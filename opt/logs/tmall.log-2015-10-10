@@ -1,0 +1,9 @@
+[2015-10-10 17:51:12.557] [INFO] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** aaaaa
+[2015-10-10 17:51:14.562] [INFO] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** aaaaa_bbb
+[2015-10-10 17:51:17.562] [INFO] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** aaaaa_bbb_ccc
+[2015-10-10 17:51:17.562] [FATAL] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** err: null, results: "aaaaa_bbb_ccc_ddd"
+[2015-10-10 17:52:44.405] [INFO] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** aaaaa
+[2015-10-10 17:52:44.419] [INFO] console - txt = "aaaaa_bbb"
+[2015-10-10 17:52:46.423] [INFO] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** aaaaa_bbb
+[2015-10-10 17:52:49.423] [INFO] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** aaaaa_bbb_ccc
+[2015-10-10 17:52:49.424] [FATAL] f:\工作积累\天脉聚源\test\async_waterfall.js - ********** err: null, results: "aaaaa_bbb_ccc_ddd"

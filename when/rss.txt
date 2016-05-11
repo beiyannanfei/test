@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"> 
+	<channel> 
+	<title>CSDN 程序员杂志</title> 
+	<link>http://programmer.csdn.net</link> 
+	<description>程序员杂志</description> 
+		<lastBuildDate>Mon, 30 Nov 2015 15:04:22</lastBuildDate> 
+					<item>
+				<title><![CDATA[微信生态中企业应用的创新与创业机会]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-11-17/2826236]]></link>
+				<description><![CDATA[大众创业、万众创新的时代已经来临，越来越多的企业开始从信息化走向互联网化。腾讯已经绕过企业互联网移动入口之争，获取了千万级别的企业用户，并构建微信企业应用生态。]]></description>
+				<author><![CDATA[杨芳贤]]></author>
+				<pubDate>Tue, 17 Nov 2015 17:00:03</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-11-17/2826236]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[《程序员11月B刊：微信 · 生态》火热上市！]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-11-17/2826235]]></link>
+				<description><![CDATA[在大众创业、万众创新新时代，腾讯借助公众平台，获取了千万级别的企业用户，并开始通过平台开放构建微信企业应用生态。本封面专题诚邀多位微信领域专家，与创业者中一起探索微信大生态中的求胜法则。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Tue, 17 Nov 2015 16:38:21</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-11-17/2826235]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[微信支付开发中的“坑”与解决之道]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-11-16/2826223]]></link>
+				<description><![CDATA[微信支付是腾讯公司的支付业务品牌，它提供公众号支付、扫码支付等支付方式，并且还提供代金券、现金红包等营销工具。微信支付结合微信公众号，是移动支付的首选。现在来介绍一下微信支付开发中的各种“坑”。]]></description>
+				<author><![CDATA[刘运强]]></author>
+				<pubDate>Mon, 16 Nov 2015 17:43:59</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-11-16/2826223]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[LBS应用的路径引导方法]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-11-16/2826221]]></link>
+				<description><![CDATA[目前LBS应用已在智能手机中占据了主导地位，但LBS技术覆盖范围太广，很少有能深入描述LBS技术的资料。所以作者在《程序员》杂志开辟专栏来描述LBS核心技术，本文为该专栏的第三篇。]]></description>
+				<author><![CDATA[贾双成]]></author>
+				<pubDate>Mon, 16 Nov 2015 16:46:15</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-11-16/2826221]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[《程序员11月A刊：云计算开源核心技术变迁》火热上市！]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-11-09/2826156]]></link>
+				<description><![CDATA[云计算开源核心技术变迁专题聚焦于OpenStack的Magnum、Heat等重要模块在容器时代的革新，和Kubernetes、Mesos等容器相关技术的最���发展，通过另类视角，重新审视高速迭代的开源技术与落地之间仍然存在的差距。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Mon, 09 Nov 2015 13:49:49</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-11-09/2826156]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[Kubernetes容器管理技术变迁]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-11-06/2826140]]></link>
+				<description><![CDATA[计算机互联网时代，随着容器及虚拟技术的发展演进，要求对分散的计算资源进行整合集中分配，实现具有高效调度、动态扩展，弹性伸缩、服务共享、高可用等大数据时代特征的模型体系，本文将对该体系进行详细讲解。]]></description>
+				<author><![CDATA[杨乐]]></author>
+				<pubDate>Fri, 06 Nov 2015 17:23:07</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-11-06/2826140]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[《程序员10月B刊：架构技术与实践》火热上市！]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-10-16/2825928]]></link>
+				<description><![CDATA[什么是架构？如何设计前后端分离的架构？如何设计高可用的架构？如何设计可伸缩的架构？什么又是架构师？程序员应该如何修炼为架构师？本期从实战外功到内力修炼全面晋升专业格局，赶紧翻开书，让我们逐一与您分享。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Fri, 16 Oct 2015 11:09:56</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-10-16/2825928]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[avalon：小而美，轻量级前端MVVM框架]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-29/2825826-avalon]]></link>
+				<description><![CDATA[迷你易用MVVM框架avalon，凭借其出色的性能表现，已成为国内举足轻重的框架。框架作者司徒正美将在本文深度剖析avalon，带你领略avalon出奇制胜之处。]]></description>
+				<author><![CDATA[司徒正美]]></author>
+				<pubDate>Tue, 29 Sep 2015 22:54:38</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-29/2825826-avalon]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[《程序员10月A刊：移动开发新看点》火热上市！]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-26/2825807]]></link>
+				<description><![CDATA[本期专题“移动开发新看点”响应10月登场的MDCC，我们从大会精华择其一二，让开发者们先睹为快。重磅邀请嘉宾分享分享自己的私房秘技、产业先见，更让我们侧面观察这些专家背后的思想、胸怀、远见。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Sat, 26 Sep 2015 10:30:18</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-26/2825807]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[微店的大数据平台建设实践与探讨]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-21/2825756]]></link>
+				<description><![CDATA[微店是全球领先的移动电商网络，创造了一个便利的手机购物环境，目前有超过3000万的店主使用微店销售商品。微店大数据架构师王锋，将重点描述大数据处理平台中数据采集、传输、存储、分析过程中的公共基础技术部分。]]></description>
+				<author><![CDATA[王锋]]></author>
+				<pubDate>Mon, 21 Sep 2015 14:54:23</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-21/2825756]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[逆水行舟，看前行中的Spark]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-21/2825754]]></link>
+				<description><![CDATA[在生态建设上，Spark取得极大的成功，其主要体现在application、environment及data source三方面。Spark的贡献者目前超过650人，围绕Spark创业的公司同样增多，“Spark as a Service”这个概念也被越来越多人接受。]]></description>
+				<author><![CDATA[陈超]]></author>
+				<pubDate>Mon, 21 Sep 2015 14:21:04</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-21/2825754]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[《程序员9月B刊：大数据核心技术与实践》火热上市！]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-15/2825713]]></link>
+				<description><![CDATA[大数据实战与技术专题，摘录了电商、游戏、移动等领域的大数据应用，覆盖当下热门的大数据开源技术实践与技术细节，如Hadoop、Spark、Docker等，带大家一览这些精彩实践赖以成型的根本——繁华的开源大数据生态圈。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Tue, 15 Sep 2015 19:01:21</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-15/2825713]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[感官世界与人机交互的盛宴─未来虚拟现实养成记]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-09/2825655]]></link>
+				<description><![CDATA[拥有苹果人机交互实验室和谷歌X实验室研发经验的顾志强，将丰富的感官科技，包括：触觉、嗅觉、心率、眼球等科技盛宴带到读者面前，展示未来VR人机交互的各种可能性。]]></description>
+				<author><![CDATA[程序员电子刊]]></author>
+				<pubDate>Wed, 09 Sep 2015 11:02:07</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-09/2825655]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[GNOME年度开源盛会GUADEC 2015瑞典全记录]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-06/2825622]]></link>
+				<description><![CDATA[今年中国在GUADEC上的影响力开始崭露头角。除了两位铜牌赞助商为来自中国外，还有两名中国的Google Summer of Code的学生，在大会上做闪电演讲；一共有9位中国人参加了此次会议，有史以来中国人参会人数最高的一次。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Sun, 06 Sep 2015 14:43:27</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-06/2825622]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[浅析VR交互技术选型中的瓶颈与机遇]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-09-01/2825601]]></link>
+				<description><![CDATA[《程序员》专访了VR Depth创始人李今，他以自身在VR产业一路摸索的实际经验，分享开发VR设备在技术上面临的各种瓶颈。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Tue, 01 Sep 2015 15:37:49</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-09-01/2825601]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[《程序员9月A刊：虚拟现实》火热上市！]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-08-31/2825593]]></link>
+				<description><![CDATA[Oculus将虚拟现实重新推上业界讨论话题榜。本期封面报道，我们从VR发展、前沿交互方案、交互技术对比、VR头盔内容与手机VR头盔内容的设计开发角度，分享新兴领域的技术选型与开发经验。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Mon, 31 Aug 2015 19:28:19</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-08-31/2825593]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[徐飞：AngularJS在苏宁云中心的深入实践]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-08-24/2825527]]></link>
+				<description><![CDATA[以AngularJS、Vue.js、avalon为代表的MVVM流，及以React为代表的组件流，成为当前前端框架的两种主要思考方式。本文将重点介绍2015年企业在AngularJS上的实践分享。]]></description>
+				<author><![CDATA[徐飞]]></author>
+				<pubDate>Mon, 24 Aug 2015 17:36:22</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-08-24/2825527]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[黑客大会之我的故事]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-08-20/2825500]]></link>
+				<description><![CDATA[8月黑帽大会刚落幕。本文是一位黑客参与黑帽大会的亲身体悟，总结了自己成为黑客的心路历程。他说：所有的黑客行为都是由一个小小的想法开始。]]></description>
+				<author><![CDATA[锺文昌]]></author>
+				<pubDate>Thu, 20 Aug 2015 11:09:08</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-08-20/2825500]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[程序员2015年8月B：安全‧实践]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-08-17/2825472]]></link>
+				<description><![CDATA[安全边界正被无限拓宽且日益复杂，传统的固定边界在新信息攻防形式下逐渐无效，Design for Failure、攻击面控制、纵深防御、实时安全情报感知等新安全体系建设开始崭露头角，更多企业的安全实践已经“从0到1”。]]></description>
+				<author><![CDATA[程序员杂志]]></author>
+				<pubDate>Mon, 17 Aug 2015 08:09:23</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-08-17/2825472]]></guid>
+			</item> 
+					<item>
+				<title><![CDATA[Vue.js：轻量高效的前端组件化方案]]></title>
+				<link><![CDATA[http://www.csdn.net/article/2015-08-11/2825439-vue]]></link>
+				<description><![CDATA[Vue.js通过简洁的API提供高效的数据绑定和灵活的组件系统。在前端纷繁复杂的生态中，Vue.js有幸受到一定程度的关注，目前在GitHub上已经有5000+的star。本文将从各方面对Vue.js做一个深入的介绍。]]></description>
+				<author><![CDATA[尤雨溪]]></author>
+				<pubDate>Tue, 11 Aug 2015 16:24:39</pubDate>
+				<guid><![CDATA[http://www.csdn.net/article/2015-08-11/2825439-vue]]></guid>
+			</item> 
+			</channel> 
+</rss> 

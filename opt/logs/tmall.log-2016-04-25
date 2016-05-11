@@ -1,0 +1,9 @@
+[2016-04-25 10:07:23.886] [INFO] console - ============== a
+[2016-04-25 10:07:23.892] [INFO] console - =============== b datas: {"a":"AAA"}
+[2016-04-25 10:07:23.893] [INFO] console - =============== c datas: {"a":"AAA","b":"BBB"}
+[2016-04-25 10:07:23.895] [INFO] console - null { a: 'AAA', b: 'BBB', c: 'CCC' }
+[2016-04-25 10:07:24.884] [INFO] f:\work\tianmaijuyuan\test\async_auto.js - *******getDate
+[2016-04-25 10:07:24.885] [INFO] f:\work\tianmaijuyuan\test\async_auto.js - *******mkdir
+[2016-04-25 10:07:27.885] [INFO] f:\work\tianmaijuyuan\test\async_auto.js - *******writeFile
+[2016-04-25 10:07:31.909] [INFO] f:\work\tianmaijuyuan\test\async_auto.js - *******emailFiles
+[2016-04-25 10:07:31.910] [FATAL] f:\work\tianmaijuyuan\test\async_auto.js - ****** err: "a", result: {"getDate":"getDate","mkDir":"mkdir","writeFile":"writeFile","emailFiles":"emailFiles"}

@@ -1,0 +1,20 @@
+[2015-10-13 11:21:42.762] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******getDate
+[2015-10-13 11:21:42.781] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******mkdir
+[2015-10-13 11:21:45.793] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******writeFile
+[2015-10-13 11:21:49.794] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******emailFiles
+[2015-10-13 11:21:49.794] [FATAL] f:\工作积累\天脉聚源\test\async_auto.js - ****** err: null, result: {"getDate":"getDate","mkDir":"mkdir","writeFile":"writeFile","emailFiles":"emailFiles"}
+[2015-10-13 11:22:04.278] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******getDate
+[2015-10-13 11:22:04.284] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******mkdir
+[2015-10-13 11:22:07.287] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******writeFile
+[2015-10-13 11:22:11.287] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******emailFiles
+[2015-10-13 11:22:11.287] [FATAL] f:\工作积累\天脉聚源\test\async_auto.js - ****** err: "a", result: {"getDate":"getDate","mkDir":"mkdir","writeFile":"writeFile","emailFiles":"emailFiles"}
+[2015-10-13 11:28:39.054] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******getDate
+[2015-10-13 11:28:39.068] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******mkdir
+[2015-10-13 11:28:42.074] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******writeFile
+[2015-10-13 11:28:46.074] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******emailFiles
+[2015-10-13 11:28:46.075] [FATAL] f:\工作积累\天脉聚源\test\async_auto.js - ****** err: "a", result: {"getDate":"getDate","mkDir":"mkdir","writeFile":"writeFile","emailFiles":"emailFiles"}
+[2015-10-13 11:31:19.745] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******getDate
+[2015-10-13 11:31:19.761] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******mkdir
+[2015-10-13 11:31:22.770] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******writeFile
+[2015-10-13 11:31:26.771] [INFO] f:\工作积累\天脉聚源\test\async_auto.js - *******emailFiles
+[2015-10-13 11:31:26.772] [FATAL] f:\工作积累\天脉聚源\test\async_auto.js - ****** err: "a", result: {"getDate":"getDate","mkDir":"mkdir","writeFile":"writeFile","emailFiles":"emailFiles"}

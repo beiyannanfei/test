@@ -1,0 +1,9 @@
+[2016-05-06 12:09:11.863] [TRACE] f:\work\tianmaijuyuan\test\logger.js - aaaaa
+[2016-05-06 12:09:11.867] [DEBUG] f:\work\tianmaijuyuan\test\logger.js - aaaaa
+[2016-05-06 12:09:11.868] [INFO] f:\work\tianmaijuyuan\test\logger.js - aaaaa
+[2016-05-06 12:09:11.868] [WARN] f:\work\tianmaijuyuan\test\logger.js - aaaaa
+[2016-05-06 12:09:11.868] [ERROR] f:\work\tianmaijuyuan\test\logger.js - aaaaa
+[2016-05-06 12:09:11.868] [FATAL] f:\work\tianmaijuyuan\test\logger.js - aaaaa
+[2016-05-06 12:09:11.868] [INFO] f:\work\tianmaijuyuan\test\logger.js - begin: 1462507751868
+[2016-05-06 12:09:15.593] [INFO] console - a: 3725ms
+[2016-05-06 12:09:15.597] [INFO] f:\work\tianmaijuyuan\test\logger.js - end: 1462507755597

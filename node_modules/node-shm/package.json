@@ -1,0 +1,29 @@
+{
+  "author": "Jan Supuka <sbmintegral@sbmintegral.sk> (http://www.sbmintegral.sk)",
+  "name": "shm",
+  "description": "simple to use, PHP compatible shared memory for node.js",
+  "main": "./build/Release/shm",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/supipd/node-shm.git"
+  },
+  "keywords" : [
+	"shm",
+	"shmop",
+	"shared",
+	"memory",
+	"ipc"
+  ],
+  "scripts": {
+    "install": "node-gyp rebuild",
+	"test" : "node ./test/test.js"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=0.8.14"
+  },
+  "bugs": { 
+    "url" : "https://github.com/supipd/node-shm/issues"
+  }
+}

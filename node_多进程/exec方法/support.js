@@ -1,0 +1,1 @@
+console.log("support 进程 " + process.argv[2] + " 执行。");

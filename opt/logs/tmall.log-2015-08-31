@@ -1,0 +1,9 @@
+[2015-08-31 18:02:29.211] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-31 18:02:29.215] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-31 18:02:29.216] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-31 18:02:29.216] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-31 18:02:29.216] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-31 18:02:29.216] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-31 18:02:29.216] [INFO] f:\工作积累\天脉聚源\test\logger.js - begin: 1441015349216
+[2015-08-31 18:02:33.663] [INFO] console - a: 4445ms
+[2015-08-31 18:02:33.666] [INFO] f:\工作积累\天脉聚源\test\logger.js - end: 1441015353665

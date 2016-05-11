@@ -1,0 +1,86 @@
+[2015-08-10 14:10:57.687] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:10:57.691] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:10:57.692] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:10:57.692] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:10:57.692] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:10:57.692] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:10:57.692] [INFO] console - console.log
+[2015-08-10 14:11:37.496] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:11:37.499] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:11:37.500] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:11:37.500] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:11:37.500] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:11:37.500] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:11:37.501] [INFO] console - a: 0ms
+[2015-08-10 14:12:16.614] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:16.617] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:16.618] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:16.618] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:16.618] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:16.618] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:16.618] [INFO] console - a: 0ms
+[2015-08-10 14:12:42.732] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:42.736] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:42.737] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:42.737] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:42.738] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:42.738] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:42.739] [INFO] console - a: 1ms
+[2015-08-10 14:12:54.035] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:54.039] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:54.039] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:54.039] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:54.039] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:54.040] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:12:54.045] [INFO] console - a: 5ms
+[2015-08-10 14:13:01.290] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:13:01.293] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:13:01.294] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:13:01.294] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:13:01.294] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:13:01.294] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:13:01.342] [INFO] console - a: 48ms
+[2015-08-10 14:14:14.327] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:14:14.330] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:14:14.330] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:14:14.331] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:14:14.331] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:14:14.331] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:14:14.420] [INFO] console - a: 88ms
+[2015-08-10 14:15:02.052] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:02.056] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:02.056] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:02.057] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:02.057] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:02.057] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:02.059] [INFO] console - a: 2ms
+[2015-08-10 14:15:22.578] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:22.581] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:22.582] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:22.582] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:22.582] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:22.583] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:23.006] [INFO] console - a: 423ms
+[2015-08-10 14:15:31.461] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:31.464] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:31.465] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:31.465] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:31.465] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:31.465] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:15:35.131] [INFO] console - a: 3664ms
+[2015-08-10 14:16:33.593] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:16:33.597] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:16:33.597] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:16:33.598] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:16:33.598] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:16:33.598] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:16:37.287] [INFO] console - a: 3688ms
+[2015-08-10 14:17:44.918] [TRACE] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:17:44.921] [DEBUG] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:17:44.921] [INFO] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:17:44.922] [WARN] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:17:44.922] [ERROR] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:17:44.922] [FATAL] f:\工作积累\天脉聚源\test\logger.js - aaaaa
+[2015-08-10 14:17:44.922] [INFO] f:\工作积累\天脉聚源\test\logger.js - begin: 1439187464922
+[2015-08-10 14:17:48.843] [INFO] console - a: 3920ms
+[2015-08-10 14:17:48.845] [INFO] f:\工作积累\天脉聚源\test\logger.js - end: 1439187468845

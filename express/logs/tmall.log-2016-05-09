@@ -1,0 +1,71 @@
+[2016-05-09 10:01:01.450] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:01:01.453] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:01:01.453] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:01:01.466] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:01:18.390] [INFO] console - ================r: {}
+[2016-05-09 10:01:18.392] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll err: "{\"command\":\"LPUSH\",\"code\":\"WRONGTYPE\"}"
+[2016-05-09 10:01:18.393] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll set redis fiald err: "{\"command\":\"LPUSH\",\"code\":\"WRONGTYPE\"}"
+[2016-05-09 10:02:32.255] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:02:32.256] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:02:32.257] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:02:32.266] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:02:34.970] [INFO] console - ******************e: {}
+[2016-05-09 10:02:34.970] [INFO] console - ================r: {}
+[2016-05-09 10:03:03.595] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:03:03.622] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:03:03.623] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:03:03.643] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:03:05.627] [INFO] console - ******************e: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-09 10:03:05.627] [INFO] console - ================r: {}
+[2016-05-09 10:11:08.236] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:11:08.237] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:11:08.238] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:11:08.244] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:11:09.781] [INFO] console - ******************e: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-09 10:11:09.782] [INFO] console - ================r: "{\"command\":\"LPUSH\",\"code\":\"WRONGTYPE\"}"
+[2016-05-09 10:23:12.874] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:23:12.876] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:23:12.877] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:23:12.885] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:25:09.694] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:25:09.696] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:25:09.696] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:25:09.703] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:25:29.944] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll v3 err: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-09 10:25:29.945] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll set redis fiald err: "{\"command\":\"LPUSH\",\"code\":\"WRONGTYPE\"}"
+[2016-05-09 10:26:10.052] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:26:10.054] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:26:10.054] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:26:10.061] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:26:11.846] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll v3 err: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-09 10:26:11.847] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll set redis fiald err: "{\"command\":\"LPUSH\",\"code\":\"WRONGTYPE\"}"
+[2016-05-09 10:29:48.233] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:29:48.235] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:29:48.236] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:29:48.246] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 10:29:50.401] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll v3 err: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-09 10:29:50.402] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll set redis fiald err: "{\"command\":\"LPUSH\",\"code\":\"WRONGTYPE\"}"
+[2016-05-09 10:29:50.413] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coSeriesErrAndRoll rollback success v: 2
+[2016-05-09 10:35:37.530] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 10:35:37.532] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 10:35:37.534] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 10:35:37.542] [FATAL] F:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 17:12:07.709] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 17:12:07.710] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 17:12:07.710] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 17:12:07.717] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 17:12:49.479] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 17:12:49.481] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 17:12:49.482] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 17:12:49.494] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 17:12:50.943] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - ========= e: "Cannot read property 'apply' of undefined"
+[2016-05-09 17:13:17.856] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 17:13:17.858] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 17:13:17.858] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 17:13:17.868] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 17:13:22.031] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - ========= e: "value.apply is not a function"
+[2016-05-09 17:13:48.109] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-09 17:13:48.110] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-09 17:13:48.111] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-09 17:13:48.118] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-09 17:13:49.787] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - ========= e: "value.apply is not a function"

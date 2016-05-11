@@ -1,0 +1,60 @@
+{
+  "name": "kafka-node",
+  "description": "node client for Apache kafka, only support kafka 0.8 and above",
+  "version": "0.2.28",
+  "main": "kafka.js",
+  "dependencies": {
+    "async": "~0.9.0",
+    "binary": "~0.3.0",
+    "buffer-crc32": "~0.2.5",
+    "buffermaker": "~1.2.0",
+    "debug": "^2.1.3",
+    "lodash": "~3.5.0",
+    "node-uuid": "~1.4.3",
+    "node-zookeeper-client": "~0.2.2",
+    "retry": "~0.6.1",
+    "snappy": "^4.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.1",
+    "should": "^5.2.0",
+    "optimist": "^0.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SOHU-Co/kafka-node.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "gitHead": "e211f2f44c14e852817bac0687a957aae49611d8",
+  "bugs": {
+    "url": "https://github.com/SOHU-Co/kafka-node/issues"
+  },
+  "homepage": "https://github.com/SOHU-Co/kafka-node#readme",
+  "_id": "kafka-node@0.2.28",
+  "_shasum": "999a480a29143c277535ce4e9e6f2f07622bc4e5",
+  "_from": "kafka-node@*",
+  "_npmVersion": "2.10.1",
+  "_nodeVersion": "2.1.0",
+  "_npmUser": {
+    "name": "haio",
+    "email": "mockingror@gmail.com"
+  },
+  "dist": {
+    "shasum": "999a480a29143c277535ce4e9e6f2f07622bc4e5",
+    "size": 27449,
+    "noattachment": false,
+    "tarball": "http://registry.npm.taobao.org/kafka-node/download/kafka-node-0.2.28.tgz"
+  },
+  "maintainers": [
+    {
+      "name": "haio",
+      "email": "mockingror@gmail.com"
+    }
+  ],
+  "directories": {},
+  "publish_time": 1442400056121,
+  "_cnpm_publish_time": 1442400056121,
+  "_resolved": "https://registry.npm.taobao.org/kafka-node/download/kafka-node-0.2.28.tgz"
+}

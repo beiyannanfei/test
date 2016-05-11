@@ -1,0 +1,24 @@
+[2015-08-07 12:43:56.035] [INFO] f:\工作积累\天脉聚源\test\ztest.js - a = ["aaa",1,"bbb",2,"ccc",3,"ddd",4]
+[2015-08-07 12:46:03.525] [INFO] f:\工作积累\天脉聚源\test\ztest.js - a = ["aaa",1,"bbb",2,"ccc",3,"ddd",4]
+[2015-08-07 12:46:03.529] [INFO] f:\工作积累\天脉聚源\test\ztest.js - b = {"aaa":1,"bbb":2,"ccc":3,"ddd":4}
+[2015-08-07 14:54:53.107] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 1 'aaa'
+[2015-08-07 14:54:53.110] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 2 'bbb'
+[2015-08-07 14:54:53.111] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 3 'ccc'
+[2015-08-07 14:55:14.357] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 1 'aaa'
+[2015-08-07 14:55:14.363] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 2 'bbb'
+[2015-08-07 14:55:14.363] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 3 'ccc'
+[2015-08-07 14:55:32.570] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 1
+[2015-08-07 14:55:32.579] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 2
+[2015-08-07 14:55:32.580] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 3
+[2015-08-07 14:56:02.980] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 10 'aaa'
+[2015-08-07 14:56:02.984] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 20 'bbb'
+[2015-08-07 14:56:02.985] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 30 'ccc'
+[2015-08-07 14:59:54.227] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 10 'aaa'
+[2015-08-07 14:59:54.242] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 20 'bbb'
+[2015-08-07 14:59:54.243] [INFO] f:\工作积累\天脉聚源\test\ztest.js - 30 'ccc'
+[2015-08-07 15:16:23.634] [INFO] f:\工作积累\天脉聚源\test\ztest.js - map: {"aaa":10,"bbb":20,"ccc":30}
+[2015-08-07 15:16:23.637] [INFO] f:\工作积累\天脉聚源\test\ztest.js - keyList: ["aaa","bbb","ccc"]
+[2015-08-07 15:16:23.638] [INFO] f:\工作积累\天脉聚源\test\ztest.js - valueList: [10,20,30]
+[2015-08-07 15:16:23.638] [INFO] f:\工作积累\天脉聚源\test\ztest.js - val: "aaa", value: 10, mapValue: 10
+[2015-08-07 15:16:23.638] [INFO] f:\工作积累\天脉聚源\test\ztest.js - val: "bbb", value: 20, mapValue: 20
+[2015-08-07 15:16:23.639] [INFO] f:\工作积累\天脉聚源\test\ztest.js - val: "ccc", value: 30, mapValue: 30
