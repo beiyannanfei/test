@@ -132,4 +132,11 @@ exports.coAuto = function (req, res) {
 	if (!key || !val) {
 		return res.send(400, "param incomplete");
 	}
+	co(function *() {
+		var rVal1 = yield [
+			rc.set(key, val),
+			rc.set(val, key)
+		]
+
+	});
 };
