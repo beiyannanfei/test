@@ -127,4 +127,6 @@ exports.coParallelErr = function (req, res) {    //并行执行
 };
 
 exports.coAuto = function (req, res) {
+	var key = req.query.key;
+	var val = req.query.val;
 };
