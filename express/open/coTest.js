@@ -132,9 +132,4 @@ exports.coAuto = function (req, res) {
 	if (!key || !val) {
 		return res.send(400, "param incomplete");
 	}
-	logger.info("coParallel rVal: %j");
-
-
-	
-
 };
