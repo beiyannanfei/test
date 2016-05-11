@@ -133,6 +133,8 @@ exports.coAuto = function (req, res) {
 		return res.send(400, "param incomplete");
 	}
 
+
+
 	
 
 };
