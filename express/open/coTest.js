@@ -125,3 +125,6 @@ exports.coParallelErr = function (req, res) {    //并行执行
 		return res.send(500, e.message);
 	});
 };
+
+exports.coAuto = function (req, res) {
+};
