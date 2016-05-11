@@ -1,0 +1,128 @@
+worker_processes 1;
+error_log logs/error.log error; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 8866;
+
+        location = /sum {
+            internal;   #只允许内部调用
+
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.say(tonumber(args.a) + tonumber(args.b))
+            }
+        }
+
+        location = /app/test {
+            content_by_lua_block {
+                local res = ngx.location.capture(
+                    "/sum", {args={a=3, b=8}}
+                )
+                ngx.say("status:", res.status, " response:", res.body)
+            }
+        }
+    }
+
+    server {
+        listen 8865;
+
+        location = /sum {
+            internal;
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.print(tonumber(args.a) + tonumber(args.b))
+            }
+        }
+
+        location = /sub {
+            internal;
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.print(tonumber(args.a) - tonumber(args.b))
+            }
+        }
+
+        location = /mul {
+            internal;
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.print(tonumber(args.a) * tonumber(args.b))
+            }
+        }
+
+        location = /app/test {
+            content_by_lua_block {
+                local res1, res2, res3 = ngx.location.capture_multi({
+                    {"/sum", {args={a=3, b=8}}},
+                    {"/sub", {args={a=3, b=8}}},
+                    {"/mul", {args={a=3, b=8}}}
+                })
+                ngx.say("status:", res1.status, " response:", res1.body)
+                ngx.say("status:", res2.status, " response:", res2.body)
+                ngx.say("status:", res3.status, " response:", res3.body)
+            }
+        }
+    }
+
+    server {
+        listen 8864;
+
+        location = /foo {
+            content_by_lua_block {
+                ngx.say("i'm foo")
+            }
+        }
+
+        location = /app/test {
+            rewrite_by_lua_block {
+                return ngx.redirect('/foo');
+            }
+        }
+    }
+
+    server {
+        listen 8863;
+        server_name localhost;
+        lua_code_cache off;
+        location = /sum0 {
+            internal;
+            content_by_lua_file test_lua/location1.lua;
+        }
+
+        location = /app/test {
+            content_by_lua_file test_lua/location2.lua;
+        }
+    }
+
+    server {
+        listen 8862;
+        server_name localhost;
+        lua_code_cache off;
+
+        location = /sum {
+            internal;
+            content_by_lua_file test_lua/location_sum.lua;
+        }
+
+        location = /sub {
+            internal;
+            content_by_lua_file test_lua/location_sub.lua;
+        }
+
+        location = /mul {
+            internal;
+            content_by_lua_file test_lua/location_mul.lua;
+        }
+
+        location = /app/test {
+            content_by_lua_file test_lua/location_multi.lua;
+        }
+    }
+}
+

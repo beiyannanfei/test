@@ -1,0 +1,42 @@
+worker_processes  1;        #nginx worker 数量
+error_log logs/error.log;   #指定错误日志文件路径
+events {
+    worker_connections 1024;
+}
+http {
+    server {
+        listen 6699;
+
+        # 加法
+        location /addition {
+           content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.say(args.a + args.b)
+            }
+        }
+
+        # 减法
+        location /subtraction {
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.say(args.a - args.b)
+            }
+        }
+
+        # 乘法
+        location /multiplication {
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.say(args.a * args.b)
+            }
+        }
+
+        # 除法
+        location /division {
+            content_by_lua_block {
+                local args = ngx.req.get_uri_args()
+                ngx.say(args.a / args.b)
+            }
+        }
+    }
+}

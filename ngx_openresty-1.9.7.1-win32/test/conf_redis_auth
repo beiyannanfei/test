@@ -1,0 +1,63 @@
+worker_processes 1;
+error_log logs/error.log info; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    lua_package_path 'lua/?.lua;lualib/resty/?.lua;;';
+
+    server {
+        listen 8866;
+        server_name localhost;
+
+        location /test {
+            content_by_lua_block {
+                local redis = require "redis"
+                local red = redis:new()
+                red:set_timeout(1000)
+
+                local ok, err = red:connect("127.0.0.1", 6379)
+                if not ok then
+                    return ngx.say("faild to connect: ", err)
+                end
+                ngx.say("connect success.")
+
+                local count
+                count, err = red:get_reused_times()     -- 请注意这里 auth 的调用过程
+                if 0 == count then
+                    ok, err = red:auth("password")
+                    if not ok then
+                        return ngx.say("faild to auth: ", err)
+                    end
+                elseif err then
+                    return ngx.say("fiald to get reused times: ", err)
+                end
+                ngx.say("auth success.")
+
+                ok, err = red:set("dog", "an animal")
+                if not ok then
+                    return ngx.say("faild to set dog: ", err)
+                end
+                ngx.say("set result: ", ok, " set err: ", err)
+
+                local res, err = red:get("dog")
+                if err then
+                    return ngx.say("redis get err: ", err);
+                end
+                ngx.say("redis get success res: ", res, " err: ", err);
+
+                ok, err = red:set_keepalive(10000, 100) -- 连接池大小是100个，并且设置最大的空闲时间是 10 秒
+                if not ok then
+                    return ngx.say("faild to set keepalive: ", err)
+                end
+                ngx.say("set keepalive success result: %j", ok)
+
+                ok, err = red:set("dog", "a animal")    -- err set_keepalive 已经关闭连接
+                ngx.say("final set ok: ", ok, " err: ", err);
+            }
+        }
+    }
+}

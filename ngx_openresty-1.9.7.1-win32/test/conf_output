@@ -1,0 +1,46 @@
+worker_processes 1;
+error_log logs/error.log error; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 8866;
+
+        lua_code_cache off;     #关闭输出缓存
+
+        location /test {
+            content_by_lua_block {
+                ngx.say(string.rep("hello", 1000))
+                ngx.sleep(3)
+                ngx.say("the world")
+            }
+        }
+    }
+
+    server {
+        listen 8865;
+
+        location /test {
+            content_by_lua_block {
+                local table = {
+                    "hello, ",
+                    { "world: ", true, " or ", false, {": ", nul} }
+                }
+                ngx.print(table)
+            }
+        }
+    }
+
+    server {
+        listen 8864;
+        server_name localhost;
+
+        location /test {
+            content_by_lua_file test_lua/output.lua;
+        }
+    }
+}

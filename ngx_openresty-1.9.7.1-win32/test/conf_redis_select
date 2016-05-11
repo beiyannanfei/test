@@ -1,0 +1,50 @@
+worker_processes 1;
+error_log logs/error.log info; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 8866;
+        server_name localhost;
+        location /test {
+            content_by_lua_block {
+                local redis = require "lualib.resty.redis"
+                local red = redis:new()
+                red:set_timeout(1000)
+                local ok, err = red:connect("127.0.0.1", 6379)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis connect fiald err: %s, ok: %d", err, ok))
+                end
+                ngx.say(string.format("redis connect success err: %s, ok: %s", err, ok))
+
+                ok, err = red:select(1)     -- 选择redis的1库
+                if err or (not ok) then
+                    return ngx.say(string.format("redis select fiald err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis select success err: %s, ok: %s", err, ok))
+
+                ok, err = red:set("dog", "an animal")
+                if err or (not ok) then
+                    return ngx.say(string.format("redis set fiald err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis set success err: %s, ok: %s", err, ok))
+
+                ok, err = red:select(0)     -- 切记将redis连接放入连接池之前将库设为默认
+                if err or (not ok) then
+                    return ngx.say(string.format("redis select to default fiald err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis select to default success err: %s, ok: %s", err, ok))
+
+                ok, err = red:set_keepalive(10000, 100)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis set keepalive fiald err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis set keepalive success err: %s, ok: %s", err, ok))
+            }
+        }
+    }
+}

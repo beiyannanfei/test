@@ -1,0 +1,6 @@
+229上启动nginx方法
+	1. cd ~/work/
+	2. PATH=/usr/local/openresty/nginx/sbin:$PATH		//设置环境变量(本次有效，永久生效方法，打开文件 /etc/profile，在文件末尾加入export PATH=$PATH:/usr/local/openresty/nginx/sbin， 然后执行source /etc/profile 命令重新加载)
+	3. export PATH
+	4. nginx -p `pwd`/ -c conf/nginx.conf		启动
+	5. nginx -s quit -p `pwd`/ -c conf/nginx.conf	停服

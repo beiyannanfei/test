@@ -1,0 +1,69 @@
+worker_processes 1;
+error_log logs/error.log error; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen  8866;
+
+        lua_need_request_body on;   # 默认读取 body(全局)
+
+        client_max_body_size 10m;   # 接收POST传递body参数的大小(默认1M，超过设置会将body写入临时文件，此时获取body则变为nil)
+
+        location /test {
+            content_by_lua_block {
+                local data = ngx.req.get_body_data()
+                ngx.say("hello " .. data)
+            }
+        }
+
+        location /test1 {
+            content_by_lua_block {
+                ngx.req.read_body()     -- 显示调用读取body参数(作用域内生效)
+                local data = ngx.req.get_body_data()
+                ngx.say("hello ", data)
+            }
+        }
+    }
+
+    server {
+        listen  8865;
+
+        lua_need_request_body on;   # 默认读取 body(全局)
+
+        client_max_body_size 10m;   # 接收POST传递body参数的大小(默认1M，超过设置会将body写入临时文件，此时获取body则变为nil)
+
+        location /test {
+            content_by_lua_block {
+                local data = ngx.req.get_body_data()
+                ngx.say("hello " .. data)
+            }
+        }
+    }
+
+    server {
+        listen 8864;
+        server_name localhost;
+        client_max_body_size 10m;
+
+        location /test {
+            content_by_lua_file test_lua/body.lua;
+        }
+    }
+
+    server {
+        listen 8863;
+        server_name localhost;
+        lua_need_request_body on;
+
+        location /test {
+            content_by_lua_file test_lua/body1.lua;
+        }
+    }
+}
+
+#curl 127.0.0.1:8866/test -d jack

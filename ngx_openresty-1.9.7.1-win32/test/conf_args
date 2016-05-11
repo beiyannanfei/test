@@ -1,0 +1,74 @@
+worker_processes  1;        #nginx worker 数量
+error_log logs/error.log info;   #指定错误日志文件路径
+events {
+    worker_connections 1024;
+}
+
+http {
+    lua_package_path 'lua/?.lua;lualib/resty/?.lua;;';
+
+    server {
+       listen       8866;
+       server_name  localhost;
+
+       location /test {
+           content_by_lua_block {
+               local arg = ngx.req.get_uri_args()
+               for k,v in pairs(arg) do
+                   ngx.say("[GET]  key:", k, " v:", v)
+               end
+
+               ngx.req.read_body() -- 解析 body 参数之前一定要先读取 body
+               local arg = ngx.req.get_post_args()
+               for k,v in pairs(arg) do
+                   ngx.say("[POST] key:", k, " v:", v)
+               end
+           }
+       }
+
+       location /test2 {
+           content_by_lua_block {
+               local res = ngx.location.capture(
+                    '/test',
+                        {
+                           method = ngx.HTTP_POST,
+                           args = ngx.encode_args{a=10, b='20&'},
+                           body = ngx.encode_args{c=30, d='40&'}
+                       }
+                    )
+               ngx.say(res.body)
+           }
+       }
+
+       location /test3 {
+            content_by_lua_block {
+                local res = ngx.location.capture(
+                    "/test",
+                    {
+                        method = ngx.HTTP_POST,
+                        args = "a=100&b=200%26",    -- 注意这里的 %26 ,代表的是 & 字符
+                        body = "c=300&d=400%26"
+                    }
+                )
+                ngx.say(res.body)
+            }
+       }
+    }
+
+    server {
+        listen 8865;
+        server_name localhost;
+
+        location /test {
+            content_by_lua_file test_lua/args1.lua;
+        }
+
+        location /test1 {
+            content_by_lua_file test_lua/redis_test.lua;
+        }
+    }
+}
+
+#curl "127.0.0.1:8866/test?a=1&b=2%26" -d "c=3&d=4%26"
+#curl "127.0.0.1:8866/test2"
+#curl "127.0.0.1:8866/test3"

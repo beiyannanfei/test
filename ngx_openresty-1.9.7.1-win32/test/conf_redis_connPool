@@ -1,0 +1,220 @@
+#redis使用连接池
+
+worker_processes 1;
+error_log logs/error.log info; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    lua_package_path 'lua/?.lua;lualib/resty/?.lua;;';
+    init_by_lua_file init/init.lua;
+
+    server {
+        listen 8866;
+        server_name localhost;
+
+        location /test {
+            content_by_lua_block {
+                local redis = require "resty.redis_iresty"
+                local red = redis:new({db_address = "127.0.0.1:6380"})
+
+                local ok, err = red:get("dog")
+                if err or (not ok) then
+                    return ngx.say(string.format("redis set faild err: %s, ok: %s", err, not ok))
+                end
+                ngx.say(string.format("redis set success err: %s, ok: %d", err, tonumber(ok)))
+                ngx.log(ngx.ERR, string.format("********* %s ===== %s", err, ok))
+                ngx.say(tonumber(err) or 0)
+            }
+        }
+
+        location /md5 {     #curl 127.0.0.1:8866/md5?str=aaa
+            content_by_lua_block {
+                local arg = ngx.req.get_uri_args();
+                local str = arg.str or "hello world";
+                local md5Str = ngx.md5(str);
+                ngx.say(string.format("src: %s, dest: %s", str, md5Str));
+            }
+        }
+
+        location /time {    #curl 127.0.0.1:8866/time
+            content_by_lua_block {
+                local str = string.format("ngx.today(): %s\nngx.time(): %s\nngx.utctime(): %s\nngx.localtime(): %s\nngx.now(): %s",
+                ngx.today(), ngx.time(), ngx.utctime(), ngx.localtime(), ngx.now()*1000);
+                ngx.say(str);
+                ngx.say(ngx.utctime("2016-03-03 12:27:25"));
+            }
+        }
+
+        location ~ ^/app/([-_0-9a-zA-Z]+)/([-_0-9a-zA-Z]+) {    # curl 127.0.0.1:8866/app/test_lua/test
+            set $path $1;
+            set $fileName $2;
+            content_by_lua_file $path/$fileName.lua;
+        }
+
+        location /type {        # curl 127.0.0.1:8866/type
+            content_by_lua_block {
+                local a = "abcd";
+                local b = 1234;
+                local c = {a=10, b= 20, 30};
+                ngx.say(string.format("type a: %s, b: %s, c: %s", type(a), type(b), type(c)));
+            }
+        }
+
+        location /string {      # curl 127.0.0.1:8866/string
+            content_by_lua_block {
+                local str = string.format("string.len('abcd'): %s, string.rep('a', 4): %s, string.lower('ASdF'): %s, string.upper('qaxS'): %s, string.sub('abcd', 1, 2): %s",
+                    string.len("abcd"), string.rep("a", 4), string.lower('ASdF'), string.upper('qaxS'), string.sub('abcd', 1, 2));
+                ngx.say(str);
+                str = string.format("string.char(97): %s, string.byte('a'): %s, string.byte('abc', -1): %s",
+                    string.char(97), string.byte('a'), string.byte('abc', -1));
+                ngx.say(str);
+                local i = 99;
+                ngx.say(string.char(i, i + 1, i + 2));
+                ngx.say(string.format("string.gsub('one string','one','twe'): %s", string.gsub('one string','one','twe')));
+            }
+        }
+
+        location /test0 {
+            proxy_pass http://qa.pmall.yaotv.tvm.cn/open/userVirtual?openId=AAA&sig=089c4db3127010d50cbb057ff02af772;
+            proxy_set_header Host $host;
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /open/userVirtual {    # curl "127.0.0.1:8866/open/userVirtual?openId=AAA&sig=089c4db3127010d50cbb057ff02af772"
+            proxy_pass http://qa.pmall.yaotv.tvm.cn$request_uri;
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /test1 {
+            internal;
+            proxy_pass http://qa.pmall.yaotv.tvm.cn/open/userVirtual?$args;
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /test2 {
+            content_by_lua_block {
+                local arg = ngx.req.get_uri_args();
+                local res = ngx.location.capture(
+                    "/test1", {args={openId=arg.openId, sig=arg.sig}}
+                )
+                ngx.say("status:", res.status, " response:", res.body)
+            }
+        }
+
+        location /jump {
+            proxy_pass $scheme://$server_addr:6699/addition?$args;
+            proxy_set_header  X-Real-IP  $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /var {     # curl "localhost:8866/var"
+            echo "================ common inner variable================";
+            echo "args                  = $args";
+            echo "content_type          = $content_type";
+            echo "document_uri          = $document_uri";
+            echo "host                  = $host";
+            echo "http_user_agent       = $http_user_agent";
+            echo "is_args               = $is_args";
+            echo "query_string          = $query_string";
+            echo "request_method        = $request_method";
+            echo "request_uri           = $request_uri";
+            echo "scheme                = $scheme";
+            echo "server_addr           = $server_addr";
+            echo "server_port           = $server_port";
+            echo "uri                   = $uri";
+            echo "================ seldom inner variable ================";
+            echo "arg_name              = $arg_name";
+            echo "binary_remote_addr    = $binary_remote_addr";
+            echo "body_bytes_send       = $body_bytes_sent";
+            echo "content_length        = $content_length";
+            echo "document_root         = $document_root";
+            echo "hostname              = $hostname"
+            echo "http_cookie           = $http_cookie";
+            echo "http_referer          = $http_referer";
+            echo "http_via              = $http_via";
+            echo "http_x_forwarded_for  = $http_x_forwarded_for";
+            echo "limit_rate            = $limit_rate";
+            echo "nginx_version         = $nginx_version";
+            echo "pid                   = $pid";
+            echo "realpath_root         = $realpath_root";
+            echo "remote_addr           = $remote_addr";
+            echo "remote_port           = $remote_port";
+            echo "remote_user           = $remote_user";
+            echo "request               = $request";
+            echo "request_body          = $request_body";
+            echo "request_body_file     = $request_body_file";
+            echo "request_completion    = $request_completion";
+            echo "request_filename      = $request_filename";
+            echo "server_protocol       = $server_protocol";
+        }
+
+        location /init_test {       # curl "localhost:8866/init_test"
+            content_by_lua_block {
+                say();
+            }
+        }
+
+        location ~ ^/pre/([-_0-9a-zA-Z]+) {     # curl "localhost:8866/pre/aaa"
+            echo $1;
+        }
+
+        location /main1 {    #子请求   curl "localhost:8866/main1"
+            echo_location /foo;
+            echo_location /bar;
+        }
+
+        location /foo {
+            echo foo;
+        }
+
+        location /bar {
+            echo bar;
+        }
+
+        location /main2 {   #子请求变量 curl "http://localhost:8080/main?c=3"
+            echo "main args: $args";
+            echo_location /sub "a=1&b=2";
+        }
+
+        location /sub {
+            echo "sub args: $args";
+        }
+
+        location /main3 {   #   curl "127.0.0.1:8866/main3" -d "a=10"
+            echo "main method: $echo_request_method";
+            echo_location '/sub1';
+        }
+
+        location /sub1 {
+            echo "sub1 method: $echo_request_method";
+        }
+
+        location ^~ /image/ {   # curl "localhost:8866/image/aaa"  <=> ~ ^/image/
+            echo "request_uri = $request_uri";
+        }
+
+        location ~* \.(gif|jpg|jpeg)$ {     # curl "localhost:8866/aaa/bbb/ccc.jpg"
+            echo "request_uri = $request_uri";
+        }
+
+        location /error {       # curl "localhost:8866/error"
+            error_page 404 @fallback;
+        }
+
+        location @fallback {
+            echo "error_page test";
+        }
+
+        location /sub2 {
+            proxy_pass http://fanyi.baidu.com/#zh/en/%E9%9B%80%E5%B7%A2;
+            proxy_set_header Accept-Encoding "";
+        }
+    }
+}

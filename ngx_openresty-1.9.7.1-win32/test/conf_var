@@ -1,0 +1,46 @@
+worker_processes 1;
+error_log logs/error.log info; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    server {
+        listen 8866;
+        server_name localhost;
+
+        location /sum {
+            content_by_lua_block {
+                local a = tonumber(ngx.var.arg_a) or 0
+                local b = tonumber(ngx.var.arg_b) or 0
+                ngx.say("sum: ", a + b)
+            }
+        }
+    }
+
+    server {
+        listen 8865;
+        server_name localhost;
+
+        location /sum {
+            access_by_lua_block {   --使用access阶段完成准入阶段处理
+                local black_ips = {["127.0.0.1"]=true}
+
+                local ip = ngx.var.remote_addr
+                ngx.log(ngx.INFO, "======ip====== ", ip)
+                if true == black_ips[ip] then
+                    ngx.exit(ngx.HTTP_FORBIDDEN)
+                end
+            }
+
+            content_by_lua_block {
+                local a = tonumber(ngx.var.arg_a) or 0
+                local b = tonumber(ngx.var.arg_b) or 0
+                ngx.say("sum: ", a + b)
+            }
+        }
+    }
+}
+

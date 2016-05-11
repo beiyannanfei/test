@@ -1,0 +1,26 @@
+worker_processes  1;        #nginx worker 数量
+error_log logs/error.log;   #指定错误日志文件路径
+events {
+    worker_connections 1024;
+}
+http {
+    lua_package_path 'lua/?.lua;/test_lua/?.lua;;';
+
+    server {
+		#监听端口，若你的6699端口已经被占用，则需要修改
+        listen 6699;
+        location / {
+            default_type text/html;
+
+            content_by_lua_block {
+                ngx.say("HelloWorld")
+            }
+        }
+
+        location /test {
+            content_by_lua_file test_lua/hello.lua;
+        }
+    }
+}
+
+#测试方法 curl 127.0.0.1:6699 输出 HelloWorld

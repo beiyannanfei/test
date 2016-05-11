@@ -1,0 +1,50 @@
+worker_processes 1;
+error_log logs/error.log info; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    lua_package_path 'lua/?.lua;lualib/resty/?.lua;;';
+
+    server {
+        listen 8866;
+        server_name localhost;
+
+        location /usescript {
+            content_by_lua_block {
+                local redis = require "redis"
+                local json  = require "dkjson"
+                local red = redis:new()
+                red:set_timeout(1000)  -- 1 sec
+
+                local ok, err = red:connect("127.0.0.1", 6379)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis connect faild err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis connect success err: %s, ok: %s", err, ok))
+
+                local id = "100"
+                ok, err = red:eval([[
+                    local info = redis:call("get", KEYS[1])
+                    info = json.decode(info)
+                    local g_id = info.gid
+                    local g_info = redis:call("get", g_id)
+                    return g_info
+                ]], 1, id)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis eval faild err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis eval success err: %s, ok: %s", err, ok))
+
+                ok, err = red:close()
+                if err or (not ok) then
+                    return ngx.say(string.format("redis close faild err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis close success err: %s, ok: %s", err, ok))
+            }
+        }
+    }
+}

@@ -1,0 +1,81 @@
+worker_processes 1;
+error_log logs/error.log info; #日志级别
+pid logs/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    lua_package_path 'lua/?.lua;lualib/resty/?.lua;;';
+
+    server {
+        listen 8866;
+        server_name localhost;
+
+        location /withoutpipeline {
+            content_by_lua_block {
+                local redis = require "redis"
+                local red = redis:new()
+                red:set_timeout(1000)   -- 1 sec
+
+                local ok, err = red:connect("127.0.0.1", 6379)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis connect faild err: %s, ok: %s", err, ok))
+                end
+                ngx.say(string.format("redis connect success err: %s, ok: %s", err, ok))
+
+                ok, err = red:set("cat", "Marry")
+                ngx.say(string.format("redis set cat err: %s, ok: %s", err, ok))
+                local res, err = red:get("cat")
+                ngx.say(string.format("redis get cat err: %s, res: %s", err, res))
+
+                ok, err = red:set("horse", "Bob")
+                ngx.say(string.format("redis set horse err: %s, ok: %s", err, ok))
+                res, err = red:get("horse")
+                ngx.print(string.format("redis get horse err: %s, res: %s", err, res))
+
+                ok, err = red:set_keepalive(10000, 100)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis set keepalive faild err: %s, ok: %s", err, ok))
+                end
+                return ngx.say(string.format("redis set keepalive success err: %s, ok: %s", err, ok))
+            }
+        }
+
+        location /withpipeline {
+            content_by_lua_block {
+                local redis = require "redis"
+                local red = redis:new()
+                red:set_timeout(1000)   -- 1 sec
+
+                local ok, err = red:connect("127.0.0.1", 6379)
+                if err or (not ok) then
+                    return ngx.say(string.format("redis connect faild err: %s, ok: %s", err, ok))
+                end
+
+                red:init_pipeline()
+                red:set("cat", "Marry")
+                red:set("horse", "Bob")
+                red:get("cat")
+                red:get("horse")
+                local results, err = red:commit_pipeline()
+                if err or (not results) then
+                    return ngx.say(string.format("redis commit pipeline err: %s, results: %s", err, results))
+                end
+
+                for i, res in ipairs(results) do
+                    if type(res) == "table" then
+                        if not res[1] then
+                            ngx.say(string.format("faild to run commond i: %s, res[1]: %s, res[2]: %s", i, res[1], res[2]))
+                        else
+                            ngx.pring(table)
+                        end
+                    else
+                        ngx.say(string.format("i: %s, res: %s", i, res))
+                    end
+                end
+            }
+        }
+    }
+}
