@@ -137,6 +137,6 @@ exports.coAuto = function (req, res) {
 			rc.set(key, val),
 			rc.set(val, key)
 		]
-
+		console.log();
 	});
 };
