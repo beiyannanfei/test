@@ -29,7 +29,8 @@ app.get("/co/db/series", mCoTest.dbSeries);
 app.get("/co/parallel", mCoTest.coParallel);
 //并行执行异步出错    curl "127.0.0.1:9001/open/co/parallel/err?key=a5&val=b5"
 app.get("/co/parallel/err", mCoTest.coParallelErr);
-
+//串并结合      curl "127.0.0.1:9001/open/co/auto?key=a6&val=b6"
+app.get("/co/auto", mCoTest.coAuto);
 
 
 

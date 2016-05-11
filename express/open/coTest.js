@@ -126,17 +126,24 @@ exports.coParallelErr = function (req, res) {    //并行执行
 	});
 };
 
-exports.coAuto = function (req, res) {
+exports.coAuto = function (req, res) {      //先并后串
 	var key = req.query.key;
 	var val = req.query.val;
 	if (!key || !val) {
 		return res.send(400, "param incomplete");
 	}
+
 	co(function *() {
-		var rVal1 = yield [
+		var rVal = yield [
 			rc.set(key, val),
 			rc.set(val, key)
-		]
-		console.log();
+		];
+		logger.info("coAuto rVal: %j", rVal);
+		var rVal2 = yield rc.set("rVal", JSON.stringify(rVal));
+		logger.info("coAuto rVal2: %j", rVal2);
+		return res.send(200, {rVal: rVal, rVal2: rVal2});
+	}).catch(e => {
+		logger.error("coAuto err: %j", e.message);
+		return res.send(500, e.message);
 	});
 };
