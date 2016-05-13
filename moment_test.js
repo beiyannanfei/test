@@ -20,6 +20,8 @@ function show(testFun) {
 }
 
 var dateTimeStr = "YYYY-MM-DD HH:mm:ss";
+
+console.log(moment().startOf('d').format(dateTimeStr));
 //console.log(moment().format());     //2016-03-23T16:03:57+08:00
 //console.log(moment().isValid());    //true
 //console.log(moment(1318781876406).format());    //2011-10-17T00:17:56+08:00
@@ -29,7 +31,7 @@ var dateTimeStr = "YYYY-MM-DD HH:mm:ss";
 //console.log(moment({hour: 5, minute: 10}).format('YYYY-MM-DD HH:mm:ss'));  //2016-03-23 05:00:00
 //console.log(moment({hour: 5, minute: 10, seconds: 20}).format('YYYY-MM-DD HH:mm:ss'));  //2016-03-23 05:00:00
 //console.log(moment({hour: 5, minute: 10, seconds: 20, milliseconds: 300}).format());  //2016-03-23 05:00:00
-
+/*
 //Gets or sets the seconds.
 show(moment().seconds(30).format("YYYY-MM-DD HH:mm:ss")); //now: 2016-05-11 14:55:55  --  2016-05-11 14:55:30  setSeconds
 show(moment().seconds());   //now: 2016-05-11 14:59:59 -- 59  getSeconds
@@ -159,3 +161,4 @@ show(moment().toString());  //now: 2016-05-11 16:47:37 -- Wed May 11 2016 16:47:
 
 
 
+*/

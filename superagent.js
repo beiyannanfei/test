@@ -291,7 +291,7 @@ exports.httpGetWithParam = function (url, param, cb) {
 exports.httpGetNoJson = function (url, cb) {
 	request.get(url)
 		.type('application/x-www-form-urlencoded')
-		.timeout(10000)
+		.timeout(1000)
 		.end(function (err, xhr) {
 			if (err) {
 				return cb(err);
