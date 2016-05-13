@@ -180,3 +180,54 @@
 [2016-05-13 15:52:18.238] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
 [2016-05-13 15:52:28.802] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/user0/0
 [2016-05-13 15:52:28.803] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:16:42.194] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:16:42.195] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:16:42.196] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:16:42.204] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:16:50.111] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/render/test
+[2016-05-13 16:16:50.111] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:16:50.113] [ERROR] console - Error: No default engine was specified and no extension was provided.
+    at new View (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\view.js:41:42)
+    at Function.app.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\application.js:486:12)
+    at ServerResponse.res.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\response.js:798:7)
+    at f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:64:13
+    at callbacks (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:164:37)
+    at param (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:138:11)
+    at pass (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:145:5)
+    at Router._dispatch (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:173:5)
+    at Object.router (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:33:10)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+[2016-05-13 16:19:19.230] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:19:19.232] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:19:19.233] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:19:19.260] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:19:21.150] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/render/test
+[2016-05-13 16:19:21.150] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:19:21.748] [ERROR] console - Error: Failed to lookup view "index"
+    at Function.app.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\response.js:798:7)
+    at f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:65:13
+    at callbacks (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:164:37)
+    at param (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:138:11)
+    at pass (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:145:5)
+    at Router._dispatch (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:173:5)
+    at Object.router (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:33:10)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+    at Object.showMethod [as handle] (f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:13:2)
+[2016-05-13 16:19:47.954] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:19:47.954] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:19:47.955] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:19:47.964] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:19:49.792] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/render/test
+[2016-05-13 16:19:49.793] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:19:50.169] [ERROR] console - Error: Failed to lookup view "./index"
+    at Function.app.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\application.js:493:17)
+    at ServerResponse.res.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\response.js:798:7)
+    at f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:65:13
+    at callbacks (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:164:37)
+    at param (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:138:11)
+    at pass (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:145:5)
+    at Router._dispatch (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:173:5)
+    at Object.router (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:33:10)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+    at Object.showMethod [as handle] (f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:13:2)
