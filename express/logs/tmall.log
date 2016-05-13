@@ -1,23 +1,182 @@
-[2016-05-11 12:09:16.095] [WARN] console - connect.multipart() will be removed in connect 3.0
-[2016-05-11 12:09:16.097] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
-[2016-05-11 12:09:16.098] [WARN] console - connect.limit() will be removed in connect 3.0
-[2016-05-11 12:09:16.109] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
-[2016-05-11 12:10:26.793] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coParallelErr err: "WRONGTYPE Operation against a key holding the wrong kind of value"
-[2016-05-11 12:11:34.997] [WARN] console - connect.multipart() will be removed in connect 3.0
-[2016-05-11 12:11:34.999] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
-[2016-05-11 12:11:35.000] [WARN] console - connect.limit() will be removed in connect 3.0
-[2016-05-11 12:11:35.012] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
-[2016-05-11 12:11:37.245] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coParallelErr err: "WRONGTYPE Operation against a key holding the wrong kind of value"
-[2016-05-11 12:12:07.396] [WARN] console - connect.multipart() will be removed in connect 3.0
-[2016-05-11 12:12:07.397] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
-[2016-05-11 12:12:07.397] [WARN] console - connect.limit() will be removed in connect 3.0
-[2016-05-11 12:12:07.407] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
-[2016-05-11 12:12:09.164] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coParallelErr err: "WRONGTYPE Operation against a key holding the wrong kind of value"
-[2016-05-11 12:12:18.995] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal: ["OK","OK"]
-[2016-05-11 12:12:18.995] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal2: {}
-[2016-05-11 12:12:49.477] [WARN] console - connect.multipart() will be removed in connect 3.0
-[2016-05-11 12:12:49.478] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
-[2016-05-11 12:12:49.479] [WARN] console - connect.limit() will be removed in connect 3.0
-[2016-05-11 12:12:49.494] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
-[2016-05-11 12:12:56.198] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal: ["OK","OK"]
-[2016-05-11 12:12:56.199] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal2: "OK"
+[2016-05-13 12:04:24.756] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:04:24.759] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:04:24.760] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:04:24.767] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:04:41.621] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:04:41.622] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:04:41.623] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:04:41.632] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:06:15.383] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:06:15.384] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:06:15.385] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:06:15.393] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:07:35.430] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:07:35.432] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:07:35.433] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:07:35.445] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:08:32.201] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:08:32.202] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:08:32.202] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:08:32.212] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:08:54.827] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:08:54.830] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:08:54.831] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:08:54.849] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:08:55.869] [INFO] console - aaaaa
+[2016-05-13 12:08:55.870] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: GET
+[2016-05-13 12:10:43.202] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:10:43.204] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:10:43.204] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:10:43.214] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:11:04.345] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:11:04.346] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:11:04.346] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:11:04.354] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:11:48.377] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:11:48.379] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:11:48.381] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:11:48.406] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:13:10.648] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:13:10.649] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:13:10.650] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:13:10.658] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:13:30.972] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:13:30.973] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:13:30.973] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:13:30.981] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:13:32.141] [INFO] console - aaaaa
+[2016-05-13 12:13:32.141] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: GET
+[2016-05-13 12:14:04.926] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:14:04.928] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:14:04.929] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:14:04.940] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:18:13.647] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:18:13.648] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:18:13.649] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:18:13.659] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:18:17.793] [INFO] console - aaaaa
+[2016-05-13 12:18:17.793] [INFO] f:\work\tianmaijuyuan\test\express\app.js - Request Type: GET
+[2016-05-13 12:18:56.569] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:18:56.570] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:18:56.571] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:18:56.580] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:22:00.588] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:22:00.589] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:22:00.590] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:22:00.599] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:22:27.883] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:22:27.885] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:22:27.885] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:22:27.895] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:22:29.865] [INFO] console - aaaaa
+[2016-05-13 12:22:29.865] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: GET
+[2016-05-13 12:30:25.509] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:30:25.510] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:30:25.510] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:30:25.518] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:30:29.624] [INFO] console - aaaaa
+[2016-05-13 12:30:29.624] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: GET
+[2016-05-13 12:30:44.295] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:30:44.297] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:30:44.297] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:30:44.310] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:30:57.958] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:30:57.959] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:30:57.960] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:30:57.967] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:31:02.077] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:31:02.079] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:31:02.080] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:31:02.091] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:31:02.872] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: GET
+[2016-05-13 12:31:43.716] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:31:43.717] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:31:43.717] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:31:43.726] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:31:55.854] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: GET
+[2016-05-13 12:32:03.268] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: POST
+[2016-05-13 12:32:10.473] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: POST
+[2016-05-13 12:35:20.587] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:35:20.588] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:35:20.589] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:35:20.598] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:35:30.062] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request Type: POST
+[2016-05-13 12:35:30.062] [INFO] f:\work\tianmaijuyuan\test\express\open\openApi.js - Request URL: /open/test
+[2016-05-13 12:39:21.368] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:39:21.369] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:39:21.369] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:39:21.380] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:39:42.462] [INFO] console - ID: 123
+[2016-05-13 12:40:23.602] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:40:23.604] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:40:23.605] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:40:23.617] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:45:10.190] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:45:10.191] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:45:10.191] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:45:10.198] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:45:17.193] [ERROR] console - Error: No default engine was specified and no extension was provided.
+    at new View (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\view.js:41:42)
+    at Function.app.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\application.js:486:12)
+    at ServerResponse.res.render (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\response.js:798:7)
+    at f:\work\tianmaijuyuan\test\express\open\openApi.js:77:6
+    at callbacks (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:164:37)
+    at f:\work\tianmaijuyuan\test\express\open\openApi.js:74:7
+    at callbacks (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:164:37)
+    at param (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:138:11)
+    at param (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:135:11)
+    at pass (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:145:5)
+[2016-05-13 12:45:31.952] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:45:31.954] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:45:31.955] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:45:31.967] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:54:22.229] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:54:22.231] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:54:22.232] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:54:22.249] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:54:29.639] [INFO] console - ================asdfsaf
+[2016-05-13 12:55:03.989] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:55:03.991] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:55:03.991] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:55:04.000] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:55:11.672] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:55:11.673] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:55:11.674] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:55:11.681] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:55:33.553] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:55:33.554] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:55:33.555] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:55:33.563] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 12:55:35.559] [INFO] console - ================asdfsaf
+[2016-05-13 12:55:51.596] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 12:55:51.597] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 12:55:51.598] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 12:55:51.607] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 14:21:50.728] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 14:21:50.729] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 14:21:50.729] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 14:21:50.737] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 14:22:07.183] [INFO] console - ================asdfsaf
+[2016-05-13 15:51:09.960] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 15:51:09.961] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 15:51:09.961] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 15:51:09.968] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 15:51:28.306] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 15:51:28.307] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 15:51:35.393] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 15:51:35.394] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: POST
+[2016-05-13 15:51:35.394] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: POST
+[2016-05-13 15:51:35.394] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 15:51:55.203] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 15:51:55.204] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 15:51:55.204] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 15:51:55.217] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 15:51:58.396] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 15:51:58.396] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: POST
+[2016-05-13 15:52:06.770] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/user/123
+[2016-05-13 15:52:06.770] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 15:52:06.771] [INFO] console - ID: 123
+[2016-05-13 15:52:18.237] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/user0/123
+[2016-05-13 15:52:18.238] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 15:52:28.802] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/user0/0
+[2016-05-13 15:52:28.803] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET

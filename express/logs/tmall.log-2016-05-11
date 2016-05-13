@@ -1,0 +1,23 @@
+[2016-05-11 12:09:16.095] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-11 12:09:16.097] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-11 12:09:16.098] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-11 12:09:16.109] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-11 12:10:26.793] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coParallelErr err: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-11 12:11:34.997] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-11 12:11:34.999] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-11 12:11:35.000] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-11 12:11:35.012] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-11 12:11:37.245] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coParallelErr err: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-11 12:12:07.396] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-11 12:12:07.397] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-11 12:12:07.397] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-11 12:12:07.407] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-11 12:12:09.164] [ERROR] f:\work\tianmaijuyuan\test\express\open\coTest.js - coParallelErr err: "WRONGTYPE Operation against a key holding the wrong kind of value"
+[2016-05-11 12:12:18.995] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal: ["OK","OK"]
+[2016-05-11 12:12:18.995] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal2: {}
+[2016-05-11 12:12:49.477] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-11 12:12:49.478] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-11 12:12:49.479] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-11 12:12:49.494] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-11 12:12:56.198] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal: ["OK","OK"]
+[2016-05-11 12:12:56.199] [INFO] f:\work\tianmaijuyuan\test\express\open\coTest.js - coAuto rVal2: "OK"

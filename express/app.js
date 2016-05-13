@@ -3,9 +3,11 @@ var app = express();
 var config = require("./config.js");
 var appAdmin = require("./admin/adminApi.js");
 var appOpen = require("./open/openApi.js");
+var appMidd = require("./mid_test/midWareTest.js");
 var middleware = require("./globle/middleware.js");
 var util = require("util");
 var log4js = require('log4js');
+var cookieParser = require('cookie-parser');
 log4js.configure(config.log4jsconfig, {});
 var logger = log4js.getLogger(__filename);
 
@@ -29,9 +31,13 @@ app.use(express.bodyParser({
 	maxFieldsSize: 1024 * 1024
 }));
 
+// load the cookie-parsing middleware
+app.use(cookieParser());
+
 app.use(middleware.midSend());
 app.use("/admin", appAdmin);
 app.use("/open", appOpen);
+app.use("/midd", appMidd);
 
 app.use(app.router);
 app.set('port', config.port);
