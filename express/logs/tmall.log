@@ -231,3 +231,101 @@
     at Object.router (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\router\index.js:33:10)
     at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
     at Object.showMethod [as handle] (f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:13:2)
+[2016-05-13 16:55:09.237] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:55:09.239] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:55:09.239] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:55:09.247] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:55:12.733] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 16:55:12.734] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:55:12.734] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: ::ffff:127.0.0.1
+[2016-05-13 16:57:16.875] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 16:57:16.875] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:57:16.876] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: ::ffff:192.168.28.105
+[2016-05-13 16:57:28.184] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 16:57:28.187] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:57:28.188] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: ::ffff:192.168.28.105
+[2016-05-13 16:57:37.155] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:57:37.157] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:57:37.159] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:57:37.174] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:57:41.865] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 16:57:41.865] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:57:41.865] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: ::ffff:192.168.28.105
+[2016-05-13 16:58:25.904] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:58:25.905] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:58:25.906] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:58:25.917] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:58:30.008] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 16:58:30.008] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:58:30.008] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: "::ffff:127.0.0.1", forwardedIpsStr: undefined
+[2016-05-13 16:59:45.418] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 16:59:45.421] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 16:59:45.422] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 16:59:45.429] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 16:59:47.989] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 16:59:47.989] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 16:59:47.989] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: [ '', '', 'ffff', '127.0.0.1' ]
+[2016-05-13 17:00:01.007] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 17:00:01.008] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 17:00:01.009] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 17:00:01.016] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 17:00:10.328] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:00:10.329] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:00:10.329] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: undefined
+[2016-05-13 17:00:20.101] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 17:00:20.103] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 17:00:20.103] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 17:00:20.111] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 17:00:22.244] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:00:22.244] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:00:22.245] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: 127.0.0.1
+[2016-05-13 17:00:37.738] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:00:37.739] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:00:37.740] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: 192.168.28.105
+[2016-05-13 17:01:04.130] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 17:01:04.131] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 17:01:04.132] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 17:01:04.142] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 17:01:06.793] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:01:06.793] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:01:06.793] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: 127.0.0.1
+[2016-05-13 17:08:14.503] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 17:08:14.504] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 17:08:14.505] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 17:08:14.512] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 17:08:16.544] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:08:16.544] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:08:16.545] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: 127.0.0.1
+[2016-05-13 17:08:16.545] [ERROR] console - TypeError: Converting circular structure to JSON
+    at Object.stringify (native)
+    at Object.showIp (f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:24:30)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+    at Object.showMethod [as handle] (f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:13:2)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+    at Object.showUrl [as handle] (f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js:18:2)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+    at Object.expressInit [as handle] (f:\work\tianmaijuyuan\test\express\node_modules\express\lib\middleware.js:30:5)
+    at next (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\proto.js:193:15)
+    at Object.query [as handle] (f:\work\tianmaijuyuan\test\express\node_modules\express\node_modules\connect\lib\middleware\query.js:45:5)
+[2016-05-13 17:09:27.968] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 17:09:27.968] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 17:09:27.969] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 17:09:27.979] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 17:09:30.941] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:09:30.941] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:09:30.942] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: 127.0.0.1
+[2016-05-13 17:09:30.942] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.hostname: undefined
+[2016-05-13 17:09:30.942] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.protocol: "http"
+[2016-05-13 17:09:30.942] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-13 17:09:30.942] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.ips: []
+[2016-05-13 17:11:52.041] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-13 17:11:52.042] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-13 17:11:52.043] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-13 17:11:52.056] [FATAL] f:\work\tianmaijuyuan\test\express\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-13 17:11:53.210] [TRACE] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request Type: GET
+[2016-05-13 17:11:53.210] [DEBUG] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request URL: /midd/test
+[2016-05-13 17:11:53.211] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - Request IP: 127.0.0.1
+[2016-05-13 17:11:53.211] [WARN] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.hostname: undefined
+[2016-05-13 17:11:53.211] [ERROR] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.protocol: "http"
+[2016-05-13 17:11:53.211] [FATAL] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-13 17:11:53.211] [INFO] f:\work\tianmaijuyuan\test\express\mid_test\midWareTest.js - req.ips: []

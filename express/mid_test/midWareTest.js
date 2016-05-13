@@ -8,17 +8,19 @@ var log4js = require('log4js');
 var logger = log4js.getLogger(__filename);
 
 //中间件练习
-var showMethod = function (req, res, next) {
-	logger.info('Request Type:', req.method);
+var showReqMethod = function (req, res, next) {        //请求方式
+	logger.trace('Request Type:', req.method);
+	logger.debug('Request URL:', req.originalUrl);
+	var ipList = req.connection.remoteAddress.split(":");
+	logger.info("Request IP:", ipList[ipList.length - 1]);
+	logger.warn("req.hostname: %j", req.hostname);
+	logger.error("req.protocol: %j", req.protocol);
+	logger.fatal("req.ip: %j", req.ip);
+	logger.info("req.ips: %j", req.ips);
 	next();
 };
 
-var showUrl = function (req, res, next) {
-	logger.info('Request URL:', req.originalUrl);
-	next();
-};
-app.use(showUrl);       //注意注意：use中间件要在所有get，post，put，delete的前面，否则不会执行
-app.use(showMethod);
+app.use(showReqMethod);       //注意注意：use中间件要在所有get，post，put，delete的前面，否则不会执行
 
 
 // curl "127.0.0.1:9001/midd/test"
