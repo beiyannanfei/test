@@ -16,7 +16,11 @@ process.on('uncaughtException', function (err) {
 	logger.error('[Inside \'uncaughtException\' event]' + err.stack || err.message);
 });
 
+app.set("env", config.NODE_ENV);
+
 app.use('/birds', birds);
+
+logger.info("run environment: %j", app.get('env'));
 
 app.set('port', config.port);
 //exports.server = require('http').createServer(app);
