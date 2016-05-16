@@ -41,7 +41,7 @@ app.use("/midd", appMidd);
 
 app.use(app.router);
 app.set('port', config.port);
-exports.server = require('http').createServer(app)
+exports.server = require('http').createServer(app);
 exports.server.listen(app.get('port'), function () {
 	logger.fatal('Express server listening on port %d, redis: %j', app.get('port'), util.format("%s:%s", config.redis.host, config.redis.port));
 });
