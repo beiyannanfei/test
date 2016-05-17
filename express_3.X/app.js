@@ -5,6 +5,7 @@ var appAdmin = require("./admin/adminApi.js");
 var appOpen = require("./open/openApi.js");
 var appMidd = require("./mid_test/midWareTest.js");
 var middleware = require("./globle/middleware.js");
+var appApi = require("./api_test/apiTest.js");
 var util = require("util");
 var log4js = require('log4js');
 var cookieParser = require('cookie-parser');
@@ -27,7 +28,7 @@ app.all('*', function (req, res, next) {
 });
 
 app.use(express.logger(logToken));
-app.use(express.bodyParser({
+app.use(express.bodyParser({    //如果不加这句代码，那么post中的body参数无法解析
 	maxFieldsSize: 1024 * 1024
 }));
 
@@ -38,6 +39,7 @@ app.use(middleware.midSend());
 app.use("/admin", appAdmin);
 app.use("/open", appOpen);
 app.use("/midd", appMidd);
+app.use("/api", appApi);
 
 app.use(app.router);
 app.set('port', config.port);
