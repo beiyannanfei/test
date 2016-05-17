@@ -111,3 +111,8 @@ app.get("/getacceptedCharsets", function (req, res) {
 	return res.send(acceptedCharsets);
 });
 
+
+
+
+
+

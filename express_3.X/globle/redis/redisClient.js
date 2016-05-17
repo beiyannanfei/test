@@ -15,7 +15,7 @@ module.exports = function (redis) {
 		redis = redislib.createClient(config.redis.port, config.redis.host);
 	}
 	return new client(redis);
-}
+};
 
 var client = function (redis) {
 	this.redis = redis;

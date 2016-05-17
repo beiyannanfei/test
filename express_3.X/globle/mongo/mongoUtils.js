@@ -12,7 +12,7 @@ var strIdCollections = [];
 
 function dbUtils(collection, slave) {
 	this.collection = collection;
-	this.slave = slave
+	this.slave = slave;
 	if (slave) {
 		this.curDb = db.slaveDb;
 	}
@@ -36,7 +36,7 @@ dbUtils.toId = function (id) {
 			else {
 				arr.push(o);
 			}
-		})
+		});
 		return arr;
 	}
 	if (!(id instanceof ObjectID)) {
@@ -44,7 +44,7 @@ dbUtils.toId = function (id) {
 		return new ObjectID(id);
 	}
 	return id
-}
+};
 
 dbUtils.isValidId = function (id) {
 	if (/^[0-9a-zA-Z]{24}$/.test(id)) {
@@ -53,18 +53,18 @@ dbUtils.isValidId = function (id) {
 	else {
 		return false;
 	}
-}
+};
 
 dbUtils.id2Str = function (id) {
 	if (_.isArray(id)) {
 		var arr = [];
 		_.each(id, function (o) {
 			arr.push(o.toString());
-		})
+		});
 		return arr;
 	}
 	return id.toString();
-}
+};
 
 function obj2str(obj) {
 	for (var k in obj) {
