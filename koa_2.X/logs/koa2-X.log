@@ -1,30 +1,17 @@
-[2016-05-18 11:16:14.528] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
-[2016-05-18 11:16:35.419] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
-[2016-05-18 11:16:47.368] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_1.js - GET / - 4
-[2016-05-18 11:16:55.892] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_1.js - GET /open - 0
-[2016-05-18 11:17:48.427] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
-[2016-05-18 11:17:50.711] [INFO] console - aaaaaaaaaaaaa
-[2016-05-18 11:17:50.712] [INFO] console - cccccccccccccccc
-[2016-05-18 11:17:50.713] [INFO] console - eeeeeeeeeeeeeee
-[2016-05-18 11:17:50.716] [INFO] console - ddddddddddddd
-[2016-05-18 11:17:50.716] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_1.js - GET /open - 4
-[2016-05-18 11:17:50.717] [INFO] console - bbbbbbbbbbbb
-[2016-05-18 11:57:02.562] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
-[2016-05-18 11:59:18.890] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
-[2016-05-18 11:59:23.765] [ERROR] console - 
-[2016-05-18 11:59:23.767] [ERROR] console -   TypeError: Cannot set property 'body' of undefined
-      at app_1.js:33:2
-      at dispatch (F:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
-      at next (F:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:44:18)
-      at app_1.js:25:8
-      at [object Generator].next (native)
-      at step (F:\work\tianmaijuyuan\test\koa_2.X\app_1.js:3:191)
-      at F:\work\tianmaijuyuan\test\koa_2.X\app_1.js:3:451
-      at new Promise (D:\Program Files\nodejs\node_modules\runkoa\node_modules\babel-polyfill\node_modules\core-js\modules\es6.promise.js:193:7)
-      at F:\work\tianmaijuyuan\test\koa_2.X\app_1.js:3:99
-      at app_1.js:23:1
-[2016-05-18 11:59:23.768] [ERROR] console - 
-[2016-05-18 12:00:47.404] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
-[2016-05-18 12:00:50.743] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_1.js - GET /open - 3
-[2016-05-18 12:29:07.273] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\b_app_1.js - server start listen post: 9101
-[2016-05-18 12:29:22.024] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\b_app_1.js - GET /open - 3
+[2016-05-23 10:24:16.938] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:24:30.718] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:24:56.417] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:24:59.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:25:37.548] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:25:40.564] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:26:56.255] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:26:58.060] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:27:10.497] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:27:11.827] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:27:27.855] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:27:28.041] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:27:39.623] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:28:13.161] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:28:18.228] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:47:36.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 11:04:07.132] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101

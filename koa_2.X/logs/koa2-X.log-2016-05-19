@@ -1,0 +1,115 @@
+[2016-05-19 15:04:23.060] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 15:05:22.504] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 15:08:28.474] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 15:20:16.876] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 15:23:10.079] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 15:23:51.884] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:17:30.345] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:21:43.060] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:29:25.387] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:29:36.621] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx id: "3"
+[2016-05-19 16:30:02.073] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:36:52.167] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:37:25.946] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:38:20.083] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - named : "/users/3"
+[2016-05-19 16:38:20.095] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:39:40.597] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:39:43.154] [ERROR] console - 
+[2016-05-19 16:39:43.155] [ERROR] console -   TypeError: router.redirec is not a function
+      at f:\work\tianmaijuyuan\test\koa_2.X\app_2.js:31:9
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:44:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:321:16
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:326:31)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+      at Server.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\lib\application.js:135:7)
+[2016-05-19 16:39:43.155] [ERROR] console - 
+[2016-05-19 16:39:54.214] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:39:56.757] [ERROR] console - 
+[2016-05-19 16:39:56.758] [ERROR] console -   TypeError: Cannot read property '0' of undefined
+      at Router.redirect (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:470:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\app_2.js:31:9
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:44:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:321:16
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:326:31)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+[2016-05-19 16:39:56.758] [ERROR] console - 
+[2016-05-19 16:40:36.077] [INFO] console - /users/3
+[2016-05-19 16:40:36.089] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:40:44.379] [ERROR] console - 
+[2016-05-19 16:40:44.379] [ERROR] console -   TypeError: Cannot read property '0' of undefined
+      at Router.redirect (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:470:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\app_2.js:33:9
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:44:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:321:16
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:326:31)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+[2016-05-19 16:40:44.380] [ERROR] console - 
+[2016-05-19 16:41:20.584] [INFO] console - /users/3
+[2016-05-19 16:41:20.600] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:41:22.473] [ERROR] console - 
+[2016-05-19 16:41:22.473] [ERROR] console -   TypeError: Cannot read property '0' of undefined
+      at Router.redirect (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:470:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\app_2.js:33:9
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:44:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:321:16
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:326:31)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+[2016-05-19 16:41:22.473] [ERROR] console - 
+[2016-05-19 16:41:35.200] [INFO] console - /users/3
+[2016-05-19 16:41:35.213] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:41:36.398] [ERROR] console - 
+[2016-05-19 16:41:36.399] [ERROR] console -   TypeError: Cannot read property '0' of undefined
+      at Router.redirect (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:470:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\app_2.js:33:9
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:44:18)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:321:16
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\node_modules\koa-compose\index.js:36:12
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa-router\lib\router.js:326:31)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+[2016-05-19 16:41:36.399] [ERROR] console - 
+[2016-05-19 16:43:55.163] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:44:19.064] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:47:39.040] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:47:50.117] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.id: 0
+[2016-05-19 16:48:07.990] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.id: 0
+[2016-05-19 16:48:34.165] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:48:36.983] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.id: 100
+[2016-05-19 16:49:10.015] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:49:12.555] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.id: 100
+[2016-05-19 16:49:24.742] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:49:25.551] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.id: 0
+[2016-05-19 16:49:48.497] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 16:49:49.168] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.id: 100
+[2016-05-19 17:18:39.652] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:19:06.719] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.url = "/forums/123/posts"
+[2016-05-19 17:19:19.345] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ctx.url = "/forums/123/posts/456"
+[2016-05-19 17:31:06.086] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:32:01.225] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:32:49.769] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:33:26.519] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:33:28.126] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - url: "/aaa/bbb"
+[2016-05-19 17:33:45.982] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:33:54.170] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - url: "/prefix/test"
+[2016-05-19 17:35:11.322] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:35:27.484] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - url: "/prefix/test/147"
+[2016-05-19 17:38:38.521] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-19 17:39:15.257] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - url: "/param/programming/how-to-node", params: {"category":"programming","title":"how-to-node"}
