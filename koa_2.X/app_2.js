@@ -39,7 +39,7 @@ router.get("/multi/midd/:id",
 		ctx.id = id * id;
 		return next();
 	}, ctx => {
-		logger.info("ctx.id: %j", ctx.id)
+		logger.info("ctx.id: %j", ctx.id);
 		ctx.body = ctx.id;
 	}
 );

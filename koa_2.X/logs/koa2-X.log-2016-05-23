@@ -1,0 +1,812 @@
+[2016-05-23 10:24:16.938] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:24:30.718] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:24:56.417] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:24:59.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:25:37.548] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:25:40.564] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:26:56.255] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:26:58.060] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:27:10.497] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:27:11.827] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:27:27.855] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a1 ==========
+[2016-05-23 10:27:28.041] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:27:39.623] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:28:13.161] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 10:28:18.228] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - ========== a2 ==========
+[2016-05-23 10:47:36.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 11:04:07.132] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_2.js - server start listen post: 9101
+[2016-05-23 11:31:27.871] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:31:57.285] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:32:15.206] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 ctx.header: {"host":"127.0.0.1:9101","connection":"keep-alive","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","accept-encoding":"gzip, deflate, sdch","accept-language":"zh-CN,zh;q=0.8","cookie":"_ga=GA1.1.393714363.1454293214"}
+[2016-05-23 11:32:58.928] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:33:02.014] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 ctx.header: {"host":"127.0.0.1:9101","connection":"keep-alive","cache-control":"max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","accept-encoding":"gzip, deflate, sdch","accept-language":"zh-CN,zh;q=0.8","cookie":"_ga=GA1.1.393714363.1454293214"}
+[2016-05-23 11:33:02.016] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 ctx.method: "GET"
+[2016-05-23 11:36:26.565] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:36:31.113] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 ctx.header: {"host":"127.0.0.1:9101","connection":"keep-alive","cache-control":"max-age=0","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","accept-encoding":"gzip, deflate, sdch","accept-language":"zh-CN,zh;q=0.8","cookie":"_ga=GA1.1.393714363.1454293214"}
+[2016-05-23 11:36:31.114] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 ctx.method: "GET"
+[2016-05-23 11:36:31.115] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) ctx.length: undefined
+[2016-05-23 11:37:58.350] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:38:02.869] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:38:02.870] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:38:02.870] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:38:02.871] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test"
+[2016-05-23 11:39:48.646] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:39:52.524] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:39:52.524] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:39:52.525] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:39:52.525] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:39:52.525] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:40:45.911] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:40:47.676] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:40:47.676] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:40:47.677] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:40:47.677] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:40:47.677] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:40:47.677] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:41:22.763] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:41:24.812] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:41:24.813] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:41:24.813] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:41:24.814] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:41:24.814] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:41:24.814] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:41:24.814] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:41:45.966] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:41:45.966] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:41:45.966] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:41:45.966] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:41:45.966] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:41:45.967] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:41:45.967] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:44:51.346] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:44:59.119] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:44:59.120] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:44:59.120] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:44:59.120] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:44:59.121] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:44:59.121] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:44:59.121] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:44:59.121] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:47:53.787] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:48:02.994] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"host":"127.0.0.1:9101","connection":"keep-alive","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","accept-encoding":"gzip, deflate, sdch","accept-language":"zh-CN,zh;q=0.8","cookie":"_ga=GA1.1.393714363.1454293214"}
+[2016-05-23 11:48:02.995] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:48:02.995] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:48:02.995] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:48:02.996] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:48:02.996] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:48:02.996] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:48:02.996] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:48:02.997] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:48:13.595] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:48:13.595] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:48:13.596] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:48:13.597] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:48:13.597] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:48:13.597] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:48:13.598] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:48:13.598] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:48:13.598] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:48:42.406] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:48:46.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:48:46.364] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:48:46.364] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:48:46.365] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:48:46.365] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:48:46.365] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:48:46.365] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:48:46.366] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:48:46.366] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:48:46.367] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:52:00.511] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:52:04.269] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:52:04.270] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:52:04.271] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:52:04.271] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:52:04.271] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:52:04.271] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:52:04.271] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:52:04.272] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:52:04.272] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:52:04.273] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:52:04.273] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:52:45.185] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:52:47.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:52:47.711] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:52:47.711] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:52:47.712] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:52:47.712] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:52:47.712] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:52:47.712] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:52:47.713] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:52:47.713] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:52:47.714] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:52:47.714] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:52:47.714] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 11:53:15.927] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:53:18.972] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:53:18.973] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:53:18.974] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:53:18.974] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:53:18.974] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:53:18.974] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:53:18.975] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:53:18.975] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:53:18.976] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:53:18.977] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:53:18.977] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:53:18.977] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 11:53:18.977] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 11:53:42.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:53:45.357] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:53:45.358] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:53:45.358] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:53:45.358] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:53:45.359] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:53:45.359] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:53:45.359] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:53:45.359] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:53:45.360] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:53:45.361] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:53:45.361] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:53:45.361] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 11:53:45.362] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 11:53:45.362] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 11:54:35.547] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"host":"192.168.68.121:9101","connection":"keep-alive","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","accept-encoding":"gzip, deflate, sdch","accept-language":"zh-CN,zh;q=0.8,en;q=0.6,zh-TW;q=0.4"}
+[2016-05-23 11:54:35.547] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:54:35.548] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:54:35.548] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:54:35.548] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:54:35.549] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:54:35.549] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:54:35.551] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "192.168.68.121:9101"
+[2016-05-23 11:54:35.554] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:54:35.556] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:54:35.557] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:54:35.559] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 11:54:35.560] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:192.168.28.199"
+[2016-05-23 11:54:35.561] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 11:56:04.817] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 11:56:07.153] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 11:56:07.153] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:56:07.154] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:56:07.154] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:56:07.154] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:56:07.154] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:56:07.154] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:56:07.155] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 11:56:07.155] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:56:07.156] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:56:07.156] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:56:07.156] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 11:56:07.157] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 11:56:07.157] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 11:56:07.157] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 11:56:35.039] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"host":"192.168.68.121:9101","connection":"keep-alive","accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","upgrade-insecure-requests":"1","user-agent":"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36","accept-encoding":"gzip, deflate, sdch","accept-language":"zh-CN,zh;q=0.8"}
+[2016-05-23 11:56:35.040] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 11:56:35.040] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 11:56:35.040] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 11:56:35.040] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 11:56:35.040] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 11:56:35.041] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 11:56:35.042] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "192.168.68.121:9101"
+[2016-05-23 11:56:35.042] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 11:56:35.044] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 11:56:35.044] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 11:56:35.044] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 11:56:35.045] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:192.168.68.121"
+[2016-05-23 11:56:35.045] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 11:56:35.045] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["168","192"]
+[2016-05-23 11:59:55.532] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:00:07.843] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:00:07.845] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:00:07.846] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:00:07.847] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:00:07.848] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:00:07.848] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:00:07.849] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:00:07.850] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:00:07.850] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:00:07.851] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:00:07.852] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:00:07.852] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:00:07.852] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:00:07.853] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:00:07.854] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:00:19.501] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:00:21.414] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:00:21.414] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:00:21.415] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:00:21.415] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:00:21.415] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:00:21.415] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:00:21.415] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:00:21.416] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:00:21.416] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:00:21.417] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:00:21.417] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:00:21.417] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:00:21.418] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:00:21.418] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:00:21.418] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:01:21.793] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:01:23.061] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:01:23.062] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:01:23.063] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:01:23.063] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:01:23.063] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:01:23.064] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:01:23.064] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:01:23.065] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:01:23.065] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:01:23.066] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:01:23.066] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:01:23.066] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:01:23.067] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:01:23.067] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:01:23.068] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:02:27.774] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:02:29.719] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:02:29.720] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:02:29.720] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:02:29.721] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:02:29.721] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:02:29.721] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:02:29.721] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:02:29.722] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:02:29.722] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:02:29.723] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:02:29.723] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:02:29.723] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:02:29.723] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:02:29.723] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:02:29.724] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:02:29.724] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args:  {}
+[2016-05-23 12:02:39.590] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:02:41.517] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:02:41.518] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:02:41.518] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:02:41.518] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:02:41.519] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:02:41.519] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:02:41.519] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:02:41.520] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:02:41.520] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:02:41.521] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:02:41.521] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:02:41.521] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:02:41.521] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:02:41.521] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:02:41.522] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:02:41.522] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args:  undefined
+[2016-05-23 12:03:06.619] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:03:08.359] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:03:08.359] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:03:08.360] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:03:08.360] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:03:08.360] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:03:08.360] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:03:08.361] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:03:08.361] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:03:08.362] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:03:08.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:03:08.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:03:08.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:03:08.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:03:08.363] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:03:08.364] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:03:08.364] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args:  undefined
+[2016-05-23 12:07:20.488] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:07:26.499] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:07:26.500] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:07:26.500] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:07:26.501] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:07:26.501] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:07:26.501] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:07:26.501] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:07:26.502] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:07:26.502] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:07:26.503] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:07:26.503] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:07:26.503] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:07:26.504] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:07:26.504] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:07:26.504] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:07:26.504] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args:  undefined
+[2016-05-23 12:07:36.074] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:07:37.682] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:07:37.683] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:07:37.683] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:07:37.683] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:07:37.684] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:07:37.684] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:07:37.684] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:07:37.685] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:07:37.685] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:07:37.686] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:07:37.687] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:07:37.687] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:07:37.687] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:07:37.687] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:07:37.688] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:07:37.688] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args:  { method: 'POST',
+  url: '/context/post/test?a=10&b=20',
+  header: 
+   { 'user-agent': 'curl/7.33.0',
+     host: '127.0.0.1:9101',
+     accept: '*/*',
+     'content-length': '9',
+     'content-type': 'application/x-www-form-urlencoded' } }
+[2016-05-23 12:08:05.882] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:08:09.694] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:08:09.695] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:08:09.695] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:08:09.696] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:08:09.696] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:08:09.696] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:08:09.696] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:08:09.697] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:08:09.697] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:08:09.698] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:08:09.698] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:08:09.699] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:08:09.699] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:08:09.699] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:08:09.700] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:08:09.700] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args:  { a: '10', b: '20' }
+[2016-05-23 12:08:34.785] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:08:38.608] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:08:38.609] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:08:38.609] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:08:38.609] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:08:38.610] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:08:38.610] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:08:38.610] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:08:38.610] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:08:38.611] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:08:38.612] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:08:38.612] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:08:38.612] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:08:38.612] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:08:38.612] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:08:38.613] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:08:38.613] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - args: {"a":"10","b":"20"}
+[2016-05-23 12:09:13.320] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:09:15.352] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:09:15.353] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:09:15.353] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:09:15.353] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:09:15.354] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:09:15.354] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:09:15.354] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:09:15.355] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:09:15.355] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:09:15.356] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:09:15.356] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:09:15.356] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:09:15.357] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:09:15.357] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:09:15.357] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:09:15.357] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:09:26.013] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:09:27.188] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:09:27.189] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:09:27.190] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:09:27.190] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:09:27.190] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:09:27.191] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:09:27.191] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:09:27.191] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:09:27.192] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:09:27.193] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:09:27.193] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:09:27.194] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:09:27.194] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:09:27.194] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:09:27.195] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:09:27.195] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:23:09.393] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:23:17.739] [ERROR] console - 
+[2016-05-23 12:23:17.740] [ERROR] console -   TypeError: next is not a function
+      at Object.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\app_3.js:17:16)
+      at next (native)
+      at onFulfilled (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:65:19)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:54:5
+      at Object.co (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:50:10)
+      at converted (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\index.js:17:15)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+      at Server.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\lib\application.js:135:7)
+      at emitTwo (events.js:87:13)
+[2016-05-23 12:23:17.740] [ERROR] console - 
+[2016-05-23 12:23:34.056] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:24:25.168] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:24:28.306] [ERROR] console - 
+[2016-05-23 12:24:28.307] [ERROR] console -   TypeError: You may only yield a function, promise, generator, array, or object, but the following object was passed: "undefined"
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:101:25)
+      at onFulfilled (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:69:7)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:54:5
+      at Object.co (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:50:10)
+      at converted (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\index.js:17:15)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+      at Server.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\lib\application.js:135:7)
+      at emitTwo (events.js:87:13)
+      at Server.emit (events.js:172:7)
+[2016-05-23 12:24:28.307] [ERROR] console - 
+[2016-05-23 12:25:13.469] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:25:14.782] [ERROR] console - 
+[2016-05-23 12:25:14.782] [ERROR] console -   TypeError: You may only yield a function, promise, generator, array, or object, but the following object was passed: "undefined"
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:101:25)
+      at onFulfilled (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:69:7)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:54:5
+      at Object.co (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:50:10)
+      at converted (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\index.js:17:15)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+      at Server.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\lib\application.js:135:7)
+      at emitTwo (events.js:87:13)
+      at Server.emit (events.js:172:7)
+[2016-05-23 12:25:14.783] [ERROR] console - 
+[2016-05-23 12:29:43.266] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:30:11.487] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:30:13.180] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:30:13.180] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:30:13.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:30:13.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:30:13.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:30:13.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:30:13.181] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:30:13.182] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:30:13.182] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:30:13.183] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:30:13.183] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:30:13.183] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:30:13.183] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:30:13.183] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:30:13.184] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:30:23.940] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:30:23.940] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:30:23.940] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:30:23.940] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:30:23.941] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:30:23.941] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:30:23.941] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:30:23.941] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:30:23.942] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:30:23.942] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:30:23.942] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:30:23.943] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:30:23.944] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:30:23.944] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:30:23.944] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:30:23.944] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: {"method":"POST","url":"/context/post/test?a=10&b=20","header":{"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}}
+[2016-05-23 12:33:37.036] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:33:39.702] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 111111111111
+[2016-05-23 12:33:39.706] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:33:39.706] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:33:39.706] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:33:39.707] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:33:39.707] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:33:39.708] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:33:39.708] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:33:39.708] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:33:39.709] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:33:39.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:33:39.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:33:39.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:33:39.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:33:39.710] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:33:39.711] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:33:39.711] [ERROR] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:33:47.866] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:33:47.866] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:33:47.867] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:33:47.868] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:33:47.868] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:33:47.869] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:33:47.869] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:33:47.869] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:33:47.870] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:33:47.871] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:33:47.871] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:33:47.871] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:33:47.871] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:33:47.872] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:33:47.872] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:33:57.843] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:33:58.346] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:33:58.348] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:33:58.349] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:33:58.349] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:33:58.349] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:33:58.350] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:33:58.350] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:33:58.350] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:33:58.351] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:33:58.352] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:33:58.353] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:33:58.353] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:33:58.353] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:33:58.354] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:33:58.354] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:35:09.846] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:35:11.144] [ERROR] console - 
+[2016-05-23 12:35:11.144] [ERROR] console -   TypeError: next is not a function
+      at Object.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\app_3.js:21:9)
+      at next (native)
+      at onFulfilled (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:65:19)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:54:5
+      at Object.co (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:50:10)
+      at converted (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\index.js:17:15)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+      at Server.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\lib\application.js:135:7)
+      at emitTwo (events.js:87:13)
+[2016-05-23 12:35:11.145] [ERROR] console - 
+[2016-05-23 12:35:25.760] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:35:26.447] [ERROR] console - 
+[2016-05-23 12:35:26.447] [ERROR] console -   TypeError: You may only yield a function, promise, generator, array, or object, but the following object was passed: "undefined"
+      at next (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:101:25)
+      at onFulfilled (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:69:7)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:54:5
+      at Object.co (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\node_modules\co\index.js:50:10)
+      at converted (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-convert\index.js:17:15)
+      at dispatch (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:43:32)
+      at f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\node_modules\koa-compose\index.js:36:12
+      at Server.<anonymous> (f:\work\tianmaijuyuan\test\koa_2.X\node_modules\koa\lib\application.js:135:7)
+      at emitTwo (events.js:87:13)
+      at Server.emit (events.js:172:7)
+[2016-05-23 12:35:26.448] [ERROR] console - 
+[2016-05-23 12:35:50.893] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:35:54.481] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:35:54.481] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:35:54.481] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:35:54.482] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:35:54.482] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:35:54.482] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:35:54.482] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:35:54.482] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:35:54.483] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:35:54.484] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:35:54.484] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:35:54.484] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:35:54.484] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:35:54.484] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:35:54.485] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:36:01.908] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 111111111111
+[2016-05-23 12:36:45.314] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:36:46.299] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 111111111111
+[2016-05-23 12:36:46.335] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - body: {"c":"30","d":"40"}
+[2016-05-23 12:37:06.908] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:37:07.992] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 111111111111
+[2016-05-23 12:37:08.026] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - body: {"c":"30","d":"40"}
+[2016-05-23 12:38:36.574] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:38:36.575] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:38:36.575] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:38:36.576] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:38:36.576] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:38:36.576] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:38:36.576] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:38:36.576] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:38:36.577] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:38:36.578] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:38:36.578] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:38:36.578] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:38:36.579] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:38:36.579] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:38:36.579] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:38:43.434] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:38:44.899] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:38:44.899] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:38:44.899] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:38:44.900] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:38:44.900] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:38:44.900] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:38:44.900] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:38:44.900] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:38:44.901] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:38:44.902] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:38:44.902] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:38:44.902] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:38:44.902] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:38:44.902] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:38:44.903] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:38:56.133] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:39:17.773] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:39:22.783] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 111111111111
+[2016-05-23 12:39:22.809] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - body: {"c":"30","d":"40"}
+[2016-05-23 12:43:42.362] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:43:49.459] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 111111111111
+[2016-05-23 12:43:49.484] [FATAL] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - body: {"c":"30","d":"40"}
+[2016-05-23 12:47:02.732] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:47:06.744] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:47:06.745] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:47:06.746] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:47:06.747] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:47:06.747] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:47:06.748] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:47:06.749] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:47:06.750] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:47:06.751] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:47:06.753] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:47:06.754] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:47:06.755] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:47:06.756] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:47:06.757] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:47:06.758] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:47:57.951] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:47:59.224] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:47:59.225] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:47:59.226] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:47:59.226] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:47:59.227] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:47:59.227] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:47:59.227] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:47:59.228] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:47:59.229] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:47:59.230] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:47:59.231] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:47:59.232] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:47:59.233] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:47:59.234] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:47:59.235] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:48:49.880] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:48:51.067] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 1111111111111
+[2016-05-23 12:48:51.091] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - body: {"c":"30","d":"40"}
+[2016-05-23 12:49:28.152] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:49:29.415] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:49:29.416] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:49:29.417] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:49:29.417] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:49:29.418] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:49:29.418] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:49:29.419] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:49:29.419] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:49:29.420] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:49:29.422] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:49:29.423] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:49:29.423] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:49:29.424] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:49:29.427] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:49:29.427] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:49:34.565] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:49:34.566] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:49:34.567] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:49:34.569] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:49:34.570] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:49:34.571] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:49:34.572] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:49:34.573] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:49:34.574] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:49:34.575] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:49:34.575] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:49:34.576] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:49:34.577] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:49:34.578] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:49:34.578] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:49:34.582] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:49:59.978] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:49:59.979] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:49:59.979] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:49:59.980] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:49:59.980] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:49:59.980] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:49:59.981] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:49:59.981] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:49:59.981] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:49:59.982] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:49:59.982] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:49:59.982] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:49:59.982] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:49:59.983] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:49:59.984] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:49:59.985] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:50:28.489] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*"}
+[2016-05-23 12:50:28.489] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-05-23 12:50:28.490] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:50:28.490] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-05-23 12:50:28.490] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-05-23 12:50:28.491] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:50:28.491] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:50:28.492] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:50:28.492] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:50:28.492] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:50:28.493] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:50:28.493] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:50:28.493] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:50:28.494] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:50:28.494] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:50:46.545] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:50:46.545] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:50:46.546] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:50:46.548] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:50:46.549] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:50:46.549] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:50:46.550] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:50:46.550] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:50:46.551] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:50:46.552] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:50:46.552] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:50:46.553] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:50:46.554] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:50:46.554] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:50:46.554] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:50:46.555] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:52:06.052] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:52:07.355] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:52:07.355] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:52:07.356] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:52:07.357] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:52:07.357] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:52:07.358] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:52:07.359] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:52:07.359] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:52:07.360] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:52:07.362] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:52:07.362] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:52:07.363] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:52:07.364] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:52:07.365] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:52:07.365] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:52:07.366] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:52:18.789] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 00000000000
+[2016-05-23 12:52:18.791] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - method GET
+[2016-05-23 12:52:57.090] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 12:52:58.164] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 00000000000
+[2016-05-23 12:52:58.165] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - method GET
+[2016-05-23 12:53:00.605] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:53:00.606] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:53:00.607] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:53:00.607] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:53:00.608] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:53:00.608] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:53:00.609] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:53:00.610] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:53:00.611] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:53:00.612] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:53:00.613] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:53:00.614] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:53:00.615] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:53:00.615] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:53:00.616] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:53:00.617] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 12:53:22.803] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 12:53:22.804] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 12:53:22.804] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 12:53:22.805] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 12:53:22.806] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 12:53:22.807] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 12:53:22.808] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 12:53:22.809] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 12:53:22.809] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 12:53:22.810] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 12:53:22.811] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 12:53:22.811] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 12:53:22.812] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 12:53:22.813] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 12:53:22.814] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 12:53:22.814] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: undefined
+[2016-05-23 17:55:21.211] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_1.js - server start listen post: 9101
+[2016-05-23 17:55:30.496] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_1.js - GET /test - 1
+[2016-05-23 17:56:44.658] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
+[2016-05-23 17:56:59.791] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 00000000000
+[2016-05-23 17:56:59.792] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - method POST
+[2016-05-23 17:56:59.793] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 1111111111111
+[2016-05-23 17:56:59.823] [FATAL] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - body: {"c":"30","d":"40"}
+[2016-05-23 17:56:59.824] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求头 -- ctx.header: {"user-agent":"curl/7.33.0","host":"127.0.0.1:9101","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-05-23 17:56:59.825] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-05-23 17:56:59.826] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-05-23 17:56:59.826] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-05-23 17:56:59.827] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-05-23 17:56:59.828] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-05-23 17:56:59.828] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-05-23 17:56:59.831] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-05-23 17:56:59.831] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-05-23 17:56:59.832] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-05-23 17:56:59.833] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-05-23 17:56:59.834] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-05-23 17:56:59.835] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-05-23 17:56:59.835] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-05-23 17:56:59.836] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-05-23 17:56:59.837] [ERROR] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - get args: {"a":"10","b":"20"}, post args: {"c":"30","d":"40"}
+[2016-05-23 17:57:46.793] [INFO] F:\work\tianmaijuyuan\test\koa_2.X\app_3.js - server start listen post: 9101
