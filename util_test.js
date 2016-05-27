@@ -9,3 +9,7 @@ var str = util.format("test: %j", a);
 
 console.log(str);
 
+util.exec("ls e:/", function (err, stdout, stderr) {
+	console.log(arguments);
+});
+
