@@ -21,7 +21,12 @@ function show(testFun) {
 
 var dateTimeStr = "YYYY-MM-DD HH:mm:ss";
 
-console.log(moment().startOf('d').format(dateTimeStr));
+//console.log(moment().startOf('d').format(dateTimeStr));
+
+
+
+show(moment().add({hours: -24}).format(dateTimeStr));    //now: 2016-05-11 15:54:32 -- 2016-05-04 15:54:31
+
 //console.log(moment().format());     //2016-03-23T16:03:57+08:00
 //console.log(moment().isValid());    //true
 //console.log(moment(1318781876406).format());    //2011-10-17T00:17:56+08:00
