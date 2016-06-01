@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>从表单发送电子邮件</title>
+</head>
+<body>
+<h2>从表单发送电子邮件</h2>
+<hr>
+<h3>Send e-mail to someone@example.com</h3>
+
+<form action="MAILTO: someone@example.com" method="post" enctype="text/plain">
+    Name:<br>
+    <input type="text" name="name" value="your name"><br>
+    E-mail:<br>
+    <input type="text" name="mail" value="your email"><br>
+    Comment:<br>
+    <input type="text" name="comment" value="your comment" size="50"><br><br>
+    <input type="submit" value="Send">
+    <input type="reset" value="Reset">
+</form>
+</body>
+</html>

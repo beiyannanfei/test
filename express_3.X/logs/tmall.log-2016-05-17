@@ -1,0 +1,152 @@
+[2016-05-17 10:42:35.608] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:42:35.610] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:42:35.611] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:42:35.620] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:42:37.999] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:42:38.000] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getPath
+[2016-05-17 10:42:38.000] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:42:38.000] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:42:38.000] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:42:38.001] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:42:38.001] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:42:38.001] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getPath path: "/getPath"
+
+
+[2016-05-17 10:44:24.732] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:44:24.733] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:44:24.734] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:44:24.748] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:44:31.451] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:44:31.451] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:44:31.452] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:44:31.452] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:44:31.452] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:44:31.452] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:44:31.452] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:44:31.453] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:44:56.875] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:44:56.876] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:44:56.877] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:44:56.886] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:44:59.386] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:44:59.386] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:44:59.386] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:44:59.387] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:44:59.387] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:44:59.387] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:44:59.387] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:44:59.388] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:45:24.720] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:45:24.723] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:45:24.724] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:45:24.748] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:45:26.106] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:45:26.106] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:45:26.106] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:45:26.106] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:45:26.107] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:45:26.107] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:45:26.107] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:45:26.108] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:45:34.046] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:45:34.048] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:45:34.049] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:45:34.064] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:45:36.267] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:45:36.268] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:45:36.268] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:45:36.268] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:45:36.268] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:45:36.269] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:45:36.269] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:45:36.270] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:45:57.818] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:45:57.820] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:45:57.820] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:45:57.830] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:45:59.256] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:45:59.257] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:45:59.257] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:45:59.257] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:45:59.257] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:45:59.257] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:45:59.258] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:45:59.258] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:46:11.039] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:46:11.040] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:46:11.041] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:46:11.051] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:46:13.374] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:46:13.374] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:46:13.375] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:46:13.375] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:46:13.375] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:46:13.375] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:46:13.376] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:46:13.376] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:46:32.657] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:46:32.658] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:46:32.659] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:46:32.668] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:46:38.480] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:46:38.481] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:46:38.481] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:46:38.481] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:46:38.481] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:46:38.482] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:46:38.482] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:46:38.483] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:46:48.384] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:46:48.384] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:46:48.385] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:46:48.386] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:46:48.386] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:46:48.388] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:46:48.388] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:46:48.389] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:47:08.705] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:47:08.706] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:47:08.706] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:47:08.715] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:47:10.704] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:47:10.705] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:47:10.705] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:47:10.705] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:47:10.705] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:47:10.706] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:47:10.706] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:47:10.707] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
+[2016-05-17 10:47:32.115] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-17 10:47:32.117] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-17 10:47:32.118] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-17 10:47:32.132] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-05-17 10:47:33.586] [TRACE] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request Type: GET
+[2016-05-17 10:47:33.586] [DEBUG] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request URL: /api/getLocation
+[2016-05-17 10:47:33.586] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - Request IP: 127.0.0.1
+[2016-05-17 10:47:33.586] [WARN] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.hostname: undefined
+[2016-05-17 10:47:33.587] [ERROR] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.protocol: "http"
+[2016-05-17 10:47:33.587] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ip: "::ffff:127.0.0.1"
+[2016-05-17 10:47:33.587] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - req.ips: []
+
+
+[2016-05-17 10:47:33.588] [INFO] f:\work\tianmaijuyuan\test\express_3.X\api_test\apiTest.js - getLocation to /getPath
