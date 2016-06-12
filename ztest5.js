@@ -11,3 +11,4 @@ Promise.resolve().then(function() {
 });
 
 console.log('script end');
+
