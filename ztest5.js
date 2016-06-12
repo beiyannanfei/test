@@ -1,18 +1,13 @@
-var async = require("async");
+console.log('script start');
 
-var srcList = [
-	{status: 10, A: 104},
-	{status: 20, A: 103},
-	{status: 30, A: 102},
-	{status: 40, A: 101}
-];
-console.log(srcList);
+setTimeout(function() {
+	console.log('setTimeout');
+}, 0);
 
-async.eachSeries(srcList, function (item, cb) {
-	if (item.status > 20) {
-		item.status = 8888;
-	}
-	return cb(null);
-}, function (err) {
-	console.log(srcList);
+Promise.resolve().then(function() {
+	console.log('promise1');
+}).then(function() {
+	console.log('promise2');
 });
+
+console.log('script end');
