@@ -1,0 +1,417 @@
+<li msg="客服电话" ngmodel="ms.formData.WX_RED.tel" style="overflow:visible;">
+    <strong class="tit ng-binding">颜色：</strong>
+    <div class="input-group m-b" style="position:relative;width:50%;">
+        <input type="text" class="form-control float" style="cursor:pointer;" id="color-show" ng-click="toggleHeight($event)" color="#d09a45" name="Color060">
+        <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" aria-hidden="true"></span>
+        <b class="add_color dbx-add-color" style="cursor:pointer;"></b>
+        <ul class="countenance block" id="color" style="  top: 20px;left: -10px;width: 100%;overflow:hidden;border-bottom-width:0;" ng-style="{height:height}">
+
+            <li ng-click="setColor($event)" style="background-color:#63b359" v="#63b359" name="Color010"></li>
+            <li ng-click="setColor($event)" style="background-color:#2c9f67" v="#2c9f67" name="Color020"></li>
+            <li ng-click="setColor($event)" style="background-color:#509fc9" v="#509fc9" name="Color030"></li>
+            <li ng-click="setColor($event)" style="background-color:#5885cf" v="#5885cf" name="Color040"></li>
+            <li ng-click="setColor($event)" style="background-color:#9062c0" v="#9062c0" name="Color050"></li>
+            <li ng-click="setColor($event)" style="background-color:#d09a45" v="#d09a45" name="Color060"></li>
+            <li ng-click="setColor($event)" style="background-color:#e4b138" v="#e4b138" name="Color070"></li>
+            <li ng-click="setColor($event)" style="background-color:#ee903c" v="#ee903c" name="Color080"></li>
+            <li ng-click="setColor($event)" style="background-color:#f08500" v="#f08500" name="Color081"></li>
+            <li ng-click="setColor($event)" style="background-color:#a9d92d" v="#a9d92d" name="Color082"></li>
+            <li ng-click="setColor($event)" style="background-color:#dd6549" v="#dd6549" name="Color090"></li>
+            <li ng-click="setColor($event)" style="background-color:#cc463d" v="#cc463d" name="Color100"></li>
+            <li ng-click="setColor($event)" style="background-color:#cf3e36" v="#cf3e36" name="Color101"></li>
+        </ul>
+        <style>
+
+            .marketing{
+                height: 99px;
+                line-height: 99px;
+                width: 97%;
+                background: #fff;
+                border:solid 1px #E4E5E7;
+                margin: 0 auto;
+                padding-left: 30px;
+                margin-bottom: 20px;
+            }
+            span.cancel{cursor: pointer;}
+            .demand{
+                height:95px;
+                margin: 0 auto;
+                background: #fff;
+                padding-top: 30px;
+                border-left:solid 1px #E4E5E7;
+                border-right:solid 1px #E4E5E7;
+            }
+            .demand .demand_left{
+                float: left;
+                width: 48%;
+                padding-left: 30px;
+            }
+            .demand .demand_left select{
+                float: left;
+                width: 198px;
+            }
+            .demand .demand_left .demand_text{
+                float: left;
+                margin-left: 5px;
+            }
+            .demand .demand_left .demand_text input{
+                width: 212px;
+            }
+            .demand .demand_right{
+                float: right;
+                width: 51%;
+            }
+            .demand .demand_right button{
+                margin-right: 10px;
+            }
+            .tab_table{
+                height: auto;
+                margin: 0 auto;
+                background: #fff;
+            }
+            .tab_table table{
+                border: solid 1px #E4E5E7;
+            }
+            .tab_table table thead{
+                height: 46px;
+                background: #f7f9fa;
+            }
+            .tab_table table thead tr th{
+                text-align: center;
+                line-height: 29px;
+                color: #6A6C6F;
+                font-weight: normal;
+            }
+            .tab_table table tbody tr td{
+                text-align: center;
+                line-height: 68px;
+            }
+            .tab_table table tbody tr{
+                height: 68px;
+            }
+            .tab_table table tbody tr td span{
+                cursor: pointer;
+                color: #333;
+                margin-right: 10px;
+            }
+            .tab_table table tbody tr td span:last-child{
+                margin-right: 0;
+            }
+            .tab_table table tbody tr td dl{
+                margin-bottom: 0;
+                height: 54px;
+            }
+            .tab_table table tbody tr td dl dt{
+                float: left;
+                height: 54px;
+                width: 70px;
+            }
+            .tab_table table tbody tr td dl dt img{
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
+            .tab_table table tbody tr td dl dd{
+                float: left;
+                margin-left: 10px;
+            }
+            .tab_table table tbody tr td dl dd p{
+                text-align: left;
+            }
+            .tab_table table tbody tr td dl dd p.name{
+                margin-top: 5px;
+            }
+            .addcards{
+                padding: 0 0 0 40px;
+            }
+
+            .addcards .addcards_left .addcards_content{
+                width: 96%;
+                height: 540px;
+                margin: 0 auto;
+            }
+            .addcards .addcards_left .addcards_content .header{
+                height: 43px;
+                width: 100%;
+                background: #22292c;
+                line-height: 43px;
+            }
+
+            .addcards .addcards_left .addcards_content .header p.title{
+                float:left;
+                color:#fff;
+                font-size: 16px;
+                margin-left: 90px;
+            }
+            .addcards .addcards_left .addcards_content .header i{
+                float: right;
+                margin-right: 10px;
+                margin-top: 13px;
+                color: #fff;
+                font-size: 20px;
+            }
+            .addcards .addcards_left .addcards_content .nav{
+                width: 100%;
+                height: 220px;
+                background:#35a4de;
+                margin-top: 2px;
+            }
+            .addcards .addcards_left .addcards_content .nav .nav_top{
+                height: 80px;
+                padding-top: 15px;
+                clear: both;
+            }
+            .addcards .addcards_left .addcards_content .nav .nav_top dl{
+                float: left;
+                height: 50px;
+                margin-bottom: 0;
+                margin-left: 10px;
+            }
+            .addcards .addcards_left .addcards_content .nav .nav_top dl dt{
+                float: left;
+                height: 50px;
+                width: 50px;
+            }
+            .addcards .addcards_left .addcards_content .nav .nav_top dl dt img{
+                display: block;
+                height: 100%;
+                width: 100%;
+            }
+            .addcards .addcards_left .addcards_content .nav .nav_top dl dd{
+                float: left;
+                line-height: 50px;
+                color: #fff;
+                margin-left: 10px;
+                font-size: 14px;
+            }
+            .addcards .addcards_left .addcards_content .nav .nav_top a{
+                float: right;
+                width: 60px;
+                height: 33px;
+                text-align: center;
+                line-height: 33px;
+                color: #fff;
+                border: solid 1px #77d2ff;
+                border-radius: 5px;
+                margin-right: 10px;
+                margin-top: 13px;
+            }
+            .addcards .addcards_left .addcards_content .nav h2.nav_thing{
+                color: #fff;
+                font-size: 30px;
+                text-align: center;
+            }
+            .addcards .addcards_left .addcards_content .nav p.nav_price{
+                color: #d5ffff;
+                text-align: center;
+                font-size: 16px;
+            }
+            .addcards .addcards_left .addcards_content .nav p.nav_data{
+                color: #85deff;
+                text-align: center;
+                font-size: 13px;
+            }
+            .addcards .addcards_left .addcards_content .section{
+                width: 100%;
+                margin-top: 10px;
+            }
+            .addcards .addcards_left .addcards_content .section p{
+                height: 40px;
+                line-height: 40px;
+                border-bottom: solid 1px #e7e7eb;
+                padding-left: 20px;
+            }
+            .addcards .addcards_left .addcards_content .section p i{
+                float: right;
+                font-size: 28px;
+                padding-right: 20px;
+                padding-top: 7px;
+            }
+            .addcards .addcards_right{
+                display: inline-block;
+                margin-left: 20px;
+                height: auto;
+                width: 611px;
+                background: #fff;
+                border: solid 1px #e7e7eb;
+                margin-top: 37px;
+                position: relative;
+                border-radius: 3px;
+            }
+            .addcards .addcards_right .triangle{
+                border-color: #fff transparent transparent transparent;
+                border-style: solid;
+                border-width: 10px 10px 0px 10px;
+                width: 0;
+                height: 0;
+                -webkit-transform:rotate(90deg);
+                -o-transform:rotate(90deg);
+                -moz-transform:rotate(90deg);
+                -ms-transform:rotate(90deg);
+                position: absolute;
+                top:50%;
+                left:-15px;
+            }
+            .addcards .addcards_right .right_all{
+                width: 95%;
+                height: 100%;
+                margin: 0 auto;
+            }
+            .addcards .addcards_right .right_all .all_header{
+                width: 100%;
+                height: 140px;
+                border-bottom: solid 1px #e7e7eb;
+                line-height: 140px;
+                position: relative;
+                clear: both;
+            }
+            .addcards .addcards_right .right_all .all_header strong{
+                float: left;
+                width: 77px;
+                text-align: right;
+                font-size: 12px;
+                color: #666;
+            }
+            .addcards .addcards_right .right_all .all_header p.select_img{
+                height: 79px;
+                width: 80px;
+                border: solid 1px #e7e7eb;
+                font-size: 38px;
+                text-align: center;
+                line-height: 79px;
+                float: left;
+                margin-top: 30px;
+                margin-left: 10px;
+                cursor: pointer;
+                color: #e7e7eb
+            }
+            .addcards .addcards_right .right_all .all_header input{
+                opacity: 0;
+                position: absolute;
+                right: 407px;
+                height: 79px;
+                width: 80px;
+            }
+            .addcards .addcards_right .right_all .shopper_name{
+                margin-top: 25px;
+                height: 35px;
+                clear: both;
+            }
+            .addcards .addcards_right .right_all .shopper_name strong{
+                float: left;
+                width: 77px;
+                text-align: right;
+                font-size: 12px;
+                color: #666;
+                margin-top: 7px;
+            }
+            .addcards .addcards_right .right_all .shopper_name select{
+                float: left;
+                margin-left: 10px;
+                width: 70%;
+            }
+            .addcards .addcards_right .right_all .shopper_name .noshow{
+                float: left;
+                margin-left: 60px;
+                color: #333;
+            }
+            .addcards .addcards_right .right_all .nonestyle strong{
+                margin-top: 0;
+            }
+            .addcards .addcards_right .right_all .shopper_name input{
+                float: left;
+                margin-left: 10px;
+                width: 70%;
+            }
+            .addcards .addcards_right .right_all .shopper_name strong.padding{
+                margin-top: 5px;
+            }
+            .addcards .addcards_right .right_all .margin{
+                height:35px;
+            }
+            .addcards .addcards_right .right_all .margin .m-b{
+                width: 71.5%;
+            }
+            .addcards .addcards_right .right_all .margin .m-b input{
+                width: 100%;
+            }
+            .addcards .addcards_right .right_all .margin .m-b .input-group-addon i{
+                font-size: 19px;
+                padding-left: 5px;
+            }
+            .addcards .addcards_right .right_all .shopper_name .checkbox{
+                float: left;
+                margin-left: 10px;
+                width: 70%;
+                margin-top: -10px;
+            }
+            .addcards .addcards_right .right_all .shopper_name .radio{
+                float: left;
+                margin-left: 10px;
+                margin-top: -10px;
+                margin-right: 20px;
+            }
+            .addcards .addcards_right .right_all .shopper_name textarea{
+                float: left;
+                width: 70%;
+                resize:none;
+                margin-left: 10px;
+                height: 120px;
+                outline: none;
+                border-color: #e4e5e7;
+            }
+            .addcards .addcards_right .right_all .position{
+                position: relative;
+                /*height: 120px;*/
+            }
+            .addcards .addcards_right .right_all .position span{
+                position: absolute;
+                right: 100px;
+                bottom: 3px;
+                color: #ccc;
+            }
+            .addcards_bottom{
+                height: 50px;
+                width: 97%;
+                margin: 0 auto;
+                background: #fff;
+                margin-top: 20px;
+                padding-left: 35%;
+                padding-top: 10px;
+            }
+            .addcards .addcards_right .right_all .margin .m-b input.float{width: 98%;cursor: pointer;}
+            ul.countenance{position: absolute;z-index: 999;top:34px;margin-left: 10px;background: #fff;padding-left:10px;width: 98%;height: auto;border: solid 1px #e4e5e7;border-top: none;display: none;}
+            ul.block{display: block!important;}
+            ul.countenance li{
+                /*float: left;*/
+                width:25px;
+                height: 25px;
+                background: red;
+                margin-left: 9px;
+                margin-bottom: 10px;
+                margin-top: 10px;
+                display:inline-block;
+                cursor: pointer;
+            }
+            b.add_color{height: 25px;width: 25px;display: block;background: #fff;position: absolute;z-index: 999;left:10px;top:4.5px;}
+            .loading{
+                width: 50px;
+                height: 50px;
+                position: absolute;
+                top:50%;
+                left:50%;
+                margin: -25px 0 0 -25px;
+            }
+
+        </style>
+
+    </div>
+    <!--<input onfocus="undefined"-->
+    <!--ng-focus="undefined"-->
+    <!--ng-model="ms.formData.WX_RED.tel"-->
+    <!--type="text"-->
+    <!--class="form-control ng-pristine ng-valid">-->
+</li>
+
+
+

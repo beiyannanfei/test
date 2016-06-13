@@ -1,0 +1,49 @@
+Goods   {
+                 "category" : "99991000", //商品分类
+                 "ext" : {      //商品扩展属性
+                     "hidePrice": 0,     //是否隐藏价格   0：不隐藏, 1:隐藏
+                     "hideCount": 0,     //是否隐藏库存   0：不隐藏, 1:隐藏
+                     "gainInfo": "",    //领奖须知url
+                     "limitCount": 999999,  //每人限购次数
+                     "followLimit": 3,      //是否关注限制， 1：关注， 2：未关注， 3：不限制
+                     "redLimit": 0,         //红包个数限制 默认为0
+                     "pointLimit": 0,       //积分数限制  默认为0
+                     "redLimitPrice": 0,    //红包金额限制    默认为0
+                     "detail": "<p>商品详情</p>",        //商品详情
+                     "postage": 1,          //邮费
+                     'state': 1             //上下架状态 1：上架， 2：下架， 3：库存中,
+                     expireDay: 30          //有效天数, 会员商品才有的属性
+                     validTime: Date          //有效期, 红包商品才有的属性
+                     vipType: 'demand'       //demand：点播会员， forums：社区会员
+                 },
+                 "pic": "http://mall.mtq.tvm.cn/pic/20150424160602-23615-1v6jnxn.jpg",   //商品图片
+                 "token": "tvmty",          //公共号token
+                 "type": 3,                 //商品类型
+                 "name": '测试实物商品'       //商品名字
+                 _id:   //商品id, ObjectId
+         }
+
+sku: {
+        goodsId: string     //商品Id
+        title: {
+                     '颜色': ['白色', '红色'],
+                     '尺寸': ['M', 'L']
+               },
+        info: [{'颜色': '白色', '尺寸': 'M', count: 999, price: 1}, {'颜色': '红色', '尺寸': 'M', count: 999, price: 1}
+             ,{'颜色': '白色', '尺寸': 'L', count: 999, price: 1}, {'颜色': '红色', '尺寸': 'L', count: 999, price: 1}]
+     },
+
+card: {
+    token: {type: String},
+    tvmId: {type: String},
+    logo_url: {type: String},
+    code_type: {type: String},
+    brand_name: {type: String},
+    title: {type: String},   // 9
+    sub_title: {type: String},  // 18
+    color: {type: String},
+    notice: {type: String}, // 12
+    description: {type: String}, // 1000
+    date_info: Schema.Types.Mixed,     // {type: 1, 2,  begin_timestamp, end_timestamp, fixed_term, fixed_begin_term}
+    dateTime: {type: Date, default: Date.now}
+}

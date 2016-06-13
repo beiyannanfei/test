@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<title>订单详情</title>
+<link href="/pointMall/stylesheets/me-order-list.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+</head>
+<body class="bg_body7">
+<div class="award_info_top">
+    <div class="text">您获得了{{lottery.prizeName}}。</div>
+</div>
+<dl class="list_award">
+<dt>
+    {{#if lottery.waybillId}}
+        <strong>快递公司：{{lottery.wayCom}}</strong>
+        <strong>运单号：{{lottery.waybillId}}</strong>
+    {{/if}}
+    <span class="fr">{{lottery.state}}</span></dt>
+<dd>
+	<span class="price">{{lottery.dateTime}}</span>
+    <img src="{{lottery.prizePic}}" class="pic">
+    <strong class="tit">{{lottery.prizeName}}</strong>
+</dd>
+</dl>
+<dl class="address_info">
+<input type="hidden" id="uid" value="{{lottery._id}}">
+<input type="hidden" id="goodsId" value="{{lottery.prizeId}}">
+<input type="hidden" id="prizeType" value="{{lottery.prizeType}}">
+<input type="hidden" id="from" value="{{lottery.from}}">
+{{#if lottery.addInfo}}
+    <dt id="add"><strong>收货人：{{lottery.addInfo.name}}</strong><span class="fr">{{lottery.addInfo.tel}}</span></dt>
+    <dd><strong>收货地址：</strong>{{lottery.addInfo.add}}</dd>
+{{else}}
+    {{#if lottery.mobile}}
+        <dt id="mobile"><dd class="add"><strong>手机号：</strong>{{lottery.mobile}}</dd></dt>
+    {{else}}
+        <dd class="view_tracking"><strong class="add-address"></strong></dd>
+    {{/if}}
+{{/if}}
+{{#if lottery.liveUrl}}
+    <dd class="liveUrl"><strong>直播地址：</strong>{{lottery.liveUrl}}</dd>
+{{/if}}
+</dl>
+</body>
+
+
+<!--<script type="text/javascript" src="/pointMall/url/statistics" charset="UTF-8"></script>-->
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var uid = $('#uid').val();
+        var from = $('#from').val();
+        var goodsId = $('#goodsId').val();
+        var prizeType = $('#prizeType').val();
+        if (prizeType == '3'){
+            $('.add-address').text('我要领奖')
+        } else if (prizeType == '4' || prizeType == '6'){
+            $('.add-address').text('我要领奖')
+        } else if (prizeType == '103' || prizeType == '104'){
+            $('.add-address').text('点击播放')
+        } else{
+            $('.view_tracking').hide();
+        }
+        $('.add-address').click(function(){
+            if (prizeType == '103' || prizeType == '104'){
+                window.location.href = '/pointMall/goto/video/goods/player/' + goodsId
+            } else if (from == 1 || from == 2){
+                window.location.href = '/pointMall/goto/exchange/goods/' + goodsId + '?lotteryId=' + uid
+            }
+        })
+    })
+</script>
+</html>

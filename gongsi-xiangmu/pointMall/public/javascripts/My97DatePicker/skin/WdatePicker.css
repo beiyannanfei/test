@@ -1,0 +1,21 @@
+.Wdate{
+	border:#999999 1px solid;
+	height: 20px;
+	background: #FFFFFF url(datePicker.gif) no-repeat right;
+}
+.iptcommonNew{
+	width: 310px;
+	padding: 0;
+	height: 25px;
+	line-height: 25px;
+	background: url(img.gif) repeat-x;
+	border: 1px solid #716959;
+	color: #6E624A;
+} 
+
+.WdateFmtErr{
+	font-weight: bold;
+	color: red;
+}
+
+

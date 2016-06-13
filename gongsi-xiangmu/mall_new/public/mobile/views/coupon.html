@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title></title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/coupon.css">
+  <style>
+    [v-cloak]{
+      visibility: hidden;
+    }
+  </style>
+  <script>
+    function onBridgeReady(){
+      document.addEventListener('WeixinJSBridgeReady', function onBridgeReady()  {
+        WeixinJSBridge.call('hideOptionMenu');
+      });
+      WeixinJSBridge.call('hideOptionMenu');
+    }
+    if (typeof WeixinJSBridge == "undefined"){
+      if( document.addEventListener ){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+      }else if (document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+      }
+    }else{
+      onBridgeReady();
+    }
+  </script>
+</head>
+<body>
+  <header class="header" v-cloak id="user">
+    <span class="header-pic">
+      <img :src="user.weixin_avatar_url">
+    </span>
+    <div class="joy-msg">
+      恭喜您 ! 领取成功
+    </div>
+  </header>
+
+  <div class="main" v-cloak id="coupon">
+    <div class="coupon-logo">
+      <img :src="coupon.pic">
+    </div>
+    <div class="coupon-info">
+        <h2 class="coupon-name">{{ coupon.name }}</h2>
+
+        <p class="coupon-type">
+          <span class="coupon-price">{{ coupon.value }}</span>元优惠券
+        </p>
+        <p class="coupon-addition">
+           {{ coupon.tips }}
+        </p>
+
+        <a id="jump_url" class="btn" :class="isDisable? 'btn-disabled' :'btn-info'" jump_url="{{ coupon.jump_url }}">{{ jump_text }}</a>
+
+      <dl>
+        <dt>有&nbsp;效&nbsp;&nbsp;期:</dt>
+        <dd>&nbsp;{{ coupon.beginDateStr }} 至 {{ coupon.endDateStr }}</dd>
+        <dt>此券权限:</dt>
+        <dd>{{ coupon.desc }}</dd>
+      </dl>
+    </div>
+  </div>
+  <script src="../js/config.js"></script>
+  <script src="../lib/zepto/zepto.min.js"></script>
+  <script src="../lib/vue/vue.min.js"></script>
+  <script src="../js/coupon.js"></script>
+</body>
+</html>

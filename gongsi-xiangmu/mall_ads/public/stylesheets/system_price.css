@@ -1,0 +1,195 @@
+body{font-family: "微软雅黑";background: none}
+li{list-style: none;}
+.lottery{
+	width: 90%;
+	height: auto;
+	background: #fff;
+	border:solid #ccc 1px;
+	margin: 0 auto;
+	padding-bottom: 50px;
+}
+.lottery button.add_price{
+	float: right;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+.lottery .price_list{
+	width:90%;
+	height: auto;
+	margin: 20px auto;
+}
+.lottery button.save{
+	width: 20%;
+	position: absolute;
+	left: 50%;
+	margin-left: -10%;
+}
+.pop_cnt{position:absolute; width:792px; left: 50%; top:0; margin-left:-391px; border: 2px solid #e6e6e6;background: #fff;padding-bottom: 20px;}
+.pop_cnt h2{ clear:both; height:50px; padding:0 10px;border-radius:4px 4px 0 0; background:#f4f5f9;  line-height:50px;margin-top: 0}
+.pop_cnt h2 strong{ float:left; font-weight:normal;font-size:16px; color:#333;}
+.pop_cnt h2 .close{ float:right; width:16px; height:16px; margin:16px 0 0 ; background:url(/images/am_close.png) no-repeat center center; cursor:pointer; text-indent:-9999px}
+.pop_cnt .info1{padding:15px 0 0 15px; margin:0; min-height:200px; max-height: 400px; overflow-y:auto;}
+.pop_cnt .info1 li{line-height:34px; margin:0 8px 0 0; float:left; text-align:center; padding:130px 0 0; width:100px;}
+.pop_cnt .info1 li img{height:80px; width:80px; margin-top:-132px; display:block;}
+.pop_cnt .info1 li img.click{border:solid 1px red;}
+.pop_cnt .dialog_btn{width:30%;margin: 0 auto;}
+.pop_cnt .info1 li p{width: 80px;overflow: hidden;white-space:nowrap;margin-bottom: 0}
+.lottery .price_list .price{
+	width: 80%;
+	margin: 0 auto;
+	height: auto;
+	margin-bottom: 30px;
+	border:solid 1px #ccc;
+	position: relative;
+	clear: both;
+	padding: 30px 30px 190px 30px;
+}
+.lottery .price_list .price span.close{
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	font-size: 40px;
+}
+.lottery .price_list .price .price_left{
+	float: left;
+	width: 130px;
+	height: 130px;
+	position: relative;
+}
+.lottery .price_list .price .price_left span{
+	position: absolute;
+	width: 130px;
+	height: 130px;
+	text-align: center;
+	line-height: 130px;
+	font-size: 24px;
+	top:0;
+	cursor: pointer;
+}
+.lottery .price_list .price .price_left span.upload{
+	display: none;
+}
+.lottery .price_list .price .price_left img{
+	display: block;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}
+.lottery .price_list .price .price_right{
+	float: left;
+	margin-left: 20px;
+	width: 68%;
+	margin-top: -13px;
+}
+.lottery .price_list .price .diffent{
+	margin-top: 0;
+}
+.lottery .price_list .price .price_right .midden{
+	margin-top: 60px;
+}
+.lottery .price_list .price .price_right .name_price{
+	height: auto;
+}
+.lottery .price_list .price .price_right .name_price>p{
+	display: inline-block;
+	width: 78px;
+	text-align: right;
+}
+.lottery .price_list .price .price_right .name_price input{
+	display: inline-block;
+	width: 40%;
+}
+.lottery .price_list .price .price_right .name_price select{
+	display: inline-block;
+	width: 12.25em;
+}
+.lottery .price_list .price .price_right .name_price .add_redbag{
+	display: inline-block;
+	width: 50%;
+}
+.lottery .price_list .price .price_right .name_price .add_redbag p.redbag_btn{
+	position: relative;
+	margin: 0 0 0;
+	display: inline-block;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+.lottery .price_list .price .price_right .name_price .add_redbag p span.delete{
+	position: absolute;
+	right: -4px;
+	top: -4px;
+	height: 15px;
+	width: 15px;
+	background-color: red;
+	border-radius: 50%;
+	color: #fff;
+	text-align: center;
+	line-height: 13px;
+	cursor: pointer;
+}
+.isMulti,.tit,.uploader-text-area,.progress,.success_upl,.upload_pic_check{
+	display: none;
+}
+input[type=file]{
+	position: absolute;
+	width: 130px;
+	height: 130px;
+	top:0;
+	left:0;
+	display: block!important;
+	opacity: 0;
+}
+.ng-isolate-scope{
+	width: 80%;
+	margin: 0 auto;
+	height: auto;
+	margin-bottom: 20px;
+}
+.yes_option{
+	width: 80%;
+	margin: 0 auto;
+	height: auto;
+	margin-bottom: 30px;
+}
+.yes_option li{
+	height: 55px;
+	width: 100%;
+	line-height: 55px;
+}
+.ng-binding{
+	margin-right: 3%;
+}
+.price_list .tit{
+	display: inline-block;
+	width: 11%;
+	text-align: right;
+}
+.price_list .ng-valid{
+	display: inline-block;
+	width: 72%;
+}
+.addAward{
+	width: 100%;
+	text-align: right;
+	margin-bottom: 10px;
+}
+.redbags{
+	width: 100%;
+	height: 55px;
+}
+.redbags .ng-binding{
+	display: inline-block;
+	width: 10%;
+	text-align: right;
+	margin-right: 0;
+}
+.redbags .reward{
+	display: inline-block;
+	width: auto;
+	margin-right: 10px;
+}
+.redbags .form-control{
+	display: inline-block;
+	width: 24%;
+	margin-left: 0;
+}

@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{unit}}兑换后台</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/common.css" />
+    <style type="text/css">
+        .top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
+        .top_tit01 a{ font-size:12px; color:#888}
+        .pad_t20{ padding-top:20px}
+        .area_phone{ float:left; width:320px; margin-right:15px; border:solid 1px #efefef; cursor: pointer;}
+        .area_phone .title{ height:62px; padding:2px 1px 1px; background:url(/pointMall/images/phone_top.gif) no-repeat 0 0; text-align:center; font-size:14px; color:#fff;}
+        .area_phone .title span{display:block; height:27px;padding:32px 1px 1px;}
+        .area_phone .title span.click_on{ margin:-1px; border:dashed 1px #0f79cb;}
+        .area_phone .blank_area{ min-height:110px;margin-top:-1px;}
+        .area_phone .blank_area.click_on{border:dashed 1px #0f79cb;}
+        .area_phone .blank_area .tip{ padding-top:40px; text-align:center; font-size:14px;color:#444;}
+        .area_phone .pro_list_area{ height:380px;overflow-x:hidden; overflow-y:auto }
+        .area_phone .pro_list_area.click_on{margin-top:-1px;border:dashed 1px #0f79cb;}
+        .area_phone .pro_list_area .tip{ padding-top:170px;border-top:solid 1px rgba(0,0,0,.1); text-align:center; font-size:14px; color:#444;}
+
+        .swiper-container{width:320px; height: 110px; text-align:center; background-color:#d8d8d8;}
+        .swiper-container{margin:0 auto 5px;position:relative;overflow:hidden;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;z-index:1;}
+        .swiper-wrapper{position:relative;width:320px; height: 110px;-webkit-transition-property:-webkit-transform,left,top;-webkit-transition-duration:0s;-webkit-transform:translate3d(0px,0,0);-webkit-transition-timing-function:ease;-moz-transition-property:-moz-transform,left,top;-moz-transition-duration:0s;-moz-transform:translate3d(0px,0,0);-moz-transition-timing-function:ease;-o-transition-property:-o-transform,left,top;-o-transition-duration:0s;-o-transform:translate3d(0px,0,0);-o-transition-timing-function:ease;-o-transform:translate(0px,0px);-ms-transition-property:-ms-transform,left,top;-ms-transition-duration:0s;-ms-transform:translate3d(0px,0,0);-ms-transition-timing-function:ease;transition-property:transform,left,top;transition-duration:0s;transform:translate3d(0px,0,0);transition-timing-function:ease;}.swiper-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto;}
+        .swiper-slide{float:left;}
+        .swiper-slide img{height: 110px; width: 100%}
+        .swiper-wp8-horizontal{-ms-touch-action:pan-y;}.swiper-wp8-vertical{-ms-touch-action:pan-x;}
+        .pagination {position: absolute; left: 0; text-align: center; bottom: 5px; width: 100%; heigth: 10px;}
+        .swiper-pagination-switch { display: inline-block; width: 10px; height: 10px; border-radius: 10px; background: #999; margin: 0 3px; cursor: pointer;}
+        .swiper-active-switch {background: #fff;}
+
+        .area_right{ position:relative; float:left; display:none; width:590px; min-height:350px; padding:15px; border:solid 1px #efefef;}
+        .area_right .arrow{ position:absolute; top:25px; left:-8px; height:12px; width:8px; background:url(/pointMall/images/arrow1.png) no-repeat 0 0; line-height:0; font-size:0;}
+        .area_right .arrow.c2{ top:110px}
+        .area_right .arrow.c3{ top:270px}
+        .page_setting dt{ padding-bottom:6px; font-size:14px}
+        .page_setting dd{ padding-bottom:10px;}
+        .page_setting dt span{ font-size:14px; color:#888}
+        .page_setting dd{ position:relative;}
+        .page_setting .way_tab1{ clear:both; overflow:hidden; }
+        .page_setting .way_tab1 li{ float:left; width:75px; margin-right:10px;padding:2px 0 3px; background:#fff; border:solid 1px #ccc; border-radius:4px; font-size:13px; cursor:pointer; text-align:center}
+        .page_setting .way_tab1 li.on{ background:#ececec}
+        .page_setting dd.set_bg{}
+        .page_setting dd.set_bg .w4{ width:178px;line-height:23px; border:solid 1px #ccc; border-radius:3px;}
+        .page_setting dd.set_bg .reset{display:inline-block; padding:3px 10px 4px; background:#ddd; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#000; font-size:12px}
+        .page_setting .w1{ width:300px; padding:4px 6px; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px}
+        .page_setting dd.ch_mb label{ font-size:14px; margin-right:15px; color:#666}
+        .page_setting .ar_form{ position:relative; clear:both; overflow:hidden; background:#f5f5f5; padding:15px}
+        .page_setting .ar_form li{ margin-bottom:10px}
+        .page_setting .ar_form li .w2{width:320px; padding:4px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px}
+        .page_setting .ar_form li.pic{ float:left; width:100px; margin-right:10px; position: relative;}
+        .page_setting .ar_form li.pic .sta1{ border:solid 1px #e7e7eb; height:98px; background:#fff; text-align:center; font-size:14px; line-height:90px; cursor:pointer}
+        .page_setting .ar_form li.pic .sta1:hover{ background:#fbfbfb; color:#c00}
+        .page_setting .ar_form li.pic .sta2{ position:relative;border:solid 1px #e7e7eb; height:98px; background:#000; cursor:pointer}
+        .page_setting .ar_form li.pic .sta2 img{ width:98px; height:98px; display:block;}
+        .page_setting .ar_form li.pic .sta2 img:hover{opacity:.9}
+        .page_setting .ar_form li.pic .sta2 p{ position:absolute; bottom:0; left:0; right:0; height:24px; background:rgba(0,0,0,.5); text-align:center; color:#fff; line-height:23px; font-size:14px;}
+        .page_setting .ar_form li.desc textarea{width:210px; height:90px; padding:4px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px; resize: none;}
+        .page_setting .ar_form li.btn{ position:absolute; right:20px; top:20px;}
+        .page_setting .ar_form li.btn strong{display:inline-block; padding:5px 8px 6px; background:#ccc; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#fff;}
+        .page_setting .ar_form li.btn strong.clear{ background:#e60012}
+        .page_setting .ar_form li.btn strong.clear:hover{ background:#cf1524}
+
+        .title02{ font-size:16px}
+        .title02 i{ color:#999;font-size:14px}
+        .add_flist{ padding-top:10px;}
+        .add_flist li{position:relative; width:330px; margin:10px 0 0; padding:15px 15px 15px 175px; border:solid 1px #e7e7eb}
+        .add_flist .add_goods{ border:0; padding:0; margin:0}
+        .add_flist .add_goods strong{display:inline-block; width:90px; padding:5px 0 6px; background:#0090ff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#fff; text-align:center}
+        .add_flist .add_goods strong:hover{ background:#007bd9}
+        .add_flist li .del_p{ position:absolute; width:20px; height:20px; background:url(/pointMall/images/ico_del.png) no-repeat center center; right:-30px; top:50%; margin-top:-12px; text-indent:-9999px; cursor:pointer; opacity:.5}
+        .add_flist li .del_p:hover{opacity:1}
+        .add_flist li .title{ padding-top:7px; color:#555}
+        .add_flist li .title strong{ display:inline-block; width:70px; font-weight:normal; font-size:14px;}
+        .add_flist li .title input,.name{width:200px; padding:3px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px; color:#333; display:inline-block;}
+        .add_flist li .pic{ float:left; width:150px; margin-left:-160px}
+        .add_flist li .pic .sta1{ border:solid 1px #e7e7eb; height:120px; background:#f4f5f9; text-align:center; font-size:14px; line-height:120px; cursor:pointer}
+        .add_flist li .pic .sta1:hover{ background:#fbfbfb; color:#c00}
+        .add_flist li .pic .sta2{ position:relative;border:0; background:#000; text-align:center; cursor:pointer}
+        .add_flist li .pic .sta2 img{ max-width:150px; min-height:110px;max-height:120px; display:block; margin:0 auto}
+        .add_flist li .pic .sta2 img:hover{opacity:.9}
+        .add_flist li .pic .sta2 p{ position:absolute; bottom:0; left:0; right:0; height:24px; background:rgba(0,0,0,.5); text-align:center; color:#fff; line-height:23px; font-size:14px;}
+
+        .normal-goods-list li{ position:relative; margin-bottom:8px; overflow:hidden; clear:both;}
+        .normal-goods-list li .pic img{ width:100%}
+        .normal-goods-list li .count{ height:30px; background:#fff; box-shadow:0 0 5px rgba(0,0,0,.2);}
+        .normal-goods-list li .count strong{ float:left; width:55%; padding-left:10px; line-height:30px; font-weight:normal;white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+        .normal-goods-list li .count span{ float:right; padding-right:10px; color:#dc261c; line-height:30px}
+        .normal-goods-list li .count span i{ font-size:18px; line-height:33px}
+        .normal-goods-list li .count span em{color:#666;}
+        .normal-goods-list li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(/pointMall/images/pmall/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+        .normal-goods-list li .tip2{ position:absolute; left:-89px; top:-10px}
+        .normal-goods-list li .tip2 strong{ display:inline-block; width:200px; height:20px; padding-top:25px; background:#939393; color:#fff; text-align:center; font-weight:normal; -webkit-transform:rotate(-45deg); font-size:10px}
+        .normal-goods-list li .tip2 .comingsoon{ background:#dc261c}
+
+        .list_goods2 li{ float:left; width:50%;}
+        .list_goods2 li .wrap{position:relative; margin:5px; overflow:hidden; clear:both}
+        .list_goods2 li:nth-child(odd) .wrap{ margin-left:10px}
+        .list_goods2 li:nth-child(even) .wrap{ margin-right:10px}
+        .list_goods2 li .pic img{ width:100%; height: 110px;}
+        .list_goods2 li .count{ clear:both; overflow:hidden; padding-bottom:2px; padding-left:6px; background:#fff}
+        .list_goods2 li .count h3{ display:block;  padding-top:3px; font-weight:normal; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+        .list_goods2 li .count p{ padding-bottom:2px}
+        .list_goods2 li .count span{ float:left; color:#dc261c;}
+        .list_goods2 li .count span i{ font-size:15px; font-weight:bold}
+        .list_goods2 li .count em{ float:right; margin-top:3px; padding-right:4px; color:#666}
+        .list_goods2 li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(img/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+        .list_goods2 li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(/pointMall/images/pmall/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+        .list_goods2 li .tip2{ position:absolute; left:-89px; top:-10px}
+        .list_goods2 li .tip2 strong{ display:inline-block; width:200px; height:20px; padding-top:25px; background:#939393; color:#fff; text-align:center; font-weight:normal; -webkit-transform:rotate(-45deg); font-size:10px}
+        .list_goods2 li .tip2 .comingsoon{ background:#dc261c}
+
+        /*弹层*/
+        button{font-size:100%; margin:0;}
+        .btn button{display:block; height:100%; background-color:transparent; border:0; outline:0; overflow:visible; padding:0 22px; color:#fff; cursor:pointer;}
+
+        .btn_primary{background-color:#44b549; border-color:#44b549; color:#fff;}
+        .btn_primary:hover,.btn_primary.active{background-color:#379729; border-color:#379729; color:#fff;}
+
+        .btn_grey{background-color:#a0a0a0; border-color:#a0a0a0; color:#fff;}
+        .btn_grey:hover,.btn_grey.active{background-color:#888888; border-color:#888888; color:#fff;}
+        .layer_wBg{ position:fixed; background-color:rgba(0,0,0,0.6); left:0; top:-100%; width:100%; height:100%; z-index:10000;
+        transition:all .2s linear;
+        -webkit-transition:all .2s linear;
+        }
+        .layer_wBg.hide{ opacity:0; top:-100%;}
+        .layer_wBg.show{ opacity:1; top:0;}
+        .layer_w{width:700px; background-color:#FFF; position:absolute; left:50%; top:50%; margin-left:-350px; margin-top:-205px;}
+        .layer_w .header{ background-color:#f4f5f9; height:50px; line-height:50px; position:relative; padding:0 20px; font-size:16px;}
+        .layer_w .header .close{position: absolute;top: 50%;margin-top: -15px;right:10px;width:30px;height:30px;line-height: 999em;overflow: hidden; cursor:pointer; background: url("/pointMall/images/icon_close.png") no-repeat center;}
+        .layer_w .header .close:hover{ opacity:0.5;}
+        .layer_w .con{ height:300px; padding:15px; overflow:auto;}
+        .layer_w .frm_control_group{ width:420px; margin:0 auto; padding-top:60px;}
+        .layer_w .frm_control_group .frm_label{ display:block; font-size:14px; line-height:2em; margin-bottom:10px;}
+        .layer_w .frm_control_group .frm_input_box input{ border:1px solid #CCC; font-size:14px; color:#333; padding:10px; width:300px;}
+        .layer_w .frm_control_group .frm_error{ color:#e97979;font-size:14px; line-height:2em;}
+        .layer_w .btn_group{ background-color:#f4f5f9; padding:16px 0 5px; text-align:center;}
+
+        /*新样式*/
+        .imgs{width:120px; height:150px; float:left; margin-right:10px;}
+        .imgs table{border:1px solid #ccc;}
+        .imgs.this table{border-color:#f60;}
+        .imgs img{max-width:120px; max-height:120px;}
+        .imgs p{text-align:center; line-height:30px;}
+
+        .share-file{width: 100px; height: 100px; position: absolute; opacity: 0; top: 0; left: 0;}
+
+        .select-local-goods{padding-right: 10px; padding-left: 10px; position: relative; }
+        .local-image{position:absolute; width: 90px; height: 29px; opacity: 0; top: 0; left: 0;}
+    </style>
+</head>
+<body style="background-color: #FFF">
+    <input type="hidden" id="m" value="{{m}}">
+    <input type="hidden" id="storeId" value="{{storeId}}">
+    <div class="wrap01">
+        <h2 class="top_tit01">{{unit}}兑换后台 > 添加商品 > 配置单行模板</h2>
+        <div class="pad_t20 clearfix">
+            <div class="area_phone" style="background:#fff;">
+                <div class="title">
+                    <span class="click_on"></span>
+                </div>
+                <div class="blank_area">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+
+                        </div>
+                        <div class="pagination"></div>
+                    </div>
+                </div>
+                <div class="pro_list_area">
+                    <ul class="n-goods-list"></ul>
+                </div>
+            </div>
+            <div class="area_right" style="display:block;">
+                <span class="arrow"></span>
+                <dl class="page_setting">
+                    <dt>页面设置<span>（建议标题不超过10个文字）</span></dt>
+                    <dd><input name="" type="text" placeholder="请输入商店名字" class="w1" id="name"></dd>
+                    <dt>方式</dt>
+                    <dd>
+                        <ul id="way" class="way_tab1">
+                            <li class="on" way="2">购买</li>
+                            <li way="1">{{unit}}兑换</li>
+                        </ul>
+                    </dd>
+                    <dt>背景颜色</dt>
+                    <dd class="set_bg"><input name="" type="color" class="w4" id="bgColor" value="#ffffff" onChange="$('.area_phone').css('background',this.value);"> <span id="reset" class="reset">重置</span></dd>
+                    <dt>分享设置<span>（建议标题不超过10个文字、正文不超过20个字、使用120*120像素图片）</span></dt>
+                    <dd>
+                        <ul class="ar_form">
+                            <li><input id="share-title" type="text" placeholder="请输入页面名称" class="w2"></li>
+                            <li class="pic">
+                                <div id="upload-pic" class="sta1">上传图片</div>
+                                <div id="change-pic" class="sta2" style="display:none"><img id="share_img_url"><p>修改</p></div>
+                                <input id="file" type="file" name="file" class="share-file" disclass="file_box" onchange="changeFile('file', renderShareImg)"/>
+                            </li>
+                            <li class="desc"><textarea id="share-desc" cols="" rows="" placeholder="请输入正文"></textarea></li>
+                            <li class="btn"><strong class="clear">全部清空</strong></li>
+                        </ul>
+                    </dd>
+                </dl>
+            </div>
+            <div class="area_right">
+                <span class="arrow c2"></span>
+                <h2 class="title02">广告或轮播区<i>(图片建议尺寸：640像素*280像素)</i></h2>
+                <div class="add_flist">
+                    <div class="clearfix add_goods">
+                        <strong class="select-ad-goods">添加商品</strong>
+                        <strong class="select-local-goods">添加本地图片
+                            <input id="local-image" class="local-image" name="file" type="file" onchange="changeFile('local-image', uploadLocalImage)">
+                        </strong>
+                    </div>
+                </div>
+                <ul class="add_flist box1 sortable">
+
+                </ul>
+            </div>
+            <div class="area_right">
+                <span class="arrow c3"></span>
+                <h2 class="title02">商品编辑区<i class="suggest-info">(图片建议尺寸：640像素*280像素)</i></h2>
+                <div class="add_flist">
+                    <div class="clearfix add_goods">
+                        <strong class="select-goods">添加商品</strong>
+                    </div>
+                </div>
+                <ul class="add_flist box2 sortable">
+
+                </ul>
+            </div>
+        </div>
+        <div class="bt_confirm_btn"><strong class="save save1">保存</strong><strong id="cancel">取消</strong></div>
+    </div>
+</body>
+</html>
+
+<!--弹层1-->
+<div class="layer_wBg" id="addPrize">
+    <div class="layer_w">
+        <div class="header">选择商品<span class="close" data-action="layer_close">关闭</span></div>
+        <div class="con">
+            <!---->
+            <div class="lottery_addList">
+                <ul id="lottery_addListcon"></ul>
+            </div>
+        </div>
+        <div class="bt_confirm_btn">
+            <strong class="save">确定</strong>
+            <strong class="close">取消</strong>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="integralUnit" value="{{unit}}">
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/idangerous.swiper.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/ajaxfileupload.js"></script>
+<script type="text/javascript">
+    var goodsMap = {}
+    var selectGoodsType = 1; // 1: ad, 2: normal
+
+    function uploadLocalImage(url, name){
+        selectGoodsType = 1
+        var fakeId = 'fake-' + new Date().getTime()
+        var goods = {pic: url, id: fakeId, name: name}
+        goodsMap[fakeId] = goods
+        addSelectedGoods([goods]);
+        notiGoodsChange();
+    }
+
+    function renderShareImg(url){
+        $('#share_img_url').attr('src', url)
+        $('#upload-pic').hide()
+        $('#change-pic').show()
+    }
+
+    function changeFile(id, done){
+        if (!$('#' + id).val()){
+            return;
+        }
+        $.ajaxFileUpload({
+            type: 'post',
+            url: '/pointMall/image/upload',
+            fileElementIds: [id],
+            success: function(data){
+                var res = JSON.parse($(data).text())
+                if (res && res.url){
+                    done(res.url, res.name)
+                } else {
+                    alert('上传图片失败')
+                }
+            },
+            error: function(xhr){
+                var res = JSON.parse($(xhr.responseText).text())
+                if (res && res.url){
+                    done(res.url, res.name)
+                } else {
+                    alert('上传图片失败')
+                }
+            }
+        })
+    }
+
+    $(function() {
+        var storeId = $('#storeId').val();
+        var m = $('#m').val();
+        var mySwiper = null
+
+        if (m == '2'){
+            $('.n-goods-list').addClass('list_goods2');
+            $('.suggest-info').text('(图片建议尺寸：500像素*400像素)');
+        } else {
+            $('.n-goods-list').addClass('normal-goods-list');
+        }
+
+        $('.clear').click(function(){
+            $('#share-title').val('');
+            $('#share-desc').val('');
+            $('#share_img_url').removeAttr('src');
+            $('#upload-pic').show()
+            $('#change-pic').hide()
+        })
+
+        function renderStore(store){
+            $('#name').val(store.name);
+            $('.title .click_on').html(store.name);
+            $('#way li[way=' + store.way + ']').click();
+            $('.area_phone').css('background', store.bgColor);
+            $('#bgColor').val(store.bgColor);
+            if (store.share){
+                $('#share-title').val(store.share.title);
+                $('#share-desc').val(store.share.desc);
+                $('#share_img_url').attr('src', store.share.img_url);
+                $('#upload-pic').hide()
+                $('#change-pic').show()
+            }
+            var ads = []
+            var prizes = []
+            $.each(store.prizes, function(i, o){
+                if (o.isAd){
+                    ads.push(o)
+                } else {
+                    prizes.push(o)
+                }
+            });
+            if (ads && ads.length > 0){
+                selectGoodsType = 1
+                addSelectedGoods(ads)
+            }
+            if (prizes && prizes.length > 0){
+                selectGoodsType = 2
+                addSelectedGoods(prizes)
+            }
+            notiGoodsChange()
+        }
+
+        $( ".sortable" ).sortable()
+        $( ".sortable" ).on('sortstop', function(){
+            console.log('change')
+            notiGoodsChange()
+        });
+        $( ".sortable" ).disableSelection();
+
+        $('#reset').click(function(){
+            $('#bgColor').val('#ffffff');
+            $('#bgColor').change()
+        })
+
+        function getStore(storeId){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/store/' + storeId,
+                success: function(data){
+                    $.each(data.prizes, function(i, o){
+                        goodsMap[o.id] = o;
+                    })
+                    renderStore(data);
+                },
+                error: function(xhr){
+                    alert('获取商店数据失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+        if (storeId){
+            getStore(storeId);
+        }
+
+        function checkInt(count){
+            count = parseInt(count, 10);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return count;
+            }
+        }
+
+        function checkFloat(count){
+            count = parseFloat(count);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return Math.floor(count * 100) / 100;
+            }
+        }
+
+        function renderGoods(data){
+            var html="";
+            $.each(data, function(i, o){
+                var id=data[i]._id,_pic=data[i].pic,_name=data[i].name;
+                html+='<li class="imgs" playType="'+ o.ext.playType +'" goodsId="'+ id +'">'+
+                        '<table cellspacing="0" cellpadding="0" border="0" width="100%">'+
+                        '<tbody><tr><td align="center" width="120" height="120">'+
+                        '<img alt="" title="'+ _pic +'" src="'+ _pic +'">'+
+                        '</td></tr></tbody></table><p>'+ _name +'</p></li>'
+            })
+
+            var $newCell = $(html);
+            $('#lottery_addListcon').append($newCell);
+
+            $('li', $newCell.parent()).click(function(){
+                if($(this).attr('class') == 'imgs'){
+                    $(this).addClass('this');
+                }else{
+                    $(this).removeClass('this');
+                }
+            });
+        }
+
+        function loadGoods(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/list/buy/goods',
+                success: function(data){
+                    $.each(data, function(i, o){
+                        o.id = o._id;
+                        goodsMap[o._id] = o;
+                    })
+                    renderGoods(data);
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+        loadGoods();
+
+        $('.select-goods').click(function(){
+            selectGoodsType = 2
+            getGood();
+        })
+
+        $('.select-ad-goods').click(function(){
+            selectGoodsType = 1
+            getGood();
+        })
+
+        $('.blank_area').addClass('click_on');
+        $('.pro_list_area').addClass('click_on');
+        $('.title span').addClass('click_on');
+        $('.title span').click(function(){
+            $('.area_right').eq(0).css('display','block').siblings('.area_right').css('display','none');
+        })
+        $('.blank_area').click(function(){
+            $('.area_right').eq(1).css('display','block').siblings('.area_right').css('display','none');
+        })
+        $('.pro_list_area').click(function(){
+            $('.area_right').eq(2).css('display','block').siblings('.area_right').css('display','none');
+        })
+
+        $('#name').blur(function(){
+            var txt=$(this).val();
+            $('.title .click_on').html(txt);
+        })
+
+        $('#way li').click(function(){
+            if(!$(this).hasClass('on')){
+                $('.box1').empty();
+                $('.box2').empty();
+                notiGoodsChange();
+                $(this).addClass('on').siblings().removeClass('on');
+            }else{
+                $(this).addClass('on').siblings().removeClass('on');
+            }
+        })
+
+        $('.layer_wBg').find('.close').click(function(){
+            $('.layer_wBg').css('top','-100%');
+        })
+
+        function bindEvent($newView){
+            /*$('input.price', $newView).blur(function(){
+                var price = $(this).val();
+                if ((price = checkFloat(price)) == null){
+                    $(this).val('');
+                } else {
+                    $(this).val(price);
+                }
+                var goodsId = $(this).closest('li').attr('goodsId');
+                $('.n-goods-list li[goodsId=' + goodsId + ']').find('.price-value').html('￥' + $(this).val())
+            })
+
+            $('input.score', $newView).blur(function(){
+                console.log('blur')
+                var score = $(this).val();
+                if ((score = checkInt(score)) == null){
+                    $(this).val('');
+                } else {
+                    $(this).val(score);
+                }
+                var goodsId = $(this).closest('li').attr('goodsId');
+                $('.n-goods-list li[goodsId=' + goodsId + ']').find('.score-value').html($(this).val())
+            })
+
+            $('input.count', $newView).blur(function(){
+                var count = $(this).val();
+                if ((count = checkInt(count)) == null){
+                    $(this).val('');
+                } else {
+                    $(this).val(count);
+                }
+            })*/
+
+            $('.remove', $newView).click(function(){
+                $(this).closest('li').remove();
+                notiGoodsChange();
+            })
+        }
+
+        function notiGoodsChange(){
+            var html = '';
+            $('.box1 li').each(function(){
+                var goodsId = $(this).attr('goodsId');
+                var goods = goodsMap[goodsId];
+                if (!goodsId || !goodsMap[goodsId]){
+                    console.log(goodsId)
+                    console.log(goodsMap[goodsId])
+                    console.log($(this))
+                    return true
+                }
+                html += '<div goodsId="' + goods.id + '" class="swiper-slide">' +
+                        '<img src="' + goods.pic + '"></div>'
+            })
+
+            $('.swiper-wrapper').empty()
+            $('.swiper-wrapper').append(html)
+
+            if (mySwiper){
+                mySwiper.destroy()
+            }
+            mySwiper = new Swiper('.swiper-container',{
+                pagination: '.pagination',
+                paginationClickable: true,
+                mode:'horizontal',
+                loop:'true',
+                paginationAsRange: true,
+                autoplay: 3000
+            })
+
+            var html = '';
+            $('.box2 li').each(function(){
+                var goodsId = $(this).attr('goodsId');
+                var goods = goodsMap[goodsId];
+                if (!goodsId || !goodsMap[goodsId]){
+                    console.log(goodsId)
+                    console.log(goodsMap[goodsId])
+                    console.log($(this))
+                    return true
+                }
+
+                if(m == 2){
+                    html += '<li goodsId="'+ goods.id + '"><div class="wrap">' +
+                            '<div class="pic"><img src="'+ goods.pic +'"></div>' +
+                            '<div class="count"><h3>' + goods.name + '</h3>';
+                    if($('#way .on').attr('way') == 1){
+                        var score = goods.ext.score;
+                        html += '<p><span><i class="score-value">' + score + '</i> {{unit}}</span>';
+                        html += '<em class="price-value">￥' + goods.price + '</em>'
+                        html += '</p>'
+                    } else {
+                        html += '<p><span><i class="price-value">￥' + goods.price + '</i></span></p>'
+                    }
+                    html += '</div></div></li>'
+                } else {
+                    html += '<li goodsId="'+ goods.id +'">'+
+                            '<div class="pic"><img src="'+ goods.pic +'"></div>'+
+                            '<div class="count"><strong>'+ goods.name +'</strong><span>';
+                    if($('#way .on').attr('way') == 1){
+                        html += '<i class="score-value">'
+                        html += goods.ext.score;
+                    } else {
+                        html += '<i class="price-value">'
+                        if (goods.price){
+                            html += '￥' + goods.price;
+                        }
+                    }
+                    html += '</i> ';
+                    if($('#way .on').attr('way') == 1){
+                        var unit = $('#integralUnit').val() || '积分';
+                        html += unit
+                        if (goods.price){
+                            html += '<em class="price-value">￥' + goods.price + '</em>'
+                        } else {
+                            html += '<em class="price-value"></em>'
+                        }
+                    }
+                    html += '</span></div></li>';
+                }
+            })
+            $('.n-goods-list').empty()
+            $('.n-goods-list').append(html)
+        }
+
+        function addSelectedGoods(goodsList){
+            var html = '';
+            $.each(goodsList, function(i, goods){
+                var link = goods.link?goods.link:'';
+                html += '<li class="clearfix st" goodsId="'+ goods.id +'">'+
+                        '<div class="pic">'+
+                        '<div class="sta2"><img src="'+ goods.pic +'"></div></div>'+
+                        '<div class="title"><strong>商品名称：</strong><div class="name">'+ goods.name +'</div></div>';
+                if (selectGoodsType == 1 && /^fake/.test(goods.id)){
+                    html += '<div class="title"><strong>链接：</strong><input name="" placeholder="可以为空" class="link" type="text" value="' +
+                            link + '"></div>'
+                }
+                html += '<span class="del_p remove">删除</span></li>';
+            })
+            var $newView = $(html);
+            if (selectGoodsType == 1) {
+                $('.box1').append($newView);
+            } else {
+                $('.box2').append($newView);
+            }
+
+            $('.layer_wBg').css('top','-100%');
+            $('.layer_wBg .this').removeClass('this');
+            bindEvent($newView);
+        }
+        window.addSelectedGoods = addSelectedGoods
+        window.notiGoodsChange = notiGoodsChange
+
+        $('.layer_wBg .save').click(function(){
+            var selectedGoods = $('#lottery_addListcon').find('li.this');
+            if(selectedGoods.length <= 0){
+                return alert('请选择你要的商品！')
+            }
+
+            var goodsList = []
+            selectedGoods.each(function(){
+                var id = $(this).attr('goodsId');
+                goodsList.push(goodsMap[id]);
+            })
+            addSelectedGoods(goodsList);
+            notiGoodsChange();
+        })
+
+        function getGood(ele){
+            $('.layer_wBg li').hide();
+            var way = parseInt($('#way .on').attr('way'), 10);
+            if (way == 1){
+                $('.layer_wBg li[playType=' + way + ']').show();
+            } else {
+                $('.layer_wBg li[playType!=' + 1 + ']').show();
+            }
+
+            if($('.n-goods-list li').length != 0){
+                $('.n-goods-list li').each(function(){
+                    var id = $(this).attr('goodsId');
+                    $('.layer_wBg li[goodsId=' + id + ']').hide()
+                })
+            }
+
+            if($('.swiper-slide').length != 0){
+                $('.swiper-slide').each(function(){
+                    var id = $(this).attr('goodsId');
+                    $('.layer_wBg li[goodsId=' + id + ']').hide()
+                })
+            }
+
+            $('.layer_wBg').css('top','0');
+        }
+
+        $('#cancel').click(function(){
+            window.history.go(-1);
+        })
+
+        $('.save1').click(function(){
+            var name = $('#name').val();
+            if(!name){
+                return alert('请输入商店名字！')
+            }
+
+            var way = parseInt($('#way .on').attr('way'), 10);
+            if(way != 1 && way != 2){
+                return alert('内容错误！')
+            }
+
+            var shareTitle = $('#share-title').val();
+            if(!shareTitle){
+                return alert('请输入分享标题')
+            }
+
+            var shareDesc = $('#share-desc').val();
+            if(!shareDesc){
+                return alert('请输入分享文本')
+            }
+
+            var shareImg = $('#share_img_url').attr('src');
+            if(!shareImg){
+                return alert('请上传分享图片')
+            }
+
+            if($('.box1 li').length <= 0){
+                return alert('请选择广告或轮播区添加商品，至少1个商品！')
+            }
+            if($('.box2 li').length <= 0){
+                return alert('请选择商品编辑区添加商品，至少1个商品！')
+            }
+
+            var err = null;
+            var prizes = []
+            $('.box1 li').each(function(){
+                var doc = {}
+                doc.id = $(this).attr('goodsId');
+                if (/^fake/.test(doc.id)){
+                    doc.local = true
+                    doc.pic = goodsMap[doc.id].pic
+                    doc.name = goodsMap[doc.id].name
+                    var link = $(this).find('input.link').val();
+                    var urlReg = /^(https|http):\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
+                    if (link){
+                        if (!urlReg.test(link)){
+                            return err = '不合法的链接'
+                        }
+                        doc.link = link;
+                    }
+                }
+                doc.isAd = true
+                prizes.push(doc);
+            })
+            if (err){
+                return alert(err);
+            }
+
+            $('.box2 li').each(function(){
+                var doc = {}
+                doc.id = $(this).attr('goodsId');
+                prizes.push(doc);
+            })
+            if (err){
+                return alert(err);
+            }
+
+            var bgColor = $('#bgColor').val();
+
+            var url = ''
+            if (storeId){
+                url = '/pointMall/store/' + storeId + '/update';
+            } else {
+                url = '/pointMall/add/store'
+            }
+            var data = {
+                name: name,
+                bgColor: bgColor,
+                prizes: prizes,
+                way: way,
+                m: m,
+                share: {
+                    img_url: shareImg,
+                    desc: shareDesc,
+                    title: shareTitle
+                }
+            }
+            $.ajax({
+                url: url,
+                type:'POST',
+                data: data,
+                error: function(){
+                    alert("失败");
+                },
+                success: function(data){
+                    window.location.href = '/pointMall/store'
+                }
+            })
+        })
+    });
+</script>

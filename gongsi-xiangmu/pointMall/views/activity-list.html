@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>活动列表</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+    <style type="text/css">
+        td a{margin: 0 10px; cursor: pointer;}
+        .pop_cnt{ position:fixed; width:792px; left: 50%; top: 50%; margin: -135px 0 0 -386px; border: 2px solid #e6e6e6}
+        .pop_cnt .info1{padding:15px 0 0 15px; margin:0; min-height:200px; max-height: 400px; overflow-y:auto;}
+        .pop_cnt .info1 li{line-height:34px; margin:0 20px 10px 0; float:left; text-align:center; padding:130px 0 0; width:100px;}
+        .pop_cnt .info1 li img{height:100px; width:100px; margin-top:-132px; display:block;}
+    </style>
+</head>
+<body style="margin:0 auto">
+<h2 class="s_title02">活动管理</h2>
+<div class="wrap01">
+    <h3 class="tit02 fbhd"><a style="float:left; padding:5px; border:0; background:#f0620c; color:#fff; border-radius:2px;" id="boundUrl" url="{{boundUrl}}">查看抽奖榜单链接</a><a href="/pointMall/add/activity?way={{way}}">+添加抽奖</a></h3>
+    <ul class="list_msg1 list_msg2">
+        <li class="min_padding">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+                <colgroup>
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="20%">
+                    <col width="*">
+                </colgroup>
+                <tr>
+                    <td>起止时间</td>
+                    <td>名称</td>
+                    <td>{{unit}}限制数</td>
+                    <td class="">操作</td>
+                </tr>
+            </table>
+        </li>
+        {{#each activities}}
+            <li activityId="{{_id}}">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+                    <colgroup>
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="20%">
+                        <col width="*">
+                    </colgroup>
+                    <tr activityId="{{_id}}">
+                        <td class="date">{{startTime}}-{{endTime}}</td>
+                        <td class="date">{{name}}</td>
+                        <td class="date">{{score}}</td>
+                        <td class="">
+                            <a href="/pointMall/activity/{{_id}}/update">修改</a>
+                            <a class="delete" href="javascript:void(0)">删除</a>
+                            <a class="showGoods" href="#" goods="{{prize}}">查看奖品</a>
+                            <a class="copyUrl" href="#" link="{{link}}">查看抽奖链接</a>
+                            <a class="showId" href="#">查看抽奖ID</a></td>
+                    </tr>
+                </table>
+            </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="matter_con matter_con2" style="display: none; background-color: #fff;">
+    <div class="mass_top clearfix" style="background-color: #eee;">
+        <span style="width: 100px; display: inline-block; margin: 15px 10px; font-weight: bold; font-size: 16px;">活动链接</span>
+        <label></label>
+    </div>
+    <ul class="matter_content">
+        <li>
+            <input style="width:100%; height: 20px; padding: 5px;" id="myText" type="text">
+        </li>
+    </ul>
+</div>
+
+<div class="pop_cnt">
+    <h2><strong class="tit2">奖品列表</strong><span class="close" title="关闭">关闭</span></h2>
+    <ul class="info1">
+
+    </ul>
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/toast.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('.copyUrl').click(function(){
+            var url = $(this).attr('link');
+            $('#myText').val(url)
+            $('.matter_con2').css('display','block');
+        })
+        $('.showId').click(function(){
+            var activityId = $(this).closest('tr').attr('activityId');
+            window.prompt("抽奖ID", activityId);
+        })
+        $('.matter_con2 .mass_top label').click(function(){
+            $('.matter_con2').css('display','none');
+        })
+
+        $('.showGoods').click(function(){
+            var goods = $(this).attr('goods');
+            goods = JSON.parse(goods)
+            var domString = ''
+            $.each(goods, function(i, o){
+                domString += '<li><img src="' + o.pic + '" alt="">' + o.name + '</li>'
+            })
+            $('.info1').empty();
+            $('.info1').append(domString);
+            $('.pop_cnt').css('display','block');
+            $('.bg').css('display','block');
+        })
+
+        $('.close').click(function(){
+            $('.pop_cnt').css('display','none');
+            $('.bg').css('display','none');
+        })
+
+        $('.delete').click(function(){
+            var activityId = $(this).closest('tr').attr('activityId');
+            if (confirm('确定要删除活动吗？')){
+                $.ajax({
+                    type: 'DELETE',
+                    url: '/pointMall/activity/' + activityId,
+                    success: function(data){
+                        alert('删除成功')
+                        $('li[activityId=' + activityId + ']').slideUp();
+                    },
+                    error: function(){
+                        alert('删除失败')
+                    }
+                })
+            }
+        })
+
+        $('#boundUrl').click(function(){
+            var url = $(this).attr('url');
+            window.prompt("链接地址请复制", url);
+        })
+    });
+</script>
+
+</body>
+</html>

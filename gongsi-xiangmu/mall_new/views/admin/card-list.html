@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>卡券列表</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/card.css" />
+</head>
+<body style="margin:0 auto">
+    <div class="normalheader transition animated fadeIn">
+    <div class="hpanel" style="width:100%">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">营销应用</a></li>
+                    <li>
+                        <span>营销应用列表</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                营销应用
+            </h2>
+            <small>营销应用列表</small>
+        </div>
+    </div>
+</div>
+    <div class="tab_header"></div>
+    <div class="hpanel" style="padding:0 40px 0 40px;margin-bottom:0">
+        <ul class="nav nav-tabs">
+            {{#if token}}
+                <li><a href="/admin/activity?way=1" aria-expanded="true">刮刮卡</a></li>
+                <li><a href="/admin/activity?way=2" aria-expanded="false">大转盘</a></li>
+                <li><a href="/admin/red/pager" aria-expanded="false">抢红包</a></li>
+            {{/if}}
+            <li class="active"><a href="#" aria-expanded="false">卡券管理</a></li>
+            <li><a href="http://business.dev.tvm.cn/Marketing/seckillList" aria-expanded="false">秒杀活动</a></li>
+        </ul>
+    </div>
+    <div class="demand" style="margin:0 40px 0 40px">
+        <div class="demand_left">
+            <select class="form-control m-b" name="account">
+                <option>卡券类型</option>
+                <option>优惠券</option>
+            </select>
+            <div class="demand_text">
+                <input id="search-name" type="text" class="form-control" placeholder="按名字查询">
+            </div>
+        </div>
+        <div class="demand_right">
+            <button type="button" class="btn w-xs btn-primary" id="search">查询</button>
+            <button type="button" class="btn w-xs btn-info" data-toggle="modal" data-target="#voucher" id="consume">核销卡券</button>
+            <button type="button" class="btn w-xs btn-info" data-toggle="modal" data-target="#voucher" id="set-white-list">添加测试白名单</button>
+            <button type="button" class="btn w-xs btn-success" id="add-card">+添加卡券</button>
+        </div>
+    </div>
+    <div class="tab_table" style="margin:0 40px 0 40px">
+        <table class="table" id="card-list">
+            <thead>
+            <tr>
+                <th>卡券类型</th>
+                <th>卡券名称</th>
+                <th>价格</th>
+                <th>卡券有效期</th>
+                <th>审核状态</th>
+                <th>领取限制</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="modal fade" id="voucher" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;width:100%;height:100%;">
+        <div class="modal-dialog" style="width:480px;">
+            <div class="modal-content">
+                <div class="color-line"></div>
+                <div class="modal-header text-center">
+                    <h2 class="title">核销卡券</h2>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="form-control" placeholder="卡券码：">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary confirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="Link_card" tabindex="-1" role="dialog" aria-hidden="true" style="display:none;width:100%;height:100%;">
+        <div class="modal-dialog" style="width:320px;">
+            <div class="modal-content" id="modal-content" style="height:320px;width:320px;position:relative">
+                <img src="/images/loading.gif" alt="" class="loading">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function(){
+        
+        $('#search').click(function(){
+            var name = $('#search-name').val()
+            $('#card-list .name').each(function(){
+                var cname = $(this).text()
+                if (new RegExp(name).test(cname) || !name){
+                    $(this).closest('tr').show()
+                } else {
+                    $(this).closest('tr').hide()
+                }
+            })
+        })
+
+        $('#set-white-list').click(function(){
+            $('#voucher').attr('v', 0)
+            $('#voucher').find('.title').text('设置卡券白名单');
+            $('#voucher').find('input').attr('placeholder', '微信号：');
+        })
+
+        $('#consume').click(function(){
+            $('#voucher').attr('v', 1)
+            $('#voucher').find('.title').text('核销卡券');
+            $('#voucher').find('input').attr('placeholder', '卡券码：');
+        });
+
+        $('#voucher').find('.confirm').click(function(){
+            $('#voucher').hide();
+            if ($('#voucher').attr('v') == 1){
+                consumeCode()
+            } else if ($('#voucher').attr('v') == 0){
+                setWhiteList()
+            }
+        })
+
+        function setWhiteList(){
+            var no = $('#voucher').find('input').val()
+            if (!no){
+                return
+            }
+            $.ajax({
+                type: "POST",
+                url: "/admin/card/white/list",
+                data: {no: no},
+                success: function(data){
+                    swal({title: "成功!", text: "设置白名单成功!", type: "success"});
+                },
+                error: function(){
+                    swal({title: "失败!", text: "设置白名单失败!", type: "warning"});
+                }
+            })
+        }
+
+        function consumeCode(){
+            var code = $('#voucher').find('input').val()
+            if (!code){
+                return
+            }
+            $.ajax({
+                type: "POST",
+                url: "/admin/card/consume",
+                data: {code: code},
+                success: function(data){
+                    swal({title: "成功!", text: "核销卡券成功!", type: "success"});
+                },
+                error: function(){
+                    swal({title: "失败!", text: "核销卡券失败!", type: "warning"});
+                }
+            })
+        }
+
+        $('#add-card').click(function(){
+            window.location.href = '/admin/add/card'
+        })
+
+        function bindEvent($view){
+            $('.delete', $view).click(function(){
+                
+                var $parent = $(this).closest('tr')
+                var cardId = $parent.attr('id')
+                swal({
+                    title: "确定删除吗？",
+                    text: "删除后不能撤销，请慎重考虑",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false,
+                    closeOnCancel: true },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "delete",
+                            url: '/admin/card/' + cardId,
+                            success: function(data){
+                                $parent.slideUp()
+                                swal('删除成功')
+                            },
+                            error: function(){
+                                swal('删除失败')
+                            }
+                        })
+                    }
+                })
+            })
+
+            $('.link', $view).click(function(){
+                var url = $(this).attr('link');
+                window.prompt("链接地址请复制", url);
+            });
+
+            $('.receive-list', $view).click(function(){
+                var $parent = $(this).closest('tr')
+                var cardId = $parent.attr('id')
+                window.location.href = '/admin/card/' + cardId +  '/go/receiver'
+            });
+
+            $('.edit', $view).click(function(){
+                var $parent = $(this).closest('tr')
+                var cardId = $parent.attr('id')
+                window.location.href = '/admin/update/card/' + cardId
+            });
+
+            $('.Link_card', $view).click(function(){
+                var $parent = $(this).closest('tr')
+                var card_id = $parent.attr('card_id')
+                loadQrcode(card_id, function(err, url){
+                    if (err){
+
+                    } else{
+                        $('#modal-content').find('img').attr('src',url).removeClass('loading')
+                    }
+                })
+            })
+        }
+
+        function loadQrcode(card_id, cb){
+            $.ajax({
+                    type: "GET",
+                    url: "/admin/card/" + card_id + '/qrcode',
+                    success: function(data){
+                        if (data && data.url) {
+                            cb(null, data.url)                             
+                        } else {
+                            cb('err')                         
+                        }
+                    },
+                    error: function(){
+                         cb('err')  
+                    }
+               })                
+        }
+
+        function getState(state){
+            if (state == 'new'){
+                return '审核中'
+            } else if (state == 'pass'){
+                return '审核通过'
+            } else if (state == 'not_pass'){
+                return '审核未通过'
+            } else {
+                return state
+            }
+        }
+
+        function renderCard(data){
+            var parent = $('#card-list')
+            var domString = ''
+            $.each(data, function(i, o){
+                var base_info = o.card.general_coupon.base_info
+                var limitStr = '无限制'
+                if (base_info.get_limit > 0){
+                    limitStr = '1人' + base_info.get_limit + '张'
+                }
+                domString += '<tr card_id="' + o.card_id + '" id="' + o._id + '"><td>优惠券</td><td>' + base_info.title + '</td><td>' + o.price + '</td>' +
+                    '<td>' + base_info.date_info.begin_timestamp + '至' + base_info.date_info.end_timestamp + '</td>' +
+                    '<td>' + getState(o.state) + '</td><td>' + limitStr + '</td><td>';
+                if (o.link){
+                    domString += '<span class="link" link="' + o.link + '">链接</span><span class="Link_card" data-toggle="modal" data-target="#Link_card">二维码</span>';
+                }
+                domString += '<span class="edit">编辑</span>' +
+                    '<span class="receive-list">领取列表</span>' +
+                    '<span class="delete">删除</span>' +
+                    '</td></tr>'
+            })
+            var $view = $(domString)
+            parent.append($view)
+            bindEvent($view)
+        }
+
+
+        function loadCard(){
+            $.ajax({
+                type: "GET",
+                url: "/admin/card/list",
+                success: function(data){
+                    renderCard(data)
+                },
+                error: function(){
+
+                }
+            })
+        }
+        loadCard()
+    })
+</script>
+</html>

@@ -1,0 +1,653 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>群发信息</title>
+<link href="/pointMall/stylesheets/mass-group.css" type="text/css" rel="stylesheet">
+<link href="/pointMall/stylesheets/style_mn-group.css" rel="stylesheet" type="text/css">
+
+<style>
+.mass_button_send {
+    width: 106px;
+    height: 32px;
+    border-radius: 5px;
+    display: inline-block;
+    background: #44b549;
+    text-align: center;
+    line-height: 32px;
+    color: #fff;
+    margin: 0 20px 0 0;
+}
+
+#dialogBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none
+}
+
+.dialogBoxBG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+#dialog {
+    position: absolute;
+    z-index: 1;
+    width: 600px;
+    height: 400px;
+    background-color: #f0f1f2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dialogShow .dialog {
+    -webkit-animation: show .3s;
+}
+
+.dialogHidd .dialog {
+    -webkit-animation: hidd .5s forwards;
+}
+
+.dialogShow .dialogBoxBG {
+    -webkit-animation: showBG .5s;
+}
+
+.dialogHidd .dialogBoxBG {
+    -webkit-animation: hiddBG .35s forwards 350ms;
+}
+
+/* 20140905 lizhaoquan ********************************************************************/
+#dialogBoxOpen, #dialogBoxAlert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none
+}
+
+#dialogBoxAlert {
+    z-index: 2
+}
+
+#dialogOpen,
+#dialogAlert {
+    position: absolute;
+    z-index: 1;
+    width: 600px;
+    height: 400px;
+    background-color: #f0f1f2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dialogTitle h3 {
+    margin: 0;
+    font-weight: none
+}
+
+/******************************************************************************************/
+#dialogBox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: none
+}
+
+.dialogBoxBG {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+#dialog {
+    position: absolute;
+    top: 30%;
+    right: 10%;
+    left: 10%;
+    z-index: 1;
+    background-color: #f0f1f2;
+    border-radius: 4px;
+    overflow: hidden
+}
+
+.dialogShow .dialog {
+    -webkit-animation: show .3s;
+}
+
+.dialogHidd .dialog {
+    -webkit-animation: hidd .5s forwards;
+}
+
+.dialogShow .dialogBoxBG {
+    -webkit-animation: showBG .5s;
+}
+
+.dialogHidd .dialogBoxBG {
+    -webkit-animation: hiddBG .35s forwards 350ms;
+}
+
+.closeButton {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    right: 6px;
+    top: 0px;
+    color: white;
+    line-height: 40px;
+    font-size: 14px
+}
+
+.dialogTitle {
+    height: 40px;
+    font-size: 18px;
+    background-color: #252525;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    border-radius: 4px 4px 0 0;
+    text-align: center
+}
+
+.title {
+    margin: 0;
+    padding: 0
+}
+
+.dialogTable {
+    font-size: .9em;
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    border: 0;
+    border-collapse: separate;
+    border-spacing: 0
+}
+
+.dialogBody {
+    overflow: hidden;
+    text-align: cneter
+}
+
+@-webkit-keyframes showBG {
+    0% {
+        opacity: 0
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes hiddBG {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes show {
+    0% {
+        -webkit-transform: scale(0);
+        opacity: 0
+    }
+    85% {
+        -webkit-transform: scale(1.10);
+        opacity: 1
+    }
+    100% {
+        -webkit-transform: scale(1);
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes hidd {
+    0% {
+        -webkit-transform: scale(1);
+        opacity: 1
+    }
+    30% {
+        -webkit-transform: scale(1.05);
+        opacity: 1
+    }
+    50% {
+        -webkit-transform: scale(0.8);
+        opacity: 0.8
+    }
+    100% {
+        -webkit-transform: scale(1.2);
+        opacity: 0
+    }
+}
+
+.wrap01 {
+    padding: 15px 30px;
+}
+
+.popup_replay {
+    display: block;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:before, .clearfix:after {
+    display: table;
+    line-height: 0;
+    content: "";
+}
+
+.clearfix:after {
+    clear: both;
+    overflow: hidden;
+}
+
+.tip_gr {
+    border-bottom: 1px #000 solid;
+    height: 35px;
+    padding: 10px 15px 0 15px;
+    margin: 0 10px;
+}
+
+.area_conxin {
+    border: none;
+    margin: 0;
+}
+
+/********************************************/
+.layer_wBg {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6);
+    left: 0;
+    top: -100%;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    transition: all .2s linear;
+    -webkit-transition: all .2s linear;
+}
+
+.layer_wBg.hide {
+    opacity: 0;
+    top: -120%;
+}
+
+.layer_wBg.show {
+    opacity: 1;
+    top: 0;
+}
+
+.layer_w {
+    width: 950px;
+    background-color: #FFF;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -475px;
+    margin-top: -200px;
+}
+
+.layer_w .header {
+    background-color: #f4f5f9;
+    height: 50px;
+    line-height: 50px;
+    position: relative;
+    padding: 0 20px;
+    font-size: 16px;
+}
+
+.layer_w .header .close {
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    line-height: 999em;
+    overflow: hidden;
+    cursor: pointer;
+    background: url("/pointMall/images/icon_close.png") no-repeat center;
+}
+
+.layer_w .header .close:hover {
+    opacity: 0.5;
+}
+
+.layer_w .con {
+    height: 500px;
+    padding: 10px;
+    overflow: auto;
+}
+
+/********************************************************/
+.videoinfo {
+    width: 290px;
+    position: relative;
+    margin: 10px 0px 0px 10px;
+    overflow: auto;
+    border: 1px solid #F4F4F4;
+
+    background-color: #fafafa;
+    display: block;
+}
+
+.videoinfo:hover {
+    box-shadow: 0 0 10px #0096ff;
+    border: 1px solid #0096ff;
+    cursor: pointer;
+}
+
+.videoinfo .contentImg {
+    max-width: 100%;
+    /*
+    max-height:160px;
+    */
+}
+
+.videoinfo h3 {
+    font-size: 15px;
+    color: #333;
+    text-align: left;
+    margin: 6px 0px 0px 6px;
+    line-height: 23px;
+}
+
+.videoinfo .date {
+    height: 20px;
+    line-height: 20px;
+    margin: 0 5px;
+}
+
+.videoinfo .summary {
+    margin: 5px 10px;
+    color: #666;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+/********************************************************/
+.article_list  .pop_edit span{ margin-top:40px}
+.article_list { position:relative;clear:both; overflow:hidden; padding:10px; border-top:solid 1px #e7e7eb;}
+.article_list  .pic{ float:right; margin-left:5px;}
+.article_list  .pic img{ width:75px; height:75px}
+.article_list  h3{ height:75px; vertical-align:middle; display:table-cell; font-size:14px; color:#777;word-break:break-all;}
+.article_list  h3 a{ color:#777}
+.article_list  h3 a:hover{ color:#444; text-decoration:underline}
+.article_list .add_more strong{ display:block; background:url(../images/add_more.jpg) no-repeat center center; border:dotted 2px #b5b5b5; line-height:60px; text-align:center; text-indent:-9999px; opacity:.5; cursor:pointer}
+.article_list .add_more strong:hover{opacity:1}
+
+</style>
+</head>
+<body>
+<div class="tip_gr clearfix">
+    <span class="current">群发信息</span>
+</div>
+<h3 class="mass_title" id="mass_title">
+    <a href="/pointMall/groups/packet" target="_self" class="goback" style="margin-right:15px; color:#44b549;">返回</a>与
+    {{groupName}} 群组的聊天
+</h3>
+
+<!--新建群发功能-->
+<div class="mass_content">
+    <div class="mass_content_con">
+        <div class="new_mass" style="display: block;">
+
+            <div >
+                <div class="mass_area">
+                    <ul class="mass_area_top clearfix">
+                        <li class="txt"><a onclick="editor()"><i></i></a>
+
+                            <div>文字</div>
+                        </li>
+                        <li class="mage-text"><a id="tuwen"><i></i></a>
+
+                            <div>图文</div>
+                        </li>
+                        <li style="padding: 10px 0 0 0 "><a id="tuwenN">1+N   </a>
+
+                            <div> 1+N 图文</div>
+                        </li>
+                    </ul>
+                    <div class="mass_area_content">
+                        <div class="area_con area_conxin" id="area_con_text">
+                            <div id="twContent" class="area_con_t" contenteditable="true" id="edit">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mass_button">
+                <br>
+                <label uid="6754" id="28143" onclick="sendGraphic()" class="mass_button_send fl">发送</label>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<div style="clear:both; margin-top:10px;"></div>
+
+<div class="wrap01">
+    <h3 class="tit02"><strong id="msgTxt"> </strong></h3>
+</div>
+
+<div class="layer_wBg hide" id="addPrize">
+    <div class="layer_w">
+        <div class="header">选择图文<span class="close" id="layer_close">关闭</span></div>
+        <div class="con">
+            <iframe id="iframe_tw" name="iframe_tw" width="100%" height="100%" frameborder="0" src=""></iframe>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="group_id" value="{{id}}">
+<input id="wxToken" type="hidden" value="{{wxToken}}">
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<!--<script type="text/javascript" src="/pointMall/javascripts/xdDialog.js"></script>-->
+<!--<script type="text/javascript" src="/pointMall/javascripts/face.js"></script>-->
+<script type="text/javascript">
+
+    var parameters =null;
+    var tuwen = 1;
+
+
+    $(".mass_area_top li").hover(function(){
+        $(this).find("div").show();
+        $(this).siblings().find("div").hide();
+    },function(){
+        $(this).find("div").hide();
+    });
+
+    $("#twContent").click(function(){
+        document.onkeydown=keyDown;
+    });
+
+    //删除图文
+    function keyDown(e){
+        console.log(event.keyCode );
+        if(event.keyCode==8||event.keyCode==46){$("#twContent").html('');}
+    }
+
+    $("#tuwen").click(function () {
+        tuwen=1;
+        var token = $('#wxToken').val();
+        document.getElementById("addPrize").className = "layer_wBg show";
+        document.getElementById('iframe_tw').src = '/pointMall/html/tw.html?ztype=2&token=' + token + '&t=' + new Date().getTime();
+    });
+
+    $("#tuwenN").click(function () {
+        tuwen = 2;
+        var token = $('#wxToken').val();
+        document.getElementById("addPrize").className = "layer_wBg show";
+        document.getElementById('iframe_tw').src = '/pointMall/html/tw.html?type=2&ismul=0&ztype=2&token=' + token + '&t=' + new Date().getTime();
+    });
+
+    $("#layer_close").click(function () {
+        document.getElementById("addPrize").className = 'layer_wBg hide';
+    });
+
+    function sendGraphic(){
+        var content = document.getElementById("twContent").innerText;
+        content = content.trim();
+        if(content===''){
+            alert('发送内容不内为空，请填写');
+            return false;
+        }
+        var type = 'news';//text
+        if(parameters==null){
+            type = 'text';
+            parameters = {
+                content :content
+            }
+        }
+//        console.log('-----------content------------',content);
+        var id = $('#group_id').val();
+        var url = '/pointMall/groups/graphic?id='+id+'&type='+type+'&tuwen='+tuwen;
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data:parameters,
+            dataType: 'json',
+            success: function (data) {
+                if (data && data.status === 'success') {
+                    $('#twContent').html('');
+                    parameters = null;
+                    $('#msgTxt').html('发送成功');
+                } else {
+                    console.log('操作失败，请重试');
+                    $('#msgTxt').html('发送失败，请重试');
+                }
+                setTimeout(function(){
+                    $('#msgTxt').html('');
+                },2000);
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    /**
+     * 获取图文信息
+     */
+    function gotofabuzy(itemjson) {
+//        console.log('itemjson------------ ',itemjson);
+        $('#twContent').html('');
+        $('#addPrize').attr('class', 'layer_wBg hide');
+        var date = formatDate(itemjson.createtime*1000);
+        var videoobj = itemjson.items[0];
+        if(tuwen==2){
+            var _parameters = [];
+            var desc = '';
+            if(videoobj.desc){
+                desc = videoobj.desc;
+                if(desc=='desc'){
+                    desc = '';
+                }
+            }
+            _parameters.push({
+                "title": videoobj.title,
+                "description": desc,
+                "url": videoobj.url,
+                "picurl": videoobj.img
+            });
+            var _html = '';
+            var _len = itemjson.items.length;
+            for(var i = 1;i<_len;i++){
+                var itemsObj = itemjson.items[i];
+                _html += '<div class="article_list"><div class="pic">' +
+                        '<img src="'+itemsObj.img+'"/>' +
+                        '</div> <h3>'+itemsObj.title+'</h3></div>';
+                _parameters.push({
+                    "title": itemsObj.title,
+                    "description": itemsObj.desc,
+                    "url": itemsObj.url,
+                    "picurl": itemsObj.img
+                });
+            }
+            var html='<div  class="videoinfo" >'
+                    +'<h3>'+videoobj.title+'</h3>'
+                    +'<div class="date">'+date+'</div>'
+                    +'<img src="'+videoobj.img+'" class="contentImg">'
+                    +_html
+                    +'<textarea style="display:none"></textarea>'
+                    +'</div>';
+            $('#twContent').html(html);
+
+            parameters = {
+                parameters :_parameters
+            };
+        }else{
+            var _parameters = [];
+            var html = '<div  class="videoinfo" >'
+                        + '<h3>' + videoobj.title + '</h3>'
+                        + '<div class="date">' + date + '</div>'
+                        + '<img src="' + videoobj.img + '" class="contentImg">'
+                        + '<p class="summary">' + videoobj.desc + '</p>'
+                        + '<textarea style="display:none"></textarea>'
+                        + '</div>';
+            $('#twContent').html(html);
+            _parameters.push({
+                "title": videoobj.title,
+                "description": videoobj.desc,
+                "url": videoobj.url,
+                "picurl": videoobj.img
+            });
+            parameters = {
+                parameters :_parameters
+            };
+        }
+    }
+
+    function editor(){
+        $('#twContent').html('');
+        parameters=null;
+    }
+    function formatDate(num){
+        var _time = new Date(num);
+        var now = _time;
+        var year=now.getFullYear();
+        var month=((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1);
+        var date=(now.getDate()<10?"0":"")+now.getDate();
+        var hour=(now.getHours()<10?"0":"")+now.getHours();
+        var minute=(now.getMinutes()<10?"0":"")+now.getMinutes();
+        var second=now.getSeconds();
+        return year+"-"+month+"-"+date+"   "+hour+":"+minute
+    }
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+node_modules/
+temp/
+.idea/
+config-bak/
+env-config.js
+tools/privite
+dev/
+bower_components/
+public/bower_components/
+public/t
+dal/link.js
+dal/userinfo.js
+fileSamples/
+wyqTest/test.js

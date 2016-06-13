@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>搜索统计</title>
+    <style type="text/css">
+        html,body{padding:0;margin:0;width:100%;height:100px}
+        body{font-size:14px;font-family:微软雅黑,Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif}
+        .body{width:900px;margin:20px auto;position:relative}
+        a{text-decoration:none;cursor:pointer;}
+        a:link {color: rgba(0,0,0,1);}
+        a:visited {color: rgba(0,0,0,1);}
+        a:active {color: rgba(0,0,0,1);}
+        a:hover{color:red}
+        .fl{float:left;}
+        .fr{float:right;}
+        .clearfix{*zoom:1;}
+        .clearfix:before,.clearfix:after{display:table;line-height:0;content:"";}
+        .clearfix:after{clear:both;overflow:hidden;}
+        table {border-collapse: collapse;border-spacing: 0;}
+
+        .vLine{position:relative;height:30px;margin:0 6px 0 0;border-right:4px solid #2D8BFF;width:1px}
+        .selectBox{width:120px;height:30px;line-height:30px;width:100px;margin:10px 0 0 0;position:absolute;right:10px;top:45px;cursor:pointer;}
+        .tab1{position:relative;width:510px;border-left:1px solid #E5E5E5;border-top:1px solid #E5E5E5;z-index:1}
+        .tab1 td{background:#F6F8F7;width:120px;height:40px;text-align:center;vertical-align:middle;border-right:1px solid #E5E5E5;border-bottom:1px solid #E5E5E5;cursor:pointer;}
+        .tab1 .focus{background:#fff;border-bottom:1px solid #fff;cursor:pointer;}
+        .hLine{padding:10px 10px 0 0;height:35px;border-top:1px solid #E5E5E5;width:100%;margin:-1px 0 0 0;z-index:-1}
+
+        .chart1{height:400px;width:600px;float:left;}
+        .chart2,.chart3{width:600px;height:300px;margin:auto}
+        .chartBox{position:relative}
+
+        .tab_div{float:left;margin:0px 10px 30px 0px;width:290px;}
+        .tab_title{font-size:16px;font-weight:bold;}
+        .tab2,.tab3,.tab4{position:relative;}
+        .tab_div td{padding:10px 0;cursor:pointer;border-bottom:1px #e7e6e3 dashed;height:30px;line-height:30px;text-align:center;}
+        .td1 span{background:#ddd;color:#777;width:26px;height:26px;line-height:26px;display:inline-block;font-weight:bold;}
+        .td1 span.fst{color:#fff;background:#f27815;}
+        .tab2 .td2,.tab3 .td2,.tab4 .td2{text-align:left;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:190px;display:inline-block;color:#1093d7;padding-left:10px;}
+        .tab_all{position:absolute;left:20%;top:85px;border:1px #1093d7 solid;border-radius:5px;display:none;font-size:12px;padding:0 5px;}
+        .rise{background:url(/pointMall/images/rise.png) no-repeat right center;}
+        .drap{background:url(/pointMall/images/drap.png) no-repeat right center;}
+        .tab_top .td2{color:#333;padding-left:15px;}
+    </style>
+</head>
+
+<body>
+<div class="body">
+    <h3 class="title hLine">
+        <b class="vLine"></b>最近30天数据统计
+    </h3>
+    <div class="tab_div">
+        <p class="tab_title">top20(今天)</p>
+        <table class="tab2">
+            <tr class="tab_top">
+                <td class="td1">名次</td>
+                <td class="td2">热搜</td>
+                <td class="td3">搜索指数</td>
+            </tr>
+            {{#each today}}
+            <tr>
+                {{#if heat}}
+                <td class="td1"><span class="fst">{{id}}</span></td>
+                {{else}}
+                <td class="td1"><span>{{id}}</span></td>
+                {{/if}}
+                <td class="td2"><a href="{{href}}">{{keyword}}</a>
+                    <div class="tab_all">{{keyword}}</div>
+                </td>
+                <td class="td3 ">{{hits}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="tab_div">
+        <p class="tab_title">top20(本周)</p>
+        <table class="tab3">
+            <tr class="tab_top">
+                <td class="td1">名次</td>
+                <td class="td2">热搜</td>
+                <td class="td3">搜索指数</td>
+            </tr>
+            {{#each week}}
+            <tr>
+                {{#if heat}}
+                <td class="td1"><span class="fst">{{id}}</span></td>
+                {{else}}
+                <td class="td1"><span>{{id}}</span></td>
+                {{/if}}
+                <td class="td2"><a href="{{href}}">{{keyword}}</a>
+                    <div class="tab_all">{{keyword}}</div>
+                </td>
+                <td class="td3 ">{{hits}}</td>
+            </tr>
+            {{/each}}
+        </table>
+    </div>
+    <div class="tab_div">
+        <p class="tab_title">top20(本月)</p>
+        <table class="tab4">
+            <tr class="tab_top">
+                <td class="td1">名次</td>
+                <td class="td2">热搜</td>
+                <td class="td3">搜索指数</td>
+            </tr>
+            {{#each month}}
+            <tr>
+                {{#if heat}}
+                <td class="td1"><span class="fst">{{id}}</span></td>
+                {{else}}
+                <td class="td1"><span>{{id}}</span></td>
+                {{/if}}
+                <td class="td2"><a href="{{href}}">{{keyword}}</a>
+                    <div class="tab_all">{{keyword}}</div>
+                </td>
+                <td class="td3 ">{{hits}}</td>
+            </tr>
+            {{/each}}
+
+        </table>
+    </div>
+</div>
+
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script>
+    $(".tab2 .td2").live("mouseover",function(e){
+        var index=$(".tab2 .td2").index($(this));
+        $(this).find(".tab_all").show().css("top",((index)*50+37+index)+"px");
+    });
+    $(".tab3 .td2").live("mouseover",function(e){
+        var index=$(".tab3 .td2").index($(this));
+        $(this).find(".tab_all").show().css("top",((index)*50+37+index)+"px");
+    });
+    $(".tab4 .td2").live("mouseover",function(e){
+        var index=$(".tab4 .td2").index($(this));
+        $(this).find(".tab_all").show().css("top",((index)*50+37+index)+"px");
+    });
+    $(".tab2 .td2,.tab3 .td2,.tab4 .td2").live("mouseout",function(){
+        $(this).find(".tab_all").hide();
+    });
+</script>
+</body>
+</html>

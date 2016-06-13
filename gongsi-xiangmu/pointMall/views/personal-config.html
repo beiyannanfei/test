@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>个人中心配置</title>
+    <style>
+        body{width:100%;padding:20px;box-sizing:border-box;background:#fff;}
+        .sign_title{border-bottom:1px #d9d9d9 solid;margin:0 0 40px 0;width:100%;}
+        .sign_title label{font-size:16px;display:inline-block;padding:0 20px 10px 20px;border-bottom:3px  #999999 solid;}
+        .sign_nei{margin:0 0 20px 0;width:100%;box-sizing:border-box;}
+        .sign_nei label{text-align:right;margin:0 10px 0 0;vertical-align:top;display:inline-block;min-width:150px;width:10%;font-size:14px;}
+        .sign_neia label,.sign_neia i{vertical-align:middle;font-size:14px;}
+        .integral{width:150px;height:30px;border:1px #e6e6e6 solid;margin:0 10px 0 0;text-align:center;}
+        #greet{/*width:820px;*/width:87%;border:1px #e6e6e6 solid;display:inline-block;min-height:90px;box-sizing:border-box;padding:10px;}
+
+        .mass_area{display:inline-block;/*width:820px;*/width:87%;margin:0;padding:0;overflow:hidden;box-sizing:border-box;border:1px #e6e6e6 solid;}
+        .mass_area_top{height:38px;line-height:38px;border-bottom:1px #e7e7eb solid;margin:0 0 10px 0;}
+        .mass_area_top li{position:relative;margin:0 0 0 10px;width:20px;padding:0 10px;}
+        .mass_area_top li div{padding:0px;width:40px;height:24px;line-height:24px;text-align:center;background:#373636;color:#fff;position:absolute;font-size:12px;left:0px;bottom:-30px;display:none;z-index:100;}
+        .mass_area_top li div:before{content:"";width:0;height:0;border-bottom:5px #373636 solid;border-left:5px transparent solid;border-right:5px transparent solid;position:absolute;left:15px;top:-5px;}
+        .mass_area_top li i{margin:10px 0 0 0;height:21px;width:22px;display:inline-block;background:url(/pointMall/images/area_ico.png) 0 -359px no-repeat;}
+        .mass_area_top li i:hover{background:url(/pointMall/images/area_ico.png) 0 -389px no-repeat;}
+        .area_con_t{min-height:150px;padding:20px;}
+        #qdbutton{margin:25px 0 0 18px;}
+        #qdbutton i{width:120px;height:30px;line-height:30px;text-align:center;display:inline-block;margin:0 10px;border-radius:5px;cursor:pointer;}
+        #qd{background:#0090ff;color:#fff;}
+        #qd:hover{background:#1079cc;}
+        #qx{border:1px #e6e6e6 solid;color:#676767;}
+        /*新卡片*/
+        .content1{width: 300px;border: 1px #e7e7eb solid;box-sizing: border-box;overflow: hidden;padding: 20px 15px 15px 15px;margin: 0 0 0 0;position: relative;cursor:pointer;}
+        .content1_hover{width:100%;height:100%;background:rgba(0,0,0,0);position:absolute;left:0;top:0;display:none;}
+        .xuz{position: absolute;top: 45%;left:45%;margin-top:-23px;margin-left: -13px;overflow: hidden;z-index: 1;width: 46px;height: 46px;opacity:0;display:none;}
+        .content1_top{line-height:24px;font-size:1.1em;}
+        .content1>i{margin:3px 0 10px 0;display:block;}
+        .content1_img{width:268px;overflow:hidden;position:relative;}
+        .content1_img img{width:284px;}
+        #tip{margin:0 0 0 20px;color:#f00;}
+        .content1_img p{position:absolute;left:0;bottom:0;height:44px;width:100%;background:rgba(0,0,0,0.6);color:#fff;line-height:44px;padding:0 0 0 20px;}
+        .content1_text{line-height:24px;}
+        .content1 ul li{padding:20px 0px;border-top:1px #e7e7eb solid;overflow:hidden;}
+        .content1 ul li i{display:inline-block;line-heihgt:24px;margin:20px 20px 0 0;width:180px;}
+        .content1 ul li img{width:78px;height:78px;vertical-align:middle;float:right;}
+        i{font-style: normal;color: #999}
+    </style>
+</head>
+
+<body>
+<div class="sign_title">
+    <label>个人中心配置</label>
+</div>
+<div class="sign_content">
+    <div class="sign_nei sign_neia">
+        <label>设置标题：</label>
+        <input type="text" class="integral" id="personal_title" value="{{title}}" placeholder="个人中心"><i> 默认：个人中心</i>
+        <i id="tip"></i>
+    </div>
+    <div class="sign_nei sign_neia">
+        <label>设置扫码推荐：</label>
+        <input type="text" class="integral" id="integral" value="{{integral}}" onblur="onblus()" placeholder="1000"><i> 默认:1000</i>
+        <i id="tip"></i>
+    </div>
+    <div class="sign_nei sign_neia">
+        <label>设置首次关注：</label>
+        <input type="text" class="integral" id="attention" value="{{attention}}" placeholder="1000"><i> 默认：1000</i>
+        <i id="tip"></i>
+    </div>
+    <div class="sign_nei sign_neia">
+        <label>设置数值单位：</label>
+        <input type="text" class="integral" id="unit" value="{{unit}}" placeholder="如：积分、荔枝、豆豆 "><i> 默认:积分</i>
+        <i id="tip"></i>
+    </div>
+    <div class="sign_nei sign_neia">
+        <label>设置推荐用户数：</label>
+        <input type="text" class="integral" id="recommendNumber" value="{{recommendNumber}}" onblur="onblusRecommendNumber()" placeholder="填写正整数 默认 1 "><i> 默认:推荐1个用户</i>
+        <i id="tip"></i>
+    </div>
+</div>
+<div id="qdbutton"><i id="qd" action="confirm">确定</i><i id="qx">取消</i></div>
+
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script>
+
+    $('#qx').click(function(){
+        $('#personal_title').val('');
+        $('#integral').val('');
+        $('#attention').val('');
+        $('#unit').val('');
+        $('#recommendNumber').val('');
+    });
+
+    /*验证*/
+    function onblus(){
+        var integral =  $('#integral').val();
+        var recommendNumber =  $('#recommendNumber').val();
+        alert(/^\d+$/.test(recommendNumber));
+        if(integral.value==''){
+            alert('请设置扫码推荐');
+        }else if(/^\d+$/.test(integral)){
+            return true;
+        }else if(!(/^\d+$/.test(integral))){
+            alert("请输入整数数字！");
+            $('#integral').val('');
+            return false;
+        }else if(/^\d+$/.test(recommendNumber)){
+            return true;
+        }else if(!(/^\d+$/.test(recommendNumber))){
+            alert("请输入整数数字！");
+            $('#recommendNumber').val('');
+            return false;
+        }
+
+    }
+
+    function onblusRecommendNumber(){
+        var recommendNumber =  $('#recommendNumber').val();
+        if(/^\d+$/.test(recommendNumber)){
+            return true;
+        }else if(!(/^\d+$/.test(recommendNumber))){
+            alert("请输入整数数字！");
+            $('#recommendNumber').val('');
+            return false;
+        }
+    }
+
+    $('#qd').click(function(){
+        var title =  $('#personal_title').val();
+        var integral =   $('#integral').val();
+        var attention = $('#attention').val();
+        var unit =  $('#unit').val();
+        var recommendNumber=  $('#recommendNumber').val();
+        if(title=='' || integral=='' || attention=='' ||unit=='' || recommendNumber=='' ){
+            if (!confirm("有未填选项，是否选择默认值")) {
+                return false;
+            }
+        }
+        var url = '/pointMall/personal/add';
+        $.ajax({
+            type: 'POST',
+            url: url,
+            data: {title: title, integral: integral,attention:attention,unit:unit,recommendNumber:recommendNumber},
+            dataType: 'json',
+            success: function (data) {
+                if (data && data.status === 'success') {
+                    alert('操作成功!');
+                    $('#personal_title').val(data.data.title);
+                    $('#integral').val(data.data.integral);
+                    $('#attention').val(data.data.attention);
+                    $('#unit').val(data.data.unit);
+                    $('#recommendNumber').val(data.data.recommendNumber);
+                } else {
+                    console.log('操作失败，请重试');
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>

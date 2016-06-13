@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/lottery-manage.css" />
+
+</head>
+<body id="index">
+
+<div class="warp">
+  
+  <div class="top_tile">抽奖管理</div>
+    <input type="hidden" id="state" value="{{event.state}}">
+  <div class="c_tile">{{event.theme}}  {{event.tag}}</div>
+    <div id="bound" style="display:none; margin: 10px; height: 30px;">
+        <span>查看获取中奖列表数据api:</span><input type="text" style="width: 600px;">
+    </div>
+    <table id="" class="table table-striped table-bordered table-hover">
+	  <thead>
+        <tr>
+          <th class="left">奖品</th>
+          <th>中奖人数</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <input type="hidden" id="eventId" value="{{event._id}}">
+      <tbody id="prize-list">
+      </tbody>
+    </table>
+  
+  <div class="btn_group" style="text-align:right;">
+      <span style="display: none" class="btn btn_lg btn_primary" id="sendAllMessage"><button type="button">发送中奖榜单</button></span>
+	<span class="btn btn_lg btn_default"><button type="button" onClick="goback();">返回</button></span>
+  </div>
+	
+</div>
+
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $.ajaxSetup({ cache: false });
+
+        var eventId = $('#eventId').val();
+        function getActivity(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/lottery/event/' + eventId,
+                success: function(data){
+                    renderData(data)
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+        getActivity()
+
+        function renderData(lotteryEvent){
+            if (lotteryEvent.state == 'completed'){
+                $('#sendAllMessage').show().click(function(){
+                    sendEventMessage();
+                })
+                var eventId = $('#eventId').val();
+                $('#bound').show()
+                $('#bound').find('input').val(window.location.origin + '/pointMall/lotteryEvent/' + eventId + '/bound/user/list');
+            }
+
+            var domString = ''
+            $.each(lotteryEvent.goods, function(i, o){
+                domString += '<tr class="goods-list" state=' + o.state + '>' +
+                        '<td class="left"><img src="' + o.pic + '" width="100" height="100"><p>' + o.name + '</p></td>' +
+                        '<td>' + o.count + '</td><td>' +
+                        '<button type="button" class="btn btn_lg btn_default start-lottery" id="' + o.id + '">';
+                if (o.state == 'undo'){
+                    domString += '抽奖'
+                } else{
+                    domString += '查看中奖名单'
+                }
+                domString += '</button></td></tr>';
+            })
+            var $newCell = $($.trim(domString));
+            $('#prize-list').empty()
+            $('#prize-list').append($newCell)
+            bindEvent($newCell)
+        }
+
+        function sendEventMessage(){
+            var eventId = $('#eventId').val();
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/lottery/event/' + eventId + '/send/message',
+                success: function(result){
+                    alert('发送通知成功')
+                },
+                error: function(xhr){
+                    alert('发送通知失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function bindEvent($newCell){
+            $('.start-lottery', $newCell).click(function(){
+                var id = $(this).attr('id');
+                entryLottery(id);
+            })
+        }
+
+        function entryLottery(goodId){
+            var eventId = $('#eventId').val();
+            window.location.href = '/pointMall/lottery/event/' + eventId + '/goods/' + goodId;
+        }
+    })
+
+    function goback(){
+        window.history.go(-1);
+    }
+</script>
+
+</body>
+</html>

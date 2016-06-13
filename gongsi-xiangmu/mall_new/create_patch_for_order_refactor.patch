@@ -1,0 +1,2231 @@
+Index: routes/address.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/address.js	(revision 986bc4e81a7fbdc401a3a1dacb617b3f2bb62853)
++++ routes/address.js	(revision )
+@@ -179,6 +179,10 @@
+     })
+ }
+ 
++exports.findAddressById = function(id, callback){
++    Address.findById(id, callback);
++}
++
+ exports.getAddressByIds = function(addressIds, callback){
+     var condition = {
+         _id: {
+\ No newline at end of file
+Index: README.md
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- README.md	(revision 986bc4e81a7fbdc401a3a1dacb617b3f2bb62853)
++++ README.md	(revision )
+@@ -134,9 +134,12 @@
+ 
+ db.dailyrecords.ensureIndex({type: 1, sourceId: 1, dateString: 1})
+ 
+-
+ release tips
+ db.goods.update({use: 1}, {$set: {count: 0, ext: {playType: 5}, category: "99991000"}}, {multi: true})
++
++db.lotteries.update({lotteryEvent: {$exists: true}}, {$set: {from: 2}}, {multi: true})
++db.lotteries.update({activityId: {$exists: true}}, {$set: {from: 1}}, {multi: true})
++db.lotteries.update({prizeType: 1, state: "unDelivery", from: 4}, {$set: {state: "Delivered"}}, {multi: true})
+ 
+ 
+ yum install python-argparse
+\ No newline at end of file
+Index: routes/lottery.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/lottery.js	(revision 986bc4e81a7fbdc401a3a1dacb617b3f2bb62853)
++++ routes/lottery.js	(revision )
+@@ -9,6 +9,7 @@
+ var Lottery    = models.Lottery;
+ var Users = models.Users;
+ var Activity = models.Activity;
++var LotteryEvent = models.lotteryEvent;
+ var WxOrder = models.WxOrder;
+ var Goods = models.Goods;
+ var IntegralLog = models.IntegralLog;
+@@ -76,6 +77,103 @@
+     })
+ }
+ 
++exports.gotoOrderDetail = function(req, res){
++    res.render('order_detail', {orderId: req.lottery._id});
++}
++
++exports.orderDetail = function(req, res){
++    var lottery = req.lottery
++    var findAddress = function(){
++        if (!lottery.addressId){
++            return findPrice()
++        }
++        mAddress.findAddressById(lottery.addressId, function(err, address){
++            if (err){
++                return final(err)
++            }
++            address = ut.doc2Object(address)
++            lottery.addInfo = _.values(address.addInfo).join(' ');
++            findPrice()
++        });
++    }
++
++    var findUser = function(){
++        var condition = {
++            wxToken: req.token,
++            openId: lottery.openId
++        };
++        Users.findOne(condition, function(err, user){
++            if (err){
++                return final(err)
++            }
++            lottery.userName = user.nickName;
++            lottery.userIcon = user.headImg;
++            findAddress()
++        })
++    }
++
++    var findPrice = function(){
++        if (!lottery.out_trade_no){
++            return final()
++        }
++        WxOrder.findOne({out_trade_no: lottery.out_trade_no}, function(err, wxorder){
++            if (err){
++                return final(err)
++            }
++            lottery.price = wxorder.price
++            lottery.score = wxorder.score
++            lottery.redPagerRecordIds = wxorder.redPagerRecordIds
++            if (wxorder.payResult){
++                lottery.total_fee = wxorder.payResult.total_fee / 100
++            } else {
++                lottery.total_fee = 0
++            }
++            findRedPager()
++        })
++    }
++
++    var findRedPager = function(){
++        if (!lottery.redPagerRecordIds){
++            return final()
++        }
++        var condition = {
++            _id: {$in: lottery.redPagerRecordIds}
++        }
++        RedPagerRecord.find(condition, {price: 1,redPagerId: 1}, function(err, docs){
++            if (err){
++                return final(err)
++            } else {
++                Goods.find({_id: {$in: _.uniq(_.pluck(docs, 'redPagerId'))}}, {name: 1, price: 1}, function(err, os){
++                    var priceMap = {}
++                    _.each(docs, function(d){
++                        _.each(os, function(o){
++                            if (o._id.toString() == d.redPagerId){
++                                priceMap[d._id.toString()] = o.price;
++                            }
++                        })
++                    })
++                    lottery.redPrice = 0
++                    _.each(lottery.redPagerRecordIds, function(redId){
++                        lottery.redPrice += priceMap[redId]
++                    })
++                    return final()
++                });
++            }
++        })
++    }
++
++    var final = function(err){
++        if (err){
++            res.send(500, err)
++        } else {
++            lottery.dateTime = moment(lottery.dateTime).format('YYYY/MM/DD HH:mm')
++            lottery.stateText = getTipByState(lottery.state, lottery.prizeType)
++            res.send(lottery)
++        }
++    }
++    findUser()
++}
++
+ exports.gotoOrderList = function(req, res){
+     var token = req.token;
+     var orderUrl = tkConfig.getAuthDomain(token) + "/oauth?wx_token=" + token + "&token=7fda67277f&redirect_uri=" + encodeURIComponent(config.domain + '/pointMall/auth/me/order/list?wx_token=' + token);
+@@ -158,11 +256,67 @@
+             _.each(data, function(winner){
+                 winner.userName = friendMap[winner.openId].nickName;
+                 winner.userIcon = friendMap[winner.openId].headImg;
+-                winner.dateTime = moment(winner.dateTime).format('MM/DD HH:mm')
++                winner.dateTime = moment(winner.dateTime).format('YYYY/MM/DD HH:mm')
+             })
+             if (forLottery){
+                 final(data);
+             } else {
++                findActivity(data)
++            }
++        })
++    }
++
++    var findActivity = function(data){
++        var activityIds = []
++        _.each(data, function(o){
++            if (o.from == 1){
++                activityIds.push(o.activityId)
++            }
++        })
++        if (activityIds.length == 0){
++            return findSystemLottery(data)
++        }
++        Activity.find({_id: {$in: activityIds}}, {name: 1, way: 1}, function(err, docs){
++            if (err){
++                return callback(err)
++            } else {
++                var map = {}
++                _.each(docs, function(m){
++                    map[m._id.toString()] = m;
++                })
++                _.each(data, function(winner){
++                    if (winner.from == 1){
++                        winner.activity = map[winner.activityId];
++                    }
++                })
++                findSystemLottery(data)
++            }
++        })
++    }
++
++    var findSystemLottery = function(data){
++        var ids = []
++        _.each(data, function(o){
++            if (o.from == 2){
++                ids.push(o.lotteryEvent)
++            }
++        })
++        if (ids.length == 0){
++            return findPrice(data)
++        }
++        LotteryEvent.find({_id: {$in: ids}}, {theme: 1}, function(err, docs){
++            if (err){
++                return callback(err)
++            } else {
++                var map = {}
++                _.each(docs, function(m){
++                    map[m._id.toString()] = m;
++                })
++                _.each(data, function(winner){
++                    if (winner.from == 2){
++                        winner.activity = map[winner.lotteryEvent];
++                    }
++                })
+                 findPrice(data)
+             }
+         })
+@@ -246,10 +400,8 @@
+                     })
+                     return final(data)
+                 });
+-
+             }
+         })
+-
+     }
+ 
+     var final = function(data){
+@@ -267,6 +419,9 @@
+ exports.listLottery = function(req, res){
+     var state = req.param('state');
+     var type = req.param('type');
++    var from = req.param('from');
++    var out_trade_no = req.param('out_trade_no');
++    var mobile = req.param('mobile');
+     var rank = req.rank;
+     var openId = req.openId;
+     var activityIds = req.activityIds;
+@@ -282,7 +437,7 @@
+     }
+ 
+     var q = req.param('q');
+-    if (state && !_.contains(['unDelivery', 'Delivery', 'Delivered', 'deleted'], state)){
++    if (state && !_.contains(['unDelivery', 'Delivery', 'Delivered', 'deleted', 'refund'], state)){
+         return res.send(400, 'state err:' + state);
+     }
+ 
+@@ -305,6 +460,12 @@
+     if (q){
+         condition1.prizeName = q;
+     }
++    if (out_trade_no){
++        condition1.out_trade_no = out_trade_no;
++    }
++    if (mobile){
++        condition1.mobile = mobile;
++    }
+ 
+     if (startTime && endTime){
+         condition1.dateTime = {$gte: startTime, $lt: endTime}
+@@ -319,9 +480,22 @@
+         condition1.prizeType = {$in: [mGoods.type.goods, mGoods.type.chargeCard, mGoods.type.shoppingCard, mGoods.type.live]}
+     }
+ 
+-    var condition2 = _.extend({}, condition1);
++    var condition2 = null;
+     var forLottery = false
+-    if (openId || (!rank && !activityIds)){
++    if (from){
++        if (from == 1){
++            condition1.from = 4;
++            if (!type){
++                delete condition1.prizeType
++            }
++        } else if (from == 2){
++            condition1.from = {$in: [1, 2]};
++        } else if (from == 3){
++            condition1.from = 3;
++        }
++        condition.$or = [condition1]
++    } else if (openId || (!rank && !activityIds)){
++        condition2 = _.extend({}, condition1);
+         condition2.from = 4;
+         delete condition2.prizeType
+         condition.$or = [condition1, condition2]
+@@ -364,20 +538,31 @@
+             Lottery.count(condition1, function(err, count){
+                 console.timeEnd('count order 1')
+                 console.time('count order 2')
++                if (condition2){
+-                condition2.token = req.token
+-                Lottery.count(condition2, function(err, count1){
+-                    console.timeEnd('count order 2')
+-                    count += count1
+-                    var pageTotal = Math.ceil(count / 20);
+-                    if (pageTotal == 0){
+-                        pageTotal++
+-                    }
+-                    _.each(data, function(o){
+-                        o.pageTotal = pageTotal;
+-                    });
+-                    return res.send(data)
+-                });
++                    condition2.token = req.token
++                    Lottery.count(condition2, function(err, count1){
++                        console.timeEnd('count order 2')
++                        count += count1
++                        var pageTotal = Math.ceil(count / 20);
++                        if (pageTotal == 0){
++                            pageTotal++
++                        }
++                        _.each(data, function(o){
++                            o.pageTotal = pageTotal;
++                        });
++                        return res.send(data)
++                    });
++                } else {
++                    var pageTotal = Math.ceil(count / 20);
++                    if (pageTotal == 0){
++                        pageTotal++
++                    }
++                    _.each(data, function(o){
++                        o.pageTotal = pageTotal;
+-            });
++                    });
++                    return res.send(data)
++                }
++            });
+         } else {
+             return res.send(data);
+         }
+@@ -795,239 +980,6 @@
+     }
+ }
+ 
+-exports.fillLotteryInfo = function(req, res){
+-    var openId = req.openId;
+-    if (!openId){
+-        return res.send(400, 'openid不存在');
+-    }
+-
+-    var wx_token = req.param('wx_token');
+-    if (!wx_token){
+-        return res.send(400, 'wx_token不存在');
+-    }
+-
+-    var message = req.content;
+-    if (!message){
+-        return res.send(400, 'message不存在');
+-    }
+-
+-    var randomNum = null;
+-    if (!/^WYLJ#[0-9]{6}/.test(message)){
+-        return res.send(400, 'message格式不对');
+-    }
+-    randomNum = message.substring(5, 11)
+-
+-    var findUser = function(){
+-        Users.findById(wx_token + '_' + openId, function(err, o){
+-            if (err){
+-                console.log(err);
+-                final()
+-            } else if (!o){
+-                console.log(wx_token + '_' + openId);
+-                console.log('用户不存在');
+-                final('用户不存在')
+-            } else{
+-                findLottery()
+-            }
+-        })
+-    }
+-
+-    var findLottery = function(){
+-        var condition = {token: wx_token, openId: openId, randomNum: randomNum};
+-        Lottery.findOne(condition, function(err, o){
+-            if (err){
+-                console.log('mongodb err:' + err);
+-                final();
+-            } else if (!o){
+-                console.log(wx_token + '_' + openId + '_' + randomNum);
+-                console.log('该用户没有中奖信息');
+-                final('该用户没有中奖信息, 请确认是您本人中奖，如有问题，请联系客服，谢谢。');
+-            } else{
+-                dealLotteryMessage(o);
+-            }
+-        })
+-    }
+-
+-    var dealLotteryMessage = function(lottery){
+-        if (lottery.prizeType == mGoods.type.chargeCard){
+-            if (lottery.state == "Delivered"){
+-                return final('话费已充值不能再修改手机号');
+-            }
+-
+-            if (!/^WYLJ#[0-9]{6}#1[0-9]{10}$/.test(message)){
+-                console.log(message)
+-                return final('内容格式不对, 请检查！');
+-            } else {
+-                var mobile = message.split('#')[2];
+-                exports.setLotteryMobile(lottery._id, mobile, function(err){
+-                    if (err){
+-                        console.log(err)
+-                        final()
+-                    } else{
+-                        final('已收到您的手机号， 我们会尽快为您充值')
+-                    }
+-                });
+-            }
+-        } else if (lottery.prizeType == mGoods.type.shoppingCard){
+-            if (!/^WYLJ#[0-9]{6}#1[0-9]{10}#XFK$/.test(message)){
+-                console.log(message)
+-                return final('内容格式不对, 请检查！');
+-            } else {
+-                var mobile = message.split('#')[2];
+-                exports.setLotteryMobile(lottery._id, mobile, function(err){
+-                    if (err){
+-                        console.log(err)
+-                        final()
+-                    } else{
+-                        final('稍后发送' + lottery.prizeName + '卡密, 请妥善保管，以免泄漏，感谢参与。')
+-                    }
+-                });
+-            }
+-        } else if (lottery.prizeType == mGoods.type.goods){
+-            if (lottery.state == "Delivered" || lottery.state == "Delivery"){
+-                return final('已经发货不能修改地址');
+-            }
+-            if (!/^WYLJ#[0-9]{6}#1[0-9]{10}#/.test(message)){
+-                console.log(message)
+-                return final('内容格式不对, 请检查！');
+-            } else {
+-                var arr = message.split('#');
+-                if (arr.length != 5){
+-                    console.log(message)
+-                    return final('内容格式不对, 请检查！');
+-                }
+-                var mobile = arr[2];
+-                var name = arr[3];
+-                var add = arr[4];
+-                if (!name || name.length == 0){
+-                    console.log(message)
+-                    return final('内容格式不对, 请检查！');
+-                }
+-                if (!add || add.length == 0){
+-                    console.log(message)
+-                    return final('内容格式不对, 请检查！');
+-                }
+-                mAddress.saveAddress(openId, lottery.token, {
+-                    name:name,
+-                    tel:mobile,
+-                    add:add
+-                }, function(err, o){
+-                    if (err){
+-                        console.log(err);
+-                        return final('保存地址内容出错！');
+-                    }
+-                    Lottery.findByIdAndUpdate(lottery._id,{ $set: {addressId: o._id}}, function(err,doc){
+-                        if(err) {
+-                            return final('保存地址内容出错！');
+-                        } else {
+-                            return final('保存地址成功，请到个人中心我的奖品查看！');
+-                        }
+-                    });
+-                })
+-            }
+-        } else {
+-            final()
+-        }
+-    }
+-
+-    var final = function(notice){
+-        if (notice){
+-            interface.pushMessage(wx_token, openId, notice, function(err, response){
+-                if (err){
+-                    console.log(err);
+-                } else{
+-
+-                }
+-            });
+-        }
+-        return res.send(200);
+-    }
+-
+-    findUser();
+-}
+-
+-exports.putPrizeMobile = function(req, res){
+-    var lottery = req.lottery;
+-    var prizeId = req.params.prizeId;
+-    if (!prizeId){
+-        return res.send(400);
+-    }
+-
+-    var mobile = req.param('mobile');
+-    if (!mobile){
+-        return res.send(400, 'mobile不存在');
+-    }
+-
+-    if (lottery.prizeType != mGoods.type.chargeCard){
+-        return res.send(403, '中奖类型不对');
+-    }
+-
+-    if (lottery.mobile){
+-        return res.send(403, '已经填完手机号');
+-    }
+-
+-    if (lottery.openId != req.session.openId){
+-        return res.send(403, '非本来不能填手机号');
+-    }
+-
+-    exports.setLotteryMobile(prizeId, mobile, function(err){
+-        if(err) {
+-            res.send(500, err);
+-        }else {
+-            res.send(200);
+-        }
+-    })
+-}
+-
+-exports.setLotteryMobile = function(lotteryId, mobile, done){
+-    Lottery.findByIdAndUpdate(lotteryId,{ $set: {mobile: mobile}}, function(err,doc){
+-        if(err) {
+-            done(err);
+-        }else {
+-            done();
+-        }
+-    });
+-}
+-
+-exports.putPrizeAddress = function(req,res) {
+-    var openId = req.session.openId;
+-    var prizeId = req.params.prizeId;
+-    if (!prizeId){
+-        return res.send(400, '参数出错');
+-    }
+-
+-    if (!req.body.name){
+-        return res.send(400, '参数出错');
+-    }
+-
+-    if (!req.body.tel){
+-        return res.send(400, '参数出错');
+-    }
+-
+-    if (!req.body.add){
+-        return res.send(400, '参数出错');
+-    }
+-
+-    mAddress.saveAddress(openId, req.token, {
+-        name:req.body.name,
+-        tel:req.body.tel,
+-        add:req.body.add,
+-        zip:req.body.zip
+-    }, function(err, o){
+-        if (err){
+-            console.log(err);
+-            return res.send(500, err);
+-        }
+-        Lottery.findByIdAndUpdate(prizeId,{ $set: {addressId: o._id}}, function(err,doc){
+-            if(err) {
+-                res.send({status:'-1',message:'保存信息出错'});
+-            } else {
+-                res.send({status:'1',message:'保存成功'});
+-            }
+-        });
+-    })
+-};
+-
+ exports.gotoLottery = function(req, res){
+     var activity = req.activity;
+     var now = new Date()
+@@ -1215,9 +1167,9 @@
+         } else if (type == mGoods.type.goods){
+             return '未发货';
+         } else if (type == mGoods.type.shoppingCard){
+-            return '未发';
++            return '未完成';
+         } else {
+-            return '';
++            return '已完成';
+         }
+     } else if (state == 'Delivery'){
+         if (type == mGoods.type.goods){
+@@ -1231,16 +1183,16 @@
+         } else if (type == mGoods.type.goods){
+             return '已签收';
+         } else if (type == mGoods.type.shoppingCard){
+-            return '已发';
++            return '已完成';
+         } else {
+-            return '';
++            return '已完成';
+         }
+     } else if (state == 'refund'){
+         return '已退款';
+     } else if (state == 'refunding'){
+         return '退款中';
+     } else {
+-        return '';
++        return '已完成';
+     }
+ }
+ 
+@@ -1300,6 +1252,9 @@
+ exports.exportOrder = function(req, res){
+     var state = req.param('state');
+     var type = req.param('type');
++    var from = req.param('from');
++    var out_trade_no = req.param('out_trade_no');
++    var mobile = req.param('mobile');
+ 
+     var startTime = req.param('startTime');
+     var endTime = req.param('endTime');
+@@ -1312,7 +1267,7 @@
+     }
+ 
+     var q = req.param('q');
+-    if (state && !_.contains(['unDelivery', 'Delivery', 'Delivered', 'deleted'], state)){
++    if (state && !_.contains(['unDelivery', 'Delivery', 'Delivered', 'deleted', 'refund'], state)){
+         return res.send(400, 'state err:' + state);
+     }
+ 
+@@ -1332,6 +1287,12 @@
+     if (q){
+         condition1.prizeName = q;
+     }
++    if (out_trade_no){
++        condition1.out_trade_no = out_trade_no;
++    }
++    if (mobile){
++        condition1.mobile = mobile;
++    }
+ 
+     if (startTime && endTime){
+         condition1.dateTime = {$gte: startTime, $lt: endTime}
+@@ -1341,10 +1302,19 @@
+         condition1.prizeType = {$in: [mGoods.type.goods, mGoods.type.chargeCard, mGoods.type.shoppingCard, mGoods.type.live]}
+     }
+ 
+-    var condition2 = _.extend({}, condition1);
+-    condition2.from = 4;
+-    delete condition2.prizeType
+-    condition.$or = [condition1, condition2]
++    if (from){
++        if (from == 1){
++            condition1.from = 4;
++            if (!type){
++                delete condition1.prizeType
++            }
++        } else if (from == 2){
++            condition1.from = {$in: [1, 2]};
++        } else if (from == 3){
++            condition1.from = 3;
++        }
++        condition.$or = [condition1]
++    }
+ 
+     exports.findOrders(condition, req.token, {sort: {dateTime: -1}, limit: 1000}, false, function(err, docs){
+         if (err){
+@@ -1381,10 +1351,10 @@
+             }
+         } else if (o.from == 3){
+             from = '积分兑换';
+-        } else if (o.lotteryEvent){
+-            from = '抽奖后台';
+-        } else if (o.activityId){
+-            from = '刮刮卡或者大转盘';
++        } else if (o.from == 2){
++            from = '抽奖后台:' + o.activity.theme;
++        } else if (o.from == 1){
++            from = (o.activity.way==1?'刮刮卡':'大转盘') + ':' + o.activity.way;
+         } else {
+             from = '未知';
+         }
+\ No newline at end of file
+Index: views/order-list.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- views/order-list.html	(revision 986bc4e81a7fbdc401a3a1dacb617b3f2bb62853)
++++ views/order-list.html	(revision )
+@@ -1,135 +1,156 @@
+-<!doctype html>
++<!DOCTYPE html>
+ <html>
+ <head>
+-<meta charset="utf-8">
+-<title>商品管理-订单管理</title>
+-<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+-<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/popup.css" />
+-<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/mass.css" />
+-<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+-<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+-<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+-<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+-
++    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
++    <title>订单管理</title>
++    <link href="/pointMall/stylesheets/common.css" rel="stylesheet" type="text/css">
+-<style type="text/css">
++    <style type="text/css">
+-    .mass_content_top li.active{border-color:#999999;}
+-    .s_tab_reply{ position:relative}
+-    .s_tab_reply ul li{ float:left;border-radius:5px;}
+-    .s_tab_reply ul li:hover{ background:#f1f1f1;}
+-    .s_tab_reply ul li.on{ background:#576477;  color:#fff}
+-    .s_tab_reply ul li strong{ display:inline-block; border-left:solid 1px #ddd; margin:8px 0;padding:0 15px; font-weight:normal; font-size:14px; line-height:14px; cursor:pointer}
+-    .s_tab_reply ul li.on strong{ margin:0; line-height:30px}
+-    .s_tab_reply ul li:first-child strong{ border:0}
+-    .icos2 a.chou{color:#5bc96d}
+-    .icos2 a.chou2{color:#f0081e}
+-    .s_tab_reply .tip_r{ position:absolute; right:0; top:30px;}
+-    .tip_r a{width:80px; height:32px; border-radius:4px; background:#ef6e12; display:block; color:#fff; text-align:center; line-height:32px;}
+-    .btn_clear .ico_fun_btn{border:0; background:none;}
+-    .btn_clear .list_msg1 li,.btn_clear .ico_fun_btn li{border:0; width:40px; padding:0; margin:0;}
+-    .snap{background:none; display:inline-block; padding-bottom:0;}
+-    .snap label {width:120px; height:32px; line-height:32px; float:left;}
+-    .search-snap{background:none; display:inline-block; padding-bottom:0;}
+-    .search-snap label{width:120px; height:32px; line-height:32px; float:left;}
+-    .list_msg1 li{padding:0 0 10px;}
+-    .list_msg1 .min_padding{background:#44b549; padding:7px;}
+-    .list_msg1 li .t1 td {
+-        vertical-align: middle;
+-        text-align:center;
+-        color:#666;
+-    }
+-    .list_msg2 li .t1 td {color:#fff;}
+-    .list_msg1 li .t1 td.g_left{text-align:left;}
+-    .btn_clear{ position:relative;}
+-    .btn_clear .ico_fun_btn{ position:absolute; top:15px; left:50%; margin-left:-61px;}
+-    .ico_fun_btn li span{left:10%;}
+-    .pagenavi{padding: 15px 20px 50px 0;}
+-    .search .s_btn{margin-left:-5px;}
+-    .search .w1,.msg_manage_top .search select{padding:5px 10px; border: 1px solid #ddd;}
+-    .search select{margin-right:15px;}
+-    .search input#q{width: 120px;}
++        .top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
++        .top_choose{ clear:both; overflow:hidden;}
++        .top_choose li{ float:left; width:33%; margin:15px 0 0;}
++        .top_choose li span{ display:inline-block; width:26%; padding-right:3px; font-size:14px; text-align:right}
++        .top_choose li .w1{ width:66%; height:22px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px; line-height:18px; font-size:14px}
++        .top_choose li .w2{width:69%;height:30px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px;line-height:19px; font-size:14px}
+ 
+-    .baocun{display:none;}
+-    .date p{font-size:14px;}
+-    .list_box{padding:6px; margin-bottom:10px; line-height:34px; background:#eeeeee; color:#777;}
+-    .touxiang img{max-width:30px; max-height:30px; margin-right:5px; border-radius:50%;}
+-    .list_msg1 li .t1 td.form{vertical-align: middle;}
+-    .caozuo a{padding:0 13px;}
+-    .font1{float:left; vertical-align:middle; padding-top:20px; line-height:30px;}
+-    .font1 label{margin-right:20px;}
+-    .list_msg1 li .t1 td.da_one{text-align:right;}
++        .c_btn{ clear:both; overflow:hidden; margin:20px 0 0;}
++        .c_btn span{ float:left; min-width:50px; margin:0 0 0 20px; padding:3px 10px 5px; background:#0090ff; border-radius:4px;text-align:center; font-size:14px;color:#fff; cursor:pointer; }
++        .c_btn span:hover{ background:#0079d6;}
+ 
++        .tab_list{ clear:both; overflow:hidden; margin:40px 0 0;}
++        .tab_list li{ float:left; padding:4px 0 5px; border-radius:3px;}
++        .tab_list li:hover{ background:#f1f1f1}
++        .tab_list li.on{ background:#576477; color:#fff}
++        .tab_list li strong{ display:inline-block; padding:0 20px; font-size:14px; font-weight:normal; border-left:solid 1px #ddd; text-align:center; cursor:pointer}
++        .tab_list li:first-child strong{ border:0}
++
++        .list_result{ margin-top:15px}
++        .list_result .table1{  background:#95c2eb; color:#fff;}
++        .list_result .table1 td{padding:6px 0; text-align:center; font-size:14px}
++        .list_result .table2 td{padding:4px 0; text-align:center; font-size:14px; color:#666}
++        .list_result .table2 td *{ font-size:14px}
++        .list_result .table2 td .p1{width:50px; height:50px; margin-right: 10px;}
++        .list_result .table2 td.user{ text-align:left}
++        .list_result .table2 td.user .p2{width:50px; height:50px; float:left; margin-right:10px}
++        .list_result .table2 td.status .waiting{ color:#c00}
++        .list_result .table2 td.status .paid{ color:#666}
++        .list_result .table2 td.status .fini{ color:#999}
++        .list_result .table2 td.status .btn{ display:inline-block; margin-top:4px; padding:0 10px 1px; border: solid 1px #0090ff; border-radius:4px; color:#0090ff; cursor:pointer}
++        .list_result .table2 td.status .btn2{ display:inline-block; margin-top:4px; padding:0 10px 1px; border: solid 1px #e7e7ea; border-radius:4px; color:#333; cursor:pointer}
++
++        .order_s1{ margin-top:15px;}
++        .order_s1:hover{ background:#f9f9f9}
++        .order_s1 dt,.order_s1 dd{ border:solid 1px #e7e7ea; padding:5px 0}
++        .order_s1 dd{ margin-top:-1px;}
++        .order_s1 dt .fr{ float:right; margin-right:15px;}
++        .order_s1 dt .fr a{ color:#0090ff}
++        .order_s1 dt .number{ margin-left:10px;font-size:14px}
++        .order_s1 dt .number i{ display:inline-block; margin-left:5px;padding:0 4px 2px; background:#bfc3c8; border-radius:4px;font-size:13px; color:#fff; cursor:pointer}
++        .order_s1 dt .number i:hover{ background:#aaa}
++
++        .topcon{ border-bottom:1px solid #d9dadc; height:41px; margin-top:10px;}
++        .topcon .tile{ font-weight:bold; font-size:14px; line-height:2em; padding:0 20px; height:40px; line-height:40px; display:inline-block; cursor:pointer; opacity:0.8;}
++        .topcon .tile:hover{ opacity:1;}
++        .topcon .tile.active{opacity:1; border-bottom:2px solid #0090FF;}
++
+-    .layer_w{width:730px; background-color:#FFF; margin:0 auto;}
+-    .layer_w .header{ background-color:#f4f5f9; height:50px; line-height:50px; position:relative; padding:0 20px; font-size:16px;}
+-    .layer_w .header .close{position: absolute;top: 50%;margin-top: -8px;right: 20px;width: 16px;height: 16px;line-height: 999em;overflow: hidden; cursor:pointer; background: url("/pointMall/images/mass_ico.png") 0 -2708px no-repeat;}
+-    .layer_w .header .close:hover{ background-position:0 -2734px;}
+-    .layer_w .con{ height:240px;}
+-    .layer_w .frm_control_group{ width:420px; margin:0 auto; padding-top:60px;}
+-    .layer_w .frm_control_group .frm_label{ display:block; font-size:14px; line-height:2em; margin-bottom:10px;}
+-    .layer_w .frm_control_group .frm_input_box input{ border:1px solid #CCC; font-size:14px; color:#333; padding:10px; width:300px;}
+-    .layer_w .frm_control_group .frm_error{ color:#e97979;font-size:14px; line-height:2em;}
+-    .layer_w .btn_group{ background-color:#f4f5f9; height:52px; padding-top:16px; text-align:center;}
++        .layer_w{width:730px; background-color:#FFF; margin:0 auto;}
++        .layer_w .header{ background-color:#f4f5f9; height:50px; line-height:50px; position:relative; padding:0 20px; font-size:16px;}
++        .layer_w .header .close{position: absolute;top: 50%;margin-top: -8px;right: 20px;width: 16px;height: 16px;line-height: 999em;overflow: hidden; cursor:pointer; background: url("/pointMall/images/mass_ico.png") 0 -2708px no-repeat;}
++        .layer_w .header .close:hover{ background-position:0 -2734px;}
++        .layer_w .con{ height:240px;}
++        .layer_w .frm_control_group{ width:420px; margin:0 auto; padding-top:60px;}
++        .layer_w .frm_control_group .frm_label{ display:block; font-size:14px; line-height:2em; margin-bottom:10px;}
++        .layer_w .frm_control_group .frm_input_box input{ border:1px solid #CCC; font-size:14px; color:#333; padding:10px; width:300px;}
++        .layer_w .frm_control_group .frm_error{ color:#e97979;font-size:14px; line-height:2em;}
++        .layer_w .btn_group{ background-color:#f4f5f9; height:52px; padding-top:16px; text-align:center;}
+-
+-
+-    .layer_w{width:500px; height:334px;}
+-    .frm_d{ padding:10px 0 0 50px; line-height:34px;}
+-    .frm_d label{float:left; font-size:14px; width:105px; line-height:34px;}
+-    .frm_d input.frm_input{ border:1px solid #e5e5e5; font-size:14px; color:#333; padding:7px 10px; width:198px;}
+-    .layer_w{display:none; position:fixed; top:50%; left:50%; border-radius:4px; overflow:hidden; margin:-110px 0 0 -208px;}
+-    .bg{width:100%; height:100%; background:#000; opacity:0.3; position:fixed; top:0; display:none;}
+-    .top_l li input, .top_l li select{margin-right:40px;}
+-    .txte{width:90%; height:155px; resize:none; padding:0 5px;}
+-    .layer_w .con{height:222px;}
++        .layer_w{width:500px; height:334px;}
++        .frm_d{ padding:10px 0 0 50px; line-height:34px;}
++        .frm_d label{float:left; font-size:14px; width:105px; line-height:34px;}
++        .frm_d input.frm_input{ border:1px solid #e5e5e5; font-size:14px; color:#333; padding:7px 10px; width:198px;}
++        .layer_w{display:none; position:fixed; top:50%; left:50%; border-radius:4px; overflow:hidden; margin:-110px 0 0 -208px;}
++        .bg{width:100%; height:100%; background:#000; opacity:0.3; position:fixed; top:0; display:none;}
++        .top_l li input, .top_l li select{margin-right:40px;}
++        .txte{width:90%; height:155px; resize:none; padding:0 5px;}
++        .layer_w .con{height:222px;}
+-    /*.newyema em{padding:3px 12px 2px 4px;}
+-    .newyema em.next{padding:3px 4px 1px 12px;}*/
++
++        .layer_way{width:450px; height:200px; background-color:#FFF; margin:0 auto;}
++        .layer_way{display:none; position:fixed; top:50%; left:50%; border-radius:4px; overflow:hidden; margin:-110px 0 0 -208px;}
++        .layer_way .w1{ width:66%; height:22px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px; line-height:18px; font-size:14px}
++        .layer_way .btn_group{ background-color:#f4f5f9; height:52px; padding-top:16px; text-align:center;}
++        .layer_way .fm_input{ position: relative; padding:8px 12px;}
++        .layer_way .fm_input span,.layer_way .fm_input input{ display: inline-block;}
++        .layer_way .fm_input span{width: 86px; text-align: right;}
++
++        .pagenavi{ padding:15px 10px 50px 0; text-align:right; line-height:26px;}
++        .pagenavi em{ display:inline-block; vertical-align:top; margin-right:5px; padding:6px 12px 4px 4px; border-radius:3px; border:solid 1px #ccc; cursor:pointer}
++        .pagenavi em strong{ display:inline-block; text-indent:-9999px; border:solid 6px #999; border-color:transparent #aaa transparent transparent}
++        .pagenavi em:hover{ background:#eee}
++        .pagenavi em.next{padding:6px 4px 4px 12px;}
++        .pagenavi em.next strong{border-color:transparent transparent transparent #aaa }
++        .pagenavi .page_st{ margin-right:5px;}
++        .pagenavi .input_number{ margin-right:4px; vertical-align:top; display:inline-block; line-height:23px; border:solid 1px #ccc; padding:1px 0 3px;  text-align:center;border-radius:3px;}
++        .pagenavi .input_number input{ border:0;width:40px; padding:0 5px; line-height:20px;outline:none; text-align:center}
++        .pagenavi .btn_send{border:solid 1px #ccc; vertical-align:top; display:inline-block; line-height:23px; padding:2px 10px; width:50px; text-align:center;border-radius:3px; cursor:pointer}
++        .pagenavi .btn_send:hover{background:#eee}
+-</style>
++    </style>
+ </head>
+-
+ <body>
+-<div class="mass_content mass_content2">
+-    <div class="mass_content_top clearfix have_border msg_manage_top">
+-        <ul class="clearfix">
+-            <li class="active">订单管理</li>
+-        </ul>
++<div class="layer_way" style="border: 1px solid #CCC;">
++    <div style="height:120px; padding-top: 12px;">
++        <div class="fm_input"><span>快递公司：</span><input id="wayCom" type="text" class="w1"></div>
++        <div class="fm_input"><span>快递号：</span><input id="waybillId" type="text" class="w1"></div>
+     </div>
+-    <div class="search-container" style="margin: 5px 10px; clear: both; font-size: 25px;">
+-        <div class="search" style="float: right; padding: 20px 0; clear: both;">
+-            <input readonly="readonly" type="text" id="startTime" class="Wdate Wdate1" placeholder="开始时间"/>
+-            至
+-            <input readonly="readonly" type="text" id="endTime" class="Wdate Wdate2" placeholder="结束时间"/>
+-            <select id="state">
+-                <option value="">按状态查询</option>
+-                <option value="unDelivery">未发货</option>
+-                <option value="Delivery">已发货</option>
+-                <option value="Delivered">已签收</option>
+-            </select>
+-            <select id="type">
+-                <option value="">按商品类型查询</option>
+-                <option value="2">现金</option>
+-                <option value="3">商品</option>
+-                <option value="4">充值卡</option>
+-                <option value="6">消费卡</option>
+-            </select>
+-            <input id="q" class="w1" type="text"  style="width: 100px;" placeholder="商品名字">
+-            <div class="snap s_btn" style="padding: 0;vertical-align: middle; margin-left: 10px;"><label style="width:auto;padding: 0 12px;margin: 0; ">查 找</label></div>
+-            <div class="snap" style="padding: 0;vertical-align: middle; margin-left: 5px;" id="download"><label style="width:auto;padding: 0 12px; margin: 0;">下载表格</label></div>
++    <div class="btn_group">
++        <span id="way-ok" class="btn btn_primary" style="display: inline-block; padding: 5px 10px;"><button type="button">确定</button></span>
++        <span id="way-cancel" class="btn btn_default" style="display: inline-block; padding: 5px 10px;"><button type="button">取消</button></span>
+-        </div>
+-    </div>
++    </div>
++</div>
+-    <div style="background-color: #dadada; height: 1px; margin: 4px 0px; clear: both;"></div>
+-    <div style="margin: 5px 10px; clear: both;">
+-        <form class="font1">
+-            <input id="cbox" type="checkbox"> <label>全选</label>
+-        </form>
+-        <div class="snap set-state">
+-            <label>批量设置状态</label>
++<div class="layer_w">
++    <div class="header">设置订单状态<span class="close">关闭</span></div>
++    <div class="con">
++        <div class="frm_d">
++            <label>设置订单状态：</label><input type="radio" class="redbox" checked="checked" name="t1" value="Delivered"> 已完成 <input type="radio" class="redbox" name="t1" value="notice"> 仅发消息
++            <input type="radio" class="redbox" name="t1" value="refund"> 退款
+         </div>
+-        <div class="snap" style="float: right;">
+-            <label id="link" url="{{orderUrl}}">订单链接</label>
++        <div class="frm_d">
++            <textarea id="message" class="txte" placeholder="请输入通知文本"></textarea>
+         </div>
+     </div>
+-    <ul class="list_msg1 list_msg2" id="order-list">
++    <div class="btn_group">
++        <span class="btn btn_lg btn_primary"><button type="button">确定</button></span>
++    </div>
++</div>
++<div class="wrap01">
++    <h2 class="top_tit01">订单管理</h2>
++    <div class="topcon">
++        <span id="nav_1" class="tile" from="1">购买订单</span>
++        <span id="nav_2" class="tile" from="2">抽奖订单</span>
++        <span id="nav_3" class="tile" from="3">兑换订单</span>
++    </div>
++    <ul class="top_choose">
++        <li><span>开始时间：</span><input readonly="readonly" type="text" id="startTime" class="Wdate Wdate1 w1" placeholder="开始时间"/></li>
++        <li><span>截止时间：</span><input readonly="readonly" type="text" id="endTime" class="Wdate Wdate1 w1" placeholder="截止时间"/></li>
++        <!--<li><span>收货人：</span><input id="name" name="" type="text" class="w1"></li>-->
++        <li><span>商品名：</span><input id="q" name="" type="text" class="w1"></li>
++        <!--<li><span>微信昵称：</span><input id="userName" name="" type="text" class="w1"></li>-->
++        <li><span>商品类型：</span><select name="" class="w2" id="type">
++            <option value="">请选择</option>
++            <option show-from="1" value="1">积分</option>
++            <option value="3">实物</option>
++            <option value="4">充值卡</option>
++            <option value="6">消费卡</option>
++            <option value="102">直播</option>
++        </select></li>
++        <li><span>订单状态：</span><select name="" class="w2" id="state">
+ 
++        </select></li>
++        <li show-from="1"><span>订单号：</span><input name="" id="out_trade_no" type="text" class="w1"></li>
++        <li><span>手机号：</span><input id="mobile" name="" type="text" class="w1"></li>
+     </ul>
++    <div class="c_btn"><span id="search">筛选</span><span id="download">批量导出Excel</span><span class="set-state">批量设置状态</span>
++        <span id="link" url="{{orderUrl}}">订单链接</span>
+-</div>
++    </div>
++    <div class="list_result" id="order-list"></div>
++</div>
+ <div class="pagenavi newyema">
+     <em class="pre">
+         <strong></strong>
+@@ -143,545 +164,546 @@
+     </span>
+     <span class="btn_send">跳转</span>
+ </div>
++<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
++<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
++<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
++<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-cn.js"></script>
++<script>
++    $(function(){
++        var searchMap = {}
+ 
+-<div class="bg"></div>
+-<div class="layer_w">
+-    <div class="header">设置订单状态<span class="close" onClick="top.xdDialog.close();">关闭</span></div>
+-    <div class="con">
+-        <div class="frm_d">
+-            <label>设置订单状态：</label><input type="radio" class="redbox" checked="checked" name="t1" value="Delivered"> 已完成 <input type="radio" class="redbox" name="t1" value="notice"> 仅发消息
+-            <input type="radio" class="redbox" name="t1" value="refund"> 退款
+-        </div>
+-        <div class="frm_d">
+-            <textarea id="message" class="txte" placeholder="请输入通知文本"></textarea>
+-        </div>
+-    </div>
+-    <div class="btn_group">
+-        <span class="btn btn_lg btn_primary"><button type="button">确定</button></span>
+-    </div>
+-</div>
++        function getCurFrom(){
++            return $('.topcon span.active').attr('from');
++        }
+ 
+-<script type="text/javascript">
+-$(function(){
+-    $('#startTime').focus(function () {
+-        WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss'});
+-    })
+-    $('#endTime').focus(function () {
+-        var startTime = $('#startTime').val()
+-        if (startTime) {
+-            WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss', minDate: "#F{$dp.$D(\'startTime\',{H:1});}"});
++        function initTable(from) {
++            var domString = ''
++            if (from == 1){
++                domString = '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">' +
++                        '<colgroup><col width="6%"><col width="20%"><col width="15%">' +
++                        '<col width="15%"><col width="15%"><col width="10%"><col width="*%"></colgroup>' +
++                        '<tr><td><label for="c_id"><input name="" type="checkbox" value="" id="all-choose"> 全选</label></td>' +
++                        '<td>商品</td><td>价格/个数</td><td>购买人</td><td>下单时间</td><td>下单状态</td>' +
++                        '<td>付款金额</td></tr></table>'
++            } else if (from == 2){
++                domString = '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">' +
++                        '<colgroup><col width="6%"><col width="20%"><col width="10%"><col width="20%">' +
++                        '<col width="15%"><col width="15%"><col width="*"></colgroup>' +
++                        '<tr><td><label for="c_id"><input name="" type="checkbox" value="" id="all-choose"> 全选</label></td>' +
++                        '<td>奖品</td><td>抽奖方式</td><td>活动名字</td><td>中奖人</td><td>中奖时间</td><td>状态</td>' +
++                        '</tr></table>'
++            } else if (from == 3){
++                domString = '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table1">' +
++                        '<colgroup><col width="6%"><col width="20%"><col width="20%">' +
++                        '<col width="20%"><col width="15%"><col width="*"></colgroup>' +
++                        '<tr><td><label for="c_id"><input name="" type="checkbox" value="" id="all-choose"> 全选</label></td>' +
++                        '<td>商品</td><td>兑换积分/个数</td><td>兑奖用户</td><td>兑奖时间</td><td>状态</td>' +
++                        '</tr></table>'
++            }
++            var $newCell = $($.trim(domString))
++            $('#order-list').append($newCell);
++            $('#all-choose', $newCell).click(function(){
++                if ($(this).is(':checked')){
++                    $('.chebox').prop('checked', true);
+-        } else {
++                } else {
+-            $('#startTime').focus()
++                    $('.chebox').removeAttr('checked')
+-        }
+-    })
++                }
++            })
++        }
+ 
+-    function getOrderList(page, state, q, startTime, endTime, type){
+-        var url = '/pointMall/lottery/list?'
+-        if (page){
+-            url += '&page=' + page
++        $('#type').change(function(){
++            var type = $('#type').val();
++            var domString = ''
++            domString += '<option value="">请选择</option>'
++            if (type == 1 || type == 102 || type == 6){
++                domString += '<option value="Delivered">已完成</option>';
++            } else if (type == 3){
++                domString += '<option value="unDelivery">未发货</option>';
++                domString += '<option value="Delivery">已发货</option>';
++                domString += '<option value="Delivered">已签收</option>';
++            } else if (type == 4){
++                domString += '<option value="unDelivery">未充值</option>';
++                domString += '<option value="Delivered">已充值</option>';
+-        }
++            }
+-        if (state){
+-            url += '&state=' + state
++            if (getCurFrom() == 1){
++                domString += '<option value="refund">已退款</option>';
+-        }
++            }
+-        if (type){
+-            url += '&type=' + type
++            $('#state').empty()
++            $('#state').append(domString)
++        })
++
++        $('.tile').click(function(){
++            var from = $(this).attr('from');
++            if ($(this).hasClass('active')){
++                return;
+-        }
++            }
+-        if (q){
+-            url += '&q=' + q
++            $('.tile').removeClass("active");
++            $(this).addClass("active");
++            getOrderList(0, from);
++            $('[show-from][show-from=' + from + ']').show()
++            $('[show-from][show-from!=' + from + ']').hide()
++            window.location.href = '#from=' + from
++            clearSearchMap()
++        })
++
++        function clearSearchMap(){
++            $('#state').val('');
++            $('#type').val('');
++            $('#q').val('');
++            $('#out_trade_no').val('');
++            $('#mobile').val('');
++            $('#startTime').val('');
++            $('#endTime').val('');
+         }
+-        if (startTime){
+-            url += '&startTime=' + startTime
+-        }
+-        if (endTime){
+-            url += '&endTime=' + endTime
+-        }
+ 
+-        $.ajax({
+-            type: 'GET',
+-            url: url,
+-            success: function(data){
+-                renderOrderList(data);
+-                if (data.length > 0){
+-                    $('.page_st').text((page + 1) + '/' + data[0].pageTotal);
++        if (window.location.href.indexOf('#from=') != -1){
++            var from = window.location.href.substring(window.location.href.indexOf('#from=') + '#from='.length);
++            $('.tile[from=' + from + ']').click();
+-                } else{
++        } else {
+-                    $('.page_st').text((page + 1) + '/' + 1);
++            $('.tile[from=1]').click();
+-                }
++        }
+ 
+-            },
+-            error: function(xhr){
+-                alert('加载失败：' + xhr.responseText?xhr.responseText:'')
++        function getTipByState(state, type){
++            if (state == 'refund'){
++                return '已退款';
+             }
+-        })
++            if (type == 102 || type == 1){
++                return '已付款';
+-    }
++            }
+ 
+-    function getTipByState(state, type){
+-        if (state == 'unDelivery'){
+-            if (type == 4){
+-                return '未充值';
+-            } else if (type == 3){
+-                return '未发货';
+-            } else if (type == 6){
+-                return '未发';
+-            } else {
+-                return '';
+-            }
+-        } else if (state == 'Delivery'){
+-            if (type == 3){
+-                return '已发货';
+-            } else {
+-                return '';
+-            }
+-        } else if (state == 'Delivered'){
+-            if (type == 4){
+-                return '已充值';
+-            } else if (type == 3){
+-                return '已签收';
+-            } else if (type == 6){
+-                return '已发';
+-            } else {
+-                return '';
+-            }
++            if (state == 'unDelivery'){
++                if (type == 4){
++                    return '未充值';
++                } else if (type == 3){
++                    return '未发货';
++                } else if (type == 6){
++                    return '未发';
++                } else {
++                    return '';
++                }
++            } else if (state == 'Delivery'){
++                if (type == 3){
++                    return '已发货';
++                } else {
++                    return '';
++                }
++            } else if (state == 'Delivered'){
++                if (type == 4){
++                    return '已充值';
++                } else if (type == 3){
++                    return '已签收';
++                } else if (type == 6){
++                    return '已发';
++                } else {
++                    return '';
++                }
+-        } else if (state == 'refund'){
+-            return '已退款';
+-        } else if (state == 'refunding'){
+-            return '退款中';
+-        } else {
+-            return '';
+-        }
+-    }
++            } else {
++                return '';
++            }
++        }
+ 
+-    function getColorByState(state){
+-        if (state == 'unDelivery'){
+-            return 'red';
+-        } else if (state == 'Delivery'){
+-            return 'blue';
+-        } else if (state == 'Delivered'){
+-            return 'green';
+-        } else {
+-            return 'red';
+-        }
+-    }
++        function getColorByState(state){
++            if (state == 'unDelivery'){
++                return 'red';
++            } else if (state == 'Delivery'){
++                return 'blue';
++            } else if (state == 'Delivered'){
++                return 'green';
++            } else {
++                return 'red';
++            }
++        }
+ 
+-    function renderOrderList(data){
+-        var domString = ''
+-        $.each(data, function(i, o){
+-            var addInfo = o.addInfo?o.addInfo:"用户还没有填地址信息";
+-            var wayCom = o.wayCom?o.wayCom:'';
+-            var wayBillId = o.waybillId?o.waybillId:'';
+-            var mobile = o.mobile?o.mobile:'用户还没有填手机号';
+-            var shoppingCard = o.shoppingCard?o.shoppingCard:'';
+-            var rule = '';
+-            if (o.ext){
+-                $.map(o.ext, function(v, k){
+-                    rule += v + ' '
++        function bindEvent($newCell){
++            $('.delivery', $newCell).click(function(){
++                var dl = $(this).closest('dl');
++                var orderId = dl.attr('orderId');
++                $('.layer_way').show()
++                $('#way-ok').attr('orderId', orderId)
+-                })
++            })
++
++            $('.delete', $newCell).click(function(){
++                var dl = $(this).closest('dl');
++                var orderId = dl.attr('orderId');
++                if (confirm('请确定是否要删除订单，不能恢复！')){
++                    $.ajax({
++                        method: "DELETE",
++                        url: '/pointMall/order/' + orderId,
++                        success: function(data){
++                            $('dl[orderId=' + orderId + ']').slideUp();
++                        },
++                        error: function(){
++                            alert('删除失败');
+-            }
++                        }
++                    })
++                }
++            })
+ 
+-            domString += '<li prizeType="' + o.prizeType + '" orderId="' + o._id + '">' +
+-                    '<div class="list_box">' +
+-                    '<a href="#" class="touxiang"><img src=' + o.userIcon + '></a>' + o.userName + '<span class="fr">' + o.dateTime + '</span>';
+-            if (o.from == 4){
+-                var text = '微信支付 商品价格：' + o.price + ',付款金额：' + o.total_fee
+-                if (o.score > 0){
+-                    text += ' ,花费积分' + o.score
++            $('.refund', $newCell).click(function(){
++                var dl = $(this).closest('dl');
++                var orderId = dl.attr('orderId');
++                if (confirm('确定是否要退款，不能恢复！')){
++                    $.ajax({
++                        method: "POST",
++                        url: '/pointMall/order/' + orderId + '/refund',
++                        success: function(data){
++                            var dl = $('dl[orderId=' + orderId + ']');
++                            var prizeType = dl.attr('prizeType');
++                            dl.find('.state').text(getTipByState('refund', prizeType)).css('color', getColorByState('refund'));
++                            dl.find('.refund').remove()
++                            dl.find('.delivery').remove()
++                            alert('退款成功!')
++                        },
++                        error: function(xrh){
++                            alert('操作失败! ' + xrh.responseText);
+-                }
++                        }
+-                if (o.redPrice > 0){
+-                    text += ' ,红包抵扣' + o.redPrice
++                    })
+                 }
+-                domString += '<span class="fr" style="margin-right: 20px;">' + text + '</span>';
+-            } else if (o.from == 3){
+-                domString += '<span class="fr" style="margin-right: 20px;">积分兑换</span>';
+-            } else if (o.lotteryEvent){
+-                domString += '<span class="fr" style="margin-right: 20px;">抽奖后台</span>';
+-            } else if (o.activityId){
+-                domString += '<span class="fr" style="margin-right: 20px;">刮刮卡或者大转盘</span>';
++            })
+-            }
++        }
+-            domString += '</div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">';
+ 
+-            domString += '<colgroup><col width="22"><col width="6%"><col width="8%"><col width="29%"><col width="12%"><col width="12%"><col width="8%"><col width="25%"></colgroup>'
+-            /*if (o.prizeType == 3){
+-
+-            } else if (o.prizeType == 4){
+-                domString += '<colgroup><col width="22"><col width="6%"><col width="8%"><col width="29%"><col width="12%"><col width="12%"></colgroup>'
+-            } else {
+-                domString += '<colgroup><col width="22"><col width="6%"><col width="8%"></colgroup>'
+-            }*/
+-
+-            domString += '<tr><td class="date da_one" align="right">';
++        function renderOrderList(type, data){
++            var domString = ''
++            $.each(data, function(i, o){
++                if (type == 1){
++                    domString += '<dl prizeType="' + o.prizeType + '" class="order_s1" orderId="' + o._id + '">' +
++                            '<dt><span class="fr"><a href="/pointMall/goto/order/' + o._id + '/detail">详情</a></span>' +
++                            '<div class="number">订单号：' + o.out_trade_no;
++                    if (o.state != 'refund'){
++                        domString += '<i class="refund">退款</i>';
++                    }
++                    domString += '</div></dt><dd>' +
++                            '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table2">' +
++                            '<colgroup><col width="6%"><col width="20%"><col width="15%"><col width="15%">' +
++                            '<col width="15%"><col width="10%"><col width="*"></colgroup>' +
++                            '<tr><td><input name="" type="checkbox" value="" class="chebox"></td>' +
++                            '<td><img src="' + o.prizePic + '" class="p1">' + o.prizeName + '</td>' +
++                            '<td><p>' + o.price + '</p><p>（1）</p></td>' +
++                            '<td class="user"><img src="' + o.userIcon + '" class="p2"> ' + o.userName + '<br></td>' +
++                            '<td><p>' + o.dateTime.substring(0, 10) + '</p><p>' + o.dateTime.substring(10, o.dateTime.length) + '</p></td>' +
++                            '<td class="status"><p class="waiting state">' + getTipByState(o.state, o.prizeType) + '</p>';
+-            if (o.prizeType == 3){
++                    if (o.prizeType == 3){
+-                domString += '<input class="chebox" type="checkbox">';
+-            } else if (o.prizeType == 4){
+-                domString += '<input class="chebox" type="checkbox">';
+-            } else if (o.prizeType == 6){
+-                domString += '<input class="chebox" type="checkbox">';
+-            } else if (o.from == 4 && o.state != 'Delivered' && o.state != 'refunding'){
+-                domString += '<input class="chebox" type="checkbox">';
++                        if (o.state == 'unDelivery'){
++                            domString += '<span class="btn delivery">发货</span>'
+-            }
++                        }
+-            domString += '</td>' +
+-                    '<td class="avatar" width="65"><div class="pic"><a href="#"><img src=' +
+-                    o.prizePic + '></a><span style="color:#000000;">' + rule + '</span></div></td>' +
+-                    '<td class="date">' + o.prizeName + '</td>';
++                    }
++                    domString += '<span class="btn delete">删除</span>'
++                    domString += '</td><td>' + o.total_fee + '</td></tr></table></dd></dl>'
++                } else {
++                    if (type == 2){
++                        domString += '<dl prizeType="' + o.prizeType + '" class="order_s1" orderId="' + o._id + '">' +
++                                '<dt>' +
++                                '<div style="text-align: right; margin-right: 15px;"><span><a href="/pointMall/goto/order/' + o._id + '/detail" style="color: #0090ff;">详情</a></span></div></dt><dd>' +
++                                '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table2">' +
++                                '<colgroup><col width="6%"><col width="20%"><col width="10%"><col width="20%"><col width="15%">' +
++                                '<col width="15%"><col width="*"></colgroup>' +
++                                '<tr><td><input name="" type="checkbox" value="" class="chebox"></td>' +
++                                '<td><img src="' + o.prizePic + '" class="p1">' + o.prizeName + '</td>';
+ 
+-            if (o.prizeType == 3){
+-                domString += '<td class="date" title=' + addInfo + '>' + addInfo + '</td>' +
+-                        '<td class="date"><input class="put wayCom" type="text" placeholder="快递公司" value="' + wayCom + '"></td>' +
+-                        '<td class="date"><input class="put wayBillId" type="text" placeholder="运单号" value="' + wayBillId + '"></td>';
+-            } else if (o.prizeType == 4 || o.prizeType == 6){
+-                domString += '<td class="date" title=' + mobile + '>' + mobile + '</td>' +
+-                        '<td class="date" title=' + shoppingCard + '>' + shoppingCard + '</td>' +
+-                        '<td></td>';
++                        if (o.from == 1){
++                            domString += '<td><p>' + (o.activity.way==1?'刮刮卡':'大转盘') + '</p><p>（1）</p></td>';
++                            domString += '<td><p>' + o.activity.name + '</p></td>';
+-            } else {
++                        } else {
+-                domString += '<td></td><td></td><td></td>';
++                            domString += '<td><p>系统抽奖</p></td>';
++                            domString += '<td><p>' + o.activity.theme + '</p></td>';
+-            }
++                        }
++                    } else {
++                        domString += '<dl prizeType="' + o.prizeType + '" class="order_s1" orderId="' + o._id + '">' +
++                                '<dt>' +
++                                '<div style="text-align: right; margin-right: 15px;"><span><a href="/pointMall/goto/order/' + o._id + '/detail" style="color: #0090ff;">详情</a></span></div></dt><dd>' +
++                                '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="table2">' +
++                                '<colgroup><col width="6%"><col width="20%"><col width="20%"><col width="20%">' +
++                                '<col width="15%"><col width="*"></colgroup>' +
++                                '<tr><td><input name="" type="checkbox" value="" class="chebox"></td>' +
++                                '<td><img src="' + o.prizePic + '" class="p1">' + o.prizeName + '</td>';
+ 
+-            domString += '<td class="dq_zhuang"><span class="state" style="color:' + getColorByState(o.state) + ';">' + getTipByState(o.state, o.prizeType) + '</span></td>' +
+-                    '<td class="caozuo g_left">';
+-
++                        domString += '<td><p>' + o.score + '</p><p>（1）</p></td>';
++                    }
++                    domString += '<td class="user"><img src="' + o.userIcon + '" class="p2"> ' + o.userName + '<br></td>' +
++                            '<td><p>' + o.dateTime.substring(0, 10) + '</p><p>' + o.dateTime.substring(10, 18) + '</p></td>' +
++                            '<td class="status"><p class="waiting state">' + getTipByState(o.state, o.prizeType) + '</p>';
+-            if (o.prizeType == 3){
+-                if (o.state == 'unDelivery'){
++                    if (o.prizeType == 3){
++                        if (o.state == 'unDelivery'){
+-                    domString += '<a href="javascript:void(0)" class="fahuo">发货</a>'
+-                    domString += '<a href="javascript:void(0)" class="change" style="display: none">修改</a>'
+-                    domString += '<a href="javascript:void(0)" class="save" style="display: none">保存</a>'
+-                    domString += '<a href="javascript:void(0)" class="showWayInfo" style="display: none">物流查询</a>'
+-                    domString += '<a href="javascript:void(0)" class="delivered" style="display: none">完成</a>'
+-                } else if (o.state == 'Delivery'){
+-                    domString += '<a href="javascript:void(0)" class="change">修改</a>'
+-                    domString += '<a href="javascript:void(0)" class="save" style="display: none">保存</a>'
+-                    domString += '<a href="javascript:void(0)" class="delivered">完成</a>'
+-                    domString += '<a href="javascript:void(0)" class="showWayInfo">物流查询</a>'
+-                } else if (o.state == 'Delivered'){
+-                    domString += '<a href="javascript:void(0)" class="showWayInfo">物流查询</a>'
++                            domString += '<span class="btn delivery">发货</span>'
+-                }
++                        }
+-            } else if (o.prizeType == 4){
+-                if (o.state == 'unDelivery'){
+-                    domString += '<a href="javascript:void(0)" class="delivered">完成</a>'
+-                } else if (o.state == 'refund'){
+-                    domString += '<a href="javascript:void(0)">已退款</a>'
+-                } else if (o.state == 'refunding'){
+-                    domString += '<a href="javascript:void(0)">退款中</a>'
+-                }
++                    }
++                    domString += '<span class="btn delete">删除</span>'
++                    domString += '</td></tr></table></dd></dl>'
+-            }
++                }
+-            if (o.from == 4){
+-                if (o.state == 'refund'){
+-                    domString += '<a href="javascript:void(0)">已退款</a>'
+-                } else if (o.state == 'refunding'){
+-                    domString += '<a href="javascript:void(0)">退款中</a>'
+-                }
+-            }
+-            domString += '<a href="javascript:void(0)" class="delete">删除</a>'
+-            domString += '</td></tr></table></li>'
+-        })
++            })
+-
+-        var $newCell = $($.trim(domString));
+-        $('#order-list').empty();
++            var $newCell = $($.trim(domString));
++            $('#order-list').empty();
++            initTable(getCurFrom())
+-        $('#order-list').append($newCell);
+-        bindEvent($newCell);
+-    }
++            $('#order-list').append($newCell);
++            bindEvent($newCell);
++        }
+ 
+-    function saveOrder(orderId, wayCom, waybillId){
+-        $.ajax({
+-            method: "POST",
+-            url: '/pointMall/order/' + orderId,
+-            data: $.param({waybillId: waybillId, wayCom: wayCom}),
+-            success: function (data) {
+-                var li = $('li[orderId=' + orderId + ']');
+-                li.find('.change').show();
+-                li.find('.fahuo').hide();
+-                li.find('.save').hide();
+-                li.find('.delivered').show();
+-                li.find('.showWayInfo').show();
+-                li.find('.state').text(getTipByState(data.state, data.prizeType)).css('color', getColorByState(data.state));
+-                li.find('.wayCom').attr('disabled', true);
+-                li.find('.wayBillId').attr('disabled', true);
+-                alert('保存成功');
+-            },
+-            error: function (xhr) {
+-                alert('保存失败:' + xhr.responseText?xhr.responseText:'');
++        function getOrderList(page, from, state, q, startTime, endTime, type, out_trade_no, mobile){
++            var url = '/pointMall/lottery/list?from=' + from
++            if (page){
++                url += '&page=' + page
+             }
+-        })
++            if (state){
++                url += '&state=' + state
+-    }
++            }
+-
+-    function bindEvent($newCell){
+-        $('.wayCom', $newCell).each(function(){
+-            var val = $(this).val()
+-            if (val){
+-                $(this).attr('disabled', true);
+-                $(this).closest('li').find('.wayBillId').attr('disabled', true);
++            if (type){
++                url += '&type=' + type
+             }
+-        })
+-
+-        $('.fahuo', $newCell).click(function(){
+-            var li = $(this).closest('li');
+-            var wayCom = li.find('.wayCom').val();
+-            var wayBillId = li.find('.wayBillId').val();
+-
+-            if(!wayCom){
+-                return alert('请输入快递公司')
++            if (q){
++                url += '&q=' + q
+             }
+-
+-            if(!wayBillId){
+-                return alert('请输入运单号')
++            if (startTime){
++                url += '&startTime=' + startTime
+             }
+-            var orderId = li.attr('orderId');
+-            saveOrder(orderId, wayCom, wayBillId)
+-        })
+-
+-        $('.save', $newCell).click(function(){
+-            var li = $(this).closest('li');
+-            var wayCom = li.find('.wayCom').val();
+-            var wayBillId = li.find('.wayBillId').val();
+-
+-            if(!wayCom){
+-                return alert('请输入快递公司')
++            if (endTime){
++                url += '&endTime=' + endTime
+             }
+-
+-            if(!wayBillId){
+-                return alert('请输入运单号')
++            if (out_trade_no){
++                url += '&out_trade_no=' + out_trade_no
+             }
+-            var orderId = li.attr('orderId');
+-            saveOrder(orderId, wayCom, wayBillId)
+-        })
++            if (mobile){
++                url += '&mobile=' + mobile
++            }
+ 
+-        $('.delete', $newCell).click(function(){
+-            var li = $(this).closest('li');
+-            var orderId = li.attr('orderId');
+-            if (confirm('请确定是否要删除订单，不能回复！')){
+-                $.ajax({
++            $.ajax({
+-                    method: "DELETE",
+-                    url: '/pointMall/order/' + orderId,
++                type: 'GET',
++                url: url,
+-                    success: function(data){
++                success: function(data){
+-                        $('li[orderId=' + orderId + ']').slideUp();
++                    renderOrderList(from, data);
++                    if (data.length > 0){
++                        $('.page_st').text((page + 1) + '/' + data[0].pageTotal);
++                    } else{
++                        $('.page_st').text((page + 1) + '/' + 1);
++                    }
+-                    },
++                },
+-                    error: function(){
+-                        alert('删除失败');
++                error: function(xhr){
++                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+-                    }
+-                })
+-            }
++                }
++            })
++        }
++
++        $('.close').click(function(){
++            $('.layer_w').css('display','none');
++            $('.bg').css('display','none');
+         })
+-        $('.change', $newCell).click(function(){
+-            var li = $(this).closest('li');
+-            li.find('.save').show();
+-            li.find('.fahuo').hide();
+-            li.find('.change').hide();
+-            li.find('.wayCom').removeAttr('disabled');
+-            li.find('.wayBillId').removeAttr('disabled');
+-            li.find('.wayCom').focus();
++
++        $('.set-state').click(function(){
++            var orderIds = getOrderId();
++            if (orderIds.length == 0){
++                return alert('选中为空')
++            }
++            $('.layer_w').css('display','block');
++            $('.bg').css('display','block');
+         })
++        $('.btn_lg').click(function(){
++            var hideLayer = function(){
++                $('.layer_w').css('display','none');
++                $('.bg').css('display','none');
++            }
+ 
+-        $('.delivered').click(function(){
+-            var li = $(this).closest('li');
+-            var orderId = li.attr('orderId');
+-            var prizeType = li.attr('prizeType');
+-            dealOrder(orderId, 'Delivered', prizeType);
+-        });
+-
+-        $('.showWayInfo').click(function(){
+-            window.open('http://www.kuaidi100.com/');
+-        });
+-
+-        $('#cbox').click(function(){
+-            if ($(this).is(':checked')){
+-                $('.chebox').prop('checked', true);
++            var orderIds = getOrderId();
++            var message = $('#message').val();
++            if (orderIds.length == 0){
++                hideLayer()
++                return alert('选中为空')
++            } else if (!message || $.trim(message).length == 0){
++                hideLayer()
++                return alert('通知消息为空')
+             } else {
+-                $('.chebox').removeAttr('checked')
++                sendMessage(orderIds, message, function(err){
++                    hideLayer()
++                    if (err){
++                        return;
+-            }
++                    }
++                    var state = $('input[type="radio"]:checked').val()
++                    if (state == 'Delivered' || state == 'refund'){
++                        $('.chebox:checked').each(function(){
++                            var dl = $(this).closest('dl')
++                            var prizeType = dl.attr('prizeType');
++                            dl.find('.state').text(getTipByState(state, prizeType)).css('color', getColorByState(state));
+-        })
+-    }
++                        })
++                    }
++                    $('.chebox:checked').removeAttr('checked')
++                });
++            }
++        })
+ 
+-    function dealOrder(orderId, state, prizeType){
+-        var message = "确定" + getTipByState(state, prizeType) + "?" + ((state == 'Delivered')?'完成之后不能修改':'');
+-        console.log(message)
+-        if (confirm(message)){
++        function sendMessage(orderIds, message, done){
++            var state = $('input[type="radio"]:checked').val()
++            if (!state){
++                return;
++            }
+             $.ajax({
+-                method: "POST",
+-                url: '/pointMall/order/' + orderId + '/' + state,
++                type: 'POST',
++                url: '/pointMall/order/' + state + '/send/message',
++                data: {orderIds: orderIds, message: message},
+                 success: function(data){
+-                    if (state == 'Delivered' || state == 'refund'){
+-                        var li = $('li[orderId=' + orderId + ']');
+-                        li.find('.change').hide();
+-                        li.find('.fahuo').hide();
+-                        li.find('.save').hide();
+-                        li.find('.delivered').hide();
+-                        li.find('.state').text(getTipByState(state, prizeType)).css('color', getColorByState(state));
+-                    }
+-                    alert('操作成功');
++                    alert('设置成功');
++                    done()
+                 },
+-                error: function(xrh){
+-                    alert('操作失败! ' + xrh.responseText);
++                error: function(xhr){
++                    alert('设置失败,' + xhr.responseText);
++                    done('err')
+                 }
+             })
+         }
++
++        function getOrderId(){
++            var orderIds = []
++            $('.chebox:checked').each(function(){
++                var orderId = $(this).closest('dl').attr('orderId');
++                orderIds.push(orderId);
++            })
++            return orderIds;
+-    }
++        }
+ 
+-    var searchMap = {}
+-    $('.s_btn').click(function(){
++        $('#search').click(function(){
+-        var state = $('#state').val();
+-        var type = $('#type').val();
+-        var q = $('#q').val();
++            var state = $('#state').val();
++            var type = $('#type').val();
++            var q = $('#q').val();
++            var out_trade_no = $('#out_trade_no').val();
++            var mobile = $('#mobile').val();
+-        var startTime = $('#startTime').val();
++            var startTime = $('#startTime').val();
+-        console.log(startTime)
+-        var endTime = $('#endTime').val();
++            var endTime = $('#endTime').val();
+-        console.log(endTime)
+-        if (!endTime || !startTime){
+-            startTime = null;
+-            endTime = null;
+-        }
++            if (!endTime || !startTime){
++                startTime = null;
++                endTime = null;
++            }
+ 
+-        getOrderList(0, state, q, startTime, endTime, type);
++            var from = getCurFrom();
++            getOrderList(0, from, state, q, startTime, endTime, type, out_trade_no, mobile);
+-        searchMap.state = state
+-        searchMap.q = q
+-        searchMap.startTime = startTime
+-        searchMap.endTime = endTime
+-        searchMap.type = type
++            searchMap.state = state
++            searchMap.q = q
++            searchMap.startTime = startTime
++            searchMap.endTime = endTime
++            searchMap.type = type
++            searchMap.out_trade_no = out_trade_no
++            searchMap.mobile = mobile
+-    })
++        })
+ 
+-    $('.next').click(function(){
+-        var text = $('.page_st').text();
+-        var curPage = parseInt(text.split('/')[0], 10);
+-        var total = parseInt(text.split('/')[1], 10);
+-        if (curPage == total){
+-            return;
+-        }
++        $('.next').click(function(){
++            var text = $('.page_st').text();
++            var curPage = parseInt(text.split('/')[0], 10);
++            var total = parseInt(text.split('/')[1], 10);
++            if (curPage == total){
++                return;
++            }
+-        getOrderList(curPage, searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type);
++            getOrderList(curPage, getCurFrom(), searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type, searchMap.out_trade_no, searchMap.mobile);
+-    })
++        })
+ 
+-    $('.pre').click(function(){
+-        var text = $('.page_st').text();
+-        var curPage = parseInt(text.split('/')[0], 10);
+-        if (curPage == 1){
+-            return;
+-        }
++        $('.pre').click(function(){
++            var text = $('.page_st').text();
++            var curPage = parseInt(text.split('/')[0], 10);
++            if (curPage == 1){
++                return;
++            }
+-        getOrderList(curPage - 2, searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type);
++            getOrderList(curPage - 2, getCurFrom(), searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type, searchMap.out_trade_no, searchMap.mobile);
+-    })
++        })
+ 
+-    $('.btn_send').click(function(){
+-        var page = $('#page').val();
++        $('.btn_send').click(function(){
++            var page = $('#page').val();
+ 
+-        var text = $('.page_st').text();
+-        var totalPage = parseInt(text.split('/')[1], 10);
++            var text = $('.page_st').text();
++            var totalPage = parseInt(text.split('/')[1], 10);
+ 
+-        var page = parseInt(page, 10);
+-        if (isNaN(page)){
+-            return alert('请输入整数');
+-        }
+-        if (totalPage < page){
+-            return alert('超过最大页数：' + totalPage);
+-        }
+-        if (page < 1){
+-            return alert('页数至少为1');
+-        }
++            var page = parseInt(page, 10);
++            if (isNaN(page)){
++                return alert('请输入整数');
++            }
++            if (totalPage < page){
++                return alert('超过最大页数：' + totalPage);
++            }
++            if (page < 1){
++                return alert('页数至少为1');
++            }
+-        getOrderList(page - 1, searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type);
++            getOrderList(page - 1, getCurFrom(), searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type, searchMap.out_trade_no, searchMap.mobile);
+-    })
++        })
+ 
+-    getOrderList(0);
++        $('#startTime').focus(function () {
++            WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss'});
++        })
++        $('#endTime').focus(function () {
++            var startTime = $('#startTime').val()
++            if (startTime) {
++                WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss', minDate: "#F{$dp.$D(\'startTime\',{H:1});}"});
++            } else {
++                $('#startTime').focus()
++            }
++        })
+ 
+-    $('#download').click(function(){
+-        if (confirm('默认下载最新的1000条, 想要下载更多订单，请通过搜索条件筛选')){
++        $('#download').click(function(){
++            if (confirm('默认下载最新的1000条, 想要下载更多订单，请通过搜索条件筛选')){
+-            var url = '/pointMall/export/lottery/list?'
++                var url = '/pointMall/export/lottery/list?from=' + getCurFrom()
+-            if (searchMap.state){
+-                url += '&state=' + searchMap.state
+-            }
+-            if (searchMap.q){
+-                url += '&q=' + searchMap.q
+-            }
+-            if (searchMap.startTime){
+-                url += '&startTime=' + searchMap.startTime
+-            }
+-            if (searchMap.endTime){
+-                url += '&endTime=' + searchMap.endTime
+-            }
+-            if (searchMap.type){
+-                url += '&type=' + searchMap.type
+-            }
++                if (searchMap.state){
++                    url += '&state=' + searchMap.state
++                }
++                if (searchMap.q){
++                    url += '&q=' + searchMap.q
++                }
++                if (searchMap.startTime){
++                    url += '&startTime=' + searchMap.startTime
++                }
++                if (searchMap.endTime){
++                    url += '&endTime=' + searchMap.endTime
++                }
++                if (searchMap.type){
++                    url += '&type=' + searchMap.type
++                }
+-
+-            window.open(url)
++                if (searchMap.out_trade_no){
++                    url += '&out_trade_no=' + searchMap.out_trade_no
+-        }
++                }
+-    })
+-
+-    $('#link').click(function(){
+-        var url = $(this).attr('url');
+-        window.prompt("链接地址请复制", url);
+-    })
+-
+-    $('.close').click(function(){
+-        $('.layer_w').css('display','none');
+-        $('.bg').css('display','none');
+-    })
+-    $('.set-state').click(function(){
+-        var orderIds = getOrderId();
+-        if (orderIds.length == 0){
+-            return alert('选中为空')
++                if (searchMap.mobile){
++                    url += '&mobile=' + searchMap.mobile
+-        }
++                }
+-        $('.layer_w').css('display','block');
+-        $('.bg').css('display','block');
+-    })
+-    $('.btn_lg').click(function(){
+-        var hideLayer = function(){
+-            $('.layer_w').css('display','none');
+-            $('.bg').css('display','none');
+-        }
+ 
+-        var orderIds = getOrderId();
+-        var message = $('#message').val();
+-        if (orderIds.length == 0){
+-            hideLayer()
+-            return alert('选中为空')
+-        } else if (!message || $.trim(message).length == 0){
+-            hideLayer()
+-            return alert('通知消息为空')
+-        } else {
+-            sendMessage(orderIds, message, function(err){
+-                hideLayer()
+-                if (err){
+-                    return;
++                window.open(url)
+-                }
++            }
+-                var state = $('input[type="radio"]:checked').val()
+-                if (state == 'Delivered' || state == 'refund'){
+-                    $('.chebox:checked').each(function(){
+-                        var li = $(this).closest('li')
+-                        var prizeType = li.attr('prizeType');
+-                        li.find('.change').hide();
+-                        li.find('.fahuo').hide();
+-                        li.find('.save').hide();
+-                        li.find('.delivered').hide();
+-                        li.find('.state').text(getTipByState(state, prizeType)).css('color', getColorByState(state));
+-                    })
++        })
+-                }
+-                $('.chebox:checked').removeAttr('checked')
+-            });
+-        }
+-    })
+ 
+-    function sendMessage(orderIds, message, done){
+-        var state = $('input[type="radio"]:checked').val()
+-        if (!state){
+-            return;
+-        }
++        function saveOrder(orderId, wayCom, waybillId){
+-        $.ajax({
++            $.ajax({
+-            type: 'POST',
+-            url: '/pointMall/order/' + state + '/send/message',
+-            data: {orderIds: orderIds, message: message},
++                method: "POST",
++                url: '/pointMall/order/' + orderId,
++                data: $.param({waybillId: waybillId, wayCom: wayCom}),
+-            success: function(data){
++                success: function (data) {
+-                alert('设置成功');
+-                done()
++                    var dl = $('dl[orderId=' + orderId + ']')
++                    var prizeType = dl.attr('prizeType');
++                    dl.find('.state').text(getTipByState(data.state, prizeType)).css('color', getColorByState(data.state));
++                    dl.find('.delivery').hide()
++                    $('.layer_way').hide()
++                    $('#way-ok').removeAttr('orderId')
++                    alert('保存成功');
+-            },
++                },
+-            error: function(xhr){
++                error: function (xhr) {
+-                alert('设置失败,' + xhr.responseText);
+-                done('err')
++                    alert('保存失败:' + xhr.responseText?xhr.responseText:'');
+-            }
+-        })
+-    }
++                }
++            })
++        }
+ 
+-    function getOrderId(){
+-        var orderIds = []
+-        $('.chebox:checked').each(function(){
+-            var orderId = $(this).closest('li').attr('orderId');
+-            orderIds.push(orderId);
+-        })
+-        return orderIds;
++        $('#way-cancel').click(function(){
++            $('.layer_way').hide()
++        });
++
++        $('#way-ok').click(function(){
++            var orderId = $(this).attr('orderId');
++            var wayCom = $('#wayCom').val();
++            var wayBillId = $('#waybillId').val();
++
++            if(!wayCom){
++                return alert('请输入快递公司')
+-    }
++            }
++
++            if(!wayBillId){
++                return alert('请输入运单号')
++            }
++            saveOrder(orderId, wayCom, wayBillId)
+-})
++        })
+ 
++        $('#link').click(function(){
++            var url = $(this).attr('url');
++            window.prompt("链接地址请复制", url);
++        })
++    });
+ </script>
+ </body>
+ </html>
+Index: routes/api.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- routes/api.js	(revision 986bc4e81a7fbdc401a3a1dacb617b3f2bb62853)
++++ routes/api.js	(revision )
+@@ -135,8 +135,8 @@
+ app.post('/order/:state/send/message', routes.midAuth(), mLottery.lotterySendMessage);
+ app.delete('/order/:id', routes.midAuth(false), mLottery.delOrder);
+ app.get('/check/user/new/order', routes.midAuth(false), routes.midAuthUser(false), mLottery.checkUserUnCompleteOrder);
+-//app.get('/goto/order/:id/detail', routes.midAuth(false), mLottery.midLotteryLoader, mLottery.gotoOrderDetail);
+-//app.get('/order/:id/detail', routes.midAuth(false), mLottery.midLotteryLoader, mLottery.orderDetail);
++app.get('/goto/order/:id/detail', routes.midAuth(false), mLottery.midLotteryLoader, mLottery.gotoOrderDetail);
++app.get('/order/:id/detail', routes.midAuth(false), mLottery.midLotteryLoader, mLottery.orderDetail);
+ 
+ //for account
+ app.get('/auth/me/order/list', middleware.checkAuthSign, routes.authToken('wx_token'), routes.midAuthOpenId('openid'), routes.checkUserIsFollow, mAccount.gotoMyOrderList);
+Index: views/order_detail.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- views/order_detail.html	(revision )
++++ views/order_detail.html	(revision )
+@@ -0,0 +1,195 @@
++<!DOCTYPE html>
++<html>
++<head>
++<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
++<title>实物订单流程</title>
++<link href="/pointMall/stylesheets/common.css" rel="stylesheet" type="text/css">
++<style type="text/css">
++.top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
++.top_choose{ clear:both; overflow:hidden;}
++.top_choose li{ float:left; width:33%; margin:15px 0 0;}
++.top_choose li span{ display:inline-block; width:26%; padding-right:3px; font-size:14px; text-align:right}
++.top_choose li .w1{ width:66%; height:22px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px; line-height:18px; font-size:14px}
++.top_choose li .w2{width:69%;height:30px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px;line-height:19px; font-size:14px}
++
++.c_btn{ clear:both; overflow:hidden; margin:20px 0 0;}
++.c_btn span{ float:left; min-width:50px; margin:0 0 0 20px; padding:3px 10px 5px; background:#0090ff; border-radius:4px;text-align:center; font-size:14px;color:#fff; cursor:pointer; }
++.c_btn span:hover{ background:#0079d6;}
++
++.tab_list{ clear:both; overflow:hidden; margin:40px 0 0;}
++.tab_list li{ float:left; padding:4px 0 5px; border-radius:3px;}
++.tab_list li:hover{ background:#f1f1f1}
++.tab_list li.on{ background:#576477; color:#fff}
++.tab_list li strong{ display:inline-block; padding:0 20px; font-size:14px; font-weight:normal; border-left:solid 1px #ddd; text-align:center; cursor:pointer}
++.tab_list li:first-child strong{ border:0}
++
++.list_result{ margin-top:15px}
++.list_result .table1{  background:#0090ff; color:#fff;}
++.list_result .table1 td{padding:6px 0; text-align:center; font-size:14px}
++.list_result .table2 td{padding:4px 0; text-align:center; font-size:14px; color:#666}
++.list_result .table2 td *{ font-size:14px}
++.list_result .table2 td .p1{width:50px; height:50px}
++.list_result .table2 td.user{ text-align:left}
++.list_result .table2 td.user .p2{width:50px; height:50px; float:left; margin-right:10px}
++.list_result .table2 td.status .waiting{ color:#c00}
++.list_result .table2 td.status .paid{ color:#666}
++.list_result .table2 td.status .fini{ color:#999}
++.list_result .table2 td.status .btn{ display:inline-block; margin-top:4px; padding:0 10px 1px; border: solid 1px #0090ff; border-radius:4px; color:#0090ff; cursor:pointer}
++.list_result .table2 td.status .btn2{ display:inline-block; margin-top:4px; padding:0 10px 1px; border: solid 1px #e7e7ea; border-radius:4px; color:#333; cursor:pointer}
++
++.order_s1{ margin-top:15px;}
++.order_s1:hover{ background:#f9f9f9}
++.order_s1 dt,.order_s1 dd{ border:solid 1px #e7e7ea; padding:5px 0}
++.order_s1 dd{ margin-top:-1px;}
++.order_s1 dt .fr{ float:right; margin-right:10px;}
++.order_s1 dt .fr a{ color:#0090ff}
++.order_s1 dt .number{ margin-left:10px;font-size:14px}
++.order_s1 dt .number i{ display:inline-block; margin-left:5px;padding:0 4px 2px; background:#bfc3c8; border-radius:4px;font-size:13px; color:#fff; cursor:pointer}
++.order_s1 dt .number i:hover{ background:#aaa}
++
++.w_order_step{ width:100%; overflow:hidden; clear:both; padding:20px 0;}
++.track_number{ padding:15px 0 70px; color:#f4580b; text-align:center; font-size:34px;}
++.w_order_step .steps *{ font-size:14px; font-weight:normal;}
++.w_order_step .steps{ position:relative; width:1080px; margin:0 auto}
++.w_order_step .steps .bar{ height:30px; background:url(/pointMall/images/step_ico.png) no-repeat center 0;}
++.w_order_step .steps .bar strong{ display:block; height:30px; background:url(/pointMall/images/step_ico2.png) no-repeat 0 0}
++.w_order_step .steps .tip1{ position:absolute; width:100%; top:-30px;}
++.w_order_step .steps .tip1 strong{ float:left; width:25%; color:#999; text-align:center}
++.w_order_step .steps .tip1 strong.on{color:#0090ff;}
++.w_order_step .steps .tip2{ margin-top:5px;}
++.w_order_step .steps .tip2 strong{ float:left; width:25%; color:#0090ff; text-align:center}
++.list_track{ padding:10px;}
++.list_track li{ padding:5px 0; color:#333}
++.list_track li *{ font-size:14px}
++.list_track li strong{ float:left; width:75px; padding-right:4px; text-align:right; color:#999; font-weight:normal}
++
++.tit_status{ background:#0090ff; padding:3px 10px 4px; line-height:25px; color:#fff; font-size:14px}
++</style>
++</head>
++<body>
++<div class="wrap01">
++    <input id="orderId" type="hidden" value="{{orderId}}">
++	<h2 class="top_tit01"><a id="back" style="cursor: pointer;">返回</a> > 订单详情</h2>
++</div>
++</body>
++<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
++<script>
++    $(function(){
++        var orderId = $('#orderId').val()
++
++        function renderOrder(order){
++            var domString = ''
++            if (order.from == 4){
++                domString += '<div class="w_order_step">' +
++                        '<div class="track_number">订单号：' + order.out_trade_no + '</div>';
++                if (order.prizeType == 3) {
++                    if (order.state == 'unDelivery'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:50%"></strong></div>' +
++                                '<div class="tip1"><strong>买家已下单</strong><strong class="on">买家已付款</strong><strong>卖家已发货</strong><strong>物流标记签收</strong></div>';
++                    } else if (order.state == 'Delivery'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:75%"></strong></div>' +
++                                '<div class="tip1"><strong>买家已下单</strong><strong>买家已付款</strong><strong class="on">卖家已发货</strong><strong>物流标记签收</strong></div>';
++                    } else if (order.state == 'Delivered'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:100%"></strong></div>' +
++                                '<div class="tip1"><strong>买家已下单</strong><strong>买家已付款</strong><strong>卖家已发货</strong><strong class="on">物流标记签收</strong></div>';
++                    } else if (order.state == 'refund'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:100%"></strong></div>' +
++                                '<div class="tip1"><strong>买家已下单</strong><strong>买家已付款</strong><strong>申请退款</strong><strong class="on">已退款</strong></div>';
++                    }
++                    domString += '</div>';
++                }
++                domString += '<div class="tit_status">订单状况</div>' +
++                        '<ul class="list_track">' +
++                        '<li><strong>商品名字：</strong><span>' + order.prizeName + '</span></li>' +
++                        '<li><strong>订单状态：</strong><span>' + order.stateText + '</span></li>' +
++                        '<li><strong>订单总计：</strong><span>' + order.price + '</span></li>' +
++                        '<li><strong>使用积分：</strong><span>' + order.score + '</span></li>' +
++                        '<li><strong>使用红包：</strong><span>' + (order.redPrice?order.redPrice:"0") + '</span></li>' +
++                        '<li><strong>下单用户：</strong><span>' + order.userName + '</span></li>';
++                if (order.prizeType == 3) {
++                    if (order.ext){
++                        var rule = '';
++                        $.map(order.ext, function(v, k){
++                            rule += v + ' '
++                        })
++                        if (rule){
++                            domString += '<li><strong>商品规格：</strong><span>' + rule + '</span></li>'
++                        }
++                    }
++                    domString += '<li><strong>收货地址：</strong><span>' + (order.addInfo?order.addInfo:"未填写") + '</span></li>'
++                    domString += '<li><strong>快递公司：</strong><span>' + (order.wayCom?order.wayCom:"未填写") + '</span></li>'
++                    domString += '<li><strong>快递单号：</strong><span>' + (order.waybillId?order.waybillId:"未填写") + '</span></li>'
++                } else if (order.prizeType == 4 || order.prizeType == 6 || order.prizeType == 1) {
++                    domString += '<li><strong>手机号：</strong><span>' + (order.mobile?order.mobile:"未填写") + '</span></li>'
++                    if (order.prizeType == 6){
++                        domString += '<li><strong>消费码：</strong><span>' + (order.shoppingCard?order.shoppingCard:"空") + '</span></li>'
++                    }
++                }
++                domString += '</ul>'
++            } else {
++                domString += '<div class="w_order_step"><div class="track_number"></div>';
++                if (order.prizeType == 3) {
++                    if (order.state == 'unDelivery'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:50%"></strong></div>' +
++                                '<div class="tip1"><strong>生成订单</strong><strong class="on">买家已下单</strong><strong>卖家已发货</strong><strong>物流标记签收</strong>';
++                    } else if (order.state == 'Delivery'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:75%"></strong></div>' +
++                                '<div class="tip1"><strong>生成订单</strong><strong>买家已下单</strong><strong class="on">卖家已发货</strong><strong>物流标记签收</strong>';
++                    } else if (order.state == 'Delivered'){
++                        domString += '<div class="steps"><div class="bar"><strong style="width:100%"></strong></div>' +
++                                '<div class="tip1"><strong>生成订单</strong><strong>买家已下单</strong><strong>卖家已发货</strong><strong class="on">物流标记签收</strong>';
++                    }
++                    domString += '</div></div>';
++                }
++                domString += '<div class="tit_status">订单状况</div>' +
++                        '<ul class="list_track">' +
++                        '<li><strong>商品名字：</strong><span>' + order.prizeName + '</span></li>' +
++                        '<li><strong>订单状态：</strong><span>' + order.stateText + '</span></li>';
++                if (order.from == 3) {
++                    domString += '<li><strong>使用积分：</strong><span>' + order.score + '</span></li>';
++                }
++                domString += '<li><strong>用户：</strong><span>' + order.userName + '</span></li>';
++                if (order.prizeType == 3) {
++                    if (order.ext){
++                        var rule = '';
++                        $.map(order.ext, function(v, k){
++                            rule += v + ' '
++                        })
++                        if (rule){
++                            domString += '<li><strong>商品规格：</strong><span>' + rule + '</span></li>'
++                        }
++                    }
++                    domString += '<li><strong>收货地址：</strong><span>' + (order.addInfo?order.addInfo:"未填写") + '</span></li>'
++                    domString += '<li><strong>快递公司：</strong><span>' + (order.wayCom?order.wayCom:"未填写") + '</span></li>'
++                    domString += '<li><strong>快递单号：</strong><span>' + (order.waybillId?order.waybillId:"未填写") + '</span></li>'
++                } else if (order.prizeType == 4 || order.prizeType == 6) {
++                    domString += '<li><strong>手机号：</strong><span>' + (order.mobile?order.mobile:"未填写") + '</span></li>'
++                    if (order.prizeType == 6){
++                        domString += '<li><strong>消费码：</strong><span>' + (order.shoppingCard?order.shoppingCard:"空") + '</span></li>'
++                    }
++                }
++                domString += '</ul>'
++            }
++            $('.wrap01').append(domString);
++        }
++
++        function loadOrder(){
++            $.ajax({
++                type: 'GET',
++                url: '/pointMall/order/' + orderId + '/detail',
++                success: function(data){
++                    renderOrder(data)
++                },
++                error: function(xhr){
++                    alert('获取订单详情失败!')
++                }
++            })
++        }
++        loadOrder()
++
++        $('#back').click(function(){
++            window.history.back();
++        })
++    })
++</script>
++</html>

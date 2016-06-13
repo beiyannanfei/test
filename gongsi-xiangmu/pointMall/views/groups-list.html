@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>行为分组管理</title>
+
+    <link href="/pointMall/stylesheets/mass-group.css" type="text/css" rel="stylesheet" />
+    <link href="/pointMall/stylesheets/style_mn-group.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        .mass_content_top li.active{border-color:#999999;}
+        .s_tab_reply{ position:relative}
+        .s_tab_reply ul li{ float:left;border-radius:5px;}
+        .s_tab_reply ul li:hover{ background:#f1f1f1;}
+        .s_tab_reply ul li.on{ background:#576477;  color:#fff}
+        .s_tab_reply ul li strong{ display:inline-block; border-left:solid 1px #ddd; margin:8px 0;padding:0 15px; font-weight:normal; font-size:14px; line-height:14px; cursor:pointer}
+        .s_tab_reply ul li.on strong{ margin:0; line-height:30px}
+        .s_tab_reply ul li:first-child strong{ border:0}
+        .icos2 a.chou{color:#5bc96d}
+        .icos2 a.chou2{color:#f0081e}
+        .s_tab_reply .tip_r{ position:absolute; right:0; top:30px;}
+        .tip_r a{width:80px; height:32px; border-radius:4px; background:#ef6e12; display:block; color:#fff; text-align:center; line-height:32px;}
+        .btn_clear .ico_fun_btn{border:0; background:none;}
+        .btn_clear .list_msg1 li,.btn_clear .ico_fun_btn li{border:0; width:40px; padding:0; margin:0;}
+        .msg_manage_top .search2{bottom:13px; position:absolute; right:0;}
+        .snap{background:none; float:left; padding:0;}
+        .snap label {width:74px; height:32px; line-height:32px; margin-right:8px;}
+        .list_msg1 li{padding:25px 7px;}
+        .list_msg1 .min_padding{background:#eee; padding:7px;}
+        .list_msg1 li .t1 td {
+            vertical-align: middle;
+            text-align:center;
+            color:#666;
+        }
+        .list_msg1 li .t1 td.g_left{text-align:left;}
+        .btn_clear{ position:relative;}
+        .btn_clear .ico_fun_btn{ position:absolute; top:15px; left:50%; margin-left:-61px;}
+        .ico_fun_btn li span{left:10%;}
+        .pagenavi {
+            padding: 15px 20px 50px 0;
+        }
+        .layer_w{width:419px; height:220px;}
+        .layer_w .con{height:110px;}
+        .frm_d{ padding:40px 0 0 79px;}
+        .frm_d label{float:left; font-size:14px; width:50px; line-height:34px;}
+        .frm_d input.frm_input{ border:1px solid #e5e5e5; font-size:14px; color:#333; padding:7px 10px; width:198px;}
+        .layer_w{display:none; position:fixed; top:50%; left:50%; border-radius:4px; overflow:hidden; margin:-110px 0 0 -208px;}
+        .bg{width:100%; height:100%; background:#000; opacity:0.3; position:fixed; top:0; display:none;}
+        .msg_manage_top{padding:0 98px;}
+        .top_l li input, .top_l li select{margin-right:40px;}
+        .top_l li input.Wdate2{width:140px;}
+    </style>
+</head>
+
+<body>
+<div class="mass_content mass_content2">
+
+    <ul class="list_msg1 list_msg2">
+        <li class="min_padding">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+                <colgroup>
+                    <col width="65">
+                    <col width="*">
+                    <col width="22%">
+                    <col width="22%">
+                    <col width="22%">
+                    <col width="80">
+                </colgroup>
+                <tr>
+                    <td>头像</td>
+                    <td>昵称</td>
+                    <td>时间</td>
+                    <td>类型</td>
+                    <td>来源</td>
+                    <td>用户行为</td>
+                </tr>
+            </table>
+        </li>
+        <div id="behaviorList">
+             <!-- data -->
+        </div>
+        <div id="queryGroup" style="text-align: right; margin-top: 20px; overflow: hidden;padding-bottom: 20px;">
+            <a onclick="getGroups()"
+               style="display: inline-block; background-color: #999; color: #FFF; padding:8px 15px;">查看更多</a>
+        </div>
+   </ul>
+</div>
+
+
+<input id="groupsId" type="hidden" value="{{{groupsId}}}">
+
+
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+
+
+<script type="text/javascript">
+
+    var page = 1;
+    var pagecount = 10
+    var groupsId = $('#groupsId').val();
+    console.log('---groupsId---',groupsId);
+    $(function(){
+        getGroups();
+    });
+
+    function getGroups(){
+        if(groupsId!='' && groupsId!='undefined'){
+            var url = '/pointMall/groups/queryUser?id='+groupsId;
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(data){
+                    if(data && data.status==='success'){
+                        var dataArray = data.data;
+                        var html = '';
+                        for(var i =0;i<dataArray.length;i++){
+                            var obj = dataArray[i];
+                            var result = '';
+                            if(obj.result){
+                                result= obj.result;
+                            }
+                            html += '<li><table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">' +
+                                    '<colgroup><col width="65"><col width="*"><col width="22%"><col width="22%"><col width="22%"><col width="80"></colgroup>' +
+                                    '<td class="avatar"><div class="pic"><a href="#"><img src="' + obj.headImg + '"></a></div></td>' +
+                                    '<td>' + obj.nickName + '</td>' +
+                                    '<td class="date">' + obj.dateTime+'</td>' +
+                                    '<td>' + obj.description + '</td>' +
+                                    '<td>' + obj.behavior + '</td>' +
+                                    '<td>' + result + '</td>' +
+                                    '</tr></table>' +
+                                    '</li>';
+                        }
+                        $('#behaviorList').append(html);
+                        page++;
+                        if (dataArray.length < pagecount) {
+                            $('#queryGroup').hide();
+                        }else{
+                            $('#queryGroup').show();
+                        }
+                    }
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        }
+    }
+
+</script>
+</body>
+</html>

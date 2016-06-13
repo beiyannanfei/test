@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>添加商品</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/add-goods.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/add-goods-detail.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/ueditor/themes/default/_css/umeditor.css" />
+</head>
+<body>
+    <style>
+        p{white-space: normal!important;}
+    </style>
+<div class="pop_page1" style="width:770px;top:150px; left:50%; margin-left:-385px; z-index:10;display: none; min-height: 200px;">
+    <h2 class="title"><strong>视频资源</strong><span class="close" title="关闭">关闭</span></h2>
+    <div class="nodata">暂无资源，请先上传资源！</div>
+    <ul class="pop_list clearfix">
+    </ul>
+    <ul style="float:right;margin-right:20px;" class="pagination dbx-pagination">
+        <!--<li class="disabled"><a href="#" class="pagination-prev" aria-label="Previous"><span aria-hidden="true">«</span></a></li>-->
+        <!--<li class="active pagination-a"><a href="#">1</a></li>-->
+
+        <!--<li><a class="pagination-next" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
+    </ul>
+</div>
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">商品管理</a></li>
+                    <li>
+                        <span class="dbx-msg"></span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs" style="font-size:30px;">
+                商品管理
+            </h2>
+            <small class="dbx-msg"></small>
+        </div>
+    </div>
+</div>
+<div class="wrap01">
+    <input type="hidden" id="wxToken" value="{{token}}">
+    <input type="hidden" id="goodsId" value="{{goodsId}}">
+    <h3 class="tit2">基本信息</h3>
+    <div class="wrap_all">
+        <ul class="wrap_add">
+            <li>
+                <strong class="tit">使用方式：</strong>
+                <select name="" class="w1 form-control m-b" id="play-way">
+                    <option value="1">{{unit}}兑换</option>
+                    <option value="2">购买</option>
+                    <!--<option value="3">降价拍</option>
+                    <option value="4">一元拍</option>-->
+                    <option value="5">抽奖</option>
+                    <option value="6">众筹</option>
+                </select>
+            </li>
+            <li>
+                <strong class="tit">商品类型：</strong>
+                <select name="" class="w1 form-control m-b" id="type">
+                    <option value="3" checked>实物商品</option>
+                    <option value="4">充值卡</option>
+                    <option disabled-type="5&6" value="102">直播</option>
+                    <option disabled-type="1&6" value="1">{{unit}}</option>
+                    <option disabled-type="6" value="6">第三方消费码</option>
+                    <option disabled-type="2&6" value="7">商城红包</option>
+                    <!--<option disabled-type="1&2&6" value="2">现金红包</option>-->
+                    <option disabled-type="1&2&6" value="5">谢谢参与</option>
+                    <option disabled-type="1&6&5" value="105">会员vip</option>
+                    <option disabled-type="1&6&5" value="106">沙龙门票</option>
+                    <option disabled-type="1&2&4&6" value="999">其他</option>
+                    <option disabled-type="2&5&4&6" value="10">其他(优惠券)</option>
+                    <!--<option disabled-type="1&2&6" value="9">折扣券</option>-->
+                </select>
+            </li>
+            <li goods-type="105" style="display: none;">
+                <strong class="tit">会员类型：</strong>
+                <select name="" class="w1 form-control m-b" id="vipType">
+                    <option value="" checked>请选择</option>
+                    <option value="forums">社区</option>
+                </select>
+            </li>
+            <li>
+                <strong class="tit">选择商品品类：</strong>
+                <select id="category1" name="" class="w3 form-control m-b">
+
+                </select>
+                <select id="category2" name="" class="w3 form-control m-b">
+
+                </select>
+            </li>
+            <li id="score-count" goods-type="1" style="display: none;">
+                <strong class="tit">{{unit}}数：</strong>
+                <input id="score-count-value" name="" type="text" class="form-control" placeholder="必须整数">
+            </li>
+            <li id="live-time" goods-type="102" style="display: none;">
+                <strong class="tit">直播开始时间：</strong>
+                <input readonly="readonly" type="text" class="form-control startTime Wdate Wdate1" placeholder="开始时间"/>
+            </li>
+            <li id="buy-text" goods-type="102" style="display: none;">
+                <strong class="tit">直播地址：</strong>
+                <input id="buyText" name="" type="text" class="form-control" placeholder="必须填写直播的地址">
+            </li>
+            <li hide-goods-type="-103-">
+                <strong class="tit">商品名称：</strong>
+                <input id="name" name="" type="text" class="form-control">
+            </li>
+            <li hide-goods-type="-105-">
+                <strong class="tit">商品价格：</strong>
+                <input id="price" name="" type="text" class="form-control" placeholder="￥人民币(元)">
+                <input type="checkbox" name="hide-price">不显示价格</span>
+            </li>
+            <li hide-goods-type="-2-5-103-104-999-9-">
+                <strong class="tit">总库存：</strong>
+                <input id="count" name="" type="text" class="form-control">
+                <input type="checkbox" name="hide-count">不显示库存
+            </li>
+            <div style="display: none;" goods-type="103" class="add_resource clearfix"><strong class="btn add-res">+ 视频资源</strong></div>
+            <div style="display: none;" goods-type="103" class="area_resource">
+                <input type="hidden" id="video-res-id" value="">
+                <input type="hidden" id="shareId" value="">
+                <div class="a_pic"><img id="video-pic"><span class="ico">播放</span></div>
+                <ul class="f_form">
+                    <li>
+                        <strong class="tit">名字：</strong>
+                        <span><input id="demandName" name="" type="text" class="w1"></span>
+                    </li>
+                    <li>
+                        <strong class="tit">观看时间：</strong>
+                        <span><input id="freeSecond" placeholder="单位为秒, 默认为3" name="" type="text" class="w1"></span>
+                    </li>
+                    <li>
+                        <strong class="tit">描述：</strong>
+                        <span><textarea id="video-desc" name="" class="form-control" maxlength="100" placeholder="最多100个字"></textarea></span>
+                    </li>
+                </ul>
+            </div>
+            <div style="display: none;" goods-type="104" class="wrap_add">
+                <strong class="btn add-res-goods">+ 点播商品</strong>
+                <ul class="list2_sh" id="video-goods-list">
+
+                </ul>
+                <li>
+                    <strong class="tit">分享描述：</strong>
+                    <span><textarea id="share-desc" name="" class="form-control"></textarea></span>
+                </li>
+                <li>
+                    <strong class="tit">购买vip链接：</strong>
+                    <select name="" class="w1" id="vipGoodsId">
+                        <option value="">请选择</option>
+                    </select>
+                </li>
+            </div>
+            <li data="pic-data">
+                <strong class="tit">上传图片：</strong>
+                <div>
+                    <img src="/images/lotu.jpg" id="pic" class="pic" alt="">
+                    <input id="file" type="file" name="file" style="display: none" onchange="changeFile()">
+                    <span class="del" id="del">删除</span>
+                </div>
+            </li>
+            <li>
+                <span class="btn1" id="upload-file">上传图片</span>
+                <p class="tip">依据店铺来定，图片大小<i>建议</i>为: 640*280 或 500*400</p>
+            </li>
+            <li hide-goods-type="-1-2-3-4-5-6-7-103-104-106-999-9-10-102-" style="display: none;">
+                <strong class="tit">会员有效天数：</strong>
+                <!-- <input id="expire-day" type="text" class="form-control" placeholder="会员有效天数"> -->
+                <div class="Lottery">
+                    <div>
+                        <button class="btn btn-primary" id="addDay">添加天数套餐</button>
+                    </div>
+                    <table class="table table-bordered member" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th>套餐名称</th>
+                                <th>天数</th>
+                                <th>价格</th>
+                            </tr>
+                        </thead>
+                        <tbody id="showMember">
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li id="validity-time" hide-goods-type="-1-3-2-4-5-6-7-102-103-104-105-106-999-9-10-">
+                <strong class="tit">商品有效期：</strong>
+                <input readonly="readonly" type="text" class="form-control validity-time Wdate Wdate1" placeholder="有效期"/>
+            </li>
+            <li hide-goods-type="-2-5-7-999-9-" id="limit-count">
+                <strong class="tit">每人限购次数：</strong>
+                <label><input name="limit" class="limit-count" type="radio" value="999999" checked> 一人多次</label>
+                <label><input name="limit" class="limit-count" type="radio" value="1"> 一人一次</label>
+                (只对{{unit}}兑换、购买、众筹有效)
+            </li>
+            <li hide-goods-type="-1-2-5-102-103-104-105-106-9-999-" class="play-way" data="5">
+                <strong class="tit">领奖须知：</strong>
+                <input id="gain-info" type="text" class="form-control" placeholder="图文链接">
+            </li>
+            <li hide-goods-type="-9-10-">
+                <strong class="tit">所属店铺：</strong>
+                <select name="" class="w1" id="store">
+                    <option value="">请选择</option>
+                </select>
+            </li>
+            <li style="display: none;" goods-type="10">
+                <strong class="tit">所属优惠券：</strong>
+                <select name="" class="w1" id="coupon">
+                    <option value="">请选择</option>
+                </select>
+            </li>
+            <li hide-goods-type="-1-2-3-4-5-6-7-102-103-104-105-106-9-10-">
+                <strong class="tit">商品外链：</strong>
+                <input id="extLink" type="text" class="form-control" placeholder="外部链接">
+                <span>(可选项，如填写，则用户在个人订单中会显示链接入口按钮)</span>
+            </li>
+            <li style="display: none;">
+                <strong class="tit">关注用户：</strong>
+                <label><input name="follow" class="follow-limit" type="radio" value="3" checked> 所有</label>
+                <label><input name="follow" class="follow-limit" type="radio" value="1"> 关注</label>
+                <label><input name="follow" class="follow-limit" type="radio" value="2"> 非关注</label>
+            </li>
+        </ul>
+    </div>
+    <h3 goods-type="3" class="tit2">规格<span style="color: cadetblue; margin-left: 10px; vertical-align: middle">(可选项，如不选择，用户在购买或者兑换时不提示用户)</span>
+        <span class="rule-custom">添加自定义规格</span>
+    </h3>
+    <div class="wrap_all">
+    <ul class="wrap_add rule" goods-type="3">
+
+    </ul>
+    </div>
+
+    <h3 class="tit2" goods-type="6" style="display: none;">消费码
+        <span class="imports">导入消费码<input id="excel-import" class="import" name="excel" type="file"></span>
+        <span>(<a style="color: green" href="/docs/shoppingCards.xlsx">点击下载excel模板</a>)</span>
+    </h3>
+    <ul class="wrap_add" goods-type="6" style="display: none;">
+        <textarea name="" placeholder="多个消费券请以英文逗号隔开" class="shoppingCard" type="text"></textarea>
+    </ul>
+
+    <h3 class="tit2" goods-type="7">红包设置</h3>
+    <div class="wrap_all">
+        <ul class="wrap_add" goods-type="7">
+            <li>
+                <strong class="tit"><i style="color:red;font-style:normal">*</i>生效时间：</strong>
+                <input name="score" type="text" class="form-control effect">
+            </li>
+            <li>
+                <strong class="tit"><i style="color:red;font-style:normal">*</i>过期时间：</strong>
+                <input name="score" type="text" class="form-control exceed">
+            </li>
+            <!--<li>
+                <strong class="tit" id="user_can">可使用商品：</strong>
+                <button type="button" class="btn btn-primary" id="addStore">+添加商品</button>
+            </li>-->
+        </ul>
+    </div>
+
+    <h3 class="tit2" id="use-rule">使用规则</h3>
+    <div class="wrap_all">
+    <ul class="wrap_add">
+        <div class="play-way" data="3">
+            <li>
+                <strong class="tit">起拍价格：</strong>
+                <input name="startPrice" type="text" class="form-control" placeholder="￥人民币(元)">
+            </li>
+            <li>
+                <strong class="tit">结束价格：</strong>
+                <input name="endPrice" type="text" class="form-control" placeholder="￥人民币(元)">
+            </li>
+            <li>
+                <strong class="tit">开拍时间：</strong>
+                <input readonly="readonly" type="text" class="form-control start-down-time Wdate Wdate1" placeholder="开拍时间"/>
+            </li>
+            <li>
+                <strong class="tit">降价幅度：</strong>
+                <input name="priceDown" type="text" class="w4">
+            </li>
+            <li>
+                <strong class="tit">下降：</strong>
+                <input name="" type="text" class="form-control" placeholder="￥人民币(元)">
+            </li>
+        </div>
+        <div class="play-way" data="1">
+            <li>
+                <strong class="tit">兑换{{unit}}：</strong>
+                <input name="score" type="text" class="form-control" placeholder="{{unit}}数">
+            </li>
+            <li>
+                <strong class="tit">开始时间：</strong>
+                <input readonly="readonly" type="text" class="form-control start-time Wdate Wdate1" placeholder="开始时间"/>
+            </li>
+            <li>
+                <strong class="tit">结束时间：</strong>
+                <input readonly="readonly" type="text" class="form-control end-time Wdate Wdate1" placeholder="结束时间"/>
+            </li>
+        </div>
+        <div class="play-way" data="2">
+            <li>
+                <strong class="tit">红包个数限制：</strong>
+                <input name="redLimit" type="text" class="form-control" placeholder="购买时最多使用红包数,默认为0" value="0">
+            </li>
+            <li>
+                <strong class="tit">红包金额限制：</strong>
+                <input name="redLimitPrice" type="text" class="form-control" placeholder="购买时最多能使用红包金额,默认为0">
+            </li>
+            <li>
+                <strong class="tit">使用{{unit}}限制：</strong>
+                <input name="pointLimit" type="text" class="form-control" placeholder="购买时最多使用的{{unit}}数,默认为0" value="0">
+                <span style="color:#c43c35;">提示：1000{{unit}}=1元</span>
+            </li>
+            <li>
+                <strong class="tit">开始时间：</strong>
+                <input readonly="readonly" type="text" class="form-control start-time Wdate Wdate1" placeholder="开始时间"/>
+            </li>
+            <li>
+                <strong class="tit">结束时间：</strong>
+                <input readonly="readonly" type="text" class="form-control end-time Wdate Wdate1" placeholder="结束时间"/>
+            </li>
+        </div>
+        <div class="play-way" data="4">
+            <li>
+                <strong class="tit">开始时间：</strong>
+                <input readonly="readonly" type="text" class="form-control start-time Wdate Wdate1" placeholder="开始时间"/>
+            </li>
+            <li>
+                <strong class="tit">结束时间：</strong>
+                <input readonly="readonly" type="text" class="form-control end-time Wdate Wdate1" placeholder="结束时间"/>
+            </li>
+        </div>
+        <div class="play-way" data="5">
+
+        </div>
+        <div class="play-way" data="6">
+            <li>
+                <strong class="tit">开始时间：</strong>
+                <input readonly="readonly" type="text" class="form-control start-time Wdate Wdate1" placeholder="开始时间"/>
+            </li>
+            <li>
+                <strong class="tit">结束时间：</strong>
+                <input readonly="readonly" type="text" class="form-control end-time Wdate Wdate1" placeholder="结束时间"/>
+            </li>
+            <li>
+                <strong class="tit">众筹总金额：</strong>
+                <input name="totalMoney" type="text" class="form-control" value="0">
+            </li>
+            <li>
+                <strong class="tit">众筹伪支持者：</strong>
+                <input name="fakeCount" type="text" class="form-control" placeholder="初始支持者数， 默认为0">
+            </li>
+            <li>
+                <strong class="tit">红包个数限制：</strong>
+                <input name="redLimit" type="text" class="form-control" placeholder="购买时最多使用红包数,默认为0" value="0">
+            </li>
+            <li>
+                <strong class="tit">红包金额限制：</strong>
+                <input name="redLimitPrice" type="text" class="form-control" placeholder="购买时最多能使用红包金额,默认为0">
+            </li>
+            <li>
+                <strong class="tit">使用{{unit}}限制：</strong>
+                <input name="pointLimit" type="text" class="form-control" placeholder="购买时最多使用的{{unit}}数,默认为0" value="0">
+                <span style="color:#c43c35;">提示：1000{{unit}}=1元</span>
+            </li>
+        </div>
+    </ul>
+    </div>
+    <div class="layer_wBg">
+        <div class="layer_w">
+            <div class="header">选择商品<span class="close" data-action="layer_close">关闭</span></div>
+            <div class="con">
+                <!---->
+                <div class="lottery_addList">
+                    <ul class="store_list" id="lottery_addListcon">
+                        
+                    </ul>
+                    <div class="first two" style="display:none">
+                        <input type="text" class="VIPname form-control sample" placeholder="套餐名称">
+                        <input class="VIPday form-control sample" type="text" placeholder="会员有效天数">
+                        <input type="text" placeholder="价格" class="priceVIP form-control sample">
+                        <button  class="btn btn-primary" id="addDayCon">添加天数套餐</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bt_confirm_btn">
+                <strong class="save">确定</strong>
+                <strong class="abolish">取消</strong>
+                <strong class="sure">确定</strong>
+                <strong class="not">取消</strong>
+            </div>
+        </div>
+    </div>
+    <div class="setting_next"><button type="button" class="btn w-xs btn-success" id="next">下一步</button></div>
+</div>
+<div class="wrap02" style="display: none">
+    <!--<h2 class="top_tit01">添加商品 > 商品详情设置</h2>-->
+    <div class="pad_t20 clearfix">
+        <div class="area_phone">
+            <div class="title">
+                <span id="view-title"></span>
+            </div>
+            <div class="blank_area">
+                <div class="view_goods">
+                    <div class="cover"></div>
+                    <img id="view-pic">
+                    <h3 id="view-name"></h3>
+                </div>
+            </div>
+            <div class="pro_list_area click_on">
+                <div class="contentBody" id="contentBody"></div>
+            </div>
+        </div>
+        <div class="area_right page_setting" style="
+        /*margin-top:100px*/
+        ">
+            <span class="arrow c3"></span>
+            <style>
+
+
+                .page_setting .ar_form {
+                    position: relative;
+                    clear: both;
+                    overflow: hidden;
+                    background: #f5f5f5;
+                    padding: 15px;
+                    margin-bottom:20px;
+                }
+
+                .page_setting .ar_form li {
+                    margin-bottom: 10px;
+                }
+
+                .page_setting .ar_form li .w2 {
+                    width: 320px;
+                    padding: 4px 6px;
+                    background: #fff;
+                    border: solid 1px #e7e7eb;
+                    font-family: "微软雅黑";
+                    font-size: 14px;
+                }
+
+                .page_setting .ar_form li.pic {
+                    float: left;
+                    width: 100px;
+                    margin-right: 10px;
+                    position: relative;
+                }
+
+                .page_setting .ar_form li.pic .sta1{ border:solid 1px #e7e7eb; height:98px; background:#fff; text-align:center; font-size:14px; line-height:90px; cursor:pointer}
+                .page_setting .ar_form li.pic .sta1:hover{ background:#fbfbfb; color:#c00}
+                .page_setting .ar_form li.pic .sta2{ position:relative;border:solid 1px #e7e7eb; height:98px; background:#000; cursor:pointer}
+                .page_setting .ar_form li.pic .sta2 img{ width:98px; height:98px; display:block;}
+                .page_setting .ar_form li.pic .sta2 img:hover{opacity:.9}
+                .page_setting .ar_form li.pic .sta2 p{ position:absolute; bottom:0; left:0; right:0; height:24px; background:rgba(0,0,0,.5); text-align:center; color:#fff; line-height:23px; font-size:14px;}
+                .page_setting .ar_form li.desc textarea{width:210px; height:90px; padding:4px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px; resize: none;}
+                .page_setting .ar_form li.btn{ position:absolute; right:20px; top:20px;}
+                .page_setting .ar_form li.btn strong{display:inline-block; padding:5px 8px 6px; background:#ccc; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#fff;}
+                .page_setting .ar_form li.btn strong.clear{ background:#e60012}
+                .page_setting .ar_form li.btn strong.clear:hover{ background:#cf1524}
+
+
+                .page_setting dt {
+                    padding-bottom: 6px;
+                    font-size: 14px;
+                }
+
+                .page_setting dt span {
+                    font-size: 14px;
+                    color: #888;
+                }
+
+
+
+            </style>
+            <dt class="dbx-share" style="width:110%;">分享设置<span>（建议标题不超过10个文字、正文不超过20个字、使用120*120像素图片）</span></dt>
+            <ul class="dbx-share ar_form">
+                <li><input id="share-title" type="text" placeholder="请输入页面名称" class="w2"></li>
+                <li class="pic">
+                    <div id="upload-pic" class="sta1" style="display: block;">上传图片</div>
+                    <div id="change-pic" class="sta2" style="display: none;"><img id="share_img_url"><p>修改</p></div>
+                    <input id="file1" type="file" name="file" class="share-file" disclass="file_box" onchange="changeFile1('file1', renderShareImg)">
+                </li>
+                <li class="desc"><textarea id="share-desc1" cols="" rows="" placeholder="请输入正文"></textarea></li>
+                <li class="btn"><strong class="clear">全部清空</strong></li>
+            </ul>
+            <script type="text/plain" id="myEditor" style="width: 540px; height: 400px;"></script>
+        </div>
+    </div>
+    <div class="bt_confirm_btn"><strong class="save pre">上一步</strong><strong class="save save-and-up">上架</strong><strong class="save save-and-down">下架</strong><strong class="save ok">保存</strong></div>
+</div>
+
+<input type="hidden" id="integralUnit" value="{{unit}}">
+<script type="text/javascript" src="/javascripts/add-goods-rule.js"></script>
+<script type="text/javascript" src="/javascripts/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/umeditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="/ueditor/editor_api.js"></script>
+<script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    var canNotEdit = false
+
+    function renderShareImg(url){
+        $('#share_img_url').attr('src', url)
+        $('#upload-pic').hide()
+        $('#change-pic').show()
+    }
+    $(function(){
+
+
+        $('.clear').click(function(){
+            $('#share-title').val('');
+            $('#share-desc1').val('');
+            $('#share_img_url').removeAttr('src');
+            $('#upload-pic').show()
+            $('#change-pic').hide()
+        })
+
+
+        $('#upload-pic').next().next().hide()
+
+
+        $('#upload-pic').click(function(){
+            $(this).next().next().click();
+        });
+
+        $('#change-pic').click(function(){
+            $(this).next().click();
+        });
+
+
+        setTimeout(function(){
+            var payWay=$('#play-way').val();
+            var $shares=$('.dbx-share');
+            if(payWay==='5'){
+                $shares.hide();
+            }
+        },100);
+
+        $('#next').click(function(){
+            var payWay=$('#play-way').val();
+            var $shares=$('.dbx-share');
+            if(payWay==='5'){
+                $shares.hide();
+            }else{
+                $shares.show();
+            }
+        })
+
+    })
+
+
+    function changeFile1(id, done){
+        if (!$('#' + id).val()){
+            return;
+        }
+        $.ajaxFileUpload({
+            type: 'post',
+            url: '/image/upload',
+            fileElementIds: [id],
+            success: function(data){
+                var res = JSON.parse($(data).text())
+                if (res && res.url){
+                    done(res.url, res.name)
+                } else {
+                    swal('上传图片失败')
+                }
+            },
+            error: function(xhr){
+                var res = JSON.parse($(xhr.responseText).text())
+                if (res && res.url){
+                    done(res.url, res.name)
+                } else {
+                    swal('上传图片失败')
+                }
+            }
+        })
+    }
+
+
+
+
+    function changeFile(){
+        if (canNotEdit){
+            return;
+        }
+        if (!$('#file').val()){
+            return;
+        }
+        $.ajaxFileUpload({
+            type: 'post',
+            url: '/image/upload',
+            fileElementIds: ['file'],
+            success: function(data){
+                var res = JSON.parse($(data).text())
+                if (res && res.url){
+                    $('#pic').attr('src', res.url)
+//                    $('#change-pic').show().attr('src',res.url).prev().hide();
+                    $('#view-pic').attr('src', res.url)
+                    $('#del').show()
+                } else {
+                    swal('上传图片失败')
+                }
+            },
+            error: function(xhr){
+                var res = JSON.parse($(xhr.responseText).text())
+                if (res && res.url){
+                    $('#pic').attr('src', res.url);
+                    $('#view-pic').attr('src', res.url)
+                    $('#del').show()
+                } else {
+                    swal('上传图片失败')
+                }
+            }
+        })
+    }
+
+    $(function () {
+
+        $('.layer_wBg').find('.abolish').click(function(){
+            $('.layer_wBg').removeClass('show')
+        })
+        $('.layer_wBg').find('.not').click(function(){
+            $('.layer_wBg').removeClass('show')
+        })
+
+        $('#addDay').click(function(){
+            $('.save').hide();
+            $('.abolish').hide();
+            $('.sure').show();
+            $('.not').show();
+            $('.layer_wBg').addClass('show')
+            $('#lottery_addListcon').html('')
+            $('.first').show()
+            $('.header').text('添加天数套餐')
+        })
+
+        $('#addDayCon').click(function(){
+            var lottery_addListcon = $('.lottery_addList')
+            rendToLottery(lottery_addListcon)
+        })
+
+        function rendToLottery(parents,things){
+            var domString = ''
+            domString += '<div class="first"><input type="text" class="VIPname form-control samples" placeholder="套餐名称"><input type="text" class="VIPday form-control samples" placeholder="会员有效天数"><input type="text" class="priceVIP form-control samples" placeholder="价格"><button class="btn btn-danger" id="delete">删除</button></div>'
+            var $parent = $(domString)
+            parents.append($parent)
+            $('#delete', $parent).click(function(){
+                $(this).closest('.first').remove();
+            })
+
+            if (things) {
+                $parent.find('.VIPday').val(things.day)
+                $parent.find('.priceVIP').val(things.price)
+                $parent.find('.VIPname').val(things.name)
+            };
+        }
+        $('.sure').click(function(){
+            SureData()
+        })
+        function SureData(){
+            var page = [];
+            $('.first').each(function(){
+                var VIPday = $(this).find('.VIPday').val();
+                var priceVIP = $(this).find('.priceVIP').val();
+                var VIPname = $(this).find('.VIPname').val();
+                if (!VIPday || !priceVIP || !VIPname) {
+                    alert('请填写会员天数或价格或套餐名称');
+                    return false;
+                }
+                if ((VIPday = checkInt(VIPday)) == null) {
+                    alert('请填入正确的天数');
+                    return false;
+                }
+                if ((priceVIP = checkFloat(priceVIP)) == null) {
+                    alert('请填入正确的价格');
+                    return false;
+                }           
+                page.push({name:VIPname, day: VIPday, price: priceVIP})
+            })
+            $('.layer_wBg').removeClass('show')
+            VIP = page
+            $('.member').show()
+            renderToMwmber(page)
+        }
+
+        function renderToMwmber(page){
+            var domString = ''
+            $.each(page,function(i,v){
+                domString += '<tr><td class="_name">' + v.name + '</td><td class="_day">' + v.day + '</td><td class="_price">' + v.price + '</td></tr>'
+            })
+            $('#showMember').html(domString)
+        }
+
+        var buyGoods = {}
+        var initBuyGoods = false
+        function loadBuyGoods(cb){
+            if (initBuyGoods){
+                return
+            }
+            $.ajax({
+                type: 'GET',
+                url: "/admin/list/buy/goods",
+                success: function(data){
+                    $.each(data, function(i, o){
+                        buyGoods[o._id.toString()] = o
+                    })
+                    initBuyGoods = true;
+                    cb(data)
+                }
+            })
+        }
+        $('#addStore').click(function(){
+            $('.sure').hide();
+            $('.not').hide();
+            $('.save').show();
+            $('.abolish').show();
+            $('.layer_wBg').addClass('show')
+            $('.first').hide();
+            $('.header').text('添加商品')
+            if (initBuyGoods){
+                return
+            }
+            loadBuyGoods(function(data){
+                grendTolayer(data)
+            })         
+        })
+        var goodsCatConfig = null;
+        var goodsData = {};
+        var goodsId = $('#goodsId').val();
+        var token = $('#wxToken').val();
+        var VIP = [];
+
+        function generateGoodsCatOption(data){
+            var domString = '<option value="">请选择</option>'
+
+            $.map(data, function(v, k){
+                domString += '<option value="' + k + '">' + v.name + '</option>'
+            })
+            return domString;
+        }
+
+        function grendTolayer(data){
+            var parent = $('#lottery_addListcon')
+            var html = '';
+            $.each(data, function(i,v){
+                html += '<div class="one" goodid="' + v._id + '" img = "' + v.pic + '"><li class="imgs"><img src="' + v.pic + '" alt=""></li><div class="right_message"><div style="width:50px;float:left;">商品名：</div><p title="'+ v.name+'" style="width:70px;overflow:hidden;height:28px;line-height:14px;position:relative;top:2px;">' + v.name + '</p></div></div>'
+            })
+            parent.html(html)
+            $('li', parent).click(function(){
+                if($(this).attr('class') == 'imgs'){
+                    $(this).addClass('this');
+                }else{
+                    $(this).removeClass('this');
+                }
+            });
+        }
+        $('.layer_wBg .save').click(function(){
+            var ids = []
+            $('#lottery_addListcon').find('li.this').each(function(){
+                ids.push($(this).closest('.one').attr('goodid'))
+            })            
+            if(ids.length <= 0){
+                return swal('请选择你要的商品！')
+            }
+            
+            $('.layer_wBg').removeClass('show')
+            $('#addStore').hide();
+            grendTouser(ids)
+        })
+        function grendTouser(ids){
+            var html = '';
+            var user_can = $('#user_can')
+            $.each(ids, function(i, id){
+                if (buyGoods[id]){
+                    html += '<div class="picture_right" dataId="' + id + '"><img src="' + buyGoods[id].pic + '"><span>×</span></div>'
+                }
+            })
+            user_can.after(html)
+            $('span',$('html')).click(function(){
+                $(this).closest('.picture_right').remove();
+                if ($('.picture_right').length == 0) {
+                    $('#addStore').show();
+                };
+            })
+        }
+
+        $('#discount').change(function(){
+            var v = $(this).val();
+            if ( v <= 0 || v >= 10) {
+                $(this).val('');
+                swal('折扣不能超过或等于10折且保留小数点后一位')
+            };
+        })
+
+        $('#category1').change(function(){
+            var v = $(this).val();
+            var domString = ''
+            if (v && goodsCatConfig[v] && goodsCatConfig[v].cat){
+                var data = goodsCatConfig[v].cat;
+                domString = generateGoodsCatOption(data);
+            } else {
+                domString = generateGoodsCatOption({});
+            }
+            $('#category2').empty();
+            $('#category2').append(domString);
+        })
+
+        function initGoodsCategory(){
+            var domString = generateGoodsCatOption(goodsCatConfig);
+            $('#category1').empty();
+            $('#category1').append(domString)
+            $('#category1').change()
+        }
+
+        function loadGoodsCategory(cb){
+            $.ajax({
+                type: 'GET',
+                url: "/admin/goods/category",
+                success: function(data){
+                    goodsCatConfig = data;
+                    if (goodsCatConfig){
+                        initGoodsCategory();
+                    }
+                    cb?cb():''
+                },
+                error: function(){
+                    cb?cb():''
+                }
+            })
+        }
+
+        $('#upload-file').click(function(){
+            $('#file').click();
+        })
+
+        $('#del').click(function(){
+            $('#pic').removeAttr('src')
+            $('#view-pic').attr('src', res.url)
+            $('#del').hide()
+        })
+
+        $('#live-time').find('.startTime').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('.effect').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('.exceed').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('#validity-time').find('.validity-time').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('#type').change(function(){
+            var v = $(this).val();
+            if (v == 999) {
+                $('#extLink').next().text("(必选项，填写后，则用户在个人订单中会显示链接入口按钮)");
+            }
+            $('#live-time').find('.startTime').val('')
+            $('[goods-type][goods-type=' + v + ']').show()
+            $('[goods-type][goods-type!=' + v + ']').hide()
+            $('[hide-goods-type]').show()
+            $('[hide-goods-type*=-' + v + '-]').hide()
+            resMap = null;
+            $('.pop_page1 .pop_list').empty()
+        })
+
+        $('#play-way').change(function(){
+            var value = $(this).val();
+            $('.play-way').hide();
+            $('.play-way[data=' + value + ']').show();
+            $('#type').find('option').show()
+            $('#type').val('3')
+            $('#type').change()
+            $('#type').find('option[disabled-type*=' + value + ']').hide()
+            if (value == 5){
+                $('#store').closest('li').hide()
+                $('#limit-count').hide()
+                $('#use-rule').hide()
+            } else {
+                $('#store').closest('li').show()
+                $('#limit-count').show()
+                $('#use-rule').show()
+            }
+        })
+        $('#play-way').change();
+
+        $('.play-way').find('.start-down-time').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('.play-way').find('.start-time').each(function(){
+            $(this).attr('id', Math.random());
+        })
+
+        $('.play-way').find('.start-time').focus(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('.play-way').find('.end-time').focus(function(){
+            var startTime = $(this).closest('.play-way').find('.start-time');
+            var id = startTime.attr('id');
+            var v = startTime.val();
+            if (v){
+                WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss', minDate: "#F{$dp.$D(\'" + id + "\',{m:1});}"});
+            } else {
+                startTime.focus()
+            }
+        })
+
+        function checkInt(count){
+            count = parseInt(count, 10);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return count;
+            }
+        }
+
+        function checkFloat(count){
+            count = parseFloat(count);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return Math.floor(count * 1000) / 1000;
+            }
+        }
+
+        $('#next').click(function(){
+            $('.save').show()
+            var category1 = $('#category1').val();
+            if (!category1){
+                return swal('请选择商品品类');
+            }
+
+            var category2 = $('#category2').val();
+            if (!category2){
+                return swal('请选择商品品类');
+            }
+
+            var discount = $('#discount').val();
+            if (type == 9) {
+                if (!discount) {
+                    return swal('请填写折扣');
+                };
+            };
+
+            var type = parseInt($('#type').val(), 10);
+
+            var name = '';
+            if (type == 103){
+                name = $('#demandName').val();
+            } else {
+                name = $('#name').val()
+            }
+            if (!name){
+                return swal('请输入商品名字');
+            }
+
+            var urlReg = /^(https|http):\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
+            var gainInfo = $('#gain-info').val();
+            if (!gainInfo){
+                gainInfo = ''
+            } else if (gainInfo && !urlReg.test(gainInfo)){
+                return swal('领奖须知链接格式不正确');
+            }
+
+            var extLink = $('#extLink').val();
+            if (type == 999){
+                if(!extLink){
+                    return swal('商品外部链接不能为空');
+                }
+                if(!urlReg.test(extLink)){
+                    return swal('商品外部链接格式不正确');
+                }
+            }
+            if (!extLink || !urlReg.test(extLink)){
+                extLink = ''
+            }
+            
+            
+
+            var storeId = $('#store').val();
+            var store = {}
+            if (storeId){
+                var storeName = $('#store').find('option:checked').text()
+                store = {id: storeId, name: storeName}
+            }
+
+            var couponId = $('#coupon').val();
+            var coupon = {}
+            if (couponId){
+                var couponName = $('#coupon').find('option:checked').text()
+                coupon = {id: couponId, name: couponName}
+            } else if (type == 10){
+                return alert('请选择优惠券')
+            }
+
+            var price = $('#price').val();
+            if ($('#priceVIP').val() == '') {
+                return alert('请填写会员价格')
+            }
+            if (type == 105) {
+                price = VIP[0].price;
+            }
+            if ((price = checkFloat(price)) == null){
+                return swal('请输入正确的商品价格');
+            }
+            if (type == 2 && (price < 1 || price > 200)){
+                return swal('请输入正确的红包金额， 1-200元');
+            }
+
+            if ((type != 103 && type != 5) && price == 0){
+                return swal('商品价格必须大于0');
+            }
+
+            var hidePrice = 0;
+            if ($('input[name=hide-price]').is(':checked')){
+                hidePrice = 1
+            }
+
+            var hideCount = 0;
+            if ($('input[name=hide-count]').is(':checked')){
+                hideCount = 1
+            }
+
+            /*if (type == 7) {
+                if(($('h3[goods-type=7]').is(':visible'))&&($('.picture_right').size()>0)!==true){
+                    return swal('必须 选择可使用商品哦');
+                }
+            }*/
+
+            var count = $('#count').val();
+            if (type == 5 || type == 2 || type == 999){
+                count = 0
+            } else if (type == 103 || type == 104){
+                count = 999999
+            } else {
+                if ((count = checkInt(count)) == null){
+                    return swal('请输入正确的奖品库存数量');
+                }
+            }
+
+            var pic = $('#pic').attr('src');
+            console.log('pic:' + pic)
+            if (!pic || pic == '/images/lotu.jpg'){
+                return swal('请选择商品图片');
+            }
+
+            var ruleGender = []
+            $('#rule-gender input:checked').each(function(){
+                ruleGender.push($(this).val())
+            })
+            var ruleColor = []
+            $('#rule-color input:checked').each(function(){
+                ruleColor.push($(this).val())
+            })
+            var ruleSize = []
+            $('#rule-size input:checked').each(function(){
+                ruleSize.push($(this).val())
+            })
+            var rule = {size: ruleSize, color: ruleColor, gender: ruleGender}
+
+            $('.rule .custom').each(function(){
+                var title = $(this).attr('title')
+                var arr = []
+                $(this).find('input:checked').each(function(){
+                    arr.push($(this).val())
+                })
+                if (arr.length > 0){
+                    rule[title] = arr;
+                }
+            })
+
+            if (!pic){
+                return swal('请选择商品图片');
+            }
+
+            var cardEndTime = $('.exceed').val()
+            var cardStartTime = $('.effect').val()
+            if (type == 7) {
+              if (!cardEndTime) {
+                  return swal('请填写过期时间')
+              };
+              if (!cardStartTime) {
+                  return swal('请填写生效时间')
+              };
+              if (cardStartTime == cardEndTime) {
+                return swal('生效时间不能等于过期时间')
+              }
+            };
+
+            
+            var idList = [];
+            $.each($('.picture_right'),function(){
+                var dataId = $(this).attr('dataId');
+                idList.push(dataId)
+            })
+
+            var expireDay;
+            var value = $('#expire-day').val()
+            if (type == 105) {
+                expireDay = VIP[0].day;
+            }
+
+
+
+            goodsData = {
+                name: name,
+                type: type,
+                category: category1 + category2,
+                pic: pic,
+                count: count,
+                price: price,
+                ext: {
+                    expireDay: expireDay,
+                    rule: rule,
+                    hidePrice: hidePrice,
+                    hideCount: hideCount,
+                    usedGoodsIds: idList,
+                    discount: discount/10,
+                    cardEndTime: cardEndTime,
+                    cardStartTime: cardStartTime,
+                    daySku: VIP
+                }
+            }
+
+            goodsData.ext.gainInfo = gainInfo
+            goodsData.ext.extLink = extLink
+            goodsData.ext.store = store
+            goodsData.ext.coupon = coupon
+
+            var limitCount = parseInt($('.limit-count:checked').val(), 10);
+            if (limitCount){
+                goodsData.ext.limitCount = limitCount
+            }
+            var followLimit = parseInt($('.follow-limit:checked').val(), 10);
+            if (followLimit){
+                goodsData.ext.followLimit = followLimit
+            }
+
+            var payType = $('#type').val();
+            if (payType == '102'){
+                var liveTime = $('#live-time').find('.startTime').val();
+                if (!liveTime){
+                    return swal('请输入直播时间')
+                }
+                goodsData.ext.liveTime = liveTime
+
+                var buyText = $('#buyText').val();
+                if (!buyText){
+                    return swal('请输入购买成功后的文本');
+                }
+                goodsData.ext.buyText = buyText
+            } else if (payType == '1'){
+                var score = $('#score-count-value').val();
+                if ((score = checkInt(score)) == null){
+                    return swal('请输入正确内容');
+                }
+                goodsData.score = score
+            } else if (payType == '6'){
+                var shoppingCards = $('.shoppingCard').val()
+                if (count > 0 && (!shoppingCards || $.trim(shoppingCards).length == 0)) {
+                    return swal('没有填写消费码');
+                } else {
+                    var shoppingCards = $.trim(shoppingCards).split(',')
+                    var shoppingCardArr = []
+                    $.each(shoppingCards, function (i, o) {
+                        if (o && o.length > 0) {
+                            shoppingCardArr.push(o)
+                        }
+                    })
+                    shoppingCardArr = $.unique(shoppingCardArr)
+                    if (shoppingCardArr.length < count){
+                        return swal('消费码数量小于库存数量')
+                    }
+                    goodsData.ext.shoppingCards = shoppingCardArr;
+                }
+            } else if (payType == '103'){
+                var shareId = $('#shareId').val()
+                if (!shareId){
+                    return swal('请先选择视频资源');
+                }
+
+                var freeSecond = $('#freeSecond').val()
+                if (freeSecond && (freeSecond = checkInt(freeSecond)) == null){
+                    return swal('请输入正确免费观看时间');
+                } else if (!freeSecond){
+                    freeSecond = 3
+                }
+
+                var videoResId = $('#video-res-id').val()
+                goodsData.ext.videoRes = {
+                    shareId: shareId,
+                    pic: $('#video-pic').attr('src'),
+                    desc: $('#video-desc').val(),
+                    freeSecond: freeSecond
+                }
+                if (resMap && resMap[videoResId]){
+                    goodsData.ext.videoRes = $.extend(goodsData.ext.videoRes, resMap[videoResId])
+                } else if (localMap && localMap[shareId]){
+                    goodsData.ext.videoRes = $.extend(localMap[shareId], goodsData.ext.videoRes)
+                }
+            } else if (payType == '104'){
+                var ids = []
+                $('#video-goods-list li').each(function(){
+                    var attGoodsId = $(this).attr('goodsId')
+                    ids.push(attGoodsId)
+                })
+                if (ids.length == 0){
+                    return swal('请至少选择一件点播商品');
+                }
+                var shareDesc = $('#share-desc').val()
+                if (!shareDesc){
+                    return swal('请填写分享描述');
+                }
+                goodsData.ext.package = ids
+                goodsData.ext.shareDesc = shareDesc
+
+                var vipGoodsId = $('#vipGoodsId').val();
+                if (vipGoodsId){
+                    goodsData.ext.vipGoodsId = vipGoodsId
+                } else {
+                    goodsData.ext.vipGoodsId = ''
+                }
+            }
+
+            var validTime = $('.validity-time').val()
+            if (validTime){
+                goodsData.ext.validTime = validTime
+            }
+
+            if (type == 105){
+                var vipType = $('#vipType').val()
+                if (!vipType){
+                    return swal('请选择vip类型');
+                }
+                goodsData.ext.vipType = vipType
+            }
+
+            var playWay = parseInt($('#play-way').val(), 10);
+            goodsData.ext.playType = playWay;
+            var playWayContent = $('.play-way[data=' + playWay + ']');
+            if (playWay == 1){
+                var score = playWayContent.find('input[name=score]').val()
+                if ((score = checkInt(score)) == null){
+                    var unit = $('#integralUnit').val() || '积分';
+                    return swal('请填写正确的'+unit);
+                }
+                goodsData.ext.score = score;
+                var startTime = playWayContent.find('.start-time').val()
+                var endTime = playWayContent.find('.end-time').val()
+                if (startTime && endTime){
+                    if (endTime < startTime){
+                        return swal('结束时间必须大于开始时间');
+                    }
+                    goodsData.ext.startTime = startTime;
+                    goodsData.ext.endTime = endTime;
+                }
+
+            } else if (playWay == 2 || playWay == 6){
+                var redLimit = playWayContent.find('input[name=redLimit]').val()
+                if (!redLimit){
+                    redLimit = 0
+                }
+                if ((redLimit = checkInt(redLimit)) == null){
+                    return swal('请填写正确的红包数');
+                }
+                var pointLimit = playWayContent.find('input[name=pointLimit]').val()
+                if (!pointLimit){
+                    pointLimit = 0
+                }
+                if ((pointLimit = checkInt(pointLimit)) == null){
+                    return swal('请填写正确的积分数');
+                }
+                var redLimitPrice = playWayContent.find('input[name=redLimitPrice]').val()
+                if (!redLimitPrice){
+                    redLimitPrice = 0
+                }
+                if ((redLimitPrice = checkFloat(redLimitPrice)) == null){
+                    return swal('请填写正确的红包金额');
+                }
+                var fakeCount = playWayContent.find('input[name=fakeCount]').val()
+                if (!fakeCount){
+                    fakeCount = 0
+                }
+                if ((fakeCount = checkInt(fakeCount)) == null){
+                    return swal('请填写正确的伪支持数');
+                }
+                var startTime = playWayContent.find('.start-time').val()
+                var endTime = playWayContent.find('.end-time').val()
+                if (startTime && endTime){
+                    if (endTime < startTime){
+                        return swal('结束时间必须大于开始时间');
+                    }
+                    goodsData.ext.startTime = startTime;
+                    goodsData.ext.endTime = endTime;
+                } else if (playWay == 6){
+                    return swal('请填写正确的众筹开始结束时间');
+                }
+                if (playWay == 6) {
+
+                    var totalMoney=parseInt($('input[name=totalMoney]').val());
+                    if(checkInt($('input[name=totalMoney]').val())===null || totalMoney<=0){
+                        return swal('众筹总金额必须大于0');
+                    }
+                    goodsData.ext.totalMoney = totalMoney;
+                }
+                goodsData.ext.redLimit = redLimit;
+                goodsData.ext.pointLimit = pointLimit;
+                goodsData.ext.redLimitPrice = redLimitPrice;
+                goodsData.ext.fakeCount = fakeCount;
+            } else if (playWay == 5){
+
+            } else {
+                return swal('暂时不支持此类型');
+            }
+
+            $('#view-title').text(name)
+            $('#view-name').text(name)
+            $('#view-pic').attr('src', pic)
+
+            $('.wrap01').hide()
+            $('.wrap02').show()
+        })
+
+        function formatDate(num){
+            var _time = new Date(num);
+            var now = _time;
+            var year=now.getFullYear();
+            var month=((now.getMonth()+1)<10?"0":"")+(now.getMonth()+1);
+            var date=(now.getDate()<10?"0":"")+now.getDate();
+            var hour=(now.getHours()<10?"0":"")+now.getHours();
+            var minute=(now.getMinutes()<10?"0":"")+now.getMinutes();
+            var second=now.getSeconds();
+            return year+"-"+month+"-"+date+"   "+hour+":"+minute
+        }
+
+        // for goods detail
+        var editor = UM.getEditor('myEditor',{
+            autoHeightEnabled : false
+        });
+        editor.addListener('contentChange', function(){
+            $('#contentBody').html(editor.getContent());
+        })
+        $('*').not('textarea').each(function(){
+            $(this).scroll(function(e){
+                e.cancelBubble=true;
+                event.stopPropagation();
+                return false;
+            })
+        })
+
+        $('.cancel').click(function(){
+            window.location.href = '/admin/goods';
+        })
+
+        $('.pre').click(function(){
+            $('.wrap01').show()
+            $('.wrap02').hide()
+        })
+
+//        $('#name').on('keyup paste mouseup',function(){
+//            var val=$(this).val();
+//            var payWay=$('#play-way').val();
+//            if(payWay!=='5'){
+//                $('#share-title').val(val);
+//            }
+//        })
+        function saveGoods(){
+            if (canNotEdit){
+                return;
+            }
+            var url = '/admin/add/goods'
+            if (goodsId){
+                url = '/admin/goods/' + goodsId + '/update'
+            }
+
+
+            var payWay=$('#play-way').val();
+            if(payWay!=='5'){
+                var shareMap={
+                    title:$('#share-title').val(),
+                    desc:$('#share-desc1').val(),
+                    img_url:$('#share_img_url').attr('src')||''
+                };
+                var nullCount=0;
+                for(var i in shareMap){
+                    if(shareMap[i].trim()===''){
+                        nullCount++;
+//                        swal(map[i][0]+map[i][1]);
+//                        return false;
+                    }
+                }
+                if(nullCount>0&&nullCount<3){
+                    swal('分享设置填写不完整，请检查!');
+                    return false;
+                }
+                if(nullCount===0){
+                    goodsData.ext.share=shareMap;
+                }
+            }
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: goodsData,
+                success: function(data){
+                    if (goodsData.ext.playType == 5){
+                        window.location.href = '/admin/prize'
+                    } else {
+                        window.location.href = '/admin/goods'
+                    }
+                },
+                error: function(){
+                    swal('保存商品失败')
+                }
+            })
+        }
+
+        $('.save-and-up').click(function(){
+            goodsData.ext.detail = editor.getContent()
+            goodsData.ext.state = 1
+            saveGoods();
+        })
+
+        $('.save-and-down').click(function(){
+            goodsData.ext.detail = editor.getContent()
+            goodsData.ext.state = 2
+            saveGoods();
+        })
+
+        $('.ok').click(function(){
+            var state = $(this).attr('state');
+            goodsData.ext.detail = editor.getContent()
+            if (goodsId && state){
+                goodsData.ext.state = state
+            } else{
+                goodsData.ext.state = 3
+            }
+            saveGoods();
+        })
+
+        function renderCustomRule(data, id){
+            var domString = ''
+            domString += '<div id="' + new Date().getTime() + '" class="custom sample" title="' + data.title + '"><span style="margin-right: 15px;">' + data.title + ':</span>';
+            $.each(data.values, function(i, o){
+                domString += '<label><input type="checkbox" checked="true" value="' + o + '">' + o + '</label>'
+            })
+            domString += '<span class="update" style="margin-left: 20px; color: blue; cursor: pointer;">修改</span><span class="del-custom" style="margin-left: 20px; color: blue; cursor: pointer;">删除</span>'
+
+            domString += '</div>'
+            var view = $(domString);
+            if (id){
+                $('#' + id).replaceWith(view);
+            } else {
+                $('.rule').append(view);
+            }
+
+            $('.del-custom', view).click(function(){
+                $(this).closest('div.custom').remove()
+            })
+            $('.update', view).click(function(){
+                var custom = $(this).closest('div.custom')
+                var id = custom.attr('id');
+                var title = custom.attr('title')
+                var values = []
+                custom.find('input').each(function(){
+                    values.push($(this).val())
+                })
+                new createLayerwcj({title: title, values: values}, function(data){
+                    if (data && data.title && data.values && data.values.length > 0){
+                        renderCustomRule(data, id);
+                    }
+                })
+            })
+        }
+
+        $('.rule-custom').click(function(){
+            new createLayerwcj({}, function(data){
+                if (data && data.title && data.values && data.values.length > 0){
+                    renderCustomRule(data);
+                }
+            })
+        })
+
+
+
+        function bindExcelUploadEvent(){
+            $('input[name=excel]').get(0).onchange=function(){
+                var $file=$(this);
+                var shoppingCardView = $('.shoppingCard')
+                var shoppingCards = shoppingCardView.val();
+                var shoppingCardArr = []
+                if(shoppingCards && shoppingCards.length > 0){
+                    shoppingCards = $.trim(shoppingCards).split(',')
+                    $.each(shoppingCards, function(i, o){
+                        if (o && o.length > 0){
+                            shoppingCardArr.push(o)
+                        }
+                    })
+                }
+                var id = $(this).attr('id');
+//            if (!$(this).val()){
+//                return;
+//            }
+                $.ajaxFileUpload({
+                    type: 'post',
+                    url: '/excel/upload',
+                    fileElementIds: [id],
+                    success: function(data){
+                        var res = JSON.parse($(data).text())
+                        setData(res)
+                    },
+                    error: function(xhr){
+                        var res = JSON.parse($(xhr.responseText).text())
+                        setData(res)
+                    }
+                })
+
+                var setData = function(data){
+                    var importShoppingCards = []
+                    if (data && data.length > 0 && data[0].data){
+                        importShoppingCards = data[0].data
+                    }
+                    var len = 0
+                    $.each(importShoppingCards, function(i, o){
+                        if (o && o.length > 0){
+                            shoppingCardArr.push(o[0])
+                            len++
+                        }
+                    })
+                    shoppingCardArr = $.unique(shoppingCardArr)
+                    shoppingCardView.val(shoppingCardArr.join(','))
+                    swal('成功导入了' + len + '张消费码! 当前总数：' + shoppingCardArr.length);
+                    $('input[name=excel]').get(0).value='';
+                    $('input[name=excel]').get(0).files.length=0
+                }
+                $('input[name=excel]').get(0).value='';
+                $('input[name=excel]').get(0).files.length=0;
+                setTimeout(function(){
+                    bindExcelUploadEvent();
+                })
+            }
+        }
+
+        bindExcelUploadEvent();
+
+
+
+
+//        $('input[name=excel]').on('change', function(){
+//
+//        })
+
+        function renderGoods(goods){
+            if(goods.ext.share){
+                setTimeout(function(){
+                    console.log('goods.ext.share',goods.ext.share);
+                    var payWay=$('#play-way').val();
+                    if(payWay!=='5'){
+                        $('#share-title').val(goods.ext.share.title)
+                        $('#share-desc1').val(goods.ext.share.desc)
+                        $('#share_img_url').attr('src',goods.ext.share.img_url)
+                        $('#change-pic').show().prev().hide();
+                    }
+                },100)
+            }
+
+            if (goods.type == 103){
+                $('#demandName').val(goods.name);
+            } else if (goods.type == 7){
+                if (goods.ext.usedGoodsIds) {
+                    $('#addStore').hide();
+                } else {
+                    $('#addStore').show();
+                }
+                loadBuyGoods(function(data){                    
+                    grendTolayer(data)
+                    grendTouser(goods.ext.usedGoodsIds)
+                })
+            }
+            $('#name').val(goods.name)
+            $('#price').val(goods.price)
+            $('#count').val(goods.count)
+            $('#discount').val(goods.ext.discount*10)
+            $('.effect').val(goods.ext.cardStartTime)
+            $('.exceed').val(goods.ext.cardEndTime)
+            $('#distribution').val(goods.count)
+
+            if (goods.ext.rule){
+                if (goods.ext.rule.size){
+                    $.each(goods.ext.rule.size, function(i, o){
+                        $('#rule-size input[value=' + o + ']').attr('checked', true)
+                    })
+                }
+                if (goods.ext.rule.color){
+                    $.each(goods.ext.rule.color, function(i, o){
+                        $('#rule-color input[value=' + o + ']').attr('checked', true)
+                    })
+                }
+                if (goods.ext.rule.gender){
+                    $.each(goods.ext.rule.gender, function(i, o){
+                        $('#rule-gender input[value=' + o + ']').attr('checked', true)
+                    })
+                }
+                delete goods.ext.rule.size
+                delete goods.ext.rule.color
+                delete goods.ext.rule.gender
+                $.map(goods.ext.rule, function(v, k){
+                    renderCustomRule({title: k, values: v})
+                })
+            }
+            if (goods.ext.hidePrice){
+                $('input[name=hide-price]').attr('checked', true)
+            }
+            if (goods.ext.hideCount){
+                $('input[name=hide-count]').attr('checked', true)
+            }
+            $('#category1').val(goods.category.substring(0, 4))
+            $('#category1').change();
+            $('#category2').val(goods.category.substring(4, 8))
+
+            if (goods.ext.detail){
+                editor.setContent(goods.ext.detail, false);
+            }
+
+            $('#play-way').val(goods.ext.playType)
+            $('#play-way').change()
+            $('#play-way').attr('disabled', 'disabled')
+
+            $('#type').val(goods.type)
+            $('#type').change()
+            $('#type').attr('disabled', 'disabled')
+
+            if (goods.type == '102'){
+                $('#live-time').show()
+                $('#live-time').find('.startTime').val(goods.ext.liveTime);
+                $('#select-tu').show();
+                $('#buy-text').show()
+                $('#buyText').val(goods.ext.buyText);
+            } else if (goods.type == '1'){
+                $('#score-count').show()
+                $('#score-count-value').val(goods.score)
+            } else if (goods.type == '103'){
+                $('#shareId').val(goods.ext.videoRes.shareId)
+                $('#video-pic').attr('src', goods.ext.videoRes.pic)
+                $('#video-desc').val(goods.ext.videoRes.desc)
+                $('#freeSecond').val(goods.ext.videoRes.freeSecond)
+                localMap[goods.ext.videoRes.shareId] = goods.ext.videoRes
+            } else if (goods.type == '104'){
+                $.each(goods.ext.package, function(i, o){
+                    renderSelectVideoGoods(o);
+                })
+                $('#share-desc').val(goods.ext.shareDesc)
+                $('#vipGoodsId').val(goods.ext.vipGoodsId)
+            } else if (goods.type == '105'){
+                $('#expire-day').val(goods.ext.expireDay)
+                $('#expire-day').attr('disabled', 'disabled')
+                if (goods.ext.vipType){
+                    $('#vipType').val(goods.ext.vipType)
+                } else {
+                    $('#vipType').val('demand')
+                }
+
+                $('#vipType').attr('disabled', 'disabled')
+            }
+            $('#pic').attr('src', goods.pic)
+            $('#view-pic').attr('src', goods.pic)
+            $('#del').show()
+            if (goods.ext.validTime){
+                $('.validity-time').val(goods.ext.validTime)
+            }
+            if (goods.ext.limitCount){
+                $('.limit-count[value=' + goods.ext.limitCount + ']').attr('checked', true)
+            }
+            $('.follow-limit[value=' + goods.ext.followLimit + ']').attr('checked', true)
+
+            var parent = $('.play-way[data=' + goods.ext.playType + ']');
+            if (goods.ext.playType == 1){
+                parent.find('input[name=score]').val(goods.ext.score)
+                if (goods.ext.startTime && goods.ext.endTime){
+                    parent.find('.start-time').val(goods.ext.startTime)
+                    parent.find('.end-time').val(goods.ext.endTime)
+                }
+            } else if (goods.ext.playType == 2 || goods.ext.playType == 6){
+                if (goods.ext.redLimit >= 0){
+                    parent.find('input[name=redLimit]').val(goods.ext.redLimit)
+                }
+                if (goods.ext.redLimitPrice >= 0){
+                    parent.find('input[name=redLimitPrice]').val(goods.ext.redLimitPrice)
+                }
+                if (goods.ext.pointLimit >= 0){
+                    parent.find('input[name=pointLimit]').val(goods.ext.pointLimit)
+                }
+                if (goods.ext.startTime && goods.ext.endTime){
+                    parent.find('.start-time').val(goods.ext.startTime)
+                    parent.find('.end-time').val(goods.ext.endTime)
+                }
+                if (goods.ext.playType == 6){
+                    if (goods.ext.totalMoney >= 0){
+                        parent.find('input[name=totalMoney]').val(goods.ext.totalMoney)
+                    }
+                    if (goods.ext.fakeCount >= 0){
+                        parent.find('input[name=fakeCount]').val(goods.ext.fakeCount)
+                    }
+                }
+            }
+
+            if (goods.ext.daySku) {
+                VIP = goods.ext.daySku
+                var arr = [];
+                for (var i = 0; i < goods.ext.daySku.length; i++){
+                    var value = goods.ext.daySku[i]
+                    var dd = $('.first');
+                    var two = $('.two')
+                    var showMember = $('#showMember')
+                    arr.push(value)
+                    $('.member').show()
+                    renderToMwmber(arr)
+                    if (i == 0) {
+                        dd.find('.VIPday').val(value.day)
+                        dd.find('.priceVIP').val(value.price)
+                        dd.find('.VIPname').val(value.name)
+                        showMember.find('._name').text(value.name)
+                        showMember.find('._day').text(value.day)
+                        showMember.find('._price').text(value.price)
+                    } else {
+                        rendToLottery(two, value)
+
+
+                    }
+                }
+                //goodsData.ext.daySku = goods.ext.daySku
+            };
+
+            if (goods.ext.gainInfo){
+                $('#gain-info').val(goods.ext.gainInfo)
+            }
+            if (goods.ext.extLink){
+                $('#extLink').val(goods.ext.extLink)
+            }
+            if (goods.ext.store && goods.ext.store.id){
+                $('#store').val(goods.ext.store.id)
+            }
+
+            if (goods.ext.coupon && goods.ext.coupon.id){
+                $('#coupon').val(goods.ext.coupon.id)
+            }
+
+            if (goods.ext.shoppingCards){
+                $('.shoppingCard').val(goods.ext.shoppingCards.join((',')))
+            }
+
+            if (goods.ext.state == 1){
+                $('.save-and-up').hide()
+            } else if (goods.ext.state == 2){
+                $('.save-and-down').hide()
+            }
+            $('.ok').attr('state', goods.ext.state);
+        }
+
+        function loadGoods(){
+            $.ajax({
+                type: "GET",
+                url: '/admin/goods/' + goodsId + '/info',
+                success: function(data){
+                    renderGoods(data)
+                    if (token && !data.token){
+                        enterPreview()
+                    }
+                },
+                error: function(xhr){
+                    console.log('获取商品信息失败')
+                }
+            })
+        }
+
+        if (goodsId){
+            loadGoodsCategory(function(){
+                loadCoupon(function(){
+                    loadStore(function(){
+                        loadDemandVip(function(){
+                            loadGoods();
+                        });
+                    })
+                })
+            })
+        } else {
+            loadGoodsCategory(function(){
+                loadCoupon(function(){
+                    loadStore(function(){
+                        loadDemandVip(function(){
+
+                        });
+                    })
+                });
+            });
+        }
+
+        function generateStoreOption(stores){
+            var domString = ''
+            if (stores.length == 0){
+                return domString;
+            }
+            $.each(stores, function(i, o){
+                domString += '<option value="' + o._id + '">' + o.name + '</option>'
+            })
+            return domString;
+        }
+
+        function generateVipGoodsOption(docs){
+            var domString = ''
+            if (docs.length == 0){
+                return domString;
+            }
+            $.each(docs, function(i, o){
+                domString += '<option value="' + o._id + '">' + o.name + '</option>'
+            })
+            return domString;
+        }
+
+        function loadStore(cb){
+            $.ajax({
+                type: "GET",
+                url: '/admin/store/select/list',
+                success: function(data){
+                    $('#store').append(generateStoreOption(data))
+                    cb()
+                },
+                error: function(xhr){
+                    cb()
+                }
+            })
+        }
+
+        function loadCoupon(cb){
+            $.ajax({
+                type: "GET",
+                url: '/admin/coupon/list?pageSize=1000',
+                success: function(data){
+                    if (data.status == 'success'){
+                        $('#coupon').append(generateStoreOption(data.data.result))
+                    }
+                    cb()
+                },
+                error: function(xhr){
+                    cb()
+                }
+            })
+        }
+
+        function loadDemandVip(cb){
+            $.ajax({
+                type: "GET",
+                url: '/admin/vip/demand/select/list',
+                success: function(data){
+                    $('#vipGoodsId').append(generateVipGoodsOption(data))
+                    cb()
+                },
+                error: function(xhr){
+                    cb()
+                }
+            })
+        }
+
+        var curPage=1;
+        var total=null;//总数据条数
+        var pageCount=10;//每一页显示的数据条数
+        var totalPage=null;//总页数
+        var paginationCount=5;//导航条最多显示的个数
+        var $ul1=$('.pop_list'),
+                $ul2=$ul1.next().hide();
+
+//        <li class="disabled"><a href="#" class="pagination-prev" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+//        <li class="active pagination-a"><a href="#">1</a></li>
+//
+//        <li><a class="pagination-next" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+//        function changePage(page){
+//
+//        }
+        function bindEvtForPaginationLink(){
+            $ul2.find('.pagination-prev').click(function(){
+                if($(this).parent().hasClass('disabled')){
+                    return false;
+                }
+                curPage=curPage-1;
+                loadVideo(curPage);
+//                alert('prev');
+            })
+            $ul2.find('.pagination-next').click(function(){
+                if($(this).parent().hasClass('disabled')){
+                    return false;
+                }
+                curPage=curPage+1;
+                loadVideo(curPage);
+//                alert('next');
+            })
+            $ul2.find('.pagination-a').each(function(){
+                $(this).click(function(){
+                    var page=parseInt($(this).text(),10);
+                    loadVideo(page);
+                    curPage=page;
+                })
+            })
+        }
+        function makePaginationLink(){//比如第一页从1开始
+
+            var start=curPage;
+            if(start<1){
+                start=1;
+            }
+            var end=start+paginationCount;
+            if(end>totalPage){
+                end=totalPage;
+            }
+            if(end-start<paginationCount){
+                start=start-(paginationCount-(end-start));
+            }
+            if(start<1){
+                start=1;
+            }
+            var str='<li'+(curPage===1?' class="disabled"':'')+'><a href="#" class="pagination-prev" aria-label="Previous"><span aria-hidden="true">«</span></a></li>';
+            for(var i=start;i<=end;i++){
+                str+='<li'+(curPage===i?' class="active"':'')+'><a class="pagination-a" href="javascript:;">'+i+'</a></li>';
+            }
+            str+='<li'+(curPage===totalPage?' class="disabled"':'')+'><a class="pagination-next" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>';
+
+            $ul2.html(str);
+            setTimeout(function(){
+                bindEvtForPaginationLink();
+            })
+        }
+        function handlePagination(data){
+            console.log('data is:',data);
+            total=parseInt(data.subjectcount,10);
+            totalPage=Math.ceil(total/pageCount);
+            console.log('totalPage is:',totalPage)
+            if(totalPage!==1){
+                $ul2.show();
+                makePaginationLink();
+//                if(totalPage<=paginationCount){
+//                    makePaginationLink(1);
+//                }
+            }
+        }
+        function renderRes(data){
+            //dbx-pagination
+            $('.pop_page1').show()
+
+//            <li><a class="pagination-a" href="#">2</a></li>
+//            <li><a class="pagination-a" href="#">3</a></li>
+//            <li><a class="pagination-a" href="#">4</a></li>
+//            <li><a class="pagination-a" href="#">5</a></li>
+
+            if (!data || data.length == 0){
+                return $('.pop_page1 .nodata').show()
+            }
+            var domString = ''
+            resMap = {}
+            $.each(data.subject, function(i, o){
+                var imageUrl="";
+                if($.isArray(o.entry)){
+                    o.entry=o.entry[0];
+                }
+                domString += '<li id="' + o.attrkey.id + '"><div class="pic"><img src="' +
+                        o.entry.image_url
+                        + '"><span class="ico">播放</span></div>' +
+                        '<h3>' + o.entry.title + '</h3></li>'
+                resMap[o.attrkey.id ] = o;
+            });
+            var $newView = $($.trim(domString));
+            $('.pop_page1 .pop_list').html('').append($newView);
+            $('li', $newView.parent()).click(function(){
+                var res = resMap[$(this).attr('id')]
+                if (res){
+                    $('#video-pic').attr('src',res.entry.image_url);
+                    $('#demandName').val(res.entry.title);
+                    $('#video-desc').val(res.entry.summary);
+                    $('#video-res-id').val(res.attrkey.id);
+                    $('#shareId').val(res.attrkey.id);
+                }
+                $('.pop_page1').hide();
+            })
+            handlePagination(data);
+        }
+
+        function loadVideo(page){
+            $.ajax({
+                method: 'GET',
+                //url: '/admin/wmh/video/resource',
+                url: '/admin/media/'+pageCount+'/'+(page||1),
+                success: function(data){
+                    console.log('this is the data:',data);
+                    if(data){
+                        renderRes(data);
+                    }
+                },
+                error: function(){
+                    renderRes([]);
+                }
+            })
+        }
+
+        function renderSelectVideoGoods(goods){
+            var s = '<li goodsId="' + goods._id + '"><strong>' + goods.name + '</strong><span class="close">关闭</span></li>'
+            var $view = $($.trim(s))
+            $('#video-goods-list').append($view);
+            $('.close', $view).click(function(){
+                var attGoodsId = $(this).closest('li').attr('goodsId')
+                $(this).closest('li').remove();
+                $('.pop_page1 li[goodsId=' + attGoodsId + ']').hide()
+            })
+        }
+
+        function renderVideoGoods(data){
+            $('.pop_page1').show()
+            if (!data || data.length == 0){
+                return $('.pop_page1 .nodata').show()
+            }
+            var domString = ''
+            resMap = {}
+            $.each(data, function(i, o){
+                domString += '<li goodsId="' + o._id + '"><div class="pic"><img src="' + o.ext.videoRes.pic + '"><span class="ico">播放</span></div>' +
+                        '<h3>' + o.name + '</h3></li>'
+                resMap[o._id] = o
+            });
+            var $newView = $($.trim(domString));
+            $('.pop_page1 .pop_list').empty().append($newView);
+            $('li', $newView.parent()).click(function(){
+                var res = resMap[$(this).attr('goodsId')]
+                if (res){
+                    renderSelectVideoGoods(res)
+                }
+                $('.pop_page1').hide();
+            })
+
+            $('#video-goods-list li').each(function(){
+                var attGoodsId = $(this).attr('goodsId')
+                $('.pop_page1 li[goodsId=' + attGoodsId + ']').hide()
+            })
+        }
+
+        function loadVideoGoods(){
+            $.ajax({
+                method: 'GET',
+                url: '/admin/video/goods',
+                success: function(data){
+                    renderVideoGoods(data)
+                },
+                error: function(){
+                    renderVideoGoods([])
+                }
+            })
+        }
+
+        var resMap = null
+        var localMap = {}
+        $('.add-res').click(function(){
+            if (!resMap){
+                loadVideo();
+            } else {
+                $('.pop_page1').show();
+            }
+        })
+
+        $('.add-res-goods').click(function(){
+            if (!resMap){
+                loadVideoGoods();
+            } else {
+                $('#video-goods-list li').each(function(){
+                    var attGoodsId = $(this).attr('goodsId')
+                    $('.pop_page1 li[goodsId=' + attGoodsId + ']').hide()
+                })
+                $('.pop_page1').show();
+            }
+        })
+
+        $('.pop_page1 .close').click(function(){
+            $('.pop_page1').hide();
+        })
+
+        function enterPreview(){
+            canNotEdit = true
+            $('input').attr('disabled', 'disabled')
+            $('select').attr('disabled', 'disabled')
+            $('textarea').attr('disabled', 'disabled')
+            $('.bt_confirm_btn .save-and-up').hide()
+            $('.bt_confirm_btn .save-and-down').hide()
+            $('.bt_confirm_btn .ok').hide()
+            $('#upload-file').hide();
+            $('#del').hide();
+            $('.add_resource').hide();
+            $('.add-res-goods').hide();
+            editor.hide()
+        }
+    });
+</script>
+
+
+
+
+
+</body>
+</html>
+<style>
+    .wrap_all .Wdate{
+        cursor:pointer;
+        background:white;
+    }
+    .pad_t20.clearfix{
+        padding-left:30px;
+    }
+    .store_list .one{
+        height:160px;
+    }
+    .right_message{
+        margin-top:10px;
+        position:relative;
+    }
+</style>
+
+<script>
+    $.extend({
+        parseUrl:function(href){
+            var url=href||location.href;
+            var a =  document.createElement('a');
+            a.href = url;
+            var ret = {},
+                    seg = a.search.replace(/^\?/,'').split('&'),
+                    len = seg.length, i = 0, s;
+            for (;i<len;i++) {
+                if (!seg[i]) { continue; }
+                s = seg[i].split('=');
+                ret[s[0]] = s[1];
+            }
+            return ret;
+        }
+    })
+    $(function(){
+        var type= $.parseUrl().type||null;
+        var val=$('#play-way').val();
+        if(val==='5'){
+            $('.dbx-msg').html('创建一个新奖品');
+        }
+        $('#play-way').change(function(){
+            var val=$(this).val();
+            if(val==='5'){
+                $('.dbx-msg').html('创建一个新奖品');
+            }else{
+                $('.dbx-msg').html('创建一个新商品');
+            }
+        })
+        if(type==='jiang_pin'){
+            $('.dbx-msg').html('创建一个新奖品');
+        }else{
+            $('.dbx-msg').html('创建一个新商品');
+        }
+    })
+</script>

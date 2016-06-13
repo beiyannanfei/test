@@ -1,0 +1,72 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/order_chart.css">
+<div class="load">
+    <img src="/images/loading.gif">
+</div>
+<div class="main">
+	<div class="normalheader transition animated fadeIn">
+	    <div class="hpanel">
+	        <div class="panel-body">
+	            <a class="small-header-action" href="##">
+	                <div class="clip-header">
+	                    <i class="fa fa-arrow-up"></i>
+	                </div>
+	            </a>
+
+	            <div id="hbreadcrumb" class="pull-right m-t-lg">
+	                <ol class="hbreadcrumb breadcrumb">
+	                    <li><a href="##">订单统计</a></li>
+	                    <li>
+	                        <span>统计列表</span>
+	                    </li>
+	                </ol>
+	            </div>
+	            <h2 class="font-light m-b-xs">
+	                订单统计
+	            </h2>
+	            <small>统计列表</small>
+	        </div>
+	    </div>
+	</div>
+	<div class="chartTime">
+		<p>
+			<i>日期：</i>
+			<input type="text" id="data" class="form-control">
+		<p>
+			<i>时间段：</i>
+			<select class="form-control" id="time"></select>
+		</p>
+	</div>
+	<div class="chart_num">
+		<div class="award_num">
+			<p id="total"></p>
+			<p id="money"></p>
+		</div>
+		<table class="table chart_table">
+			<thead>
+				<tr>
+					<th>名称</th>
+					<th>发送数量</th>
+					<th>发送金额</th>
+					<th>发送人数</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody id="chart_message">
+				
+			</tbody>
+		</table>
+	</div>
+	<div class="pop_cnt">
+        <h2><strong class="tit2">奖品列表</strong><span class="close" title="关闭">关闭</span></h2>
+        <ul class="info1" style="list-style:none">
+           
+        </ul>
+        <div class="dialog_btn">
+            <button type="button" class="btn w-xs btn-success" id="save">确定</button>
+            <button type="button" class="btn w-xs btn-default" id="wrong">取消</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/javascripts/order_chart.js"></script>

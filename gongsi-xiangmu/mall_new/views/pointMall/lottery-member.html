@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/lottery-manage.css" />
+
+</head>
+<body id="index">
+
+<div class="warp">
+  
+  <div class="top_tile">抽奖管理</div>
+  
+  <div class="crumbs">中奖名单管理</div>
+
+  <div class="c_tile">{{event.theme}}  {{event.tag}}</div>
+    <input type="hidden" id="eventId" value="{{event._id}}">
+    <input type="hidden" id="goodsId" value="{{goods._id}}">
+    <input type="hidden" id="state" value="{{goods.state}}">
+  
+  <div class="manage">
+    <ul class="th">
+      <li>奖品</li>
+      <li id="member">中奖名单</li>
+    </ul>
+    <div class="con">
+       <div class="gif">
+         <img src="{{goods.pic}}" width="100" height="100">
+         <p>{{goods.name}}</p>
+       </div>
+       <div class="list">
+         <ul id="lottery-user-list">
+
+         </ul>
+       </div>
+    </div>
+  </div>
+  
+  <div class="btn_group" style="margin-top:20px;">
+    <span class="btn btn_lg btn_primary sendAll" style="display: none"><button type="button">通知全部用户</button></span>
+    <span class="btn btn_lg btn_primary completed"><button type="button">完成</button></span>
+	<span class="btn btn_lg btn_default"><button type="button" onClick="goback()">取消</button></span>
+  </div>
+	
+</div>
+
+<div class="layer_wBg" id="assign-user">
+    <div class="layer_w">
+      <div class="header">指定中奖名单<span class="close" data-action="layer_close">关闭</span></div>
+      <div class="con">
+        <div class="layer_search">
+          <input type="text" class="inputTet" id="q" placeholder="按用户名查询" /><input type="button" class="btn" id="search-button" value="查询">
+        </div>
+        <div class="layer_search_list">
+          <ul id="user-list">
+
+          </ul>
+        </div>
+        <!---->
+      </div>
+      <div class="btn_group">
+        <span class="btn btn_lg btn_primary ok"><button type="button">确定</button></span>
+        <span class="btn btn_lg btn_default cancel"><button type="button">取消</button></span>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var state = $('#state').val();
+        console.log(state);
+        if (state != 'undo'){
+            $('.completed').hide();
+            $('.sendAll').show();
+        }
+
+        function searchUser(q){
+            if (!q){
+                return;
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/search/user?q=' + q,
+                success: function(data){
+                    renderSearchUser(data)
+                },
+                error: function(xhr){
+                    alert('搜索失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function renderSearchUser(data){
+            var domString = '';
+            $.each(data, function(i, o){
+                domString += "<li nickName=" + o.nickName + " headImg=" + o.headImg + " openId=" + o.openId + "><img class=photo src=" + o.headImg + " width=46 height=46>" + o.nickName + "</li>"
+            })
+            var newCell = $($.trim(domString));
+            $('#user-list').empty();
+            $('#user-list').append(newCell);
+            $('li', newCell.parent()).click(function(){
+                var openId = $(this).attr('openId');
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+            });
+        }
+
+        function startLottery(openIds, openId){
+            if (!openIds){
+                openIds = []
+            } else if(!$.isArray(openIds)){
+                openIds = [openIds]
+            }
+
+            var eventId = $('#eventId').val();
+            var goodsId = $('#goodsId').val();
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/lottery/event/' + eventId + '/goods/' + goodsId,
+                data: {openIds: openIds},
+                success: function(data){
+                    renderUser(data, openId)
+                },
+                error: function(xhr){
+                    alert('抽奖失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        var running = false
+        function doneLottery(openIds){
+            if (!openIds){
+                return alert('没有任何中奖名单');
+            }
+
+            if (running){
+                return
+            }
+            running = true
+
+            var eventId = $('#eventId').val();
+            var goodsId = $('#goodsId').val();
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/lottery/event/' + eventId + '/goods/' + goodsId + '/done',
+                data: {openIds: openIds},
+                success: function(data){
+                    window.history.go(-1);
+                },
+                error: function(xhr){
+                    alert('失败：' + xhr.responseText?xhr.responseText:'')
+                    running = false;
+                }
+            })
+        }
+
+        function renderUser(data, openId){
+            var domString = '';
+            if (data.length == 0){
+                return;
+            }
+            $.each(data, function(i, o){
+                domString += "<li openId=" + o.openId + ">"
+                domString += "<img class='photo' src=" + o.headImg + " width=46 height=46>" + o.nickName
+                domString += "<span class=ml_right>"
+                if (state == 'undo'){
+                    domString += "<button type=button class='btn btn_lg btn_default change'>换人</button>"
+                    domString += "<button type=button class='btn btn_lg btn_primary assign'>指定中奖人</button>"
+                } else if (state == 'completed'){
+                    domString += "<button type=button class='btn btn_lg btn_default sendMessage"
+                    if (o.notice == 0){
+                        domString += "' style='color: green'>通知成功, 再次通知"
+                    } else if (!o.notice){
+                        domString += "'>发送中奖通知"
+                    } else {
+                        domString += "' style='color: red'>通知失败, 再次通知"
+                    }
+                    domString += "</button>"
+                }
+
+                domString += "</span>"
+                domString += "</li>"
+            })
+            var newCell = $($.trim(domString));
+            if (openId){
+                $('#lottery-user-list').find('li[openId=' + openId + ']').replaceWith(newCell);
+            } else{
+                $('#lottery-user-list').append(newCell);
+            }
+            bindUserEvent(newCell)
+            $('#member').text('中奖名单（' + $('#lottery-user-list').children().length + '）')
+        }
+
+        function bindUserEvent($newCell){
+            $('.change', $newCell).click(function(){
+                var openId = $(this).closest('li').attr('openId');
+                changeUser(openId)
+            })
+
+            $('.assign', $newCell).click(function(){
+                console.log('assign');
+                var openId = $(this).closest('li').attr('openId');
+                $('#assign-user').attr('openId', openId).addClass('show').removeClass('hide');
+            })
+
+            $('.sendMessage', $newCell).click(function(){
+                var openId = $(this).closest('li').attr('openId');
+                sendMessage(openId);
+            })
+        }
+
+        function sendMessage(openId){
+            var eventId = $('#eventId').val();
+            var goodsId = $('#goodsId').val();
+
+            var data = {}
+            if (openId){
+                data.openId = openId
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/lottery/event/' + eventId + '/goods/' + goodsId + '/send/message',
+                data: data,
+                success: function(result){
+                    $.each(result, function(key, value){
+                        if (value == 0){
+                            $('li[openId=' + key + ']').find('.sendMessage').text('通知成功, 再次通知').css('color', 'green')
+                        } else{
+                            $('li[openId=' + key + ']').find('.sendMessage').text('通知失败, 再次通知').css('color', 'red')
+                        }
+                    })
+                },
+                error: function(xhr){
+                    alert('发送通知失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function getUserOpenIds(){
+            var openIds = [];
+            $('#lottery-user-list').find('li').each(function(){
+                openIds.push($(this).attr('openId'))
+            })
+            return openIds;
+        }
+
+        function changeUser(openId){
+            var openIds = getUserOpenIds();
+            var index = openIds.indexOf(openId);
+            openIds.splice(index, 1);
+            startLottery(openIds, openId);
+        }
+
+        function assignUser(users, openId){
+            renderUser(users, openId)
+        }
+
+        $('.completed').click(function(){
+            var openIds = getUserOpenIds();
+            doneLottery(openIds);
+        })
+
+        $('.sendAll').click(function(){
+            sendMessage();
+        })
+
+        $('#assign-user').find('.close').click(function(){
+            $('#assign-user').removeClass('show').addClass('hide');
+        })
+
+        $('#assign-user').find('.cancel').click(function(){
+            $('#assign-user').removeClass('show').addClass('hide');
+        })
+
+        $('#assign-user').find('#search-button').click(function(){
+            searchUser($('#q').val());
+        })
+
+        $('#assign-user').find('.ok').click(function(){
+            var $li = $('#user-list').find('li[class=active]');
+            if ($li.length == 1){
+                var openId = $li.attr('openId');
+                var openIds = getUserOpenIds(openId);
+                var index = openIds.indexOf(openId);
+                if (index > -1){
+                    return alert('中奖名单已经有该用户')
+                }
+                var headImg = $li.attr('headImg');
+                var nickName = $li.attr('nickName');
+                $('#assign-user').removeClass('show').addClass('hide');
+                var user = [{openId: openId, headImg: headImg, nickName: nickName}]
+                assignUser(user, $('#assign-user').attr('openId'));
+            } else {
+                return alert('请选择一个用户！')
+            }
+        })
+
+        startLottery();
+    })
+
+    function goback(){
+        window.history.go(-1);
+    }
+</script>
+
+</body>
+</html>

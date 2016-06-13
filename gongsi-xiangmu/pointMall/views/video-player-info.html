@@ -1,0 +1,772 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{goods.name}}</title>
+    <link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/wxShareApi.js"></script>
+    <style type="text/css">
+        body{ background:#fff ;}
+        body,html{ height:100%}
+        .top_video {z-index: 9999; width: 100%; box-sizing: border-box;position:relative; padding: 10px 10px;}
+        .top_video img{ width:100%; height: 100%;}
+        .top_video .pic .play {position: absolute;left: 50%;top: 50%;width: 100px;height: 100px;margin: -50px 0 0 -50px;background: url(/pointMall/images/ico_play.png) no-repeat 0 0;background-size: 100px 100px;text-indent: -9999px;cursor: pointer;}
+        .video_txt{position:relative; bottom: 5px; width:100%;padding:0 10px;box-sizing:border-box;height:35px;line-height:35px;background:#000;color:#fff; display: none;}
+        .video_txt a{color:#76c72c;}
+
+        .wrap_info{border-top:1px #e3e4e4 solid;}
+        .wrap_info h2{ padding:8px 10px; font-size:16px; color:#333;}
+        .wrap_info .cnt{ clear:both; overflow:hidden; margin-top:5px; padding:8px 10px 10px 140px}
+        .wrap_info .cnt .pic{ float:left; margin-left:-130px; width:120px;}
+        .wrap_info .cnt .pic img{ width:100%}
+        .wrap_info .cnt .txt2{ color:#999; font-size:13px; line-height:1.5em; max-height:7.5em; overflow:hidden; overflow-y:auto; color:#666;}
+        /*视频介绍*/
+        .video_title{width:100%;height:40px;background:#f01010;color:#fff;line-height:40px;padding:0 0 0 15px;box-sizing:border-box;margin:10px 0 10px 0;}
+        .video_title img{width:30px;margin:0 10px 0 0;}
+        .introduce{ border-bottom:solid 1px #ddd;padding:0px 10px 5px 10px;}
+        .introduce span{font-size:16px;}
+        .intro_title{color:#999;font-size:14px;margin:5px 0 5px 0;}
+        .intro_title .price{color:red;margin:0 20px 0 5px;}
+        .intro_con{color:#999; font-size:14px;}
+        .intro_con span{color:#777;font-size:14px;}
+
+        .video-player-area span{font-size:18px;}
+
+        .intro img{max-width: 100%; height:auto;}
+        .intro{padding:5px 10px; word-break:break-all;}
+
+        .pre_tips{width:100%;;background:#222;color:#fff;position:relative; display: none;font-size: 14px;}
+        .pre_tips span{font-size: 14px;}
+        .tips_mid{width:100%;text-align:center;position:absolute;left:0;top:50%;margin-top:-28px; font-size: 14px;}
+        .tipos_txt{color:#fff;margin:0 0 10px 0;display:inline-block;font-size: 14px;}
+        .buy_btn{display:inline-block;padding:3px 8px;border-radius:5px;color:#f5f5f5;background:#f68210;margin-right:10px;font-size: 14px;}
+        .buy_link{color:#f68210;margin-left:10px;font-size: 14px;}
+
+        .videolist{padding: 0 0 5px 0;}
+        .videolist ul{padding: 0 10px;}
+        .videolist li{position: relative; border: 1px solid #e3e4e4; padding: 8px 50px 8px 105px; height: 62px; color: #333333; background-color: #FFFFFF; margin-bottom: 10px;}
+        .videolist li.active{color: #f68210;}
+        .videolist li .img{position: absolute; top: 10px; left: 8px; width: 87px; height: 62px; z-index: 1;}
+        .videolist li .free {position: absolute; top: 10px; left: 8px; width: 40px; height: 32px; background: url(/pointMall/images/free-video-flag.jpg) no-repeat 0 0; z-index: 2; background-size: cover;}
+        .videolist li .img img{width: 100%; height: 100%;}
+        .videolist li .play{ position: absolute; width:24px; height: 24px; top: 28px; right: 8px; }
+        .videolist li .play img{width: 100%; height: 100%}
+        .videolist li .tet{font-size: 16px; line-height: 22px; height: 44px; overflow: hidden; margin-top: 9px;}
+
+        .follow_pop_tip{ position:fixed;  top:30%; left:6%; width:88%; background:#fff; border-radius:10px; display: none; z-index: 99999;}
+        .follow_pop_tip .tip{ margin-top:15px; padding:0 15px 0 110px; min-height:75px; background:url(/pointMall/images/follow-ico.png) no-repeat 20px center; background-size:75px 75px; font-size:17px; line-height:1.4em; color:#888}
+        .follow_pop_tip .btn{ margin:20px 0; text-align:center}
+        .follow_pop_tip .btn strong{ display:inline-block; margin:0 4%; width:37%; line-height:40px; background:#fff; background:-webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#d8d8d8)); border-radius:5px; font-size:18px; font-weight:normal; text-align:center; cursor:pointer; color:#666}
+        .follow_pop_tip .btn strong.focus{ background:-webkit-gradient(linear, left top, left bottom, from(#9fceeb), to(#67b2df)); color:#fff}
+        .follow_pop_tip .arrow{ position:absolute; width:14px; height:29px; background:url(/pointMall/images/follow-arrow.png) no-repeat 0 0; background-size:14px 29px; right:-13px; bottom:15%;}
+        @media all and (min-width:600px){
+            .follow_pop_tip{max-width:600px; left:50%; margin-left:-310px}
+        }
+        @media all and (max-width:320px){
+            .follow_pop_tip .tip{ font-size:14px; padding-left:100px;background-size:65px 65px;min-height:65px;}
+            .follow_pop_tip .btn strong{ font-size:15px; line-height:34px}
+        }
+    </style>
+</head>
+<body>
+<input type="hidden" id="goodsId" value="{{goods._id}}">
+<input type="hidden" id="token" value="{{goods.token}}">
+<input type="hidden" id="playType" value="{{goods.ext.playType}}">
+<input type="hidden" id="score" value="{{goods.ext.score}}">
+<input type="hidden" id="isVip" value="{{isVip}}">
+<input type="hidden" id="vipGoodsId" value="{{goods.ext.vipGoodsId}}">
+<input type="hidden" id="unFollowed" value="{{unFollowed}}">
+<input type="hidden" id="followUrl" value="{{followUrl}}">
+<input type="hidden" id="demandId" value="{{demandId}}">
+
+<!--<div class="video-player-area">
+    <div class="video_title"><img src="/pointMall/images/video_ico.png"><span>视频播放区</span></div>
+</div>-->
+<div class="follow_pop_tip">
+    <div class="tip">亲，请先关注微信号!</div>
+    <div class="btn"><strong class="cancel">取消</strong><strong class="follow">关注</strong></div>
+    <span class="arrow"></span>
+</div>
+
+<div id="info" class="intro" info="{{goods.ext.detail}}">
+
+</div>
+<div class="top_video">
+    <div class="pre_tips">
+        <div class="tips_mid">
+            <div class="tipos_txt">试看已结束，干货教学视频等您收入囊中！</div>
+            <div class="tips_buy"><span class="buy_btn" id="pay-vip">会员优惠</span><span class="buy_price">20</span> <span style="font-size: 12px;" id="unit">元</span><a class="buy_link" id="pay-single">购买本视频</a></div>
+        </div>
+    </div>
+    <div class="pic previewPic" id="preview" style="width: 100%; background-color: rgba(0, 0, 0, 0.9);   background-repeat: no-repeat;background-size: contain;background-position: center center;"><span class="play">播放</span></div>
+    <!--<div class="video_txt">免费试看前<span class="video_time"></span>秒钟,观看完整版请<a id="buy"> 立即购买</a></div>-->
+</div>
+
+<div class="wrap_info">
+    <h2 id="cur-video-name">{{goods.name}}</h2>
+    <!--<div class="introduce">
+        <div class="intro_title">价格:<span class="price" id="video-price"></span>视频时长: <span id="video-duration"></span></div>
+        <div class="intro_con">描述:
+            <span id="video-desc" style="color: #555"></span>
+        </div>
+    </div>-->
+</div>
+
+<div class="videolist">
+    <ul id="player-list">
+
+    </ul>
+</div>
+
+</body>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.md5.js"></script>
+<script type="text/javascript">
+    window.loadShareParam = function(cb){
+        var goodsId = $('#goodsId').val()
+        var demandId = $('#demandId').val()
+        if (!goodsId){
+            return cb('err');
+        }
+        var url = '/pointMall/video/player/share/' + goodsId;
+        $.ajax({
+            type: 'post',
+            url: url,
+            data: {url: location.href.split('#')[0], demandId: demandId?demandId:''},
+            success: function(data){
+                data.type = 'video'
+                cb(null, data);
+            },
+            error: function(){
+                cb('err');
+            }
+        })
+    }
+
+    $(function(){
+        //f83eb271689a: yabuli,   (70c69789da7c C1SGTBMty: andiroushu), tvmty
+        var token = $('#token').val()
+        var domString = ''
+        if (token == 'f83eb271689a') {
+            domString = '<div class="tipos_txt">试看已结束</div>' +
+                    '<div class="tips_buy"><span class="buy_btn" id="pay-vip">成为会员</span>可观看全程4场直播及精彩视频</div>'
+        } else if (token == '70c69789da7c' || token == 'C1SGTBMty' || token == 'tvmty') {
+            domString = '<div class="tipos_txt">试看已结束. <br>只<span style="font-size: 20px; color: #f68210">1</span>元开通初级会员，享全套巨人杀手完整版视频</div>'
+                    + '<div class="tips_buy"><span class="buy_btn" id="pay-vip">马上行动</span></div>'
+        }
+        var view = $(domString)
+        if (domString){
+            $('.tips_mid').empty().append(view)
+        }
+        $('#pay-vip', $('.tips_mid')).click(function(){
+            if ($('#unFollowed').val() == 1){
+                return $('.follow_pop_tip').show()
+            }
+            window.location.href = '/pointMall/goods/detail?id=' + vipGoodsId;
+        })
+
+        var playType = $('#playType').val()
+        var score = $('#score').val()
+        if (playType == 1){
+            $('#pay-single').text('兑换本视频')
+            $('#unit').text('积分');
+        }
+        var goodsId = $('#goodsId').val()
+        var isVip = $('#isVip').val()
+        var vipGoodsId = $('#vipGoodsId').val()
+        var demandId = $('#demandId').val()
+        var resMap = {}
+        var packageMap = {}
+
+        var DAY_TIME = 24 * 60 * 60 * 1000
+        var HOUR_TIME = 60 * 60 * 1000
+        var MINUTE_TIME = 60 * 1000
+        var SECOND_TIME = 1000
+        var RECORD_PLAYER_INTERVAL = 60
+        var GoodsMap = {}
+        var init = true
+
+        /*var text = $('#info').attr('info');
+        if (text && text.length > 0){
+            var $view = $(text);
+            $('#info').append($view);
+            $('#info').attr('info', '');
+            $('#info').find('img').css('max-width', '100%').css('height', 'auto')
+            $('#info').find('img').click(function(){
+                var current = $(this).attr('src')
+                var urls = []
+                $('#info').find('img').each(function(){
+                    urls.push($(this).attr('src'))
+                })
+                if (wx){
+                    wx.previewImage({
+                        current: current,
+                        urls: urls
+                    })
+                }
+            })
+            $('#info').show()
+        } else {
+            $('#info').hide()
+        }*/
+
+
+        function checkTime(i){
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function convertDuration(duration){
+            duration = parseInt(duration, 10);
+            if (isNaN(duration)){
+                return null;
+            }
+            var h = checkTime(Math.floor(duration / HOUR_TIME))
+            var m = checkTime(Math.floor(duration % HOUR_TIME / MINUTE_TIME))
+            var s = checkTime(Math.floor(duration % MINUTE_TIME / SECOND_TIME))
+            if (h == '00'){
+                return m + ':' + s
+            } else {
+                return h + ':' + m + ':' + s
+            }
+        }
+
+        function renderVideoRes(docs){
+            var domString = ''
+            $.each(docs, function(i, o){
+                domString += '<li id="' + o._id + '" shareId="' + o.ext.videoRes.shareId + '"><div class="img"><img src="' + o.pic + '" ></div>'
+                        + '<div class="tet">' + o.name
+                        + '</div>'
+                if (o.price == 0){
+                    domString += '<div class="free"></div>'
+                }
+                domString += '<div class="play"><img src="/pointMall/images/player_icon_gray.png"></div></li>';
+
+                resMap[o._id] = o
+            })
+
+            var $newCell = $($.trim(domString));
+            $('#player-list').append($newCell)
+            var initClick = false
+            $('li', $newCell.parent()).click(function(){
+                var id = $(this).attr('id');
+                if (!initClick){
+                    initClick = true
+                } else if (!fee){
+                    var url = '/pointMall/goods/detail?id=' + goodsId;
+                    if (id){
+                        url += '&demandId=' + id
+                    }
+                    window.location.href = url
+                    return;
+                }
+                fee = false
+                var shareId = $(this).attr('shareId');
+                var id = $(this).attr('id');
+                $('.active').find('.play img').attr('src', "/pointMall/images/player_icon_gray.png")
+                $('.active').removeClass('active')
+                $(this).addClass('active')
+                $(this).find('.play img').attr('src', "/pointMall/images/player_icon.png")
+                loadPackage(shareId, function(data){
+                    packageMap[shareId] = data
+                    if (data.entry && data.entry.length > 0){
+                        $('video').removeAttr('src')
+                        $('video').attr('controls', 'controls').attr('type', "video/mp4")
+                        //$('video').attr('poster', data.entry[0].media.thumbnail.url)
+                        $('video').attr("webkit-playsinline","YES");
+                        $('video').attr("x-webkit-airplay","allow");
+                        $('video').attr('goodsId', id);
+
+                        $('#preview').css('background-image', 'url('+data.entry[0].media.thumbnail.url+')')
+                        initHistory()
+
+                        var videoUrl = data.entry[0].media.content.url
+                        var picUrl = parseUrlPath(data.entry[0].media.thumbnail.url)
+                        generateKey(picUrl, id, function(err, signData){
+                            if (err){
+                                //alert('视频加载失败')
+                                $('video').attr('src', videoUrl)
+                            } else {
+                                $('video').attr('src', videoUrl + '?sign=' + signData.sign)
+                            }
+                        })
+                        hideControl()
+                        changeVideoState('preview')
+                    }
+                    isForcePause = false;
+                });
+                /*if (resMap[id].price != 0){
+                    $('#video-price').text('￥' + resMap[id].price)
+                } else {
+                    $('#video-price').text('免费')
+                }
+                $('#cur-video-name').text(resMap[id].name)
+                $('#video-duration').text(convertDuration(resMap[id].ext.videoRes.duration))
+                $('#video-desc').text(resMap[id].ext.videoRes.desc)
+                $('.video_time').text(resMap[id].ext.videoRes.freeSecond)*/
+
+                //console.log(resMap[id].ext.detail)
+                if (resMap[id].ext.detail){
+                    while (resMap[id].ext.detail.indexOf('nowrap') >= 0){
+                        resMap[id].ext.detail = resMap[id].ext.detail.replace('nowrap', 'normal');
+                    }
+                    $('#info').empty().append(resMap[id].ext.detail);
+                    $('#info').find('img').css('max-width', '100%').css('height', 'auto')
+                    $('#info').find('img').click(function(){
+                        var current = $(this).attr('src')
+                        var urls = []
+                        $('#info').find('img').each(function(){
+                            urls.push($(this).attr('src'))
+                        })
+                        if (wx){
+                            wx.previewImage({
+                                current: current,
+                                urls: urls
+                            })
+                        }
+                    })
+                    $('#info').show()
+                } else {
+                    $('#info').empty()
+                    $('#info').hide()
+                }
+                if (!isForcePause){
+                    $(window).scrollTop(0)
+                }
+            })
+
+            if (demandId && $('#' + demandId) && $('#' + demandId).length > 0){
+                $('#' + demandId).click();
+            } else {
+                $newCell[0].click()
+            }
+        }
+
+        function parseUrlPath(url){
+            var s = url.split('/')
+            var domain = s[0] + s[1] + s[2] + '//'
+            var path = url.substring(domain.length, url.length);
+            return path;
+        }
+
+        function generateKey(path, goodsId, cb){
+            if (GoodsMap[goodsId]){
+                return cb(null, GoodsMap[goodsId])
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/video/player/sign',
+                data: {path: path, goodsId: goodsId},
+                success: function(data){
+                    cb(null, data)
+                    GoodsMap[goodsId] = data
+                },
+                error: function(){
+                    cb('err');
+                }
+            })
+        }
+
+        function initHistory(){
+
+        }
+
+        var playTimer = null
+        function startTimerForPlayTime(){
+            playTimer = setInterval(function(){
+                addPlayerHistory($('video').attr('goodsId'))
+            }, RECORD_PLAYER_INTERVAL * 1000)
+        }
+
+        function showControl(){
+            //$('video').attr('controls', 'controls')
+            //$('.video_txt').hide()
+        }
+
+        function hideControl(){
+            //$('video').removeAttr('controls', 'controls')
+            /*if (resMap[$('video').attr('goodsId')].price == 0){
+                $('.video_txt').hide()
+            } else {
+                $('.video_txt').show()
+            }*/
+        }
+
+        $('.previewPic').find('.play').click(function(){
+            if ($('#unFollowed').val() == 1){
+                $('.follow_pop_tip').show()
+                return
+            }
+            changeVideoState('play')
+            document.getElementById("video").play();
+
+            var hUrl = 'http://ana.mtq.tvm.cn/ana?id=55a5c4464a7ebdbfb0000001&event_code=117000&token=' + $('#token').val() + '&create_time=' + Math.floor(new Date().getTime() / 1000) + '&title=' + $('title').text()
+            $('body').append('<img style="width:0px; height: 0px;" src="' + hUrl + '">')
+        })
+
+        $('#buy').click(function(){
+            isForcePause = true
+            changeVideoState('fee')
+        })
+
+        var u = navigator.userAgent, app = navigator.appVersion;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        $(window).resize(function(){
+            var width = $(window).width() - 20
+            var height = width / 3 * 2
+            $('.pre_tips').css('width', width + 'px').css('height', height + 'px')
+            $('.previewPic').css('width', width + 'px').css('height', height + 'px')
+            $('.top_video').css('height', height + 20 + 'px')
+            $('video').css('width', width + 'px').css('height', height + 'px')
+        })
+
+        var firstPlay = true
+        var firstTimer = null
+        function createVideo(){
+            var width = $(window).width() - 20
+            var height = width / 3 * 2 + 20
+            $('.pre_tips').css('width', width + 'px').css('height', height + 'px')
+            $('.previewPic').css('width', width + 'px').css('height', height + 'px')
+            $('.top_video').css('height', height + 20 + 'px')
+            var domString = '<video currentTime=1 id="video" style="background-color: rgba(0, 0, 0, 1);width: ' + width  + 'px; height: ' +  (height) + 'px; display: none;"></video>'
+            var $video = $(domString);
+
+            $('video').remove()
+            $('.top_video').append($video)
+
+            $video.on('seeked', function(){
+                var curGoodsId = $('video').attr('goodsId')
+                if (canPlay()){
+                    return;
+                }
+
+                var second = 0;
+                if (resMap[curGoodsId].ext.videoRes.freeSecond){
+                    second = parseInt(resMap[curGoodsId].ext.videoRes.freeSecond, 10)
+                }
+
+                var video = document.getElementById("video");
+                if (video.currentTime > second){
+                    isForcePause = true;
+                    checkUserPlayEnable()
+                }
+            });
+
+            $video.on('playing', function(){
+
+            });
+
+            $video.on('play', function(){
+                hideControl()
+                console.log('play')
+
+                var curGoodsId = $('video').attr('goodsId')
+
+                //startTimerForPlayTime();
+
+                if (canPlay()){
+                    return;
+                }
+
+                if (resMap[curGoodsId].ext.videoRes.freeSecond){
+                    second = parseInt(resMap[curGoodsId].ext.videoRes.freeSecond, 10)
+                }
+                readyCheck()
+            })
+
+            $video.on('pause', function(){
+                if (checkTimer){
+                    clearTimeout(checkTimer)
+                    checkTimer = null
+                }
+                if (playTimer){
+                    clearInterval(playTimer);
+                    playTimer = null
+                }
+                console.log('pause')
+            })
+
+            $video.on('ended', function(){
+                console.log('ended')
+                if (playTimer){
+                    clearInterval(playTimer);
+                    playTimer = null
+                }
+                if (checkTimer){
+                    clearTimeout(checkTimer)
+                    checkTimer = null
+                }
+                addPlayerHistory($('video').attr('goodsId'))
+            })
+
+            $video.on('timeupdate', function(e){
+                if (firstPlay){
+                    var video = document.getElementById("video");
+                    video.currentTime = 1
+                    firstPlay = false
+                }
+            });
+
+            $video.on('loadeddata loadedmetadata', function(e){
+
+            });
+
+            $video.on('canplay', function(){
+
+            });
+
+            /*$video.on('touchend', function(){
+                if (!isForcePause){
+                    showControl()
+                }
+            });*/
+        }
+
+        function resetTimer(){
+            if (playTimer){
+                clearInterval(playTimer);
+                playTimer = null
+            }
+            if (checkTimer){
+                clearTimeout(checkTimer)
+                checkTimer = null
+            }
+            if (hideFeeTimer){
+                clearTimeout(hideFeeTimer)
+                hideFeeTimer = null
+            }
+        }
+        createVideo()
+
+        var isForcePause = false;
+
+        var checkTimer = null
+        var second = 0
+        function readyCheck(){
+            var video = document.getElementById("video");
+            if (video.currentTime >= second){
+                return checkUserPlayEnable()
+            }
+            checkTimer = setTimeout(function(){
+                if (video.currentTime >= second){
+                    clearTimeout(checkTimer)
+                    checkTimer = null
+                    return checkUserPlayEnable()
+                } else{
+                    readyCheck()
+                }
+            }, 1000)
+        }
+
+        $('#pay-single').click(function(){
+            if ($('#unFollowed').val() == 1){
+                return $('.follow_pop_tip').show()
+            }
+
+            var url = ''
+            if (playType == 1){
+                url = '/pointMall/goto/exchange/goods/' + goodsId
+            } else {
+                url = '/pointMall/goods/' + $('video').attr('goodsId') + '/submit/order';
+            }
+            window.location.href = url;
+        })
+
+        $('.follow_pop_tip .cancel').click(function(){
+            $('.follow_pop_tip').hide()
+        })
+
+        $('.follow_pop_tip .follow').click(function(){
+            $('.follow_pop_tip').hide()
+            if ($('#followUrl').val()){
+                return window.location.href = $('#followUrl').val();
+            }
+        })
+
+        if (!vipGoodsId){
+            $('#pay-vip').hide();
+        }
+
+        $('.ico_history img').click(function(){
+            window.location.href = '/pointMall/goto/player/history'
+        })
+
+        function addPlayerHistory(goodsId){
+            return;
+            console.log('addPlayerHistory')
+            var video = document.getElementById("video");
+            if (video.currentTime < 0){
+                return;
+            }
+
+            if (video.currentTime < GoodsMap[goodsId].curDuration + RECORD_PLAYER_INTERVAL && GoodsMap[goodsId].curDuration != 0){
+                return;
+            }
+            GoodsMap[goodsId].curDuration = video.currentTime
+            $.ajax({
+                type: "POST",
+                url: '/pointMall/add/player/history',
+                data: {id: goodsId, curDuration: video.currentTime},
+                success: function(data){
+
+                },
+                error: function(){
+
+                }
+            })
+        }
+
+        function canPlay(){
+            if ((resMap && resMap[$('video').attr('goodsId')] && resMap[$('video').attr('goodsId')].price == 0) || isVip || (checkResultMap && checkResultMap[$('video').attr('goodsId')] == 2)){
+                return true
+            } else {
+                return false
+            }
+        }
+
+        var fee = false
+        function changeVideoState(state){
+            console.log(state)
+            if (state == 'fee'){
+                var curGoodsId = $("video").attr('goodsId');
+                createVideo();
+                fee = true
+                $('#' + curGoodsId).click();
+
+                console.log(resMap)
+                if(vipGoodsId){
+                    if (playType == 1){
+                        $('.buy_price').text('或 '+ score);
+                    } else {
+                        $('.buy_price').text('或 '+ resMap[curGoodsId].price);
+                    }
+                } else {
+                    if (playType == 1){
+                        $('.buy_price').text(score);
+                    } else {
+                        $('.buy_price').text(resMap[curGoodsId].price);
+                    }
+                }
+
+                $('.pre_tips').show();
+                $('video').hide();
+                $('.previewPic').hide()
+                resetTimer()
+            } else if (state == 'play'){
+                $('.pre_tips').hide();
+                $('video').show();
+                /*if (canPlay()){
+                    $('.video_txt').hide()
+                } else {
+                    $('.video_txt').show()
+                    startTimerForHideFee()
+                }*/
+                $('.previewPic').hide()
+            } else if (state == 'preview'){
+                if (isForcePause){
+                    $('.pre_tips').show();
+                    $('video').hide();
+                    $('.previewPic').hide()
+                    //$('.video_txt').hide()
+                } else {
+                    $('.pre_tips').hide();
+                    $('video').hide();
+                    /*if (canPlay()){
+                        $('.video_txt').hide()
+                    } else {
+                        $('.video_txt').show()
+                    }
+                    checkUserPlayEnable(true)*/
+                    $('.previewPic').show()
+                }
+                isForcePause = false;
+                resetTimer()
+            } else if (state == 'feeTip'){
+                /*if (canPlay()){
+                    $('.video_txt').hide()
+                } else {
+                    $('.video_txt').show()
+                }*/
+            }
+        }
+
+        var hideFeeTimer = null
+        function startTimerForHideFee(){
+            hideFeeTimer = setTimeout(function(){
+                $('.video_txt').fadeOut(1000)
+            }, 10000)
+        }
+
+        var checkResultMap = {}
+        function checkUserPlayEnable(first){
+            if (checkResultMap[$('video').attr('goodsId')]){
+                if (checkResultMap[$('video').attr('goodsId')] == 1){
+                    isForcePause = true
+                    changeVideoState('fee')
+                }
+                return;
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/verify/demand/goods',
+                data: {ids: [goodsId, $('video').attr('goodsId')]},
+                success: function(data) {
+                    if (data.status == 'success') {
+                        checkResultMap[goodsId] = 2
+                        checkResultMap[$('video').attr('goodsId')] = 2
+                    } else {
+                        isForcePause = true
+
+                        checkResultMap[goodsId] = 1
+                        checkResultMap[$('video').attr('goodsId')] = 1
+
+                        changeVideoState('fee')
+                    }
+                },
+                error: function(){
+
+                }
+            })
+        }
+
+        function loadPackage(shareId, cb){
+            /*var url = "http://v12.tv.cctv5.cctv.com/s3/g2r2/"
+            if (/^wx/.test(shareId)){
+                url = 'http://iwmh.mtq.tvm.cn/data/cloud_json/'
+                url = "http://cms.tvmcloud.com/files/"
+            }*/
+            var s = $.md5(shareId).toString();
+            $.ajax({
+                method: 'GET',
+                url: '/pointMall/wmh/video/json?md5=' + s,
+                success: function(data){
+                    cb(data)
+                },
+                error: function(){
+                    alert('视频文件加载失败!')
+                }
+            })
+        }
+
+        function loadVideoRes(){
+            $.ajax({
+                method: 'GET',
+                url: '/pointMall/goods/' + goodsId + '/video/res',
+                success: function(data){
+                    renderVideoRes(data);
+                },
+                error: function(){
+                    console.log('视频加载失败')
+                    renderVideoRes([]);
+                }
+            })
+        }
+        loadVideoRes()
+    })
+</script>
+</html>

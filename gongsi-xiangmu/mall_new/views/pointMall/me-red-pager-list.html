@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>我的红包</title>
+    <link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <style type="text/css">
+        body{ background:#f6f6f6}
+        .tab_pocket{ clear:both; overflow:hidden; border-bottom:solid 1px #dbdbdb; padding:0 20px}
+        .tab_pocket li{ float:left; width:25%; padding:10px 0 8px; font-size:14px; text-align:center; cursor:pointer}
+        .tab_pocket li.on{ border-bottom:solid 2px #0090ff; color:#0090ff}
+
+        .list_p li{ clear:both; overflow:hidden;padding:10px 17px; border-top:solid 1px #fdfdfd;border-bottom:solid 1px #dbdbdb;}
+        .list_p li a{ display:block; width:100%; position:relative; overflow:hidden}
+        .list_p li .pic{ display:table-cell; vertical-align:middle; position:relative; width:20%; }
+        .list_p li .pic img{ width:100%}
+        .list_p li .pic strong{ position:absolute; left:0; width:100%; bottom:18%; font-weight:normal;text-align:center; font-size:25px; color:#ffe32a; white-space:nowrap; font-family:Impact; text-shadow: 0 1px 1px #666;}
+        .list_p li .zr{display:table-cell; vertical-align:middle;width:2000px; *width:auto; *zoom:1;}
+        .list_p li h3{margin-left:10px; padding-bottom:2px;color:#000;font-size:14px;}
+        .list_p li p{margin-left:10px;font-size:14px; color:#777;}
+        .list_p li .fini_use{ position:absolute; right:10px; top:10px; width:85px; height:40px; background:url(/pointMall/images/redPager/red-used.png) no-repeat 0 0; background-size:85px 40px; text-indent:-9999px}
+
+        .cnt_nodata{ padding-top:30%; text-align:center; display: none;}
+        .cnt_nodata img{ width:28%; margin:0 auto}
+        .cnt_nodata p{ padding-top:15px; font-size:14px}
+    </style>
+    <script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+</head>
+<body>
+
+<ul class="tab_pocket">
+    <li data="all" class="on">全 部</li>
+    <li data="endLine">已过期</li>
+</ul>
+<ul class="list_p" id="red-list">
+
+</ul><!--//-->
+<div class="cnt_nodata">
+    <img src="/pointMall/images/rmb.png">
+    <p>哇哦！红包还是空的呢！<br>快去溜达溜达，去捡红包哇！</p>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $.ajaxSetup({cache: false});
+
+        function renderRedPager(data){
+            var domString = ''
+            if (data.length == 0){
+                return $('.cnt_nodata').show();
+            }
+            $.each(data, function(i, o){
+                var endTime = o.endTime?o.endTime:"不限时"
+                domString += '<li endLine=' + o.isEndLine + '><a href="javascript:void(0)"><div class="pic"><img src="/pointMall/images/bg_redpocket.png"><strong>' + o.price + '</strong></div>' +
+                            '<div class="zr"><h3>' + o.name + '</h3>';
+                if (o.goodsType == 6 && o.shoppingCard){
+                    domString += '<p>电子码：' + o.shoppingCard + '</p>';
+                }
+                domString += '<p>过期日期:' + endTime + '</p></div>';
+                if (o.state == 1){
+                    domString += '<span class="fini_use">已使用</span>';
+                }
+                domString += '</a></li>'
+            })
+            $('#red-list').append(domString);
+        }
+
+        function loadRedPagerList(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/me/red/pager/list',
+                success: function(data){
+                    renderRedPager(data);
+                },
+                error: function(){
+
+                }
+            })
+        }
+        loadRedPagerList()
+
+        $('.tab_pocket li').click(function(){
+            var data = $(this).attr('data');
+            $(this).siblings().removeClass('on')
+            $(this).addClass('on')
+            $('#red-list li').show()
+            if (data == 'endLine'){
+                $('#red-list li[endline!=true]').hide()
+            }
+        })
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/vendor/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/vendor/fontawesome/css/font-awesome.css"/>
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/vendor/metisMenu/dist/metisMenu.css"/>
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/vendor/animate.css/animate.css"/>
+
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/vendor/sweetalert/lib/sweet-alert.css"/>
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css"/>
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/fonts/pe-icon-7-stroke/css/helper.css"/>
+    <link rel="stylesheet" href="http://www.mtq.tvm.cn/static/styles/style.css">
+
+    <script src="http://www.mtq.tvm.cn/static/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/slimScroll/jquery.slimscroll.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/jquery-flot/jquery.flot.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/jquery-flot/jquery.flot.resize.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/jquery-flot/jquery.flot.pie.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/flot.curvedlines/curvedLines.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/jquery.flot.spline/index.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/iCheck/icheck.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/peity/jquery.peity.min.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/sparkline/index.js"></script>
+    <script src="http://www.mtq.tvm.cn/static/vendor/sweetalert/lib/sweet-alert.js"></script>
+
+
+
+    <script src="/javascripts/lib/underscore.js"></script>
+    <script src="/javascripts/lib/angular-1.4.min.js"></script>
+    <script src="/javascripts/lib/angular-animate.min.js"></script>
+    <script src="/javascripts/lib/ui-bootstrap-tpls.js"></script>
+    <script src="/javascripts/lib/require.js"></script>
+
+
+
+    <link rel="stylesheet" href="/stylesheets/common.css">
+    <link rel="stylesheet" href="/stylesheets/lib/animate.min.css">
+    <script src="/share/validate.js"></script>
+    <script src="/javascripts/baseModule/baseModule.templates.js"></script>
+    <script src="/javascripts/baseModule/baseModule.js"></script>
+    <script src="/javascripts/baseModule/baseModule.config.service.js"></script>
+
+
+
+
+    <!--<link type="text/css" rel="stylesheet" href="/stylesheets/main.min.css">-->
+    <!--<link rel="stylesheet" href="http://www.mtq.tvm.cn/static/vendor/fontawesome/css/font-awesome.css"/>-->
+    <!--<script src="/javascripts/main.min.js"></script>-->
+
+    <script>
+
+        require.config({
+            baseUrl: "/javascripts"
+        });
+
+
+    </script>
+
+</head>
+<body ng-app="main">
+<div ng-show="isUILock" ng-controller="baseController" class="ui-lock-anim-wrapper">
+    <div class="ui-lock-anim" ng-include src="'/tpl/loading.html'"></div>
+</div>
+<script>
+    (function ($) {
+        'use strict';
+        angular
+                .module('main', [
+                    'base'
+                ])
+    })(jQuery);
+</script>
+<style>
+    .ui-lock-anim,.ui-lock-anim-wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10000000000;
+    }
+    .ui-lock-anim{
+        top: 20%;
+    }
+</style>

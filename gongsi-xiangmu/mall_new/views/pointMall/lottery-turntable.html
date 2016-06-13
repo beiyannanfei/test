@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta name="description" content="大转盘">
+<title>{{activity.name}}</title>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script src="/pointMall/javascripts/turntable/zepto.js"></script>
+<style type="text/css">
+body{margin: 0; padding: 0; font: 14px/1.5 Microsoft YaHei, Helvitica, Verdana, Arial, san-serif;
+    background: url({{config.turnplateBg}});
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+}
+p{margin:0;padding:0}
+.txt{width:80%;margin:10px 10%}
+input::-moz-placeholder, textarea::-moz-placeholder {color: #999;} 
+.wheel{position:relative;width:280px;height:280px;margin:-20px auto;}
+.turnplateBox{position:absolute;width:250px;height:250px;top:50%;left:50%;-webkit-transform:translate(-50%,-50%)}
+.turnplate{width:inherit;height:inherit;background:url({{activity.turnplate}}) no-repeat;background-size:100% 100%}
+.cursorBox{position:absolute;width:80px;height:80px;margin:-5px 0 0 0;top:50%;left:50%;-webkit-transform:translate(-50%,-50%)}
+.cursor{width:inherit;height:80px;margin:auto;background:url(/pointMall/images/turntable/cursor.png) no-repeat center center;background-size:100% 100%}
+
+.content {margin:0px 0 15px 0;}
+.box{border-radius: 5px;font-size: 14px;border: 1px dashed rgba(0, 0, 0, 0.3);}
+.box .title-green {padding: 0 5px 0px 10px;background: url(/pointMall/images/turntable/title-bg-green.png) no-repeat 0 0;border-radius: 3px 3px 3px 0;color: #ffffff;height: 22px;margin: -1px;}
+.boxcontent{margin:15px 15px 0;border-radius: 5px;padding: 2px;background-color: #FEF8B2;-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);}
+.box .Detail {padding: 15px;}
+
+.clear{ clear:both; overflow:hidden;_zoom:1;}
+
+.layer_w{background-color:rgba(0,0,0,0.5); width:100%; height:100%; top:0; left:0; position:fixed; z-index:99999;}
+.layer_w .con{position:relative; top:50%; width:80%; margin:0 auto; padding:10px; height:270px; margin-top:-145px; background-color:#FFF;}
+.layer_w .con.bg{ background:url(/pointMall/images/bg_m_l.jpg) no-repeat center center #FFFFFF; background-size:cover;}
+.layer_w .tile{color:#2b2b2b; border-bottom:1px solid #e1e1e1; font-size:15px; line-height:1.5em; padding-bottom:5px; text-align:center; margin: 0 10px;}
+.layer_w .info{}
+.layer_w .info .img{ text-align:center; padding:10px 0;}
+.layer_w .info .img img{height:110px;}
+.layer_w .info p{ line-height:1.5em; font-size:14px;}
+
+.layer_w .con .colse{ width:40px; height:40px; background-color:#FFF; border:1px solid #505050; border-radius:50%; display:inline-block; position:absolute; cursor:pointer; right:-14px; top:-14px;}
+.layer_w .con .colse:before,.layer_w .con .colse:after{ content:''; position:absolute; width:22px; height:1px; background-color:#505050;top:19px; left:8px;}
+.layer_w .con .colse:before{transform:rotate(45deg); -webkit-transform:rotate(45deg);}
+.layer_w .con .colse:after{transform:rotate(-45deg); -webkit-transform:rotate(-45deg);}
+.layer_w .con .colse:hover{ opacity:0.5}
+.layer_w .con .gonglue{ background-color:#ee8317; color:#FFF; padding:10px 15px; font-size:14px; position:absolute; left:50%; margin-left:-43px; bottom:14px;}
+
+.follow_pop_tip{ position:fixed;  top:30%; left:6%; width:88%; background:#fff; border-radius:10px; display: none; z-index: 9999;}
+.follow_pop_tip .tip{ margin-top:15px; padding:0 15px 0 110px; min-height:75px; background:url(/pointMall/images/follow-ico.png) no-repeat 20px center; background-size:75px 75px; font-size:17px; line-height:1.4em; color:#888}
+.follow_pop_tip .btn{ margin:20px 0; text-align:center}
+.follow_pop_tip .btn strong{ display:inline-block; margin:0 4%; width:37%; line-height:40px; background:#fff; background:-webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#d8d8d8)); border-radius:5px; font-size:18px; font-weight:normal; text-align:center; cursor:pointer; color:#666}
+.follow_pop_tip .btn strong.focus{ background:-webkit-gradient(linear, left top, left bottom, from(#9fceeb), to(#67b2df)); color:#fff}
+.follow_pop_tip .arrow{ position:absolute; width:14px; height:29px; background:url(/pointMall/images/follow-arrow.png) no-repeat 0 0; background-size:14px 29px; right:-13px; bottom:15%;}
+@media all and (min-width:600px){
+    .follow_pop_tip{max-width:600px; left:50%; margin-left:-310px}
+}
+@media all and (max-width:320px){
+    .follow_pop_tip .tip{ font-size:14px; padding-left:100px;background-size:65px 65px;min-height:65px;}
+    .follow_pop_tip .btn strong{ font-size:15px; line-height:34px}
+}
+
+@media (min-height:560px){
+    .wheel{position:relative;width:280px;height:280px;background:url(/pointMall/images/turntable/turnplateBG.png) no-repeat;background-size:100% 100%;margin:10px auto}
+    .content {margin:30px 0 15px 0;}
+}
+</style>
+</head>
+<body>
+
+<div class="follow_pop_tip">
+    <div class="tip">亲，请先关注微信号!</div>
+    <div class="btn"><strong class="cancel">取消</strong><strong class="follow">关注</strong></div>
+    <span class="arrow"></span>
+</div>
+
+<div class="layer_w" id="layer_w" style="display: none">
+    <div class="con bg">
+        <div class="tile" id="lottery_title"></div>
+        <div class="info">
+            <div class="img"><img id="lottery_pic" src=""></div>
+            <p style="text-align: center;" id="lottery_text"></p>
+        </div>
+        <span class="colse" id="close"></span>
+        <a class="gonglue" id="gonglue" url="{{config.scoreHelp}}">土豪攻略</a>
+    </div>
+</div>
+
+<div class="main">
+<input type="hidden" id="activityId" value="{{activity._id}}">
+<input type="hidden" id="token" value="{{activity.token}}">
+<input type="hidden" id="unFollowed" value="{{unFollowed}}">
+<input type="hidden" id="followUrl" value="{{followUrl}}">
+<input type="hidden" id="goodsCount" value="{{goodsCount}}">
+{{!<img src="/pointMall/images/turntable/txt.png" class="txt"/>}}
+<div id="wheel" class="wheel" style="margin-top:166px;">
+  <div id="turnplateBox" class="turnplateBox"><div id="turnplate" class="turnplate"></div></div>
+<div id="cursorBox" class="cursorBox"><div id="cursor" class="cursor"></div></div>
+</div>
+<div class="content">
+<div style="display: none;" id="gain-prize"><a style="position: relative; text-decoration: none;margin: -20px 15px; float: right; color: white;" href="/pointMall/go/me/order/list?type=1">我要领奖>></a></div>
+<div class="boxcontent boxyellow">
+<div class="box">
+<div class="title-green">活动说明：</div>
+<div class="Detail"><p id="info">{{activity.info}}</p>
+</div></div></div></div></div>
+<input type="hidden" id="integralUnit" value="{{unit}}">
+
+<script type="text/javascript">
+window.requestAnimFrame =(function(){return window.requestAnimationFrame || window.webkitRequestAnimationFrame||function(callback){window.setTimeout(callback,1000/60)} })();
+var rating=0, prizeImg="", prizeType=0, prizeCount=parseInt($('#goodsCount').val());
+function setC(start,end,count){
+	var data=[]; 
+	(function(b,c,d){for(var i=0,t;i<d;i++){t=i;data.push(-c*((t=t/d-1)*t*t*t-1)+b)}}(start,end,count));	
+	return data 
+}
+function getPrizeDeg(b){
+	var a=360/b,i=0,c=[];
+	for(;i<b;i++){
+		c.push(i*a)
+    }
+	return c
+}
+
+onload=function(){
+    var totalDeg=3600
+    ,steps=[]
+    ,lostDeg=[36,96,156,216,276,336]
+	,prizeDeg=getPrizeDeg(prizeCount)
+    ,running=false
+    ,count=1,totalCount=1
+    ,turnplate=document.getElementById('turnplate')
+    ,cursor =document.getElementById('cursor')
+    ,close =document.getElementById('close')
+    ,lottery_text =document.getElementById('lottery_text')
+    ,lottery_pic =document.getElementById('lottery_pic')
+    ,lottery_title =document.getElementById('lottery_title')
+    ,gonglue = document.getElementById('gonglue')
+    ,layer_w =document.getElementById('layer_w')
+    ,prizeId = null
+    ,data = null
+    ,prizeName = null;
+
+    function step(){
+        var angle=steps.shift();
+        if(steps.length){
+            turnplate.style.webkitTransform='rotate('+angle+'deg) translate3d(0,0,0)';
+            requestAnimFrame(step)
+        }else{
+            setTimeout(function(){
+                        console.log('rating is:',rating,data,prizeType);
+                if(rating != null){
+                    if (prizeType == 5){
+                        lottery_title.innerHTML = '谢谢参与'
+                        lottery_text.innerHTML = ''
+                    } else if (prizeType == 3 || prizeType == 4 || prizeType == 6){
+                        lottery_title.innerHTML = '中奖了'
+                        var href = "/pointMall/goods/detail?id=" + data._id + '&lotteryId=' + data.id
+                        lottery_text.innerHTML = '恭喜您获得' + prizeName + '(<a href=' + href + '>点击领奖</a>)';
+                    } else if (prizeType == 999){
+                        console.log('999')
+                        lottery_title.innerHTML = '中奖了'
+                        var href = data.extLink
+                        lottery_text.innerHTML = '恭喜您获得' + prizeName + '(<a href=' + href + '>点击领奖</a>)';
+                    }
+                    else if(prizeType==9){
+//                            var usedGoodsId=data.usedGoodsId;
+                        lottery_title.innerHTML = '中奖了';
+                        var href=data.goodsUrl;
+                        lottery_text.innerHTML = '恭喜您获得' + data.name;
+                        if(href){
+                            lottery_text.innerHTML=lottery_text.innerHTML+ '(<a href=' + href + '>立即使用</a>)';
+                        }
+
+                    }
+                    else {
+                        lottery_title.innerHTML = '中奖了'
+                        lottery_text.innerHTML = '恭喜您获得' + prizeName;
+                    }
+                    gonglue.removeAttribute('href');
+                    gonglue.removeEventListener('click', closeLayer);
+                    gonglue.addEventListener('click', closeLayer);
+                    gonglue.innerHTML = '继续抽奖'
+
+                    lottery_pic.src = prizeImg
+                    layer_w.style.display = 'block'
+                }
+                totalDeg=lostDeg[0]*100;
+                running=false;
+            },
+            200)
+        }
+    }
+    function start(deg){
+        count++;
+        //deg=deg||lostDeg[parseInt(lostDeg.length*Math.random())];
+        totalDeg-=deg;
+        steps=setC(0,totalDeg,360);
+        step();
+    }
+    var unit = $('#integralUnit').val() || '积分';
+    function getPrize($data){
+        data=typeof ($data)==="string"?eval("("+$data+")"):$data;
+        if (data.status == '-1'){
+            running = false;
+            prizeId = null;
+            prizeType = 0;
+            lottery_title.innerHTML = 'Oh no~ '+unit+'不够了'
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            var helpUrl = gonglue.getAttribute('url');
+            if (helpUrl){
+                lottery_text.innerHTML = '别担心，点击下方按钮，小编教你如何变土豪'
+                gonglue.setAttribute('href', helpUrl)
+                gonglue.removeEventListener('click', closeLayer);
+                gonglue.innerHTML = '土豪攻略'
+                gonglue.style.display = 'block'
+            } else{
+                lottery_text.innerHTML = ''
+                gonglue.style.display = 'none';
+            }
+            layer_w.style.display = 'block'
+            return;
+        } else if (data.status == '-2' || data.status == '-9'){
+            running = false;
+            prizeId = null;
+            prizeType = 0;
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            layer_w.style.display = 'block'
+            gonglue.removeAttribute('href');
+            gonglue.removeEventListener('click', closeLayer);
+            if (data.category){
+                lottery_title.innerHTML = '您还不具备抽奖资格，详细请参考活动说明吧。'
+                gonglue.style.display = 'none'
+            } else {
+                lottery_title.innerHTML = 'Oh no~ 没有抽到任何奖品'
+                gonglue.addEventListener('click', closeLayer);
+                gonglue.innerHTML = '继续抽奖'
+                gonglue.style.display = 'block'
+            }
+            return;
+        } else if (data.status == '-3'){
+            running = false;
+            prizeId = null;
+            prizeType = 0;
+            lottery_title.innerHTML = '每人抽奖只限' + data.limit + '次哦！ '
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            layer_w.style.display = 'block'
+            gonglue.removeAttribute('href');
+            gonglue.removeEventListener('click', closeLayer);
+            gonglue.addEventListener('click', closeLayer);
+            gonglue.innerHTML = '继续抽奖'
+            gonglue.style.display = 'none'
+            return;
+        } else if (data.status == '-4'){
+            running = false;
+            prizeId = null;
+            prizeType = 0;
+            lottery_title.innerHTML = '您已经参与过抢票不能参与抽奖 '
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            layer_w.style.display = 'block'
+            gonglue.removeAttribute('href');
+            gonglue.removeEventListener('click', closeLayer);
+            gonglue.addEventListener('click', closeLayer);
+            gonglue.innerHTML = '继续抽奖'
+            gonglue.style.display = 'none'
+            return;
+        } else{
+            prizeId = data.id;
+            prizeImg=data.pic;
+            prizeType=data.type;
+            rating = +data.rating;
+            prizeName = data.name;
+            start(prizeDeg[rating-1])
+
+            var hUrl = 'http://ana.mtq.tvm.cn/ana?id=553f459da976e7b3bf000001&event_code=117000&token=' + $('#token').val() + '&create_time=' + Math.floor(new Date().getTime() / 1000) + '&page=' + $('title').text() + '&open_id=' + data.openId +
+                            '&title=' + prizeName
+            $('body').append('<img style="width:0px; height: 0px;" src="' + hUrl + '">')
+            return;
+        }
+    }
+
+    function closeLayer(){
+        layer_w.style.display = 'none';
+    }
+
+    close.addEventListener("click",function(){
+        closeLayer();
+    })
+
+    cursor.addEventListener("click",function(){
+        if (running == true){
+            return;
+        }
+        running = true;
+        startLottery();
+    })
+
+    $('.follow_pop_tip .cancel').click(function(){
+        $('.follow_pop_tip').hide()
+    })
+
+    $('.follow_pop_tip .follow').click(function(){
+        $('.follow_pop_tip').hide()
+        if ($('#followUrl').val()){
+            return window.location.href = $('#followUrl').val();
+        }
+    })
+
+    function startLottery(){
+        if ($('#unFollowed').val() == 1){
+            running = false;
+            return $('.follow_pop_tip').show()
+        }
+        var url = "/pointMall/lottery/activity/" + $('#activityId').val() + "/draw";
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: getPrize,
+            error: function(xhr){
+                getPrize({status: '-2'})
+            }
+        })
+    }
+
+    $.ajax({
+        method: 'GET',
+        url: '/pointMall/check/user/new/order',
+        success: function(){
+            $('#gain-prize').show();
+        },
+        error: function(){
+
+        }
+    })
+    $('#info').html($('#info').text().split('\n').join('<br>'))
+}
+
+
+$(function(){
+
+    $('html,body').css({
+        minHeight:document.documentElement.clientHeight+'px'
+    })
+    $('body').css({
+        backgroundSize:'100% 100%'
+    })
+
+//    $('#info').css({
+//        maxHeight:document.documentElement.clientHeight-$('#info').offset().top+'px'
+//    })
+
+//    if(document.documentElement.clientWidth>=document.documentElement.clientHeight){
+//        $('#ggkWrap').css({
+//            position:'initial'
+//        })
+//        $('html').css({
+//            height:'initial'
+//        })
+//        $('body').css({
+//            position:'relative',
+//            top:$('body').height()-$('html').height()+'px'
+//        })
+//        $('html').css({
+//            height:$('html').height()-20+'px'
+//        })
+//    }
+
+})
+
+</script>
+<footer style="text-align:center; color:#ffd800;margin-right:20px"></footer>
+</body></html>

@@ -199,3 +199,4 @@
 [2016-05-24 10:28:20.713] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
 [2016-05-24 10:28:20.713] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求IP列表 -- ctx.ips: []
 [2016-05-24 10:28:20.714] [INFO] f:\work\tianmaijuyuan\test\koa_2.X\app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-06-12 17:56:42.108] [INFO] E:\node_test\test\koa_2.X\app_2.js - server start listen post: 9101

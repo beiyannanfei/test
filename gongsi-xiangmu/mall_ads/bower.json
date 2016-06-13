@@ -1,0 +1,16 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "authors": [
+    "Shekhar Gulati <shekhargulati84@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.0",
+    "bootstrap-star-rating": "~3.5.3",
+    "angular-animate": "~1.4.3",
+    "animate.css": "~3.3.0"
+  }
+}

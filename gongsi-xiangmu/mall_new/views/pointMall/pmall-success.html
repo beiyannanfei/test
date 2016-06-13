@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>兑换成功</title>
+<link href="/pointMall/stylesheets/point-mall.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<style type="text/css">
+body{ background:#e4e4e4}
+.good_trade{ max-width:70%; margin:18px auto 0;}
+.good_trade img{ width:100%; border:solid 3px #c9c9c9}
+.trade_result{ margin-top:15px; text-align:center}
+.trade_result strong{ display:inline-block; padding-left:35px; background:url(/pointMall/images/pmall/suc.png) no-repeat 0 0;background-size:27px 27px; font-size:15px; line-height:27px;}
+.g_info1{ margin-top:25px; padding:0 12px; background:#fcfcfc; box-shadow:0 0 5px rgba(0,0,0,.2)}
+.g_info1 li{ clear:both; overflow:hidden; border-top:dashed 1px #ddd; padding:5px 0}
+.g_info1 li:first-child{ border:0}
+.g_info1 li span{ float:left; color:#888}
+.g_info1 li .fr{ float:right; font-weight:normal}
+.btn_view{ margin-top:18px; text-align:center;}
+.btn_view strong{ display:inline-block; width:133px; margin:0 5px; padding:7px 0; border-radius:20px; background:#ffa333; text-align:center; color:#fff; font-size:15px; font-weight:normal; cursor:pointer}
+.btn_view strong.return{ background:#ea473e}
+.tip2{ margin-top:15px; text-align:center; color:#ea473e;}
+</style>
+</head>
+<body>
+<input type="hidden" id="playType" value="{{prize.ext.playType}}">
+<div class="good_trade"><img src="{{prize.pic}}"></div>
+<div class="trade_result"><strong>恭喜您，兑换成功</strong></div>
+<ul class="g_info1">
+    <li><span>商品名称：</span><strong class="fr">{{prize.name}}</strong></li>
+    <li id="score" style="display: none;"><span>使用{{unit}}：</span><strong class="fr">{{prize.ext.score}}</strong></li>
+    {{#if prize.ext.buyText}}
+        <li><span>直播地址：</span><strong class="fr">请在微信消息中查看直播地址</strong></li>
+    {{/if}}
+</ul>
+<div class="btn_view"><strong class="view">查看订单</strong><strong class="return">返回</strong></div>
+<div class="tip2">提示：您可以在“我的订单”页面查看订单详情。</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script>
+    $(function(){
+        var playType = $('#playType').val()
+        if (playType == 1){
+            $('#score').show()
+        }
+
+        $('.view').click(function(){
+            window.location.href = '/pointMall/go/me/order/list'
+        })
+
+        $('.return').click(function(){
+            window.history.go(-1)
+        })
+    });
+</script>
+</body>
+</html>

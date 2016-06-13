@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>播放历史</title>
+    <link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+    <style type="text/css">
+        body{ background:#f6f6f6 ;}
+        body,html{ height:100%}
+
+        .top_tit{ clear:both; overflow:hidden; padding:10px 15px; background:#fff; box-shadow:0 0 5px rgba(0,0,0,.2)}
+        .top_tit strong{ float:left; font-size:16px; font-weight:normal}
+        .top_tit .del{ float:right; width:14px; height:18px; background:url(/pointMall/images/del-history.png) no-repeat 0 0; background-size:14px 18px; cursor:pointer; text-indent:-9999px}
+        .top_tit .del:hover{opacity:.8}
+
+        .list_result li{clear:both; overflow:hidden; padding:15px 15px 15px 125px; border-top:solid 1px #ddd;}
+        .list_result li:hover{ background:#f9f9f9}
+        .list_result li .pic{ float:left; width:110px; margin-left:-110px; margin-right:10px; min-height: 110px;}
+        .list_result li .pic img{ width:100%}
+        .list_result li h2{ line-height:1.5em; font-size:14px; overflow:hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3;}
+        .list_result li .date{ padding-top:4px; font-size:14px; color:#999}
+
+        .pop_info{ position:fixed; background:rgba(0,0,0,.6); top:0; right:0; bottom:0; left:0;}
+        .pop_info .cnt{ position:absolute; width:90%; left:5%; top:30%; padding:30px 0 30px 0; background:#fff; border-radius:5px;}
+        .pop_info .cnt .close{ position:absolute; right:-14px; top:-14px; width:35px; height:35px; background:url(/pointMall/images/close-pay.png) no-repeat 0 0; background-size:35px 35px; text-indent:-9999px; cursor:pointer}
+        .pop_info .cnt .tip{ text-align:center; color:#333; font-size:17px;}
+        .pop_info .cnt .btn{ margin-top:30px; text-align:center}
+        .pop_info .cnt .btn strong{ display:inline-block; margin:0 8px; padding:10px 30px; background:#f5563b; border-radius:5px; color:#fff; font-size:16px; font-weight:normal; cursor:pointer}
+        .pop_info .cnt .btn strong.cancel{ background:#f0f0f0; color:#333}
+
+        .nodata{ margin-top:120px; padding-top:110px; background:url(/pointMall/images/no-history.png) no-repeat center 0; background-size:100px auto; color:#999; font-size:14px; text-align:center; display: none;}
+    </style>
+</head>
+<body>
+<div class="top_tit">
+    <strong>播放历史</strong>
+    <span class="del">删除</span>
+</div>
+<div class="nodata">快去看看，有没有你喜欢的视频吧!</div>
+<ul class="list_result" id="history-list">
+
+</ul>
+
+<div class="pop_info" style="display:none;">
+    <div class="cnt">
+        <span id="close" class="close">关闭</span>
+        <div class="tip">清除所有播放列表吗？</div>
+        <div class="btn"><strong class="cancel" id="cancel">取 消</strong><strong id="confirm">确 定</strong></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('.del').click(function(){
+            $('.pop_info .tip').text('清除所有播放列表吗？')
+            $('.pop_info').removeAttr('goodsId').show()
+        })
+
+        function delHistory(ids){
+            $.ajax({
+                type: 'POST',
+                url: '/pointMall/remove/player/history',
+                data: {ids: ids},
+                success: function(data){
+                    $.each(ids, function(i, o){
+                        $('#' + o).remove();
+                    })
+                    if ($('#history-list li').length == 0){
+                        $('.del').hide();
+                        $('.nodata').show();
+                    }
+                },
+                error: function(){
+                    alert('删除失败!')
+                }
+            })
+        }
+
+        $('#confirm').click(function(){
+            $('.pop_info').hide()
+            var goodsId = $('.pop_info').attr('goodsId')
+            if (goodsId){
+                delHistory([goodsId]);
+            } else {
+                delHistory(getSelectIds());
+            }
+        })
+
+        $('#close').click(function(){
+            $('.pop_info').hide()
+        })
+
+        $('#cancel').click(function(){
+            $('.pop_info').hide()
+        })
+
+        function getSelectIds(){
+            var ids = []
+            $('#history-list li').each(function(o){
+                ids.push($(this).attr('id'));
+            })
+            return ids;
+        }
+
+        function renderVideoGoods(data){
+            var domString = '';
+            if (data.length == 0){
+                $('.nodata').show();
+                return $('.del').hide()
+            }
+            $.each(data, function(i, o){
+                domString += '<li id="' + o._id + '"><div class="pic"><img src="' + o.pic + '"></div>' +
+                    '<h2>' + o.name + '</h2>' +
+                    '<h2>' + o.ext.videoRes.desc + '</h2>';
+                var min = Math.floor(o.curDuration / 60)
+                var s = ''
+                if (min > 1){
+                    var s = '观看至'
+                    if (min >= 60){
+                        s += Math.floor(min / 60) + '小时'
+                        min = min % 60
+                    }
+                    if (min > 1){
+                        s += min + '分钟'
+                    }
+                } else {
+                    s += '观看不足1分钟'
+                }
+                domString += '<div class="date">' + s + '</div></li>'
+            })
+            var $newCell = $($.trim(domString));
+            $('#history-list').append($newCell)
+            $('li', $newCell.parent()).click(function(){
+                var id = $(this).attr('id')
+                window.location.href = '/pointMall/goto/video/goods/player/' + id
+            })
+
+            var timer ;
+            $('li', $newCell.parent()).mousedown(function(e) {
+                e.preventDefault()
+                var id = $(this).attr('id');
+                timer = setTimeout(function() {
+                    $('.pop_info .tip').text('清除该条记录？')
+                    $('.pop_info').attr('goodsId', id).show()
+                    alert(1)
+                }, 1500);
+            });
+
+            $('li', $newCell.parent()).mouseup(function() {
+                clearTimeout(timer);
+            });
+        }
+
+        function loadPlayerHistory(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/player/history',
+                success: function(data){
+                    renderVideoGoods(data);
+                },
+                error: function(){
+
+                }
+            })
+        }
+        loadPlayerHistory()
+    })
+</script>
+</html>

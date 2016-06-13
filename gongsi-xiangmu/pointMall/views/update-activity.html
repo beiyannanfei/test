@@ -1,0 +1,511 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品管理系统</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/mass.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/popup.css" />
+</head>
+<body>
+<h3 class="mass_title" id="mass_title"><a id="back" href="javascript:void(0)">返回</a> > 发起活动</h3>
+<div class="start_box" style="padding:0 19px;">
+    <input id="activityId" type="hidden" value="{{activity._id}}">
+    <div class="faqibtn">发起活动</div>
+    <dl class="dl_box">
+        <dt>活动名称：</dt>
+        <dd><input id="name" type="text" class="text2" value="{{activity.name}}"></dd>
+    </dl>
+    <dl class="dl_box">
+        <dt>所需积分数：</dt>
+        <dd><input id="score" type="text" class="text2" value="{{activity.score}}"></dd>
+    </dl>
+    <dl class="dl_box">
+        <dt>抽奖方式：</dt>
+        <dd><label class="radios this" value="1">刮刮卡</label><label class="radios" value="2">大转盘</label></dd>
+    </dl>
+    <input type="hidden" id="way" value="{{activity.way}}">
+    <dl class="dl_box dl_box2">
+        <dt>活动选择奖品：</dt>
+        <dd>
+            <div class="target_obj target_uni fl new_select">
+                <a href="javascript:;" class="target_show">
+                    <label>按商品数量计算概率</label>
+                    <i></i>
+                </a>
+                <ul>
+                    <li value="count">按商品数量计算概率</li>
+                    <li value="percent">按商品百分比计算概率</li>
+                </ul>
+            </div>
+            <input type="hidden" id="lotteryC" value="{{activity.lotteryC}}">
+            <ol class="this_jiangpin this_jiangpingai" style="display: inline-block">
+                {{#each prizes}}
+                <li class="new_libox goods" prizeId="{{_id}}" prizeType="{{type}}" shoppingCard="{{shoppingCards}}">
+                    {{#if isShoppingCard}}
+                        <input type="button" class="jingdk" value="消费卡">
+                    {{/if}}
+                    <div class="clearfix" style="position: relative;">
+                        {{#if isCheck}}
+                            <label class="prize-name check this" checked="checked">{{name}}</label>
+                        {{else}}
+                            <label class="prize-name check">{{name}}</label>
+                        {{/if}}
+                        <input class="rating-width" type="text" placeholder="奖品等级" value="{{rating}}">
+                        <input class="count" type="text" placeholder="奖品概率" value="{{lotteryCount}}">
+                        {{#if isShoppingCard}}
+
+                        {{else}}
+                            <div class="right_box">
+                                {{#if defaultP}}
+                                    <label class="check default this" checked="checked"><span>设为默认</span></label>
+                                {{else}}
+                                    <label class="check default"><span>设为默认</span></label>
+                                {{/if}}
+                                <span></span>
+                                <input class="percent" type="text" placeholder="默认概率" value="{{defaultP}}">
+                            </div>
+                        {{/if}}
+                    </div>
+                    <div class="time">
+                        <input type="hidden" class="time-val" value="{{time}}">
+                        {{#each this.time}}
+                            {{#if @index}}
+                                </br>
+                            {{/if}}
+                            <span class="time-child"><span>时间控制：</span><span><input class="time-width count2 start-time" type="text" placeholder="开始时间" value="{{startTime}}"> - <input class="time-width count2 end-time" type="text" placeholder="结束时间" value="{{endTime}}"></span><input class="count-width" type="text" placeholder="奖品数量" value="{{count}}"></span>
+                        {{/each}}
+                        <a class="add-time" style="margin-left: 10px;" href="javascript:void(0)">添加</a>
+                    </div>
+                </li>
+                {{/each}}
+                <span style="color: red">注意：选择按商品数量计算概率时， 时间格式为， 例如： 08:10-15:30表示8点10分到15点30分的中奖数量，时间可以不填写， 如不填写就按当天算。
+                    <br>如果选择按商品百分比计算概率， 那么所有商品的概率中和必须为1</span>
+            </ol>
+        </dd>
+    </dl>
+    <dl class="dl_box mass_button">
+        <dt></dt>
+        <dd>
+        	<span id="saveMess" class="btn btn_lg btn_primary">
+            	<span>确定</span>
+            </span>
+            <span id="cancel" class="btn btn_lg btn_default">
+            	<span>取消</span>
+            </span>
+        </dd>
+    </dl>
+</div>
+
+<div id="Jdk-box" class="matter_con matter_con2" style="display: none;margin: -174px 0 0 -300px;">
+    <div id="box-close" class="mass_top clearfix">
+        <span style="width: 100px; display: inline-block; margin: 15px 10px; font-weight: bold; font-size: 16px;">消费卡</span>
+        <label></label>
+    </div>
+    <div style="margin-top: 10px; margin-left: 15px;">
+        <span>总数: </span><span id="total"></span>
+    </div>
+    <ul class="matter_content" style=" min-height: 270px;">
+        <li>
+            <textarea style="width:551px; resize: none;" placeholder="请填写卡号， 多个可以用英文逗号隔开!"></textarea>
+        </li>
+    </ul>
+    <span id="saveJdk" class="btn btn_lg btn_primary"style="margin-left: 230px;">
+         <span>确定</span>
+    </span>
+</div>
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/toast.js"></script>
+<!--<script type="text/javascript" src="/pointMall/javascripts/mass.js"></script>-->
+<script type="text/javascript">
+    $(function () {
+        $('.target_show label').click(function(){
+            $(this).parent().siblings('ul').toggle();
+        })
+
+        $('.target_obj ul li').click(function(){
+            //$('.ren span').remove();
+            $(this).parent().siblings('a').children('label').empty();
+            var myaal=this.innerHTML;
+            //var myaal=$(this).val();
+            $(this).parent().siblings('a').children('label').prepend(myaal);
+            $(this).parent('ul').css('display','none');
+        })
+
+        $('.radios').click(function(){
+            $(this).addClass('this').siblings().removeClass('this');
+            $('#way').val($(this).attr('value'));
+        })
+        var way = $('#way').val();
+        $('.radios[value=' + way + ']').click();
+
+        $("label.check").click(function(){
+            if($(this).attr('checked')){
+                $(this).attr('checked','')
+                $(this).removeClass('this').addClass('la').removeAttr('checked');
+            }	else{
+                $(this).removeClass('la').addClass("this").attr('checked','checked');
+            }
+        })
+        $('.new_select ul li').click(function(){
+            var lotteryC = $(this).attr('value')
+            $('#lotteryC').val(lotteryC);
+            var placeholder = (lotteryC == 'percent'?'奖品概率，小数，最大为1':'奖品数量，整数，最少为1');
+            $('.this_jiangpingai').find('input.count').val('');
+            $('.this_jiangpingai').find('input.count').attr('placeholder', placeholder);
+            if (lotteryC == 'percent'){
+                $('.this_jiangpingai').find('.time').hide();
+            } else{
+                $('.this_jiangpingai').find('.time').show();
+            }
+        })
+        var lotteryC = $('#lotteryC').val();
+        var placeholder = (lotteryC == 'percent'?'奖品概率，小数，最大为1':'奖品数量，整数，最少为1');
+        $('.this_jiangpingai').find('input.count').attr('placeholder', placeholder);
+        if (lotteryC == 'percent'){
+            $('.this_jiangpingai').find('.time').hide();
+        } else{
+            $('.this_jiangpingai').find('.time').show();
+        }
+        var select = (lotteryC == 'percent'?'按商品百分比计算概率':'按商品数量计算概率');
+        $('.new_select a label').text(select);
+
+        function errorFocus($view){
+            var timerId = parseInt($view.attr('timerId'));
+            if (timerId){
+                clearTimeout(timerId);
+            } else{
+                $view.focus();
+            }
+            $view.css('border-color', '#FF0000');
+            $view.css('border-width', '2px');
+
+            timerId = setTimeout(function(){
+                $view.css('border-color', '');
+                $view.css('border-width', '');
+                $view.removeAttr('timerId');
+            }, 1500);
+            $view.attr('timerId', timerId);
+        }
+
+        function checkTimeFormat(time){
+            var isError = false;
+            if (!/^[0-9]{2}:[0-9]{2}$/.test(time)){
+                isError = true;
+                alert('时间格式不正确')
+            } else{
+                var time = time.split(':')
+                var hour = parseInt(time[0], 10)
+                var minute = parseInt(time[1], 10)
+                if (hour > 23 || hour < 0){
+                    isError = true;
+                    alert('小时应该在0-23之间')
+                }
+                if (minute > 59 || minute < 0){
+                    isError = true;
+                    alert('分钟应该在0-59')
+                }
+            }
+            return isError;
+        }
+
+        function addActivity(){
+            var name = $('#name').val();
+            if (!name){
+                return errorFocus($('#name'))
+            }
+            var way = $('#way').val();
+            if (!way){
+                return errorFocus($('#way'))
+            }
+            var score = $('#score').val();
+            if (!score){
+                return errorFocus($('#score'))
+            }
+            var lotteryC = $('#lotteryC').val();
+
+            var prizes = []
+            var isError = false;
+            var totalP = 0;
+
+            var defaultTotalP = 0;
+            var ratings = []
+            $(".this_jiangpin label.prize-name[checked=checked]").each(function(){
+                var $parent = $(this).closest('.goods');
+                var prizeId = $parent.attr('prizeId');
+                var prizeType = $parent.attr('prizeType');
+
+                var count = $parent.find('input.count').val();
+
+                var rating = $parent.find('input.rating-width').val();
+                rating = parseInt(rating, 10);
+                if (isNaN(rating)){
+                    isError = true;
+                    errorFocus($parent.find('input.rating-width'));
+                    return false;
+                }
+
+                var isDefault = $parent.find('label.default').attr('checked');
+                var defaultP = 0;
+                if (isDefault){
+                    defaultP = $parent.find('input.percent').val();
+                    defaultP = parseFloat(defaultP);
+                    if (isNaN(defaultP) || defaultP > 1){
+                        isError = true;
+                        errorFocus($parent.find('input.percent'));
+                        return false;
+                    }
+                    defaultTotalP += defaultP;
+                }
+
+                var time = [];
+
+                var prizeCount = 0;
+                if (lotteryC == 'percent'){
+                    count = parseFloat(count);
+                    if (isNaN(count) || count >= 1){
+                        isError = true;
+                        errorFocus($parent.find('input.count'));
+                        return false;
+                    }
+                    totalP += count;
+                } else{
+                    var hasTime = false;
+                    $parent.find('.time-child').each(function(){
+                        var $this = $(this);
+                        var startTime = $this.find('.start-time').val();
+                        var endTime = $this.find('.end-time').val();
+
+                        if (startTime){
+                            if (isError = checkTimeFormat(startTime)){
+                                errorFocus($this.find('.start-time'));
+                                return false
+                            }
+                        } else if (endTime){
+                            isError = true;
+                            errorFocus($this.find('.start-time'));
+                            alert('没有开始时间');
+                            return false
+                        }
+                        if (endTime){
+                            if (isError = checkTimeFormat(endTime)){
+                                errorFocus($this.find('.end-time'));
+                                return false
+                            }
+                        } else if (startTime){
+                            isError = true;
+                            errorFocus($this.find('.end-time'));
+                            alert('没有结束时间');
+                            return false
+                        }
+                        var count = 0;
+                        if (startTime && endTime){
+                            count = $this.find('.count-width').val();
+                            count = parseInt(count, 10);
+                            if (isNaN(count) || count < 0){
+                                isError = true;
+                                errorFocus($this.find('.count-width'));
+                                return false;
+                            }
+                            if (startTime >= endTime){
+                                isError = true;
+                                alert('开始时间不能大于结束时间');
+                                return false
+                            }
+
+                            $.each(time, function(i, o){
+                                if (startTime >= o.startTime && startTime < o.endTime){
+                                    isError = true;
+                                    alert('时间段有冲突， 请检查！');
+                                    return;
+                                }
+                                if (endTime > o.startTime && endTime <= o.endTime){
+                                    isError = true;
+                                    alert('时间段有冲突， 请检查！');
+                                    return;
+                                }
+                            })
+                            if (isError){
+                                return;
+                            }
+                            time.push({startTime: startTime, endTime: endTime, count: count})
+                            hasTime = true;
+                            prizeCount += count;
+                        }
+                    })
+                    if (!hasTime){
+                        count = parseInt(count, 10);
+                        if (isNaN(count) || count < 0){
+                            isError = true;
+                            errorFocus($parent.find('input.count'));
+                            return false;
+                        }
+                        prizeCount += count;
+                    }
+                    if (isError){
+                        return;
+                    }
+                }
+
+                if ($.inArray(rating, ratings) > -1){
+                    isError = true;
+                    alert('奖品等级重复');
+                    return false;
+                } else if (rating > $(".this_jiangpin label.prize-name[checked=checked]").length){
+                    isError = true;
+                    alert('奖品等级大于总奖品数');
+                    return false;
+                } else{
+                    ratings.push(rating);
+                }
+
+                var prize = {
+                    id: prizeId,
+                    rating: rating
+                }
+                if (isDefault){
+                    prize.defaultP = defaultP;
+                }
+
+                if (time && time.length > 0){
+                    prize.time = time;
+                } else if(count >= 0){
+                    prize.count = count
+                } else{
+                    isError = true;
+                    alert('请填写奖品数目或者时间段')
+                    return false;
+                }
+                if (prizeType == '6'){
+                    var shoppingCard = $parent.attr('shoppingCard');
+                    if (!shoppingCard){
+                        isError = true;
+                        alert('请添加消费卡');
+                        return false;
+                    } else{
+                        var shoppingCards = shoppingCard.split(',');
+                        var shoppingCardCount = shoppingCards.length;
+                        if (prizeCount != 0 && shoppingCardCount < prizeCount){
+                            isError = true;
+                            alert('消费卡数量不能小于奖品数');
+                            return false;
+                        }
+                        prize.shoppingCards = shoppingCards;
+                    }
+                }
+
+                prizes.push(prize);
+            })
+
+            if (isError){
+                return;
+            }
+
+            if (lotteryC == 'percent' && totalP != 1){
+                return alert('商品总概率必须为1');
+            }
+
+            if (lotteryC != 'percent'){
+                if (defaultTotalP == 0){
+                    return alert('按奖品数量抽奖, 请设置默认奖品');
+                } else if (defaultTotalP != 1){
+                    return alert('默认奖品的总概率必须等于1');
+                }
+            }
+
+            if (prizes.length == 0){
+                return alert('没有选择奖品');
+            }
+
+            var data = {
+                name: name,
+                score: score,
+                prizes: prizes,
+                lotteryC: lotteryC,
+                way: way
+            }
+			
+            $.ajax({
+                method: 'POST',
+                url: "/pointMall/activity/" + $('#activityId').val() + "/update",
+                data: data,
+                success: function(){
+                    window.location.href = '/pointMall/activity'
+                },
+                error: function(xhr){
+                    $.showToast('错误：' + xhr.responseText?xhr.responseText:'');
+                }
+            })
+        }
+
+        $('#saveMess').bind('click', function(e){
+            addActivity()
+        })
+
+        $('#cancel').bind('click', function(e){
+            window.history.go(-1);
+        })
+
+        $('#back').bind('click', function(e){
+            window.history.go(-1);
+        })
+
+        $('.add-time').click(function(){
+            var domString = '</br><span class="time-child"><span>时间控制：</span><span><input class="time-width count2 start-time" type="text" placeholder="开始时间"> - <input class="time-width count2 end-time" type="text" placeholder="结束时间"></span><input class="count-width count" type="text" placeholder="奖品数量" value="{{count}}"></span>'
+            $(domString).insertBefore($(this));
+        })
+
+        $('#saveJdk').click(function(){
+            var prizeId = $('#Jdk-box').attr('prizeId');
+            var jdk = $('#Jdk-box').find('textarea').val();
+            if (!jdk || $.trim(jdk).length == 0){
+                return alert('没有填写消费卡');
+            } else {
+                $('#Jdk-box').hide();
+                $('li[prizeId=' + prizeId + ']').attr('shoppingCard', $.trim(jdk));
+                $('#Jdk-box').find('textarea').val('');
+            }
+        })
+
+        $('#box-close').click(function(){
+            $('#Jdk-box').hide();
+            $('#Jdk-box').find('textarea').val('');
+        })
+
+        $('.jingdk').click(function(){
+            var $li = $(this).closest('li');
+            var prizeId = $li.attr('prizeId');
+            var shoppingCard = $li.attr('shoppingCard')
+            var len = 0
+            if (!shoppingCard){
+                shoppingCard = ''
+            } else {
+                len = shoppingCard.split(',').length
+            }
+
+            $('#Jdk-box').find('textarea').val(shoppingCard)
+            $('#Jdk-box').find('#total').text(len)
+            $('#Jdk-box').attr('prizeId', prizeId).show();
+        })
+
+        $('#Jdk-box').find('textarea').bind('input propertychange', function(){
+            var shoppingCard = $('#Jdk-box').find('textarea').val()
+            shoppingCard = $.trim(shoppingCard);
+            var len = 0;
+            if (!shoppingCard){
+                len = 0
+            } else {
+                len = shoppingCard.split(',').length;
+                if (shoppingCard[0] == ','){
+                    len--
+                }
+                if (shoppingCard[shoppingCard.length - 1] == ','){
+                    len--
+                }
+            }
+            $('#Jdk-box').find('#total').text(len)
+        })
+    });
+</script>
+</body>
+</html>

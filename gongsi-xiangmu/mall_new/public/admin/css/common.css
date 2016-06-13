@@ -1,0 +1,70 @@
+#wrapper {
+  margin: 0;
+}
+
+#tabPagination {
+  padding-left: -10px;
+}
+
+#jumpPage {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+}
+
+#tabPagination .btn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.loading-self {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  margin-top: -16px;
+}
+
+.table tbody > tr > td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table thead > tr > th {
+  text-align: center;
+}
+
+/*
+  文件上传样式
+ */
+
+.img-preview {
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background-color: #EBEBEB;
+  text-align: center;
+  position: relative;
+}
+.img-preview span {
+  display: inline-block;
+  margin-top: 40px;
+}
+.img-preview .img-label {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: #8C8C8C;
+  color: #fff;
+  font-size: 13px;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.img-addition {
+  vertical-align: -40px;
+  margin-left: 15px;
+}

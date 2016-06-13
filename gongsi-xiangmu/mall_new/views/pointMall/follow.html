@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>加公众号</title>
+<style type="text/css">
+*{margin:0; padding:0; list-style:none; font-size:12px;}
+
+/*--需要的样式----------------*/
+.tanceng_box{width:100%; height:100%; position:fixed; top:0; display:none; left:0; background:rgba(0,0,0,0.8)}
+.tanceng_box img{width:90%; display:block; margin:80px auto;}
+.tanceng_box p{font-size:60px; padding:0 10px; font-family:"宋体"; color:#fff; margin-bottom:50px;}
+/*.tanceng_box label{background:url(/pointMall/images/btn_bg.png) no-repeat; width:198px; height:92px; display:block; margin:0 auto;}*/
+/*--需要的样式----------------*/
+</style>
+</head>
+
+<body>
+
+<div class="tanceng_box" style="display:block;">
+
+	<img src="/pointMall/images/tan_bg.png" alt="">
+	
+    <p>请关注“{{wxname}}”公众号才可以进入此页面哦！</p>
+    
+    <!--<label for="" onClick="close_box();"></label>-->
+    
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script type="text/javascript">
+function close_box(){
+	window.history.go(-1)
+}
+</script>
+</body>
+</html>

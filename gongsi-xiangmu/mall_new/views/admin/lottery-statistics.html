@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>抽奖分析统计</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+    <link rel="stylesheet" href="/pointMall/stylesheets/jqWidgets/jqx.base.css" type="text/css" />
+
+    <script type="text/javascript" src="/pointMall/javascripts/jqWidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/jqWidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/jqWidgets/jqxdraw.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/jqWidgets/jqxchart.core.js"></script>
+
+    <script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/en.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-tw.js"></script>
+</head>
+<body>
+<div class="msg_manage_top">
+    <ul class="tab_top1">
+    <li class="on"><a href="#">抽奖分析统计</a></li>
+    <li class="fr_count">累计总金额：{{totalMoney}}元</li>
+    </ul>
+</div>
+<div class="wrap01">
+    <div class="summary_stat">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <th colspan="4"></th>
+            </tr>
+            <th colspan="4" id="statistics-title">昨日数据统计</th>
+            <tr>
+                <td class="txt_color1"><p>抽奖人数</p><p class="num">0人</p></td>
+                <td class="txt_color2"><p>抽奖次数</p><p class="num">0次</p></td>
+                <td class="txt_color3"><p>抽中次数</p><p class="num">0次</p></td>
+                <td class="txt_color4"><p>抽奖总金额</p><p class="num">0元</p></td>
+            </tr>
+        </table>
+	</div>
+    <div class="s_tab_reply search_if">
+        <strong class="t1">时间：</strong>
+        <ul class="tab" id="time">
+            <li index="0"><strong>今天</strong></li>
+            <li index="1"><strong>昨天</strong></li>
+            <li index="2"><strong>最近7天</strong></li>
+            <li index="3"><strong>最近30天</strong></li>
+        </ul>
+        <div class="fr_select">
+            <label>开始时间：</label>
+            <input type="text" id="startTime" class="Wdate Wdate2"/>
+            <label>结束时间：</label>
+            <input type="text" id="endTime" class="Wdate Wdate2"/>
+            <strong class="btn_confirm">确定</strong>
+        </div>
+    </div>
+    <div class="tit_stat1"><strong>●</strong>趋势图</div>
+    <div class="canvas_stat" id="chartContainer" style="width:100%; height:400px"></div>
+    <div class="tit_stat1"><strong>●</strong>详情数据</div>
+    <div class="s_tab_reply stat_award" id="activity-list">
+        <!--<ul>
+            {{#each activities}}
+                <li><strong>{{name}}</strong></li>
+            {{/each}}
+        </ul>-->
+    </div>
+    <dl id="lottery-statistics-list" class="list_creat_qa list_creat_qa2">
+        <dt>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <colgroup>
+            <col width="15%">
+            <col width="*">
+            <col width="16%">
+            <col width="16%">
+            <col width="16%">
+            <col width="16%">
+            </colgroup>
+            <tr>
+            <th>时间</th>
+            <th>抽奖人数</th>
+            <th>抽奖次数</th>
+            <th>抽中次数</th>
+            <th>抽奖总金额</th>
+            <th>详情信息</th>
+            </tr>
+            </table>
+        </dt>
+    </dl>
+    <!--<div class="pagenavi">
+        <em class="pre"><strong></strong></em>
+        <span class="page_st"></span>
+        <em class="next"><strong></strong></em>
+        <span class="input_number"><input type="text" id="page"></span>
+        <span class="btn_send">跳转</span>
+    </div>-->
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        var statisticsData = {}
+        var chartData = []
+        var activityMap = {}
+        function loadStatistics(startTime, endTime){
+            activityMap = {'all': '全部'}
+            chartData = []
+            var url = '/admin/lottery/statistics/result?';
+            if (startTime){
+                url += "&startTime=" + startTime
+            }
+            if (endTime){
+                url += "&endTime=" + endTime
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(data){
+                    console.log('success data is:',data);
+                    renderStatisticsList(data)
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function renderStatisticsList(data){
+            console.log('data data data is:',data);
+            var list=data[0].activity;
+            console.log("list is:",list);
+            statisticsData = {}
+            var result = {numberPeople: 0, numberLottery: 0, totalMoney: 0, zjTime: 0}
+
+            $.each(data, function(i, o){
+                $.each(o.activity, function(index, acitivty){
+                    activityMap[acitivty.activityId] = acitivty.name
+                })
+            });
+
+            $.each(data, function(i, o){
+                console.log("o is:",o);
+                var dateTime = o.dateTime?o.dateTime:'';
+                var numberPeople = o.numberPeople?o.numberPeople:0;
+                var numberLottery = o.numberLottery?o.numberLottery:0;
+                var zjTime = o.zjTime?o.zjTime:0;
+                var totalMoney = o.totalMoney?o.totalMoney:0;
+
+                if (data.length == 1){
+                    var hourMap = {}
+                    $.each(o.activity, function (index, acitivty) {
+                        if (!hourMap[acitivty.dateTime]){
+                            hourMap[acitivty.dateTime] = []
+                        }
+                        hourMap[acitivty.dateTime].push(acitivty)
+                    });
+
+                    console.log("hourMap is:",hourMap)
+                    $.each(hourMap, function (k, v) {
+                        var chartO = {'all': 0}
+                        $.each(activityMap, function(id, name){
+                            if (!chartO[id]){
+                                chartO[id] = 0
+                            }
+                            $.each(v, function(i, activity){
+                                chartO.dateTime = activity.dateTime;
+                                if (activity.activityId == id){
+                                    chartO[id] += activity.numberLottery ? activity.numberLottery : 0
+                                    chartO['all'] += chartO[id]
+                                } else {
+                                    chartO[id] += 0
+                                }
+                            });
+                        });
+                        chartData.push(chartO)
+                    });
+                } else {
+                    var chartO = {'all': 0}
+                    $.each(activityMap, function(id, name) {
+                        $.each(o.activity, function (index, acitivty) {
+                            chartO.dateTime = acitivty.dateTime;
+                            if (!chartO[id]){
+                                chartO[id] = 0
+                            }
+                            if (acitivty.activityId == id){
+                                chartO[id] += acitivty.numberLottery ? acitivty.numberLottery : 0
+                            } else {
+                                chartO[id] += 0
+                            }
+                        })
+                        chartO['all'] += chartO[id]
+                    })
+                    chartData.push(chartO)
+                }
+
+                console.log('activityMap is:',activityMap)
+                $.each(activityMap, function(id, name){
+                    if (!statisticsData[id]){
+                        statisticsData[id] = []
+                    }
+                    if (id == 'all'){
+                        statisticsData[id].push({
+                            dateTime: dateTime,
+                            numberLottery: numberLottery,
+                            numberPeople: numberPeople,
+                            totalMoney: totalMoney,
+                            name: name,
+                            zjTime: zjTime,
+                            totalNumberLottery:(function(){
+
+                                var totalNumberLottery;
+                                for(var i in list){
+                                    var item=list[i],activityId=item.activityId;
+                                    if(id===activityId){
+                                        totalNumberLottery=item.totalNumberLottery;
+                                        break;
+                                    }
+                                }
+                                return totalNumberLottery;
+                            })()
+                        })
+                    } else {
+                        var idTotal = 0;
+                        var idTotalMoney = 0;
+                        var idTotalPeople = 0;
+                        var totalNumberLottery=0;
+                        var _zjTime=0;
+
+                        $.each(o.activity, function (index, activity) {
+                            console.log("activity is---------------:",activity,activity.activityId,id)
+                            if (activity.activityId == id){
+                                idTotal += activity.numberLottery
+                                idTotalMoney = activity.totalMoney
+                                idTotalPeople += activity.numberPeople
+                                totalNumberLottery=activity.totalNumberLottery;
+                                _zjTime=activity.zjTime;
+//                                console.log('')
+                            }
+                        })
+
+                        statisticsData[id].push({
+                            dateTime: dateTime,
+                            numberLottery: idTotal,
+                            numberPeople: idTotalPeople,
+                            totalMoney: idTotalMoney,
+                            name: name,
+                            totalNumberLottery:totalNumberLottery
+                            ,
+                            zjTime:_zjTime
+                        })
+                        console.log('statisticsData is:',statisticsData)
+                    }
+                });
+
+                result.numberPeople += numberPeople
+                result.numberLottery += numberLottery
+                result.zjTime += zjTime
+                result.totalMoney += totalMoney
+            })
+
+            setLotteryTotal(result)
+            appendActivity(activityMap,data)
+            showChart();
+        }
+
+        function renderActivityData(data,initialData){
+            console.log('initialData-------- is:',initialData,data)
+            data.sort(function(a, b){
+                return a.dateTime < b.dateTime?1:-1
+            })
+            var domString = ''
+            $.each(data, function(i, o){
+                console.log('------o -------is:',o);
+                var dateTime = o.dateTime?o.dateTime:'';
+                var numberPeople = o.numberPeople?o.numberPeople:0;
+                var numberLottery = o.numberLottery?o.numberLottery:0;
+                var zjTime = o.zjTime?o.zjTime:0;
+                var totalMoney = o.totalMoney?o.totalMoney.toFixed(2):0;
+
+                domString += '<dd><table width="100%" border="0" cellspacing="0" cellpadding="0"><colgroup><col width="15%"><col width="*">' +
+                        '<col width="16%"><col width="16%"><col width="16%"><col width="16%"></colgroup><tr>' +
+                        '<td>' + dateTime + '</td><td>' + (o.totalNumberLottery||numberPeople) + '</td><td>' + numberLottery + '</td><td>' +
+                        zjTime + '</td><td>' + totalMoney + '</td>' +
+                        '<td><strong class="view" dateTime="' + dateTime + '">点击查看</strong></td></tr></table></dd>'
+            })
+            var $newCell = $($.trim(domString));
+            $('#lottery-statistics-list').find('dd').remove()
+            $('#lottery-statistics-list').append($newCell);
+            $('.view', $newCell).click(function(){
+                var dateTime = $(this).attr('dateTime');
+                var dates = dateTime.split('-')
+                window.location.href = '/admin/lottery/statistics/detail?dateTime=' + new Date(dates[0], dates[1] - 1, dates[2], 0, 0, 0).getTime();
+            })
+        }
+
+        function appendActivity(activityMap,initialData){
+
+            var domString = '<ul>';
+            $.each(activityMap, function(id, name){
+                domString += "<li id=" + id + "><strong>" + name + "</strong></li>"
+            })
+            domString += '</ul>'
+            var $newCell = $($.trim(domString))
+            $('#activity-list').empty()
+            $('#activity-list').append($newCell)
+            $('li', $newCell).click(function(){
+                var activityId = $(this).attr('id');
+                if (activityId){
+                    renderActivityData(statisticsData[activityId],initialData)
+                }
+                $($newCell).find('li').removeClass('on');
+                $(this).addClass('on');
+            })
+            $($newCell).find('li[id=all]').click();
+        }
+
+        function setLotteryTotal(result){
+            $('.txt_color1').find('.num').text(result.numberPeople + '人')
+            $('.txt_color2').find('.num').text(result.numberLottery + '次')
+            $('.txt_color3').find('.num').text(result.zjTime + '次')
+            $('.txt_color4').find('.num').text(result.totalMoney.toFixed(2) + '元')
+        }
+
+        $('#time').find('li').click(function(){
+            var index = $(this).attr('index');
+            var state = {
+
+                title : document.title,
+
+                url : location.pathname+"?type="+index
+
+            };
+
+            history.pushState(state, document.title, location.pathname+"?type="+index);
+            var now = new Date()
+            var startTime = null;
+            var endTime = null;
+
+            if (index == 0){
+                $('#statistics-title').text('今日数据统计')
+                endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() + 24 * 60 * 60 * 1000
+                startTime = endTime - 24 * 60 * 60 * 1000
+            } else if (index == 1){
+                $('#statistics-title').text('昨日数据统计')
+                endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime()
+                startTime = endTime - 24 * 60 * 60 * 1000
+            } else if (index == 2){
+                $('#statistics-title').text('最近7日数据统计')
+                endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() + 24 * 60 * 60 * 1000
+                startTime = endTime - 7 * 24 * 60 * 60 * 1000
+            } else if (index == 3){
+                $('#statistics-title').text('最近30日数据统计')
+                endTime = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() + 24 * 60 * 60 * 1000
+                startTime = endTime - 30 * 24 * 60 * 60 * 1000
+            }
+
+            loadStatistics(startTime, endTime)
+            $('#time').find('li').removeClass('on');
+            $(this).addClass('on');
+        })
+
+        $.extend({
+            parseUrl:function(href){
+                var url=href||location.href;
+                var a =  document.createElement('a');
+                a.href = url;
+                var ret = {},
+                        seg = a.search.replace(/^\?/,'').split('&'),
+                        len = seg.length, i = 0, s;
+                for (;i<len;i++) {
+                    if (!seg[i]) { continue; }
+                    s = seg[i].split('=');
+                    ret[s[0]] = s[1];
+                }
+                return ret;
+            }
+        })
+
+        var urlMap= $.parseUrl(),type;
+        if(!urlMap.type){
+            type=1;
+        }else{
+            type=urlMap.type;
+        }
+        $('#time').find('li[index='+type+']').click()
+
+        function showChart(){
+            chartData.sort(function(a, b){
+                return a.dateTime > b.dateTime?1:-1
+            })
+            var settings = {
+                title: '抽奖数据曲线图',
+                description: "",
+                enableAnimations: true,
+                showLegend: true,
+                padding: { left: 15, top: 5, right: 40, bottom: 10 },
+                source: chartData,
+                categoryAxis: {
+                    dataField: 'dateTime',
+                    type: 'basic'
+                    /*formatFunction: function (value) {
+                        return value;
+                    }*/
+                },
+                xAxis:
+                {
+                    dataField: 'dateTime',
+                    axisSize: 'auto',
+                    showTickMarks: true,
+                    tickMarksColor: '#888888',
+                    showGridLines: true,
+                    gridLinesColor: '#888888'
+                },
+                colorScheme: 'scheme04',
+                seriesGroups: [{
+                    type: 'spline', //spline line
+                    valueAxis:{
+                        displayValueAxis: true,
+                        axisSize: 'auto',
+                        tickMarksColor: '#888888',
+                        minValue: 0
+                    },
+                    series: [
+
+                    ]
+                }]
+            };
+            $.each(activityMap, function(k, v){
+                settings.seriesGroups[0].series.push({dataField: k, displayText: v, opacity: 0.7})
+            })
+            $('#chartContainer').jqxChart(settings);
+        }
+
+        $('.btn_confirm').click(function(){
+            var startTime = $('#startTime').val()
+            if (!startTime){
+                return alert('请选择开始时间')
+            }
+
+            var endTime = $('#endTime').val()
+            if (!endTime){
+                return alert('请选择结束时间')
+            }
+
+            var startTimes = startTime.split('-')
+            var endTimes = endTime.split('-')
+            loadStatistics(new Date(startTimes[0], startTimes[1] - 1, startTimes[2], 0, 0, 0).getTime(), new Date(endTimes[0], endTimes[1] - 1, endTimes[2], 0, 0, 0).getTime())
+            $('#time').find('li').removeClass('on');
+        })
+
+        $('#startTime').focus(function(){
+            WdatePicker({dateFmt:'yyyy-MM-dd'});
+        })
+        $('#endTime').focus(function(){
+            var startTime = $('#startTime').val()
+            if (startTime){
+                WdatePicker({dateFmt:'yyyy-MM-dd', minDate: "#F{$dp.$D(\'startTime\',{d:1});}"});
+            } else {
+                $('#startTime').focus()
+            }
+        })
+    })
+
+</script>
+
+</body>
+</html>
+<style>
+    #wrapper{
+        padding:20px;
+    }
+    th{
+        text-align:center;
+    }
+</style>
+<script>
+    $(function(){
+        $(':text').each(function(){
+            $(this).css({
+                lineHeight:$(this).height()+'px'
+            })
+        })
+    })
+</script>

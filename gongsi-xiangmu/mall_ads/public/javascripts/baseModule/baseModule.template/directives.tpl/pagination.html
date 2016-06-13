@@ -1,0 +1,8 @@
+<div class="pagination-wrapper">
+    <ul class="pagination">
+        <li ng-click="prev()" ng-if="currentPage!==1"><a href="javascript:;" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+        <li ng-click="fetchData(page)" ng-class="{active:currentPage===page}" ng-if="page!=undefined" ng-repeat="(index,page) in pageConfig track by $index"><a href="javascript:;">{{page}}</a></li>
+        <li ng-click="next()" ng-if="totalPage!==currentPage"><a href="javascript:;" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+    </ul>
+    <div ng-transclude></div>
+</div>

@@ -1,0 +1,64 @@
+<li msg="奖品名称">
+    <strong class="tit ng-binding">{{btntext||'选择文件'}}：</strong>
+    <div class="dbx-uploader" data-uploadindex="{{uploaderIndex}}">
+        <a class="uploader-text-area" href="javascript:;" ng-click="chooseFiles($event)">选择文件</a>
+        <input style="display:none;" type="file">
+        <span class="upload">＋</span>
+        <div ng-transclude></div>
+        <div class="save_pic">
+            <div class="isMulti">
+                <label class="isMultiTitle">是否支持多图上传:</label>
+                <input ng-click="multiY($event,uploaderIndex)" ng-checked="options.multi==='1'" name="isMulti{{uploaderIndex}}" type="radio"><label>是</label>
+                <input ng-click="multiN($event,uploaderIndex)" ng-checked="options.multi==='0'" name="isMulti{{uploaderIndex}}" type="radio"><label>否</label>
+            </div>
+            <div ng-show="isUploading" class="progress">
+                <div class="progress-bar" role="progressbar" style="min-width: 2em;" ng-style="{width:percent+'%'}">
+                    {{percent}}%
+                </div>
+            </div>
+            <div class="imgs-area uploading-imgs-area" ng-if="tmpImgSrcs.length!==0&&options.type==='img'||options.type==='image'">
+                <div>
+                    <div class="upload_pic_check">即将上传的图片预览:</div>
+                    <div ng-repeat="src in tmpImgSrcs track by $index">
+                        <img ng-src="{{src}}">
+                        <label>{{file.files[$index].name}}</label>
+                    </div>
+
+                </div>
+
+                <button class="dbx-uploader-submit" ng-click="beginUpload($event)">开始上传</button>
+            </div>
+            <div class="imgs-area uploading-imgs-area" ng-if="options.type!=='img'&&options.type!=='image'&&file.files&&file.files.length!==0">
+
+                <div>
+                    <div>即将上传的文件名称:</div>
+                    <div ng-repeat="item in file.files">
+                        <!--<img ng-src="{{src}}">-->
+                        <label>{{item.name}}</label>
+                    </div>
+
+                </div>
+                <button class="dbx-uploader-submit" ng-click="beginUpload($event)">开始上传</button>
+            </div>
+            <div class="imgs-area uploaded-imgs-area" ng-if="imgSrcs.length!==0&&options.type==='img'||options.type==='image'">
+                <div class="success_upl">上传成功的图片预览:</div>
+                <div class="picture" ng-repeat="src in imgSrcs track by $index">
+                    <img ng-src="{{src}}">
+                    <label>{{uploadedFileNames[$index]}}</label>
+                </div>
+            </div>
+            <div class="imgs-area uploading-imgs-area" ng-if="options.type!=='img'&&options.type!=='image'&&uploadedFileNames.length!==0">
+
+                <div>
+                    <div>上传完成的文件名称:</div>
+                    <div ng-repeat="name in uploadedFileNames track by $index">
+                        <label>{{name}}</label>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</li>
+

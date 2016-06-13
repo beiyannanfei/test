@@ -1,0 +1,198 @@
+.top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
+.top_tit01 strong{ float:right; position:relative; top:-3px;padding:2px 10px; background:#0090ff; border-radius:4px; font-size:14px; color:#fff; font-weight:normal;}
+.top_tit01 strong:hover{ cursor:pointer; background:#0079d6;}
+
+.top_search{ overflow:hidden; clear:both; padding:10px 0 0; text-align:right}
+.top_search *{ font-size:13px}
+.top_search .w1{ width:160px; border:solid 1px #c9c9c9; padding:3px 4px;font-family:"微软雅黑"; border-radius:3px; box-shadow:inset 0 1px 3px #ddd; line-height:18px}
+.top_search .btn{ width:50px; height:26px; padding:1px 0 3px;border:solid 1px #c9c9c9; background:#f9f9f9;border-radius:3px; cursor:pointer }
+.top_search .btn:hover{ background:#eee}
+
+.t_form1{position:relative; margin-top:20px}
+.t_form1 dt{ clear:both; overflow:hidden; padding:6px 0; margin-bottom:10px; background:#95c2eb; color:#fff }
+.t_form1 dd{ clear:both; margin-bottom:15px;padding:25px 0; border:solid 1px #e7e7eb;width:100%}
+.t_form1 dd:hover{ background:#f9f9f9}
+.t_form1 th{ font-size:14px}
+.t_form1 td{ text-align:center; font-size:14px; color:#555}
+
+.t_form1 td.address{ position:relative; }
+.t_form1 td.address strong{display:inline-block; width:70px; border:solid 1px #ddd;padding:2px 0; background:#fff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer}
+.t_form1 td.address strong:hover,.t_form1 td.address.on strong{ border:solid 1px #0090ff; color:#0090ff}
+.t_form1 td.address .url{ display:none; position:absolute; right:-50px; top:50%; margin-top:15px; background:#fff; border:solid 1px #ddd; padding:4px 6px; box-shadow:0 0 3px #ccc; border-radius:4px; white-space:nowrap }
+.t_form1 td.address .url i{ margin-left:10px; cursor:pointer; color:#0090ff}
+
+.t_form1 td.address.on .url{ display:block}
+.t_form1 td .e1{ width:80%; border:solid 1px #e7e7eb; padding:3px 4px 4px; font-family:"微软雅黑"; font-size:14px}
+.t_form1 td.good{ text-align:left}
+.t_form1 td.good img{ float:left; padding:2px; border:solid 1px #ddd; margin:0 15px 0 30px; max-width:100px; max-height:100px}
+.t_form1 td.good h3{ margin-top:7px;}
+.t_form1 td.good p{ margin-top:4px;}
+.operate1 strong{ display:inline-block; margin:0 5px; padding:3px 0; font-size:14px; border-radius:3px; font-weight:normal; color:#0090ff; cursor:pointer;}
+.operate1 strong:hover{ color:#0068b9}
+
+.pop_page1{ position:absolute; min-width:300px; background:#fff; border-radius:5px; box-shadow:0 1px 5px rgba(0,0,0,.2);}
+.pop_page1 .title{ height:45px; background:#0090ff; padding:0 15px;border-radius:5px 5px 0 0;}
+.pop_page1 .title strong{ float:left; color:#fff; font-size:14px; line-height:45px; font-weight:normal}
+.pop_page1 .title .close{ float:right; width:15px; height:15px; margin:15px 0 0; background:url(/pointMall/images/close.png) no-repeat center center; text-indent:-9999px; cursor:pointer}
+.pop_page1 .title .close:hover{opacity:.8; background-color:#000}
+.pop_page1 .cnt_code1{ margin:10px auto; text-align:center}
+.pop_page1 .cnt_code1 img{ width:160px; height:160px;}
+.pop_page1 .cnt_code1 p{ margin-top:8px; font-size:14px}
+.pop_page1 .cnt2{ margin:20px auto;}
+.pop_page1 .cnt2 .tip{ text-align:center; font-size:14px}
+.pop_page1 .cnt2 .btn{ margin-top:20px; text-align:center}
+.pop_page1 .cnt2 .btn strong{display:inline-block; width:85px; margin:0 5px; padding:5px 0; background:#0090ff; font-size:14px; border-radius:3px; font-weight:normal; color:#fff; cursor:pointer; text-align:center}
+.pop_page1 .cnt2 .btn strong.cancel{ background:#ff5252}
+
+.tit2{ margin:10px 20px; font-size:14px}
+.wrap_add{ margin:0 auto; width:660px; border:solid 1px #e7e7eb; padding:10px 30px; background:#fff;}
+.wrap_add li{ clear:both; overflow:hidden; margin:12px 0; padding-left:120px}
+.wrap_add li *{ font-size:14px}
+.wrap_add li .tit{ float:left; margin-left:-120px; padding-top:3px; width:110px; text-align:right; font-weight:normal}
+.wrap_add li .w1{ width:241px; padding:2px 0; border:solid 1px #ddd; border-radius:3px}
+.wrap_add li .w2{width:240px; padding:2px 0; border:solid 1px #ddd; line-height:21px; border-radius:3px}
+.wrap_add li .pic{ float:left; margin-right:10px; vertical-align:middle; min-height: 100px; max-height: 200px; min-width: 100px; max-width: 200px; background-color: #e6e6e6;}
+.wrap_add li .del{ float:left; margin-top:20px; cursor:pointer; color:#0090ff; display: none;}
+.wrap_add li .btn1{ display:block;width:95px; padding:4px 0; background:#0090ff; font-size:14px; border-radius:3px; font-weight:normal; color:#fff; cursor:pointer; text-align:center }
+.wrap_add li .btn1:hover{background:#0079d6;}
+.wrap_add li .tip{ margin-top:4px; color:#999}
+.setting_next{ margin-top:40px; text-align:center; color:#999; font-size:14px}
+.setting_next strong{display:inline-block;width:95px; padding:5px 0; margin-right:5px; background:#0090ff; font-size:14px; border-radius:5px; font-weight:normal; color:#fff; cursor:pointer; text-align:center }
+.setting_next strong:hover{background:#0079d6;}
+
+/* add on 2014.12.23 */
+.wrap_add li .tip i{ color:#f00}
+.wrap_add{ width:auto}
+.wrap_add li .w3{ width:120px; padding:2px 0; border:solid 1px #ddd; border-radius:3px}
+.wrap_add li label{ margin-right:15px}
+.wrap_add li .w2{ width:234px;padding:2px 3px;}
+.wrap_add li .w4{ width:197px;padding:2px 40px 2px 3px; background:url(/pointMall/images/pmall/min.gif) no-repeat right center; border:solid 1px #ddd; line-height:21px; border-radius:3px}
+.wrap_add2{ border:solid 1px #e7e7eb; padding:10px 20px; background:#fff;}
+.wrap_add2 .c_tx img{ cursor:pointer}
+.wrap_add2 .cnt_show{ padding-top:15px;}
+.wrap_add2 .tip{ padding-top:15px; text-align:right; font-size:14px; color:#777}
+.wrap_add3 .w2{ width:234px;padding:2px 3px;}
+.wrap_add3 { clear:both; overflow:hidden; margin:12px 0; padding-left:5px}
+.wrap_add3 *{ font-size:14px}
+.wrap_add3 .tit{ float:left; margin-left:2px; padding-top:3px; width:80px; text-align:left; font-weight:normal}
+
+.rule label{margin-right:15px}
+
+.play-way {display: none;}
+
+.rule-custom{display:inline-block; padding: 5px 10px; vertical-align: middle; background-color: #3a87ad; border: 1px solid #e7e7eb; overflow: hidden; text-align: center; color: white; cursor: pointer;}
+
+textarea.shoppingCard{width: 500px; height: 200px; resize: none; padding: 5px 5px;}
+.imports{width: 74px;margin-top:5px; padding:5px 10px; height: 32px; background-color: #da4f49; position: relative; border: 1px solid #e7e7eb; overflow: hidden; text-align: center; line-height: 32px; color: white}
+.import{position:absolute; width: 100%; height: 100%; opacity: 0; top: 0; left: 0;}
+
+.add_resource{ padding-top:20px}
+.add_resource strong.btn {display:inline-block; padding:4px 10px 5px; background:#0090ff; border:0; border-radius:5px; font-size:14px; font-family:"微软雅黑";color:#fff; cursor:pointer; font-weight:normal}
+.add_resource strong.btn:hover{ background:#0079d6;}
+.area_resource{ margin-top:10px; padding:20px 20px 20px 170px; background:#fdfdfd; border:solid 1px #e8e8ec; position: relative;}
+.area_resource .a_pic{ position:absolute; left:20px; width:130px}
+.area_resource .a_pic img{ width:100%}
+.area_resource .a_pic .ico{ position:absolute; left:50%; top:50%; margin:-20px 0 0 -20px; width:40px; height:40px; background:url(/pointMall/images/ico_play1.png) no-repeat 0 0; text-indent:-9999px; cursor:pointer}
+.f_form li{ padding:5px 0}
+.f_form li *{ font-size:14px;}
+.f_form li .tit{ float:left; width:80px; padding-right:5px; margin-left: 0px; font-weight:normal; text-align:right; line-height:25px;}
+.f_form li .w1{width:300px; margin-right:5px; padding:3px 6px; border:solid 1px #e7e7eb;}
+.f_form li .w2{width:400px; height:80px; padding:3px 6px; border:solid 1px #e7e7eb;}
+.f_form li span i{ color:#999}
+.pop_page1{ position:absolute; min-width:300px; background:#fff; border-radius:5px; box-shadow:0 1px 5px rgba(0,0,0,.2);}
+.pop_page1 .title{ height:45px; background:#0090ff; padding:0 15px;border-radius:5px 5px 0 0;}
+.pop_page1 .title strong{ float:left; color:#fff; font-size:14px; line-height:45px; font-weight:normal}
+.pop_page1 .title .close{ float:right; width:15px; height:15px; margin:15px 0 0; background:url(/pointMall/images/close.png) no-repeat center center; text-indent:-9999px; cursor:pointer}
+.pop_page1 .title .close:hover{opacity:.8; background-color:#000}
+.pop_page1 .pop_list{ padding:10px;}
+.pop_page1 .pop_list li{ float:left; width:130px; margin:10px; cursor:pointer}
+.pop_page1 .pop_list li:hover{opacity:.8}
+.pop_page1 .pop_list li img{width:130px; height:98px;}
+.pop_page1 .pop_list li .pic{ position:relative;}
+.pop_page1 .pop_list li .ico{position:absolute; left:50%; top:50%; margin:-20px 0 0 -20px; width:40px; height:40px; background:url(/pointMall/images/ico_play1.png) no-repeat 0 0; text-indent:-9999px;}
+.pop_page1 .pop_list li h3{ padding-top:4px; text-align:center; font-size:14px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+.pop_page1 .nodata{ padding-top:20px; text-align:center; font-size:15px; display: none;}
+
+.r_tit2{ margin-top:30px; font-weight:bold; font-size:14px}
+.f_form2 { padding-top:5px}
+.f_form2 li{ padding:10px 0}
+.f_form2 li *{ font-size:14px;}
+.f_form2 li .tit{ float:left; width:105px; padding-right:5px; font-weight:normal; text-align:right; line-height:25px}
+.f_form2 li .w1{width:300px; margin-right:5px; padding:3px 6px 4px; border:solid 1px #e7e7eb;}
+.f_form2 li span i{ color:#9c3737}
+.list2_sh{ clear:both; overflow:hidden; margin-bottom:-10px; padding-top:20px;}
+.list2_sh li{ float:left; clear:none; position:relative; overflow: initial; margin:0 20px 20px; padding:5px 15px;border:solid 1px #e6e6e6; color:#c9c9c9;text-align:center;}
+.list2_sh li strong{ font-weight:normal; font-size:14px;}
+.list2_sh li .close{ position:absolute; top:-10px; right:-10px; width:21px; height:21px; background:url(/pointMall/images/close2.png) no-repeat 0 0; text-indent:-9999px; cursor:pointer}
+.list2_sh li .close:hover{opacity:.8;}
+
+.add-res-goods {display:inline-block; padding:4px 10px 5px; background:#0090ff; border:0; border-radius:5px; font-size:14px; font-family:"微软雅黑";color:#fff; cursor:pointer; font-weight:normal}
+.add-res-goods:hover{ background:#0079d6;}
+
+.store_list li{
+	border: 1px solid #ccc;
+	width: 120px;
+	height: 120px;
+	text-align: center;
+	line-height: 114px;
+}
+.store_list li.this{
+	border: 1px solid #f60;
+}
+.store_list .one{
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	display: inline-block;
+}
+.store_list li img{
+	max-width: 110px;
+    max-height: 110px;
+}
+.store_list .one .right_message label{
+	display: inline-block;
+	width: 50px;
+	text-align: right;
+}
+.store_list .one .right_message p{
+	display: inline-block;
+	width: 60px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 1;
+}
+.wrap_add li .picture_right{
+	float: left;
+	width: 90px;
+	height: 90px;
+	margin-right: 20px;
+	position: relative;
+	margin-bottom: 20px;
+}
+.wrap_add li .picture_right img{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.wrap_add li .picture_right span{
+	position: absolute;
+	top:1px;
+	right: -10px;
+	width: 20px;
+	height: 20px;
+	background: red;
+	color: #fff;
+	text-align: center;
+	line-height: 20px;
+	border-radius: 50%;
+	cursor: pointer;
+	opacity: 0.5
+}
+.first{margin-top: 15px;}
+.first input{width: 170px;padding: 2px 3px;border: solid 1px #ddd;line-height: 21px;border-radius: 3px;margin-right: 10px;}
+.first button{padding: 5px 5px;border:none;background:rgb(0, 187, 0);color:#fff;border-radius:3px;outline: none;cursor: pointer;}
+.member{width:30%;border:solid 1px #ccc;margin-top: 20px;border-bottom:none;}
+.member th,.member td{text-align: center;}
+.member thead tr{height: 30px;line-height: 30px;border-bottom: solid 1px #ccc;}
+.member tbody tr{height: 30px;line-height: 30px;border-bottom: solid 1px #ccc;}

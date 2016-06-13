@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>发起活动</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/mass.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/popup.css" />
+
+    <style type="text/css">
+        .top_tit01{ height:99px;line-height: 99px;background: #fff;padding-left: 30px;width:97%;margin:20px auto;font-size: 28px;}
+        /* @media (min-width:1220px) {
+            .fl_w{width: 550px;}
+            .qdbutton a{margin: 18px 99px;}
+        }
+        @media (max-width:1220px) {
+            .fl_w{width: 370px;}
+            .qdbutton a{margin: 16px 29px;}
+        } */
+        .fl_w{height:auto;padding-top: 250px; position:relative;}
+        .fl_w>img{position:absolute; top:0; left:0;}
+        .fr_w{background:#fff;}
+        .font_red{color:#f60;}
+        .tit01{padding-bottom:20px;}
+        .fr_w .ico_l_arrow{-moz-border-right-colors: #fff;}
+        .btn{text-align:center;margin: 0}
+        .btn .yes,.nn .yes{border-radius: 3px;
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0 8px;
+            padding: 4px 37px;
+            width: 77px;
+            background: none repeat scroll 0 0 #0090ff;
+            border: 1px solid #0090ff;
+            color: #fff;
+            text-align:center;}
+        .next{margin-left: 250px;margin-top: 20px;}
+        .fr_w li{clear:both;}
+        .fr_w li label{margin-top: 5px;}
+        .fr_w li font{width:95px; text-align:right; padding-right:5px;float: left;margin-top: 5px;}
+        .fr_w li textarea{float: left;margin-left: 10px;resize:none;width:70%;border-radius: 4px;outline: none;}
+        .fr_w.fr_w2 li font{width:50px;}
+        .fr_w li input{border:1px solid #e6e6e6; width:70%;float: left;}
+        .fr_w li{padding-top:20px;}
+        .fr_w.fr_w2 li{padding:20px;}
+        .text{border:1px solid #e6e6e6; padding:6px; display:inline-block; width:324px; min-height:136px;}
+        .shuoming font{ vertical-align:top;}
+        .shuoming i{ vertical-align:bottom;}
+        .fr_w li i{color:#a0a0a0;}
+        .check label{padding:0 15px 0 22px; min-width:53px; display:inline-block; background:url(/images/checked_bg.png) no-repeat 0 -15px;}
+        .check label.lei{background-position:0 2px;}
+        .fr_w li.btn{margin:0 0 20px; padding-top:40px;}
+        .qdbutton{width: 80%;margin:0 auto;text-align: center;}
+        .custom {display: none;position: relative;}
+        .qdbutton i {
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            margin: 0 10px;
+            text-align: center;
+            width: 40%;
+        }
+        .qdbutton a {
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            width: 40%;
+        }
+        .qd {
+            background: none repeat scroll 0 0 #0090ff;
+            color: #fff;
+        }
+        .qd:hover{background:#1079cc; color:#fff;}
+        .qx:hover{background:#1079cc; border-color:#e6e6e6;}
+        .qx {
+            border: 1px solid #e6e6e6;
+            color: #222222;
+            background-color: #fff;
+        }
+        input.file{height: 28px;
+            margin: 0 0 0 -131px;
+            padding: 0;
+            width: 337px!important;
+            opacity:0;
+            position: absolute;
+            top:3px;
+            right: 85px;
+        }
+        .selected{width:262px; height:30px; padding:0 8px; line-height:30px; display:inline-block; border:1px solid #e6e6e6; position:relative;}
+        .fr_w.fr_w2 li font.guize{ vertical-align:top; margin-top:5px;}
+        .selected span{ display:inline-block; border:1px solid #e6e6e6; width:278px;}
+        .fr_w.fr_w2 li input.jianglv{width:70px;}
+        .fr_w.fr_w2 li input.text1{width:60px; text-align:center;float: left;padding:6px;}
+        .fr_w.fr_w2 li input.jianglv1{width:120px; text-align:center;}
+        .fr_w.fr_w2 li.zjl{margin-top:-50px; padding-top:0;}
+        .fr_w.fr_w2 li.zjl font.guize{width:45px; text-align:left;}
+        .nn .yishezhi,.nn .weishezhi,.nn .shezhi{padding:4px; width:auto; margin-top:16px;color: #fff}
+        .default-setting{float:right; background:#fff; padding:4px; width:auto; margin-top:16px; font-size: 14px;}
+        .nn .shezhi{background:#eeeeee; border-color:#eeeeee; color:#959595;}
+        .nn .shezhi:hover{background:#eeeeee; border-color:#eeeeee; color:#959595;}
+        .nn .yes{float:right;}
+        .nn .left{float:left;width:65px; height:65px; border:1px solid #e6e6e6; position:relative;}
+        .fr_w.fr_w2 li input.file{width:80px; height:80px; padding:0; border:0; opacity:0; position:absolute; top:0; left:0;}
+        .fr_w.fr_w2 li.nn{display:block; border:1px solid #e6e6e6; margin:-1px; -moz-box-sizing:border-box; clear:both; overflow:hidden; position:relative;}
+        .nn .left p{background:#f3f3f3; line-height:19px; height:50px; padding-top:15px; text-align:center;}
+        .d_tianjia .left p{padding-top:23px; height:42px; cursor:pointer;}
+        .pop_cnt{ position:fixed; width:792px; left: 50%; top: 50%; margin: -135px 0 0 -386px; border: 2px solid #e6e6e6}
+        .pop_cnt .info1{padding:15px 0 0 15px; margin:0; min-height:200px; max-height: 400px; overflow-y:auto;}
+        .pop_cnt .info1 li{line-height:34px; margin:0 20px 10px 0; float:left; text-align:center; padding:130px 0 0; width:100px;}
+        .pop_cnt .info1 li img{height:100px; width:100px; margin-top:-132px; display:block;}
+        .pop_cnt .info1 li span{float: left;width: 60px;}
+        .pop_cnt .info1 li p{float: left;width:35px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+        .tanchu_an{ display:inline-block; padding:15px;}
+        .tanchu_an i.weishezhi{margin:0; padding:4px 8px;}
+        .yin{border-top:1px solid #e6e6e6; padding:20px; margin:89px -20px -20px; display:block;}
+        .fr_w.fr_w2 li .aniu{margin-bottom:15px;}
+        .fr_w.fr_w2 li .aniu i{width:74px; height:32px; display:inline-block; border-radius:3px; text-align:center; line-height:32px; color:#393939; cursor:pointer;font-style: normal;}
+        .fr_w.fr_w2 li .aniu i:hover{background:#f1f1f1;}
+        .fr_w.fr_w2 li .aniu i.i_t{background:#576475; color:#fff;}
+        .fr_w.fr_w2 li .yin{background:#f0f0f0;}
+        .fr_w.fr_w2 li .yin dl dt:first-child{height:20px;}
+        .fr_w.fr_w2 li .yin dl dd,.fr_w li .yin dl dt{display:none;}
+        .fr_w.fr_w2 li .yin dl .xs{display:block}
+        .fr_w.fr_w2 li .yin dl dd p{margin-bottom:10px;}
+        .fr_w.fr_w2 li .yin dl dd p a{margin-top:6px;margin-left: 220px;}
+        .zeng{color:#008fff;}
+        .zeng:hover{color:#008fff;}
+        .nn span.yes{width:50px; padding:4px;}
+        .left_stend{ position:relative; z-index:1; line-height:26px; font-size:14px; color:#fff; letter-spacing:1px;width: 90%;margin: 0 auto;height: auto}
+        .left_stend li{height:auto;padding: 3px 0 2px 0;}
+        .left_stend p{height: 20px;line-height: 20px;font-size: 14px;}
+        .p_box{padding-top:10px;}
+        .news_w{float:left;}
+        .left{margin-right:20px;}
+        .news_w dt{line-height:28px; height:28px; padding-top:8px; font-size:14px;}
+        .st_close{color: #ee804e;
+            cursor: pointer;
+            font-size: 35px;
+            position: absolute;
+            right: -1px;
+            top: -14px;
+            transform: rotate(45deg);
+            text-align:center;}
+        .st_close:hover{color:#d15c27}
+        .fr_w .ico_l_arrow{z-index:1;}
+        .fr_w2{display:none;}
+        .select-hover{cursor: pointer;}
+        .select-hover:hover{border: 1px solid #808080}
+
+        .wheel{position:relative;width:277px;height:277px;margin:-20px auto;}
+        .turnplateBox{position:absolute;width:236px;height:236px;top:50%;left:50%;-webkit-transform:translate(-50%,-50%)}
+        .turnplate{width:inherit;height:inherit;background:no-repeat;background-size:100% 100%}
+        .cursorBox{position:absolute;width:80px;height:80px; margin-top: -5px;top:50%;left:50%;-webkit-transform:translate(-50%,-50%)}
+        .cursor{width:inherit;height:80px;margin:auto;background:url(/images/turntable/cursor.png) no-repeat center center;background-size:100% 100%}
+        .content {margin:0px 0 15px 0;}
+
+        .box{border-radius: 5px;font-size: 14px;border: 1px dashed rgba(0, 0, 0, 0.3);}
+        .box .title-green {padding: 0 5px 0px 10px;background: url(/images/turntable/title-bg-green.png) no-repeat 0 0;border-radius: 3px 3px 3px 0;color: #ffffff;height: 22px;margin: -1px;}
+        .boxcontent{margin:15px 15px 0;border-radius: 5px;padding: 2px;background-color: #FEF8B2;-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);position: relative;}
+        .box .Detail {padding: 15px;}
+        .ratingText{font-size: 14px;}
+
+        .selectText{border:1px solid #CCC; height:34px; min-width:100px;float: left;width: 35%}
+        .frm{margin-top:20px;}
+        .frm .tile{margin-bottom:8px;}
+
+        .imports{width: 74px;margin-top:5px; height: 32px; background-color: #da4f49; position: relative; border: 1px solid #e7e7eb; overflow: hidden; text-align: center; line-height: 32px; color: white}
+        .import{position:absolute; width: 100%; height: 100%; opacity: 0; top: 0; left: 0;}
+        .fanhui{float: left;margin-left: 240px;margin-top: 20px;margin-bottom: 10px;}
+        .done{margin-left: 10px;margin-top: 20px;margin-bottom: 10px;}
+        .percent_icon{line-height: 30px;margin-left: 5px;color: #000;font-style: normal;}
+        .Wdate{width:145px!important;padding: 6px;height: 33px;}
+        .bianji{float: right;margin-right: 25px;}
+        .w_msg_list{width: 100%;}
+        .setTime{height: auto;width: 70%;background: #fff;clear: both;margin-left: 105px;padding-bottom: 20px;border: solid 1px rgb(204,204,204);}
+        .oneTime{height: 34px;margin-bottom: 10px;}
+    </style>
+</head>
+<body>
+    <div class="normalheader transition animated fadeIn">
+    <div class="hpanel" style="width:100%">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a>应用</a></li>
+                    <li>
+                        <span>抽奖管理</span>
+                    </li>
+                    <li class="active">
+                        <span class="dbx-msg2"></span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light dbx-msg1 m-b-xs" style="font-size:30px;">
+                <a id="back">返回上一级</a> >
+            </h2>
+            <small class="dbx-msg2"></small>
+        </div>
+    </div>
+</div>
+    <input id="way" type="hidden" value="{{way}}">
+    <input id="activityId" type="hidden" value="{{activityId}}">
+<div class="wrap01" style="margin:20px 40px 0 40px;">
+    <div class="w_msg_list clearfix">
+        {{#if isGGK}}
+            <div class="fl_w" style="padding-top:25px;padding-bottom:25px;">
+                <img style="width: 100%; height: 100%;" src="/images/ggk/ggkBg.jpg" alt="" />
+                <div style="width:90%;margin:0 auto;">
+                <img style="width: 100%; height: 100%;position:relative;" src="/images/ggk/prize-top.jpg" alt="" />
+                <img style="width: 100%; height: 100%;position:relative;margin-top:30px;" src="/images/ggk/ggk-gray1.png" alt="" /></div>
+                <ul class="left_stend">
+                    <p>活动说明</p>
+                    <li></li>
+                </ul>
+            </div>
+        {{else}}
+            <div class="fl_w">
+                <img style="width: 100%; height: 100%;" src="/images/turnplate.jpg" alt="">
+                <div id="wheel" class="wheel">
+                    <div id="turnplateBox" class="turnplateBox"><div id="turnplate" class="turnplate"></div></div>
+                    <div id="cursorBox" class="cursorBox"><div id="cursor" class="cursor"></div></div>
+                </div>
+                <div class="pic" style="position: relative;width:100%">
+                    <li class="qdbutton"><a class="qd download-turnplate">下载转盘模板</a>
+                        <i onclick="jQuery(this).next().click();" class="qx">上传转盘</i>
+                        <input style="display:none;" type="file" class="file" id="imgTwo" name="turnplate" onchange="preImg(this.id,'turnplate');"></li>
+                </div>
+                <div class="content">
+                    <div class="boxcontent boxyellow">
+                        <div class="box">
+                            <div class="title-green">活动说明：</div>
+                            <div class="Detail">
+                                <ul class="left_stend" style="color: #000; padding: 0;">
+                                    <li></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        <ul class="fr_w fr_w1">
+            <span class="ico_l_arrow"></span>
+            <li>
+                <font><span class="font_red">*</span>活动名称:</font>
+                <input id="name" class="huodong_name form-control" type="text" placeholder="请输入活动名称">
+            </li>
+            <li>
+                <font><span class="font_red">*</span>消耗{{unit}}:</font>
+                <input id="score" class="xiaohjf form-control" type="text" placeholder="{{unit}}（填写整数可为0）"></li>
+            <li>
+                <font><span class="font_red">*</span>时间:</font>
+                <input type="text" id="startTime" class="form-control" placeholder="开始时间" style="width:30%;float:left"/> <b style="font-weight:normal;float:left;line-height:34px;margin-left:5px;">至</b> <input type="text" id="endTime" class="form-control"style="width:30%;float:left;margin-left:5px;" placeholder="结束时间"/>
+            </li>
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="color-line"></div>
+                        <div class="modal-header text-center">
+                            <h2 style="font-size:16px;">设置（<i style="font-style:normal" id="start"></i> --- <i style="font-style:normal" id="end"></i>）内每天抽奖时间段</h2>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <div class="oneTime">
+                                <input type="text" class="form-control startData" id="startData" placeholder="开始时间" style="width:40%;float:left"/> <b style="font-weight:normal;float:left;line-height:34px;margin-left:5px;">至</b> <input type="text" class="form-control endData" id="endData" style="width:40%;float:left;margin-left:5px;" placeholder="结束时间"/><button type="button" class="btn btn-success" style="float:left;margin-left:7px;" id="addTimeCon">+时间段</button>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" id="sure">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <li class="shuoming">
+                <font>活动说明:</font>
+                <textarea placeholder="活动规则阐述" class="text" contenteditable="true"></textarea>
+            </li>
+            <div class="pic">
+                <li class="bg-img check"><font>更换背景:</font>
+                        <input type="file" id="bg-img" name="file" style="width:185px;" />
+                        <input type="button" id="resetBg" value="重置"
+                               style="width:80px;cursor:pointer;color:white;background:none repeat scroll 0 0 #0090ff" />
+                        <span>建议图片尺寸: 640*1080, 100k以下 </span>
+                        <input type="hidden" id="bg_img_default"
+                               {{#if isGGK}}
+                                    value="/images/default/ggkBg.jpg"
+                               {{else}}
+                                    value="/images/turnplate.jpg"
+                               {{/if}}/>
+
+                        <input type="hidden" id="bg_img_current" value="" />
+                </li>
+                <li class="cover check"><font style="margin-right:10px;">活动封面:</font><label class="lei" for="default">默认</label><label class="new_y" for="custom">自定义</label></li>
+                <li class="qdbutton"><div class="custom"><a href="/images/default/cover-default.psd" class="qd">下载活动封面模板</a><i class="qx">上传活动封面</i><input type="file" class="file" id="imgOne" name="cover" onchange="preImg(this.id,'coverPre');"></div><div class="p_box"><img id="coverPre" width="450" src="" alt=""></div></li>
+            </div>
+            <li class="limit check">
+                <font>抽奖次数限制:</font>
+                <input id="limit" class="limit_val form-control" type="text" placeholder="默认每人多次" />
+            </li>
+            <li class="inBound check"><font style="margin-right:10px;">是否在榜单显示:</font><label for="1">是</label><label class="lei" for="0">否</label></li>
+            <li class="follow-limit check"><font style="margin-right:10px;">未关注用户是否能中奖:</font><label for="1">是</label><label class="lei" for="0">否</label></li>
+            <li>
+                <font class="tile" style="margin-right:10px;">选择抽奖用户:</font>
+                <select class="selectCategory selectText form-control" id="cat" tag="{{tag}}">
+
+                </select>
+                <select class="selectText form-control" id="key">
+
+                </select>
+            </li>
+            <button type="button" class="btn w-xs btn-success next" id="ryes">下一步</button>
+        </ul>
+        <ul class="fr_w fr_w2">
+            <span class="ico_l_arrow"></span>
+            <li class="nn add-rating-goods">
+                <div class="left select-hover"><p class="add-rating">+添加</br><i id="next-rating">1等奖</i></p></div>
+            </li>
+            <li class="nn add-default-goods">
+                <div class="left select-hover"><p class="add-rating" guli="true">+添加</br><i>鼓励奖</i></p></div><i class="default-setting">(未中奖默认为)</i>
+            </li>
+            <button type="button" class="btn w-xs btn-success fanhui">上一步</button>
+            <button type="button" class="btn w-xs btn-success done">完成</button>
+        </ul>
+    </div>
+</div>
+<div class="pop_cnt">
+    <h2><strong class="tit2">添加奖品</strong><span class="close" title="关闭">关闭</span></h2>
+    <ul class="info1">
+
+    </ul>
+</div>
+
+<div class="bg"></div>
+<script type="text/javascript" src="/javascripts/ajaxfileupload.js"></script>
+<script type="text/javascript">
+    var hasCover = false;
+    var hasTurnplate = false;
+    var goodsMapCache = {}    
+    var bidCache = {}
+
+    /**
+     * 从 file 域获取 本地图片 url
+     */
+    function getFileUrl(sourceId) {
+        var url;
+        var file = null
+        if (navigator.userAgent.indexOf("MSIE")>=1) { // IE
+            url = document.getElementById(sourceId).value;
+        } else if(navigator.userAgent.indexOf("Firefox")>0) { // Firefox
+            url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+            file = document.getElementById(sourceId).files.item(0);
+        } else if(navigator.userAgent.indexOf("Chrome")>0) { // Chrome
+            url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+            file = document.getElementById(sourceId).files.item(0);
+        }
+
+        if (!/(.jpg)|(.jpeg)|(.png)$/.test(file.name.toLowerCase())){
+            swal('仅支持png, jpg格式的图片');
+            $(sourceId).removeAttr('value');
+            return null
+        }
+        if ('imgOne' == sourceId && file.size > 50 * 1024){
+            swal('图片太大, 不能超过50K');
+            $(sourceId).removeAttr('value');
+            return null
+        }
+        if ('imgTwo' == sourceId && file.size > 150 * 1024){
+            swal('图片太大, 不能超过150K');
+            $(sourceId).removeAttr('value');
+            return null
+        }
+        return url;
+    }
+    /**
+     * 将本地图片 显示到浏览器上
+     */
+    function preImg(sourceId, targetId) {
+        var url = getFileUrl(sourceId);
+        var pre = $('#' + targetId);
+        if (url){
+            if (targetId == 'coverPre'){
+                pre.attr('src', url)
+                hasCover = true
+            } else if (targetId == 'turnplate'){
+                hasTurnplate = true
+                pre.css("background-image","url(" + url + ")");
+            }
+        }
+    }
+$(function() {
+    var activityId = $('#activityId').val();
+    var way = parseInt($('#way').val());
+    var goodsInit = false;
+    var isRating = true; // 1:rating 0:encourage
+    var goodsMap = {}
+    var activityData = {prizes: [], way: way, lotteryC: 'count'}
+    var changePrizeId = null;
+
+    var tagCategory = $('#cat').attr('tag');
+    tagCategory = JSON.parse(tagCategory);
+
+    $('#imgTwo').click(function(e){
+        var count = 0
+        $.each(goodsMap, function (k, v) {
+            count++
+        });
+        if (count == 0){
+            swal('请先选择奖品!')
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    })
+
+    function renderTagSelect() {
+        $('#cat').append('<option value="">请选择</option>')
+        $.each(tagCategory, function (k, v) {
+            var options = '<option value="' + k + '">' + k + '</option>'
+            $('#cat').append(options)
+            $('#cat').change()
+        })
+    }
+
+    $('#cat').change(function () {
+        var category = $(this).val();
+        $('#key').empty();
+        $('#key').append('<option value="">请选择</option>')
+        if (!tagCategory[category]) {
+            return;
+        }
+        $.each(tagCategory[category], function (i, o) {
+            var options = '<option value="' + o + '">' + o + '</option>'
+            $('#key').append(options)
+        })
+    })
+    renderTagSelect();
+
+    function loadActivity(activityId) {
+        $.ajax({
+            method: 'get',
+            url: '/admin/activity/' + activityId,
+            success: function (data) {
+                renderActivity(data);
+            },
+            error: function () {
+                swal('获取失败');
+            }
+        })
+    }
+
+    function renderActivity(activity) {
+        $('.huodong_name').val(activity.name);
+        $('.xiaohjf').val(activity.score);
+        $('#startTime').val(activity.startTime)
+        $('#endTime').val(activity.endTime)
+        $('.text').val(activity.info)
+        $('.left_stend li').html(activity.info.split('\n').join('<br/>'))
+
+        if (activity.category && activity.category.length > 0 && $.isArray(activity.category)) {
+            $.each(activity.category, function (i, o) {
+                if (o.enable == 1) {
+                    $('#cat').val(o.cat);
+                    $('#cat').change();
+                    $('#key').val(o.key);
+                }
+            })
+        }
+
+        if (activity.cover) {
+            $('.cover').find('label[for=custom]').click();
+            $('#coverPre').attr('src', activity.cover)
+            activityData.cover = activity.cover;
+        }
+
+        if (activity.limit) {
+            //$('.limit').find('label[for=' + activity.limit + ']').click();
+            $('.limit .limit_val').val(activity.limit);
+        }
+
+        if (activity.bgImg && activity.bgImg.length > 0) {
+            $("#bg_img_current").val(activity.bgImg);
+           // $("#bg_img_default").val(activity.bgImg);
+            $(".fl_w>img:first").attr("src",activity.bgImg);
+        }
+
+        $('.inBound').find('label[for=' + activity.inBound + ']').click();
+        $('.follow-limit').find('label[for=' + activity.followLimit + ']').click();
+
+        activity.prizes.sort(function (a, b) {
+            return a.rating > b.rating ? 1 : -1
+        })
+
+        $.each(activity.prizes, function (i, o) {
+            if (o.bid){
+                bidCache[o.id] = o.bid
+            }
+            
+            if (o.isDefault) {
+                isRating = false;
+            } else {
+                isRating = true
+            }
+
+            createRating(o, o.rating, false);
+            var li = $('li[goodsId=' + o.id + ']');
+            if (!isNaN(o.p)) {
+                li.find('.percent').find('input.count').val(o.p * 100)
+            }
+            if (o.time && o.time.length > 0) {
+                li.find('.forTime').click()
+                $.each(o.time, function (j, m) {
+                    var dd = li.find('.add-time').closest('dd');
+                    if (j == 0) {
+                        dd.find('.startTime').val(m.startTime)
+                        dd.find('.endTime').val(m.endTime)
+                        dd.find('.count').val(m.count)
+                    } else {
+                        addTime(dd, m)
+                    }
+                })
+            } else if (o.day || o.count >= 0) {
+                li.find('.xs').find('.day').val(o.day || '1');
+                li.find('.xs').find('.count').val(o.count);
+            }
+            /*var obj = $.extend({}, o)
+            delete obj.name
+            delete obj.pic
+            delete obj.type
+            goodsMap[obj.id] = obj*/
+        })
+
+        $('li.goods').each(function () {
+            $(this).find('.save').click();
+            $(this).find('.yin').hide();
+        })
+
+        if (activity.turnplate) {
+            var downUrl = '/images/turntable/' + activity.prizes.length + '.psd'
+            $('#turnplate').css("background-image", "url(" + activity.turnplate + ")")
+            $('a.download-turnplate').attr('href', downUrl)
+            activityData.turnplate = activity.turnplate;
+        }
+        notifyGoodsChanged(activity.turnplate ? true : false);
+    }
+
+    if (activityId) {
+        loadActivity(activityId);
+    }
+
+    function selectGoods() {
+        if (!goodsInit) {
+            $.ajax({
+                type: "GET",
+                url: "/admin/lottery/enable/goods",
+                success: function (data) {
+                    var domString = ''
+                    $.each(data, function (i, o) {
+                        domString += '<li goodsId="' + o._id.toString() + '" type="' + o.type + '"><img src="' + o.pic + '" alt=""><span>奖品名：</span><p class="name" title="' + o.name + '">' + o.name + '</p>';
+                        if (o.bid && o.bid.length > 0) {
+                            domString += '<span>招商名字：</span><p title="'+ o.bid[0].name +'">'+ o.bid[0].name +'</p>'
+                            domString += '<span>商家名字：</span><p title="'+ o.bid[0].bname +'">'+ o.bid[0].bname +'</p>'
+                        }
+                        domString +='</li>'
+
+                        goodsMapCache[o._id.toString()] = o;
+                    })
+                    $('.info1').empty();
+
+                    var newCell = $(domString)
+                    $('.info1').append(newCell);
+                    bindGoodsEvent(newCell);
+                    goodsInit = true;
+                    showGoods()
+                },
+                error: function () {
+                    swal('获取商品列表失败')
+                }
+            })
+        } else {
+            showGoods()
+        }
+    }
+
+    function bindGoodsEvent($newCell) {
+        $('li', $newCell.parent()).click(function () {
+            var goodsId = $(this).attr('goodsId')
+            var type = $(this).attr('type')
+            var pic = $(this).find('img').attr('src')
+            var name = $(this).find('p.name').text();
+            var goods = {
+                id: goodsId,
+                pic: pic,
+                name: name,
+                type: type
+            }
+            $('.pop_cnt').css('display', 'none');
+            $('.bg').css('display', 'none');
+            var rating = 0;
+            var noti = true;
+            if (changePrizeId) {
+                rating = parseInt($('li.goods[goodsId=' + changePrizeId + ']').attr('ratingNum'), 10);
+                delete goodsMap[changePrizeId];
+                noti = false;
+            } else {
+                if (isRating) {
+                    rating = $('li.rating-goods').length
+                } else {
+                    rating = $('li.goods').length
+                }
+                rating++
+            }
+            createRating(goods, rating, noti)
+        })
+    }
+
+    function showGoods() {
+        $('.info1').find('li').show()
+        if (isRating) {
+            $('.info1').find('li[type=5]').hide()
+        } else {
+            $('.info1').find('li[type=3]').hide()
+            $('.info1').find('li[type=4]').hide()
+            $('.info1').find('li[type=6]').hide()
+            $('.info1').find('li[type=7]').hide()
+        }
+
+        $('li.goods').each(function () {
+            var goodsId = $(this).attr('goodsId')
+            $('.info1').find('li[goodsId=' + goodsId + ']').hide()
+        })
+
+        $('.pop_cnt').css('display', 'block');
+        $('.bg').css('display', 'block');
+    }
+
+    $('.close').click(function () {
+        $('.pop_cnt').css('display', 'none');
+        $('.bg').css('display', 'none');
+    })
+
+    $('.fanhui').click(function () {
+        $('.fr_w1').css('display', 'block');
+        $('.fr_w2').css('display', 'none');
+    })
+
+    $('#ryes').click(function () {
+        var name = $('.huodong_name').val();
+        if (name == '') {
+            return errorFocus($('.huodong_name'))
+        }
+        var score = $('.xiaohjf').val();
+        if ((score = checkInt(score)) == null) {
+            return errorFocus($('.xiaohjf'))
+        }
+
+        var startTime = $('#startTime').val()
+        if (startTime == '') {
+            return errorFocus($('#startTime'))
+        }
+
+        var endTime = $('#endTime').val()
+        if (endTime == '') {
+            return errorFocus($('#endTime'))
+        }
+
+        var info = $('.text').val()
+        if (info == '' || info == '<i>活动规则阐述</i>') {
+            return errorFocus($('.text'))
+        }
+
+        var coverSelect = $('.cover').find('label.lei').attr('for')
+        if (coverSelect != 'default') {
+            var cover = $('#coverPre').attr('src')
+            if (!cover) {
+                return swal('请上传自定义图片')
+            }
+        } else {
+            delete activityData.cover
+        }
+
+        //var limit = $('.limit').find('label.lei').attr('for')
+        var limit = $('.limit .limit_val').val();
+
+        var inBound = $('.inBound').find('label.lei').attr('for')
+        var followLimit = $('.follow-limit').find('label.lei').attr('for')
+
+        var cat = $('#cat').val();
+        var key = $('#key').val();
+        if (cat && key) {
+            activityData.category = [
+                {cat: cat, key: key, enable: 1}
+            ]
+        } else {
+            activityData.category = []
+        }
+
+        activityData.name = name
+        activityData.score = score
+        activityData.startTime = startTime
+        activityData.endTime = endTime
+        activityData.info = info
+
+        if (limit) {
+            activityData.limit = parseInt(limit, 10)
+            if(isNaN(activityData.limit)) activityData.limit = null;
+        }
+        activityData.inBound = parseInt(inBound, 10)
+        activityData.followLimit = parseInt(followLimit, 10)
+
+        activityData.bgImg = 
+            $("#bg_img_current").val().length > 0 ? 
+            $("#bg_img_current").val() : 
+            $("#bg_img_default").val();
+
+
+        $('.fr_w1').css('display', 'none');
+        $('.fr_w2').css('display', 'block');
+    })
+
+    $('.file').mouseover(function () {
+        $(this).siblings('.qx').css('background', '#abacae');
+    }).mouseout(function () {
+        $(this).siblings('.qx').css('background', '#fff');
+    })
+
+
+    $('.pic label').click(function () {
+        var parent = $(this).closest('.pic');
+        $(this).siblings('label').removeClass('lei');
+        if ($(this).hasClass('new_y')) {
+            if (!$(this).hasClass('lei')) {
+                parent.find('.custom').show();
+                $('#coverPre').attr('src', '')
+            }
+        } else {
+            hasCover = false
+            $('#imgOne').val()
+            parent.find('.custom').hide();
+            $('#coverPre').attr('src', '/images/default/cover-default.jpg')
+        }
+        $(this).addClass('lei')
+    })
+
+    $('.limit label').click(function () {
+        var parent = $(this).closest('.pic');
+        $(this).siblings('label').removeClass('lei');
+        $(this).addClass('lei')
+    })
+    $('.inBound label').click(function () {
+        $(this).siblings('label').removeClass('lei');
+        $(this).addClass('lei')
+    })
+
+    $('.follow-limit label').click(function () {
+        $(this).siblings('label').removeClass('lei');
+        $(this).addClass('lei')
+    })
+
+    $('#coverPre').attr('src', '/images/default/cover-default.jpg')
+
+    $('#startTime').focus(function () {
+        WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss'});
+    })
+    $('#endTime').focus(function () {
+        var startTime = $('#startTime').val()
+        if (startTime) {
+            WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss', minDate: "#F{$dp.$D(\'startTime\',{m:1});}"});
+        } else {
+            $('#startTime').focus()
+        }
+    })
+    $('.text').bind('propertychange input', function () {
+        var _html = $(this).val();
+        if (_html == '') {
+            $(this).attr('placeholder','活动规则阐述')
+            $('.left_stend li').text('');
+            $('.left_stend li').html('')
+        } else {
+//            if (_html == '<i>活动规则阐述</i>') {
+//
+//            } else {
+//
+//            }
+            $('.left_stend li').text('');
+            $('.left_stend li').html($('.text').val().split('\n').join('<br>'))
+        }
+    })
+
+    function createRating(goods, ratingNum, noti) {
+        var domString = ''
+        if (!changePrizeId) {
+            if (!isRating) {
+                $('li.default-goods').find('.st_close').hide()
+            } else {
+                $('li.rating-goods').find('.st_close').hide()
+            }
+        }
+        if (!isRating) {
+            domString += '<li type="' + goods.type + '" ratingNum="' + ratingNum + '" goodsId="' + goods.id + '"class="nn goods default-goods" name="鼓励奖">' +
+                    '<div class="left">' +
+                    '<img width="65" height="65" src="' + goods.pic + '">' +
+                    '</div><dl class="news_w"><dt><span class="ratingText">' + ratingNum + '等奖 </span>' + '(鼓励奖) : ' + goods.name + '</dt>' +
+                    '<dd class="guize"><i>鼓励奖概率：<i class="txt1"></i></i></dd></dl>' +
+                    '<div class="st_close" title="关闭">+</div>' +
+                    '<i class="bianji yishezhi btn w-xs btn-info" style="float:right;margin-right:25px;">设置中奖规则</i>' +
+                    '<div class="yin">' +
+                    '<div class="percent" style="padding-bottom:25px;"><font>中奖率:</font><input class="text1 count" type="text" placeholder="0-100"><i class="percent_icon">%</i>' +
+                    '<span class="yes save">保存</span></div>' +
+                    '</div></li>'
+        } else {
+            domString += '<li type="' + goods.type + '" ratingNum="' + ratingNum + '" goodsId="' + goods.id + '"class="nn goods rating-goods" name="' + ratingNum + '等奖">' +
+                    '<div class="left">' +
+                    '<img width="65" height="65" src="' + goods.pic + '">' +
+                    '</div><dl class="news_w">' +
+                    '<dt class="jpdeng">' + ratingNum + '等奖 : ' + goods.name + '</dt>' +
+                    '<dd class="guize"><i>中奖规则：<i class="txt1"></i>' +
+                    '</i></dd></dl>' +
+                    '<i class="bianji yishezhi btn w-xs btn-info">设置中奖规则</i>' +
+                    '<div class="yin">' +
+                    '<div class="percent" style="padding-bottom:25px;">' +
+                    '<font>中奖率:</font>' +
+                    '<input class="text1 count" type="text" placeholder="0-100"><i class="percent_icon">%</i>' +
+                    '<i></i>';
+            domString += '</div>' +
+                    '<div class="aniu">' +
+                    '<i class="i_t forDay">按天</i>' +
+                    '<i class="forTime">按时段</i><span class="yes save">保存</span>' +
+                    '</div><dl><dt class="xs">' +
+                    '<input class="text1 day" type="text" placeholder="例：1"><b style="float:left;width:20px;text-align:center;line-height:30px;">天</b><input class="text1 num count" type="text" placeholder="例：1"><b style="float:left;width:20px;text-align:center;line-height:30px;">个</b>' +
+                    '</dt><dd class="time">' +
+                    '<p style="clear:both;height:30px;" class="timep">' +
+                    '<input readonly="readonly" class="Wdate startTime" id="' + Math.random() + '" type="text" placeholder="开始时间"> <b style="float:left;font-weight:normal;margin-left:5px;line-height:30px;">至</b> <input readonly="readonly" class="Wdate endTime" type="text" placeholder="结束时间" style="margin-left:5px;margin-right:5px;"><input class="text1 count" type="text" placeholder="数量"><a class="zeng add-time">增加</a>' +
+                    '</p>' +
+                    '</dd><p style="color: red;margin-left:12px;margin-bottom:10px;display:block;height:20px;">提示：当抽奖正进行且处于该时段的时候不要修改时间段!</p></dl></div>' +
+                    '<div class="st_close" title="关闭">+</div>' +
+                    '</li>';
+        }
+
+        var $newCell = $($.trim(domString))
+        console.log(changePrizeId);
+        if (changePrizeId) {
+            $('li.goods[goodsId=' + changePrizeId + ']').replaceWith($newCell)
+            changePrizeId = null;
+        } else {
+            if (!isRating) {
+                $newCell.insertBefore($('.add-default-goods'))
+            } else {
+                $newCell.insertBefore($('.add-rating-goods'))
+            }
+        }
+        bindSelectedGoodsEvent($newCell)
+        if (noti) {
+            notifyGoodsChanged();
+        }
+    }
+
+    function addTime($parent, time) {
+        var domString = ''
+//        domString += '<p style="clear:both;height:30px;margin-bottom:20px;"><input style="margin-left:5px;margin-right:5px;" readonly="readonly" class="Wdate startTime" id="' + Math.random() + '" type="text" placeholder="开始时间"> <b style="float:left;font-weight:normal;margin-left:5px;">至</b> <input  class="Wdate endTime" type="text" placeholder="结束时间" readonly="readonly"> <input style="margin-left:5px;margin-right:5px;" class="text1 count" type="text" placeholder="数量"><a class="del-time" href="#">删除</a></p>'
+
+        domString += '<p style="clear:both;height:30px;">' +
+        '<input readonly="readonly" class="Wdate startTime" id="' + Math.random() + '" type="text" placeholder="开始时间"> <b style="float:left;font-weight:normal;margin-left:5px;line-height:30px;">至</b> <input readonly="readonly" class="Wdate endTime" type="text" placeholder="结束时间" style="margin-left:5px;margin-right:5px;"><input class="text1 count" type="text" placeholder="数量"><a class="del-time">删除</a>' +
+        '</p>'
+        var $newCell = $(domString);
+        $parent.append($newCell);
+        $('.del-time', $newCell).click(function () {
+            $(this).closest('p').remove();
+        })
+
+        if (time) {
+            $newCell.find('.startTime').val(time.startTime)
+            $newCell.find('.endTime').val(time.endTime)
+            $newCell.find('.count').val(time.count)
+        }
+
+        bindDateEvent($newCell)
+    }
+
+    function bindSelectedGoodsEvent($newCell) {
+        $('.left', $newCell).click(function () {
+            var $li = $(this).closest('li');
+            var prizeId = $li.attr('goodsId');
+            changePrizeId = prizeId;
+            if ($li.hasClass('rating-goods')) {
+                isRating = true;
+            } else {
+                isRating = false;
+            }
+            selectGoods();
+        })
+
+        $('.st_close', $newCell).click(function () {
+            var $li = $(this).closest('li').prev();
+            if ($li) {
+                $li.find('.st_close').show()
+            }
+
+            $(this).closest('li').remove();
+            notifyGoodsChanged();
+            var goodsId = $(this).closest('li').attr('goodsId');
+            delete goodsMap[goodsId];
+        })
+
+        $('.yishezhi', $newCell).click(function () {
+            $(this).closest('li').find('.yin').toggle();
+        })
+
+        $('.add-time', $newCell).click(function () {
+            var dd = $(this).closest('dd');
+            addTime(dd)
+        })
+
+        bindDateEvent($newCell)
+
+        $('.forDay', $newCell).click(function () {
+            $(this).closest('li').find('.forTime').removeClass('i_t')
+            $(this).addClass('i_t')
+            $(this).closest('li').find('.time').hide()
+            $(this).closest('li').find('.xs').show()
+        })
+
+        $('.forTime', $newCell).click(function () {
+            $(this).closest('li').find('.forDay').removeClass('i_t')
+            $(this).addClass('i_t')
+            $(this).closest('li').find('.xs').hide()
+            $(this).closest('li').find('.time').show()
+        })
+
+        $('.save', $newCell).click(function () {
+            var li = $(this).closest('li');
+            var percent = li.find('.percent').find('input.count').val();
+            var rating = parseInt(li.attr('ratingNum'))
+            var goodsId = li.attr('goodsId')
+            var type = li.attr('type')
+
+            percent = checkFloat(percent)
+
+            if (type == '5' && rating < $('li.goods').length) { //thanks
+                return swal('谢谢参与必须放到最后')
+            }
+
+            if (li.hasClass('default-goods')) {
+                if (percent == null) {
+                    return errorFocus(li.find('.percent').find('input.count'));
+                }
+                if (percent) {
+                    percent = percent/100
+                }
+                goodsMap[goodsId] = {
+                    id: goodsId,
+                    isDefault: true,
+                    rating: rating,
+                    p: percent
+                }
+
+                $(this).closest('li').find('.guize').find('.txt1').text(percent*100 + '%');
+            } else {
+                if (percent) {
+                    percent = percent/100
+                }
+
+                var dayOrTime = li.find('.i_t');
+                if (dayOrTime.hasClass('forDay')) {
+                    var day = li.find('.xs').find('.day').val();
+                    var count = li.find('.xs').find('.count').val();
+                    if ((day = checkInt(day)) == null || day <= 0) {
+                        return errorFocus(li.find('.xs').find('.day'));
+                    }
+                    if ((count = checkInt(count)) == null || count < 0) {
+                        return errorFocus(li.find('.xs').find('.count'));
+                    }
+                    if ((day > 1 && count != 1) || (day != 1 && count > 1)) {
+                        return swal('按天格式必须是1天多个，或者多天一个')
+                    }
+
+                    goodsMap[goodsId] = {
+                        id: goodsId,
+                        day: day,
+                        count: count,
+                        rating: rating
+                    }
+
+                    if (percent) {
+                        goodsMap[goodsId].p = percent
+                    }
+                    $(this).closest('li').find('.guize').find('.txt1').text('按天， 概率为：' + (percent ? (percent * 100 + '%') : '系统概率'));
+                } else {
+                    var time = []
+                    var isError = false;
+                    console.log(li.find('.time').find('p').length)
+                    li.find('.time').find('p').each(function () {
+                        var $this = $(this);
+                        var startTime = $this.find('.startTime').val();
+                        var endTime = $this.find('.endTime').val();
+                        var count = $this.find('.count').val();
+                        if (startTime && endTime) {
+                            if (checkTimeFormat(startTime)) {
+                                isError = true
+                                return errorFocus($this.find('.startTime'));
+                            }
+                            if (checkTimeFormat(endTime)) {
+                                isError = true
+                                return errorFocus($this.find('.endTime'));
+                            }
+                        }
+
+                        if ((count = checkInt(count)) == null || count < 0) {
+                            isError = true
+                            return errorFocus($this.find('.count'));
+                        }
+
+                        if (startTime >= endTime) {
+                            swal('开始时间不能大于结束时间');
+                            isError = true
+                            return false
+                        }
+
+                        var hasError = false
+                        $.each(time, function (i, o) {
+                            if (startTime >= o.startTime && startTime < o.endTime) {
+                                isError = true
+                                return hasError = true
+                            }
+                            if (endTime > o.startTime && endTime <= o.endTime) {
+                                isError = true
+                                return hasError = true
+                            }
+                        })
+                        if (hasError) {
+                            isError = true
+                            return swal('时间段有冲突， 请检查！');
+                        }
+                        console.log({startTime: startTime, endTime: endTime, count: count})
+                        time.push({startTime: startTime, endTime: endTime, count: count})
+                    })
+                    if (isError) {
+                        return;
+                    }
+                    if (time.length == 0) {
+                        return swal('请选择时间段');
+                    }
+
+                    goodsMap[goodsId] = {
+                        id: goodsId,
+                        rating: rating,
+                        time: time
+                    }
+                    console.log(time)
+                    if (percent) {
+                        goodsMap[goodsId].p = percent
+                    }
+                    $(this).closest('li').find('.guize').find('.txt1').text('按时间段， 概率为：' + (percent ? (percent * 100 + '%') : '系统概率'));
+                }
+            }
+            $(this).closest('li').find('.yin').toggle();
+        })
+    }
+
+    function checkInt(count) {
+        count = parseInt(count, 10);
+        if (isNaN(count) || count < 0) {
+            return null;
+        } else {
+            return count;
+        }
+    }
+
+    function checkFloat(count) {
+        count = parseFloat(count);
+        if (isNaN(count) || count < 0) {
+            return null;
+        } else {
+            return count;
+        }
+    }
+
+    function bindDateEvent($newCell) {
+        $('.startTime', $newCell).focus(function () {
+            WdatePicker({dateFmt: 'HH:mm', startDate: '00:00'});
+        })
+        $('.endTime', $newCell).focus(function () {
+            var $startTime = $(this).closest('p').find('.startTime')
+            var startTime = $(this).closest('p').find('.startTime').val()
+            var id = $startTime.attr('id')
+            if (startTime) {
+                WdatePicker({dateFmt: 'HH:mm', startDate: startTime, minDate: "#F{$dp.$D(\'" + id + "\',{m:1});}"});
+            } else {
+                $startTime.focus()
+            }
+        })
+    }
+
+    function notifyGoodsChanged(isInit) {
+        var len = $('li.rating-goods').length + 1
+        $('#next-rating').text(len + '等奖');
+        $('li.default-goods').each(function () {
+            $(this).attr('ratingNum', len)
+            $(this).find('.ratingText').text(len + '等奖')
+            len++
+        })
+        if (!isInit) {
+            $('#imgTwo').val('')
+            activityData.turnplate = ''
+
+            var len = $('li.goods').length;
+            var type = $('li.goods').eq(len - 1).attr('type');
+
+            var url = ''
+            var downUrl = ''
+            if (type == 5) {
+                url = '/images/turntable/thanks-' + len + '.png'
+                downUrl = '/images/turntable/thanks-' + len + '.psd'
+            } else {
+                url = '/images/turntable/' + len + '.png'
+                downUrl = '/images/turntable/' + len + '.psd'
+            }
+            if (len < 3){
+                $('#turnplate').css("background-image", "")
+                $('a.download-turnplate').removeAttr('href');
+            } else {
+                $('#turnplate').css("background-image", "url(" + url + ")")
+                $('a.download-turnplate').attr('href', downUrl)
+            }
+        }
+    }
+
+    $('.add-rating').click(function () {
+        var isDefault = $(this).attr('guli');
+        isRating = isDefault ? false : true
+        changePrizeId = null;
+        selectGoods();
+    })
+
+    function errorFocus($view) {
+        var timerId = parseInt($view.attr('timerId'));
+        if (timerId) {
+            clearTimeout(timerId);
+        } else {
+            $view.focus();
+        }
+        $view.css('border-color', '#FF0000');
+        $view.css('border-width', '2px');
+
+        timerId = setTimeout(function () {
+            $view.css('border-color', '');
+            $view.css('border-width', '');
+            $view.removeAttr('timerId');
+        }, 1500);
+        $view.attr('timerId', timerId);
+    }
+
+    function checkTimeFormat(time) {
+        var isError = false;
+        if (!/^[0-9]{2}:[0-9]{2}$/.test(time)) {
+            isError = true;
+        } else {
+            var time = time.split(':')
+            var hour = parseInt(time[0], 10)
+            var minute = parseInt(time[1], 10)
+            if (hour > 23 || hour < 0) {
+                isError = true;
+            }
+            if (minute > 59 || minute < 0) {
+                isError = true;
+            }
+        }
+        return isError;
+    }
+
+    $('.done').click(function () {
+        activityData.prizes = []
+        var totalP = 0
+        var count = 0
+
+        $.each(goodsMap, function (k, v) {
+            if (goodsMapCache[v.id] && goodsMapCache[v.id].bid && goodsMapCache[v.id].bid.length > 0){
+                v.bid = goodsMapCache[v.id].bid[0].id
+            } else if (bidCache[v.id]){
+                v.bid = bidCache[v.id]
+            }
+            activityData.prizes.push(v);
+            if (v.isDefault) {
+                totalP += v.p
+                count++
+                totalP = Math.round(totalP * 100) / 100;
+            }
+        })
+
+
+        if (activityData.prizes.length == 0) {
+            return swal('请选择奖品');
+        }
+
+        if ($('li.goods').length != activityData.prizes.length) {
+            return swal('请先设置正确的奖品并保存');
+        }
+
+        if (count == 0) {
+            return swal('请至少选择一个鼓励奖');
+        }
+
+        if (way == 2 && (activityData.prizes.length < 3 || activityData.prizes.length > 12)) {
+            return swal('大转盘奖品数量不能小于3或者大于10');
+        }
+
+        if (totalP != 1) {
+            return swal('鼓励奖的概率总和必须为1');
+        }
+
+        var ratings = []
+        for (var i = 0; i < activityData.prizes.length; i++) {
+            var o = activityData.prizes[i];
+            var li = $('li.goods[goodsId=' + o.id + ']');
+            var rating = parseInt(li.attr('ratingnum'), 10)
+            if (!rating || isNaN(rating)) {
+                return swal('奖品等奖发生错误');
+            }
+            o.rating = rating
+
+            if (li.attr('type') == '5' && rating < activityData.prizes.length) { //thanks
+                return swal('谢谢参与必须放到最后')
+            }
+            if ($.inArray(o.rating, ratings) > -1) {
+                return swal('奖品等奖出现重复')
+            }
+            if (o.rating > activityData.prizes.length) {
+                return swal('奖品等奖大于奖品总数');
+            }
+            ratings.push(o.rating)
+        }
+        saveActivity();
+    })
+
+    function saveActivity() {
+        var fileElementIds = []
+        if (hasCover) {
+            fileElementIds.push('imgOne')
+        }
+
+        if (hasTurnplate) {
+            fileElementIds.push('imgTwo')
+        } else {
+            var len = $('li.goods').length;
+            var type = $('li.goods').eq(len - 1).attr('type');
+
+            if (!activityData.turnplate){
+                var turnplateUrl = ''
+                if (type == 5) {
+                    turnplateUrl = '/images/turntable/thanks-' + len + '.png'
+                } else {
+                    turnplateUrl = '/images/turntable/' + len + '.png'
+                }
+                activityData.turnplate = turnplateUrl
+            }
+        }
+
+        var url = "/admin/add/activity";
+        if (activityId) {
+            url = "/admin/activity/" + activityId + '/update'
+        }
+
+        $.ajaxFileUpload({
+            type: 'post',
+            url: url,
+            data: activityData,
+            fileElementIds: fileElementIds,
+            dataType: 'json',
+            success: function (data) {
+                var res = JSON.parse($(data).text())
+                if (res.code == 200) {
+                    window.location.href = '/admin/activity?way=' + way
+                } else {
+                    swal(res.msg);
+                }
+            },
+            error: function (xhr) {
+                var res = JSON.parse($(xhr.responseText).text())
+                if (res.code == 200) {
+                    window.location.href = '/admin/activity?way=' + way
+                } else {
+                    swal(res.msg);
+                }
+            }
+        })
+    }
+
+    $('#back').click(function () {
+        self.location=document.referrer;
+    })
+
+
+    $("#resetBg").on("click", function(){
+        resetInputFile($("#bg-img"));
+        $("#bg_img_current").val($("#bg_img_default").val());
+    });
+
+    $('body').on("change", "#bg-img", function() {
+        
+            if ($(this)[0].files[0]) {
+                if ($(this)[0].files[0].size > 102400) {
+                    swal("图片大小不能大于100k!");
+                    return;
+                } 
+                // do ajax upload
+                $.ajaxFileUpload({
+                type: 'post',
+                url: '/image/upload',
+                fileElementIds: ['bg-img'],
+                success: function(data){
+                    var res = JSON.parse($(data).text());
+                    if (res && res.url){
+                        $("#bg_img_current").val(res.url);
+                        $(".fl_w>img:first").attr("src",res.url);
+                    } else {
+                        swal('上传图片失败');
+                    }
+                },
+                error: function(xhr){
+                    swal('上传图片失败');
+                }
+            })
+        }
+    });
+})
+
+function resetInputFile(inputField) {
+
+    $(inputField).replaceWith($(inputField).clone());
+    $(".fl_w>img:first").attr("src",$("#bg_img_default").val());
+}
+</script>
+
+<script type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+</body>
+</html>
+<script>
+    $.extend({
+        parseUrl:function(href){
+            var url=href||location.href;
+            var a =  document.createElement('a');
+            a.href = url;
+            var ret = {},
+                    seg = a.search.replace(/^\?/,'').split('&'),
+                    len = seg.length, i = 0, s;
+            for (;i<len;i++) {
+                if (!seg[i]) { continue; }
+                s = seg[i].split('=');
+                ret[s[0]] = s[1];
+            }
+            return ret;
+        }
+    })
+    $(function(){
+        var way=parseInt($.parseUrl().way,10)- 1,msg=['刮刮卡','大转盘'][way];
+        $('.dbx-msg1').each(function(){
+            var obj=$(this).get(0);
+            if(obj.innerHTML!==''){
+                obj.innerHTML+=msg;
+            }else{
+                obj.innerHTML=msg;
+            }
+        });
+        $('.dbx-msg2').html('创建一个'+msg);
+
+    })
+</script>

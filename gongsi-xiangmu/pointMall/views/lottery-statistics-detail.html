@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>抽奖统计</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+    <style type="text/css">
+        .users_award_list{ clear:both; overflow:hidden; border-top:solid 1px #e7e7eb; margin:10px 8px;}
+        .users_award_list li{ float:left; margin:13px}
+        .users_award_list li .pic{ text-align:center}
+        .users_award_list li .pic img{ width:50px; height:50px; margin:0 auto}
+        .users_award_list li p{ padding-top:4px; color:#666; white-space:nowrap; max-width:110px; overflow:hidden; text-overflow:ellipsis}
+        .users_award_list li.btn strong{ display:block; width:75px; margin:42px auto 0; background:#0090ff; border-radius:5px;text-align:center; color:#fff; line-height:27px; font-size:14px ; font-weight:normal; cursor:pointer}
+        .users_award_list li.btn strong:hover{ background:#0f79cb;}
+    </style>
+    <script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+</head>
+<body>
+<h2 class="s_title02">抽奖统计详情</h2>
+<input type="hidden" value="{{dateTime}}" id="dateTime">
+<div class="msg_manage_top">
+    <ul class="tab_top1">
+    <li class="on"><a href="#">按奖品查询</a></li>
+    </ul>
+</div>
+<div class="wrap01">
+    <dl class="list_creat_qa list_creat_qa2" id="lottery-statistics-list">
+        <dt>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+            <colgroup>
+            <col width="15%">
+            <col width="*">
+            <col width="16%">
+            <col width="16%">
+            <col width="16%">
+            </colgroup>
+            <tr>
+            <th>图片</th>
+            <th>奖品名称</th>
+            <th>中奖数量</th>
+            <th>中奖人数</th>
+            <th>金额</th>
+            </tr>
+            </table>
+        </dt>
+    </dl>
+</div>
+<script type="text/javascript">
+    $(function(){
+        function loadStatistics(dateTime){
+            var url = '/pointMall/lottery/statistics/prize/detail?dateTime=' + dateTime;
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(data){
+                    renderStatisticsData(data)
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function renderStatisticsData(data){
+            var domString = ''
+            $.each(data, function(i, o){
+
+                domString += '<dd><table width="100%" border="0" cellspacing="0" cellpadding="0"><colgroup><col width="15%"><col width="*">' +
+                        '<col width="16%"><col width="16%"><col width="16%"></colgroup><tr>' +
+                        '<td class="award"><img src="' + o.pic + '"></td><td>' + o.name + '</td><td>' +
+                        o.numberLottery + '</td><td>' + o.numberPeople + '</td>' +
+                        '<td>' + o.totalMoney + '</td></tr></table>' +
+                        '<ul class="users_award_list">';
+                $.each(o.users, function(i, user){
+                    domString += '<li><div class="pic"><img src="' + user.headImg + '"></div><p>' + user.nickName + '</p></li>'
+                })
+                /*if (o.users.length > 10){
+                    domString += '<li class="btn pack-up"><strong>展开</strong></li>'
+                }*/
+                domString += '</ul></dd>'
+            })
+            var $newCell = $($.trim(domString));
+            $('#lottery-statistics-list').find('dd').remove()
+            $('#lottery-statistics-list').append($newCell);
+            $('.pack-up', $newCell).click(function(){
+
+            })
+        }
+
+        loadStatistics($('#dateTime').val());
+    })
+</script>
+</body>
+</html>

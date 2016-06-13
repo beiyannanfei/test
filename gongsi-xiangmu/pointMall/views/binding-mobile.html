@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>绑定手机号</title>
+<link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<style type="text/css">
+body{ background:#f6f6f6}
+.btn_order{ margin:15px 10px 10px; background:#0090ff; padding:6px 0; border-radius:5px; text-align:center; color:#fff; font-size:14px}
+.btn_order:hover{ background:#007edf;}
+.list_oper1{ margin:0 10px 30px}
+.list_oper1 li{ clear:both; overflow:hidden; padding-top:20px; }
+.list_oper1 li *{ font-size:14px;}
+.list_oper1 li .c1{padding:9px 10px 10px; background:#fff; border-radius:5px; border:solid 1px #d8d8d8;}
+.list_oper1 li .c2{ float:left;padding:10px 5px; background:#fff; border-radius:5px; border:solid 1px #d8d8d8; width:30%;margin-right:10px;}
+.list_oper1 li .get_check{ float:right; width:85px; background:#f1890f; color:#fff; font-size:14px; line-height:44px;border-radius:5px; text-align:center; cursor:pointer}
+.list_oper1 li .get_check.t2{ font-size:17px}
+.list_oper1 li strong{ float:left;width:65px; padding-right:15px; margin-top:1px; text-align:right; color:#888; font-weight:normal;}
+.list_oper1 li input{ border:0; background:none; padding:0; outline:none; line-height:18px}
+.list_oper1 li .c2 input{ width:90px}
+#gv{width:30%;height: 43px;}
+
+@media all and (max-width:320px){
+	
+}
+@media all and (min-width:321px) and (max-width:375px){
+	.list_oper1 li .c2{ width:35%}
+}
+@media all and (min-width:376px) and (max-width:700px){
+	.list_oper1 li .c2{ width:38%}
+}
+@media all and (min-width:701px) and (max-width:2000px){
+	.list_oper1 li .c2{ width:40%}
+}
+</style>
+</head>
+<body>
+<ul class="list_oper1">
+    <!--<li>
+        <div class="c2">
+            <input id="gv_value" name="gv" value="" type="text" class="w2">
+        </div>
+        <img id="gv">
+        <span class="get_check get_gv_check">刷新</span>
+    </li>-->
+    <li>
+        <div class="c1"><strong>姓名</strong><input id="name" name="mobile" type="text" placeholder="姓名" class="w1"></div>
+    </li>
+    <li>
+        <div class="c1"><strong>手机号码</strong><input id="mobileNumber" name="mobile" type="text" placeholder="手机号" class="w1"></div>
+    </li>
+<!--<li>
+	<div class="c2"><strong>验证码</strong>
+        <input id="vcode" name="vcode" type="text" placeholder="验证码" class="w2">
+    </div>
+    <span class="get_check get_vcode_check">获得验证码</span>
+</li>-->
+</ul>
+<!--//-->
+<div class="btn_order">绑 定</div>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script>
+    $(function(){
+        var mobileRegex = /^[0-9]{8,13}$/
+
+        function loadGv(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/gv',
+                success: function(data){
+                    $('#gv').attr('src', data)
+                },
+                error: function(xhr){
+                    alert('获取图形验证码失败')
+                }
+            });
+        }
+
+        $('.get_gv_check').click(function(){
+            loadGv();
+        });
+
+        //loadGv();
+
+        $('.btn_order').click(function(){
+            sub_bind();
+        });
+
+        function sub_bind(){
+            /*var gv_value = $('#gv_value').val();
+            if(gv_value==''){
+                alert('请输入图形验证码!');
+                return;
+            }*/
+
+            var mobileNumber = $('#mobileNumber').val();
+            if(mobileNumber==''){
+                alert('请输入手机号码!');
+                return false;
+            }
+            if (!mobileRegex.test(mobileNumber)) {
+                alert('请输入有效手机号码!');
+                return false;
+            }
+
+            var data = {mobile: mobileNumber}
+            var name = $('#name').val();
+            if (name){
+                data.name = name
+            }
+            $.ajax({
+                method: 'POST',
+                url: '/pointMall/bind/mobile',
+                data: data,
+                success: function(data){
+                    window.history.go(-1);
+                },
+                error: function(xhr){
+                    alert(xhr.responseText)
+                }
+            })
+        }
+    });
+
+</script>
+</body>
+</html>

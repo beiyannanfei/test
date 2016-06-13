@@ -1,0 +1,96 @@
+.main{
+	width: 100%;
+	height: 100%;
+	padding: 0 40px 0 40px;
+}
+.main .awad_main .main-left{
+	float: left;
+	margin-top: 30px;
+}
+.main .awad_main .main-left label{
+	float: left;
+	margin-top: 9px;
+	text-align: right;
+	width: 110px;
+	margin-left: 10px;
+}
+.main .awad_main .main-left #selectedData{
+	float: left;
+	margin-right: 10px;
+}
+.main .awad_main .main-left button{
+	float: left;
+}
+.main .awad_main .main-right{
+	float: right;
+}
+.main .awad_main .main-right span{
+	height: 30px;
+	line-height: 30px;
+	margin-right: 10px;
+}
+.main .awad_main .main-right span i{
+	font-style: normal;
+	text-align: left;
+	display: inline-block;
+}
+.main .awad_main .main-right span b{
+	font-weight: normal;
+	width: 120px;
+	text-align: right;
+	display: inline-block;
+}
+.main .main-table{
+	clear: both;
+	margin-top: 60px;
+}
+.main .main-table table{
+	border: solid 1px #DDDDDD;
+	background: #fff;
+}
+.main .main-table table label{
+	font-weight: normal;
+}
+.main .main-table table thead tr{
+	border-bottom: solid 1px #DDD;
+	height: 46px;
+	background: #f7f9fa;
+}
+.main .main-table table thead tr th{
+	text-align: center;
+	border: none;
+	line-height:30px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.main .main-table table tbody tr{
+	height: 68px;
+	border-bottom: solid 1px #DDD;
+}
+.main .main-table table tbody tr td{
+	text-align: center;
+	vertical-align: middle;
+	border: none;
+}
+
+.modal-content{
+	padding: 0 0 0 20px;
+}
+.money,.redbag{
+	height: 30px;
+	line-height: 30px;
+}
+.info{
+	margin-top: 10px;
+}
+.info i{
+	font-style: normal;
+	display: inline-block;
+	vertical-align: top;
+	width: 65px;
+	text-align: right;
+}
+.info table{
+	display: inline-block;
+	vertical-align: top;
+}

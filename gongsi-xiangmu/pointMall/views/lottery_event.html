@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>抽奖管理</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes"> 
+
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/lottery-manage.css" />
+
+
+</head>
+<body id="index">
+
+<div class="warp">
+  
+  <div class="top_tile">抽奖管理</div>
+  
+  <div class="topcon">
+    <span id="nav_1" class="tile" state="undo">未抽奖</span>
+    <span id="nav_2" class="tile" state="completed">已抽奖</span>
+    <div class="top_r">
+      <button type="button" class="btn btn_lg btn_primary addLottery">创建新抽奖</button>
+    </div>
+  </div>
+ 
+  
+  <div id="chDiv">
+    <div class="c_tile" style="display: none">未抽奖列表（共 <span id="lottery_num_un"></span> 个）</div>
+    
+    <table id="" class="table table-striped table-bordered table-hover">
+	  <thead>
+        <tr>
+          <th class="left">抽奖主题</th>
+          <th>抽奖范围</th>
+          <th>时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      
+      <tbody id="lottery_list">
+
+      </tbody>
+    </table>
+  </div>
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $.ajaxSetup({ cache: false });
+
+        $('.addLottery').click(function() {
+            window.location.href = "/pointMall/add/lottery/event";
+        });
+
+        function deleteEvent(id){
+            $.ajax({
+                method: "DELETE",
+                url: "/pointMall/lotteryEvent/" + id,
+                success: function(){
+                    $('#' + id).slideUp();
+                },
+                error: function(){
+                    alert('删除失败!')
+                }
+            })
+        }
+
+        function bindEvent($viewCell){
+            $('.edit', $viewCell).click(function() {
+                var id = $(this).closest('tr').attr("id");
+                window.location.href = "/pointMall/update/lottery/event/" + id;
+            })
+
+            $('.lottery', $viewCell).click(function() {
+                var id = $(this).closest('tr').attr("id");
+                window.location.href = "/pointMall/lottery/event/" + id + '/detail';
+            })
+
+            $('.detail', $viewCell).click(function() {
+                var id = $(this).closest('tr').attr("id");
+                window.location.href = "/pointMall/lottery/event/" + id + '/detail';
+            });
+
+            $('.delete', $viewCell).click(function() {
+                var id = $(this).closest('tr').attr("id");
+                if (confirm('确定是否删除该抽奖，不能恢复！')){
+                    deleteEvent(id);
+                }
+            });
+        }
+
+        function renderEventList(data, state){
+            var html = '';
+            $('#lottery_num_un').html(data.length);
+            for(var i = 0; i < data.length; i++){
+                var goodsState = 'undo';
+                $.each(data[i].goods, function(i, o){
+                    if (o.state != 'undo'){
+                        goodsState = o.state;
+                        return;
+                    }
+                })
+                var _id = data[i]._id,
+                    _theme = data[i].theme,
+                    _tag = data[i].tag,
+                    _tagCategory = data[i].tagCategory,
+                    _dateTime = data[i].dateTime;
+
+                html += '<tr id="'+ _id +'">';
+                html += '<td class="left">'+ _theme +'</td>';
+                html += '<td>'+ _tagCategory + '-' + _tag +'</td>';
+                html += '<td>'+ _dateTime +'</td>';
+                html += '<td>';
+                if (state == 'undo'){
+                    if (goodsState == 'undo'){
+                        html += '<button type="button" class="btn btn_lg btn_default edit">编辑</button>';
+                    }
+                    html += '<button type="button" class="btn btn_lg btn_default lottery">抽奖</button>';
+                } else if (state == 'completed'){
+                    html += '<button type="button" class="btn btn_lg btn_default detail">查看详情</button>';
+                }
+                html += '<button type="button" class="btn btn_lg btn_default delete">删除</button>';
+                html += '</td>';
+                html += '</tr>';
+            }
+            var viewCell = $($.trim(html));
+            $('#lottery_list').append(viewCell);
+            bindEvent(viewCell);
+        }
+
+        function getEventList(state){
+            var url = "/pointMall/list/lottery/event?"
+            if (!state){
+                state = 'undo';
+            }
+            if (state){
+                url += "&state=" + state;
+            }
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(data){
+                    renderEventList(data, state);
+                },
+                error: function(xhr){
+
+                }
+            })
+        }
+
+        $('.tile').click(function(){
+            var state = $(this).attr('state');
+            if ($(this).hasClass('active')){
+                return;
+            }
+            $('.tile').removeClass("active");
+            $(this).addClass("active");
+            $('#lottery_list').empty();
+            getEventList(state);
+        })
+
+        $('.tile[state=undo]').click();
+    });
+</script>
+</body>
+</html>

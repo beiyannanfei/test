@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title></title>
+  <link rel="stylesheet" href="../css/mobile.css">
+</head>
+<body id="app">
+<header class="header">
+    <span class="header-pic">
+      <img src="../img/head.png">
+    </span>
+  <div class="joy-msg">
+    恭喜您 ! 领取成功
+  </div>
+</header>
+
+<div class="main">
+  <div class="coupon-logo">
+    <img src="{{ pic  }}">
+  </div>
+  <div class="coupon-info">
+    <h2 class="coupon-name">{{name }}</h2>
+
+    <p class="coupon-type">
+      <span class="coupon-price">{{ value  }}</span>元优惠券
+    </p>
+    <p class="coupon-addition">
+      {{ tips }}
+    </p>
+
+    <a class="btn btn-info" href="{{ jump_url  }}">立即使用</a>
+
+    <dl>
+      <dt>有&nbsp;效&nbsp;&nbsp;期:</dt>
+      <dd>&nbsp;{{ beginDate }} 至 {{ endDate}}</dd>
+      <dt>此券权限:</dt>
+      <dd>{{ desc }}</dd>
+    </dl>
+  </div>
+</div>
+<script src="../lib/vue/vue.min.js"></script>
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      name: '太太乐团',
+      pic: '../img/logo.png',
+      value: 100,
+      beginDate: '2015-01-01',
+      endDate: '2015-02-01',
+      desc: '只限购买太太悦团插花系列产品',
+      jump_url: 'http://www.baidu.com',
+      tips: '购买时立即抵扣,不限额.'
+    }
+  })
+
+</script>
+</body>
+</html>

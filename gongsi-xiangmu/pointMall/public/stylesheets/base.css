@@ -1,0 +1,17 @@
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,figure{margin:0;padding:0}
+html,body{width:100%;height:100%;}
+html{min-height:100%;position:relative;}
+body{margin:0;padding:0;font-size:12px;font-family:微软雅黑,Arial,Helvetica,sans-serif;-webkit-text-size-adjust:none;background-color: #fff;}
+ul,ol,li{list-style-type:none}
+a:hover,a:active{outline:0;}
+a,a:visited{text-decoration:none; cursor: pointer}
+.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;line-height:0;content:"";}.clearfix:after{clear:both;}
+.fl{float:left;}
+.fr{float:right}
+
+th, td{text-align: center; border: 1px solid gray; padding: 6px 6px;}
+th, td a{margin: 10px;}
+table{text-align: center; font-size: 13px; border-collapse: collapse; width: 100%;max-width: 100%;}
+
+.container {width: 960px;overflow: hidden;margin-right: auto;margin-left: auto;}

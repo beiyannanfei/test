@@ -1,0 +1,56 @@
+<link rel="stylesheet" href="/stylesheets/statistics.css">
+<div ng-if="data.average" class="money">
+    平均金额：{{data.average}}
+</div>
+<div ng-if="data.max" class="redbag">
+    红包上限：{{data.max}}
+</div>
+
+<div ng-if="data.info" class="info">
+    <i>info：</i>
+    <table>
+        <tr>
+            <td>红包名称</td>
+            <!--<td>moneyType</td>-->
+            <td>人数(占比)</td>
+            <td>金额占比</td>
+            <td>等级</td>
+            <td>最大金额</td>
+            <!--<td>type</td>-->
+        </tr>
+        <tr ng-repeat="item in data.info track by $index">
+            <td>{{item.name}}</td>
+            <!--<td>{{item.moneyType}}</td>-->
+            <td>{{item.count}}</td>
+            <td>{{item.percent}}</td>
+            <td>{{item.rate}}</td>
+            <td>{{item.redMax}}</td>
+            <!--<td>{{item.type}}</td>-->
+
+            <!--ng-if的使用演示:-->
+            <!--<td ng-if="item.a===1">-->
+            <!-- -->
+            <!--</td>-->
+        </tr>
+    </table>
+</div>
+<div ng-if="data.prizes" class="info">
+    <i>prizes：</i>
+    <table>
+        <tr>
+            <td>奖品id</td>
+            <td>奖品数量</td>
+            <td>奖品名称</td>
+            <td>等级</td>
+            <td>奖品类型</td>
+        </tr>
+        <tr ng-repeat="item in data.prizes track by $index">
+            <td>{{item.id}}</td>
+            <td>{{item.count}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.rate}}</td>
+            <td>{{item.type}}</td>
+        </tr>
+    </table>
+</div>
+

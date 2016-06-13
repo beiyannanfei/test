@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/pointMall/stylesheets/main.css">
+    <style type="text/css">
+        .msgModal {
+            position: fixed;
+            top: 0;
+            background-color: #FFF;
+            width: 90%;
+            margin: 20% 5%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 8px;
+            padding: 10px 0;
+            font-size: 14px;
+            box-shadow: 0 0 4px #333;
+            z-index: 99999;
+            display: none;
+        }
+    </style>
+</head>
+<body style="background-color:#FFF;">
+
+
+<div class="ui-refresh">
+    <div class="pageInfo">
+        {{#if personalise}}
+        <div class="userInfo_top">
+        {{else}}
+        <div class="userInfo_top nonav">
+        {{/if}}
+            <span class="photo"><img class="img" id="personal_img" src="{{{headImg}}}"></span>
+            <div class="info">
+                <p class="name"><label id="personal_name">{{{nickName}}}</label><img onclick="refreshUser()" style="vertical-align: middle; margin-left: 6px;height: 25px" height="26px;" src="/pointMall/images/refresh000.png"></p>
+                <p class="score">
+                    {{unit}} <span id="scoreIntegral">{{{integral}}}</span>
+                </p>
+            </div>
+            {{#if personalise}}
+            <div class="moreInfo">
+                <ul>
+                    <li id="friend_h">
+                        <p class="img"><img src="/pointMall/images/icon_user_0.png"></p>
+
+                        <p class="tet">好友</p>
+                    </li>
+                    <li id="mess_h">
+                        <p class="img">
+                            <img src="/pointMall/images/icon_mess_0.png">
+                        </p>
+                        <p class="tet">消息</p>
+                    </li>
+                    <li id="team_h">
+                        <p class="img"><img src="/pointMall/images/icon_friend_0.png"></p>
+                        <p class="tet">朋友圈</p>
+                    </li>
+                    <li id="order_h">
+                        <p class="img"><img src="/pointMall/images/icon_oder_0.png"></p>
+                        <p class="tet">账户信息</p><!--<p class="tet">我的奖品</p>-->
+                    </li>
+                </ul>
+            </div>
+            {{else}}
+                <!--  -->
+            {{/if}}
+
+            <!---->
+        </div>
+    </div>
+    <div class="itemdiv">
+        <div class="con">
+            <div class="code">
+                <img id="ScanCode" src="{{wx_qrcode}}" alt="请稍候，加载中…">
+                <p>推荐朋友扫此二维码加关注，获赠<font color="red">{{scanIntegral}}</font>{{unit}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="dataWarp">
+        <header>
+            {{unit}}明细
+            <div id="btn_s" class="mybtn">
+                <div style="position:fixed; top:0; left:0; right:0; bottom:0; display:none; z-index:9;" id="btn_s_warp"></div>
+                <!--<span class="tet">全部</span>-->
+                <!--<ul style=" z-index:100;">-->
+                <!--<li itemx="">全部</li>-->
+                <!--<li itemx="2">推荐好友</li>-->
+                <!--<li itemx="3">签到</li>-->
+                <!--<li itemx="4">转发卡片</li>-->
+                <!--<li itemx="5">有奖问答</li>-->
+                <!--<li itemx="1">现场互动</li>-->
+                <!--<li itemx="2">积分抽奖</li>-->
+                <!--<li itemx="3">推荐好友</li>-->
+                <!--<li itemx="4">签到有礼</li>-->
+                <!--<li itemx="5">我的卡片</li>-->
+                <!--</ul>-->
+            </div>
+        </header>
+        <ul class="data-list">
+            {{#each data}}
+            <li><span class="time">{{time}}</span> {{description}}<span class="score"> {{integral}} </span></li>
+            {{/each}}
+        </ul>
+    </div>
+
+
+</div>
+
+
+<div id="message" class="msgModal">
+    <label id="messageText"></label>
+</div>
+
+<!-- openId  mpUser -->
+<input id="mobile_openId" type="hidden" value="{{{openId}}}">
+<input id="mobile_wxToken" type="hidden" value="{{{wxToken}}}">
+<input id="mobile_integral" type="hidden" value="{{{integral}}}">
+<input id="mobile_wtopicUrl" type="hidden" value="{{{wtopicUrl}}}">
+
+<input id="mobile_personalise" type="hidden" value="{{{personalise}}}">
+{{#if personalise}}
+<!--  -->
+{{else}}
+    <!-- token,url,userHost,title,desc,link,imgUrl -->
+    <input id="share_headImg" type="hidden" value="{{{headImg}}}">
+    <input id="share_title" type="hidden" value="{{{shareTitle}}}">
+    <input id="share_userHost" type="hidden" value="{{{userHost}}}">
+    <input id="share_desc" type="hidden" value="{{{shareDesc}}}">
+{{/if}}
+
+
+
+<!--<script type="text/javascript" src="/pointMall/url/statistics" charset="UTF-8"></script>-->
+
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+    {{#if personalise}}
+    <script type="text/javascript">
+        function viewProfile() {
+            typeof WeixinJSBridge != "undefined" && WeixinJSBridge.invoke && WeixinJSBridge.invoke("profile", {username: '天脉', scene: "57"});
+        }
+
+        function onBridgeReady() {
+            document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+                WeixinJSBridge.call('hideOptionMenu');
+            });
+            WeixinJSBridge.call('hideOptionMenu');
+        }
+        if (typeof WeixinJSBridge == "undefined") {
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        } else {
+            onBridgeReady();
+        }
+    </script>
+    {{else}}
+    <script>
+        var DB=document.body;
+        function setJsonp(_,action,callback){
+            return new function(){
+                var js=document.createElement("script"),fun=(typeof(callback)=="function"?callback:false);
+                js.src=action;
+                js.onreadystatechange=js.onload=function(e){
+                    var read=js.readyState;
+                    if(read){
+                        if(read=="loaded")fun(1)
+                    }else{
+                        fun&&fun(e,js.src)
+                    }
+                }
+                _.appendChild(js)
+            }
+        }
+        function initWX(token,url,userHost,title,desc,link,imgUrl){
+            window.getWX=function($data){
+                setJsonp(DB,"http://res.wx.qq.com/open/js/jweixin-1.0.0.js",function(){
+                    wx.config({
+                        debug: false,
+                        appId:$data.appid,
+                        timestamp: $data.timestamp,
+                        nonceStr: $data.noncestr,
+                        signature:$data.signature,
+                        jsApiList: [
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareWeibo',
+                            'hideMenuItems',
+                            'showMenuItems',
+                            'hideAllNonBaseMenuItem',
+                            'showAllNonBaseMenuItem',
+                            'translateVoice',
+                            'startRecord',
+                            'stopRecord',
+                            'onRecordEnd',
+                            'playVoice',
+                            'pauseVoice',
+                            'stopVoice',
+                            'uploadVoice',
+                            'downloadVoice',
+                            'chooseImage',
+                            'previewImage',
+                            'uploadImage',
+                            'downloadImage',
+                            'getNetworkType',
+                            'openLocation',
+                            'getLocation',
+                            'hideOptionMenu',
+                            'showOptionMenu',
+                            'closeWindow',
+                            'scanQRCode',
+                            'chooseWXPay',
+                            'openProductSpecificView',
+                            'addCard',
+                            'chooseCard',
+                            'openCard'
+                        ]
+                    });
+                    share(title,desc,link,imgUrl);
+                })
+            }
+            setJsonp(DB,userHost+"/ufo/signature?cb=getWX&url="+encodeURIComponent(url)+"&wx_token="+token)
+        }
+
+        function share(title,desc,link,imgUrl){
+            var obj = {
+                title:title,
+                desc:desc,
+                link: link,
+                imgUrl:imgUrl
+            };
+            wx.ready(function(){
+                wx.onMenuShareAppMessage(obj);
+                wx.onMenuShareTimeline(obj);
+            })
+        }
+        initWX($('#mobile_wxToken').val(),window.location.href,$('#share_userHost').val(),$('#share_title').val(),$('#share_desc').val(),window.location.href,$('#share_headImg').val());
+    </script>
+    <!--  -->
+    {{/if}}
+<script>
+    console.log(window.location.href );
+    var _refresh = false;
+    var count = 0;
+    var wtopicUrl = $('#mobile_wtopicUrl').val();
+
+    //------------------------------------------------------------------
+
+    $('#loadHref').on("click", function () {
+        var openId = $('#mobile_openId').val();
+        // window.location.href = '/tvmGoods/index.html?mpUser=' + mpUser + '&openId=' + openId;
+    });
+    //-----------------------------------------------
+    var winH = $(window).height();
+    $('.code').height(($('.code img').width() + 20));
+    var openId = $('#mobile_openId').val();
+    var wxToken = $('#mobile_wxToken').val();
+    var isLoading = false,
+            page = 1,
+            pageSub = true,
+            pagecount = 5,  //单页个数
+            maxpage = 1,
+            genreNum = '',   //检索条件  全部 开始
+            dataurl = '/pointMall/search/integralLog?openId=' + openId+ '';
+    function loadData() {
+        if (pageSub) {
+            isLoading = true;
+            $.ajax({
+                type: "get",
+                url: dataurl,
+                dataType: 'json',
+                data: {page: page, pagecount: pagecount, genre: genreNum},
+                success: onLoadData
+            });
+        } else {
+            //alert("已经加载全部数据");
+        }
+    }
+    function onLoadData(data) {
+        if (data != null && data.status == "success") {
+            isLoading = false;
+            var html = '', flag = '+';
+            var i = 0, length = data.data.length, image;
+            var myView = '';
+            var openId = $('#mobile_openId').val();
+            if (length < pagecount) {
+                pageSub = false;
+            }
+            for (; i < length; i++) {
+                var mess = data.data[i];
+                html += '<li><span class="time">' + mess.time + '</span> ' + mess.description + '<span class="score">' + mess.integral + ' </span></li>';
+            }
+            $('.data-list').append(html);
+            page++;
+        } else if (data.status == "failed") {
+            return false;
+        }
+    }
+
+    function formatDate(num) {
+        var now = new Date(num);
+        var year = now.getYear();
+        var month = now.getMonth() + 1;
+        var date = now.getDate();
+        var hour = now.getHours();
+        var minute = now.getMinutes();
+        var second = now.getSeconds();
+        //year+"-"+month+"-"+date+"   "+hour+":"+minute+":"+second
+        return   month + '-' + date;
+    }
+
+    $('#btn_s .tet').on("click", function (e) {
+        $(this).parent().find('ul').show();
+        $('#btn_s_warp').show();
+        e.stopPropagation();
+    });
+    $('#btn_s li').on("click", function (e) {
+        genreNum = $(this).attr("itemx");
+        page = 1;
+        $(this).parent().parent().find('.tet').text(($(this).text()));
+        $('.data-list li').remove();
+        loadData();
+        $('#btn_s ul').hide();
+        $('#btn_s_warp').hide();
+    });
+    $('#btn_s_warp').on("click", function () {
+        $('#btn_s ul').hide();
+        $(this).hide();
+    });
+    //$(body).on("click", function(){$('#btn_s ul').hide();});
+    function onScroll() {
+
+        if (!isLoading && pageSub) {
+            var scrolltobottom = ($(window).scrollTop() + $(window).height() > $(document).height() - 60);
+            if (scrolltobottom) {
+                loadData();
+            }
+        }
+    }
+
+
+    //0917
+    var getInfoURL = wtopicUrl + '/wtopic/invoke/wtopic.checkMyAlertInfo';
+
+    $.getJSON(getInfoURL + '?openid=' + openId + '&wxtoken=' + wxToken + '&time=' + (new Date().getTime()), function (chunk) {
+        if (chunk && chunk.status == 'OK') {
+            var newfriend = chunk.newfriend;
+            var newmsg = chunk.newmsg;
+            if (newfriend > 0) {
+                if (newfriend > 999) {
+                    newfriend = 999;
+                }
+                $('#friend_h').children('.img').html('<span class="num">' + newfriend + '</span>')
+            }
+            if (newmsg > 0) {
+                if (newmsg > 999) {
+                    newmsg = 999;
+                }
+                $('#mess_h').children('.img').html('<span class="num">' + newmsg + '</span>')
+            }
+
+        }
+    });
+    $('.moreInfo li').on("click", function (e) {
+        var _id = $(this).attr('id');
+        var openId = $('#mobile_openId').val();
+
+
+        if (_id == 'friend_h') {
+            window.location.href = wtopicUrl + '/wtopic/sso/oauth?to=wechat2topic&token=' + wxToken + '&go=myfriend';
+        }
+        if (_id == 'mess_h') {
+            window.location.href = wtopicUrl + '/wtopic/sso/oauth?to=wechat2topic&token=' + wxToken + '&go=xiaoxi';
+        }
+        if (_id == 'team_h') {
+            window.location.href = wtopicUrl + '/wtopic/sso/oauth?to=wechat2topic&token=' + wxToken + '&go=pyq ';
+        }
+        if (_id == 'order_h') {
+            window.location.href = '/pointMall/me/account';
+        }
+    });
+
+    function address() {
+        var openId = $('#mobile_openId').val();
+        window.location.href = '/pointMall/address/list?openId=' + openId;
+    }
+
+
+    ////////
+    $(document).ready(function (e) {
+        loadData();
+        $(window).bind('scroll', onScroll);
+    });
+
+
+    function refreshUser() {
+
+        $('#messageText').html('');
+        $('#messageText').html('正在获取你的最新个人资料');
+        $('body').append('<div class="messageBg" style="width: 100%; height: 100%;z-index: 900; background-color: rgba(0,0,0,0.4);position: fixed;top:0; left: 0;"></div>');
+        $('#message').show();
+        var wxToken = $('#mobile_wxToken').val();
+        var url = '/pointMall/personal/reacquire?wxToken=' + wxToken;
+        $.getJSON(url + '&time=' + (new Date().getTime()), function (chunk) {
+            setTimeout(function () {
+                $('#message').hide();
+                $('.messageBg').hide();
+            }, 1000);
+            if (chunk && chunk.status == 'success') {
+                var nickName = chunk.data.nickName;
+                var headImg = chunk.data.headImg;
+                //console.log('----------headImg------------',headImg);
+                if (nickName != '' && nickName != 'Guest') {
+                    $('#personal_name').html(nickName);
+                }
+                if (headImg) {
+                    $("#personal_img").attr("src", headImg);
+                }
+                count++;
+            } else {
+                console.log(chunk.msg);
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>

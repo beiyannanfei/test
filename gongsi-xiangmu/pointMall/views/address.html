@@ -1,0 +1,425 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>地址列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes"> 
+
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/address.css" />
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+
+</head>
+<body>
+
+<input type="hidden" id="uid" value="{{uid}}">
+<input type="hidden" id="openId" value="{{openId}}">
+<input type="hidden" id="orderId" value="{{orderId}}">
+<input type="hidden" id="tips" value="{{tips}}">
+<div class="warp">
+  
+  <div class="addlist" id="setadr">
+      <p id="empty" style="font-size: 14px; text-align: center; padding: 15px;">您还没有填写任何地址哦，赶紧去填写吧！</p>
+
+      <!--
+      <div class="adr">
+        <input type="radio" id="list_01" name="adr_type" checked="">
+        <label for="list_01" class="radio color_orange"></label>
+        <h4>姓名</h4>
+        <span class="tel">12309123123</span>
+        <p class="adddres">倍金额比较电脑的</p>
+        <span class="modfiy"></span>
+      </div>
+      -->
+  </div>
+  
+  <div class="footerFixed">
+      {{#if uid}}
+        <span id="qrtj" class="btn btn_lg btn_primary" onClick="confirmation();" id="sourceLottery">确认提交</span>
+      {{/if}}
+      <span class="btn btn_lg btn_primary" onClick="addAddres();">添加新地址</span>
+  </div>
+</div>
+
+<div class="now_ok">
+    <div class="ok_box">
+        <p>提交成功！具体进展请留意公共号通知。</p>
+        <div><label class="no_l" onclick="goBack()">确定</label></div>
+    </div>
+</div>
+<div id="layer_wBg_box"></div>
+<div id="layer_w" class="layer_w" style="display:none;">
+    <div class="con" style="background:#FFF; height:240px;">
+        <div class="tile">提示</div>
+        <div class="info" style="height:120px;">
+            <br>
+            <p>已提交申请，我们会尽快为您处理。您可以到个人中心查看我的中奖。</p>
+        </div>
+        <div class="btn_group">
+            {{#if fromMessage}}
+                <span class="btn btn_lg btn_primary"><button type="button" id="completed">完成</button></span>
+            {{else}}
+                {{#if fromOrder}}
+                    <span class="btn btn_lg btn_primary"><button type="button" id="completed">完成</button></span>
+                {{else}}
+                    <span class="btn btn_lg btn_primary"><button type="button" id="tryAgain">再抽一次</button></span>
+                    <span class="btn btn_lg btn_primary"><button type="button" id="me-order">查看我的中奖</button></span>
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+<!--<script type="text/javascript" src="/pointMall/url/statistics" charset="UTF-8"></script>-->
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+var host='/pointMall',
+	addressURL = host + '/address',
+	addDefaultURL = host + '/address/default',
+	addDefaultId,
+	addJson = {};
+var saveIng = true;
+var paramsArray = getArgs();
+openId = paramsArray.openId || '';
+
+var uid = $('#uid').val();
+var openId = $('#openId').val();
+var orderId = $('#orderId').val();
+
+$('.radio').live('click',function(){
+	//$("input[name='adr_type']").remove('checked');
+	var _this = $(this);
+	var isDefault = _this.attr('data-isDefault');
+	addDefaultId = _this.parent().attr('id');
+	$.post(addDefaultURL,{openId:openId,addressId:addDefaultId}, function(chunk){
+		if(chunk == 'OK'){
+			console.log('ook====='+addDefaultId)
+			$('.radio').attr('data-isdefault','0');
+			$('#'+addDefaultId).children('.radio').attr('data-isdefault','1');
+		}else{
+			
+		}
+	});
+});
+
+$('.modfiy').live('click',function(){
+	var _this = $(this);
+	var id = _this.parent().attr('id');
+	var zip = _this.parent().attr('data-zip') || '';
+	var name = _this.parent().children('h4').text();
+	var tel = _this.parent().children('.tel').text();
+	var addres = _this.parent().children('.adddres').text();
+	addJson.id = id;
+	addJson.name = name;
+	addJson.tel = tel;
+	addJson.addres = addres;
+	addJson.zip = zip;
+	addAddres(addJson);
+});
+
+$('#tryAgain').live('click',function(){
+    $('#layer_w').hide()
+    window.history.go(-1);
+})
+
+$('#me-order').live('click',function(){
+    $('#layer_w').hide()
+    window.location.href = '/pointMall/me/lottery/list';
+})
+
+$('#completed').live('click',function(){
+    $('#layer_w').hide()
+    window.history.go(-1);
+})
+
+
+function getAddresList(){
+	$.getJSON(addressURL+'?openId='+openId, function(chunk){
+		if(chunk){
+			var html = '';
+			var html_first = '';
+			for(var i=0; i<chunk.length; i++){
+				var _id = chunk[i]._id;
+				var isDefault = chunk[i].isDefault;
+				var checked = '';
+				if(isDefault == 1){
+					addDefaultId = chunk[i]._id;
+					checked = 'checked="checked"';
+					//相同复制
+					html_first += '<div class="adr" id="'+ _id +'" data-zip="'+ chunk[i].addInfo.zip +'">';
+					html_first += '<input type="radio" id="list_r'+ i +'" name="adr_type" '+ checked +'>';
+					html_first += '<label for="list_r'+ i +'" class="radio color_orange" data-isDefault="'+ isDefault +'"></label>';
+					html_first += '<h4>'+ chunk[i].addInfo.name +'</h4>';
+					html_first += '<span class="tel">'+ chunk[i].addInfo.tel +'</span>';
+					html_first += '<p class="adddres">'+ chunk[i].addInfo.add +'</p>';
+					html_first += '<span class="modfiy"></span>';
+					html_first += '</div>';
+					
+				}else{
+					html += '<div class="adr" id="'+ _id +'" data-zip="'+ chunk[i].addInfo.zip +'">';
+					html += '<input type="radio" id="list_r'+ i +'" name="adr_type" '+ checked +'>';
+					html += '<label for="list_r'+ i +'" class="radio color_orange" data-isDefault="'+ isDefault +'"></label>';
+					html += '<h4>'+ chunk[i].addInfo.name +'</h4>';
+					html += '<span class="tel">'+ chunk[i].addInfo.tel +'</span>';
+					html += '<p class="adddres">'+ chunk[i].addInfo.add +'</p>';
+					html += '<span class="modfiy"></span>';
+					html += '</div>';
+				}
+			}
+            if (chunk.length > 0){
+                $('#empty').hide()
+                $('#qrtj').show();
+            }else{
+                $('#qrtj').hide();
+            }
+			$('#setadr').append(html_first).append(html);
+		}
+	});
+}
+
+getAddresList();
+
+
+function createLayer(json){
+	var _json = json,
+		_addresId = '',
+		_name = '',
+		_tel = '',
+		_zip = '',
+		_addres = '';
+	if(_json){
+		_addresId = _json.id || '';
+		_name = _json.name || '';
+		_tel = _json.tel || '';
+		_zip = _json.zip || '';
+		_addres = _json.addres || '';
+	}
+	var html = '';
+	html += '<div class="layer_wBg" id="add" data-addresId="'+ _addresId +'">';
+    html += '<div class="frm">';
+    html += '<label>收货人</label>';
+    html += '<div class="info">';
+    html += '<input type="text" placeholder="姓名" class="inputText name" value="'+ _name +'" />';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="frm">';
+    html += '<label>手机号码</label>';
+    html += '<div class="info">';
+    html += '<input type="tel" maxlength="11" placeholder="请填写" class="inputText tel" value="'+ _tel +'" />';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="frm">';
+    html += '<label>邮政编码</label>';
+    html += '<div class="info">';
+    html += '<input type="text" maxlength="6" placeholder="请填写" class="inputText zip" value="'+ _zip +'" />';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="frm">';
+    html += '<label>详细地址</label>';
+    html += '<div class="info">';
+    html += '<textarea rows="3" class="addres">'+ _addres +'</textarea>';
+    html += '</div>';
+    html += '</div>';
+	if(_json){
+		html += '<div class="frm mar_top">';
+    	html += '<span class="del" onClick="deladdres();">删除收货地址</span>';
+    	html += '</div>';
+	}
+    html += '<div class="btn_group">';
+    html += '<span class="btn btn_lg btn_primary"><button type="button" onClick="saveAddres();">保存</button></span>';
+    html += '<span class="btn btn_lg btn_default"><button type="button" onClick="closeLayer();">取消</button></span>';
+    html += '</div>';
+    html += '</div>';
+	$('#layer_wBg_box').html('');
+	$('#layer_wBg_box').append(html);
+	setTimeout("$('#add').addClass('show')",10);
+}
+
+function addAddres(json){
+	var _add = $('#add');
+	if(json){
+		createLayer(json);
+		return;
+	}
+	createLayer();
+}
+function closeLayer(){
+	$('.layer_wBg').removeClass('show');
+	saveIng = true;
+}
+
+function deladdres(){
+	var addresId = $('#add').attr('data-addresId');
+	$.post(addressURL+'/'+addresId+'/delete',{openId:openId}, function(chunk){
+		if(chunk == 'OK'){
+			$('#'+addresId).remove();
+            var len = $('#setadr').children().length;
+            if (len == 1){
+                $('#empty').show();
+                $('#qrtj').hide();
+            } else {
+                $('#qrtj').show();
+            }
+			closeLayer();
+		}
+	});
+}
+
+
+function saveAddres(){
+	if(!saveIng){
+		saveIng = false;
+		return;
+	}
+	var add = $('#add'),
+		name = add.find('.name').val(),
+		tel = add.find('.tel').val(),
+		zip = add.find('.zip').val(),
+		addres = add.find('.addres').val(),
+		addresId = add.attr('data-addresId');
+	if(!name){
+		alert("请输入收货人姓名")
+		return;
+	}
+	if(!tel){
+		alert("请输入手机号码")
+		return;
+	}
+	if(tel.length<11){
+		alert("请正确输入手机号码")
+		return;
+	}
+	if(!addres){
+		alert("请输入地址")
+		return;
+	}
+	//修改
+	if(addresId){
+		$.post(addressURL+'/'+addresId+'/update',{openId:openId,name:name,tel:tel,zip:zip,add:addres,orderId:orderId}, function(chunk){
+			if(chunk){
+				saveIng = false;
+				$('#'+addresId).attr('data-zip',zip);
+				$('#'+addresId).children('h4').html(name);
+				$('#'+addresId).children('.tel').html(tel);
+				$('#'+addresId).children('.adddres').html(addres);
+				closeLayer();
+			}else{
+				saveIng = true;
+			}
+		});
+		return;
+	}
+	
+	
+	//新增
+	$.post(addressURL,{openId:openId,name:name,tel:tel,zip:zip,add:addres,orderId:orderId}, function(chunk){
+		if(chunk){
+			saveIng = false;
+			console.log(chunk)
+			var html = '';
+			var _id = chunk._id;
+			var isDefault = chunk.isDefault;
+			var checked = '';
+			var i = 'new_'+fngetTime();
+			if(isDefault == 1){
+				addDefaultId = chunk._id;
+				checked = 'checked="checked"';
+			}
+			html += '<div class="adr" id="'+ _id +'" data-zip="'+ chunk.addInfo.zip +'">';
+			html += '<input type="radio" id="list_r'+ i +'" name="adr_type" '+ checked +'>';
+			html += '<label for="list_r'+ i +'" class="radio color_orange" data-isDefault="'+ isDefault +'"></label>';
+			html += '<h4>'+ chunk.addInfo.name +'</h4>';
+			html += '<span class="tel">'+ chunk.addInfo.tel +'</span>';
+			html += '<p class="adddres">'+ chunk.addInfo.add +'</p>';
+			html += '<span class="modfiy"></span>';
+			html += '</div>';
+			console.log(html)
+            $('#empty').hide()
+			$('#setadr').append(html);
+			closeLayer();
+            $('#qrtj').show();
+		}else{
+			saveIng = true;
+		}
+	});
+}
+
+function fngetTime(){
+	return new Date().getTime();
+}
+
+
+function getArgs(_url){
+	var parmhash={};
+	var querstr=_url||location.search;
+	var offset1=querstr.indexOf("?");
+	if(offset1!=-1){
+		querstr=querstr.substring(offset1+1);
+	}
+	if(querstr!=""){
+		var parms=querstr.split("&");
+		var parmsLen=parms.length;
+		for(var i=0;i<parmsLen;i++){
+			var _keyval=parms[i].split("=");
+			var _key=_keyval[0];
+			var _val=_keyval[1];
+			try{
+					parmhash[_key]=decodeURI(_val);
+			}catch(ex){
+				var offset0=-1;
+				var n=0;
+				while((offset0=_val.indexOf("%%"))!=-1){
+					_val=_val.substring(0,offset0)+'%25'+_val.substring(offset0+1);
+					n+=4;
+				}
+				parmhash[_key]=decodeURI(_val);
+			}
+		}
+	}
+	return parmhash;
+}
+
+function goBack(){
+    window.history.go(-1)
+}
+
+function confirmation(){
+    var addDefaultId = $('.radio[data-isDefault=1]').parent().attr('id');
+    if(orderId){
+        var url = '/pointMall/address/reselect';
+        $.ajax({
+            type: 'POST',
+            url:url ,
+            data:{orderId:orderId,addressId:addDefaultId},
+            success: function(){
+                if ($('#tips').val()){
+                    $('.now_ok').show();
+                } else {
+                    goBack()
+                }
+            },
+            error: function(){
+                alert('保存失败');
+            }
+        });
+    }else{
+        $.ajax({
+            type: 'POST',
+            url: '/pointMall/lottery/' + uid + '/fill/address/' + addDefaultId,
+            success: function(){
+                $('#layer_w').show()
+            },
+            error: function(){
+                alert('保存失败');
+            }
+        })
+    }
+}
+
+</script>
+
+
+</body>
+</html>

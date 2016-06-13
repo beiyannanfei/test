@@ -1,0 +1,174 @@
+<link rel="stylesheet" href="/stylesheets/statistics.css">
+<script>
+    //jquery.mvvw.js
+    /*
+    说明：
+    tpl方法是一个超级简单的模板匹配引擎
+    getDataByModel：此方法根据p2这个modelstr从p1这个map中获取到对应的数据，如果获取失败则返回otherWiseVal指定的值
+    bootstrap方法用于启动页面,扫描系统内置的指令并执行对应多做，包含以下指令：
+
+    1 bx-repeat repeat某个元素一定的次数，次数由以逗号split的值的长度决定
+    2 bx-include 引入一个外部的文件并将文件内容放在该元素里
+     */
+    (function($){
+        var lib={
+            getDataByModel : function ($scope, modelStr, otherWiseVal) {
+                otherWiseVal = otherWiseVal || null;
+                var arr = modelStr.split('.'), len = arr.length, result = $scope;
+                if (len === 1) {
+                    return $scope[arr[0]];
+                } else if (len > 1) {
+                    var isError = false;
+                    for (var i in arr) {
+                        if (typeof(result[arr[i]]) === 'undefined') {
+                            isError = true;
+                            break;
+                        } else {
+                            result = result[arr[i]];
+                        }
+                    }
+                    if (isError) {
+                        return otherWiseVal;
+                    } else {
+                        return result;
+                    }
+                } else if (len === 0) {
+                    return otherWiseVal;
+                }
+            },
+            bootstrap: function ($obj) {
+                $('*',$obj).each(function(){
+                    var $this=$(this);
+                    if($this.attr('bx-repeat')){
+                        var repeatStr = $(this).attr('bx-repeat'), arr = repeatStr.split(',');
+                        for (var i in arr) {
+                            $this.clone().html(arr[i]).insertBefore($this);
+                        }
+                        $this.remove();
+                    }
+                    if($this.attr('bx-include')){
+                        $.get($(this).attr('bx-include'),function(e){
+                            $this.html(e);
+                        })
+                    }
+                })
+            },
+            tpl: function (options) {
+
+                options = $.extend({
+                    left_split: "{{",
+                    right_split: "}}",
+                    tpl: "",
+                    data: null
+                }, options);
+                if (options.data == null) {
+                    return options.tpl;
+                } else {
+                    var reg = new RegExp(options.left_split + "(.+?)" + options.right_split, "gi");
+                    var strs = options.tpl.match(reg), tpl = options.tpl;
+                    for (var i = 0; i < strs.length; i++) {
+                        var str = strs[i];
+                        strs[i] = str.substring(options.left_split.length, str.length - (options.right_split.length));
+                        tpl = tpl.replace(str, str.indexOf(".") == -1 ? (options.data[strs[i]] || '') : (lib.getDataByModel(options.data, strs[i])) || '');
+                    }
+                    return tpl;
+                }
+            }
+        };
+        $.extend(lib);
+    })(jQuery)
+</script>
+
+
+<div style="display:none;" class="ui-lock-anim-wrapper">
+    <div class="ui-lock-anim" bx-include="/tpl/loading.html"></div>
+</div>
+
+<div style="height: 100%;overflow:scroll;" class="main">
+
+
+    <div class="main-table">
+        <table class="table awad_table">
+            <thead>
+            <tr>
+                <th bx-repeat="用户头像,用户昵称,卡券码,卡券使用状态,核销时间"></th>
+            </tr>
+            </thead>
+            <tbody id="awad_list">
+            <script type="text/template" id="table_content">
+                <tr>
+                    <td><img src="{{pic}}"></td>
+                    <td>{{nickname}}</td>
+                    <td>{{code}}</td>
+                    <td>{{status}}</td>
+                    <td>{{datetime}}</td>
+                </tr>
+            </script>
+            </tbody>
+        </table>
+    </div>
+
+    <!--<div style="text-align:right;margin-top:-20px;" id="page">-->
+    <!--<ul class="pagination"></ul>-->
+    <!--</div>-->
+
+</div>
+
+
+<script>
+    (function ($) {
+
+
+        $(function () {
+            $.bootstrap($('body'));
+            var tpl = $('#table_content').html(),
+                    $listWrapper = $('#awad_list'),
+                    $uiLocker=$('.ui-lock-anim-wrapper').last(),
+                    url = '/test/test1',
+                    listData = null;
+
+            function render() {
+                if (listData === null) {
+                    return;
+                }
+                var str = '';
+                for (var i in listData) {
+                    str += $.tpl({
+                        tpl: tpl,
+                        data: listData[i]
+                    })
+                }
+                $listWrapper.html(str);
+            }
+
+            function pullData() {
+                $uiLocker.show();
+                $.get(url)
+                    .success(function (e) {
+
+                        $uiLocker.hide();
+                        //此处将listData这个变量转换成符合下列各式的代码即可完成ui更新操作
+//                            listData=[
+//                                {
+//                                    pic:'111',
+//                                    nickname:'sdfs',
+//                                    codee:'sdfdf',
+//                                    status:'sdfdsf',
+//                                    datetime:'sdfds'
+//                                }
+//
+//                            ];
+                        render();
+                    })
+                    .error(function (e) {
+                        alert(e.responseText)
+                    })
+            }
+
+            pullData();
+
+        })
+    })(jQuery)
+</script>
+
+

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{redPagerEvent.name}}</title>
+    <link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+    <style type="text/css">
+        body{ background:#271805}
+        .body_bg{ position:fixed; left:0; right:0; top:0; bottom:0; z-index:0}
+        .body_bg img{ width:100%; height:100%}
+        .wrap_main{ position:relative; z-index:1;}
+        .top_tip{ margin:16px 20px 20px; clear:both; overflow:hidden}
+        .top_tip .avatar{ float:left; width:18%;}
+        .top_tip .avatar img{ width:100%; border:solid 2px #fff;}
+        .top_tip .cnt{ position:relative; float:right; width:75%; margin:10px 1px 3px 0; min-height:50px;background:#fff; border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.2)}
+        .top_tip .cnt .arrow{ position:absolute; left:-6px; top:10px; width:7px; height:12px; background:url(/pointMall/images/redPager/arrow3.png) no-repeat 0 0; background-size:7px 12px;}
+        .top_tip .cnt i{ position:absolute; width:15px; height:12px;background:url(/pointMall/images/redPager/y1.png) no-repeat 0 0; background-size:15px 12px; top:10px; text-indent:-9999px}
+        .top_tip .cnt i.l{ left:7px;}
+        .top_tip .cnt i.r{background:url(/pointMall/images/redPager/y2.png) no-repeat 0 0; background-size:15px 12px; right:5px}
+        .top_tip .cnt strong{ display:block; font-weight:normal; padding:10px 25px; font-size:15px; color:#777}
+
+        .get_pocket{ position:relative; margin-top:15px; text-align:center}
+		.get_pocket .pic1{ position:relative; z-index:3; width:50%; left:25%; }
+		.get_pocket .pic1 .s1{ width:100%;margin:0 auto}
+		.get_pocket .pic1 .s2{ position:absolute; width:63%; right:0; bottom:5px}
+        .get_pocket .btn{position:absolute; z-index:9; bottom:-35px; width:66%; left:17%; background:#f29900; padding:4px 0; border-radius:5px; color:#fff; font-size:18px; cursor:pointer}
+        .get_pocket .btn:hover{ background:#e37b00}
+		.get_pocket .rmb{position:absolute; top:40%; left:23%; z-index:4;width:54%; text-align:center; font-size:48px; color:#ffda48;text-shadow:1px 2px 5px rgba(0,0,0,.5);font-family:Impact; display: none;}
+		.get_pocket .rmb img{ width:23%; margin-right:5px}
+
+        .not_open{ position:absolute; z-index:999; background:#000; padding:5px; background:rgba(0,0,0,.5); color:#fff; white-space:nowrap; font-size:14px; display: none;}
+
+        .tit_others{ margin-top:35px; background:url(/pointMall/images/redPager/line.png) no-repeat center center;background-size:100% auto; color:#fff; font-size:14px; line-height:25px; text-align:center;text-shadow:0 1px 1px rgba(0,0,0,.4)}
+
+        .list_others{margin:0 20px;}
+        .list_others li{margin:10px 0; clear:both; overflow:hidden}
+        .list_others li .avatar{ float:left; width:18%;}
+        .list_others li .avatar img{ width:100%; border:solid 2px #fff;}
+        .list_others li .cnt{ position:relative; float:right; width:75%; margin:0 1px 3px 0; min-height:50px;background:rgba(0,0,0,.6); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.2)}
+        .list_others li .cnt .arrow{ position:absolute; left:-7px; top:10px; width:7px; height:12px; background:url(/pointMall/images/redPager/arrow3.png) no-repeat 0 0; background-size:7px 12px; opacity:.6}
+        .list_others li .cnt .mount{ float:right; margin:10px 5px 0 0;color:white;padding-top:20px;}
+        .list_others li .cnt h2{ padding:4px 0 0 8px;padding-top:20px;}
+        .list_others li .cnt h2 strong{ float:left; display:inline-block; color:#fff; font-weight:normal; width:40%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.3);}
+        .list_others li .cnt h2 span{ color:#9a94b0; text-shadow:0 1px 1px rgba(0,0,0,.1);}
+        .list_others li .cnt .desc{ margin-right:45px; padding:2px 0 0 8px; line-height:1.3em; color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.4);}
+
+        @media all and (max-width:320px){
+            .top_tip .avatar img,.list_others li .avatar img{ height:50px; border-radius:27px}
+        }
+        @media all and (min-width:321px) and (max-width:375px){
+            .top_tip .avatar img,.list_others li .avatar img{ height:60px; border-radius:32px}
+        }
+        @media all and (min-width:376px) and (max-width:700px){
+            .top_tip .avatar img,.list_others li .avatar img{ height:66px; border-radius:68px}
+        }
+        @media all and (min-width:701px) and (max-width:2000px){
+            .top_tip .avatar img,.list_others li .avatar img{ height:120px; border-radius:122px}
+        }
+        .top_tip .avatar img,.list_others li .avatar img{
+            -webkit-transform: scale(0.8);
+            -moz-transform: scale(0.8);
+            -ms-transform: scale(0.8);
+            -o-transform: scale(0.8);
+            transform: scale(0.8);
+        }
+
+        .follow_pop_tip{ position:fixed;  top:30%; left:6%; width:88%; background:#fff; border-radius:10px; display: none; z-index: 99999;}
+        .follow_pop_tip .tip{ margin-top:15px; padding:0 15px 0 110px; min-height:75px; background:url(/pointMall/images/follow-ico.png) no-repeat 20px center; background-size:75px 75px; font-size:17px; line-height:1.4em; color:#888}
+        .follow_pop_tip .btn{ margin:20px 0; text-align:center}
+        .follow_pop_tip .btn strong{ display:inline-block; margin:0 4%; width:37%; line-height:40px; background:#fff; background:-webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#d8d8d8)); border-radius:5px; font-size:18px; font-weight:normal; text-align:center; cursor:pointer; color:#666}
+        .follow_pop_tip .btn strong.focus{ background:-webkit-gradient(linear, left top, left bottom, from(#9fceeb), to(#67b2df)); color:#fff}
+        .follow_pop_tip .arrow{ position:absolute; width:14px; height:29px; background:url(/pointMall/images/follow-arrow.png) no-repeat 0 0; background-size:14px 29px; right:-13px; bottom:15%;}
+        @media all and (min-width:600px){
+            .follow_pop_tip{max-width:600px; left:50%; margin-left:-310px}
+        }
+        @media all and (max-width:320px){
+            .follow_pop_tip .tip{ font-size:14px; padding-left:100px;background-size:65px 65px;min-height:65px;}
+            .follow_pop_tip .btn strong{ font-size:15px; line-height:34px}
+        }
+        .cnt p {
+            padding: 10px;
+            color: #fff;
+        }
+
+        .cnt p > span {
+            color: #9a94b0;
+        }
+    </style>
+</head>
+<body>
+<div class="body_bg"><img src="{{redPagerEvent.bg}}"></div>
+<div class="follow_pop_tip">
+    <div class="tip">亲，请先关注微信号!</div>
+    <div class="btn"><strong class="cancel">取消</strong><strong class="follow">关注</strong></div>
+    <span class="arrow"></span>
+</div>
+<div class="wrap_main">
+    <div class="top_tip">
+        <div class="avatar"><img src="{{redPagerEvent.logo}}"></div>
+        <div class="cnt">
+            <span class="arrow"></span>
+            <strong id="tip-text"></strong>
+        </div>
+    </div><!--//-->
+    <div class="get_pocket">
+        <div class="pic1">
+            <img id="pic1" class="s1">
+            <img id="pic2" class="s2">
+        </div>
+        <div class="rmb"></div>
+        {{#if redPagerEvent.storeName}}
+        <div class="btn" id="link" link="{{redPagerEvent.storeLink}}">去{{redPagerEvent.storeName}}购物~</div>
+        {{/if}}
+    </div><!--//-->
+    <div class="tit_others">看看朋友们的运气如何</div>
+    <ul class="list_others" id="bound-list">
+
+    </ul>
+</div>
+<div class="not_open" id="not_open" style="left:50%; top:220px; margin:0 0 0 -92px;">商城还未开放，敬请期待……</div>
+<input type="hidden" id="redPagerEventId" value="{{redPagerEvent._id}}">
+<input type="hidden" id="token" value="{{redPagerEvent.token}}">
+<script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var redPagerEventId = $('#redPagerEventId').val();
+        function loadRedPager(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/redPagerEvent/' + redPagerEventId +'/result',
+                success: function(data){
+                    showRedPager(data);
+                    loadRedPagerBound()
+                },
+                error: function(){
+                    showRedPager({status: -1});
+                    loadRedPagerBound()
+                }
+            })
+        }
+
+        function loadRedPagerBound(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/redPagerEvent/' + redPagerEventId +'/bound/list',
+                success: function(data){
+                    renderRedPagerBound(data);
+                },
+                error: function(){
+
+                }
+            })
+        }
+
+        function renderRedPagerBound(data){
+            var domString = '';
+            $.each(data, function(i, o){
+                console.log("this is o:",o);
+                domString += '<li><div class="avatar"><img src="' + o.headImg + '"></div>' +
+                             '<div class="cnt"><span class="arrow"></span>';
+                domString += '<p>' + o.userName + '在 <span>' + o.dateTime + '</span> ' +
+                         '领走了一个'+ o.redPagerName +'</p>'
+                        +'</div></li>'
+            })
+            $('#bound-list').append(domString);
+        }
+
+        function showRedPager(data){
+            if (data.status == '-1'){
+                $('#tip-text').text('很遗憾未抢中红包~')
+                $('.get_pocket').find('#pic1').attr('src', '/pointMall/images/redPager/pocket3.png')
+                $('.get_pocket').find('#pic2').attr('src', '/pointMall/images/redPager/s2.png')
+                $('.get_pocket').find('.rmb').hide()
+            } else if (data.status == '-2'){
+                $('#tip-text').text('晚来一步红包被人抢走了~~')
+                $('.get_pocket').find('#pic1').attr('src', '/pointMall/images/redPager/pocket3.png')
+                $('.get_pocket').find('#pic2').attr('src', '/pointMall/images/redPager/s2.png')
+                $('.get_pocket').find('.rmb').hide()
+            } else if (data.status == '-3'){
+                $('#tip-text').text('您已经抢过了哦！下次再来吧~~~')
+                $('.get_pocket').find('#pic1').attr('src', '/pointMall/images/redPager/pocket3.png')
+                $('.get_pocket').find('#pic2').attr('src', '/pointMall/images/redPager/s3.png')
+                $('.get_pocket').find('.rmb').hide()
+            } else if (data.status == '-4'){
+                $('#tip-text').text('手慢了没有抢中红包， 请关注“' + (data.name?data.name:'公众号') + '”才有红包拿哦!')
+                $('.get_pocket').find('#pic1').attr('src', '/pointMall/images/redPager/pocket3.png')
+                $('.get_pocket').find('#pic2').attr('src', '/pointMall/images/redPager/s2.png')
+                $('.get_pocket').find('.rmb').hide()
+                $('.follow_pop_tip').show()
+                $('.follow_pop_tip .cancel').click(function(){
+                    $('.follow_pop_tip').hide()
+                })
+
+                $('.follow_pop_tip .follow').click(function(){
+                    $('.follow_pop_tip').hide()
+                    if (data.followUrl){
+                        return window.location.href = data.followUrl;
+                    }
+                })
+            } else{
+                var v;
+                console.log('data is:',data);
+                var fontSize=18;
+                if (data.type != 2){
+                    v=data.name;
+                } else{
+
+                    fontSize=48;
+                    v= data.price
+                }
+                var text = '恭喜您了！获得' + data.name
+                if (data.type == 6){
+                    text += '<span style="color: red;">(请去微信消息中查看电子码)</span>'
+                } else if (data.type == 2){
+                    text += '<p style="color: red;">(领取请查看微信消息)</p>'
+                    $('#link').hide()
+                }
+                $('#tip-text').html(text)
+                $('.get_pocket').find('#pic1').attr('src', '/pointMall/images/redPager/pocket3.png')
+//                var v = data.price
+//                if (data.type == 1){
+//                    v = 0
+//                }
+
+                $('.get_pocket').find('.rmb').css({
+                    fontSize:fontSize+'px'
+                }).show().append(v)
+                $('.get_pocket').find('#pic2').hide()
+            }
+            var hUrl = 'http://ana.mtq.tvm.cn/ana?id=553f45f6a976e7b3bf000002&event_code=125000&token=' + $('#token').val() + '&create_time=' + Math.floor(new Date().getTime() / 1000) + '&title=' + $('title').text()
+            $('body').append('<img style="width:0px; height: 0px;" src="' + hUrl + '">')
+        }
+        loadRedPager()
+
+        $('#link').click(function(){
+            var link = $(this).attr('link');
+            if (link){
+                window.location.href = link;
+            } else {
+                $('#not_open').show();
+            }
+        })
+    })
+</script>
+</body>
+</html>
+<style>
+    .list_others li .cnt h2 strong{
+        width:20%;
+    }
+    .list_others li .cnt .mount{
+        width:40%;
+        margin:0;
+        margin-right:5px;
+    }
+    .list_others li .cnt .arrow{
+        top:25px;
+    }
+    .get_pocket .rmb{
+        font-size:18px;
+        line-height:120px;
+    }
+</style>

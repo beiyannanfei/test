@@ -1,0 +1,7 @@
+node_modules/
+temp/
+.idea/
+config-bak/
+env-config.js
+tools/privite
+dev/

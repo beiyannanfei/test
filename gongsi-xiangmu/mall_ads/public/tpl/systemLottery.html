@@ -1,0 +1,214 @@
+<link rel="stylesheet" href="/stylesheets/system_price.css">
+<style>
+    .redbags .redbag-name{
+        width:auto;
+    }
+    .price_list .ng-valid{
+        width:60%
+    }
+    .redbags input[type=text]{
+        width:15%;
+    }
+</style>
+<script src="/javascripts/system_price.js"></script>
+<div ng-show="isPageLoaded" ng-class="{bounceIn:isPageLoaded,animated:isPageLoaded}" ng-app="main" ng-controller="mainController" class="lottery">
+
+    <!--<debuger ngobj="ms"></debuger>-->
+    <button ng-click="showPerferenceConfig()" class="btn btn-primary" style="margin-left:20px;margin-top:20px;">红包预设</button>
+    <button type="button" class="btn btn-primary" ng-click="openModalWin()"  style="margin-left:20px;margin-top:20px;">添加奖品</button>
+
+    <!--<ul id="myTabs" class="nav nav-tabs" role="tablist">-->
+    <!--<li ng-click="ms.needPreferenceConfig='0'" role="presentation" ng-class="{active:ms.needPreferenceConfig==='0'}" ><a id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">普通模式</a><iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe></li>-->
+    <!--<li ng-click="ms.needPreferenceConfig='1'" role="presentation" ng-class="{active:ms.needPreferenceConfig==='1'}" class=""><a role="tab" id="profile-tab" data-toggle="tab" aria-controls="profile" aria-expanded="false">预设红包规则模式</a></li>-->
+
+    <!--</ul>-->
+    <!--<div>-->
+    <!--<div class="tab-pane active in price_list">-->
+    <!--<button ng-if="ms.needPreferenceConfig==='0'" type="button" class="btn btn-success add_price" ng-click="openModalWin()" style="margin-bottom:20px;">添加奖品</button>-->
+    <!--<div class="clearfix"></div>-->
+    <!--<div ng-if="ms.needPreferenceConfig==='0'" class="price" ng-repeat="item in ms.data track by $index">-->
+    <!--<span class="close" ng-click="spliceData($index)">×</span>-->
+    <!--<div class="price_left">-->
+    <!--<img ng-click="openModalWin(true,$index)" ng-src="{{item.logo_src}}" alt="">-->
+    <!--</div>-->
+    <!--<div class="price_right diffent">-->
+    <!--<div class="name_price">-->
+    <!--<p>奖品名：</p>-->
+    <!--<span>{{item.award_name}}</span>-->
+    <!--</div>-->
+    <!--<div class="name_price">-->
+    <!--<p>奖品类型：</p>-->
+    <!--<span>{{item.award_type}}</span>-->
+    <!--</div>-->
+    <!--<div class="name_price">-->
+    <!--<p>奖品等级：</p>-->
+    <!--<input ng-model="item.award_grade" type="text" class="form-control">-->
+    <!--</div>-->
+    <!--<div class="name_price">-->
+    <!--<p>中奖人数：</p>-->
+    <!--<input ng-model="item.total_num" type="text" class="form-control">-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="name_price">&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>中奖次数：</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<input ng-model="item.total_count" type="text" class="form-control">&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="name_price">&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>奖品的id：</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<span>{{item.prize_ids}}</span>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<div class="name_price">&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>限领期限：</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;<input type="text" class="form-control">&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div ng-show="isPerferenceConfigShow" class="tab-pane price_list" style="padding: 30px 30px 0 30px;border: solid 1px #ccc;position:relative">
+        <span class="close" ng-click="isPerferenceConfigShow=false" style="font-size:40px;float:none;position:absolute;right:20px;top:10px;">×</span>
+        <div style="display:inline-block;width: 130px;height: 130px;">
+            <img src="/images/hong_bao.jpg" alt="" style="diplay:block;width:100%;height:100%;margin-bottom:220px;">
+        </div>
+        <div class="yes_option" style="display:inline-block;margin-left: 10px;margin-top:-20px;">
+            <texter msg="人均金额" ngmodel="ms.preferenceConfig.average">&nbsp;&nbsp;元</texter>
+            <texter msg="金额封顶" ngmodel="ms.preferenceConfig.max">&nbsp;&nbsp;元</texter>
+            <texter msg="商户名称" ngmodel="ms.preferenceConfig.send_name"></texter>
+            <!--<div class="addAward">-->
+            <!--<button ng-click="addAward()" class="btn w-xs btn-primary">添加红包</button>-->
+            <!--<button ng-click="openModalWin()" class="btn w-xs btn-primary">添加实物奖品</button>-->
+            <!--</div>-->
+            <div ng-repeat="item in ms.preferenceConfig.info" class="redbags">
+                <label class="redbag-name">{{item.name}}:</label>
+                <label class="reward">{{item.rate}}等奖</label>
+                <input placeholder="金额占比" type="text" ng-model="item.percent" class="form-control">&nbsp;&nbsp;%
+                <!--<select ng-model="item.moneyType" class="form-control" style="width:90px;margin-left:10px;" ng-options="select_item.type as select_item.name for select_item in ms.lotteryTypeConfig">-->
+                <!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+                <!--</select>-->
+                <input placeholder="人数占比" type="text" ng-model="item.count" class="form-control">
+                <select ng-model="item.type" class="form-control" style="width:90px;margin-left:10px;" ng-options="select_item.type as select_item.name for select_item in ms.lotteryTypeConfig">
+                    <option value="">--请选择--</option>
+                </select>
+                <input placeholder="上限4999" type="text" ng-model="item.redMax" class="form-control">
+
+                <a ng-click="deleteAward($index,'info')" title="点击删除当前设置项及以后的奖项" href="javascript:;">删除</a>
+                <a ng-if="$index===ms.preferenceConfig.info.length-1" ng-click="addAward()" href="javascript:;">添加</a>
+                <!--<button ng-click="deleteAward($index,'info')" title="点击删除当前设置项及以后的奖项" class="btn btn-danger">删除</button>-->
+                <!--<button ng-if="$index===ms.preferenceConfig.info.length-1" ng-click="addAward()" class="btn btn-danger">+</button>-->
+            </div>
+            <button ng-if="ms.preferenceConfig.info.length===0" ng-click="addAward()" class="btn btn-danger">+</button>
+            <!--<div ng-repeat="item in ms.preferenceConfig.prizes" class="redbags">-->
+            <!--<label>{{item.name}}:</label>-->
+            <!--<label class="reward">{{item.rate}}等奖</label>-->
+            <!--&lt;!&ndash;<input type="text" ng-model="item.count" class="form-control"> 人&ndash;&gt;-->
+            <!--<button style="float:right;margin-right:30px;" ng-click="deleteAward($index,'prizes')" title="点击删除当前设置项及以后的奖项" class="btn btn-danger">删除</button>-->
+            <!--</div>-->
+
+
+        </div>
+    </div>
+    <div ng-show="isPerferenceConfig1Show" class="tab-pane active in price_list">
+        <!--<button ng-if="ms.needPreferenceConfig==='0'" type="button" class="btn btn-success add_price" ng-click="openModalWin()" style="margin-bottom:20px;">添加奖品</button>-->
+        <!--<div class="clearfix"></div>-->
+        <div class="price" ng-repeat="item in ms.data track by $index" style="width:100%;">
+            <span class="close" ng-click="spliceData($index)">×</span>
+            <div class="price_left">
+                <img ng-click="openModalWin(true,$index)" ng-src="{{item.logo_src}}" alt="">
+            </div>
+            <div class="price_right diffent">
+                <div class="name_price">
+                    <p>奖品名：</p>
+                    <span>{{item.award_name}}</span>
+                </div>
+                <div class="name_price">
+                    <p>奖品类型：</p>
+                    <span>{{item.award_type}}</span>
+                </div>
+                <div class="name_price">
+                    <p>奖品等级：</p>
+                    <input ng-model="item.award_grade" type="text" class="form-control">
+                </div>
+                <div class="name_price">
+                    <p>中奖人数：</p>
+                    <input ng-model="item.total_num" type="text" class="form-control">
+                </div>
+                <!--<div class="name_price">-->
+                <!--<p>中奖次数：</p>-->
+                <!--<input ng-model="item.total_count" type="text" class="form-control">-->
+                <!--</div>-->
+                <!--<div class="name_price">-->
+                <!--<p>奖品的id：</p>-->
+                <!--<span>{{item.prize_ids}}</span>-->
+                <!--</div>-->
+                <!--<div class="name_price">-->
+                <!--<p>限领期限：</p>-->
+                <!--<input type="text" class="form-control">-->
+                <!--</div>-->
+
+            </div>
+        </div>
+    </div>
+    <!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<div class="price_list">-->
+    <!--&lt;!&ndash;<beautiful-radio-group msg="是否预设红包规则"  labels="是,否" values="1,0" ngmodel="ms.needPreferenceConfig"></beautiful-radio-group>&ndash;&gt;-->
+    <!-- -->
+    <!-- -->
+    <!--&lt;!&ndash;<div class="name_price">&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>行为：</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;&lt;!&ndash;{{ms.behaviors.s1_data.items.length}}&ndash;&gt;&ndash;&gt;-->
+    <!--&lt;!&ndash;<select class="behaviors" ng-change="s1Change()" ng-model="ms.behaviors.s1_data" ng-options="item.name for item in ms.behaviors.data"></select>&ndash;&gt;-->
+    <!--&lt;!&ndash;<select class="behaviors" ng-show="ms.behaviors.s1_data.items&&ms.behaviors.s1_data.items.length!==0" ng-model="ms.behaviors.s2_data" ng-options="item.q for item in ms.behaviors.s1_data.items"></select>&ndash;&gt;-->
+    <!--&lt;!&ndash;<select class="behaviors" ng-show="ms.behaviors.s2_data.a&&ms.behaviors.s2_data.a.length!==0" ng-model="ms.behaviors.s3_data" ng-options="item for item in ms.behaviors.s2_data.a"></select>&ndash;&gt;-->
+    <!--&lt;!&ndash; &ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+    <button style="position:relative;left:50%;" ng-show="isPerferenceConfigShow||ms.data.length!==0" ng-click="submit($event)" type="button" class="btn btn-primary">保存</button>
+    <!--{{isModalWinVisible}}-->
+    <div class="pop_cnt" ng-show="isModalWinVisible">
+        <h2><strong class="tit2">奖品列表</strong><span class="close" title="关闭" ng-click="cancelChooseAwards()">关闭</span></h2>
+        <ul class="info1" style="list-style:none">
+            <li ng-show="item.visible===true" award-type="{{item.type}}" ng-repeat="item in ms.awardsList track by $index">
+                <img ng-click="toggleAwardId(item._id,$index,$event)" ng-src="{{item.pic}}" alt="">
+                <p class="message" title="{{item.name}}"><b>{{item.name}}</b></p>
+                <p title="{{tvmService.getChineseType(item.type)}}">{{tvmService.getChineseType(item.type)}}</p>
+            </li>
+        </ul>
+        <div class="dialog_btn">
+            <button ng-click="saveAwards()" type="button" class="btn w-xs btn-success">确定</button>
+            <button ng-click="cancelChooseAwards()" type="button" class="btn w-xs btn-default">取消</button>
+        </div>
+    </div>
+</div>
+<style>
+    .pop_cnt .info1 li {
+        line-height: 34px;
+        margin: 0 8px 0 0;
+        float: left;
+        text-align: center;
+        padding: 130px 0 0;
+        width: 150px;
+    }
+    .pop_cnt .info1 li img{
+        margin-left:32px;
+    }
+    .pop_cnt .info1 li p{
+        width:auto;
+    }
+    .pop_cnt{
+        width:1000px;
+        margin-left:-500px;
+    }
+</style>

@@ -1,0 +1,141 @@
+*{
+margin:0; padding:0;
+outline: 0 !important;
+}
+*, *:before, *:after{
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+li{list-style:none}
+img{border:0; max-width:100%; height:auto;}
+html{ width:100%; height:100%;}
+body{font-family:'SimHei', Arial, Helvetica; font-size:12px; color:#333; -webkit-overflow-scrolling:touch;-webkit-text-size-adjust:none; position:relative;height:100%;}
+a{
+	color:#333;
+	text-decoration:none;
+	outline:none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+a:hover{
+	text-decoration:none;
+}
+a:focus,a:active{outline:none;}
+
+.bgimg{ position:fixed; min-height:100%; z-index:-1; width:100%;}
+.warp{ width:100%; height:100%; padding:20px; min-width:720px;}
+
+.top_tile{ font-size:14px; line-height:2em;}
+
+
+.topcon{ border-bottom:1px solid #d9dadc; height:40px; margin-top:10px;}
+.topcon .tile{ border-bottom:3px solid #FFF; font-size:14px; line-height:2em; padding:0 20px; height:39px; line-height:40px; display:inline-block;}
+.topcon .tile:hover{ opacity:1;}
+.topcon .tile.active{border-bottom:2px solid #FFF; opacity:1; border-bottom:3px solid #999;}
+.topcon .search{ float:right;}
+.topcon .search input{float:left;}
+.topcon .search .inputTet{ height:30px; border:1px solid #d9dadc; width:262px; padding:5px;}
+.topcon .search .btn{height:30px; padding:0 12px; border:1px solid #d9dadc; border-left:0; background-color:#eee; cursor:pointer;}
+
+
+
+.userList{margin-top:20px; font-size:14px;}
+.userList ul{overflow:hidden;}
+.userList .head{background-color:#44b549; height:32px; color:#FFF; line-height:30px;}
+.userList li{float:left; text-align:center;}
+
+.userList .item{ border:1px solid #e7e7eb; margin-top:10px; color:#666;}
+
+.userList .w_01{ width:10%; text-align:left;}
+.userList .w_02{ width:36%;}
+.userList .w_03{ width:36%;}
+.userList .w_04{ width:18%;}
+
+.userList .head .w_01{padding-left:12px;}
+
+.userList .item .pic{ width:74px; height:74px; padding:12px; display:inline-block;}
+.userList .item .pic img{vertical-align:bottom;}
+.userList .item .w_02{ padding-top:26px;}
+.userList .item .w_03{ padding-top:26px;}
+.userList .item .w_04{ padding-top:26px;}
+
+.userList .item .w_04 span{margin:0 5px; position:relative;}
+.userList .item .w_04 span .t{ display:none; position:absolute; top:18px; left:-10px; width:34px;}
+.userList .item .w_04 span i{display:inline-block; width:22px; height:22px; cursor:pointer; opacity:0.5;}
+.userList .item .w_04 span:hover i,.userList .item .w_04 span:hover .t{opacity:1; display:inline-block}
+.userList .item .w_04 .edit i{background:url(../images/icon_edit_08.gif) no-repeat;}
+.userList .item .w_04 .search i{background:url(../images/icon_search_08.gif) no-repeat;}
+
+
+/**/
+.per_info{background-color:#eee; margin-top:10px; padding:14px; text-align:center;}
+.per_info .photo{ width:100px; height:100px; border-radius:50%; display:inline-block;}
+.per_info .photo img{width:100%; border-radius:50%;}
+.per_info .name{font-size:24px;}
+
+
+.userList.scoreList .w_01{ width:40%; text-align:center;}
+.userList.scoreList .w_02{ width:20%;}
+.userList.scoreList .w_03{ width:40%;}
+.userList.scoreList .head .w_01{padding:0;}
+.userList.scoreList .item .w_02{ padding-top:0;}
+.userList.scoreList .item .w_03{ padding-top:0;}
+.userList.scoreList .item .w_04{ padding-top:0;}
+.userList.scoreList .item{padding:20px;}
+
+
+
+.userList.col_5 .w_01{width:10%;}
+.userList.col_5 .w_02{width:20%;}
+.userList.col_5 .w_03{width:20%;}
+.userList.col_5 .w_04{width:20%;}
+.userList.col_5 .w_05{width:30%;}
+.userList.col_5 .item .w_05{padding-top:26px;}
+.userList.col_5 a{margin:0 8px; color:#44b549; opacity:0.8}
+.userList.col_5 a:hover{ opacity:1;}
+
+
+.page{margin-top:30px; text-align:right; float:right;}
+.page span{float:left; border-radius:3px; line-height:28px;}
+.page .next{ border:1px solid #c6c6c6; height:28px; line-height:28px; display:inline-block; width:30px; cursor:pointer; margin-left:10px; position:relative;}
+.page .next i.arrow_right{border: 7px solid transparent; position:absolute;border-left-color: #c6c6c6;width: 0;height: 0;margin-left: -16px; margin-top:6px;}
+
+.page .prev{ border:1px solid #c6c6c6; height:28px; line-height:28px; display:inline-block; width:30px; cursor:pointer; margin-left:10px; position:relative;}
+.page .prev i.arrow_left{border: 7px solid transparent; position:absolute;border-right-color: #c6c6c6;width: 0;height: 0;margin-left: 2px; margin-top:6px; left:0;}
+
+.page .inputTet{ border:1px solid #c6c6c6; height:28px; line-height:28px; display:inline-block; float:left; width:50px; text-align:center; margin-right:10px; margin-left:10px;}
+.page .goto{ border:1px solid #c6c6c6; padding:0 10px; height:28px; line-height:28px; display:inline-block; cursor:pointer;}
+
+
+
+
+
+
+
+/*modal*/
+.modal_backdrop{position:fixed; top:0; right:0; bottom:0; left:0; background-color:#000; opacity:0; -webkit-transition:opacity .15s linear; transition:opacity .15s linear; z-index:999; display:none;}
+
+
+
+.modalBox{position:fixed; top:0; right:0; bottom:0; left:0; overflow:auto; overflow-y:auto; z-index:9999; display:none;}
+.modal_dialog{width:600px; margin:30px auto; position:relative; transition:transform .3s ease-out; -webkit-transition:-webkit-transform .3s ease-out; -webkit-transform:translate(0,-25%); -ms-transform:translate(0,-25%); transform:translate(0,-25%); opacity:0; z-index:99980;}
+.modal_content{-webkit-box-shadow:0 5px 15px rgba(0,0,0,0.5); box-shadow:0 5px 15px rgba(0,0,0,0.5); position:relative; background-color:#fff; border:1px solid rgba(0,0,0,0.2); outline:0; background-clip:padding-box; padding:20px;}
+.modal_dialog_login{width:420px;}
+
+
+.modal_dialog_text{ text-align:center; font-size:14px; width:550px; display:none;}
+
+
+
+.scoreWarp{}
+.scoreWarp h4{ font-size:18px;}
+.scoreWarp .score{ font-size:24px; background-color:#91e395; padding:16px 0; color:#FFF; margin-top:10px;}
+.scoreWarp .radiowarp{ margin-top:20px; overflow:hidden;}
+.scoreWarp .radiowarp label{margin-right:10px; float:left;}
+.scoreWarp .radiowarp label input{margin-right:5px;}
+.scoreWarp .edit{ overflow:hidden; margin-top:20px; text-align:left;}
+.scoreWarp .edit input{border:1px solid #CCC; margin-left:5px; padding:10px; height:26px;}
+.scoreWarp .textarea{ margin-top:20px; width:100%; border:1px solid #CCC; padding:10px; height:90px;}
+.scoreWarp .btn {text-align:center; margin-top:20px;}
+.scoreWarp .btn button{ background-color:#44b549; width:182px; height:32px; line-height:32px; border:0; text-align:center; color:#FFF; cursor:pointer;}

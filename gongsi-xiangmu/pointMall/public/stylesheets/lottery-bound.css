@@ -1,0 +1,31 @@
+@charset "utf-8";
+/*reset */
+
+ul.bound_list_others{margin:8px;padding:0; border:0; font:12px/1.5em "微软雅黑",Tahoma,"\534E\6587\5B8B\4F53";}
+ul.bound_list_others,ul.bound_list_others li{ list-style:none;}
+.bound_list_others{margin:0 20px; font-size:14px; }
+.bound_list_others li{margin:10px 0; clear:both; overflow:hidden}
+.bound_list_others li .avatar{ float:left; width:18%;}
+.bound_list_others li .avatar img{ border:solid 2px #fff; border-radius:50%;}
+.bound_list_others li .cnt{ position:relative; float:right; width:75%; padding:0 0 7px; margin:0 1px 3px 0; min-height:50px;background:rgba(0,0,0,.6); border-radius:4px; box-shadow:0 2px 4px rgba(0,0,0,.2)}
+.bound_list_others li .cnt .arrow{ position:absolute; left:-7px; top:10px; width:7px; height:12px; background:url(/pointMall/images/redPager/arrow3.png) no-repeat 0 0; background-size:7px 12px; opacity:.6}
+.bound_list_others li .cnt .mount{ float:right; margin:10px 5px 0 0;color:#ffe24f; font-size:18px}
+.bound_list_others li .cnt h2{ padding:4px 0 0 8px; margin:0;border:0; font:12px/1.5em "微软雅黑",Tahoma,"\534E\6587\5B8B\4F53";}
+.bound_list_others li .cnt h2 strong{ float:left; display:inline-block; color:#fff; font-weight:normal; width:40%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;text-shadow:0 1px 1px rgba(0,0,0,.3);}
+.bound_list_others li .cnt h2 span{ color:#9a94b0; text-shadow:0 1px 1px rgba(0,0,0,.1);}
+.bound_list_others li .cnt .desc{ font:12px/1.5em; margin-right:5px; padding:2px 0 0 8px; line-height:1.3em; color:#fff;text-shadow:0 1px 1px rgba(0,0,0,.4);}
+
+.bound-tip-text{color: #F93D6E;font-size: 1.2em;text-align: center;line-height: 50px; display: none;}
+
+@media all and (max-width:320px){
+    .bound_list_others li .avatar img{ height:50px; width:50px;}
+}
+@media all and (min-width:321px) and (max-width:375px){
+    .bound_list_others li .avatar img{ height:60px; width:60px;}
+}
+@media all and (min-width:376px) and (max-width:700px){
+    .bound_list_others li .avatar img{ height:66px; width:66px;}
+}
+@media all and (min-width:701px) and (max-width:2000px){
+    .bound_list_others li .avatar img{ height:120px; width:120px;}
+}

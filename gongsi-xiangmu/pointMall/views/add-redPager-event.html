@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>添加抢红包</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/common.css" />
+    <style type="text/css">
+        .top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
+        .top_tit01 a{ font-size:12px; color:#888}
+        .pad_t20{ padding-top:20px}
+        .area_phone{ float:left; width:320px; margin-right:15px; border:solid 1px #efefef; cursor: pointer;}
+        .area_phone img{ width:100%;}
+        .area_phone .title{ height:62px; padding:2px 1px 1px; background:url(/pointMall/images/phone_top.gif) no-repeat 0 0; text-align:center; font-size:14px; color:#fff;}
+        .area_phone .title span{display:block; height:27px;padding:32px 1px 1px;}
+        .area_phone .title span.click_on{ margin:-1px; border:dashed 1px #0f79cb;}
+        .area_phone .blank_area{ min-height:110px;margin-top:-1px;}
+        .area_phone .blank_area.click_on{border:dashed 1px #0f79cb;}
+        .area_phone .blank_area .tip{ padding-top:40px; text-align:center; font-size:14px;color:#444;}
+        .area_phone .pro_list_area{ height:380px;overflow-x:hidden; overflow-y:auto }
+        .area_phone .pro_list_area.click_on{margin-top:-1px;border:dashed 1px #0f79cb;}
+        .area_phone .pro_list_area .tip{ padding-top:170px;border-top:solid 1px rgba(0,0,0,.1); text-align:center; font-size:14px; color:#444;}
+
+        .swiper-container{width:320px; height: 110px; text-align:center; background-color:#d8d8d8;}
+        .swiper-container{margin:0 auto 5px;position:relative;overflow:hidden;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;z-index:1;}
+        .swiper-wrapper{position:relative;width:320px; height: 110px;-webkit-transition-property:-webkit-transform,left,top;-webkit-transition-duration:0s;-webkit-transform:translate3d(0px,0,0);-webkit-transition-timing-function:ease;-moz-transition-property:-moz-transform,left,top;-moz-transition-duration:0s;-moz-transform:translate3d(0px,0,0);-moz-transition-timing-function:ease;-o-transition-property:-o-transform,left,top;-o-transition-duration:0s;-o-transform:translate3d(0px,0,0);-o-transition-timing-function:ease;-o-transform:translate(0px,0px);-ms-transition-property:-ms-transform,left,top;-ms-transition-duration:0s;-ms-transform:translate3d(0px,0,0);-ms-transition-timing-function:ease;transition-property:transform,left,top;transition-duration:0s;transform:translate3d(0px,0,0);transition-timing-function:ease;}.swiper-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto;}
+        .swiper-slide{float:left;}
+        .swiper-slide img{height: 110px; width: 100%}
+        .swiper-wp8-horizontal{-ms-touch-action:pan-y;}.swiper-wp8-vertical{-ms-touch-action:pan-x;}
+        .pagination {position: absolute; left: 0; text-align: center; bottom: 5px; width: 100%; heigth: 10px;}
+        .swiper-pagination-switch { display: inline-block; width: 10px; height: 10px; border-radius: 10px; background: #999; margin: 0 3px; cursor: pointer;}
+        .swiper-active-switch {background: #fff;}
+
+        .area_right{ position:relative; float:left; width:590px; min-height:350px; padding:15px; border:solid 1px #efefef;}
+        .area_right .arrow{ position:absolute; top:25px; left:-8px; height:12px; width:8px; background:url(/pointMall/images/arrow1.png) no-repeat 0 0; line-height:0; font-size:0;}
+        .area_right .arrow.c2{ top:110px}
+        .area_right .arrow.c3{ top:270px}
+        .page_setting dt{ padding-bottom:6px; font-size:14px}
+        .page_setting dd{ padding-bottom:10px;}
+        .page_setting dt span{ font-size:14px; color:#888}
+        .page_setting dd{ position:relative;}
+        .page_setting .way_tab1{ clear:both; overflow:hidden; }
+        .page_setting .way_tab1 li{ float:left; width:75px; margin-right:10px;padding:2px 0 3px; background:#fff; border:solid 1px #ccc; border-radius:4px; font-size:13px; cursor:pointer; text-align:center}
+        .page_setting .way_tab1 li.on{ background:#ececec}
+        .page_setting dd.set_bg{}
+        .page_setting dd.set_bg .w4{ width:178px;line-height:23px; border:solid 1px #ccc; border-radius:3px;}
+        .page_setting dd.set_bg .reset{display:inline-block; padding:3px 10px 4px; background:#ddd; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#000; font-size:12px}
+        .page_setting .w1{ width:300px; padding:4px 6px; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px}
+        .page_setting dd.ch_mb label{ font-size:14px; margin-right:15px; color:#666}
+        .page_setting .ar_form{ position:relative; clear:both; overflow:hidden; background:#f5f5f5; padding:15px}
+        .page_setting .ar_form li{ margin-bottom:10px}
+        .page_setting .ar_form li .w2{width:320px; padding:4px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px}
+        .page_setting .ar_form li.pic{ float:left; width:100px; margin-right:10px; position: relative;}
+        .page_setting .ar_form li.pic .sta1{ border:solid 1px #e7e7eb; height:98px; background:#fff; text-align:center; font-size:14px; line-height:90px; cursor:pointer}
+        .page_setting .ar_form li.pic .sta1:hover{ background:#fbfbfb; color:#c00}
+        .page_setting .ar_form li.pic .sta2{ position:relative;border:solid 1px #e7e7eb; height:98px; background:#000; cursor:pointer}
+        .page_setting .ar_form li.pic .sta2 img{ width:98px; height:98px; display:block;}
+        .page_setting .ar_form li.pic .sta2 img:hover{opacity:.9}
+        .page_setting .ar_form li.pic .sta2 p{ position:absolute; bottom:0; left:0; right:0; height:24px; background:rgba(0,0,0,.5); text-align:center; color:#fff; line-height:23px; font-size:14px;}
+        .page_setting .ar_form li.desc textarea{width:210px; height:220px; padding:4px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px; resize: none;}
+        .page_setting .ar_form li.btn{ position:absolute; right:20px; top:20px;}
+        .page_setting .ar_form li.btn strong{display:inline-block; padding:5px 8px 6px; background:#ccc; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#fff;}
+        .page_setting .ar_form li.btn strong.clear{ background:#e60012}
+        .page_setting .ar_form li.btn strong.clear:hover{ background:#cf1524}
+        .page_setting img{ background:#e6e6e6; width: 100px; height: 100px;}
+
+        .title02{ font-size:16px}
+        .title02 i{ color:#999;font-size:14px}
+        .add_flist{ padding-top:10px;}
+        .add_flist li{position:relative; width:371px; margin:10px 0 0; padding:15px 15px 15px 175px; border:solid 1px #e7e7eb}
+        .add_flist .add_goods{ border:0; padding:0; margin:0}
+        .add_flist .add_goods strong{display:inline-block; width:90px; padding:5px 0 6px; background:#0090ff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer; color:#fff; text-align:center}
+        .add_flist .add_goods strong:hover{ background:#007bd9}
+        .add_flist li .del_p{ position:absolute; width:20px; height:20px; background:url(/pointMall/images/ico_del.png) no-repeat center center; right:-30px; top:50%; margin-top:-12px; text-indent:-9999px; cursor:pointer; opacity:.5}
+        .add_flist li .del_p:hover{opacity:1}
+        .add_flist li .title{ padding-top:7px; color:#555; position: relative;}
+        .add_flist li .title strong{ display:inline-block; width:70px; font-weight:normal; font-size:14px;}
+        .add_flist li .title input,.name{width:200px; padding:3px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px; color:#333; display:inline-block;}
+        .add_flist li .title textarea{width:200px; height:100px; padding:3px 6px; background:#fff; border:solid 1px #e7e7eb; font-family:"微软雅黑"; font-size:14px; color:#333; display:inline-block; resize: none;}
+        .add_flist li .pic{ float:left; width:150px; margin-left:-160px}
+        .add_flist li .pic .sta1{ border:solid 1px #e7e7eb; height:120px; background:#f4f5f9; text-align:center; font-size:14px; line-height:120px; cursor:pointer}
+        .add_flist li .pic .sta1:hover{ background:#fbfbfb; color:#c00}
+        .add_flist li .pic .sta2{ position:relative;border:0; background:#000; text-align:center; cursor:pointer}
+        .add_flist li .pic .sta2 img{ max-width:150px; min-height:110px;max-height:120px; display:block; margin:0 auto}
+        .add_flist li .pic .sta2 img:hover{opacity:.9}
+        .add_flist li .pic .sta2 p{ position:absolute; bottom:0; left:0; right:0; height:24px; background:rgba(0,0,0,.5); text-align:center; color:#fff; line-height:23px; font-size:14px;}
+
+        .normal-goods-list li{ position:relative; margin-bottom:8px; overflow:hidden; clear:both;}
+        .normal-goods-list li .pic img{ width:100%}
+        .normal-goods-list li .count{ height:30px; background:#fff; box-shadow:0 0 5px rgba(0,0,0,.2);}
+        .normal-goods-list li .count strong{ float:left; width:55%; padding-left:10px; line-height:30px; font-weight:normal;white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+        .normal-goods-list li .count span{ float:right; padding-right:10px; color:#dc261c; line-height:30px}
+        .normal-goods-list li .count span i{ font-size:18px; line-height:33px}
+        .normal-goods-list li .count span em{color:#666;}
+        .normal-goods-list li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(/pointMall/images/pmall/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+        .normal-goods-list li .tip2{ position:absolute; left:-89px; top:-10px}
+        .normal-goods-list li .tip2 strong{ display:inline-block; width:200px; height:20px; padding-top:25px; background:#939393; color:#fff; text-align:center; font-weight:normal; -webkit-transform:rotate(-45deg); font-size:10px}
+        .normal-goods-list li .tip2 .comingsoon{ background:#dc261c}
+
+        .list_goods2 li{ float:left; width:50%;}
+        .list_goods2 li .wrap{position:relative; margin:5px; overflow:hidden; clear:both}
+        .list_goods2 li:nth-child(odd) .wrap{ margin-left:10px}
+        .list_goods2 li:nth-child(even) .wrap{ margin-right:10px}
+        .list_goods2 li .pic img{ width:100%; height: 110px;}
+        .list_goods2 li .count{ clear:both; overflow:hidden; padding-bottom:2px; padding-left:6px; background:#fff}
+        .list_goods2 li .count h3{ display:block;  padding-top:3px; font-weight:normal; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+        .list_goods2 li .count p{ padding-bottom:2px}
+        .list_goods2 li .count span{ float:left; color:#dc261c;}
+        .list_goods2 li .count span i{ font-size:15px; font-weight:bold}
+        .list_goods2 li .count em{ float:right; margin-top:3px; padding-right:4px; color:#666}
+        .list_goods2 li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(img/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+        .list_goods2 li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(/pointMall/images/pmall/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+        .list_goods2 li .tip2{ position:absolute; left:-89px; top:-10px}
+        .list_goods2 li .tip2 strong{ display:inline-block; width:200px; height:20px; padding-top:25px; background:#939393; color:#fff; text-align:center; font-weight:normal; -webkit-transform:rotate(-45deg); font-size:10px}
+        .list_goods2 li .tip2 .comingsoon{ background:#dc261c}
+
+        /*弹层*/
+        button{font-size:100%; margin:0;}
+        .btn button{display:block; height:100%; background-color:transparent; border:0; outline:0; overflow:visible; padding:0 22px; color:#fff; cursor:pointer;}
+
+        .btn_primary{background-color:#44b549; border-color:#44b549; color:#fff;}
+        .btn_primary:hover,.btn_primary.active{background-color:#379729; border-color:#379729; color:#fff;}
+
+        .btn_grey{background-color:#a0a0a0; border-color:#a0a0a0; color:#fff;}
+        .btn_grey:hover,.btn_grey.active{background-color:#888888; border-color:#888888; color:#fff;}
+        .layer_wBg{ position:fixed; background-color:rgba(0,0,0,0.6); left:0; top:-100%; width:100%; height:100%; z-index:10000;
+            transition:all .2s linear;
+            -webkit-transition:all .2s linear;
+        }
+        .layer_wBg.hide{ opacity:0; top:-100%;}
+        .layer_wBg.show{ opacity:1; top:0;}
+        .layer_w{width:700px; background-color:#FFF; position:absolute; left:50%; top:50%; margin-left:-350px; margin-top:-205px;}
+        .layer_w .header{ background-color:#f4f5f9; height:50px; line-height:50px; position:relative; padding:0 20px; font-size:16px;}
+        .layer_w .header .close{position: absolute;top: 50%;margin-top: -15px;right:10px;width:30px;height:30px;line-height: 999em;overflow: hidden; cursor:pointer; background: url("/pointMall/images/icon_close.png") no-repeat center;}
+        .layer_w .header .close:hover{ opacity:0.5;}
+        .layer_w .con{ height:300px; padding:15px; overflow:auto;}
+        .layer_w .frm_control_group{ width:420px; margin:0 auto; padding-top:60px;}
+        .layer_w .frm_control_group .frm_label{ display:block; font-size:14px; line-height:2em; margin-bottom:10px;}
+        .layer_w .frm_control_group .frm_input_box input{ border:1px solid #CCC; font-size:14px; color:#333; padding:10px; width:300px;}
+        .layer_w .frm_control_group .frm_error{ color:#e97979;font-size:14px; line-height:2em;}
+        .layer_w .btn_group{ background-color:#f4f5f9; padding:16px 0 5px; text-align:center;}
+
+        /*新样式*/
+        .imgs{width:120px; height:150px; float:left; margin-right:10px;}
+        .imgs table{border:1px solid #ccc;}
+        .imgs.this table{border-color:#f60;}
+        .imgs img{max-width:120px; max-height:120px;}
+        .imgs p{text-align:center; line-height:30px;}
+        .imports{width: 74px;margin-top:5px; float: right; height: 32px; background-color: #da4f49; position: relative; border: 1px solid #e7e7eb; overflow: hidden; text-align: center; line-height: 32px; color: white}
+        .import{position:absolute; width: 100%; height: 100%; opacity: 0; top: 0; left: 0;}
+        .share-file{width: 100px; height: 100px; position: absolute; opacity: 0; top: 0; left: 0;}
+    </style>
+</head>
+<body style="background-color: #FFF">
+<input type="hidden" id="redPagerEventId" value="{{redPagerEventId}}">
+<div class="wrap01">
+    <h2 class="top_tit01">添加抢红包后台 > 添加抢红包</h2>
+    <div class="pad_t20 clearfix">
+        <div class="area_phone" style="background:#fff;">
+            <img src="/pointMall/images/redPager/red-pager-cover.jpg">
+        </div>
+        <div class="area_right">
+            <span class="arrow"></span>
+            <dl class="page_setting">
+                <dd><input name="" type="text" placeholder="请输入抢红包名字" class="w1" id="name"></dd>
+                <dd><input name="" type="text" placeholder="商城名字" class="w1" id="storeName"></dd>
+                <dd><input name="" type="text" placeholder="商城链接" class="w1" id="storeLink"></dd>
+                <dd>LOGO:<input name="file" type="file" id="LOGO-file" onchange="changeFile('LOGO-file', 'logo')">
+                    <img id="logo" src="/pointMall/images/redPager/avatar2.jpg">
+                </dd>
+                <dd>背景图片:<input name="file" type="file" id="BG-file" onchange="changeFile('BG-file', 'bg')">
+                    <img id="bg" src="/pointMall/images/redPager/bg2.jpg">
+                </dd>
+                <dd>活动结束时间:
+                    <input id="endTime" readonly="readonly" type="text" class="Wdate Wdate1" placeholder="结束时间"/>
+                </dd>
+                <dd>限定参与分组人:
+                    <select id="cat" tag="{{tag}}">
+
+                    </select>
+                    <select id="key">
+
+                    </select>
+                </dd>
+            </dl>
+            <div>
+                <strong class="tit">中奖限制：</strong>
+                <label for="xx1"><input class="limit-count" name="x" type="radio" value="1" id="xx1" checked> 一人一次</label>
+                <label for="xx2"><input class="limit-count" name="x" type="radio" value="999999999" id="xx2"> 一人多次</label>
+            </div>
+            <div class="add_flist">
+                <div class="clearfix add_goods">
+                    <p>如果选择消费码奖品可以导入excel(<a style="color: green" href="/pointMall/docs/shoppingCards.xlsx">点击下载excel模板</a>)</p>
+                    <p style="font-weight: bold; font-size: 15px; color: red;">现金红包发送规则</p>
+                    <p>1. 发红包前提<br>　◆　联系相关人员充值账户，发现金红包需要申请密码，才能选择现金红包;<br>
+                       2. 发送频率规则<br>　◆　每分钟发送红包数量不得超过1800个（1800是整个平台的限制数，请尽量降低红包的中奖概率）;<br>　◆　北京时间0：00-8：00不触发红包赠送;<br>
+                       3. 红包规则<br>　◆　单个红包金额介于[1.00元，200.00元]之间; <br>
+                       4. 请保证账户余额以免发生余额不足，派发红包失败的情况, 否则后果自负!</p>
+                    <strong class="select-goods">添加红包</strong>
+                </div>
+            </div>
+            <ul class="add_flist box2 n-goods-list">
+
+            </ul>
+        </div>
+    </div>
+    <div class="bt_confirm_btn"><strong class="save save1">保存</strong><strong id="cancel">取消</strong></div>
+</div>
+</body>
+</html>
+
+<!--弹层1-->
+<div class="layer_wBg" id="addPrize">
+    <div class="layer_w">
+        <div class="header">选择奖品<span class="close" data-action="layer_close">关闭</span></div>
+        <div class="con">
+            <!---->
+            <div class="lottery_addList">
+                <ul id="lottery_addListcon"></ul>
+            </div>
+        </div>
+        <div class="bt_confirm_btn">
+            <strong class="save">确定</strong>
+            <strong class="close">取消</strong>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+<script type="text/javascript">
+
+function changeFile(fileId, picId){
+    $.ajaxFileUpload({
+        type: 'post',
+        url: '/pointMall/image/upload',
+        fileElementIds: [fileId],
+        success: function(data){
+            var res = JSON.parse($(data).text())
+            if (res && res.url){
+                $('#' + picId).attr('src', res.url)
+            } else {
+                alert('上传图片失败')
+            }
+        },
+        error: function(xhr){
+            var res = JSON.parse($(xhr.responseText).text())
+            if (res && res.url){
+                $('#' + picId).attr('src', res.url)
+            } else {
+                alert('上传图片失败')
+            }
+        }
+    })
+}
+
+$(function() {
+    var goodsMap = {}
+    var redPagerEventId = $('#redPagerEventId').val();
+
+    var tagCategory = $('#cat').attr('tag');
+    tagCategory = JSON.parse(tagCategory);
+
+    function renderTagSelect(){
+        $('#cat').append('<option value="">请选择</option>')
+        $.each(tagCategory, function(k, v){
+            var options = '<option value="' + k + '">' + k + '</option>'
+            $('#cat').append(options)
+            $('#cat').change()
+        })
+    }
+
+    $('#cat').change(function(){
+        var category = $(this).val();
+        $('#key').empty();
+        $('#key').append('<option value="">请选择</option>')
+        if (!tagCategory[category]){
+            return;
+        }
+        $.each(tagCategory[category], function(i, o){
+            var options = '<option value="' + o + '">' + o + '</option>'
+            $('#key').append(options)
+        })
+    })
+    renderTagSelect();
+
+    $('#endTime').click(function(){
+        WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+    })
+
+    function renderStore(store){
+        $('#name').val(store.name);
+        $('#storeLink').val(store.storeLink);
+        $('#storeName').val(store.storeName?store.storeName:'');
+        $('#bg').attr('src', store.bg);
+        $('#logo').attr('src', store.logo);
+        $('#endTime').val(store.endTime);
+        $('.limit-count[value=' + store.limit +']').attr('checked', true);
+        if (store.prizes && store.prizes.length > 0){
+            addSelectedGoods(store.prizes)
+        }
+        if (store.category && store.category.length > 0){
+            $.each(store.category, function(i, o){
+                if (o.enable == 1){
+                    $('#cat').val(o.cat);
+                    $('#cat').change();
+                    $('#key').val(o.key);
+                }
+            })
+        }
+    }
+
+    function getStore(storeId){
+        $.ajax({
+            type: 'GET',
+            url: '/pointMall/redPager/' + storeId + '/info',
+            success: function(data){
+                $.each(data.prizes, function(i, o){
+                    goodsMap[o.id] = o;
+                })
+                renderStore(data);
+            },
+            error: function(xhr){
+                alert('获取抢红包数据失败：' + xhr.responseText?xhr.responseText:'')
+            }
+        })
+    }
+    if (redPagerEventId){
+        loadGoods(function(){
+            getStore(redPagerEventId);
+        });
+    } else {
+        loadGoods()
+    }
+
+    function checkInt(count){
+        count = parseInt(count, 10);
+        if (isNaN(count) || count < 0){
+            return null;
+        } else {
+            return count;
+        }
+    }
+
+    function checkFloat(count){
+        count = parseFloat(count);
+        if (isNaN(count) || count < 0){
+            return null;
+        } else {
+            return count;
+        }
+    }
+
+    function renderGoods(data){
+        var html="";
+        $.each(data, function(i, o){
+            var id=data[i]._id,_pic=data[i].pic,_name=data[i].name;
+            html+='<li class="imgs" goodsId="'+ id +'" goodsType="'+ data[i].type +'">'+
+                    '<table cellspacing="0" cellpadding="0" border="0" width="100%">'+
+                    '<tbody><tr><td align="center" width="120" height="120">'+
+                    '<img alt="" title="'+ _pic +'" src="'+ _pic +'">'+
+                    '</td></tr></tbody></table><p>'+ _name +'</p></li>'
+        })
+
+        var $newCell = $(html);
+        $('#lottery_addListcon').append($newCell);
+
+        $('li', $newCell.parent()).click(function(){
+            if($(this).attr('class') == 'imgs'){
+                $(this).addClass('this');
+            }else{
+                $(this).removeClass('this');
+            }
+        });
+    }
+
+    function loadGoods(done){
+        $.ajax({
+            type: 'GET',
+            url: '/pointMall/redPager/prize',
+            success: function(data){
+                $.each(data, function(i, o){
+                    o.id = o._id;
+                    goodsMap[o._id] = o;
+                })
+                renderGoods(data);
+                done?done():''
+            },
+            error: function(xhr){
+                alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+            }
+        })
+    }
+
+    function checkPassword(str, cb){
+        $.ajax({
+            type: 'POST',
+            url: '/pointMall/verify/cash/redPager/psw',
+            data: {password: str},
+            success: function(){
+                cb(null);
+            },
+            error: function(){
+                cb('err');
+            }
+        })
+    }
+
+    var verified = false
+    $('.select-goods').click(function(){
+        if (verified){
+            return getGood(true);
+        }
+        if (confirm('是否需要选择现金红包')){
+            var str = window.prompt("请输入选择现金红包密码");
+            checkPassword(str, function(err){
+                if (err){
+                    alert('密码错误')
+                } else {
+                    verified = true
+                    getGood(true);
+                }
+            })
+        } else {
+            getGood();
+        }
+    })
+
+    $('.layer_wBg').find('.close').click(function(){
+        $('.layer_wBg').css('top','-100%');
+    })
+
+    $('input[name=excel]').live('change', function(){
+        var $this = $(this);
+        var shoppingCardView = $(this).closest('li').find('.shoppingCard')
+        var shoppingCards = shoppingCardView.val();
+        var shoppingCardArr = []
+        if(shoppingCards && shoppingCards.length > 0){
+            shoppingCards = $.trim(shoppingCards).split(',')
+            $.each(shoppingCards, function(i, o){
+                if (o && o.length > 0){
+                    shoppingCardArr.push(o)
+                }
+            })
+        }
+        var id = $(this).attr('id');
+        if (!$(this).val()){
+            return;
+        }
+        $.ajaxFileUpload({
+            type: 'post',
+            url: '/pointMall/excel/upload',
+            fileElementIds: [id],
+            success: function(data){
+                var res = JSON.parse($(data).text())
+                setData(res)
+            },
+            error: function(xhr){
+                var res = JSON.parse($(xhr.responseText).text())
+                setData(res)
+            }
+        })
+
+        var setData = function(data){
+            var importShoppingCards = []
+            if (data && data.length > 0 && data[0].data){
+                importShoppingCards = data[0].data
+            }
+            var len = 0
+            $.each(importShoppingCards, function(i, o){
+                if (o && o.length > 0){
+                    shoppingCardArr.push(o[0])
+                    len++
+                }
+            })
+            shoppingCardView.val(shoppingCardArr.join(','))
+            alert('成功导入了' + len + '张消费码! 当前总数：' + shoppingCardArr.length);
+        }
+    })
+
+    function bindEvent($newView){
+        $('.remove', $newView).click(function(){
+            $(this).closest('li').remove();
+        })
+
+        $('.endTime', $newView).click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm'});
+        })
+    }
+
+    function addSelectedGoods(goodsList){
+        var html = '';
+        console.log(goodsList)
+        $.each(goodsList, function(i, goods){
+            var type = goods.type
+            var count = (goods.count>=0)?goods.count:''
+            var p = (goods.p>=0)?goods.p * 100:''
+            var boundText = goods.boundText?goods.boundText:''
+            var shoppingCards = ''
+            if (goods.shoppingCards){
+                shoppingCards = goods.shoppingCards.join(',')
+            }
+            html += '<li class="clearfix st" goodsId="'+ goods.id +'" goodsType="'+ type +'">'+
+                    '<div class="pic">'+
+                    '<div class="sta2"><img src="'+ goods.pic +'"></div></div>'+
+                    '<div class="title"><strong>奖品名称：</strong><div class="name">'+ goods.name +'</div>' +
+                    '<div class="title"><strong>数量：</strong><input name="" placeholder="红包数量" class="count" type="text" value="' + count +
+                    '"></div>' +
+                    '<div class="title"><strong>概率：</strong><input name="" placeholder="0-100" class="percent" type="text" value="' + p +
+                    '"></div>' +
+                    '<div class="title"><strong>榜单文字：</strong><input name="" placeholder="" class="bound-text" type="text" value="' + boundText +
+                    '"></div>';
+            if (type == 6){
+                html += '<div class="title"><strong>电子券：</strong><textarea name="" placeholder="多个消费券请以英文逗号隔开" class="shoppingCard" type="text"' +
+                        '">' + shoppingCards + '</textarea>' +
+                        '<div class="imports">导入消费码<input id="' + goods.id + 'file' + '" class="import" name="excel" type="file"></div>' +
+                        '</div>';
+            } else if (type == 2){
+                html += '<div class="title"><strong>提供方：</strong><input name="" placeholder="最多8个汉字" class="nick_name" type="text" value="' + (goods.nick_name?goods.nick_name:'') +
+                        '"></div><div class="title"><strong>发送者：</strong><input name="" placeholder="最多8个汉字" class="send_name" type="text" value="' + (goods.send_name?goods.send_name:'') +
+                '"></div><div class="title"><strong>祝福语：</strong><input name="" placeholder="最多32个汉字" class="wishing" type="text" value="' + (goods.wishing?goods.wishing:'') +
+                '"></div><div class="title"><strong>备注：</strong><input name="" placeholder="最多64个汉字" class="remark" type="text" value="' + (goods.remark?goods.remark:'') +
+                        '"></div>'
+            }
+            html += '</div>';
+            html += '<span class="del_p remove">删除</span></li>';
+        })
+        var $newView = $(html);
+
+        $('.box2').append($newView);
+        $('.layer_wBg').css('top','-100%');
+        $('.layer_wBg .this').removeClass('this');
+        bindEvent($newView);
+    }
+
+    $('.layer_wBg .save').click(function(){
+        var selectedGoods = $('#lottery_addListcon').find('li.this');
+        if(selectedGoods.length <= 0){
+            return alert('请选择你要的奖品！')
+        }
+
+        var goodsList = []
+        selectedGoods.each(function(){
+            var id = $(this).attr('goodsId');
+            goodsList.push(goodsMap[id]);
+        })
+        addSelectedGoods(goodsList);
+    })
+
+    function getGood(showCashRed){
+        $('.layer_wBg li').show();
+        if($('.n-goods-list li').length != 0){
+            $('.n-goods-list li').each(function(){
+                var id = $(this).attr('goodsId');
+                $('.layer_wBg li[goodsId=' + id + ']').hide()
+            })
+        }
+        if (!showCashRed){
+            $('.layer_wBg li[goodsType=2]').hide()
+        }
+
+        $('.layer_wBg').css('top','0');
+    }
+
+    $('#cancel').click(function(){
+        window.history.go(-1);
+    })
+
+    $('.save1').click(function(){
+        var name = $('#name').val();
+        if(!name){
+            return alert('请输入商店名字！')
+        }
+
+        var endTime = $('#endTime').val();
+        if(!endTime){
+            return alert('请选择结束时间！')
+        }
+
+        var storeName = $('#storeName').val();
+        if(!storeName){
+            storeName = ''
+            //return alert('请输入商城名字！')
+        }
+        var storeLink = $('#storeLink').val();
+        var urlReg = /^(https|http):\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
+        if (!storeLink){
+            storeLink = ''
+        } else if (!urlReg.test(storeLink)){
+            return alert('商城链接格式不正确！请以http开头')
+        }
+
+        var limit = $('.limit-count:checked').val();
+        if (limit){
+            limit = parseInt(limit, 10)
+        }
+
+        var bg = $('#bg').attr('src');
+        var logo = $('#logo').attr('src');
+
+        var err = null;
+        var prizes = []
+        $('.n-goods-list li').each(function(){
+            var doc = {}
+            var count = $(this).find('input.count').val();
+            if (!count){
+                err = '请完善信息再保存';
+                return false;
+            }
+            if ((count = checkInt(count)) == null){
+                err = '数量格式不正确';
+                return false;
+            }
+            doc.count = count;
+
+            var boundText = $(this).find('input.bound-text').val();
+            if (!boundText){
+                err = '请完善榜单文本信息再保存';
+                return false;
+            }
+            doc.boundText = boundText;
+
+            var endLine = $(this).find('input.endTime').val();
+            if (endLine){
+                doc.endTime = endLine;
+            }
+
+            var goodsType = $(this).attr('goodsType');
+            if (goodsType == 6){
+                var shoppingCards = $(this).find('.shoppingCard').val();
+                var shoppingCardArr = []
+                if (!shoppingCards){
+                    err = '请完善消费卡密信息再保存';
+                    return false;
+                }
+                if(shoppingCards && shoppingCards.length > 0){
+                    shoppingCards = $.trim(shoppingCards).split(',')
+                    $.each(shoppingCards, function(i, o){
+                        if (o && o.length > 0){
+                            shoppingCardArr.push(o)
+                        }
+                    })
+                }
+                if (shoppingCardArr.length < doc.count){
+                    err = '消费码少于奖品数量， 当前数量为：' + shoppingCardArr.length;
+                    return false;
+                }
+                doc.shoppingCards = shoppingCardArr;
+            } else if (goodsType == 2){
+                var nick_name = $(this).find('.nick_name').val();
+                if (!nick_name){
+                    err = '请填写提供方名称';
+                    return false;
+                }
+                if (nick_name.length > 8){
+                    err = '提供方名称超过8个字';
+                    return false;
+                }
+                doc.nick_name = nick_name
+
+                var send_name = $(this).find('.send_name').val();
+                if (!send_name){
+                    err = '请填写发送方名称';
+                    return false;
+                }
+                if (send_name.length > 8){
+                    err = '发送方名称超过8个字';
+                    return false;
+                }
+                doc.send_name = send_name
+
+                var wishing = $(this).find('.wishing').val();
+                if (!wishing){
+                    err = '请填写祝福语';
+                    return false;
+                }
+                if (wishing.length > 32){
+                    err = '祝福语超过32个字';
+                    return false;
+                }
+                doc.wishing = wishing
+
+                var remark = $(this).find('.remark').val();
+                if (!remark){
+                    err = '请填写红包备注';
+                    return false;
+                }
+                if (remark.length > 64){
+                    err = '红包备注超过64个字';
+                    return false;
+                }
+                doc.remark = remark
+            }
+            doc.type = goodsType
+
+            var p = $(this).find('input.percent').val();
+            if (!p){
+                err = '请完善信息再保存';
+                return false;
+            }
+            if ((p = checkFloat(p)) == null || p > 100){
+                err = '概率格式不正确';
+                return false;
+            }
+            doc.p = p / 100;
+            doc.id = $(this).attr('goodsId');
+            prizes.push(doc);
+        })
+        if (err){
+            return alert(err);
+        }
+
+        if (prizes.length == 0){
+            return alert('没有选择红包');
+        }
+
+        var url = ''
+        if (redPagerEventId){
+            url = '/pointMall/redPager/event/' + redPagerEventId + '/update';
+        } else {
+            url = '/pointMall/add/redPager/event'
+        }
+        var data = {
+            name: name,
+            prizes: prizes,
+            storeName: storeName,
+            storeLink: storeLink,
+            bg: bg,
+            logo: logo,
+            endTime: endTime
+        }
+        if (limit){
+            data.limit = limit;
+        }
+
+        var cat = $('#cat').val();
+        var key = $('#key').val();
+        if (cat && key){
+            data.category = [{cat: cat, key: key, enable: 1}]
+        } else {
+            data.category = []
+        }
+
+        $.ajax({
+            url: url,
+            type:'POST',
+            data: data,
+            error: function(){
+                alert("失败");
+            },
+            success: function(data){
+                window.location.href = '/pointMall/red/pager'
+            }
+        })
+    })
+});
+</script>

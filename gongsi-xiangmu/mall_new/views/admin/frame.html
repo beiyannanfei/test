@@ -1,0 +1,49 @@
+<!-- 所有不想跟其他系统有冲突的页面放在这里-->
+<link rel="stylesheet" href="../theme/vendor/toastr/build/toastr.min.css">
+<script src="../theme/vendor/toastr/build/toastr.min.js"></script>
+<script>
+  toastr.options = {
+    "debug":         false,
+    "newestOnTop":   false,
+    "positionClass": "toast-top-center",
+    "closeButton":   true,
+    "toastClass":    "animated fadeInDown",
+  }
+</script>
+
+
+<style>
+  iframe {
+    width: 100%;
+    min-height: 600px;
+  }
+</style>
+
+
+<iframe src="{{ page  }}" frameborder="0" id="uniqFrame"></iframe>
+
+<!-- 控制iframe高度自适应 -->
+<script>
+;(function () {
+  var frame = document.getElementById('uniqFrame')
+
+  frame.onload = function () {
+    setInterval(function () {
+      var frameDocument = frame.contentDocument
+      var frameWindow = frame.contentWindow
+      try{
+        var height = frameWindow.$(frameDocument).height()
+      }catch(e) {
+      }
+      height = height  > 600 ? height: 600
+      frame.style.height = height + 'px'
+    }, 1000)
+
+    document.title = frame.contentDocument.title
+  }
+
+
+
+
+}())
+</script>

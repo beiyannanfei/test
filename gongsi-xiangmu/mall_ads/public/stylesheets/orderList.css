@@ -1,0 +1,182 @@
+.load{
+	width: 80px;
+	height: 80px;
+	position: fixed;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	display: none;
+}
+.load img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.main{
+	width: 100%;
+	height: 100%;
+	padding: 0 40px 0 40px;
+}
+.main .awad_main{
+	margin: 20px 40px 0 40px;
+}
+.main .awad_main .awad_main_top{
+	height: auto;
+	margin-bottom: 20px;
+}
+.main .awad_main .awad_main_top .status{
+	width: 90%;
+	margin: 0 auto;
+}
+.main .awad_main .awad_main_top .status p{
+	display: inline-block;
+	margin: 0 0 10px 0;
+}
+.main .awad_main .awad_main_top .status p.award_type{
+	width: 270px;
+}
+.main .awad_main .awad_main_top .status p.award_status{
+	width: 280px;
+}
+.main .awad_main .awad_main_top .status p.award_time{
+	width:320px;
+}
+.main .awad_main .awad_main_top .status p i{
+	display: inline-block;
+	font-style: normal;
+}
+.main .awad_main .awad_main_top .status p .form-control{
+	display: inline-block;
+	width: 60%;
+}
+.main .awad_main .awad_main_top .status p strong.data{
+	display: inline-block;
+	width: 270px;
+}
+.main .awad_main .awad_main_top .status p strong.data b{
+	font-weight: normal;
+}
+.main .awad_main .awad_main_top .status p strong input.form-control{
+	width: 45%;
+	display: inline-block;
+	font-weight: normal;
+}
+.main .awad_main .awad_main_top .status_btn{
+	float: left;
+	margin-top: 10px;
+	width: 40%;
+}
+.main .awad_main .awad_main_top .status_btn select{
+	display:inline-block;
+	width: 20%;
+	vertical-align: bottom
+}
+.main .awad_main .awad_main_top .order_number{
+	float: right;
+	margin-top: 26px;
+	margin-right: 20px;
+}
+.main .awad_main .awad_table{
+	border: solid 1px #DDDDDD;
+	margin-top: 10px;
+	background: #fff;
+}
+.main .awad_main .awad_table thead tr{
+	border-bottom: solid 1px #DDD;
+	height: 46px;
+	background: #f7f9fa;
+}
+.main .awad_main .awad_table thead tr th{
+	text-align: center;
+	border: none;
+	line-height:30px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.main .awad_main .awad_table tbody tr{
+	height: 68px;
+	border-bottom: solid 1px #DDD;
+}
+.main .awad_main .awad_table tbody tr td{
+	text-align: center;
+	vertical-align: middle;
+	border: none;
+}
+.main .awad_main .awad_table tbody tr td p{
+	width: 60px;
+	height: 60px;
+	margin: 0 auto;
+}
+.main .awad_main .awad_table tbody tr td p img{
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.main .awad_main .awad_table tbody tr td.midden{
+	line-height: 20px;
+}
+.main .awad_main .awad_table tbody tr td .awad_status{
+	line-height: 0;
+}
+.main .awad_main .awad_table tbody tr td .awad_status button{
+	margin-right: 5px;
+}
+.main .awad_main .picture{
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+	display: none;
+}
+.main .awad_main .picture strong{
+	font-family: "微软雅黑";
+	font-weight: bold;
+	font-size: 30px;
+	color: #999;
+}
+.dialog {
+	width: 600px;
+	height: 400px;
+	box-shadow: #ccc 0px 0px 15px;
+	background: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom:0;
+	margin: auto;
+	z-index: 999;
+	display: none;
+}
+.dialog h3 {
+	margin: 40px 0 50px 50px;
+}
+.dialog p.address {
+	margin: 30px 0 0 50px;
+}
+.dialog p.address b{
+	display:inline-block;
+	font-weight: normal;
+}
+.dialog p.address .form-control{
+	display: inline-block;
+	width: 80%;
+}
+.dialog .dialog_btn {
+	margin: 30px auto;
+	width: 250px;
+}
+.pager_wapper > div {
+	float: left;
+	padding: .3em .6em;
+	margin: .3em;
+	border: solid 1px gray;
+	font-size: .9em;
+	min-width: 10px;
+	text-align: center;
+	cursor: pointer;
+}
+.pager_wapper .pager_current{
+	background-color: rgb(242, 210, 255);
+}

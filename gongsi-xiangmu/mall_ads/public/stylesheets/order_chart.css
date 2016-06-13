@@ -1,0 +1,87 @@
+.load{
+	width: 80px;
+	height: 80px;
+	position: fixed;
+	top:0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	display: none;
+}
+.load img{
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.main{
+	width: 100%;
+	height: 100%;
+	padding: 0 40px 0 40px;
+}
+.main .chartTime{
+	text-align: right;
+	margin-top:20px;
+	padding: 0 40px 0 40px;
+}
+.main .chartTime p{
+	display: inline-block;
+	width: 30%;
+}
+.main .chartTime p i{
+	display: inline-block;
+	font-style: normal;
+}
+.main .chartTime .form-control{
+	width: 70%;
+	display: inline-block;
+}
+.main .chart_num{
+	margin: 10px 40px 0 40px;
+}
+.main .chart_num .award_num{
+	text-align: right;
+}
+.main .chart_num .award_num p{
+	display: inline-block;
+	margin-right: 10px;
+}
+.main .chart_num .chart_table{
+	background: #fff;
+	border:solid 1px #DDD;
+}
+.main .chart_num .chart_table thead tr{
+	border-bottom: solid 1px #DDD;
+	height: 46px;
+	background: #f7f9fa;
+}
+.main .chart_num .chart_table thead tr th{
+	text-align: center;
+	border: none;
+	line-height:30px;
+	font-size: 12px;
+	font-weight: normal;
+}
+.main .chart_num .chart_table tbody tr{
+	height: 68px;
+	border-bottom: solid 1px #DDD;
+}
+.main .chart_num .chart_table tbody tr td{
+	text-align: center;
+	vertical-align: middle;
+	border: none;
+}
+.pop_cnt{position:absolute; width:792px; left: 50%; top:25%; margin-left:-391px; border: 2px solid #e6e6e6;background: #fff;padding-bottom: 20px;display:none;}
+.pop_cnt h2{ clear:both; height:50px; padding:0 10px;border-radius:4px 4px 0 0; background:#f4f5f9;  line-height:50px;margin-top: 0}
+.pop_cnt h2 strong{ float:left; font-weight:normal;font-size:16px; color:#333;}
+.pop_cnt h2 .close{ float:right; width:16px; height:16px; margin:16px 0 0 ; background:url(/images/am_close.png) no-repeat center center; cursor:pointer; text-indent:-9999px}
+.pop_cnt .info1{padding:15px 0 0 15px; margin:0; min-height:200px; max-height: 400px; overflow-y:auto;}
+.pop_cnt .info1 li{line-height:34px; margin:0 8px 0 0; float:left; text-align:center; padding:130px 0 0; width:100px;}
+.pop_cnt .info1 li img{height:80px; width:80px; margin-top:-132px; display:block;}
+.pop_cnt .info1 li p{
+	width: 80px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.pop_cnt .info1 li img.click{border:solid 1px red;}
+.pop_cnt .dialog_btn{width:30%;margin: 0 auto;}

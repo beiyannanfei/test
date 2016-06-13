@@ -1,0 +1,65 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>领奖页面</title>
+<style type="text/css">
+ul, li, dt, dl, dd, ol{ margin:0; padding:0; list-style:none;}
+body, h1, h2, h3, h4, h5, h6, h7, p, img, input, select, table, tr, td, th{ margin:0; padding:0;}
+body {font-family: Arial, Helvetica, sans-serif; font-family:"Microsoft YaHei"; font-size: 1em; font-style: normal; color: #333;}
+a{color:#4d4d4d;text-decoration:none; outline:none; cursor:pointer;}
+a:hover{color:#f60;}
+code, input, textarea,select {font-family: Arial, Helvetica, sans-serif; font-family:"Microsoft YaHei"; color:#666; font-size:12px;}
+label{ color:#333;}
+div{box-sizing: border-box;}
+input{border:0;}
+
+.bg{position:fixed; top:0; left:0; z-index:-1;}
+.bg img{width:100%}
+.photo{margin: 20% 7% 3%; border:7px solid rgba(112,22,23,0.4); border-radius:13px; overflow:hidden;}
+.photo img{width:100%; display:block;}
+.subbox{padding:0 20px 0 74px;}
+.subbox font{margin-left:-61px; float:left; font-size: 18px; line-height:32px;}
+.submit_a{padding:7px; color:#0000c9; box-sizing: border-box; display:block; width:100%; text-align:center; background:#fff; border-radius:5px;}
+.tishi{padding: 16px 20px 32px 65px; line-height:29px;}
+.btn{padding:0 15px;}
+.btn label:nth-child(1),.btn label:nth-child(2){padding:8px; cursor:pointer; background:#79a3c7; width:42%; text-align:center; border-radius:5px; color:#fff;}
+.btn label:nth-child(1):hover,.btn label:nth-child(2):hover{background:#527fa7;}
+.btn label:nth-child(1){ float:left;}
+.btn label:nth-child(2){ float:right;}
+</style>
+
+</head>
+
+<body>
+
+<div class="bg"><img src="/pointMall/images/shoppingCard-bg.jpg" alt=""></div>
+
+<div class="photo"><img src="{{lottery.prizePic}}" alt=""></div>
+
+<div class="subbox"><font>卡密：</font><label class="submit_a">{{lottery.shoppingCard}}</label></div>
+
+<div class="tishi">温馨提示：<br>您的中奖信息可在个人中心点击我的奖品进行查看，请尽快兑换您的奖品。</div>
+
+<div class="btn"><label id="tryAgain">继续抽奖</label><label id="me-order">查看我的奖品</label></div>
+
+</body>
+
+
+<script type="text/javascript" src="/pointMall/url/statistics" charset="UTF-8"></script>
+
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#tryAgain').click(function(){
+            window.history.go(-1);
+        })
+
+        $('#me-order').click(function(){
+            window.location.href = '/pointMall/me/lottery/list';
+        })
+    });
+</script>
+</html>

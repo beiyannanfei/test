@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>实物订单流程</title>
+<link href="/stylesheets/common.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+.top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
+.top_choose{ clear:both; overflow:hidden;}
+.top_choose li{ float:left; width:33%; margin:15px 0 0;}
+.top_choose li span{ display:inline-block; width:26%; padding-right:3px; font-size:14px; text-align:right}
+.top_choose li .w1{ width:66%; height:22px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px; line-height:18px; font-size:14px}
+.top_choose li .w2{width:69%;height:30px; border:solid 1px #e7e7ea; padding:3px 5px; border-radius:3px;line-height:19px; font-size:14px}
+
+.c_btn{ clear:both; overflow:hidden; margin:20px 0 0;}
+.c_btn span{ float:left; min-width:50px; margin:0 0 0 20px; padding:3px 10px 5px; background:#0090ff; border-radius:4px;text-align:center; font-size:14px;color:#fff; cursor:pointer; }
+.c_btn span:hover{ background:#0079d6;}
+
+.tab_list{ clear:both; overflow:hidden; margin:40px 0 0;}
+.tab_list li{ float:left; padding:4px 0 5px; border-radius:3px;}
+.tab_list li:hover{ background:#f1f1f1}
+.tab_list li.on{ background:#576477; color:#fff}
+.tab_list li strong{ display:inline-block; padding:0 20px; font-size:14px; font-weight:normal; border-left:solid 1px #ddd; text-align:center; cursor:pointer}
+.tab_list li:first-child strong{ border:0}
+
+.list_result{ margin-top:15px}
+.list_result .table1{  background:#0090ff; color:#fff;}
+.list_result .table1 td{padding:6px 0; text-align:center; font-size:14px}
+.list_result .table2 td{padding:4px 0; text-align:center; font-size:14px; color:#666}
+.list_result .table2 td *{ font-size:14px}
+.list_result .table2 td .p1{width:50px; height:50px}
+.list_result .table2 td.user{ text-align:left}
+.list_result .table2 td.user .p2{width:50px; height:50px; float:left; margin-right:10px}
+.list_result .table2 td.status .waiting{ color:#c00}
+.list_result .table2 td.status .paid{ color:#666}
+.list_result .table2 td.status .fini{ color:#999}
+.list_result .table2 td.status .btn{ display:inline-block; margin-top:4px; padding:0 10px 1px; border: solid 1px #0090ff; border-radius:4px; color:#0090ff; cursor:pointer}
+.list_result .table2 td.status .btn2{ display:inline-block; margin-top:4px; padding:0 10px 1px; border: solid 1px #e7e7ea; border-radius:4px; color:#333; cursor:pointer}
+
+.order_s1{ margin-top:15px;}
+.order_s1:hover{ background:#f9f9f9}
+.order_s1 dt,.order_s1 dd{ border:solid 1px #e7e7ea; padding:5px 0}
+.order_s1 dd{ margin-top:-1px;}
+.order_s1 dt .fr{ float:right; margin-right:10px;}
+.order_s1 dt .fr a{ color:#0090ff}
+.order_s1 dt .number{ margin-left:10px;font-size:14px}
+.order_s1 dt .number i{ display:inline-block; margin-left:5px;padding:0 4px 2px; background:#bfc3c8; border-radius:4px;font-size:13px; color:#fff; cursor:pointer}
+.order_s1 dt .number i:hover{ background:#aaa}
+
+.w_order_step{ width:100%; overflow:hidden; clear:both; padding:20px 0;}
+.track_number{ height: 40px;line-height: 40px;margin: 20px 40px 60px 40px;background: #fff;color: #f4580b;font-size: 18px;padding-left: 20px;}
+.w_order_step .steps *{ font-size:14px; font-weight:normal;}
+.w_order_step .steps{ position:relative; width:1080px; margin:0 auto}
+.w_order_step .steps .bar{ height:30px; background:url(/images/step_ico.png) no-repeat center 0;}
+.w_order_step .steps .bar strong{ display:block; height:30px; background:url(/images/step_ico2.png) no-repeat 0 0}
+.w_order_step .steps .tip1{ position:absolute; width:100%; top:-30px;}
+.w_order_step .steps .tip1 strong{ float:left; width:25%; color:#999; text-align:center}
+.w_order_step .steps .tip1 strong.on{color:#0090ff;}
+.w_order_step .steps .tip2{ margin-top:5px;}
+.w_order_step .steps .tip2 strong{ float:left; width:25%; color:#0090ff; text-align:center}
+.list_track{ padding:10px;margin: 0 40px 0 40px;background: #fff;border:solid 1px #ddd;}
+.list_track li{ padding:5px 0; color:#333}
+.list_track li *{ font-size:14px}
+.list_track li strong{ float:left; padding-right:4px; text-align:right; color:#999; font-weight:normal}
+
+.tit_status{ background:#f5f5f5; padding:3px 10px 4px; line-height:25px; color:#333; font-size:14px;margin:20px 40px 0 40px;border: solid 1px #ddd;border-bottom: none;}
+</style>
+</head>
+<body>
+        <div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="##">订单管理</a></li>
+                    <li>
+                        <span>订单详情</span>
+                    </li>
+                    <!--<li class="active">-->
+                        <!--<span>swals</span>-->
+                    <!--</li>-->
+                </ol>
+            </div>
+            <h1 class="font-light m-b-xs" style="font-size:30px;">
+                <a id="back" style="cursor: pointer;">返回</a> > 订单详情
+            </h1>
+            <small>订单详情</small>
+        </div>
+    </div>
+</div>
+<div class="wrap01">
+    <input id="orderId" type="hidden" value="{{orderId}}">
+</div>
+</body>
+<script>
+    $(function(){
+        var orderId = $('#orderId').val()
+
+        function renderOrder(order){
+            var domString = ''
+            if (order.from == 4){
+                domString += '<div class="w_order_step">' +
+                        '<div class="track_number">订单号：' + order.out_trade_no + '</div>';
+                if (order.prizeType == 3) {
+                    if (order.state == 'unDelivery'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:50%"></strong></div>' +
+                                '<div class="tip1"><strong>买家已下单</strong><strong class="on">买家已付款</strong><strong>卖家已发货</strong><strong>物流标记签收</strong></div>';
+                    } else if (order.state == 'Delivery'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:75%"></strong></div>' +
+                                '<div class="tip1"><strong>买家已下单</strong><strong>买家已付款</strong><strong class="on">卖家已发货</strong><strong>物流标记签收</strong></div>';
+                    } else if (order.state == 'Delivered'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:100%"></strong></div>' +
+                                '<div class="tip1"><strong>买家已下单</strong><strong>买家已付款</strong><strong>卖家已发货</strong><strong class="on">物流标记签收</strong></div>';
+                    } else if (order.state == 'refund'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:100%"></strong></div>' +
+                                '<div class="tip1"><strong>买家已下单</strong><strong>买家已付款</strong><strong>申请退款</strong><strong class="on">已退款</strong></div>';
+                    }
+                    domString += '</div>';
+                }
+                domString += '<div class="tit_status">订单详情</div>' +
+                        '<ul class="list_track">' +
+                        '<li><strong>商品名字：</strong><span>' + order.prizeName + '</span></li>' +
+                        '<li><strong>订单状态：</strong><span>' + ($.trim(order.stateText)===''?'已完成':order.stateText) + '</span></li>' +
+                        '<li><strong>订单总计：</strong><span>' + order.price*(order.count||1) + '</span></li>' +
+                        '<li><strong>使用积分：</strong><span>' + order.score + '</span></li>' +
+                        '<li><strong>使用红包金额：</strong><span>' + (order.redPrice?order.redPrice:"0") + '</span></li>' +
+                        '<li><strong>下单用户：</strong><span>' + order.userName + '</span></li>';
+                if (order.prizeType == 3) {
+                    if (order.ext){
+                        var rule = '';
+                        $.map(order.ext, function(v, k){
+                            rule += k + ':' + v + ' '
+                        })
+                        if (rule){
+                            domString += '<li><strong>商品规格：</strong><span>' + rule + '</span></li>'
+                        }
+                    }
+                    domString += '<li><strong>收货地址：</strong><span>' + (order.addInfo?order.addInfo:"未填写") + '</span></li>'
+                    domString += '<li><strong>快递公司：</strong><span>' + (order.wayCom?order.wayCom:"未填写") + '</span></li>'
+                    domString += '<li><strong>快递单号：</strong><span>' + (order.waybillId?order.waybillId:"未填写") + '</span></li>'
+                }  else {
+                    var name = (order.name?order.name:"未填写")
+                    var mobile = (order.mobile?order.mobile:"未填写")
+                    if (order.prizeType == 106){
+                        name = (order.orderInfo?order.orderInfo.name:"未填写")
+                        mobile = (order.orderInfo?order.orderInfo.mobile:"未填写")
+                    }
+                    domString += '<li><strong>姓名：</strong><span>' + name + '</span></li>'
+                    domString += '<li><strong>手机号：</strong><span>' + mobile + '</span></li>'
+                }
+                if (order.prizeType == 6){
+                    domString += '<li><strong>消费码：</strong><span>' + (order.shoppingCard?order.shoppingCard:"空") + '</span></li>'
+                }
+                domString += '</ul>'
+            } else {
+                domString += '<div class="w_order_step"><div class="track_number"></div>';
+                if (order.prizeType == 3) {
+                    if (order.state == 'unDelivery'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:50%"></strong></div>' +
+                                '<div class="tip1"><strong>生成订单</strong><strong class="on">买家已下单</strong><strong>卖家已发货</strong><strong>物流标记签收</strong>';
+                    } else if (order.state == 'Delivery'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:75%"></strong></div>' +
+                                '<div class="tip1"><strong>生成订单</strong><strong>买家已下单</strong><strong class="on">卖家已发货</strong><strong>物流标记签收</strong>';
+                    } else if (order.state == 'Delivered'){
+                        domString += '<div class="steps"><div class="bar"><strong style="width:100%"></strong></div>' +
+                                '<div class="tip1"><strong>生成订单</strong><strong>买家已下单</strong><strong>卖家已发货</strong><strong class="on">物流标记签收</strong>';
+                    }
+                    domString += '</div></div>';
+                }
+                domString += '<div class="tit_status">订单详情</div>' +
+                        '<ul class="list_track">' +
+                        '<li><strong>商品名字：</strong><span>' + order.prizeName + '</span></li>' +
+                        '<li><strong>订单状态：</strong><span>' + order.stateText + '</span></li>';
+                if (order.from == 3) {
+                    domString += '<li><strong>使用积分：</strong><span>' + order.score + '</span></li>';
+                }
+                domString += '<li><strong>用户：</strong><span>' + order.userName + '</span></li>';
+                if (order.prizeType == 3) {
+                    if (order.ext){
+                        var rule = '';
+                        $.map(order.ext, function(v, k){
+                            rule += k + ':' + v + ' '
+                        })
+                        if (rule){
+                            domString += '<li><strong>商品规格：</strong><span>' + rule + '</span></li>'
+                        }
+                    }
+                    domString += '<li><strong>收货地址：</strong><span>' + (order.addInfo?order.addInfo:"未填写") + '</span></li>'
+                    domString += '<li><strong>快递公司：</strong><span>' + (order.wayCom?order.wayCom:"未填写") + '</span></li>'
+                    domString += '<li><strong>快递单号：</strong><span>' + (order.waybillId?order.waybillId:"未填写") + '</span></li>'
+                } else {
+                    var name = (order.name?order.name:"未填写")
+                    var mobile = (order.mobile?order.mobile:"未填写")
+                    if (order.prizeType == 106){
+                        name = (order.orderInfo?order.orderInfo.name:"未填写")
+                        mobile = (order.orderInfo?order.orderInfo.mobile:"未填写")
+                    }
+                    domString += '<li><strong>姓名：</strong><span>' + name + '</span></li>'
+                    domString += '<li><strong>手机号：</strong><span>' + mobile + '</span></li>'
+                }
+                if (order.prizeType == 6){
+                    domString += '<li><strong>消费码：</strong><span>' + (order.shoppingCard?order.shoppingCard:"空") + '</span></li>'
+                }
+                domString += '</ul>'
+            }
+            $('.wrap01').append(domString);
+        }
+
+        function loadOrder(){
+            $.ajax({
+                type: 'GET',
+                url: '/admin/order/' + orderId + '/detail',
+                success: function(data){
+                    renderOrder(data)
+                },
+                error: function(xhr){
+                    alert('获取订单详情失败!')
+                }
+            })
+        }
+        loadOrder()
+
+
+        $.extend({
+            parseUrl:function(href){
+                var url=href||location.href;
+                var a =  document.createElement('a');
+                a.href = url;
+                var ret = {},
+                        seg = a.search.replace(/^\?/,'').split('&'),
+                        len = seg.length, i = 0, s;
+                for (;i<len;i++) {
+                    if (!seg[i]) { continue; }
+                    s = seg[i].split('=');
+                    ret[s[0]] = s[1];
+                }
+                return ret;
+            }
+        })
+
+
+        var urlMap= $.parseUrl(),type;
+        if(!urlMap.type){
+            type=1;
+        }else{
+            type=urlMap.type;
+        }
+
+        $('#back').click(function(){
+            location.href='/admin/order/list?type='+type;
+//            self.location=document.referrer;
+        })
+    })
+
+</script>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Page title -->
+  <title>优惠券编辑</title>
+
+  <!-- Vendor styles -->
+  <link rel="stylesheet" href="../theme/vendor/fontawesome/css/font-awesome.css"/>
+  <link rel="stylesheet" href="../theme/vendor/animate.css/animate.css"/>
+  <link rel="stylesheet" href="../theme/vendor/bootstrap/dist/css/bootstrap.css"/>
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="../theme/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css"/>
+  <link rel="stylesheet" href="../theme/fonts/pe-icon-7-stroke/css/helper.css"/>
+  <link rel="stylesheet" href="../theme/styles/style.css">
+  <link rel="stylesheet" href="../lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="../theme/vendor/toastr/build/toastr.min.css">
+
+  <link rel="stylesheet" href="../lib/webuploader/webuploader.css">
+
+  <link rel="stylesheet" href="../css/common.css"/>
+  <link rel="stylesheet" href="../lib/device/devices.min.css">
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    .device-area {
+      float: left;
+    }
+
+    .main-edit {
+      overflow: hidden;
+    }
+
+    html, body {
+      height: auto;
+    }
+
+    .marvel-device {
+      transform: scale(0.7) translateY(-80px);
+    }
+  </style>
+</head>
+
+<body>
+<div id="wrapper">
+
+  <div class="content animate-panel" style="overflow: hidden">
+    <div class="device-area">
+      <div class="marvel-device iphone6 silver">
+        <div class="top-bar"></div>
+        <div class="sleep"></div>
+        <div class="volume"></div>
+        <div class="camera"></div>
+        <div class="sensor"></div>
+        <div class="speaker"></div>
+        <div class="screen">
+          <iframe src="mobile.html" frameborder="0" width="100%" height="100%" id="mobileIframe"></iframe>
+        </div>
+        <div class="home"></div>
+        <div class="bottom-bar"></div>
+      </div>
+    </div>
+
+    <div class="main-edit" id="app" v-cloak>
+      <div class="row">
+        <div class="col-sm-12 animated-panel zoomIn" style="animation-delay: 0.2s;">
+          <div class="hpanel">
+            <div class="panel-heading">
+              优惠券基础信息
+            </div>
+            <div class="panel-body">
+              <div class="form-horizontal">
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">优惠券名称:</label>
+                  <div class="col-sm-9">
+                    <input v-model="name" class="form-control" placeholder="最多支持10个字">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">优惠券图片:</label>
+                  <div class="col-sm-9">
+                    <div class="img-preview">
+                      <template v-if="!!pic">
+                        <img src="{{ pic }}" width="100" height="70" />
+                      </template>
+                      <span v-else>暂无图片</span>
+                      <div id="couponFile" class="img-label">
+                        选择图片
+                      </div>
+                    </div>
+                    <span class="img-addition"></span>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">发放总量:</label>
+
+                  <div class="col-sm-9">
+                    <div class="input-group m-b">
+                      <input v-model="count" class="form-control">
+                      <span class="input-group-addon">张</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">面值:</label>
+                  <div class="col-sm-9">
+                    <input v-model="value" class="form-control" :disabled="uuid?true:false">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">使用提示:</label>
+
+                  <div class="col-sm-9">
+                    <input v-model="tips" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">订单金额:</label>
+                  <div class="col-sm-9">
+                    <label class="radio-inline">
+                      <input type="radio" checked >不限制
+                    </label><br>
+                    <label class="radio-inline">
+                      <input type="radio" disabled >满 <input type="text" style="width: 50px"> 元可使用
+                    </label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">每人限领:</label>
+                  <div class="col-sm-9">
+                    <select class="form-control" disabled>
+                      <option value="">不限张</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">生效时间:</label>
+                  <div class="col-sm-9">
+                    <input v-model="beginDate" class="form-control datetimepicker" :disabled="uuid?true:false">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">过期时间:</label>
+                  <div class="col-sm-9">
+                    <input v-model="endDate" class="form-control datetimepicker" :disabled="uuid?true:false">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">可使用商品:</label>
+                  <div class="col-sm-9">
+                    <label class="radio-inline">
+                      <input type="radio" checked >全店通用
+                    </label>
+                    <label class="radio-inline">
+                      <input type="radio" disabled>指定商品
+                    </label>
+
+                    <input v-model="jump_url" class="form-control" style="margin-top: 5px" placeholder="立即使用URL">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">使用说明:</label>
+                  <div class="col-sm-9">
+                    <textarea v-model="desc" cols="30" rows="5" class="form-control"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-sm-9 col-sm-offset-3">
+                    <a class="btn btn-default" style="margin-right: 20px" href="coupon.html">返回</a>
+                    <button class="btn btn-primary" @click="subform" >保存</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Vendor scripts -->
+<script src="../theme/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../lib/vue/vue.min.js"></script>
+<script src="../theme/vendor/toastr/build/toastr.min.js"></script>
+
+<script src="../lib/webuploader/webuploader.html5only.min.js"></script>
+<script src="../lib/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../lib/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<!-- custom js-->
+<script src="../js/common.js"></script>
+
+<!-- page js -->
+<script src="../js/coupon-edit.js"></script>
+
+</body>
+
+</html>

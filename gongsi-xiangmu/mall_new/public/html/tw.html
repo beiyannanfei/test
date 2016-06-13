@@ -1,0 +1,305 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+<meta name="format-detection" content="telephone=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=1, user-scalable=no" />
+<meta http-equiv="imagetoolbar" content="no">
+<title>发布资源</title>
+<style>
+    *{
+        margin:0px;padding:0px;font-size:14px;
+    }
+
+    html,body{
+        width:100%;
+        height:100%;
+    }
+    li{
+        margin:0; padding:0; list-style:none;float:left;
+    }
+    .videoinfo{
+        width:290px;
+        position: relative;
+        margin:10px 0px 0px 10px;
+        overflow: auto;
+        border: 1px solid #F4F4F4;
+
+        background-color:#fafafa;
+        display:block;
+    }
+    .videoinfo:hover{
+        box-shadow:0 0 10px #0096ff;
+        border:1px solid #0096ff;
+        cursor:pointer;
+    }
+    .videoinfo .contentImg{
+        max-width:100%;
+        /*
+        max-height:160px;
+        */
+    }
+    .videoinfo h3 {
+        font-size: 15px;
+        color: #333;
+        text-align: left;
+        margin:6px 0px 0px 6px;
+        line-height:23px;
+    }
+    .videoinfo  .date {
+        height: 20px;
+        line-height:20px;
+        margin: 0 5px;
+    }
+    .videoinfo .summary {
+        margin: 5px 10px;
+        color: #666;
+        font-size: 14px;
+        line-height:18px;
+    }
+    /****************************************************/
+    .article_list  .pop_edit span{ margin-top:40px}
+    .article_list { position:relative;clear:both; overflow:hidden; padding:10px; border-top:solid 1px #e7e7eb;}
+    .article_list  .pic{ float:right; margin-left:5px;}
+    .article_list  .pic img{ width:75px; height:75px}
+    .article_list  h3{ height:75px; vertical-align:middle; display:table-cell; font-size:14px; color:#777;word-break:break-all;}
+    .article_list  h3 a{ color:#777}
+    .article_list  h3 a:hover{ color:#444; text-decoration:underline}
+    .article_list .add_more strong{ display:block; background:url(../images/add_more.jpg) no-repeat center center; border:dotted 2px #b5b5b5; line-height:60px; text-align:center; text-indent:-9999px; opacity:.5; cursor:pointer}
+    .article_list .add_more strong:hover{opacity:1}
+
+</style>
+<script src="/pointMall/javascripts/util.js"></script>
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script>
+
+    var urlparms=url2Hash();
+    var poofset=1;
+    var loading=0;
+    var rstype=urlparms["ztype"];
+    var token=urlparms["token"];
+    var _type=urlparms["type"] || '';
+    var _ismul=urlparms["ismul"] || '';
+    var _isNtuwen = false;  //是否多图文展示
+    function invokeajax(url,callback,reqparms){
+        $.ajax({
+            type:(reqparms==null?"GET":"POST"),
+            url:(url.indexOf("wtopic.")!=-1?"invoke/"+url:url),
+            data:reqparms||"",
+            dataType : 'json',
+            success : function(ref){
+                if(ref.status=="没有权限"){
+                    LOGOUT();
+                }else{
+                    callback(ref);
+                }
+            },error:function(ref){
+                callback(null);
+            }
+        });
+
+    }
+    function videoobj2html(videoobj){
+        /**
+         {
+               "shareid": "411250",
+               "title": "\u7206\u7b11\u65b0\u95fb",
+               "pic_file_url": "http:\/\/v12.tv.cctv5.cctv.com\/s3\/g2r2\/ad\/b2\/adb20805-1af0-343f-829b-1e4b3c76f3ef\/t.jpg",
+               "description": "\u97e9\u56fd\u961f-\u6c99\u7279\u961f",
+               "play_time": "2014-09-17 20:45:00",
+               "sharetype": "1"
+             }
+         */
+        var html='<div  class="videoinfo" >'
+                +'<h3>'+videoobj.title+'</h3>'
+                +'<div class="date">'+videoobj["play_time"]+'</div>'
+                +'<img src="'+videoobj.pic_file_url+'" class="contentImg">'
+                +'<p class="summary">'+videoobj.description+'</p>'
+                +'<textarea style="display:none"></textarea>'
+                +'</div>';
+        return html;
+    }
+    function tuwenobj2html(tuwenobj){
+        /**
+         {
+     "mid": "ZMTEIVBKN",
+     "items": [
+     {
+     "id": 1559,
+     "title": "10月1日《我和我的祖国》节目单",
+     "img": "http://t8.dev.tvm.cn/data/upload/2014-09-22/1411369051-1000.png",
+     "desc": "节目单",
+     "url": "http://t8.dev.tvm.cn/index.php?g=Wap&m=Img&a=detail&mid=ZMTEIVBKN&sn=ab629bc359d7d4129d3f703ad27c96a3"
+     }
+     ],
+     "createtime": "1411369065"
+     }
+         */
+        var currdate=new Date();
+        currdate.setTime(tuwenobj.createtime*1000);
+        var datestr=data2str(currdate);
+        var contentinfo=tuwenobj.items[0];
+        var html = '';
+        if(_isNtuwen){
+            var _html = '';
+            var _len = tuwenobj.items.length;
+            for(var i = 1;i<_len;i++){
+                var itemsObj = tuwenobj.items[i];
+                _html += '<div class="article_list"><div class="pic">' +
+                        '<img src="'+itemsObj.img+'"/>' +
+                        '</div> <h3>'+itemsObj.title+'</h3></div>';
+            }
+            var html='<div  class="videoinfo" >'
+                    +'<h3>'+contentinfo.title+'</h3>'
+                    +'<div class="date">'+datestr+'</div>'
+                    +'<img src="'+contentinfo.img+'" class="contentImg">'
+                    +_html
+                    +'<textarea style="display:none"></textarea>'
+                    +'</div>';
+        }else{
+            var html='<div  class="videoinfo" >'
+                    +'<h3>'+contentinfo.title+'</h3>'
+                    +'<div class="date">'+datestr+'</div>'
+                    +'<img src="'+contentinfo.img+'" class="contentImg">'
+                    +'<p class="summary">'+contentinfo.desc+'</p>'
+                    +'<textarea style="display:none"></textarea>'
+                    +'</div>';
+        }
+        return html;
+    }
+    function buildvideohtml(datalist){
+        var datalistlen=datalist==null?0:datalist.length;
+        var maindivobj=$("#maindiv");
+        for(var i=0;i<datalistlen;i++){
+            var $row=null;
+            var iHeight=-1;
+            $('#maindiv li').each(function(){
+                var iTempHeight=parseInt( $(this).height() );
+                if(iTempHeight==0){
+                    iTempHeight = $(this).children().length;
+                }
+                if(iHeight==-1 || iHeight>iTempHeight){
+                    iHeight = iTempHeight;
+                    $row = $(this);
+                }
+            });
+            var htmel=$(videoobj2html(datalist[i]))
+            htmel.children("textarea").text(JSON.stringify(datalist[i]));
+            $row.append(htmel);
+            htmel.click(function(){
+                var itemjson=JSON.parse($(this).children("textarea").text());
+                gotofabu(itemjson)
+            });
+        }
+    }
+    function buildtuwenhtml(datalist){
+        var datalistlen=datalist==null?0:datalist.length;
+        var maindivobj=$("#maindiv");
+        for(var i=0;i<datalistlen;i++){
+            var $row=null;
+            var iHeight=-1;
+            $('#maindiv li').each(function(){
+                var iTempHeight=parseInt( $(this).height() );
+                if(iTempHeight==0){
+                    iTempHeight = $(this).children().length;
+                }
+                if(iHeight==-1 || iHeight>iTempHeight){
+                    iHeight = iTempHeight;
+                    $row = $(this);
+                }
+            });
+            var htmel=$(tuwenobj2html(datalist[i]))
+            htmel.children("textarea").text(JSON.stringify(datalist[i]));
+            $row.append(htmel);
+            htmel.click(function(){
+                var itemjson=JSON.parse($(this).children("textarea").text());
+                gotofabu(itemjson)
+            });
+        }
+    }
+    function gotofabu(itemjson){
+        //if(confirm("您确定要发布所选项吗？")){
+        parent.gotofabuzy(itemjson);
+        //}
+        //console.log(itemjson);
+    }
+    function onscrollevt(_obj){
+        var st=$(_obj).scrollTop();
+        var th=$(_obj).height();
+        var iHeight=-1;
+
+        $('#maindiv li').each(function(){
+            var iTempHeight = parseInt( $(this).height() );
+            if(iHeight==-1 || iHeight>iTempHeight){
+                iHeight = iTempHeight;
+
+            }
+        });
+//	console.log("st="+st+";th="+th+";iHeight="+iHeight,iHeight-(st+th));
+        if(iHeight-(st+th)<10){
+            loadpagedata();
+        }
+    }
+
+    function loadpagedata(){
+        if(loading==1){
+            console.log("加载中。。。");
+            return;
+        }
+        loading=1;
+        var hostname=location.hostname;
+        if(hostname=="mall.mtq.tvm.cn"){
+            hostname="iwmh.mtq.tvm.cn";
+        }else if(hostname=="us.mall.mtq.tvm.cn"){
+            hostname="us.iwmh.mtq.tvm.cn";
+        }else if(hostname=="a.mall.mtq.tvm.cn"){
+            hostname="a.iwmh.mtq.tvm.cn";
+        }else if(hostname=="wx.mall.mtq.tvm.cn"){
+            hostname="wx.iwmh.mtq.tvm.cn";
+        }else if(hostname=="a.yaotv.mtq.tvm.cn"){
+            hostname="a.iwmh.mtq.tvm.cn";
+        }else{
+            hostname="t8.dev.tvm.cn";
+        }
+        var urlstr=null;
+        if(rstype=="1"){
+            urlstr='http://'+hostname+'/rest/video/list?token='+token+'&limit=10&p='+(poofset++);
+        }else{
+            urlstr='http://'+hostname+'/rest/img/list?token='+token+'&limit=10&p='+(poofset++);
+            if(_type){
+                urlstr = urlstr + '&type='+_type;
+                _isNtuwen = true;
+            }
+            if(_ismul){
+                urlstr = urlstr + '&ismul='+_ismul;
+                _isNtuwen = true;
+            }
+        }
+        invokeajax(urlstr,function(ref){
+            if(ref && ref.data){
+                if(rstype=="2"){
+                    buildtuwenhtml(ref.data);
+                }else{
+                    buildvideohtml(ref.data);
+                }
+            }
+            loading=0;
+        },{});
+    }
+    function init(){
+        loadpagedata();
+    }
+
+</script>
+</head>
+<body onload="init()" onscroll="onscrollevt(this)">
+<ul id="maindiv" style="width:920px;">
+    <li id="c1"></li><li id="c2"></li><li id="c3"></li>
+</ul>
+</body>
+</html>

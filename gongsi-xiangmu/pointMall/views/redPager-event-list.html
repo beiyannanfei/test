@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>奖品列表</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+
+    <style type="text/css">
+        .top_tit01{ padding:0 0 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
+        .top_tit01 strong{ float:right; position:relative; top:-3px;padding:2px 10px; background:#0090ff; border-radius:4px; font-size:14px; color:#fff; font-weight:normal;}
+        .top_tit01 strong:hover{ cursor:pointer; background:#0079d6;}
+        .top_search{ overflow:hidden; clear:both; padding:10px 0 0; text-align:right}
+        .top_search *{ font-size:13px}
+        .top_search .w1{ width:160px; border:solid 1px #c9c9c9; padding:3px 4px;font-family:"微软雅黑"; border-radius:3px; box-shadow:inset 0 1px 3px #ddd; line-height:18px}
+        .top_search .btn{ width:50px; height:26px; padding:1px 0 3px;border:solid 1px #c9c9c9; background:#f9f9f9;border-radius:3px; cursor:pointer }
+        .top_search .btn:hover{ background:#eee}
+
+        .t_form1{position:relative; margin-top:20px}
+        .t_form1 dt{ clear:both; overflow:hidden; padding:6px 0; margin-bottom:10px; background:#95c2eb; color:#fff }
+        .t_form1 dd{ clear:both; margin-bottom:15px;padding:25px 0; border:solid 1px #e7e7eb;width:100%}
+        .t_form1 dd:hover{ background:#f9f9f9}
+        .t_form1 th{ font-size:14px}
+        .t_form1 td{ text-align:center; font-size:14px; color:#555}
+
+        .t_form1 td.address{ position:relative; }
+        .t_form1 td.address strong{display:inline-block; width:70px; border:solid 1px #ddd;padding:2px 0; background:#fff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer}
+        .t_form1 td.address strong:hover,.t_form1 td.address.on strong{ border:solid 1px #0090ff; color:#0090ff}
+        .t_form1 td.address .url{ display:none; position:absolute; right:-50px; top:50%; margin-top:15px; background:#fff; border:solid 1px #ddd; padding:4px 6px; box-shadow:0 0 3px #ccc; border-radius:4px; white-space:nowrap }
+        .t_form1 td.address .url i{ margin-left:10px; cursor:pointer; color:#0090ff}
+
+        .t_form1 td.address.on .url{ display:block}
+        .t_form1 td .e1{ width:80%; border:solid 1px #e7e7eb; padding:3px 4px 4px; font-family:"微软雅黑"; font-size:14px}
+        .t_form1 td.good{ text-align:left}
+        .t_form1 td.good img{ float:left; padding:2px; border:solid 1px #ddd; margin:0 15px 0 30px; max-width:100px; max-height:100px}
+        .t_form1 td.good h3{ margin-top:7px;}
+        .t_form1 td.good p{ margin-top:4px;}
+        .operate1 strong{ display:inline-block; margin:0 5px; padding:3px 0; font-size:14px; border-radius:3px; font-weight:normal; color:#0090ff; cursor:pointer;}
+        .operate1 strong:hover{ color:#0068b9}
+
+        .pop_page1{ position:fixed; min-width:300px; background:#fff; border-radius:5px; box-shadow:0 1px 5px rgba(0,0,0,.2); display: none; top:50%; left:50%; width:420px;margin:-80px 0 0 -210px; z-index:10;}
+        .pop_page1 .title{ height:45px; background:#0090ff; padding:0 15px;border-radius:5px 5px 0 0;}
+        .pop_page1 .title strong{ float:left; color:#fff; font-size:14px; line-height:45px; font-weight:normal}
+        .pop_page1 .title .close{ float:right; width:15px; height:15px; margin:15px 0 0; background:url(/pointMall/images/close.png) no-repeat center center; text-indent:-9999px; cursor:pointer}
+        .pop_page1 .title .close:hover{opacity:.8; background-color:#000}
+        .pop_page1 .cnt_code1{ margin:10px auto; text-align:center}
+        .pop_page1 .cnt_code1 img{ width:160px; height:160px;}
+        .pop_page1 .cnt_code1 p{ margin-top:8px; font-size:14px}
+        .pop_page1 .cnt2{ margin:20px auto;}
+        .pop_page1 .cnt2 .tip{ text-align:center; font-size:14px}
+        .pop_page1 .cnt2 .btn{ margin-top:20px; text-align:center}
+        .pop_page1 .cnt2 .btn strong{display:inline-block; width:85px; margin:0 5px; padding:5px 0; background:#0090ff; font-size:14px; border-radius:3px; font-weight:normal; color:#fff; cursor:pointer; text-align:center}
+        .pop_page1 .cnt2 .btn strong.cancel{ background:#ff5252}
+    </style>
+
+</head>
+<body style="margin:0 auto">
+<h2 class="s_title02">红包管理</h2>
+<div class="msg_manage_top">
+    <ul class="tab_top1">
+        <li class="on"><a href="#">抢红包列表</a></li>
+    </ul>
+</div>
+<div class="wrap01">
+    <h3 class="tit02 fbhd"><a href="/pointMall/add/redPager/event">+添加抢红包</a></h3>
+    <ul class="list_msg1 list_msg2">
+        <li class="min_padding">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+                <colgroup>
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="*">
+                </colgroup>
+                <tr>
+                    <td>
+                        活动名字
+                    </td>
+                    <td>
+                        创建时间
+                    </td>
+                    <td class="icos2">操作</td>
+                </tr>
+            </table>
+        </li>
+        {{#each redPagerEvent}}
+        <li goodId="{{_id}}">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">
+                <colgroup>
+                    <col width="15%">
+                    <col width="15%">
+                    <col width="*">
+                </colgroup>
+                <tr>
+                    <td class="date">
+                        {{name}}
+                    </td>
+                    <td class="date">
+                        {{dateTime}}
+                    </td>
+                    <td class="icos icos2">
+                        <a class="link" href="javascript:void(0)" url="{{url}}">查看链接</a>
+                        <a class="delete" href="javascript:void(0)">删除</a>
+                        <a href="/pointMall/redPager/event/{{_id}}/update">编辑</a>
+                        <a href="/pointMall/redPager/event/{{_id}}/statistics">统计</a>
+                        <a class="showId" href="#">查看抢红包ID</a></td>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div id="delete-pop" class="pop_page1">
+    <h2 class="title"><strong>删除</strong><span class="close" title="关闭">关闭</span></h2>
+    <div class="cnt2">
+        <div class="tip">确定要删除吗？</div>
+        <div class="btn"><strong class="confirm">确定</strong><strong class="cancel">取消</strong></div>
+    </div>
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#delete-pop').find('.confirm').click(function(){
+            var goodsId = $('#delete-pop').attr('goodsId');
+            deleteGoods(goodsId);
+            $('#delete-pop').hide();
+        })
+
+        $('#delete-pop').find('.close').click(function(){
+            $('#delete-pop').removeAttr('goodsId');
+            $('#delete-pop').hide();
+        })
+
+        $('#delete-pop').find('.cancel').click(function(){
+            $('#delete-pop').removeAttr('goodsId');
+            $('#delete-pop').hide();
+        })
+
+        $('.delete').click(function(){
+            var goodId = $(this).closest('li').attr('goodId');
+            $('#delete-pop').attr('goodsId', goodId).show();
+        })
+
+        $('.showId').click(function(){
+            var goodId = $(this).closest('li').attr('goodId');
+            window.prompt("抢红包", goodId);
+        })
+
+        $('.link').click(function(){
+            var url = $(this).attr('url');
+            window.prompt("链接地址请复制", url);
+        })
+
+        function deleteGoods(goodsId){
+            $.ajax({
+                type: 'DELETE',
+                url: "/pointMall/redPagerEvent/" + goodsId,
+                success: function(data){
+                    $('li[goodId=' + goodsId + ']').slideUp();
+                },
+                error: function(){
+                    alert('删除失败');
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>
+

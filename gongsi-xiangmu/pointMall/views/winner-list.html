@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品管理系统</title>
+    <link href="/pointMall/stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/pointMall/stylesheets/base.css" rel="stylesheet" type="text/css">
+    <style>
+        a.menu-button{margin-right: 10px; margin: 20px 10px 5px 10px; font-size: 16px;}
+        h3{margin: 20px 0;}
+        td img{width: 30px; height: 30px;}
+        .wuliuInfo{position:absolute;top:20%;background:#fff;width:500px;border-radius:5%; left:50%; margin-left: -250px; display: none; padding: 10px;}
+        .wuliuInfo li{overflow: hidden; padding: 10px 0; margin: 0 auto;}
+        .wuliuInfo label{color:lightblue; display:inline-block; width: 100px; text-align: left;}
+        .wuliuInfo p{margin-left: 100px;}
+    </style>
+</head>
+<body>
+<div class="wuliuInfo" style="min-height: 150px;">
+    <div class="loading" style="text-align: center; margin-top: 50px">
+        <img src="/images/loading.gif">
+    </div>
+    <ul>
+        <a class="closewuliu fr" style="margin: 8px;">关闭</a>
+        <li><label>运单号：</label><span class="order"></span></li>
+        <li><label>快递名：</label><span class="name"></span></li>
+        <li><label>状态：</label><span class="status"></span></li>
+        <li><label>订单跟踪：</label><p class="data"></p></li>
+    </ul>
+</div>
+<div class="container">
+    <div style="text-align: center">
+        <h3>{{prize.name}}的中奖列表</h3>
+    </div>
+    <table>
+        <tr>
+            <th>中奖时间</th>
+            <th>头像</th>
+            <th>微信昵称</th>
+            <th>地址</th>
+            <th>快递公司</th>
+            <th>运单号</th>
+            <th>商品编号</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        {{#each data}}
+        <tr orderId="{{_id}}" style="text-align: center">
+            <td>{{dateTime}}</td>
+            <td><img src="{{userIcon}}"></td>
+            <td>{{userName}}</td>
+            <td>{{addInfo}}</td>
+            {{#if addInfo}}
+                <td><input type="text" style="width: 120px; margin-bottom: 0px;" name="wayCom" value="{{wayCom}}"></td>
+                <td><input type="text" style="width: 120px; margin-bottom: 0px;" name="waybillId" value="{{waybillId}}"></td>
+                <td><input type="text" style="width: 120px; margin-bottom: 0px;" name="deviceId" value="{{deviceId}}"></td>
+                <td class="state">{{state}}</td>
+            {{else}}
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="state">未填地址</td>
+            {{/if}}
+            <td>
+            {{#if addInfo}}
+                {{#if canOperate}}
+                    <a href="#" class="menu-button save">保存</a>
+                    {{#if waybillId}}
+                        <a href="#" class="change" style="display: none">修改</a>
+                        <a class="menu-button delivered">已签收</a>
+                    {{/if}}
+                {{/if}}
+                <a class="menu-button showWayInfo">物流查询</a>
+            {{/if}}
+            </td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/toast.js"></script>
+<script type="text/javascript">
+    $(function () {
+        if ($('tr').length == 1){
+            $('table').append('<tr><th colspan="9"><p style="text-align: center; font-size: 20px; margin: 40px 40px;">还没有任何中奖名单</p></th></tr>')
+        }
+
+        $('input[name=waybillId]').each(function(){
+            var wayBillId = $(this).val();
+            if (wayBillId){
+                $(this).attr('disabled', true);
+                $(this).closest('tr').find('input[name="deviceId"]').attr('disabled', true);
+                $(this).closest('tr').find('input[name="wayCom"]').attr('disabled', true);
+                $(this).closest('tr').find('.change').show();
+                $(this).closest('tr').find('.save').hide();
+            }
+        })
+
+        $('.save').click(function(){
+            var $tr = $(this).closest('tr');
+            var orderId = $tr.attr('orderId');
+            var wayCom = $tr.find('input[name=wayCom]').val();
+            var deviceId = $tr.find('input[name=deviceId]').val();
+            var waybillId = $tr.find('input[name=waybillId]').val();
+            if (!deviceId || !waybillId || !orderId || !wayCom){
+                return;
+            }
+
+            saveOrder($(this), orderId, wayCom, waybillId, deviceId);
+        })
+
+        function saveOrder($view, orderId, wayCom, waybillId, deviceId){
+            $.ajax({
+                method: "POST",
+                url: '/pointMall/winning/' + orderId,
+                data: $.param({deviceId: deviceId, waybillId: waybillId, wayCom: wayCom}),
+                success: function (data) {
+                    $view.hide();
+                    $('tr[orderId=' + orderId + ']').find('.change').show();
+                    $('tr[orderId=' + orderId + ']').find('input[name=wayCom]').attr('disabled', true);
+                    $('tr[orderId=' + orderId + ']').find('input[name=deviceId]').attr('disabled', true);
+                    $('tr[orderId=' + orderId + ']').find('input[name=waybillId]').attr('disabled', true);
+                    $('tr[orderId=' + orderId + ']').find('.state').text(getTipByState(data.state));
+                    $.showToast('保存成功');
+                },
+                error: function () {
+                    $.showToast('保存失败');
+                }
+            })
+        }
+
+        $('.change').click(function(){
+            $(this).hide();
+            var $tr = $(this).closest('tr');
+            $tr.find('.save').show();
+            $tr.find('input[name=wayCom]').removeAttr('disabled');
+            $tr.find('input[name=deviceId]').removeAttr('disabled');
+            $tr.find('input[name=waybillId]').removeAttr('disabled');
+        })
+
+        $('a.delivered').click(function(){
+            var $tr = $(this).closest('tr');
+            var orderId = $tr.attr('orderId');
+            dealOrder($tr, orderId, 'Delivered');
+        });
+
+        function getTipByState(state){
+            if (state == 'Delivered'){
+                return '已签收';
+            } else if (state == 'Delivery'){
+                return '已发货';
+            } else if (state == 'deleted'){
+                return '已删除';
+            }
+        }
+
+        function dealOrder($tr, orderId, state){
+            var message = "确定" + getTipByState(state) + "?" + state == 'Delivered'?'签收之后不能修改':'';
+            if (confirm(message)){
+                $.ajax({
+                    method: "POST",
+                    url: '/pointMall/winning/' + orderId + '/' + state,
+                    success: function(data){
+                        if (state == 'Delivered'){
+                            $tr.find('.state').text(getTipByState(state));
+                            $tr.find('.change').hide();
+                            $tr.find('.save').hide();
+                            $tr.find('.deleted').hide();
+                        }
+                        $.showToast(getTipByState(state) + '成功');
+                    },
+                    error: function(xrh){
+                        $.showToast(getTipByState(state) + '失败! ' + xrh.responseText);
+                    }
+                })
+            }
+        }
+
+        $('.showWayInfo').click(function(){
+            var top = document.body.scrollTop | document.documentElement.scrollTop;
+            $('.wuliuInfo').css('margin-top', top + 'px').show();
+            $('.wuliuInfo').find('.loading').show();
+            $('.wuliuInfo').find('ul').hide();
+            var $tr = $(this).closest('tr');
+            var com = $tr.find('input[name=wayCom]').val();
+            var waybillId = $tr.find('input[name=waybillId]').val();
+            $.ajax({
+                type: "get",
+                url: "/pointMall/kuaidi/info",
+                data: {id: com, order: waybillId},
+                success: function(data){
+                    $('.wuliuInfo').find('.order').text(data.order)
+                    $('.wuliuInfo').find('.name').text(data.name)
+                    $('.wuliuInfo').find('.status').text(data.status)
+                    var record = '';
+                    $.each(data.data, function(i, o){
+                        record += o.time + ' '+ o.content + '<br>';
+                    })
+
+                    $('.wuliuInfo').find('.data').html(record);
+                    $('.wuliuInfo').find('.loading').hide();
+                    $('.wuliuInfo').find('ul').show();
+                },
+                error: function(xrh){
+                    $.showToast(xrh.responseText);
+                    $('.wuliuInfo').find('.loading').hide();
+                    $('.wuliuInfo').hide();
+                }
+            })
+        })
+
+        $('.closewuliu').click(function(){
+            $('.wuliuInfo').hide();
+        })
+    });
+</script>
+</body>
+</html>

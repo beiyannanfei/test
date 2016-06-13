@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>店铺列表</title>
+    <link href="/pointMall/stylesheets/common.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        .top_tit01{ padding:10px 10px; border-bottom:solid 1px #d9dadc; font-size:16px;}
+        .top_choose{ padding-top:10px; position:relative}
+        .top_choose .btn{ float:right; color:#777}
+        .top_choose .btn strong{display:inline-block; padding:4px 10px; background:#0090ff; border-radius:4px; font-size:14px; color:#fff; font-weight:normal;}
+        .top_choose .btn strong:hover{ cursor:pointer; background:#0079d6;}
+        .pop_moudule_choose{ display:none; position:absolute; right:0; top:62px; z-index:99; width:410px; padding:15px; background:#fff; border:solid 1px #d1d1d1; border-radius:5px; box-shadow:0 0 2px 3px rgba(0,0,0,.2)}
+        .pop_moudule_choose .arrow{ position:absolute; right:20px; top:-17px; width:21px; height:17px; background:url(/pointMall/images/arrow2.gif) no-repeat 0 bottom }
+        .pop_moudule_choose h3{ padding:0 0 10px; font-size:14px}
+        .pop_moudule_choose ul{ display:-moz-box;display:-webkit-box;}
+        .pop_moudule_choose ul li{-moz-flex-box:1;-webkit-flex-box:1; width:50%; text-align:center; cursor:pointer}
+        .pop_moudule_choose ul li p{ margin-top:8px; color:#999; font-size:14px;text-align:center;}
+        .pop_moudule_choose ul li:hover p{ color:#666;background:url(/pointMall/images/ico_edit.png) no-repeat 50px center}
+        .pop_moudule_choose ul li .pic{ position:relative; width:155px; margin:0 auto;padding:4px; border:solid 1px #ddd}
+        .pop_moudule_choose ul li .pic img{ }
+        .pop_moudule_choose ul li .pic .cover{ display:none; position:absolute; top:0; left:0; bottom:0; right:0;background:rgba(0,0,0,.2)}
+        .pop_moudule_choose ul li .pic:hover .cover{ display:block}
+
+        .t_form1{position:relative; margin-top:4px}
+        .t_form1 dt{ clear:both; overflow:hidden; padding:6px 0; margin-bottom:10px; background:#95c2eb; color:#fff }
+        .t_form1 dd{ clear:both; margin-bottom:15px;padding:25px 0; border:solid 1px #e7e7eb;width:100%}
+        .t_form1 dd:hover{ background:#f9f9f9}
+        .t_form1 th{ font-size:14px}
+        .t_form1 td{ text-align:center; font-size:14px; color:#555}
+        .t_form1 td.address{ position:relative; }
+        .t_form1 td.address strong{display:inline-block; width:70px; border:solid 1px #ddd;padding:2px 0; background:#fff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer}
+        .t_form1 td.address strong:hover,.t_form1 td.address.on strong{ border:solid 1px #0090ff; color:#0090ff}
+        .t_form1 td.address .url{ display:none; position:absolute; right:-50px; top:35px; background:#fff; border:solid 1px #ddd; padding:4px 6px; box-shadow:0 0 3px #ccc; border-radius:4px; }
+        .t_form1 td.address.on .url{ display:block}
+        .t_form1 td .e1{ width:80%; border:solid 1px #e7e7eb; padding:3px 4px 4px; font-family:"微软雅黑"; font-size:14px}
+
+        .operate1 strong{ display:inline-block; margin:0 5px; padding:3px 0; font-size:14px; border-radius:3px; font-weight:normal; color:#0090ff; cursor:pointer;}
+        .operate1 strong:hover{ color:#0068b9}
+        .qr{ position:relative;}
+        .QR_code{ position:absolute; display:none; z-index:1000; right:0; top:30px; background:#fff; padding:10px; border:1px solid #e7e7eb;
+            width: 230px; color: #555;}
+        .QR_code img{margin-bottom:6px;}
+    </style>
+</head>
+<body style="background-color: #ffffff">
+<div class="wrap01">
+    <h2 class="top_tit01">商品列表</h2>
+    <div class="top_choose clearfix">
+        <div class="btn"><strong id="create">新建列表</strong></div>
+        <div class="pop_moudule_choose" style="display:none">
+            <span class="arrow"></span>
+            <h3>选择模板</h3>
+            <ul>
+                <li m="1"><div class="pic"><span class="cover" ></span><img src="/pointMall/images/mb1.gif"></div><p>单行模板</p></li>
+                <li m="2"><div class="pic"><span class="cover"></span><img src="/pointMall/images/mb2.gif"></div><p>双行模板</p></li>
+            </ul>
+        </div>
+    </div>
+
+    <dl class="t_form1" id="store_list">
+        <dt>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                    <col width="10%">
+                    <col width="17%">
+                    <col width="10%">
+                    <col width="*">
+                </colgroup>
+                <tr>
+                    <th>标题</th>
+                    <th>创建日期</th>
+                    <th>PV/UV</th>
+                    <th>操作</th>
+                </tr>
+            </table>
+        </dt>
+    </dl>
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        function bindEvent(viewCell){
+            $('.edit', viewCell).click(function(){
+                var storeId = $(this).closest('dd').attr('storeId')
+                window.location.href = '/pointMall/store/' + storeId + '/update'
+            })
+
+            $('.delete', viewCell).click(function(){
+                var storeId = $(this).closest('dd').attr('storeId')
+                if (confirm('确定删除吗？')){
+                    $.ajax({
+                        type: 'DELETE',
+                        url: "/pointMall/store/" + storeId,
+                        success: function(data){
+                            $('dd[storeId=' + storeId + ']').slideUp();
+                        },
+                        error: function(){
+                            alert('删除失败！')
+                        }
+                    })
+                }
+            })
+
+            $('.qr', viewCell).click(function(){
+                $(this).closest('.operate1').find('.QR_code').toggle();
+            })
+
+            $('.showUrl', viewCell).click(function(){
+                var url = $(this).attr('url');
+                window.prompt("链接地址请复制", url);
+            })
+        }
+
+        function renderEventList(data){
+            var html = '';
+            for(var i = 0; i < data.length; i++){
+                var o = data[i];
+                html += "<dd storeId=" + o._id.toString() + ">"
+                html += '<table width="100%" border="0" cellspacing="0" cellpadding="0">'
+                html += '<colgroup>'
+                html += '<col width="10%">'
+                html += '<col width="17%">'
+                html += '<col width="10%">'
+                html += '<col width="*">'
+                html += '</colgroup>'
+                html += '<tr>'
+                html += '<td>' + (o.name ? o.name : "") + '</td>'
+                html += '<td>' + o.dateTime + '</td>'
+                html += '<td>' + o.pv + '/' + o.uv + '</td>'
+                html += '<td>'
+                html += '<div class="operate1"><strong class="showUrl" url="' + o.url + '">显示链接</strong>' +
+                        '<strong class="qr">二维码<span class="QR_code"><img>扫码后直接访问该店铺</span></strong>' +
+                        '<strong class="edit">编辑</strong><strong class="delete">删除</strong></div>'
+                html += '</td>'
+                html += '</tr>'
+                html += '</table>'
+                html += '</dd>'
+            }
+            var viewCell = $($.trim(html));
+            $('#store_list').append(viewCell);
+            bindEvent(viewCell);
+        }
+
+        function loadStore(){
+            $.ajax({
+                method: "GET",
+                url: "/pointMall/store/list",
+                success: function(data){
+                    renderEventList(data)
+                }
+            })
+        }
+
+        loadStore();
+
+        $('#create').click(function(){
+            $('.pop_moudule_choose').toggle();
+        })
+
+        $('.pop_moudule_choose ul li').click(function(){
+            var m = $(this).attr('m');
+            window.location.href = '/pointMall/store/add?m=' + m
+        })
+    });
+</script>
+</body>
+</html>

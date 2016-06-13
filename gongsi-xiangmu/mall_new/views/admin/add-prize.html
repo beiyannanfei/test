@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>添加奖品</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/style.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/add-goods.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/add-goods-detail.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/tw.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/jwysiwyg/jquery.wysiwyg.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/editor/themes/default/default.css" />
+</head>
+<body>
+<div class="wrap02" style="display: none">
+    <h2 class="top_tit01">添加奖品</h2>
+    <div class="pad_t20 clearfix">
+        <div class="area_phone">
+            <div class="title">
+                <span id="view-title"></span>
+            </div>
+            <div class="blank_area">
+                <div class="view_goods">
+                    <div class="cover"></div>
+                    <img id="view-pic">
+                    <h3 id="view-name"></h3>
+                </div>
+            </div>
+            <div class="pro_list_area click_on">
+                <div class="contentBody" id="contentBody"></div>
+            </div>
+        </div>
+        <div class="area_right" style="margin-top:100px">
+            <span class="arrow c3"></span>
+            <div class="editer">
+                <textarea id="content" name="content" style="width:100px;height:400px;visibility:hidden;"> </textarea>
+            </div>
+        </div>
+    </div>
+    <div class="bt_confirm_btn"><strong class="save pre">上一步</strong><strong class="save ok">保存</strong></div>
+</div>
+<div class="wrap01">
+    <input type="hidden" id="wxToken" value="{{token}}">
+    <input type="hidden" id="goodsId" value="{{goodsId}}">
+    <h2 class="top_tit01">奖品管理 > 添加奖品</h2>
+    <h3 class="tit2">基本信息</h3>
+    <ul class="wrap_add">
+        <li>
+            <strong class="tit">使用方式：</strong>
+            <select name="" class="w1" id="play-way">
+                <option value="5">抽奖</option>
+            </select>
+        </li>
+        <li>
+            <strong class="tit">奖品类型：</strong>
+            <select name="" class="w1" id="type">
+                <option value="3" checked>实物奖品</option>
+                <option value="4">充值卡</option>
+                <option value="1">{{unit}}</option>
+                <option value="6">第三方消费码</option>
+                <option value="7">红包</option>
+                <option value="5">谢谢参与</option>
+            </select>
+        </li>
+        <li>
+            <strong class="tit">选择奖品品类：</strong>
+            <select id="category1" name="" class="w3">
+
+            </select>
+            <select id="category2" name="" class="w3">
+
+            </select>
+        </li>
+        <li id="score-count" goods-type="1" style="display: none;">
+            <strong class="tit">{{unit}}数：</strong>
+            <input id="score-count-value" name="" type="text" class="w2" placeholder="必须整数">
+        </li>
+        <li>
+            <strong class="tit">奖品名称：</strong>
+            <input id="name" name="" type="text" class="w2">
+        </li>
+        <li>
+            <strong class="tit">奖品价格：</strong>
+            <input id="price" name="" type="text" class="w2" placeholder="￥人民币(元)">
+        </li>
+        <li hide-goods-type="5&7">
+            <strong class="tit">总库存：</strong>
+            <input id="count" name="" type="text" class="w2">
+        </li>
+        <li>
+            <strong class="tit">上传图片：</strong>
+            <div>
+                <img class="pic" id="pic">
+                <input id="file" type="file" name="file" style="display: none" onchange="changeFile()">
+                <span class="del" id="del">删除</span>
+            </div>
+        </li>
+        <li>
+            <span class="btn1" id="upload-file">上传图片</span>
+            <p class="tip">依据店铺来定，图片大小<i>必须</i>为: 640*280 或 500*400）</p>
+        </li>
+        <li id="validity-time" hide-goods-type="5&7">
+            <strong class="tit">奖品有效期：</strong>
+            <input readonly="readonly" type="text" class="w2 validity-time Wdate Wdate1" placeholder="有效期"/>
+        </li>
+    </ul>
+    <h3 goods-type="3" class="tit2">规则<span style="color: cadetblue; margin-left: 10px; vertical-align: middle">(可选项，如不选择，用户在购买或者兑换时不提示用户)</span>
+        <span class="rule-custom">添加自定义选项</span>
+    </h3>
+    <ul class="wrap_add rule" goods-type="3">
+        <div id="rule-gender">
+            <span style="margin-right: 10px;">性别:</span>
+            <label><input type="checkbox" value="男">男</label><label><input type="checkbox" value="女">女</label>
+        </div>
+        <div id="rule-color">
+            <span style="margin-right: 10px;">颜色:</span>
+            <label><input type="checkbox" value="黑色">黑色</label><label><input type="checkbox" value="白色">白色</label>
+            <label><input type="checkbox" value="灰色">灰色</label><label><input type="checkbox" value="红色">红色</label>
+            <label><input type="checkbox" value="黄色">黄色</label><label><input type="checkbox" value="蓝色">蓝色</label>
+            <label><input type="checkbox" value="橙色">橙色</label><label><input type="checkbox" value="紫色">紫色</label>
+            <label><input type="checkbox" value="绿色">绿色</label>
+        </div>
+        <div id="rule-size">
+            <span style="margin-right: 10px;">尺寸:</span>
+            <label><input type="checkbox" value="S">S</label><label><input type="checkbox" value="M">M</label>
+            <label><input type="checkbox" value="L">L</label><label><input type="checkbox" value="XL">XL</label>
+            <label><input type="checkbox" value="XXL">XXL</label><label><input type="checkbox" value="XXXL">XXXL</label>
+        </div>
+    </ul>
+
+    <h3 class="tit2" goods-type="6" style="display: none;">消费码
+        <span class="imports">导入消费码<input id="excel-import" class="import" name="excel" type="file"></span>
+        <span>(<a style="color: green" href="/docs/shoppingCards.xlsx">点击下载excel模板</a>)</span>
+    </h3>
+    <ul class="wrap_add" goods-type="6" style="display: none;">
+        <textarea name="" placeholder="多个消费券请以英文逗号隔开" class="shoppingCard" type="text"></textarea>
+    </ul>
+
+    <div class="setting_next"><strong id="next">下一步</strong>奖品详情设置</div>
+</div>
+
+<input type="hidden" id="integralUnit" value="{{unit}}">
+<script type="text/javascript" src="/javascripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/javascripts/add-goods-rule.js"></script>
+<script type="text/javascript" src="/javascripts/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+<script charset="utf-8" src="/editor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/editor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+    function changeFile(){
+        if (!$('#file').val()){
+            return;
+        }
+        $.ajaxFileUpload({
+            type: 'post',
+            url: '/image/upload',
+            fileElementIds: ['file'],
+            success: function(data){
+                var res = JSON.parse($(data).text())
+                if (res && res.url){
+                    $('#pic').attr('src', res.url)
+                    $('#view-pic').attr('src', res.url)
+                    $('#del').show()
+                } else {
+                    alert('上传图片失败')
+                }
+            },
+            error: function(xhr){
+                var res = JSON.parse($(xhr.responseText).text())
+                if (res && res.url){
+                    $('#pic').attr('src', res.url);
+                    $('#view-pic').attr('src', res.url)
+                    $('#del').show()
+                } else {
+                    alert('上传图片失败')
+                }
+            }
+        })
+    }
+
+    $(function () {
+        var goodsCatConfig = null;
+        var goodsData = {};
+        var twInfo = null;
+        var goodsId = $('#goodsId').val();
+
+        function generateGoodsCatOption(data){
+            var domString = '<option value="">请选择</option>'
+
+            $.map(data, function(v, k){
+                domString += '<option value="' + k + '">' + v.name + '</option>'
+            })
+            return domString;
+        }
+
+        $('#category1').change(function(){
+            var v = $(this).val();
+            var domString = ''
+            if (v && goodsCatConfig[v] && goodsCatConfig[v].cat){
+                var data = goodsCatConfig[v].cat;
+                domString = generateGoodsCatOption(data);
+            } else {
+                domString = generateGoodsCatOption({});
+            }
+            $('#category2').empty();
+            $('#category2').append(domString);
+        })
+
+        function initGoodsCategory(){
+            var domString = generateGoodsCatOption(goodsCatConfig);
+            $('#category1').empty();
+            $('#category1').append(domString)
+            $('#category1').change()
+        }
+
+        function loadGoodsCategory(cb){
+            $.ajax({
+                type: 'GET',
+                url: "/goods/category",
+                success: function(data){
+                    goodsCatConfig = data;
+                    if (goodsCatConfig){
+                        initGoodsCategory();
+                    }
+                    cb?cb():''
+                },
+                error: function(){
+                    alert('获取奖品分类失败!')
+                }
+            })
+        }
+
+        $('#upload-file').click(function(){
+            $('#file').click();
+        })
+
+        $('#del').click(function(){
+            $('#pic').removeAttr('src')
+            $('#view-pic').removeAttr('src')
+            $('#del').hide()
+        })
+
+        $('#live-time').find('.startTime').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('#validity-time').find('.validity-time').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('#pushTime').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('#type').change(function(){
+            var v = $(this).val();
+            $('#live-time').find('.startTime').val('')
+            $('[goods-type][goods-type=' + v + ']').show()
+            $('[goods-type][goods-type!=' + v + ']').hide()
+            $('[hide-goods-type]').show()
+            $('[hide-goods-type*=' + v + ']').hide()
+        })
+
+        $('.play-way').find('.start-down-time').click(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('.play-way').find('.start-time').each(function(){
+            $(this).attr('id', Math.random());
+        })
+
+        $('.play-way').find('.start-time').focus(function(){
+            WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss'});
+        })
+
+        $('.play-way').find('.end-time').focus(function(){
+            var startTime = $(this).closest('.play-way').find('.start-time');
+            var id = startTime.attr('id');
+            var v = startTime.val();
+            if (v){
+                WdatePicker({dateFmt:'yyyy/MM/dd HH:mm:ss', minDate: "#F{$dp.$D(\'" + id + "\',{H:1});}"});
+            } else {
+                startTime.focus()
+            }
+        })
+
+        $("#tuwen").click(function () {
+            var token = $('#wxToken').val();
+            document.getElementById("addPrize").className = "layer_wBg show";
+            document.getElementById('iframe_tw').src = '/html/tw.html?ztype=2&token=' + token + '&t=' + new Date().getTime();
+        });
+
+        $("#layer_close").click(function () {
+            document.getElementById("addPrize").className = 'layer_wBg hide';
+        });
+
+        function checkInt(count){
+            count = parseInt(count, 10);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return count;
+            }
+        }
+
+        function checkFloat(count){
+            count = parseFloat(count);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return Math.floor(count * 100) / 100;
+            }
+        }
+
+        $('#next').click(function(){
+            var category1 = $('#category1').val();
+            if (!category1){
+                return alert('请选择奖品品类');
+            }
+
+            var category2 = $('#category2').val();
+            if (!category2){
+                return alert('请选择奖品品类');
+            }
+
+            var name = $('#name').val();
+            if (!name){
+                return alert('请输入奖品名字');
+            }
+
+            var price = $('#price').val();
+            if ((price = checkFloat(price)) == null){
+                return alert('请输入正确的奖品价格');
+            }
+            var hidePrice = 0;
+            if ($('input[name=hide-price]').is(':checked')){
+                hidePrice = 1
+            }
+
+            var type = parseInt($('#type').val(), 10);
+
+            var count = $('#count').val();
+            if (type == 5 || type == 7 || type == 1){
+                count = 0
+            } else {
+                if ((count = checkInt(count)) == null){
+                    return alert('请输入正确的奖品库存数量');
+                }
+            }
+
+            var pic = $('#pic').attr('src');
+            if (!pic){
+                return alert('请选择奖品图片');
+            }
+
+            var ruleGender = []
+            $('#rule-gender input:checked').each(function(){
+                ruleGender.push($(this).val())
+            })
+            var ruleColor = []
+            $('#rule-color input:checked').each(function(){
+                ruleColor.push($(this).val())
+            })
+            var ruleSize = []
+            $('#rule-size input:checked').each(function(){
+                ruleSize.push($(this).val())
+            })
+            var rule = {size: ruleSize, color: ruleColor, gender: ruleGender}
+
+            $('.rule .custom').each(function(){
+                var title = $(this).attr('title')
+                var arr = []
+                $(this).find('input:checked').each(function(){
+                    arr.push($(this).val())
+                })
+                if (arr.length > 0){
+                    rule[title] = arr;
+                }
+            })
+
+            if (!pic){
+                return alert('请选择奖品图片');
+            }
+
+            goodsData = {
+                name: name,
+                type: type,
+                category: category1 + category2,
+                pic: pic,
+                count: count,
+                price: price,
+                ext: {
+                    rule: rule,
+                    hidePrice: hidePrice
+                }
+            }
+
+            var payType = $('#type').val();
+            if (payType == '1'){
+                var score = $('#score-count-value').val();
+                if ((score = checkInt(score)) == null){
+                    return alert('请输入正确内容');
+                }
+                goodsData.score = score
+            } else if (payType == '6'){
+                var shoppingCards = $('.shoppingCard').val()
+                if (!shoppingCards || $.trim(shoppingCards).length == 0) {
+                    return alert('没有填写消费卡');
+                } else {
+                    var shoppingCards = $.trim(shoppingCards).split(',')
+                    var shoppingCardArr = []
+                    $.each(shoppingCards, function (i, o) {
+                        if (o && o.length > 0) {
+                            shoppingCardArr.push(o)
+                        }
+                    })
+                    if (shoppingCardArr.length < count){
+                        return alert('消费码数量小于库存数量')
+                    }
+                    goodsData.ext.shoppingCards = shoppingCardArr;
+                }
+            }
+
+            var validTime = $('.validity-time').val()
+            if (validTime){
+                goodsData.ext.validTime = validTime
+            }
+
+            var playWay = parseInt($('#play-way').val(), 10);
+            goodsData.ext.playType = playWay;
+            $('.play-way[data=' + playWay + ']');
+            $('#view-title').text(name)
+            $('#view-name').text(name)
+            $('#view-pic').attr('src', pic)
+
+            $('.wrap01').hide()
+            $('.wrap02').show()
+        })
+
+        // for goods detail
+        var editor;
+        KindEditor.ready(function(K) {
+            editor = K.create('textarea[name="content"]',{
+                allowFileManager : true,
+                minWidth: 540,
+                items : [
+                    'source', '|', 'undo', 'redo', '|', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bgcolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'image', 'link'
+                ]
+            });
+            setInterval(function(){
+                $('#contentBody').html(editor.html());
+            },1000)
+        });
+
+        $('.cancel').click(function(){
+            window.location.href = '/goods';
+        })
+
+        $('.pre').click(function(){
+            $('.wrap01').show()
+            $('.wrap02').hide()
+        })
+
+        function saveGoods(){
+            var url = '/add/goods'
+            if (goodsId){
+                url = '/goods/' + goodsId + '/update'
+            }
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: goodsData,
+                success: function(data){
+                    window.location.href = '/prize'
+                },
+                error: function(){
+                    alert('保存奖品失败')
+                }
+            })
+        }
+
+        $('.ok').click(function(){
+            goodsData.ext.state = 3
+            saveGoods();
+        })
+
+        function renderCustomRule(data, id){
+            var domString = ''
+            domString += '<div id="' + new Date().getTime() + '" class="custom" title="' + data.title + '"><span style="margin-right: 10px;">' + data.title + ':</span>';
+            $.each(data.values, function(i, o){
+                domString += '<label><input type="checkbox" checked="true" value="' + o + '">' + o + '</label>'
+            })
+            domString += '<span class="del-custom" style="position: absolute; left: 25px;"><img style="width: 10px; height: 10px;" src="/images/am_close.png"></span>'
+            domString += '<span class="update" style="margin-left: 20px; color: blue; cursor: pointer;">修改</span>'
+
+            domString += '</div>'
+            var view = $(domString);
+            if (id){
+                $('#' + id).replaceWith(view);
+            } else {
+                $('.rule').append(view);
+            }
+
+            $('.del-custom', view).click(function(){
+                $(this).closest('div.custom').remove()
+            })
+            $('.update', view).click(function(){
+                var custom = $(this).closest('div.custom')
+                var id = custom.attr('id');
+                var title = custom.attr('title')
+                var values = []
+                custom.find('input').each(function(){
+                    values.push($(this).val())
+                })
+                new createLayerwcj({title: title, values: values}, function(data){
+                    if (data && data.title && data.values && data.values.length > 0){
+                        renderCustomRule(data, id);
+                    }
+                })
+            })
+        }
+
+        $('.rule-custom').click(function(){
+            new createLayerwcj({}, function(data){
+                if (data && data.title && data.values && data.values.length > 0){
+                    renderCustomRule(data);
+                }
+            })
+        })
+
+        $('input[name=excel]').live('change', function(){
+            var shoppingCardView = $('.shoppingCard')
+            var shoppingCards = shoppingCardView.val();
+            var shoppingCardArr = []
+            if(shoppingCards && shoppingCards.length > 0){
+                shoppingCards = $.trim(shoppingCards).split(',')
+                $.each(shoppingCards, function(i, o){
+                    if (o && o.length > 0){
+                        shoppingCardArr.push(o)
+                    }
+                })
+            }
+            var id = $(this).attr('id');
+            if (!$(this).val()){
+                return;
+            }
+            $.ajaxFileUpload({
+                type: 'post',
+                url: '/excel/upload',
+                fileElementIds: [id],
+                success: function(data){
+                    var res = JSON.parse($(data).text())
+                    setData(res)
+                },
+                error: function(xhr){
+                    var res = JSON.parse($(xhr.responseText).text())
+                    setData(res)
+                }
+            })
+
+            var setData = function(data){
+                var importShoppingCards = []
+                if (data && data.length > 0 && data[0].data){
+                    importShoppingCards = data[0].data
+                }
+                var len = 0
+                $.each(importShoppingCards, function(i, o){
+                    if (o && o.length > 0){
+                        shoppingCardArr.push(o[0])
+                        len++
+                    }
+                })
+                shoppingCardView.val(shoppingCardArr.join(','))
+                alert('成功导入了' + len + '张消费码! 当前总数：' + shoppingCardArr.length);
+            }
+        })
+
+        function renderGoods(goods){
+            $('#name').val(goods.name)
+            $('#price').val(goods.price)
+            $('#count').val(goods.count)
+            if (goods.ext.rule){
+                if (goods.ext.rule.size){
+                    $.each(goods.ext.rule.size, function(i, o){
+                        $('#rule-size input[value=' + o + ']').attr('checked', true)
+                    })
+                }
+                if (goods.ext.rule.color){
+                    $.each(goods.ext.rule.color, function(i, o){
+                        $('#rule-color input[value=' + o + ']').attr('checked', true)
+                    })
+                }
+                if (goods.ext.rule.gender){
+                    $.each(goods.ext.rule.gender, function(i, o){
+                        $('#rule-gender input[value=' + o + ']').attr('checked', true)
+                    })
+                }
+                delete goods.ext.rule.size
+                delete goods.ext.rule.color
+                delete goods.ext.rule.gender
+                $.map(goods.ext.rule, function(v, k){
+                    renderCustomRule({title: k, values: v})
+                })
+            }
+            $('#category1').val(goods.category.substring(0, 4))
+            $('#category1').change();
+            $('#category2').val(goods.category.substring(4, 8))
+            editor.html(goods.ext.detail)
+            $('#type').val(goods.type)
+            $('#type').change()
+            $('#type').attr('disabled', 'disabled')
+            if (goods.type == '1'){
+                $('#score-count').show()
+                $('#score-count-value').val(goods.score)
+            }
+            $('#pic').attr('src', goods.pic)
+            $('#view-pic').attr('src', goods.pic)
+            $('#del').show()
+            if (goods.ext.validTime){
+                $('.validity-time').val(goods.ext.validTime)
+            }
+            if (goods.ext.shoppingCards){
+                $('.shoppingCard').val(goods.ext.shoppingCards.join((',')))
+            }
+        }
+
+        function loadGoods(){
+            $.ajax({
+                type: "GET",
+                url: '/goods/' + goodsId + '/info',
+                success: function(data){
+                    renderGoods(data)
+                },
+                error: function(xhr){
+                    alert('获取奖品信息失败')
+                }
+            })
+        }
+
+        if (goodsId){
+            loadGoodsCategory(function(){
+                loadGoods();
+            })
+        } else {
+            loadGoodsCategory();
+        }
+    });
+</script>
+</body>
+</html>

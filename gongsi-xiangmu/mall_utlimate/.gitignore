@@ -1,0 +1,14 @@
+node_modules/
+temp/
+.idea/
+config-bak/
+env-config.js
+tools/privite
+dev/
+logs/
+parseUrl.js
+routes/testApi.js
+lastRenderedTemplateName.log
+routes/wyqtest.js
+*.log
+log.*

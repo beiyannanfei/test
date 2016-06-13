@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{{store.name}}</title>
+<link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<style type="text/css">
+body{ background:#e4e4e4}
+.ico_up{ position:fixed; right:20px; bottom:20px; width:44px; height:44px; background:url(/pointMall/images/pmall/up.png) no-repeat 0 0; background-size:44px 44px; text-indent:-9999px; cursor:pointer}
+.list_goods2 li{ float:left; width:50%;}
+.list_goods2 li .wrap{position:relative; margin:5px; overflow:hidden; clear:both}
+.list_goods2 li:nth-child(odd) .wrap{ margin-left:10px}
+.list_goods2 li:nth-child(even) .wrap{ margin-right:10px}
+.list_goods2 li .pic img{ width:100%}
+.list_goods2 li .count{ clear:both; overflow:hidden; padding-bottom:2px; padding-left:6px; background:#fff}
+.list_goods2 li .count h3{ display:block;  padding-top:3px; font-weight:normal; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.list_goods2 li .count p{ padding-bottom:2px}
+.list_goods2 li .count span{ float:left; color:#dc261c;}
+.list_goods2 li .count span i{ font-size:15px; font-weight:bold}
+.list_goods2 li .count em{ float:right; margin-top:3px; padding-right:4px; color:#666}
+.list_goods2 li .tip1{ position:absolute; top:5px; right:0; background:rgba(0,0,0,.5) url(img/tip1.png) no-repeat 5px center;background-size:12px 12px; padding:5px 10px 5px 23px; color:#fff;}
+.list_goods2 li .tip2{ position:absolute; left:-89px; top:-10px}
+.list_goods2 li .tip2 strong{ display:inline-block; width:200px; height:20px; padding-top:25px; background:#939393; color:#fff; text-align:center; font-weight:normal; -webkit-transform:rotate(-45deg); font-size:10px}
+.list_goods2 li .tip2 .comingsoon{ background:#dc261c}
+
+.swiper-container{width:100%;text-align:center; background-color:#d8d8d8;}
+.swiper-slide img{width:100%;}
+.swiper-container{margin:0 auto 5px;position:relative;overflow:hidden;-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;-o-backface-visibility:hidden;backface-visibility:hidden;z-index:1;}
+.swiper-wrapper{position:relative;width:100%;height:100%;-webkit-transition-property:-webkit-transform,left,top;-webkit-transition-duration:0s;-webkit-transform:translate3d(0px,0,0);-webkit-transition-timing-function:ease;-moz-transition-property:-moz-transform,left,top;-moz-transition-duration:0s;-moz-transform:translate3d(0px,0,0);-moz-transition-timing-function:ease;-o-transition-property:-o-transform,left,top;-o-transition-duration:0s;-o-transform:translate3d(0px,0,0);-o-transition-timing-function:ease;-o-transform:translate(0px,0px);-ms-transition-property:-ms-transform,left,top;-ms-transition-duration:0s;-ms-transform:translate3d(0px,0,0);-ms-transition-timing-function:ease;transition-property:transform,left,top;transition-duration:0s;transform:translate3d(0px,0,0);transition-timing-function:ease;}.swiper-free-mode>.swiper-wrapper{-webkit-transition-timing-function:ease-out;-moz-transition-timing-function:ease-out;-ms-transition-timing-function:ease-out;-o-transition-timing-function:ease-out;transition-timing-function:ease-out;margin:0 auto;}
+.swiper-slide{float:left;width:100%; height: 100%;}
+.swiper-wp8-horizontal{-ms-touch-action:pan-y;}.swiper-wp8-vertical{-ms-touch-action:pan-x;}
+.pagination {position: absolute; left: 0; text-align: center; bottom: 5px; width: 100%;}
+.swiper-pagination-switch { display: inline-block; width: 10px; height: 10px; border-radius: 10px; background: #999; margin: 0 3px; cursor: pointer;}
+.swiper-active-switch {background: #fff;}
+
+@media all and (max-width:320px){
+    .list_goods2 li .pic{ height:116px}
+    .swiper-container{ height:140px}
+    /*.swiper-slide{ height:140px}*/
+}
+@media all and (min-width:321px) and (max-width:375px){
+    .list_goods2 li .pic{ height:138px}
+    .swiper-container{ height:164px}
+    /*.swiper-slide{ height:164px}*/
+}
+@media all and (min-width:376px) and (max-width:700px){
+    .list_goods2 li .pic{ height:154px}
+    .swiper-container{ height:181px}
+    /*.swiper-slide{ height:181px}*/
+}
+@media all and (min-width:701px) and (max-width:1100px){
+    .list_goods2 li .pic{ height:200px}
+    .swiper-container{ height:260px}
+    /*.swiper-slide{ height:260px}*/
+}
+@media all and (min-width:1100px) and (max-width:2000px){
+    .list_goods2 li .pic{ height:300px}
+    .swiper-container{ height:350px}
+    /*.swiper-slide{ height:350px}*/
+}
+</style>
+</head>
+<body style="background-color: {{store.bgColor}};">
+    <input type="hidden" id="storeId" value="{{store._id}}">
+    <div class="swiper-container">
+        <div class="swiper-wrapper color_1">
+            {{#each store.prizes}}
+                {{#if this.isAd}}
+                    <div goodsId="{{id}}" link="{{link}}" class="swiper-slide" style="background:url({{pic}}) no-repeat center center; background-size:cover;">
+                    </div>
+                {{/if}}
+            {{/each}}
+        </div>
+        <div class="pagination"></div>
+    </div>
+    <ul class="list_goods2">
+        {{#each store.prizes}}
+            {{#unless this.isAd}}
+            <li goodsId="{{id}}">
+                <div class="wrap">
+                    <div class="pic" style="background:url({{pic}}) no-repeat center center; background-size:cover;"></div>
+                    <div class="count">
+                        <h3>{{name}}</h3>
+                        {{#if isExchange}}
+                            <p><span><i>{{ext.score}}</i> {{../../../unit}}</span>
+                                {{#unless ext.hidePrice}}
+                                    <em>￥{{price}}</em>
+                                {{/unless}}
+                            </p>
+                        {{else}}
+                            <p><span><i>￥{{price}}</i></span></p>
+                        {{/if}}
+                    </div>
+                    {{#if count}}
+                        {{#if isExchange}}
+                            <div class="tip2"><strong class="comingsoon">立即兑换</strong></div>
+                        {{else}}
+                            <div class="tip2"><strong class="comingsoon">立即购买</strong></div>
+                        {{/if}}
+                    {{else}}
+                        <div class="tip2"><strong class="end">已结束</strong></div>
+                    {{/if}}
+                </div>
+            </li>
+            {{/unless}}
+        {{/each}}
+    </ul>
+    <span class="ico_up">上滑</span>
+</body>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script>
+    window.loadShareParam = function(cb){
+        var storeId = $('#storeId').val();
+        $.ajax({
+            method: 'POST',
+            url: '/pointMall/store/share/' + storeId,
+            data: {url: location.href.split('#')[0]},
+            success: function(data){
+                cb(null, data);
+            },
+            error: function(){
+                cb('error')
+            }
+        })
+    }
+</script>
+<script type="text/javascript" src="/pointMall/javascripts/wxShareApi.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/idangerous.swiper.js"></script>
+<script>
+    $(function(){
+        var storeId = $('#storeId').val();
+        $('.ico_up').click(function(){
+            $("html,body").animate({scrollTop:0},300)
+        })
+
+        $('.list_goods2').find('li').click(function(){
+            var goodsId = $(this).attr('goodsId');
+            window.location.href = '/pointMall/goods/detail?id=' + goodsId;
+        })
+
+        if ($('.swiper-slide').length > 1){
+            var mySwiper = new Swiper('.swiper-container',{
+                pagination: '.pagination',
+                paginationClickable: true,
+                mode:'horizontal',
+                loop:'true',
+                keyboardControl:'true',
+                paginationAsRange:'true',
+                autoplay: 3000,
+                onSlideChangeStart: function(swiper){
+
+                }
+            })
+        }
+
+        $('.swiper-slide').click(function(){
+            var goodsId = $(this).attr('goodsId');
+            if (!/^fake/.test(goodsId)){
+                window.location.href = '/pointMall/goods/detail?id=' + goodsId;
+            } else {
+                var link = $(this).attr('link');
+                var urlReg = /^(https|http):\/\/[A-Za-z0-9]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/
+                if (link && urlReg.test(link)){
+                    window.location.href = link
+                }
+            }
+        })
+
+        window.getShareParam = function(cb){
+            $.ajax({
+                method: 'GET',
+                url: '/pointMall/store/share/' + storeId,
+                success: function(data){
+                    cb(null, data);
+                },
+                error: function(){
+                    cb('error')
+                }
+            })
+        }
+    })
+</script>
+</html>

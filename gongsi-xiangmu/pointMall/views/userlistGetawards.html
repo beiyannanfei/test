@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<title>中奖名单</title>
+<style type="text/css">
+*{font-family:"Lucida Grande","微软雅黑"}
+html,body,div,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,pre,form,p,blockquote,fieldset,input,abbr,article,aside,command,details,figcaption,figure,footer,header,hgroup,mark,meter,nav,output,progress,section,summary,time,button { margin: 0; padding: 0;font-size:12px;}
+h1,h2,h3,h4,h5,h6,pre,code,address,caption,cite,code,em,strong,th,figcaption { font-weight: normal; font-style: normal }
+ul,li,dl,dt,dd{ list-style:none}
+fieldset,iframe,img { border:0; }
+i, cite, em, var, address{font-style:normal}
+caption,th { text-align: left; }
+table { border-collapse: collapse; border-spacing: 0; }
+article,aside,footer,header,hgroup,nav,section,figure,figcaption,video { display: block; }
+
+/*ClearFix */
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+*html .clearfix {height:1%;}
+*+html .clearfix{height:1%;}
+.clearfix{display:inline-block;}
+.clearfix {display:block;}
+.clear{ clear:both; overflow:hidden;_zoom:1;}
+
+body{-webkit-overflow-scrolling:touch; }
+html,body{ height:100%}
+
+/* TYPE */
+a{ color:#444; text-decoration:none;}
+a {bblr:expression(this.onFocus=this.blur()); outline:none;}
+
+.bg_award{ position:fixed; z-index:0; left:0; top:0; right:0; bottom:0; background:url(/pointMall/images/bg_award.jpg) #1e47d9 no-repeat center 0; background-size:100% 100%;}
+.wrap_s1{ position:relative; z-index:1; padding:12px 15px;}
+.top_ad{ height:45px; background:url(/pointMall/images/top_img.png) no-repeat center 0;background-size:285px 45px; text-indent:-9999px}
+.ulist_awards li{ margin-top:10px; background:#fff; border-radius:3px;}
+.ulist_awards li dt{ padding:8px 10px; font-size:15px}
+.ulist_awards li dd{ border-top:solid 2px #b5b5b5;}
+.ulist_awards li dd th{ padding:6px 10px; background:#ffe4be}
+.ulist_awards li dd td{ padding:10px; border-top:solid 1px #d0d0d0;}
+.ulist_awards li dd td.first-child{ border:0}
+.ulist_awards li dd td.user img{ width:30px; height:30px; border-radius:15px}
+
+</style>
+</head>
+
+<body>
+<div class="bg_award"></div>
+<div class="wrap_s1">
+	<div class="top_ad">中奖名单</div>
+    <ul class="ulist_awards">
+        {{#each data}}
+        <li>
+            <dl>
+            <dt>{{memo}}（<strong>{{name}}</strong>）</dt>
+            <dd>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <colgroup>
+                <col width="20%" />
+                <col width="30%" />
+                <col width="*" />
+                </colgroup>
+                <tr>
+                <th colspan="2">用户名</th>
+                <th>获得奖品</th>
+                </tr>
+                {{#each users}}
+                    <tr>
+                        <td class="user"><img src="{{headImg}}" /></td>
+                        <td>{{nickName}}</td>
+                        <td>{{../name}}</td>
+                    </tr>
+                {{/each}}
+                </table>
+            </dd>
+            </dl>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+</body>
+</html>

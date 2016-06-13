@@ -1,0 +1,123 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/pagination.css">
+<link rel="stylesheet" href="/stylesheets/orderList.css">
+
+<div class="load">
+    <img src="/images/loading.gif">
+</div>
+<div class="main">
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="##">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <div id="hbreadcrumb" class="pull-right m-t-lg">
+                    <ol class="hbreadcrumb breadcrumb">
+                        <li><a href="##">订单管理</a></li>
+                        <li>
+                            <span>订单列表</span>
+                        </li>
+                    </ol>
+                </div>
+                <h2 class="font-light m-b-xs">
+                    订单管理
+                </h2>
+                <small>订单列表</small>
+            </div>
+        </div>
+    </div>
+    <div class="dialog">
+            <h3>物流详情</h3>
+            <p class="address" id="addInfo"></p>
+            <p class="address">
+                <b>物流公司：</b>
+                <select class="form-control" id="wayCom">
+                    <option value="圆通快递">圆通快递</option>
+                    <option value="顺丰快递">顺丰快递</option>
+                    <option value="韵达快递">韵达快递</option>
+                </select>
+            </p>
+            <p class="address">
+                <b>快递单号：</b>
+                <input type="text" class="form-control" id="waybillId"></p>
+            <p class="dialog_btn">
+                <button id="way-ok" class="btn w-xs btn-primary">确定</button>
+                <button id="way-cancel" class="btn w-xs btn_default" style="margin-left:10px">取消</button>
+                <button id="know" class="btn w-xs btn-success" style="margin-left:70px">我知道了</button>
+            </p>
+    </div>
+    <div class="awad_main">
+        <div class="awad_main_top">
+            <div class="status">
+                <p><i>奖品：</i><input type="text" class="form-control" id="awards"></p>
+                <p class="award_type">
+                    <i>奖品类型：</i>
+                    <select id="type" class="form-control">
+                        <option value="">全部</option>
+                        <option value="">实物</option>
+                        <option value="">消费码</option>
+                        <option value="">微信卡卷</option>
+                        <option value="">第三方卡券（url）</option>
+                        <option value="">微信红包</option>
+                    </select>
+                </p>
+                <p class="award_status">
+                    <i>订单状态：</i>
+                    <select id="state" class="form-control">
+                        <option value="">全部</option>
+                        <option value="">已发货</option>
+                        <option value="">未发货</option>
+                        <option value="">已完成</option>
+                    </select>
+                </p>
+                <p class="award_time">
+                    <i>日期：</i>
+                    <strong class="data">
+                        <input type="text" class="form-control" id="startTime" placeholder="开始时间">
+                        <b>至</b>
+                        <input type="text" class="form-control" id="endTime" placeholder="结束时间">
+                    </strong>  
+                </p>
+                <button class="btn btn-primary" id="screen">筛选</button>
+            </div>
+            <div class="status_btn">
+                <button class="btn btn-success" id="download">批量导出订单</button>
+                <a href="/admin/page/order_chart" class="btn btn-primary">订单统计</a>
+                <!-- <button class="btn btn-danger" id="delete">删除</button> -->
+            </div>
+            <div class="order_number"></div>
+        </div>
+        <div class="clearfix"></div>
+        <table class="table awad_table">
+            <thead>
+            <tr id="top">
+                <th>
+                    <div class="icheckbox_square-green" id="select-all" style="position: relative;margin-top:-5px;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                </th>
+                <th>奖品</th>
+                <th>图片</th>
+                <th>奖品类型</th>
+                <th>中奖人</th>
+                <th>中奖头像</th>
+                <th style="width:15%;">用户信息</th>
+                <th>中奖时间</th>
+                <th>状态</th>
+            </tr>
+            </thead>
+            <tbody id="awad_list">
+                
+            </tbody>
+        </table>
+        <div id="Pagination" class="pagination"></div>
+        <div id="nodata" class="picture">
+            <strong>还没有任何订单信息哦</strong>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/pagination.min.js"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js"></script>
+<script src="/javascripts/orderList.js"></script>

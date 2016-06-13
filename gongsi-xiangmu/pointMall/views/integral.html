@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{{unit}}管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/points-style.css"/>
+
+    <style>
+        .query_btn{width:80px;height:30px; padding:0 12px; border:1px solid #d9dadc; border-left:0; background-color:#eee; cursor:pointer;}
+        .user_btn{width:120px;height:30px; border:1px solid #d9dadc; border-left:0; background-color:#44b549; cursor:pointer;color: #FFFFFF }
+
+        .pagenavi{ padding:20px 10px 10px 0; text-align:right; line-height:26px;}
+        .pagenavi em{ display:inline-block; vertical-align:top; margin-right:5px; padding:0px 12px 0px 4px; border-radius:3px; border:solid 1px #ccc; cursor:pointer}
+        .pagenavi em strong{ display:inline-block; text-indent:-9999px; border:solid 6px #999; border-color:transparent #aaa transparent transparent}
+        .pagenavi em:hover{ background:#eee}
+        .pagenavi em.next{padding:0px 4px 0px 12px;}
+        .pagenavi em.next strong{border-color:transparent transparent transparent #aaa }
+        .pagenavi .page_st{ margin-right:5px;}
+        .pagenavi .input_number{ margin-right:4px; vertical-align:top; display:inline-block; line-height:23px; border:solid 1px #ccc; padding:1px 0 3px;  text-align:center;border-radius:3px;}
+        .pagenavi .input_number input{ border:0;width:40px; padding:0 5px; line-height:20px;outline:none; text-align:center}
+        .pagenavi .btn_send{border:solid 1px #ccc; vertical-align:top; display:inline-block; line-height:23px; padding:2px 10px; width:50px; text-align:center;border-radius:3px; cursor:pointer}
+        .pagenavi .btn_send:hover{background:#eee}
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="warp">
+
+    <!--<div class="top_tile">{{unit}}管理</div>-->
+
+    <div class="topcon">
+        <span id="nav_1" class="tile active" onClick="changDiv(1,2)">TOP排名（20名）</span>
+        <span id="nav_2" class="tile" onClick="changDiv(2,2)">{{unit}}操作历史</span>
+
+        <!--<div id="pointSearch" class="search">-->
+            <!--<input id="queryName" type="text" class="inputTet" placeholder="按用户名查询" value=""/>-->
+            <!--<input onclick="operationClick()" type="button" class="btn" value="查询">-->
+        <!--</div>-->
+        <div style="float:right;padding: 0px 20px 0px 0px;">
+            <input id="link" type="button" class="user_btn" value="个人中心URL地址">
+        </div>
+    </div>
+
+    <!--<div style="margin-top: 20px; position:relative; padding-left: 84px;">-->
+        <!--<label style="position:absolute; left: 0; top: 4px; font-size: 14px;">个人中心</label>-->
+        <!--<input type="text" style="width: 100%; border: 1px solid #eee; padding: 5px;" value="{{personalUrl}}">-->
+    <!--</div>-->
+
+    <div id="integral_filter" style="margin-top: 20px; position:relative;">
+        <label style="float:right;padding-right: 20px;"><span style="margin:10px">总数：<label id="total_number"></label></span> <input onclick="queryUserName();" type="button" class="query_btn" value="查询"> </label>
+        <label style="padding: 15px;">按积分段筛选</label><input id="startNumber" type="number" placeholder="请输入数字" style="height:30px;width:100px">-<input id="endNumber" type="number" placeholder="请输入数字" style="height:30px;width:100px">
+        <label style="padding: 15px;">用户昵称：</label><input type="text" id="queryName" value="" placeholder="请输入用户昵称" style="height:30px">
+    </div>
+
+    <div id="chDiv_1" class="userList">
+
+        <ul class="head">
+            <li class="w_01">用户头像</li>
+            <li class="w_02">昵称</li>
+            <li class="w_03">{{unit}}</li>
+            <li class="w_04">操作</li>
+        </ul>
+
+        <!---->
+        <div id="pointsList">
+            {{#each data}}
+            <ul class="item">
+                <li class="w_01"><span class="pic"><img src="{{headImg}}"></span></li>
+                <li class="w_02">{{nickName}}</li>
+                <li class="w_03" id="{{openId}}_integral">{{integral}}</li>
+                <li class="w_04">
+                    <span class="edit" onclick="modalShow('{{openId}}')"><i></i><span class="t">编辑</span></span>
+                    <span class="search"><a href="/pointMall/integral/details?openId={{openId}}"><i></i><span class="t">查看</span></a></span>
+                </li>
+            </ul>
+            {{/each}}
+        </div>
+
+        <!--<div id="queryUserName" style="text-align: right; margin-top: 20px; overflow: hidden;padding-bottom: 20px;display: none">-->
+            <!--<a onclick="find_filter()"-->
+               <!--style="display: inline-block; background-color: #999; color: #FFF; padding:8px 15px;">查看更多</a>-->
+        <!--</div>-->
+
+        <div id="queryUserName" class="pagenavi">
+            <em class="pre"><strong></strong></em>
+            <span class="page_st"><label id="page_number">1</label>/<label id="_pages">1</label></span>
+            <em class="next"><strong></strong></em>
+        </div>
+
+        <!---->
+    </div>
+
+    <div id="chDiv_2" style="display:none;">
+        <div class="userList col_5">
+
+            <ul class="head">
+                <li class="w_01">用户头像</li>
+                <li class="w_02">昵称</li>
+                <li class="w_03">{{unit}}</li>
+                <li class="w_04">时间</li>
+                <li class="w_05">备注</li>
+            </ul>
+
+            <!---->
+            <div id="pointHistory">
+
+            </div>
+            <!---->
+
+            <div id="queryPoint" style="text-align: right; margin-top: 20px; overflow: hidden;padding-bottom: 20px;">
+                <a onclick="pointHistory()"
+                   style="display: inline-block; background-color: #999; color: #FFF; padding:8px 15px;">查看更多</a>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<!--Modal-->
+<div id="myModal" class="modalBox">
+
+    <div class="modal_dialog modal_dialog_text">
+        <div class="modal_content scoreWarp">
+
+            <h4>编辑{{unit}}</h4>
+
+            <p class="score">您的当前{{unit}}：<label id="integralUser"></label>分</p>
+
+            <p class="radiowarp">
+                <label><input name="addChecked" type="radio" value="add" checked="">加{{unit}}</label>
+                <label><input name="addChecked" type="radio" value="minus">减{{unit}}</label>
+            </p>
+
+            <p class="edit">
+                在此填写{{unit}}：<input id="integralVal" type="text" class="inpiutTet">
+            </p>
+
+            <textarea id="integralMsg" class="textarea" name="" cols="" rows=""></textarea>
+
+            <div class="btn">
+                <button onclick="submit()">确定</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!---->
+<div class="modal_backdrop"></div>
+
+<input id="wxToken" type="hidden" value="{{{wxToken}}}">
+<input type="hidden" id="integralUnit" value="{{unit}}">
+<input type="hidden" id="personalUrl" value="{{personalUrl}}">
+
+<div style="display: none" id="code_opneId"></div>
+
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script>
+
+    var operationValue = 1;
+    var page = 1;
+    var pagecount = 10;
+    var _nickName = '';
+    var _startNumber = '';
+    var _endNumber = '';
+    var limit = 20; //显示条数
+    var offset = 1;//查询偏移
+    var unit = $('#integralUnit').val() || '积分';
+    $(function () {
+        integralTop();
+
+        $('#link').click(function(){
+            var url = $('#personalUrl').val();
+            window.prompt("链接地址请复制", url);
+        })
+
+
+        $(".pre").click(function () {
+            if(offset==0){
+                offset=1;
+            }
+            if (offset > 0) {
+                offset--;
+                find_filter();
+                var number = $('#page_number').text();
+                number = parseInt(number);
+                if (number > 0) {
+                    number--;
+                    if(number==0){
+                        number=1;
+                    }
+                    $('#page_number').html(number)
+                }
+            }
+        });
+        $(".next").click(function () {
+            if(offset==0){
+                offset=1;
+            }
+            offset++;
+            var pages = $('#_pages').text();
+            if (offset <= pages) {
+                find_filter();
+                var number = $('#page_number').text();
+                number = parseInt(number);
+                number++;
+                $('#page_number').html(number);
+            } else {
+                offset--;
+            }
+        });
+
+    });
+
+    function changDiv(value, maxNum) {
+        operationValue = value;
+        if (value === 2) {
+            $('#pointSearch').hide();
+            $('#integral_filter').hide();
+            $('#pointHistory').html('');
+            page = 1;
+            pointHistory();
+        } else {
+            $('#integral_filter').show();
+            $('#queryName').val('');
+            integralTop();
+            $('#pointSearch').show();
+        }
+
+        for (var i = 1; i <= maxNum; i++) {
+            document.getElementById("chDiv_" + i).style.display = "none";
+            document.getElementById("nav_" + i).className = "tile";
+        }
+
+        document.getElementById("nav_" + value).className = "tile active";
+        document.getElementById("chDiv_" + value).style.display = "block";
+    }
+
+    function modalShow(openId) {
+        var _point = $('#' + openId + '_integral').html();
+        $('#integralUser').html(_point);
+        $('#code_opneId').html(openId);
+        $(".modal_backdrop").show();
+        $("#myModal").show();
+        $("#myModal .modal_dialog_text").show();
+        setTimeout(function () {
+            $(".modal_backdrop").css({"opacity": "0.5"}), $("#myModal .modal_dialog").css({"-webkit-transform": "translate(0,0)", "opacity": "1"})
+        }, 150);
+    }
+    $(".modalBox").click(function () {
+        closeModal();
+    });
+    $(".modalBox .modal_dialog_text .modal_content").click(function (event) {
+        event.stopPropagation();
+    });
+    $(".modalBox .modal_dialog_confirm .modal_content").click(function (event) {
+        event.stopPropagation();
+    });
+
+    function closeModal() {
+        $("#myModal .modal_dialog").css({"-webkit-transform": "translate(0,-35%)"});
+        setTimeout(function () {
+            $(".modal_backdrop").removeAttr("style");
+            $("#myModal").removeAttr("style");
+            $("#myModal .modal_dialog").removeAttr("style");
+        }, 150);
+    }
+
+    function queryUserName(){
+//        $('#pointsList').html('');
+//        findUsers();
+
+        $('#pointsList').html('');
+        offset=1;
+        $('#page_number').html(1)
+        find_filter();
+    }
+
+    function find_filter() {
+        var queryName = $('#queryName').val();
+        var startNumber = $("#startNumber").val();
+        var endNumber = $("#endNumber").val();
+        var _is = true;
+        if(queryName!='' || (startNumber!='' && endNumber!='')){
+            _is=false;
+        }
+        if(_is && queryName==''){
+            alert('请选择填写微信昵称');
+            $("#queryName").focus();
+            return false;
+        }
+        if(_is && startNumber==''){
+            alert('请选择填写积分段筛选');
+            $("#startNumber").focus();
+            return false;
+        }
+        if(_is && endNumber==''){
+            alert('请选择填写积分段筛选');
+            $("#endNumber").focus();
+            return false;
+        }
+        var timestamp = new Date().getTime();
+        var url = '/pointMall/integral/filter?nickName=' + queryName+'&startNumber='+startNumber+'&endNumber='+endNumber+'&page='+offset+'&pagecount='+limit+'&r='+timestamp+'';;
+        $.getJSON(url, function (chunk) {
+            if (chunk && chunk.status === 'success') {
+                var data = chunk.data;
+                var html = '';
+                for (var i = 0, len = data.length; i < len; i += 1) {
+                    html += '<ul class="item">' +
+                            '<li class="w_01"><span class="pic"><img src="' + data[i].headImg + '"></span></li>' +
+                            '<li class="w_02">' + data[i].nickName + '</li>' +
+                            '<li class="w_03" id="' + data[i].openId + '_integral">' + data[i].integral + '</li><li class="w_04">' +
+                            '<span class="edit"><i onclick="modalShow(\'' + data[i].openId + '\')"></i><span class="t">编辑</span></span>' +
+                            '<span class="search"><a href="/pointMall/integral/details?openId=' + data[i].openId + '"><i></i><span class="t">查看</span></span></a></li></ul>'
+                }
+                $('#pointsList').html(html);
+                if(offset==1){
+                    var total = 0;
+                    var _pages = 1;
+                    if(chunk.total){
+                        total=chunk.total;
+                        _pages = chunk.pages;
+                    }
+                    $('#_pages').html(_pages);
+                    $('#total_number').html(total);
+                }
+                //
+                $('#queryUserName').show();
+            } else {
+                alert('抱歉查不到此用户的信息');
+            }
+        });
+    }
+
+    function findUsers() {
+        var nickName = $('#queryName').val();
+        if (nickName === '') {
+            alert('请输入昵称');
+            return false;
+        }
+        var url = '/pointMall/integral/queryUserName?nickName=' + nickName+'&offset='+offset+'&limit='+limit;
+        $.getJSON(url, function (chunk) {
+            if (chunk && chunk.status === 'success') {
+                var data = chunk.data;
+                var html = '';
+                for (var i = 0, len = data.length; i < len; i += 1) {
+                    html += '<ul class="item">' +
+                            '<li class="w_01"><span class="pic"><img src="' + data[i].weixin_avatar_url + '"></span></li>' +
+                            '<li class="w_02">' + data[i].nickname + '</li>' +
+                            '<li class="w_03" id="' + data[i].openid + '_integral">' + data[i].integral + '</li><li class="w_04">' +
+                            '<span class="edit"><i onclick="modalShow(\'' + data[i].openid + '\')"></i><span class="t">编辑</span></span>' +
+                            '<span class="search"><a href="/pointMall/integral/details?openId=' + data[i].openid + '"><i></i><span class="t">查看</span></span></a></li></ul>'
+                }
+                $('#pointsList').append(html);
+                //
+                offset++;
+                if (data.length < pagecount) {
+                    $('#queryUserName').hide();
+                }else{
+                    $('#queryUserName').show();
+                }
+            } else {
+                alert('抱歉查不到此用户的信息');
+            }
+        });
+    }
+
+    function integralTop(){
+        $('#total_number').html('');
+        $('#queryUserName').hide();
+
+        var wxToken = $('#wxToken').val();
+        var url = '/pointMall/integral/top?wxToken='+wxToken;
+        $.getJSON(url, function (chunk) {
+            if (chunk && chunk.status === 'success') {
+                var data = chunk.data;
+                var html = '';
+                for (var i = 0, len = data.length; i < len; i += 1) {
+                    html += '<ul class="item">' +
+                            '<li class="w_01"><span class="pic"><img src="' + data[i].headImg + '"></span></li>' +
+                            '<li class="w_02">' + data[i].nickName + '</li>' +
+                            '<li class="w_03" id="' + data[i].openId + '_integral">' + data[i].integral + '</li><li class="w_04">' +
+                            '<span class="edit"><i onclick="modalShow(\'' + data[i].openId + '\')"></i><span class="t">编辑</span></span>' +
+                            '<span class="search"><a href="/pointMall/integral/details?openId=' + data[i].openId + '"><i></i><span class="t">查看</span></span></a></li></ul>'
+                }
+                $('#pointsList').html(html);
+            }
+        });
+    }
+
+
+    function operationClick() {
+        if (operationValue === 2) {
+            pointHistory();
+        } else {
+            offset = 0;
+            queryUserName();
+        }
+    }
+
+    function pointHistory() {
+        var url = '/pointMall/integral/history?page=' + page + '&pagecount=' + pagecount;
+        $.getJSON(url, function (chunk) {
+            if (chunk && chunk.status === 'success') {
+                var data = chunk.data;
+                var html = '';
+                for (var i = 0, len = data.length; i < len; i += 1) {
+                    html += '<ul class="item">' +
+                            '<li class="w_01"><span class="pic"><img src="' + data[i].headImg + '"></span></li>' +
+                            '<li class="w_02">' + data[i].nickName + '</li>' +
+                            '<li class="w_03">' + data[i].integral + '</li>' +
+                            '<li class="w_04">' + data[i].dateTime + '</li>' +
+                            '<li class="w_05">' + data[i].description + '</li>' +
+                            '</ul>';
+                }
+                $('#pointHistory').append(html);
+                page++;
+                if (data.length < pagecount) {
+                    $('#queryPoint').hide();
+                }else{
+                    $('#queryPoint').show();
+                }
+            } else {
+                console.log('查不到数据');
+            }
+        });
+    }
+
+
+    function submit() {
+        $('#integralVal').text('');
+        var action = $("input[name='addChecked']:checked").val();
+        if (action === '') {
+            alert('请选择操作类型!');
+            return;
+        }
+        var integral = $('#integralVal').val();
+        if (integral === '') {
+            alert('请填写'+unit+'!');
+            return;
+        }
+        var message = $('#integralMsg').val();
+        message = message.trim();
+        if (message === '') {
+            alert('请输入'+unit+'加减的原因');
+            return;
+        }
+
+        var openId = $('#code_opneId').html();
+        openId = $.trim(openId);
+
+        var url = '/pointMall/integral/action?openId=' + openId + '&integral=' + integral + '&action=' + action + '&description=' + message + '&source=platform';
+        $.ajax({
+            type: "post",
+            url: url,
+            success: function (data) {
+                console.log('data', data);
+                if (data && data.status === 'success') {
+                    closeModal();
+                    var integral = data.data.data.integral;
+                    console.log('---integral---', integral);
+                    $('#' + openId + '_integral').html(integral);
+                } else {
+                    console.log(data);
+                    if(data && data.code === 'M000'){
+                        alert(data.msg);
+                    }else{
+                        alert('操作失败，请重试！');
+                    }
+                }
+            },
+            error: function (options) {
+                alert('操作失败，请重试！');
+                console.log('error', options);
+            }
+        });
+    }
+
+</script>
+
+
+</body>
+</html>

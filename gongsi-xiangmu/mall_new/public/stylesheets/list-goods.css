@@ -1,0 +1,108 @@
+.top_tit01{ height:74px;line-height: 74px;padding-left: 20px;border: solid 1px #e4e4e4;margin-bottom: 30px; font-family: "微软雅黑"}
+.top_tit01 strong{ float:right; position:relative; top:-3px;padding:2px 10px; background:#0090ff; border-radius:4px; font-size:14px; color:#fff; font-weight:normal;}
+.top_tit01 strong:hover{ cursor:pointer; background:#0079d6;}
+
+.top_search{ overflow:hidden; clear:both; height: 80px;padding-top: 25px; text-align:right}
+.top_search *{ font-size:16px}
+.top_search .w1{ width:160px; border:solid 1px #c9c9c9; padding:3px 4px;font-family:"微软雅黑"; border-radius:3px; box-shadow:inset 0 1px 3px #ddd; line-height:18px}
+.top_search .btn:hover{ background:#eee}
+.top_search strong.addStrong{height:41px;width: 118px;background: #62cb31;color: #333;font-size: 13px;line-height: 41px;text-align: center;float: left;font-style: normal;cursor: pointer;}
+
+.t_form1{position:relative; margin-top:20px}
+.t_form1 dt{ clear:both; overflow:hidden; padding:13px 0; background:#f7f9fa;border-top:solid 1px #e7e7ea;border-bottom:solid 1px #e7e7ea;}
+.t_form1 dd{ clear:both;height:99px;width:100%;border-bottom: solid 1px #E7E7EA;}
+.t_form1 dd:hover{ background:#f9f9f9}
+.t_form1 th{ font-size:14px;text-align: center;font-weight: bold;}
+.t_form1 td{ text-align:center; font-size:14px; color:#333}
+
+.t_form1 td.address{ position:relative; }
+.t_form1 td.address strong{display:inline-block; width:70px; border:solid 1px #ddd;padding:2px 0; background:#fff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer}
+.t_form1 td.address strong:hover,.t_form1 td.address.on strong{ border:solid 1px #0090ff; color:#0090ff}
+.t_form1 td.address .url{ display:none; position:absolute; right:-50px; top:50%; margin-top:15px; background:#fff; border:solid 1px #ddd; padding:4px 6px; box-shadow:0 0 3px #ccc; border-radius:4px; white-space:nowrap }
+.t_form1 td.address .url i{ margin-left:10px; cursor:pointer; color:#0090ff}
+
+.t_form1 td.address.on .url{ display:block}
+.t_form1 td .e1{ width:80%; border:solid 1px #e7e7eb; padding:3px 4px 4px; font-family:"微软雅黑"; font-size:14px}
+.t_form1 td.good{ text-align:left;padding-top: 12px;width:16%;min-width: 16%;}
+.t_form1 td.good img{ float:left; padding:2px; border:solid 1px #ddd;height:60px;width:60px; margin:5px 5px 0 5px; max-width:100px; max-height:100px}
+.t_form1 td.good p{ margin-top:10px;font-size: 14px;float: left;white-space:nowrap;width:83px;overflow: hidden;min-width: 42px;text-overflow: ellipsis;}
+.t_form1 td.operate1{width:20%;text-align: right;padding-right: 2%;}
+.t_form1 td.operate1 .btn{margin-right: 10px;padding: 3px 6px;}
+
+.pop_page1{ position:fixed; min-width:300px; background:#fff; border-radius:5px; box-shadow:0 1px 5px rgba(0,0,0,.2); display: none; top:50%; left:50%; width:420px;margin:-80px 0 0 -210px; z-index:10;}
+.pop_page1 .title{ height:45px; background:#0090ff; padding:0 15px;border-radius:5px 5px 0 0;}
+.pop_page1 .title strong{ float:left; color:#fff; font-size:14px; line-height:45px; font-weight:normal}
+.pop_page1 .title .close{ float:right; width:15px; height:15px; margin:15px 0 0; background:url(/images/close.png) no-repeat center center; text-indent:-9999px; cursor:pointer}
+.pop_page1 .title .close:hover{opacity:.8; background-color:#000}
+.pop_page1 .cnt_code1{ margin:10px auto; text-align:center}
+.pop_page1 .cnt_code1 img{ width:160px; height:160px;}
+.pop_page1 .cnt_code1 p{ margin-top:8px; font-size:14px}
+.pop_page1 .cnt2{ margin:20px auto;}
+.pop_page1 .cnt2 .tip{ text-align:center; font-size:14px}
+.pop_page1 .cnt2 .btn{ margin-top:20px; text-align:center}
+.pop_page1 .cnt2 .btn strong{display:inline-block; width:85px; margin:0 5px; padding:5px 0; background:#0090ff; font-size:14px; border-radius:3px; font-weight:normal; color:#fff; cursor:pointer; text-align:center}
+.pop_page1 .cnt2 .btn strong.cancel{ background:#ff5252}
+
+/* add on 2014.12.23 */
+.top_search .w2{ width:140px; border:solid 1px #e4e5e7;height:32px;font-family:"微软雅黑"; border-radius:5px; line-height:18px;float: left;margin-right: 20px;margin-top: 1px;}
+.n_btn1{ margin-top:20px;}
+.n_btn1 strong{display:inline-block; width:85px; margin:0 20px 0 0; padding:5px 0; background:#0090ff; font-size:14px; border-radius:3px; font-weight:normal; color:#fff; cursor:pointer; text-align:center}
+.n_btn1 strong.cancel{ background:#ff5252}
+
+
+.pager_wapper{
+    float:right;
+}
+.pager_wapper > div{
+    float:left;
+    padding:.3em .6em;
+    margin:.3em;
+    border:solid 1px gray;
+    font-size:.9em;
+    min-width:10px;
+    text-align:center;
+    cursor: pointer;
+}
+.pager_wapper > div:hover {
+    background-color:rgb(210, 241, 255);
+}
+.pager_wapper .pager_current,.pager_wapper .pager_current:hover {
+    background-color:rgb(242, 210, 255);
+}
+
+.clearFix{
+    clear:both !important;
+    float:none !important;
+    width:0 !important;
+    height:0 !important;
+    border:none !important;
+    padding:0 !important;
+    margin:0 !important;
+}
+.wrap01 .wrap01_form{
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.wrap01 .wrap01_form input{
+    height: 32px;
+    width: 328px;
+    line-height: 32px;
+    background: #fff;
+    border: solid 1px #e4e5e7;
+    border-radius: 5px;
+    font-size: 12px;
+    padding-left: 10px;
+    outline: none;
+}
+.wrap01 .wrap01_form .wrap01_search{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    cursor: pointer;
+}
+.width thead tr th{width: 3%;text-align: center;font-size: 12px;font-family: "微软雅黑";font-weight: normal;color: #6A6C6F}
+.tab_width tr td{width: 12.5%;text-align: center;}
+.tab_width tr td.shopper{width: 8%;}
+.tab_width tr td.shopper p{margin-left:29px;margin-top:10px;height:20px;text-overflow:ellipsis;overflow:hidden;}

@@ -1,0 +1,110 @@
+<link rel="stylesheet" href="/stylesheets/system_price.css">
+<style type="text/css">
+    .price_list .tit{display: none;}
+</style>
+<script src="/javascripts/crazyLottery.js"></script>
+<div ng-show="isPageLoaded" ng-class="{bounceIn:isPageLoaded,animated:isPageLoaded}" ng-app="main" ng-controller="mainController" class="lottery">
+    <!--<debuger ngobj="ms"></debuger>-->
+    <button type="button" class="btn btn-success add_price" ng-click="openModalWin()">添加奖品</button>
+    <div class="clearfix"></div>
+    <div class="price_list">
+        <div class="price" ng-repeat="item in ms.data track by $index">
+            <span class="close" ng-click="spliceData($index)">×</span>
+            <div class="price_left">
+                <img ng-click="openModalWin(true,$index)" title="点击选择另一个奖品来替换当前奖品" ng-src="{{item.logo_src}}" alt="">
+            </div>
+            <div class="price_right">
+                <div class="name_price">
+                    <p>奖品名：</p>
+                    <span>{{item.award_name}}</span>
+                </div>
+                <div class="name_price">
+                    <p>奖品类型：</p>
+                    <span>{{item.award_type}}</span>
+                </div>
+                <div class="name_price">
+                    <p>奖品等级：</p>
+                    <input ng-model="item.rate" type="text" class="form-control">
+                    <!--<span>{{item.total_num}}</span>-->
+                </div>
+                <div class="name_price">
+                    <p>数量：</p>
+                    <input ng-model="item.total_num" type="text" class="form-control">
+                    <!--<span>{{item.total_num}}</span>-->
+                </div>
+                <div class="name_price">
+                    <p>概率：</p>
+                    <input ng-model="item.p" placeholder="请填写0-100之间的整数" type="text" class="form-control">
+                </div>
+                <!--<div class="name_price">-->
+                    <!--<p>中奖次数：</p>-->
+                    <!--<input type="number" class="form-control">-->
+                <!--</div>-->
+            </div>
+        </div>
+        <div class="price">
+            <div class="price_left">
+                <img  ng-src="{{CONFIG.UNPRIZE_PIC}}" alt="">
+                <span>上传图片</span>
+                <upload max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" auto='1' srckey="url" srcmodel="CONFIG.UNPRIZE_PIC" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" width="{{CONFIG.UPLOADER.HEIGHT}}">
+                    <!--<div>-->
+                        <!--<img ng-src="{{CONFIG.UNPRIZE_PIC}}">-->
+                    <!--</div>-->
+                </upload>
+            </div>
+            <div class="price_right">
+                <div class="name_price midden">
+                    <p>未中奖概率：</p>
+                    <input type="text" ng-model="ms.unPrizedRate" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="name_price">-->
+        <!--<p>行为：</p>-->
+        <!--&lt;!&ndash;{{ms.behaviors.s1_data.items.length}}&ndash;&gt;-->
+        <!--<select class="behaviors" ng-change="s1Change()" ng-model="ms.behaviors.s1_data" ng-options="item.name for item in ms.behaviors.data"></select>-->
+        <!--<select class="behaviors" ng-show="ms.behaviors.s1_data.items&&ms.behaviors.s1_data.items.length!==0" ng-model="ms.behaviors.s2_data" ng-options="item.q for item in ms.behaviors.s1_data.items"></select>-->
+        <!--<select class="behaviors" ng-show="ms.behaviors.s2_data.a&&ms.behaviors.s2_data.a.length!==0" ng-model="ms.behaviors.s3_data" ng-options="item for item in ms.behaviors.s2_data.a"></select>-->
+        <!-- -->
+        <!--</div>-->
+
+
+    </div>
+    <button ng-click="submit($event)" ng-show="ms.data.length!==0" type="button" class="btn btn-primary save">保存</button>
+    <!--{{isModalWinVisible}}-->
+    <div class="pop_cnt" ng-show="isModalWinVisible">
+        <h2><strong class="tit2">奖品列表</strong><span class="close" title="关闭" ng-click="cancelChooseAwards()">关闭</span></h2>
+        <ul class="info1" style="list-style:none">
+            <li ng-show="item.visible===true" award-type="{{item.type}}" ng-repeat="item in ms.awardsList track by $index">
+                <img ng-click="toggleAwardId(item._id,$index,$event)" ng-src="{{item.pic}}" alt="">
+                <p class="message" title="{{item.name}}"><b>{{item.name}}</b></p>
+                <p title="{{tvmService.getChineseType(item.type)}}">{{tvmService.getChineseType(item.type)}}</p>
+            </li>
+        </ul>
+        <div class="dialog_btn">
+            <button ng-click="saveAwards()" type="button" class="btn w-xs btn-success">确定</button>
+            <button ng-click="cancelChooseAwards()" type="button" class="btn w-xs btn-default">取消</button>
+        </div>
+    </div>
+</div>
+<style>
+    .pop_cnt .info1 li {
+        line-height: 34px;
+        margin: 0 8px 0 0;
+        float: left;
+        text-align: center;
+        padding: 130px 0 0;
+        width: 150px;
+    }
+    .pop_cnt .info1 li img{
+        margin-left:32px;
+    }
+    .pop_cnt .info1 li p{
+        width:auto;
+    }
+    .pop_cnt{
+        width:1000px;
+        margin-left:-500px;
+    }
+</style>

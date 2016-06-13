@@ -1,0 +1,42 @@
+
+.layer_w{width:730px; background-color:#FFF; margin:0 auto;}
+.layer_w .header{ background-color:#f4f5f9; height:50px; line-height:50px; position:relative; padding:0 20px; font-size:16px;}
+.layer_w .header .close{position: absolute;top: 50%;margin-top: -8px;right: 20px;width: 16px;height: 16px;line-height: 999em;overflow: hidden; cursor:pointer; background: url("../img/mass_ico.png") 0 -2708px no-repeat;}
+.layer_w .header .close:hover{ background-position:0 -2734px;}
+.layer_w .con{ height:150px;}
+.layer_w .frm_control_group{ width:420px; margin:0 auto; padding-top:60px;}
+.layer_w .frm_control_group .frm_label{ display:block; font-size:14px; line-height:2em; margin-bottom:10px;}
+.layer_w .frm_control_group .frm_input_box input{ border:1px solid #CCC; font-size:14px; color:#333; padding:10px; width:300px;}
+.layer_w .frm_control_group .frm_error{ color:#e97979;font-size:14px; line-height:2em;}
+.layer_w .btn_group{ background-color:#f4f5f9; height:52px; padding-top:16px; text-align:center;}
+
+
+
+.bg_mobile{background:url("../img/bg_mobile.png") no-repeat; width:322px; height:630px; margin:0 auto; position:relative;}
+.bg_mobile .closed{background:url("../img/icon_closed.png") no-repeat; width:65px; height:65px; position:absolute; right:0; top:0px; z-index:10; cursor:pointer;}
+.bg_mobile .closed:hover{ background-position:-65px 0;}
+
+.bg_mobile .menu{ width:226px; height:36px; position:absolute; left:67px; bottom:115px;}
+.bg_mobile .menu li{position:relative; height:36px; line-height:36px; text-align:center; cursor:pointer;}
+.bg_mobile .menu li .icon{ display:inline-block; width:9px; height:9px; vertical-align:middle; background:url("../img/bg_mobile_icon.png") no-repeat; margin-right:3px;}
+.bg_mobile .menu li .subitem{ left:50%;position:absolute; bottom:45px;  box-sizing:border-box;}
+.bg_mobile .menu li ul{ position:relative; left:-50%; border-right:1px solid #CCC; border-left:1px solid #CCC; border-top:1px solid #CCC; overflow:hidden;}
+.bg_mobile .menu li ul li{ line-height:30px; border-bottom:1px solid #CCC; cursor:default; background-color:#f3f3f3; display:block;word-break: keep-all; white-space: nowrap; padding:0 10px;}
+.bg_mobile .menu li .arrow_b{ position:absolute; border-right:1px solid #CCC; border-bottom:1px solid #CCC; background-color:#f3f3f3; display:inline-block; width:8px; height:8px; z-index:10; left:30%; margin-left:-4px; bottom:-4px; transform:rotate(45deg);}
+
+.bg_mobile .menu li.col_2{width:50%; float:left; border-right:1px solid #CCC; box-sizing:border-box;}
+.bg_mobile .menu li.col_2:last-child .subitem{right:0; left:inherit;}
+.bg_mobile .menu li.col_2:last-child .subitem ul{left:0;}
+
+.bg_mobile .menu li.col_3{width:33.33333%; float:left; border-right:1px solid #CCC; box-sizing:border-box;}
+.bg_mobile .menu li.col_3:last-child .subitem{right:0; left:inherit;}
+.bg_mobile .menu li.col_3:last-child .subitem ul{left:0;}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>{{unit}}详情</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/points-style.css"/>
+
+    <style type="text/css">
+        .morebtn {
+            width: 93px;
+            height: 32px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 32px;
+            background: #ef6e12;
+            color: #fff;
+            float: right;
+            margin: 20px 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .morebtn:hover {
+            background: #de6610;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="warp">
+
+    <div class="top_tile"><a href="/pointMall/integral/integral"> 返回 </a> > {{unit}}详情页</div>
+
+    <div class="per_info">
+        <span class="photo"><img src="{{headImg}}"></span>
+        <p class="name">{{nickName}}</p>
+    </div>
+
+    <div class="userList scoreList">
+
+        <ul class="head">
+            <li class="w_01">时间</li>
+            <li class="w_02">{{unit}}</li>
+            <li class="w_03">获取方式</li>
+        </ul>
+
+        <!---->
+        <div id="integralData">
+            {{#each data}}
+            <ul class="item">
+                <li class="w_01">{{timeStr}}</li>
+                <li class="w_02">{{integral}}</li>
+                <li class="w_03">{{description}}</li>
+            </ul>
+            {{/each}}
+        </div>
+        <!---->
+
+        <!--<div class="page">-->
+            <!--<span>1/10</span><span class="prev"><i class="arrow_left"></i></span><span class="next"><i class="arrow_right"></i></span><input type="text" class="inputTet"><span class="goto">跳转</span>-->
+        <!--</div>-->
+        <div class="morebtn" id="queryIntegral" onclick="queryIntegral();">查看更多</div>
+    </div>
+
+
+
+</div>
+<input id="mobile_openId" type="hidden" value="{{{openId}}}">
+<input id="mobile_wxToken" type="hidden" value="{{{wxToken}}}">
+<input id="data_length" type="hidden" value="{{{length}}}">
+
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script>
+    var page = 2;
+    var pagecount = 20;
+    var wxToken =  $('#mobile_wxToken').val();
+    var openId =  $('#mobile_openId').val();
+    var data_length =  $('#data_length').val();
+    if(data_length<pagecount){
+        $('#queryIntegral').hide();
+    }
+    function queryIntegral(){
+        var url = '/pointMall/search/integralLog?openId=' + openId + '&wxToken=' + wxToken + '&page='+page+'&pagecount='+pagecount;
+        $.getJSON(url, function (chunk) {
+            if (chunk && chunk.status === 'success') {
+                var data = chunk.data;
+                var html = '';
+                for (var i = 0, len = data.length; i < len; i += 1) {
+                    var obj = data[i];
+                    html += '<ul class="item">' +
+                            '<li class="w_01">'+obj.timeStr+'</li>' +
+                            '<li class="w_02">'+obj.integral+'</li>' +
+                            '<li class="w_03">'+obj.description+'</li>' +
+                            '</ul>'
+                }
+                $('#integralData').append(html);
+                //
+                if (data.length < pagecount) {
+                    $('#queryIntegral').hide();
+                }else{
+                    $('#queryIntegral').show();
+                }
+                page++;
+            } else {
+                alert('抱歉查不到此用户的信息');
+            }
+        });
+    }
+</script>
+</body>
+</html>

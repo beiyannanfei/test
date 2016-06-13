@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>抽奖统计</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+    <style type="text/css">
+        .users_award_list .user-icon{text-align: center;}
+        .users_award_list .pic img{ width:50px; height:50px; margin:0 auto}
+        .users_award_list p{ padding-top:4px; color:#666; white-space:nowrap; max-width:110px; overflow:hidden; text-overflow:ellipsis}
+        .users_award_list .btn strong{ display:block; width:75px; margin:42px auto 0; background:#0090ff; border-radius:5px;text-align:center; color:#fff; line-height:27px; font-size:14px ; font-weight:normal; cursor:pointer}
+        .users_award_list .btn strong:hover{ background:#0f79cb;}
+        .width{margin:0 auto;background: #fff;border:solid 1px #DDDDDD;}
+        .width thead tr{height: 46px;background: #f7f9fa;}
+    </style>
+</head>
+<body>
+<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">抽奖统计详情</a></li>
+                    <li>
+                        <span>抽奖统计</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs" style="font-size:30px;">
+                抽奖统计
+            </h2>
+            <small>抽奖统计</small>
+        </div>
+    </div>
+</div>
+<input type="hidden" value="{{dateTime}}" id="dateTime">
+<div style="padding:0 40px 0 40px; margin-top: 10px;">
+<table class="table width users_award_list" id="lottery-statistics-list">
+    <thead>
+    <tr>
+        <th>图片</th>
+        <th>奖品名称</th>
+        <th>中奖数量</th>
+        <th>中奖人数</th>
+        <th>金额</th>
+    </tr>
+    </thead>
+</table>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        function loadStatistics(dateTime){
+            var url = '/admin/lottery/statistics/prize/detail?dateTime=' + dateTime;
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(data){
+                    renderStatisticsData(data)
+                    setTimeout(function(){
+                        var $tr=$('tr'),len=$tr.size();
+                        $tr.slice(0,len-1).children().each(function(){
+                            $(this).css({
+
+                                'vertical-align':'middle',
+                                'text-align':'center'
+                            })
+                        })
+                    })
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function renderStatisticsData(data){
+            var domString = ''
+            $.each(data, function(i, o){
+
+                domString += '<tr>' +
+                        '<td class="award pic"><img src="' + o.pic + '"></td><td>' + o.name + '</td><td>' +
+                        o.numberLottery + '</td><td>' + o.numberPeople + '</td>' +
+                        '<td>' + o.totalMoney + '</td></tr>';
+
+                domString += '<tr class="users_award_list"><td colspan=5>';
+                $.each(o.users, function(i, user){
+                    domString += '<div style="float: left; margin-left: 10px;"><div class="pic"><img src="' + user.headImg + '"></div><p class="user-icon">' + user.nickName + '</p></div>'
+                })
+                /*if (o.users.length > 10){
+                    domString += '<li class="btn pack-up"><strong>展开</strong></li>'
+                }*/
+                domString += '</td></tr>'
+            })
+            var $newCell = $($.trim(domString));
+            $('#lottery-statistics-list').find('dd').remove()
+            $('#lottery-statistics-list').append($newCell);
+            $('.pack-up', $newCell).click(function(){
+
+            })
+        }
+
+        loadStatistics($('#dateTime').val());
+    })
+</script>
+</body>
+</html>

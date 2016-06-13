@@ -1,0 +1,54 @@
+<!-- <link rel="stylesheet" type="text/css" href="/stylesheets/jBootsrapPage.css"> -->
+<link rel="stylesheet" href="/stylesheets/awad_list.css">
+
+<div class="main">
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="##">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <div id="hbreadcrumb" class="pull-right m-t-lg">
+                    <ol class="hbreadcrumb breadcrumb">
+                        <li><a href="##">奖品管理</a></li>
+                        <li>
+                            <span>奖品列表</span>
+                        </li>
+                    </ol>
+                </div>
+                <h2 class="font-light m-b-xs">
+                    奖品管理
+                </h2>
+                <small>奖品列表</small>
+            </div>
+        </div>
+    </div>
+    <div class="awad_main">
+        <button class="btn btn-success" type="button" id="release">发布奖品</button>
+        <button class="btn btn-info" type="button" id="cardManage">卡券管理</button>
+        <div class="clearfix"></div>
+        <table class="table awad_table">
+            <thead>
+            <tr>
+                <th>奖品名称</th>
+                <th>奖品图片</th>
+                <th>奖品类型</th>
+                <th>库存</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody id="awad_list">
+
+            </tbody>
+        </table>
+        <div style="text-align:right;margin-top:-20px;" id="page">
+            <ul class="pagination"></ul>
+        </div>
+    </div>
+</div>
+
+<!-- <script type="text/javascript" src="/javascripts/jBootstrapPage.js"></script> -->
+<script src="/javascripts/awad_list.js"></script>

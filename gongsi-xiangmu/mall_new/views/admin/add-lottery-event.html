@@ -1,0 +1,401 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+{{#if event}}
+    <title>修改抽奖</title>
+{{else}}
+    <title>添加抽奖</title>
+{{/if}}
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/lottery-manage.css" />
+
+</head>
+<body id="index">
+
+<div class="warp">
+    {{#if event}}
+        <input id="eventId" type="hidden" value="{{event._id}}">
+        <div class="top_tile">修改抽奖</div>
+    {{else}}
+        <div class="top_tile">添加抽奖</div>
+    {{/if}}
+
+    <div class="frm">
+        <p class="tile">抽奖主题</p>
+        <input type="text" class="inputText w500" id="theme" placeholder="填写抽奖活动主题">
+    </div>
+
+    <div class="frm">
+        <p class="tile">选择抽奖用户</p>
+        <select class="selectCategory selectText" id="tagCategory" tag="{{tag}}">
+
+        </select>
+        <select class="selectText" id="tag">
+
+        </select>
+    </div>
+
+  <div class="frm">
+      <button type="button" class="btn btn_lg btn_primary" data-action="importPrize">导入奖品</button>
+      <button type="button" class="btn btn_lg btn_grey" data-action="importDefaultPrize">导入默认奖品</button>
+      <span id="default-goods-tip">您已经选择默认奖 <span style="color: darkorange; margin-left: 5px;">(温馨提示: 添加默认奖，表明没有中奖的用户获得此奖励)</span></span>
+  </div>
+
+    <table id="" class="table table-striped table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="left">奖品</th>
+          <th>奖项备注</th>
+          <th>中奖人数</th>
+          <th>编写中奖通知</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+
+      <tbody id="goodsList"></tbody>
+    </table>
+
+  <div class="btn_group">
+    <span class="btn btn_lg btn_primary"><button type="button" data-action="saveData">完成</button></span>
+    <span class="btn btn_lg btn_default"><button type="button" onClick="cancel();">取消</button></span>
+  </div>
+  <br>
+</div>
+
+<div class="layer_wBg" id="addPrize">
+    <div class="layer_w">
+      <div class="header">选择奖品<span class="close" data-action="layer_close">关闭</span></div>
+      <div class="con">
+        <!---->
+        <div class="lottery_addList">
+          <ul id="lottery_addListcon"></ul>
+        </div>
+        <!---->
+      </div>
+      <div class="btn_group">
+        <span class="btn btn_lg btn_primary"><button type="button" data-action="goodsOk">确定</button></span>
+        <span class="btn btn_lg btn_default"><button type="button" data-action="layer_cancel">取消</button></span>
+      </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/javascripts/toast.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var importType = 1 // 1 for goods, 2 for default goods
+        var goodsMap = {}
+        var defaultGoodsId = ''
+        var eventId = null;
+        if ($('#eventId')){
+            eventId = $('#eventId').val();
+        }
+
+        $('#default-goods-tip').hide()
+
+        var tagCategory = $('#tagCategory').attr('tag');
+        tagCategory = JSON.parse(tagCategory);
+
+        function renderTagSelect(){
+            $.each(tagCategory, function(k, v){
+                var options = '<option>' + k + '</option>'
+                $('#tagCategory').append(options)
+            })
+        }
+
+        $('#tagCategory').change(function(){
+            var category = $(this).val();
+            $('#tag').empty();
+            $.each(tagCategory[category], function(i, o){
+                var options = '<option>' + o + '</option>'
+                $('#tag').append(options)
+            })
+        })
+        renderTagSelect();
+
+        function getActivity(){
+            $.ajax({
+                type: 'GET',
+                url: '/lottery/event/' + eventId,
+                success: function(data){
+                    var _theme = data.theme,
+                        _tag = data.tag,
+                        category = data.tagCategory;
+                    $('#theme').val(_theme);
+                    if (tagCategory[category]){
+                        $('#tagCategory').val(category);
+                        $('#tagCategory').change();
+                        if ($.inArray(_tag, tagCategory[category]) > -1){
+                            $('#tag').val(_tag);
+                        }
+                    }
+                    addGoodsList(data.goods);
+                    defaultGoodsId = data.defaultGoodsId
+                    if (defaultGoodsId){
+                        $('#default-goods-tip').show()
+                    }
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function renderGoods(data){
+            var html = '';
+
+            for(var i = 0; i < data.length; i++){
+                var _name = data[i].name;
+                var _pic = data[i].pic;
+                var _id = data[i]._id;
+                html += '<li id="'+ _id +'">';
+                html += '<p class="img"><img src="'+ _pic +'" width="100" height="100"></p>';
+                html += '<p class="tile">'+ _name +'</p>';
+                html += '</li>';
+            }
+            var $newCell = $($.trim(html));
+            $('#lottery_addListcon').html('');
+            $('#lottery_addListcon').append($newCell);
+            $('li', $newCell.parent()).click(function(){
+                var _this = $(this);
+                if (importType == 1){
+                    var className = _this.attr('class');
+                    if(className === 'active'){
+                        _this.removeClass('active');
+                    }else{
+                        _this.addClass('active');
+                    }
+                } else if (importType == 2){
+                    _this.siblings().removeClass('active');
+                    if (_this.hasClass('active')){
+                        _this.removeClass('active');
+                    } else {
+                        _this.addClass('active');
+                    }
+                }
+            });
+        }
+
+        function setActive(){
+            $('#lottery_addListcon').find('li').removeClass('active')
+            if (importType == 1){
+                $.each($('#goodsList').find('tr'), function(){
+                    var goodsId = $(this).attr('data-id');
+                    $('#lottery_addListcon').find('li[id=' + goodsId + ']').addClass('active');
+                })
+            } else if (importType == 2){
+                if (defaultGoodsId){
+                    $('#lottery_addListcon').find('li[id=' + defaultGoodsId + ']').addClass('active');
+                }
+            }
+        }
+
+        function getGoods(){
+            if ($('#lottery_addListcon').find('li').length > 0){
+                setActive()
+                return;
+            }
+            $.ajax({
+                type: 'GET',
+                url: '/lottery/goods',
+                success: function(data){
+                    $.each(data, function(i, o){
+                        goodsMap[o._id] = o;
+                    })
+                    renderGoods(data);
+                    setActive()
+                },
+                error: function(xhr){
+                    alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function addGoodsList(dataJson){
+            var html = '';
+            for(var i = 0; i < dataJson.length; i++){
+                var data = dataJson[i];
+                var _id = data.id;
+                var _pic = data.pic;
+                var _name = data.name;
+                var _memo = data.memo || '';
+                var _count = data.count || '';
+                var _message = data.message || '';
+
+                html += '<tr data-id="'+ _id +'">';
+                html += '<td class="left"><img src="'+ _pic +'" width="100" height="100"><p>'+ _name +'</p></td>';
+                html += '<td><input type="text" class="inputText w100 memo" placeholder="奖项备注" value="'+ _memo +'"></td>';
+                html += '<td><input type="text" class="inputText w100 count" placeholder="填写中奖人数" value="'+ _count +'"></td>';
+                html += '<td><textarea class="textareaText" rows="5" cols="30" placeholder="中奖通知推送到用户微信时显示的内容">'+ _message +'</textarea></td>';
+                html += '<td>';
+                html += '<button type="button" class="btn btn_lg btn_danger" data-action="goodsDel">删除</button>';
+                html += '</td>';
+                html += '</tr>';
+            }
+            $('#goodsList').append(html);
+        }
+
+        function goodsOk(){
+            var obj = $('#lottery_addListcon li[class=active]');
+            var picJson = [];
+            for(var i = 0; i < obj.length; i++){
+                var _id = $(obj[i]).attr('id');
+                if (importType == 1){
+                    if ($('#goodsList').find('tr[data-id=' + _id + ']').length > 0){
+                        continue;
+                    } else {
+                        var goods = goodsMap[_id];
+                        picJson.push({id: goods._id, pic: goods.pic, name: goods.name, memo: goods.memo});
+                    }
+                } else if (importType == 2){
+                    defaultGoodsId = _id
+                    console.log(defaultGoodsId)
+                    $('#default-goods-tip').show()
+                }
+            }
+            if(obj.length < 1){
+                if (importType == 1){
+                    return alert("至少选择一个奖品！");
+                } else {
+                    defaultGoodsId = ''
+                    $('#default-goods-tip').hide()
+                }
+            }
+            $('#addPrize').attr('class','layer_wBg hide');
+            addGoodsList(picJson);
+        }
+
+//保存活动 添加
+        function saveGoods(_themeVal, _category, _tagVal, _goods){
+            var url = '/lottery/event';
+            if(eventId){
+                url += '/' + eventId
+            }
+
+            $.ajax({
+                type: 'POST',
+                url: url,
+                data: {theme:_themeVal, tagCategory: _category, tag:_tagVal, defaultGoodsId: defaultGoodsId, goods:_goods},
+                success: function(data){
+                    window.history.go(-1);
+                },
+                error: function(xhr){
+                    alert('失败：' + xhr.responseText?xhr.responseText:'')
+                }
+            })
+        }
+
+        function saveData(){
+            var _themeVal = $('#theme').val(),
+                _tagVal = $('#tag').val(),
+                _category = $('#tagCategory').val(),
+                _goodsList = $('#goodsList tr');
+
+            if(!_themeVal || _themeVal.length == 0){
+                return alert("请填写抽奖主题");
+            }
+
+            if(!_tagVal || _tagVal.length == 0){
+                return alert("请选择抽奖范围");
+            }
+
+            if(!_category || _category.length == 0){
+                return alert("请选择抽奖范围类别");
+            }
+
+            if(!_goodsList.length > 0){
+                return alert("请添加奖品");
+            }
+
+            var _goods = [];
+            var obj = $('#goodsList tr');
+            for(var i = 0; i < obj.length; i++){
+                var _id = $(obj[i]).attr('data-id'),
+                    _count = $(obj[i]).find('.count').val(),
+                    _message = $(obj[i]).find('.textareaText').val(),
+                    _memo = $(obj[i]).find('.memo').val();
+
+                console.log(_count);
+                if(!_message || $.trim(_message).length == 0){
+                    return alert("请填写中奖通知！");
+                }
+                if(!_memo || $.trim(_memo).length == 0){
+                    return alert("请填写中奖奖项！");
+                }
+                if(!_count || $.trim(_count).length == 0){
+                    return alert("请填写中奖人数！");
+
+                } else if(!(/^([1-9][\d]{0,3})$/.test(_count))){
+                    return alert("中奖人数必须是1-4位整数， 且第一位不为0！");
+                }
+
+                var data = {
+                    "id":_id,
+                    "count":_count,
+                    "memo":_memo,
+                    "message":_message
+                };
+                _goods.push(data);
+            }
+            if (_goods.length == 0){
+                return alert('请添加商品！');
+            }
+
+            saveGoods(_themeVal, _category, _tagVal, _goods);
+        }
+
+        var doc = document.getElementById("index");
+        doc.addEventListener('click',function(e){
+            var ele = e.srcElement;
+            var dataAction = ele.getAttribute("data-action");
+            switch(dataAction){
+                case "layer_close":
+                    ele.parentElement.parentElement.parentElement.className = "layer_wBg hide";
+                    break;
+                case "layer_cancel":
+                    document.getElementById("addPrize").className = "layer_wBg hide";
+                    break;
+                case "importPrize":
+                    importType = 1
+                    getGoods();
+                    document.getElementById("addPrize").className = "layer_wBg show";
+                    break;
+                case "importDefaultPrize":
+                    importType = 2
+                    getGoods();
+                    document.getElementById("addPrize").className = "layer_wBg show";
+                    break;
+                case "saveData":
+                    saveData();
+                    break;
+                case "goodsOk":
+                    goodsOk()
+                    break;
+                case "goodsDel":
+                    ele.parentElement.parentElement.remove();
+                    break;
+
+            }
+        },false);
+
+        if (eventId){
+            getActivity();
+        } else {
+            $('#tagCategory').change();
+        }
+    })
+
+    function cancel(){
+        window.history.go(-1);
+    }
+
+</script>
+
+
+</body>
+</html>

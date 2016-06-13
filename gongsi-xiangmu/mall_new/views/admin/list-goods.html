@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>商品列表</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/list-goods.css" />
+</head>
+<style>
+    h4{font-family: "微软雅黑"}
+    body{font-family: "微软雅黑"}
+    .picture{text-align: center;line-height: 400px;}
+    .picture img{display: inline-block;width: 150px;height: 150px;margin-top: -20px}
+    .picture strong{font-family: "微软雅黑";font-weight: bold;font-size: 30px;color: #999}
+    .operate1 p{display:inline-block;cursor: pointer;width: 20%;}
+</style>
+<body>
+    <div class="normalheader transition animated fadeIn">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <div id="hbreadcrumb" class="pull-right m-t-lg">
+                    <ol class="hbreadcrumb breadcrumb">
+                        <li><a href="#">商品管理</a></li>
+                        <li>
+                            <span>商品列表</span>
+                        </li>
+                    </ol>
+                </div>
+                <h2 class="font-light m-b-xs">
+                    商品管理
+                </h2>
+                <small>商品列表</small>
+            </div>
+        </div>
+    </div>
+    <div class="hpanel" style="padding:20px 40px 0 40px;margin-bottom:0">
+        <div class="hpanel" style="margin-bottom:0">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="/admin/goods" aria-expanded="true">商品列表</a></li>
+                <li><a href="/admin/prize" aria-expanded="false">奖品列表</a></li>
+            </ul>
+        </div>
+    </div>
+<div class="wrap01" style="padding:0 40px 0 40px">
+    <div class="top_search" style="background:#fff;">
+        <button class="btn btn-success" type="button" id="add-goods" style="float:right;background: #62cb31;margin-right:30px;">发布商品</button>
+        <select id="state" name="" class="w2" style="margin-left:20px;font-size:12px;">
+            <option>全部</option>
+            <option value="1">出售中</option>
+            <option value="2">下架</option>
+            <option value="3">库存中</option>
+            <option value="10">已售罄</option>
+        </select>
+        <form action="" class="wrap01_form" style="margin-left:-10px;">
+            <input type="text" id="txtFieldName" placeholder="商品名" style="height:34px;">
+            <i class="fa fa-search wrap01_search" id="search" style="font-size:18px"></i>
+        </form>
+    </div>
+    <input id="hasToken" type="hidden" value="{{token}}">
+    <dl class="t_form1" id="list_goods" style="margin-top:0px;background:#fff;">
+        <dt>
+        <table class="width">
+            <thead>
+                <tr>
+                    <th style="width:1%;">
+                        <div class="icheckbox_square-green" id="select-all" style="position: relative;margin-top:-5px;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div>
+                    </th>
+                    <th>商品</th>
+                    <th>访问量</th>
+                    <th>库存</th>
+                    <th>总销量</th>
+                    <th>创建日期</th>
+                    <!--{{#if token}}-->
+                        <!--<th>所属商家</th>-->
+                    <!--{{/if}}-->
+                    <!--<th style="width:2.5%;padding-right:30px;">所属招商</th>-->
+                    <th style="width:4%;">操作</th>
+                </tr>
+            </thead>
+        </table>
+        </dt>
+    </dl>
+    <div class="bottom" style="height:100px;">
+        <div class="goods_pager_bottom" style="margin-top:5px;text-align: right;float:right;"></div>
+
+        <div class="pager_tmpl pager_wapper" style="float:right;display:none;">
+            <div class="pager_prev">上一页</div>
+            <div class="pager_next">下一页</div>
+            <div class="clearFix"></div>
+        </div>
+
+        <div class="n_btn1" style="float:left"><strong id="up">上架</strong><strong id="down" class="cancel">下架</strong></div>
+    </div>
+</div>
+
+<div id="qrcode-pop" class="pop_page1">
+    <h2 class="title"><strong>二维码</strong><span class="close" title="关闭">关闭</span></h2>
+    <div class="cnt_code1">
+        <div class="pic"><img src=""></div>
+        <p>小浣熊面面</p>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var hasToken = $('#hasToken').val()
+        $.ajaxSetup({ cache: false });
+
+        $('#add-goods').click(function(){
+            window.location.href = '/admin/add/goods';
+        })
+
+        $('#select-all').click(function(){
+            $(this).toggleClass('checked');
+            if ($(this).hasClass('checked')){
+                $('dd').find('.icheckbox_square-green').addClass('checked');
+            } else {
+                $('dd').find('.icheckbox_square-green').removeClass('checked');
+            }
+        })
+
+
+        function getCheckGoodsIds(){
+            var ids = []
+            $('dd').find('.checked').each(function(){
+                var id = $(this).closest('dd').attr('goodsId');
+                ids.push(id);
+            })
+            return ids;
+        }
+
+        function setGoodsState(ids, state){
+            if (ids.length <= 0){
+                return alert('请选择商品')
+            }
+            $.ajax({
+                type: 'POST',
+                url: '/admin/goods/state/' + state,
+                data: {ids: ids},
+                success: function(data){
+                    alert('操作成功')
+                    $('#search').click()
+                    $('#select-all').removeClass('checked')
+                },
+                error: function(){
+                    alert('操作失败')
+                }
+            })
+        }
+
+        $('#up').click(function(){
+            var ids = getCheckGoodsIds()
+            setGoodsState(ids, 1)
+        })
+
+        $('#down').click(function(){
+            var ids = getCheckGoodsIds()
+            setGoodsState(ids, 2)
+        })
+
+        function deleteGoods(goodsId, cb){
+            $.ajax({
+                type: 'DELETE',
+                url: "/admin/goods/" + goodsId,
+                success: function(data){
+                    $('dd[goodsId=' + goodsId + ']').slideUp();
+                    cb()
+                },
+                error: function(){
+                    cb('err');
+                }
+            })
+        }
+
+        function renderGoods(data) {
+            var html = '';
+            if (data.length == 0) {
+               html += '<div id="nodata" class="picture"><img src="/images/mtqicon.jpg" alt=""><strong>还没有任何商品信息哦</strong></div>';
+            }
+            $.each(data, function(i, o){
+                html += '<dd goodsId="' + o._id + '">' +
+                        '<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tab_width">' +
+                        '<tr><td style="width:5%;"><div class="icheckbox_square-green" style="position: relative;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; border: 0px; opacity: 0; background: rgb(255, 255, 255);"></ins></div></td><td class="good">' +
+                        '<img src="' + o.pic + '">' +
+                        '<p title="' + o.name + '">' + o.name + '<br><span title="' + o.price + '" style="color:red"> ¥'+ o.price +' </span></p>' + '</td><td style="width:5%;text-align:right;padding-left:5px;">' + o.pv + '/' + o.uv + '</td><td style="padding-left:30px;">' + o.count + '</td>' +
+                        '<td style="padding-left:10px;">' + o.saleCount + '</td><td>' + o.dateTime + '</td>';
+                
+                if (o.bid && o.bid.length > 0){
+                    if (hasToken){
+                        html += '<td class="shopper"><p title="' + o.bid[0].bname + '">' + o.bid[0].bname + '</p></td>';
+                    }
+                    html += '<td class="shopper" style="width:9%;text-align:right"><p title="' + o.bid[0].name + '">' + o.bid[0].name + '</p></td>';
+                } else {
+                    if (hasToken){
+                        html += '<td class="shopper"><p style="padding-right:20px;" title="自有商品">自有商品</p></td>';
+                    }
+                    html += '<td class="shopper"><p style="text-align:right">无</p></td>';
+                }
+
+                html += '<td class="operate1" style="padding-right:4%;line-height:90px">'
+                if (o.ext.state == 1 ){//&& o.type != 103
+                    if (o.url){
+                        html += '<p class="link" url="' + o.url + '">链接</p>';
+                    }
+                }
+                if (!o.bid || o.bid.length == 0){
+                    html += '<p class="edit">编辑</p><p class="delete">删除</p>';
+                } else {
+                    html += '<p class="edit">详情</p>';
+                }
+                /*html += '<strong class="qrcode">二维码</strong>';*/
+                html += '</td></tr></table></dd>'
+            })
+            var newCell = $($.trim(html));
+            $('#list_goods').find('dd').remove();
+            $('#nodata').remove();
+            $('#list_goods').append(newCell);
+
+            if (clickBottomPager)
+                window.scrollTo(0,document.body.scrollHeight);
+
+            bindEvent(newCell);
+        }
+
+        var clickBottomPager = false;
+
+        function pagerNavPager(target, pageIndex, pageCount) {
+            var pagerNavSize    = 5;
+            var pagerNavCount   = Math.ceil(pageCount / pagerNavSize);
+            var pagerNavIndex   = Math.ceil(pageIndex / pagerNavSize);
+
+            if(pagerNavCount <= 1) return;
+
+            $('<div class="pager_more_prev">...</div>').insertAfter($(target).find(".pager_prev"));
+            $('<div class="pager_more_next">...</div>').insertBefore($(target).find(".pager_next"));
+
+            var pagerNavStart   = (pagerNavIndex - 1) * pagerNavSize;
+            var pagerNavEnd     = pagerNavStart + pagerNavSize - 1;
+
+            $(target).find(".pager_hand").each(function(index){
+               if (index >= pagerNavStart && index <= pagerNavEnd) {
+                   $(this).show();
+               }else $(this).hide();
+            });
+
+            $(target).find(".pager_more_prev,.pager_more_next").on("click", function() {
+               if ($(this).hasClass("pager_more_prev")) {
+                   // prev
+                   if (pagerNavIndex > 1) {
+                       loadGoods($.extend({pageIndex:(pagerNavIndex - 1) * pagerNavSize - 5 + 1}, search));
+                   }
+               } else if ($(this).hasClass("pager_more_next")) {
+                    // next
+                   if (pagerNavIndex < pagerNavCount) {
+                       loadGoods($.extend({pageIndex:pagerNavIndex * pagerNavSize + 1}, search));
+                   }
+               }
+            });
+        }
+
+        var search = {};
+
+        function renderPager(config, target) {
+            var pageCount = config.pageCount;
+            var pageIndex = config.pageIndex;
+
+            if (pageCount <= 0) return;
+
+            $(target).find(">div").remove();
+
+            var vv = $(".pager_tmpl").clone().removeClass("pager_tmpl").show();
+
+            for (var i=0; i<pageCount; i++) {
+                var pager_hand = $("<div />")
+                $(pager_hand).attr("class", pageIndex-1 == i ? "pager_hand pager_current" : "pager_hand").html(i+1)
+                        .insertBefore($(vv).find(".pager_next"));
+            }
+
+            $(target).append($(vv)).append($('<div class="clearFix"></div>'));
+
+
+            $(target).find(".pager_wapper").find(".pager_prev,.pager_next,.pager_hand").on("click", function() {
+                var pageIndex = -1;
+
+                if ($(this).hasClass("pager_hand")) {
+                    if ($(this).hasClass("pager_current")) return;
+                    pageIndex = parseInt($(this).html());
+                } else if ($(this).hasClass("pager_prev")) {
+                    // prev
+                    if($(".pager_hand.pager_current").html() == "1") return;
+                    pageIndex = parseInt($(".pager_hand.pager_current").html()) - 1;
+                } else if ($(this).hasClass("pager_next")) {
+                    // next
+                    if($(".pager_hand.pager_current").html() == "" + pageCount) return;
+                    pageIndex = parseInt($(".pager_hand.pager_current").html()) + 1;
+                }
+
+                if (pageIndex != -1) {
+                    loadGoods($.extend({pageIndex:pageIndex}, search));
+                }
+            });
+
+            pagerNavPager(target, pageIndex, pageCount);
+        }
+
+        function bindEvent(newCell){
+            $('.delete', newCell).click(function(){
+                var goodId = $(this).closest('dd').attr('goodsId');
+                swal({
+                    title: "确定要删除吗",
+                    text: "删除后不能撤回",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false,
+                    closeOnCancel: true 
+                    },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            deleteGoods(goodId, function(err){
+                                if (err){
+                                    swal("删除失败");
+                                } else {
+                                    swal("删除成功");
+                                }
+                            })
+                        }
+                    }
+                )
+            })
+            $('.link', newCell).click(function(){
+                var url = $(this).attr('url');
+                window.prompt("链接地址请复制", url);
+            })
+
+            /*$('.qrcode', newCell).click(function(){
+                var goodId = $(this).closest('dd').attr('goodsId');
+
+            })*/
+
+            $('.edit', newCell).click(function(){
+                var goodId = $(this).closest('dd').attr('goodsId');
+                window.location.href = '/admin/goods/' + goodId + '/update';
+            })
+
+            $('.icheckbox_square-green', newCell).click(function(){
+                $(this).toggleClass('checked');
+            })
+        }
+
+        function loadGoods(params){
+            var url = "/admin/list/goods?";
+            $.map(params, function(v, k){
+                url += '&' + k + '=' + v
+            })
+            $.ajax({
+                type: 'GET',
+                url: url,
+                success: function(result){
+                    var data = result.data;
+                    //renderPager(result, $(".goods_pager_top"));
+                    renderPager(result, $(".goods_pager_bottom"));
+
+
+                    $(".goods_pager_bottom").find(".pager_hand,.pager_prev,.pager_next").on("click", function() {
+                        clickBottomPager = true;
+                    });
+
+                    $(".goods_pager_top").find(".pager_hand,.pager_prev,.pager_next").on("click", function() {
+                        clickBottomPager = false;
+                    });
+
+                    renderGoods(data);
+
+                    if (data.length == 0){
+                        $('#up').hide()
+                        $('#down').hide()
+                    } else if (params.state == '1'){
+                        $('#up').hide()
+                        $('#down').show()
+                    } else if (params.state == '2'){
+                        $('#up').show()
+                        $('#down').hide()
+                    } else if (params.state == '3'){
+                        $('#up').show()
+                        $('#down').show()
+                    } else {
+                        $('#up').show()
+                        $('#down').show()
+                    }
+
+                },
+                error: function(){
+
+                }
+            })
+        }
+
+        loadGoods({})
+
+        $('#search').click(function(){
+            clickBottomPager = false;
+
+            if ($('#state').val().length > 0)
+                search.state = $('#state').val();
+            else delete search.state;
+
+            if ($.trim($("#txtFieldName").val()).length > 0)
+                search.keywordName = $.trim($("#txtFieldName").val());
+            else delete search.keywordName;
+
+            loadGoods(search)
+        })
+
+        $('#export').click(function(){
+            window.open('/admin/export/goods/statistics')
+        })
+    });
+</script>
+<script src="/javascripts/defaultAlert.js"></script>
+</body>
+</html>
+<style>
+    tr td:nth-child(7),tr td:nth-child(8){
+        display:none;
+    }
+    .t_form1 td.good p{
+        width:140px;
+    }
+    .width thead tr th:nth-child(2){
+        padding-top: 12px;
+        width: 4%;
+    }
+    .tab_width tr td{
+        text-align:right;!important;
+    }
+    /*.t_form1 td.good img{*/
+        /*margin-left:90px;*/
+    /*}*/
+    .tab_width tr td:nth-child(1){
+        text-align:left;
+        padding-left:30px;
+    }
+    .t_form1 td.good p{
+        max-width:110px;
+        width:auto;
+    }
+    .t_form1 td.good{
+        min-width:170px;
+    }
+</style>

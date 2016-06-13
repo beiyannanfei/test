@@ -1,0 +1,687 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>商品管理-订单管理</title>
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/popup.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="/pointMall/stylesheets/mass.css" />
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+
+<style type="text/css">
+    .mass_content_top li.active{border-color:#999999;}
+    .s_tab_reply{ position:relative}
+    .s_tab_reply ul li{ float:left;border-radius:5px;}
+    .s_tab_reply ul li:hover{ background:#f1f1f1;}
+    .s_tab_reply ul li.on{ background:#576477;  color:#fff}
+    .s_tab_reply ul li strong{ display:inline-block; border-left:solid 1px #ddd; margin:8px 0;padding:0 15px; font-weight:normal; font-size:14px; line-height:14px; cursor:pointer}
+    .s_tab_reply ul li.on strong{ margin:0; line-height:30px}
+    .s_tab_reply ul li:first-child strong{ border:0}
+    .icos2 a.chou{color:#5bc96d}
+    .icos2 a.chou2{color:#f0081e}
+    .s_tab_reply .tip_r{ position:absolute; right:0; top:30px;}
+    .tip_r a{width:80px; height:32px; border-radius:4px; background:#ef6e12; display:block; color:#fff; text-align:center; line-height:32px;}
+    .btn_clear .ico_fun_btn{border:0; background:none;}
+    .btn_clear .list_msg1 li,.btn_clear .ico_fun_btn li{border:0; width:40px; padding:0; margin:0;}
+    .snap{background:none; display:inline-block; padding-bottom:0;}
+    .snap label {width:120px; height:32px; line-height:32px; float:left;}
+    .search-snap{background:none; display:inline-block; padding-bottom:0;}
+    .search-snap label{width:120px; height:32px; line-height:32px; float:left;}
+    .list_msg1 li{padding:0 0 10px;}
+    .list_msg1 .min_padding{background:#44b549; padding:7px;}
+    .list_msg1 li .t1 td {
+        vertical-align: middle;
+        text-align:center;
+        color:#666;
+    }
+    .list_msg2 li .t1 td {color:#fff;}
+    .list_msg1 li .t1 td.g_left{text-align:left;}
+    .btn_clear{ position:relative;}
+    .btn_clear .ico_fun_btn{ position:absolute; top:15px; left:50%; margin-left:-61px;}
+    .ico_fun_btn li span{left:10%;}
+    .pagenavi{padding: 15px 20px 50px 0;}
+    .search .s_btn{margin-left:-5px;}
+    .search .w1,.msg_manage_top .search select{padding:5px 10px; border: 1px solid #ddd;}
+    .search select{margin-right:15px;}
+    .search input#q{width: 120px;}
+
+    .baocun{display:none;}
+    .date p{font-size:14px;}
+    .list_box{padding:6px; margin-bottom:10px; line-height:34px; background:#eeeeee; color:#777;}
+    .touxiang img{max-width:30px; max-height:30px; margin-right:5px; border-radius:50%;}
+    .list_msg1 li .t1 td.form{vertical-align: middle;}
+    .caozuo a{padding:0 13px;}
+    .font1{float:left; vertical-align:middle; padding-top:20px; line-height:30px;}
+    .font1 label{margin-right:20px;}
+    .list_msg1 li .t1 td.da_one{text-align:right;}
+
+    .layer_w{width:730px; background-color:#FFF; margin:0 auto;}
+    .layer_w .header{ background-color:#f4f5f9; height:50px; line-height:50px; position:relative; padding:0 20px; font-size:16px;}
+    .layer_w .header .close{position: absolute;top: 50%;margin-top: -8px;right: 20px;width: 16px;height: 16px;line-height: 999em;overflow: hidden; cursor:pointer; background: url("/pointMall/images/mass_ico.png") 0 -2708px no-repeat;}
+    .layer_w .header .close:hover{ background-position:0 -2734px;}
+    .layer_w .con{ height:240px;}
+    .layer_w .frm_control_group{ width:420px; margin:0 auto; padding-top:60px;}
+    .layer_w .frm_control_group .frm_label{ display:block; font-size:14px; line-height:2em; margin-bottom:10px;}
+    .layer_w .frm_control_group .frm_input_box input{ border:1px solid #CCC; font-size:14px; color:#333; padding:10px; width:300px;}
+    .layer_w .frm_control_group .frm_error{ color:#e97979;font-size:14px; line-height:2em;}
+    .layer_w .btn_group{ background-color:#f4f5f9; height:52px; padding-top:16px; text-align:center;}
+
+
+    .layer_w{width:500px; height:334px;}
+    .frm_d{ padding:10px 0 0 50px; line-height:34px;}
+    .frm_d label{float:left; font-size:14px; width:105px; line-height:34px;}
+    .frm_d input.frm_input{ border:1px solid #e5e5e5; font-size:14px; color:#333; padding:7px 10px; width:198px;}
+    .layer_w{display:none; position:fixed; top:50%; left:50%; border-radius:4px; overflow:hidden; margin:-110px 0 0 -208px;}
+    .bg{width:100%; height:100%; background:#000; opacity:0.3; position:fixed; top:0; display:none;}
+    .top_l li input, .top_l li select{margin-right:40px;}
+    .txte{width:90%; height:155px; resize:none; padding:0 5px;}
+    .layer_w .con{height:222px;}
+    /*.newyema em{padding:3px 12px 2px 4px;}
+    .newyema em.next{padding:3px 4px 1px 12px;}*/
+</style>
+</head>
+
+<body>
+<div class="mass_content mass_content2">
+    <div class="mass_content_top clearfix have_border msg_manage_top">
+        <ul class="clearfix">
+            <li class="active">订单管理</li>
+        </ul>
+    </div>
+    <div class="search-container" style="margin: 5px 10px; clear: both; font-size: 25px;">
+        <div class="search" style="float: right; padding: 20px 0; clear: both;">
+            <input readonly="readonly" type="text" id="startTime" class="Wdate Wdate1" placeholder="开始时间"/>
+            至
+            <input readonly="readonly" type="text" id="endTime" class="Wdate Wdate2" placeholder="结束时间"/>
+            <select id="state">
+                <option value="">按状态查询</option>
+                <option value="unDelivery">未发货</option>
+                <option value="Delivery">已发货</option>
+                <option value="Delivered">已签收</option>
+            </select>
+            <select id="type">
+                <option value="">按商品类型查询</option>
+                <option value="2">现金</option>
+                <option value="3">商品</option>
+                <option value="4">充值卡</option>
+                <option value="6">消费卡</option>
+            </select>
+            <input id="q" class="w1" type="text"  style="width: 100px;" placeholder="商品名字">
+            <div class="snap s_btn" style="padding: 0;vertical-align: middle; margin-left: 10px;"><label style="width:auto;padding: 0 12px;margin: 0; ">查 找</label></div>
+            <div class="snap" style="padding: 0;vertical-align: middle; margin-left: 5px;" id="download"><label style="width:auto;padding: 0 12px; margin: 0;">下载表格</label></div>
+        </div>
+    </div>
+    <div style="background-color: #dadada; height: 1px; margin: 4px 0px; clear: both;"></div>
+    <div style="margin: 5px 10px; clear: both;">
+        <form class="font1">
+            <input id="cbox" type="checkbox"> <label>全选</label>
+        </form>
+        <div class="snap set-state">
+            <label>批量设置状态</label>
+        </div>
+        <div class="snap" style="float: right;">
+            <label id="link" url="{{orderUrl}}">订单链接</label>
+        </div>
+    </div>
+    <ul class="list_msg1 list_msg2" id="order-list">
+
+    </ul>
+</div>
+<div class="pagenavi newyema">
+    <em class="pre">
+        <strong></strong>
+    </em>
+    <span class="page_st"></span>
+    <em class="next">
+        <strong></strong>
+    </em>
+    <span class="input_number">
+    	<input type="text" id="page">
+    </span>
+    <span class="btn_send">跳转</span>
+</div>
+
+<div class="bg"></div>
+<div class="layer_w">
+    <div class="header">设置订单状态<span class="close" onClick="top.xdDialog.close();">关闭</span></div>
+    <div class="con">
+        <div class="frm_d">
+            <label>设置订单状态：</label><input type="radio" class="redbox" checked="checked" name="t1" value="Delivered"> 已完成 <input type="radio" class="redbox" name="t1" value="notice"> 仅发消息
+            <input type="radio" class="redbox" name="t1" value="refund"> 退款
+        </div>
+        <div class="frm_d">
+            <textarea id="message" class="txte" placeholder="请输入通知文本"></textarea>
+        </div>
+    </div>
+    <div class="btn_group">
+        <span class="btn btn_lg btn_primary"><button type="button">确定</button></span>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+    $('#startTime').focus(function () {
+        WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss'});
+    })
+    $('#endTime').focus(function () {
+        var startTime = $('#startTime').val()
+        if (startTime) {
+            WdatePicker({dateFmt: 'yyyy/MM/dd HH:mm:ss', minDate: "#F{$dp.$D(\'startTime\',{H:1});}"});
+        } else {
+            $('#startTime').focus()
+        }
+    })
+
+    function getOrderList(page, state, q, startTime, endTime, type){
+        var url = '/pointMall/lottery/list?'
+        if (page){
+            url += '&page=' + page
+        }
+        if (state){
+            url += '&state=' + state
+        }
+        if (type){
+            url += '&type=' + type
+        }
+        if (q){
+            url += '&q=' + q
+        }
+        if (startTime){
+            url += '&startTime=' + startTime
+        }
+        if (endTime){
+            url += '&endTime=' + endTime
+        }
+
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function(data){
+                renderOrderList(data);
+                if (data.length > 0){
+                    $('.page_st').text((page + 1) + '/' + data[0].pageTotal);
+                } else{
+                    $('.page_st').text((page + 1) + '/' + 1);
+                }
+
+            },
+            error: function(xhr){
+                alert('加载失败：' + xhr.responseText?xhr.responseText:'')
+            }
+        })
+    }
+
+    function getTipByState(state, type){
+        if (state == 'unDelivery'){
+            if (type == 4){
+                return '未充值';
+            } else if (type == 3){
+                return '未发货';
+            } else if (type == 6){
+                return '未发';
+            } else {
+                return '';
+            }
+        } else if (state == 'Delivery'){
+            if (type == 3){
+                return '已发货';
+            } else {
+                return '';
+            }
+        } else if (state == 'Delivered'){
+            if (type == 4){
+                return '已充值';
+            } else if (type == 3){
+                return '已签收';
+            } else if (type == 6){
+                return '已发';
+            } else {
+                return '';
+            }
+        } else if (state == 'refund'){
+            return '已退款';
+        } else if (state == 'refunding'){
+            return '退款中';
+        } else {
+            return '';
+        }
+    }
+
+    function getColorByState(state){
+        if (state == 'unDelivery'){
+            return 'red';
+        } else if (state == 'Delivery'){
+            return 'blue';
+        } else if (state == 'Delivered'){
+            return 'green';
+        } else {
+            return 'red';
+        }
+    }
+
+    function renderOrderList(data){
+        var domString = ''
+        $.each(data, function(i, o){
+            var addInfo = o.addInfo?o.addInfo:"用户还没有填地址信息";
+            var wayCom = o.wayCom?o.wayCom:'';
+            var wayBillId = o.waybillId?o.waybillId:'';
+            var mobile = o.mobile?o.mobile:'用户还没有填手机号';
+            var shoppingCard = o.shoppingCard?o.shoppingCard:'';
+            var rule = '';
+            if (o.ext){
+                $.map(o.ext, function(v, k){
+                    rule += v + ' '
+                })
+            }
+
+            domString += '<li prizeType="' + o.prizeType + '" orderId="' + o._id + '">' +
+                    '<div class="list_box">' +
+                    '<a href="#" class="touxiang"><img src=' + o.userIcon + '></a>' + o.userName + '<span class="fr">' + o.dateTime + '</span>';
+            if (o.from == 4){
+                var text = '微信支付 商品价格：' + o.price + ',付款金额：' + o.total_fee
+                if (o.score > 0){
+                    text += ' ,花费积分' + o.score
+                }
+                if (o.redPrice > 0){
+                    text += ' ,红包抵扣' + o.redPrice
+                }
+                domString += '<span class="fr" style="margin-right: 20px;">' + text + '</span>';
+            } else if (o.from == 3){
+                domString += '<span class="fr" style="margin-right: 20px;">积分兑换</span>';
+            } else if (o.lotteryEvent){
+                domString += '<span class="fr" style="margin-right: 20px;">抽奖后台</span>';
+            } else if (o.activityId){
+                domString += '<span class="fr" style="margin-right: 20px;">刮刮卡或者大转盘</span>';
+            }
+            domString += '</div><table width="100%" border="0" cellspacing="0" cellpadding="0" class="t1">';
+
+            domString += '<colgroup><col width="22"><col width="6%"><col width="8%"><col width="29%"><col width="12%"><col width="12%"><col width="8%"><col width="25%"></colgroup>'
+            /*if (o.prizeType == 3){
+
+            } else if (o.prizeType == 4){
+                domString += '<colgroup><col width="22"><col width="6%"><col width="8%"><col width="29%"><col width="12%"><col width="12%"></colgroup>'
+            } else {
+                domString += '<colgroup><col width="22"><col width="6%"><col width="8%"></colgroup>'
+            }*/
+
+            domString += '<tr><td class="date da_one" align="right">';
+            if (o.prizeType == 3){
+                domString += '<input class="chebox" type="checkbox">';
+            } else if (o.prizeType == 4){
+                domString += '<input class="chebox" type="checkbox">';
+            } else if (o.prizeType == 6){
+                domString += '<input class="chebox" type="checkbox">';
+            } else if (o.from == 4 && o.state != 'Delivered' && o.state != 'refunding'){
+                domString += '<input class="chebox" type="checkbox">';
+            }
+            domString += '</td>' +
+                    '<td class="avatar" width="65"><div class="pic"><a href="#"><img src=' +
+                    o.prizePic + '></a><span style="color:#000000;">' + rule + '</span></div></td>' +
+                    '<td class="date">' + o.prizeName + '</td>';
+
+            if (o.prizeType == 3){
+                domString += '<td class="date" title=' + addInfo + '>' + addInfo + '</td>' +
+                        '<td class="date"><input class="put wayCom" type="text" placeholder="快递公司" value="' + wayCom + '"></td>' +
+                        '<td class="date"><input class="put wayBillId" type="text" placeholder="运单号" value="' + wayBillId + '"></td>';
+            } else if (o.prizeType == 4 || o.prizeType == 6){
+                domString += '<td class="date" title=' + mobile + '>' + mobile + '</td>' +
+                        '<td class="date" title=' + shoppingCard + '>' + shoppingCard + '</td>' +
+                        '<td></td>';
+            } else {
+                domString += '<td></td><td></td><td></td>';
+            }
+
+            domString += '<td class="dq_zhuang"><span class="state" style="color:' + getColorByState(o.state) + ';">' + getTipByState(o.state, o.prizeType) + '</span></td>' +
+                    '<td class="caozuo g_left">';
+
+            if (o.prizeType == 3){
+                if (o.state == 'unDelivery'){
+                    domString += '<a href="javascript:void(0)" class="fahuo">发货</a>'
+                    domString += '<a href="javascript:void(0)" class="change" style="display: none">修改</a>'
+                    domString += '<a href="javascript:void(0)" class="save" style="display: none">保存</a>'
+                    domString += '<a href="javascript:void(0)" class="showWayInfo" style="display: none">物流查询</a>'
+                    domString += '<a href="javascript:void(0)" class="delivered" style="display: none">完成</a>'
+                } else if (o.state == 'Delivery'){
+                    domString += '<a href="javascript:void(0)" class="change">修改</a>'
+                    domString += '<a href="javascript:void(0)" class="save" style="display: none">保存</a>'
+                    domString += '<a href="javascript:void(0)" class="delivered">完成</a>'
+                    domString += '<a href="javascript:void(0)" class="showWayInfo">物流查询</a>'
+                } else if (o.state == 'Delivered'){
+                    domString += '<a href="javascript:void(0)" class="showWayInfo">物流查询</a>'
+                }
+            } else if (o.prizeType == 4){
+                if (o.state == 'unDelivery'){
+                    domString += '<a href="javascript:void(0)" class="delivered">完成</a>'
+                } else if (o.state == 'refund'){
+                    domString += '<a href="javascript:void(0)">已退款</a>'
+                } else if (o.state == 'refunding'){
+                    domString += '<a href="javascript:void(0)">退款中</a>'
+                }
+            }
+            if (o.from == 4){
+                if (o.state == 'refund'){
+                    domString += '<a href="javascript:void(0)">已退款</a>'
+                } else if (o.state == 'refunding'){
+                    domString += '<a href="javascript:void(0)">退款中</a>'
+                }
+            }
+            domString += '<a href="javascript:void(0)" class="delete">删除</a>'
+            domString += '</td></tr></table></li>'
+        })
+
+        var $newCell = $($.trim(domString));
+        $('#order-list').empty();
+        $('#order-list').append($newCell);
+        bindEvent($newCell);
+    }
+
+    function saveOrder(orderId, wayCom, waybillId){
+        $.ajax({
+            method: "POST",
+            url: '/pointMall/order/' + orderId,
+            data: $.param({waybillId: waybillId, wayCom: wayCom}),
+            success: function (data) {
+                var li = $('li[orderId=' + orderId + ']');
+                li.find('.change').show();
+                li.find('.fahuo').hide();
+                li.find('.save').hide();
+                li.find('.delivered').show();
+                li.find('.showWayInfo').show();
+                li.find('.state').text(getTipByState(data.state, data.prizeType)).css('color', getColorByState(data.state));
+                li.find('.wayCom').attr('disabled', true);
+                li.find('.wayBillId').attr('disabled', true);
+                alert('保存成功');
+            },
+            error: function (xhr) {
+                alert('保存失败:' + xhr.responseText?xhr.responseText:'');
+            }
+        })
+    }
+
+    function bindEvent($newCell){
+        $('.wayCom', $newCell).each(function(){
+            var val = $(this).val()
+            if (val){
+                $(this).attr('disabled', true);
+                $(this).closest('li').find('.wayBillId').attr('disabled', true);
+            }
+        })
+
+        $('.fahuo', $newCell).click(function(){
+            var li = $(this).closest('li');
+            var wayCom = li.find('.wayCom').val();
+            var wayBillId = li.find('.wayBillId').val();
+
+            if(!wayCom){
+                return alert('请输入快递公司')
+            }
+
+            if(!wayBillId){
+                return alert('请输入运单号')
+            }
+            var orderId = li.attr('orderId');
+            saveOrder(orderId, wayCom, wayBillId)
+        })
+
+        $('.save', $newCell).click(function(){
+            var li = $(this).closest('li');
+            var wayCom = li.find('.wayCom').val();
+            var wayBillId = li.find('.wayBillId').val();
+
+            if(!wayCom){
+                return alert('请输入快递公司')
+            }
+
+            if(!wayBillId){
+                return alert('请输入运单号')
+            }
+            var orderId = li.attr('orderId');
+            saveOrder(orderId, wayCom, wayBillId)
+        })
+
+        $('.delete', $newCell).click(function(){
+            var li = $(this).closest('li');
+            var orderId = li.attr('orderId');
+            if (confirm('请确定是否要删除订单，不能回复！')){
+                $.ajax({
+                    method: "DELETE",
+                    url: '/pointMall/order/' + orderId,
+                    success: function(data){
+                        $('li[orderId=' + orderId + ']').slideUp();
+                    },
+                    error: function(){
+                        alert('删除失败');
+                    }
+                })
+            }
+        })
+        $('.change', $newCell).click(function(){
+            var li = $(this).closest('li');
+            li.find('.save').show();
+            li.find('.fahuo').hide();
+            li.find('.change').hide();
+            li.find('.wayCom').removeAttr('disabled');
+            li.find('.wayBillId').removeAttr('disabled');
+            li.find('.wayCom').focus();
+        })
+
+        $('.delivered').click(function(){
+            var li = $(this).closest('li');
+            var orderId = li.attr('orderId');
+            var prizeType = li.attr('prizeType');
+            dealOrder(orderId, 'Delivered', prizeType);
+        });
+
+        $('.showWayInfo').click(function(){
+            window.open('http://www.kuaidi100.com/');
+        });
+
+        $('#cbox').click(function(){
+            if ($(this).is(':checked')){
+                $('.chebox').prop('checked', true);
+            } else {
+                $('.chebox').removeAttr('checked')
+            }
+        })
+    }
+
+    function dealOrder(orderId, state, prizeType){
+        var message = "确定" + getTipByState(state, prizeType) + "?" + ((state == 'Delivered')?'完成之后不能修改':'');
+        console.log(message)
+        if (confirm(message)){
+            $.ajax({
+                method: "POST",
+                url: '/pointMall/order/' + orderId + '/' + state,
+                success: function(data){
+                    if (state == 'Delivered' || state == 'refund'){
+                        var li = $('li[orderId=' + orderId + ']');
+                        li.find('.change').hide();
+                        li.find('.fahuo').hide();
+                        li.find('.save').hide();
+                        li.find('.delivered').hide();
+                        li.find('.state').text(getTipByState(state, prizeType)).css('color', getColorByState(state));
+                    }
+                    alert('操作成功');
+                },
+                error: function(xrh){
+                    alert('操作失败! ' + xrh.responseText);
+                }
+            })
+        }
+    }
+
+    var searchMap = {}
+    $('.s_btn').click(function(){
+        var state = $('#state').val();
+        var type = $('#type').val();
+        var q = $('#q').val();
+        var startTime = $('#startTime').val();
+        console.log(startTime)
+        var endTime = $('#endTime').val();
+        console.log(endTime)
+        if (!endTime || !startTime){
+            startTime = null;
+            endTime = null;
+        }
+
+        getOrderList(0, state, q, startTime, endTime, type);
+        searchMap.state = state
+        searchMap.q = q
+        searchMap.startTime = startTime
+        searchMap.endTime = endTime
+        searchMap.type = type
+    })
+
+    $('.next').click(function(){
+        var text = $('.page_st').text();
+        var curPage = parseInt(text.split('/')[0], 10);
+        var total = parseInt(text.split('/')[1], 10);
+        if (curPage == total){
+            return;
+        }
+        getOrderList(curPage, searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type);
+    })
+
+    $('.pre').click(function(){
+        var text = $('.page_st').text();
+        var curPage = parseInt(text.split('/')[0], 10);
+        if (curPage == 1){
+            return;
+        }
+        getOrderList(curPage - 2, searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type);
+    })
+
+    $('.btn_send').click(function(){
+        var page = $('#page').val();
+
+        var text = $('.page_st').text();
+        var totalPage = parseInt(text.split('/')[1], 10);
+
+        var page = parseInt(page, 10);
+        if (isNaN(page)){
+            return alert('请输入整数');
+        }
+        if (totalPage < page){
+            return alert('超过最大页数：' + totalPage);
+        }
+        if (page < 1){
+            return alert('页数至少为1');
+        }
+        getOrderList(page - 1, searchMap.state, searchMap.q, searchMap.startTime, searchMap.endTime, searchMap.type);
+    })
+
+    getOrderList(0);
+
+    $('#download').click(function(){
+        if (confirm('默认下载最新的1000条, 想要下载更多订单，请通过搜索条件筛选')){
+            var url = '/pointMall/export/lottery/list?'
+            if (searchMap.state){
+                url += '&state=' + searchMap.state
+            }
+            if (searchMap.q){
+                url += '&q=' + searchMap.q
+            }
+            if (searchMap.startTime){
+                url += '&startTime=' + searchMap.startTime
+            }
+            if (searchMap.endTime){
+                url += '&endTime=' + searchMap.endTime
+            }
+            if (searchMap.type){
+                url += '&type=' + searchMap.type
+            }
+
+            window.open(url)
+        }
+    })
+
+    $('#link').click(function(){
+        var url = $(this).attr('url');
+        window.prompt("链接地址请复制", url);
+    })
+
+    $('.close').click(function(){
+        $('.layer_w').css('display','none');
+        $('.bg').css('display','none');
+    })
+    $('.set-state').click(function(){
+        var orderIds = getOrderId();
+        if (orderIds.length == 0){
+            return alert('选中为空')
+        }
+        $('.layer_w').css('display','block');
+        $('.bg').css('display','block');
+    })
+    $('.btn_lg').click(function(){
+        var hideLayer = function(){
+            $('.layer_w').css('display','none');
+            $('.bg').css('display','none');
+        }
+
+        var orderIds = getOrderId();
+        var message = $('#message').val();
+        if (orderIds.length == 0){
+            hideLayer()
+            return alert('选中为空')
+        } else if (!message || $.trim(message).length == 0){
+            hideLayer()
+            return alert('通知消息为空')
+        } else {
+            sendMessage(orderIds, message, function(err){
+                hideLayer()
+                if (err){
+                    return;
+                }
+                var state = $('input[type="radio"]:checked').val()
+                if (state == 'Delivered' || state == 'refund'){
+                    $('.chebox:checked').each(function(){
+                        var li = $(this).closest('li')
+                        var prizeType = li.attr('prizeType');
+                        li.find('.change').hide();
+                        li.find('.fahuo').hide();
+                        li.find('.save').hide();
+                        li.find('.delivered').hide();
+                        li.find('.state').text(getTipByState(state, prizeType)).css('color', getColorByState(state));
+                    })
+                }
+                $('.chebox:checked').removeAttr('checked')
+            });
+        }
+    })
+
+    function sendMessage(orderIds, message, done){
+        var state = $('input[type="radio"]:checked').val()
+        if (!state){
+            return;
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/pointMall/order/' + state + '/send/message',
+            data: {orderIds: orderIds, message: message},
+            success: function(data){
+                alert('设置成功');
+                done()
+            },
+            error: function(xhr){
+                alert('设置失败,' + xhr.responseText);
+                done('err')
+            }
+        })
+    }
+
+    function getOrderId(){
+        var orderIds = []
+        $('.chebox:checked').each(function(){
+            var orderId = $(this).closest('li').attr('orderId');
+            orderIds.push(orderId);
+        })
+        return orderIds;
+    }
+})
+
+</script>
+</body>
+</html>

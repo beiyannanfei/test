@@ -1,0 +1,704 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!--<meta content="width=device-width" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />-->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{{activity.name}}</title>
+    <script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+    <style type="text/css">
+        html,body{width:100%;height:100%;font-family:微软雅黑;font-size:14px;padding:0;margin:0;}
+        @media (min-width:320px) {
+            body{height: 140%}
+        }
+        @media (min-width:320px) and (min-height: 568px){
+            body{height: 118%}
+        }
+        @media (min-width:375px) {
+            body{height: 100%}
+        }
+        .body{
+            position: relative;
+            height: 100%;
+            width: 100%;
+            /*-webkit-transform:perspective(800px) rotateY(-180deg);*/
+            transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -webkit-transform-style: preserve-3d;
+            text-decoration: none;
+            background:url({{config.ggkBg}});
+            background-size:100% 100%;
+        }
+        a{text-decoration: none;}
+        .highlight{outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+        .header{position:relative;background:#fff;height:180px;width:276px;margin:20px auto 0 auto;overflow:hidden;border:5px solid #ccc;}
+        .adItemBox{margin-top:10px;-webkit-transition:all 500ms ease}
+        .tagImg{position:absolute;left:0;top:0;width:100px;z-index:10}
+        .adItem{display:table-cell; text-align:center; vertical-align:middle}
+        .adItem img{max-width:100%;max-height:100%}
+
+        .ggkWrap{
+            /*transform:perspective(800px) rotateY(180deg);
+            -ms-transform:perspective(800px) rotateY(180deg);
+            -moz-transform:perspective(800px) rotateY(180deg);
+            -webkit-transform:perspective(800px) rotateY(180deg)*/}
+        .ggkWrap{
+            position:absolute;top:0;left:0;right:0;bottom:0;
+            backface-visibility: hidden;
+            -ms-backface-visibility: hidden;
+            -moz-backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;}
+
+        .ggkWrap{-webkit-transition:margin 300ms ease}
+        .ggkBox{position:relative;width:276px;margin:32px auto 5px auto;height:190px;background:url(/pointMall/images/ggk/gglBg.png) no-repeat;background-size:100% 100%;-webkit-transition:margin 300ms ease}
+        .ggkBg,.ggkFg{position:absolute;top:8px;left:10px;color:#333;width:256px;height:172px;overflow:hidden}
+        .ggkBg{background:no-repeat center;background-size:100%}
+        .confirmBox{position:absolute;top:8px;left:10px;right:10px;bottom:10px;background:url(/pointMall/images/ggk/ggkTemplateCover.gif);text-align:center}
+        .confirm{font-size:1.3em;margin:50px auto 10px;font-weight:bold}
+        .button{display:inline-block;width:120px;height:38px;line-height:38px;margin:15px 0 0 0;color:white;text-shadow:1px 0 1px #000;background:#FF4351;border-radius:20px;text-align:center}
+
+        #canvas{position:absolute;top:0;bottom:0;left:0}
+        .getPrize{position:absolute;left:50%;top:50%;margin:auto -60px;opacity:1;z-index:2;-webkit-transition:all 600ms ease;}
+
+        .prize{text-align:center;font-weight:bold;font-size:20px}
+
+        h3{border-bottom:2px solid #000;margin:0 auto 20px auto}
+        .label{display:block;margin:10px auto 2px auto;text-align:left;font-size:14px}
+        .input{width:100%;height:30px;padding:0;border-radius:3px;border:1px solid #85DBFF;background:rgba(255,255,255,1.00)}
+        .sendButton{display:inline-block;margin:20px 15px 0 auto;width:115px}
+        .loading{width:20px;vertical-align:middle;margin: 2px 5px 5px -10px;height:20px;-webkit-transform: translate3d(0,0,0);}
+
+        .infoWrap{position:absolute;display:none;opacity:0;z-index:3;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.6);-webkit-transition:all 500ms ease;z-index:200}
+        .infoWrap header{margin:50px 2% 0;height:40px;line-height:40px;font-size:1.5em;text-align:center;color:#fff;background:rgba(240,0,4,1.00)}
+        .infoBody{margin:auto;width:90%;background:#E9E9E9;text-align:center;overflow:auto}
+        .infoBody img{margin:20px auto 0px;width:100px}
+        .infoBody p{text-align:left;font-size:1.2em;color:#333;padding:0 10px}
+        .tryAgain{display:inline-block;margin:0 auto 20px auto}
+        #LJstr{font-size:1em;line-height:18px}
+        .touxiang{width:32px;height:32px;margin:auto 5px;vertical-align:middle}
+        .prizeInfo{color:#fff;}
+        .prizeInfo #info{margin:0 2em;height:174px;overflow-y: auto;word-wrap:break-word;}
+        .prizeInfoTitle{margin:0;padding:0 20px;height:40px;font-size:16px;line-height:40px;font-weight:normal;border-bottom:none;}
+
+        .layer_w{background-color:rgba(0,0,0,0.5); width:100%; height:100%; top:0; left:0; position:fixed; z-index:99999;}
+        .layer_w .con{position:relative; top:50%; width:80%; margin:0 auto; padding:10px; height:275px; margin-top:-145px; background-color:#FFF;}
+        .layer_w .con.bg{ background:url(/pointMall/images/bg_m_l.jpg) no-repeat center center #FFFFFF; background-size:cover;}
+        .layer_w .tile{color:#2b2b2b; border-bottom:1px solid #e1e1e1; font-size:15px; line-height:1.5em; padding-bottom:5px; text-align:center; margin: 0 10px;}
+        .layer_w .info{}
+        .layer_w .info .img{ text-align:center; padding:10px 0;}
+        .layer_w .info .img img{height:110px;}
+        .layer_w .info p{ line-height:1.5em; font-size:14px;}
+
+        .layer_w .con .colse{ width:40px; height:40px; background-color:#FFF; border:1px solid #505050; border-radius:50%; display:inline-block; position:absolute; cursor:pointer; right:-14px; top:-14px;}
+        .layer_w .con .colse:before,.layer_w .con .colse:after{ content:''; position:absolute; width:22px; height:1px; background-color:#505050;top:19px; left:8px;}
+        .layer_w .con .colse:before{transform:rotate(45deg); -webkit-transform:rotate(45deg);}
+        .layer_w .con .colse:after{transform:rotate(-45deg); -webkit-transform:rotate(-45deg);}
+        .layer_w .con .colse:hover{ opacity:0.5}
+        .layer_w .con .gonglue{ background-color:#ee8317; color:#FFF; padding:10px 15px; font-size:14px; position:absolute; left:50%; margin-left:-43px; bottom:14px;}
+
+        .pagenavi{position:absolute;width:100%;bottom:0px;z-index:10;text-align:center}
+        .pagenavi b{display:inline-block; margin:0 10px; width:10px; height:10px;border-radius:5px;background:#e8e8e8; line-height:0; font-size:0;}
+        .pagenavi b.on{ background:#9d9d9d}
+
+        .follow_pop_tip{ position:fixed;  top:30%; left:6%; width:88%; background:#fff; border-radius:10px; display: none; z-index: 99999;}
+        .follow_pop_tip .tip{ margin-top:15px; padding:0 15px 0 110px; min-height:75px; background:url(/pointMall/images/follow-ico.png) no-repeat 20px center; background-size:75px 75px; font-size:17px; line-height:1.4em; color:#888}
+        .follow_pop_tip .btn{ margin:20px 0; text-align:center}
+        .follow_pop_tip .btn strong{ display:inline-block; margin:0 4%; width:37%; line-height:40px; background:#fff; background:-webkit-gradient(linear, left top, left bottom, from(#ebebeb), to(#d8d8d8)); border-radius:5px; font-size:18px; font-weight:normal; text-align:center; cursor:pointer; color:#666}
+        .follow_pop_tip .btn strong.focus{ background:-webkit-gradient(linear, left top, left bottom, from(#9fceeb), to(#67b2df)); color:#fff}
+        .follow_pop_tip .arrow{ position:absolute; width:14px; height:29px; background:url(/pointMall/images/follow-arrow.png) no-repeat 0 0; background-size:14px 29px; right:-13px; bottom:15%;}
+        @media all and (min-width:600px){
+            .follow_pop_tip{max-width:600px; left:50%; margin-left:-310px}
+        }
+        @media all and (max-width:320px){
+            .follow_pop_tip .tip{ font-size:14px; padding-left:100px;background-size:65px 65px;min-height:65px;}
+            .follow_pop_tip .btn strong{ font-size:15px; line-height:34px}
+        }
+    </style>
+</head>
+<body>
+
+<div class="follow_pop_tip">
+    <div class="tip">亲，请先关注微信号!</div>
+    <div class="btn"><strong class="cancel">取消</strong><strong class="follow">关注</strong></div>
+    <span class="arrow"></span>
+</div>
+
+<div class="layer_w" id="layer_w" style="display: none">
+    <div class="con bg">
+        <div class="tile" id="lottery_title"></div>
+        <div class="info">
+            <div class="img"><img id="lottery_pic" src=""></div>
+            <p style="text-align: center;" id="lottery_text"></p>
+        </div>
+
+        <span class="colse" id="close"></span>
+        <a class="gonglue" id="gonglue" url="{{config.scoreHelp}}">土豪攻略</a>
+    </div>
+</div>
+
+<div class="body" id="body">
+    <input type="hidden" id="activityId" value="{{activity._id}}">
+
+    <div class="ggkWrap" id="ggkWrap">
+        <div class="header" id="header"><img src="/pointMall/images/ggk/ggkTemplateTag.png" class="tagImg"></div>
+        <div class="ggkBox" id="ggkBox">
+            <div id="ggkBg" class="ggkBg"></div>
+            <div id="ggkFg" class="ggkFg highlight"></div>
+            <div class="confirmBox" id="confirmBox">
+                <div class="confirm" id="confirm">{{activity.score}}{{unit}}刮一次<br><label class="button highlight" id="confirmButton">开始刮奖</label></div>
+            </div>
+        </div>
+
+        <div class="prizeInfo">
+            <h3 class="prizeInfoTitle">活动说明 <a id="gain-prize" style="display: none; float: right; color: white;" href="/pointMall/go/me/order/list?type=1">我要领奖>></a></h3>
+            <article id="info">{{activity.info}}</article>
+        </div>
+</div>
+    <input type="hidden" id="integralUnit" value="{{unit}}">
+    <input type="hidden" id="unFollowed" value="{{unFollowed}}">
+    <input type="hidden" id="followUrl" value="{{followUrl}}">
+    <input type="hidden" id="token" value="{{activity.token}}">
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script src="/pointMall/javascripts/wScratchPad.js"></script>
+<script type="text/javascript">
+onload=function(){
+    var credits=200,useragent = window.navigator.userAgent.toLowerCase(),winW=window.innerWidth,winH=window.innerHeight,mpUser=getSearch("mpUser")
+            ,openID=getSearch("openid")
+            ,isWX=useragent.indexOf("MicroMessenger")>-1?true:false
+            ,gglRun=0
+            ,url=""
+            ,GGK,requestId,YHOBJ
+            ,ajaxRun=0
+            ,uID
+            ,isSend=0
+            ,NODROP=0
+            ,close =document.getElementById('close')
+            ,lottery_text =document.getElementById('lottery_text')
+            ,lottery_pic =document.getElementById('lottery_pic')
+            ,lottery_title =document.getElementById('lottery_title')
+            ,gonglue = document.getElementById('gonglue')
+            ,layer_w =document.getElementById('layer_w')
+            ,PRIZE=""
+            ,pDATA
+            ,data
+            ;
+
+    var activityId = $('#activityId').val()
+    $.ajax({
+        type: 'GET',
+        url: '/pointMall/activity/' + activityId + '/goods',
+        success: function(data){
+            createAD(data);
+        }
+    })
+
+    function closeLayer(){
+        layer_w.style.display = 'none';
+        ggkReset();
+    }
+
+    close.addEventListener("click",function(){
+        closeLayer();
+    })
+
+    function createAD($data) {
+        var dl = $data.length, i = 0, w = header.offsetWidth, h = header.offsetHeight
+                , ih = (h - 40)
+                , section = document.createElement("section")
+                , nav = document.createElement("section")
+                , str = '', b = ""
+        for (; i < dl; i++) {
+            str += "<article class='adItem' style=\"width:" + w + "px;height:" + ih + "px;left:" + (i * w) + "px\"><img src='" + $data[i].pic + "'></article>";
+            b += "<b class='" + (i === 0 ? "on" : "") + "'></b>";
+        }
+        section.className = "adItemBox"
+        section.innerHTML = str;
+        nav.innerHTML = b
+        nav.className = "pagenavi"
+        section.style.cssText = 'width:' + (w * dl) + 'px;height:' + ih + 'px';
+        header.appendChild(section);
+        header.appendChild(nav);
+
+        var index = 0, tagB = header.getElementsByTagName("b");
+        console.log(tagB.length)
+        //setInterval(,3000)
+        var timer = setInterval(dong, 3000);
+        var isleft = true;
+        var idright = false;
+        var disX = 0;
+        var disY = 0;
+        var x1, x2, y1, y2;
+        var hastouch = "ontouchstart" in window ? true : false,
+                tapstart = hastouch ? "touchstart" : "mousedown",
+                tapmove = hastouch ? "touchmove" : "mousemove",
+                tapend = hastouch ? "touchend" : "mouseup";
+
+        //滑动
+        function dong(auto) {
+            clearInterval(timer)
+            if (index < tagB.length) {
+                section.style.webkitTransform = "translate(-" + (index * w) + "px,0)"
+                for (var i = 0; i < tagB.length; i++)
+                    tagB[i].className = ""
+                tagB[index].className = "on"
+                if (auto){
+                    index++
+                }
+            } else {
+                index = 0
+            }
+            timer = setInterval(function(){
+                dong(true);
+            }, 3000);
+        }
+
+        //手动滑动
+        tapClip();
+        function tapClip() {
+            function tapmoveHandler(e) {
+                e.preventDefault();
+                x2 = hastouch ? e.targetTouches[0].pageX : e.clientX - header.offsetLeft;
+                y2 = hastouch ? e.targetTouches[0].pageY : e.clientY - header.offsetTop;
+                disX = x2 - x1;
+                disY = y2 - y1;
+            }
+
+            header.addEventListener(tapstart, function (e) {
+                clearInterval(timer);
+                e.preventDefault();
+                x1 = hastouch ? e.targetTouches[0].pageX : e.clientX - header.offsetLeft;
+                y1 = hastouch ? e.targetTouches[0].pageY : e.clientY - header.offsetTop;
+                header.addEventListener(tapmove, tapmoveHandler);
+            });
+
+            header.addEventListener(tapend, function () {
+                header.removeEventListener(tapmove, tapmoveHandler);
+                if (disX < 0) {
+                    if (index < tagB.length - 1) {
+                        index++;
+                        dong()
+                    }
+                } else if (disX > 0) {
+                    if (index > 0) {
+                        index--;
+                        dong()
+                    }
+                }
+            });
+        }
+    }
+
+    function createGGK(){
+        ggkBg.style.display="none"
+        ggkBg.style.backgroundImage="url("+data.pic+")";
+        uID=data.id;
+        !GGK&&(GGK=$("#ggkFg").wScratchPad({
+            width:Math.min(255,ggkFg.offsetWidth),
+            height:ggkFg.offsetHeight,
+            image2:"/pointMall/images/ggk/ggkFg.png",
+            bgSize:"100% 100%",
+            fx:65,
+            fy:30,
+            size:30,
+            scratchDown: function(){
+                ggkBg.style.display="block"
+            },
+            scratchUp:function(e,percent){
+                if(!gglRun){
+                    if(percent>65){
+                        gglRun=1
+                        var prize=pDATA.name;
+
+                        if (data.type == 5){
+                            lottery_title.innerHTML = '谢谢参与'
+                            lottery_text.innerHTML = ''
+                        } else if (data.type == 3 || data.type == 4 || data.type == 6){
+                            lottery_title.innerHTML = '中奖了'
+                            var href = "/pointMall/goods/detail?id=" + data._id + '&lotteryId=' + data.id
+                            lottery_text.innerHTML = '恭喜您获得' + data.name + '(<a href=' + href + '>点击领奖</a>)';
+                        } else if (data.type == 999){
+                            lottery_title.innerHTML = '中奖了'
+                            var href = data.extLink
+                            lottery_text.innerHTML = '恭喜您获得' + data.name + '(<a href=' + href + '>点击领奖</a>)';
+                        }
+                        else if(data.type==9){
+//                            var usedGoodsId=data.usedGoodsId;
+                            lottery_title.innerHTML = '中奖了';
+                            var href=data.goodsUrl;
+                            lottery_text.innerHTML = '恭喜您获得' + data.name+ '(<a href=' + href + '>立即使用</a>)';
+                        }
+                        else {
+                            lottery_title.innerHTML = '中奖了'
+                            lottery_text.innerHTML = '恭喜您获得' + data.name;
+                        }
+                        gonglue.removeAttribute('href');
+                        gonglue.addEventListener('click', closeLayer);
+                        gonglue.innerHTML = '继续抽奖'
+                        gonglue.style.display = 'block';
+
+                        lottery_pic.src = data.pic
+                        layer_w.style.display = 'block'
+
+                        PRIZE=prize
+                    }
+                }
+            },
+            scratchMove: function(){
+                if (useragent.indexOf("android 4") > 0){
+                    if ($("#ggkFg").css("color").indexOf("51") > 0) {
+                        $("#ggkFg").css("color", "rgb(50,50,50)");
+                    } else if ($("#ggkFg").css("color").indexOf("50") > 0) {
+                        $("#ggkFg").css("color", "rgb(51,51,51)");
+                    }
+                }
+            }
+        }));
+    }
+
+    function createYH(){
+        canvas.style.cssText="visibility:visible;z-index:1";
+        b2.style.display="block"
+        setTimeout(function(){b2.style.opacity=1},200)
+        if(!YHOBJ)
+            YHOBJ=new YH(75)
+        YHOBJ.run()
+    }
+    function getSearch(name,str){
+        var s=str||location.search
+                ,r=new RegExp(name+"=([^#&]+)","i"),result=s.match(r)||[]
+        return result[1]
+    }
+
+    confirmButton.addEventListener("touchstart",createContent);
+    document.body.addEventListener("touchstart",function(e){
+        if(NODROP){
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    },false)
+
+    $('.follow_pop_tip .cancel').click(function(){
+        $('.follow_pop_tip').hide()
+    })
+
+    $('.follow_pop_tip .follow').click(function(){
+        $('.follow_pop_tip').hide()
+        if ($('#followUrl').val()){
+            return window.location.href = $('#followUrl').val();
+        }
+    })
+
+    function createContent(e){
+        if ($('#unFollowed').val() == 1){
+            return $('.follow_pop_tip').show()
+        }
+        if(ajaxRun)return
+        ajaxRun=1;
+        var url = "/pointMall/lottery/activity/" + $('#activityId').val() + "/draw";
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: duijiang,
+            error: function(xhr){
+                duijiang({status: '-2'})
+            }
+        })
+        var hUrl = 'http://ana.mtq.tvm.cn/ana?id=553f459da976e7b3bf000001&event_code=117000&token=' + $('#token').val() + '&create_time=' + Math.floor(new Date().getTime() / 1000) + '&title=' + $('title').text()
+        $('body').append('<img style="width:0px; height: 0px;" src="' + hUrl + '">')
+    }
+
+    function ggkReset(){
+        YHOBJ&&YHOBJ.stop();
+        ggkBox.style.cssText="";
+        gglRun=0;
+       // ggkWrap.style.backgroundImage="url(/pointMall/images/lottery-bg.jpg)";
+        if (GGK){
+            GGK.wScratchPad('reset')
+        }
+        confirmBox.style.display="block";
+    }
+    var unit = $('#integralUnit').val() || '积分';
+    function duijiang(response){
+        if(gglRun)ggkReset()
+
+        if (response.status == '-1'){
+            pDATA = null;
+            data = null;
+            lottery_title.innerHTML = 'Oh no~ '+unit+'不够了'
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            var helpUrl = gonglue.getAttribute('url');
+            if (helpUrl){
+                gonglue.setAttribute('href', helpUrl)
+                gonglue.removeEventListener('click', closeLayer);
+                gonglue.innerHTML = '土豪攻略'
+                gonglue.style.display = 'block'
+            } else{
+                gonglue.style.display = 'none';
+            }
+            layer_w.style.display = 'block'
+        } else if (response.status == '-2' || response.status == '-9'){
+            pDATA = null;
+            data = null;
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            gonglue.removeAttribute('href');
+            if (response.category){
+                lottery_title.innerHTML = '您还不具备抽奖资格，详细请参考活动说明吧。'
+                gonglue.style.display = 'none'
+            } else {
+                lottery_title.innerHTML = 'Oh no~ 没有抽到任何奖品'
+                gonglue.addEventListener('click', closeLayer);
+                gonglue.innerHTML = '继续抽奖'
+                gonglue.style.display = 'block'
+            }
+            layer_w.style.display = 'block'
+        } else if (response.status == '-3'){
+            pDATA = null;
+            data = null;
+            lottery_title.innerHTML = '每人抽奖只限' + response.limit + '次哦！ '
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            layer_w.style.display = 'block'
+            gonglue.removeAttribute('href');
+            gonglue.style.display = 'none'
+            layer_w.style.display = 'block'
+        } else if (response.status == '-4'){
+            pDATA = null;
+            data = null;
+            lottery_title.innerHTML = '您已经参与过抢票不能参与抽奖'
+            lottery_text.innerHTML = ''
+            lottery_pic.src = '/pointMall/images/money_p.png';
+            layer_w.style.display = 'block'
+            gonglue.removeAttribute('href');
+            gonglue.style.display = 'none'
+            layer_w.style.display = 'block'
+        } else if (response.status == '-5'){
+            pDATA = null;
+            data = null;
+            $('.follow_pop_tip').show()
+        } else{
+            pDATA = response;
+            data = response;
+            createGGK();
+            confirmBox.style.display="none";
+        }
+
+        header.style.webkitTransform="translate3D(0,0,0)";
+        ajaxRun=0
+    }
+    window.requestAnimFrame=(function(){
+        return window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||function( callback ){window.setTimeout( callback, 1000 / 60 )}})();
+    function YH($y){
+        var canvas = document.getElementById( 'canvas' ),
+                ctx = canvas.getContext( '2d' ),
+                cw = window.innerWidth,
+                ch = window.innerHeight,
+                fireworks = [],
+                particles = [],
+                hue = 120,
+                limiterTotal = 5,
+                limiterTick = 0,
+                timerTotal = 80,
+                timerTick = 0,
+                mousedown = false,
+                mx,
+                my;
+        canvas.width =cw;
+        canvas.height=ch;
+        function random( min, max ){
+            return Math.random() * ( max - min ) + min;
+        }
+        function calculateDistance( p1x, p1y, p2x, p2y ) {
+            var xDistance = p1x - p2x,yDistance = p1y - p2y;
+            return Math.sqrt( Math.pow( xDistance, 2 ) + Math.pow( yDistance, 2 ) );
+        }
+        function Firework( sx, sy, tx, ty ) {
+            this.x = sx;
+            this.y = sy;
+            this.sx = sx;
+            this.sy = sy;
+            this.tx = tx;
+            this.ty = ty;
+            this.distanceToTarget = calculateDistance( sx, sy, tx, ty );
+            this.distanceTraveled = 0;
+            this.coordinates = [];
+            this.coordinateCount = 3;
+            while( this.coordinateCount-- ) {
+                this.coordinates.push( [ this.x, this.y ] );
+            }
+            this.angle = Math.atan2( ty - sy, tx - sx );
+            this.speed = 2;
+            this.acceleration = 1.05;
+            this.brightness = random( 50, 70 );
+            this.targetRadius = 1;
+        }
+        Firework.prototype.update = function( index ) {
+            this.coordinates.pop();
+            this.coordinates.unshift( [ this.x, this.y ] );
+            if( this.targetRadius < 8 ) {
+                this.targetRadius += 0.3;
+            } else {
+                this.targetRadius = 1;
+            }
+            this.speed *= this.acceleration;
+            var vx = Math.cos( this.angle ) * this.speed,
+                    vy = Math.sin( this.angle ) * this.speed;
+            this.distanceTraveled = calculateDistance( this.sx, this.sy, this.x + vx, this.y + vy );
+            if( this.distanceTraveled >= this.distanceToTarget ) {
+                createParticles( this.tx, this.ty );
+                fireworks.splice( index, 1 );
+            } else {
+                this.x += vx;
+                this.y += vy;
+            }
+        }
+
+        Firework.prototype.draw = function() {
+            ctx.beginPath();
+            ctx.moveTo( this.coordinates[ this.coordinates.length - 1][ 0 ], this.coordinates[ this.coordinates.length - 1][ 1 ] );
+            ctx.lineTo( this.x, this.y );
+            ctx.strokeStyle = 'hsl(' + hue + ', 100%, ' + this.brightness + '%)';
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc( this.tx, this.ty, this.targetRadius, 0, Math.PI * 2 );
+            ctx.stroke();
+        }
+
+        function Particle( x, y ) {
+            this.x = x;
+            this.y = y;
+            this.coordinates = [];
+            this.coordinateCount = 5;
+            while( this.coordinateCount-- ) {
+                this.coordinates.push( [ this.x, this.y ] );
+            }
+            this.angle = random( 0, Math.PI * 2 );
+            this.speed = random( 1, 10 );
+            this.friction = 0.95;
+            this.gravity = 1;
+            this.hue = random( hue - 50, hue + 50 );
+            this.brightness = random( 50, 80 );
+            this.alpha = 1;
+            this.decay = random( 0.015, 0.03 );
+        }
+
+        Particle.prototype.update = function( index ) {
+            this.coordinates.pop();
+            this.coordinates.unshift( [ this.x, this.y ] );
+            this.speed *= this.friction;
+            this.x += Math.cos( this.angle ) * this.speed;
+            this.y += Math.sin( this.angle ) * this.speed + this.gravity;
+            this.alpha -= this.decay;
+            if( this.alpha <= this.decay ) {
+                particles.splice( index, 1 );
+            }
+        }
+        Particle.prototype.draw = function() {
+            ctx. beginPath();
+            ctx.moveTo( this.coordinates[ this.coordinates.length - 1 ][ 0 ], this.coordinates[ this.coordinates.length - 1 ][ 1 ] );
+            ctx.lineTo( this.x, this.y );
+            ctx.strokeStyle = 'hsla(' + this.hue + ', 100%, ' + this.brightness + '%, ' + this.alpha + ')';
+            ctx.stroke();
+        }
+        function createParticles( x, y ) {
+            var particleCount = 30;
+            while( particleCount-- ) {
+                particles.push(new Particle(x,y));
+            }
+        }
+        function loop(){
+            hue= random(0, 360 );
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+            ctx.fillRect( 0, 0, cw, ch );
+            ctx.globalCompositeOperation = 'lighter';
+            var i = fireworks.length;
+            while( i-- ) {
+                fireworks[ i ].draw();
+                fireworks[ i ].update( i );
+            }
+            var i = particles.length;
+            while( i-- ) {
+                particles[ i ].draw();
+                particles[ i ].update( i );
+            }
+            if( timerTick >= timerTotal ) {
+                if( !mousedown ) {
+                    fireworks.push( new Firework( cw / 2, ch, random( 0, cw ),$y) );
+                    timerTick = 0;
+                }
+            } else {
+                timerTick++;
+            }
+            if( limiterTick >= limiterTotal ) {
+                if( mousedown ) {
+                    fireworks.push( new Firework( cw / 2, ch, mx, my ) );
+                    limiterTick = 0;
+                }
+            } else {
+                limiterTick++;
+            }
+            requestId=requestAnimFrame( loop );
+        }
+        this.run=loop
+        this.stop=function(){
+            if(window.cancelAnimationFrame)window.cancelAnimationFrame(requestId);
+            else clearTimeout(requestId)
+            canvas.style.cssText="";
+        }
+    }
+
+    $('#gain-prize').hide();
+    /*$.ajax({
+        method: 'GET',
+        url: '/pointMall/check/user/new/order',
+        success: function(){
+            $('#gain-prize').show();
+        },
+        error: function(){
+
+        }
+    })*/
+    $('#info').html($('#info').text())
+}
+
+
+$(function(){
+
+    $('html,body').css({
+
+        minHeight:document.documentElement.clientHeight+'px'
+    })
+    $('body').css({
+        backgroundSize:'100% 100%'
+    })
+
+    $('#info').css({
+        maxHeight:document.documentElement.clientHeight-$('#info').offset().top+'px'
+    })
+
+    if(document.documentElement.clientWidth>=document.documentElement.clientHeight){
+        $('#ggkWrap').css({
+            position:'initial'
+        })
+        $('html').css({
+            height:'initial'
+        })
+        $('body').css({
+            position:'relative',
+            top:$('body').height()-$('html').height()+'px'
+        })
+        $('html').css({
+            height:$('html').height()-20+'px'
+        })
+    }
+
+})
+</script>
+<!--<script type="text/javascript" src="/pointMall/url/statistics" charset="UTF-8"></script>-->
+</body></html>

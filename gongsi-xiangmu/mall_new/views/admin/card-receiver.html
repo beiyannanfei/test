@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>卡券列表</title>
+	<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/card.css" />
+</head>
+<body style="margin:0 auto">
+	<div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">领取的列表</a></li>
+                    <li>
+                        <span>Interface</span>
+                    </li>
+                    <li class="active">
+                        <span>Panels design</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs" style="font-size:30px;">
+                卡券 > 领取的列表
+            </h2>
+            <small>Many panels design give you many possibilities.</small>
+        </div>
+    </div>
+</div>
+	<input type="hidden" value="{{card.card_id}}" id="card_id">
+	<div class="tab_table" style="margin:20px 40px 0 40px;">
+		<table class="table" id="receive-list">
+			<thead>
+			<tr>
+				<th>粉丝</th>
+				<th>领取时间</th>
+				<th>使用时间</th>
+				<th>使用状态</th>
+			</tr>
+			</thead>
+		</table>
+	</div>
+</div>
+</div>
+</body>
+<script>
+	$(function(){
+		function getState(state){
+			if (state == 'deleted'){
+				return '已删除'
+			} else if (state == 'consume'){
+				return '已使用'
+			}
+			return '未使用'
+		}
+		function renderReceiver(data){
+			var domString = ''
+			$.each(data, function(i, o){
+				domString += '<tr><td><dl style="width:30%;margin:7px auto;"><dt><img src="" alt="" class="img-thumbnail" src="' + o.headImg + '"></dt><dd style="line-height:40px;">' +
+						'<p class="name">' + (o.userName?o.userName:"佚名") + '</p>' +
+						'</dd></dl></td>' +
+						'<td>' + o.dateTime + '</td>' +
+						'<td>' + (o.state == "consume"? o.consumeTime:"--") + '</td>' +
+						'<td>' + getState(o.state) + '</td></tr>'
+			})
+			$('#receive-list').append(domString);
+		}
+
+		function loadReceiver(){
+			$.ajax({
+				type: "GET",
+				url: "/admin/card/" + $("#card_id").val() + "/receiver",
+				success: function(data){
+					renderReceiver(data)
+				},
+				error: function(){
+
+				}
+			})
+		}
+		loadReceiver()
+	})
+</script>
+</html>

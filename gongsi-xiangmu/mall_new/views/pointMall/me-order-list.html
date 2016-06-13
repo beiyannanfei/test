@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<title>我的订单</title>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<link href="/pointMall/stylesheets/me-order-list.css" rel="stylesheet" type="text/css">
+</head>
+<body class="bg_body7">
+<input type="hidden" id="openId" value="{{openId}}">
+<div id="order-list">
+    <p style="font-size: 14px; text-align: center; padding: 15px; display: none;">您的订单还是空的呢？赶紧去发现新鲜玩意吧！！！</p>
+</div>
+</body>
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var page = 0;
+        $('#load-more').click(function(){
+            page++
+            loadOrderList(page);
+        })
+
+        function getTipByState(state, type){
+            if (state == 'unDelivery'){
+                if (type == 4){
+                    return '未充值';
+                } else if (type == 3){
+                    return '未发货';
+                } else if (type == 6){
+                    return '未发';
+                } else {
+                    return '';
+                }
+            } else if (state == 'Delivery'){
+                if (type == 3){
+                    return '已发货';
+                } else {
+                    return '';
+                }
+            } else if (state == 'Delivered'){
+                if (type == 4){
+                    return '已充值';
+                } else if (type == 3){
+                    return '已签收';
+                } else if (type == 6){
+                    return '已完成';
+                } else {
+                    return '';
+                }
+            } else if (state == 'refund'){
+                return '已退款';
+            } else {
+                return '';
+            }
+        }
+
+        function getClassByState(state){
+            if (state == 'unDelivery'){
+                return 'ready';
+            } else if (state == 'Delivery'){
+                return 'ready';
+            } else if (state == 'Delivered'){
+                return 'fini';
+            } else {
+                return 'red';
+            }
+        }
+
+        function loadOrderList(page){
+            var openId = $('#openId').val()
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/me/order/list?openId=' + openId + '&page=' + page,
+                success: function(data){
+                    var ids = []
+                    $.each(data, function(i, o){
+                        ids.push(o.prizeId);
+                    })
+                    loadGoodsGainInfo(ids, function(map){
+                        renderOrderList(data, map);
+                    })
+                },
+                error: function(){
+                    alert('加载失败!');
+                }
+            })
+        }
+
+        function loadGoodsGainInfo(ids, cb){
+            if (ids.length == 0){
+                return cb({})
+            }
+            $.ajax({
+                method: "POST",
+                url: '/pointMall/goods/gain/info',
+                data: {ids: ids},
+                success: function(data){
+                    var map = {};
+                    $.each(data, function(i, o){
+                        map[o._id] = {
+                            gainInfo: o.ext?o.ext.gainInfo:'',
+                            extLink: o.ext?o.ext.extLink:''
+                        }
+                    })
+                    cb(map)
+                },
+                error: function(){
+                    alert('加载失败');
+                }
+            })
+        }
+
+        function renderOrderList(data, map){
+            var domString = '';
+            if (data.length < 10){
+                $('#load-more').hide();
+            }
+
+            if (data.length == 0){
+                $('#order-list').find('p').show();
+                return;
+            }
+
+            $.each(data, function(i, prize){
+                domString += '<dl from="' + prize.from + '" goodsId="' + prize.prizeId + '" orderId="' + prize._id + '" class="list_award">' +
+                        '<dt><span class="fr2 ' + getClassByState(prize.state) + '">' + getTipByState(prize.state, prize.prizeType) + '</span></dt>' +
+                '<dd><span class="price">' + prize.dateTime + '</span>' +
+                '<img src="' + prize.prizePic + '" class="pic">' +
+                '<strong class="tit">' + prize.prizeName + '</strong>';
+
+                if (prize.prizeType == 6){
+                    var shoppingCard = prize.shoppingCard?prize.shoppingCard:"";
+                    domString += '<p style="font-weight: bold; margin-top: 10px;">消费码： ' + shoppingCard + '</p>'
+                } else if (prize.prizeType == 4){
+                    var mobile = prize.mobile?prize.mobile:'';
+                    domString += '<p style="font-weight: bold; margin-top: 10px;">手机号： ' + mobile + '</p>'
+                }
+                domString += '</dd>'
+
+                domString += '<dd class="view_tracking">'
+                if (prize.prizeType == 3 || prize.prizeType == 4 || prize.prizeType == 6){
+                    if (map[prize.prizeId] && map[prize.prizeId].gainInfo){
+                        domString += '<strong class="gain-info" url="' + map[prize.prizeId].gainInfo + '">领奖须知</strong>'
+                    }
+                    if (prize.prizeType == 3 && !prize.addInfo && prize.trade_state != 'complete'){
+                        domString += '<strong class="add-address">我要领奖</strong>'
+                    } if ((prize.prizeType == 4 || prize.prizeType == 6) && !prize.mobile && prize.trade_state != 'complete'){
+                        domString += '<strong class="add-address">我要领奖</strong>'
+                    }
+                }
+                if (prize.prizeType == 10 || prize.jump_url){
+                    domString += '<strong class="extLink" url="' + prize.jump_url + '">立即使用</strong>'
+                }
+                if (map[prize.prizeId] && map[prize.prizeId].extLink){
+                    domString += '<strong class="extLink" url="' + map[prize.prizeId].extLink + '">点此进入</strong>'
+                }
+                domString += '</dd>'
+                domString += '</dl>'
+            })
+            var $view = $($.trim(domString))
+            if (page == 0){
+                $('#order-list').empty();
+            }
+            $('#order-list').append($view);
+            bindEvent($view);
+        }
+
+        function bindEvent($view){
+            $('.view-state', $view).click(function(){
+                window.open('http://www.kuaidi100.com/');
+            })
+
+            $('dl', $view.parent()).click(function(){
+                var orderId = $(this).attr('orderId');
+                window.location.href = '/pointMall/me/order/' + orderId + '/detail';
+            })
+
+            $('.add-address', $view.parent()).click(function(e){
+                var $dl = $(this).closest('dl');
+                var goodsId = $dl.attr('goodsId')
+                var orderId = $dl.attr('orderId')
+                window.location.href = '/pointMall/goto/exchange/goods/' + goodsId + '?lotteryId=' + orderId
+                e.stopPropagation()
+            })
+
+            $('.gain-info', $view.parent()).click(function(e){
+                var url = $(this).attr('url')
+                window.location.href = url
+                e.stopPropagation()
+            })
+
+            $('.extLink', $view.parent()).click(function(e){
+                var url = $(this).attr('url')
+                window.location.href = url
+                e.stopPropagation()
+            })
+
+            $('img.pic', $view.parent()).click(function(e){
+                var $dl = $(this).closest('dl');
+                var goodsId = $dl.attr('goodsId')
+                var orderId = $dl.attr('orderId')
+
+                var from = $dl.attr('from')
+                if (from && (from == 3 || from == 4)){
+                    window.location.href = '/pointMall/goods/detail?id=' + goodsId
+                }
+                e.stopPropagation()
+            })
+        }
+
+        loadOrderList(page);
+    });
+</script>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<!--<meta content="width=device-width" name="viewport"/>
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />-->
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>填写地址</title>
+<style type="text/css">
+html,body{width:100%;height:100%;font-family:微软雅黑;font-size:14px;padding:0;margin:0}
+.body{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	/*-webkit-transform:perspective(800px) rotateY(-180deg);*/
+	transform-style: preserve-3d;
+	-ms-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	text-decoration: none;
+}
+a{text-decoration: none;}
+.highlight{outline:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}
+.header{position:relative;font-size:1.2em;height:40px;color:white;background:rgba(0,0,0,0.5);-webkit-transition:all 300ms ease;-webkit-transform:translate3D(0,-100%,0)
+
+}
+.userName{line-height:40px;margin:0 0 0 1em}
+.credits{position:absolute;right:1em;line-height:40px}
+
+.ggkWrap,.formWrap{
+position:absolute;top:0;left:0;right:0;bottom:0;background:url(/pointMall/images/ggkBg.jpg) no-repeat;background-size:100% 100%;
+backface-visibility: hidden;
+-ms-backface-visibility: hidden;
+-moz-backface-visibility: hidden;
+-webkit-backface-visibility: hidden;}
+.formWrap{background:url(/pointMall/images/turntable/bodyBG3.jpg) no-repeat;background-size:100% 100%;}
+
+.ggkWrap{-webkit-transition:margin 300ms ease}
+.ggkBox{position:relative;width:276px;margin:60px auto 30px auto;height:202px;background:url(/pointMall/images/gglBg.png) no-repeat;background-size:100% 100%;-webkit-transition:margin 300ms ease}
+.ggkBg,.ggkFg{position:absolute;top:8px;left:10px;color:#333;width:256px;height:184px;overflow:hidden}
+.ggkBg{background:no-repeat center;background-size:100%}
+#gxnzj{position:absolute;width:90%;left:5%;top:0;display:none;color:#fff;font-size:18px;-webkit-transition:-webkit-transform 300ms ease,opacity 300ms ease 150ms;opacity:0.5;-webkit-transform:translate3d(0,-100px,0)}
+.confirmBox{position:absolute;top:8px;left:10px;right:10px;bottom:10px;background:url(/pointMall/images/ggkFg.jpg);text-align:center}
+.confirm{font-size:1.3em;margin:50px auto 10px;font-weight:bold}
+.button{display:inline-block;width:120px;height:38px;line-height:38px;margin:15px 0 0 0;color:white;text-shadow:1px 0 1px #000;background:#FF4351;border-radius:20px;text-align:center}
+#canvas{position:absolute;top:0;bottom:0;left:0; visibility:hidden;z-index:-1}
+.getPrize{position:absolute;left:50%;margin:auto -60px;display:none;opacity:1;z-index:2;-webkit-transition:all 300ms ease;}
+.prize{text-align:center;font-weight:bold;font-size:20px}
+
+.form{background:rgba(255,255,255,.6);margin:30px 3%;padding:10px;overflow:hidden}
+.form form{}
+h3{border-bottom:2px solid #000;margin:0 auto 20px auto}
+.label{display:block;margin:10px auto 2px auto;text-align:left;font-size:14px}
+.input{width:100%;height:30px;padding:0;border-radius:3px;border:1px solid #85DBFF;background:rgba(255,255,255,1.00)}
+.sendButton{display:inline-block;margin:20px 15px 0 auto;width:115px}
+.loading{width:20px;vertical-align:middle;margin: 2px 5px 5px -10px;height:20px;-webkit-transform: translate3d(0,0,0);}
+
+.infoWrap{position:absolute;display:none;opacity:0;z-index:3;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.6);-webkit-transition:all 500ms ease;}
+.infoWrap header{margin:50px 2% 0;height:40px;line-height:40px;font-size:1.5em;text-align:center;color:#fff;background:rgba(240,0,4,1.00)}
+.infoBody{margin:auto;width:90%;background:#E9E9E9;text-align:center;overflow:auto}
+.infoBody img{margin:20px auto 0px;width:100px}
+.infoBody p{text-align:left;font-size:1.2em;color:#333;padding:0 10px}
+.tryAgain{display:block;margin:0 auto 20px auto}
+#LJstr{font-size:1em;line-height:18px}
+.touxiang{width:32px;height:32px;margin:auto 5px;vertical-align:middle}
+@media (min-height:530px){
+}
+@media (max-height:504px){
+}
+@media (max-height:480px){
+/*.ggkBox{position:relative;width:240px;margin:50px auto;height:140px;background:url(img/gglBg.png) no-repeat;background-size:100%}
+.ggkBg,.ggkFg{position:absolute;top:8px;left:10px;color:#333;right:10px;bottom:10px;width:220px;height:122px}
+.confirm{font-size:1.5em;line-height:1.2em;margin:10px auto 10px;font-weight:bold}
+*/}
+</style>
+</head>
+<body>
+<div class="body" id="body">
+<div class="formWrap" id="formWrap">
+  <input type="hidden" id="uid" value="{{uid}}">
+    <input type="hidden" id="type" value="{{type}}">
+  <div class="header" id="header"><label class="userName" id="userName"></label><label class="credits" id="credits"></label></div>
+   <div class="form">
+       <form id="telForm" style="display: none">
+           <label class="label">联系电话</label>
+           <input type="text" class="input" id="mobile" placeholder="请输入手机号">
+       </form>
+       <form id="form" style="display: none">
+          <h3>配送信息</h3>
+           <label class="label" id="wxName" style="text-align:center"></label>
+    <!--       <label class="label"> 邮政编码</label>
+           <input type="text" class="input" id="user_zip" placeholder="6个数字符号">-->
+            <label class="label">收货人姓名</label>
+            <input type="text" class="input" id="user_name" placeholder="收货人姓名">
+            <label class="label">联系电话</label>
+           <input type="text" class="input" id="user_phone" placeholder="可以输入手机或座机">
+            <label class="label">寄送地址</label>
+            <input type="text" class="input" id="user_add" placeholder="输入真实的收货地址">
+        </form>
+       <div style="text-align:center"> <label class="button sendButton highlight" id="sendButton">提交信息</label> <label class="button sendButton highlight" id="resetButton">重新填写</label></div>
+  </div>
+</div>
+</div>
+<div class="infoWrap" id="infoWrap">
+<header>提交成功</header>
+<section class="infoBody"><img src="/pointMall/images/ico.png"/>
+<p id="LJstr"></p>
+<!--<label class="button tryAgain highlight" id="tryAgain">确定</label>-->
+</section>
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var type = $('#type').val();
+        if (type == '4'){
+            $('#telForm').show();
+            $('#form').hide();
+        } else{
+            $('#telForm').hide();
+            $('#form').show();
+        }
+    })
+onload=function(){
+var b1=document.getElementById("sendButton")
+        ,isSend = 0;
+
+b1.addEventListener("click",sendPrize);resetButton.addEventListener("touchstart",function(){form.reset()})
+
+function sendPrize(){
+	if(isSend)return
+
+    var type = $('#type').val();
+    if (type == '3'){
+        var add=user_add.value,name=user_name.value,phone=user_phone.value,zip=''//user_zip.value,
+        if(add.length<8){
+            alert("请输入有效的收货地址")
+            return
+        }
+        var ul=name.length;
+        if(ul<2||ul>12){
+            alert("请输入正确的收货人姓名")
+            return
+        }
+        if(!(/^\d{9,12}$/.test(phone))){
+            alert("请输入正确的电话号码")
+            return
+        }
+        isSend=1
+        b1.innerHTML="<img src='/pointMall/images/loading.gif' class='loading'>正在提交"
+        var uid = $('#uid').val();
+        $.ajax({
+            url:"/pointMall/" + uid + "/addAddress",type:"POST",data:"name="+name+"&tel="+phone+"&add="+add+"&zip="+zip,
+            success:function() {
+                sendSucceed()
+            },
+            error: function(xhr){
+                sendError(xhr)
+            }
+        })
+    } else {
+        var mobile = $('#mobile').val();
+        if(!(/^1[0-9]{10}$/.test(mobile))){
+            return alert("请输入正确的手机号码");
+        }
+        isSend = 1
+        b1.innerHTML="<img src='/pointMall/images/loading.gif' class='loading'>正在提交"
+        var uid = $('#uid').val();
+        $.ajax({
+            url: "/pointMall/" + uid + "/mobile",
+            type: "POST",
+            data: {mobile: mobile},
+            success: function(data){
+                sendSucceed()
+            },
+            error: function(xhr){
+                sendError(xhr)
+            }
+        })
+    }
+}
+//tryAgain.onclick=tryAgain.ontouchstart=function(){
+//		location="/tvmGoods/index.html"+search;
+//	}
+
+    function sendSucceed(){
+        isSend=0;
+        b1.innerHTML="提交成功";
+        var sty=infoWrap.style;
+        sty.display="block";
+        LJstr.innerHTML='您的地址已提交，我们会尽快为您发货。'
+        setTimeout(function(){sty.opacity=1},1000)
+    }
+
+    function sendError(xhr){
+        b1.innerHTML="提交信息";
+        alert('提交失败：' + xhr.responseText?xhr.responseText:'');
+    }
+}
+
+</script>
+
+</body></html>

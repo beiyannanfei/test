@@ -1,0 +1,237 @@
+<style>
+    .show{
+        display:block;
+    }
+    .none{
+        display:none;
+    }
+    .laydate_body .laydate_y .laydate_yms{
+        width:122px;!important;
+    }
+    .laydate_body .laydate_bottom{
+        height:30px;!important;
+        padding-top:10px;!important;
+    }
+    .laydate_body .laydate_ym .laydate_yms{
+            top:23px;!important;
+    }
+    .laydate_body .laydate_top{
+        background-color:transparent;!important;
+    }
+    .laydate_body .laydate_table thead th{
+        border:none;!important;
+    }
+    .laydate_body .laydate_y{
+        width:122px;!important;
+    }
+    .laydate_body .laydate_top{
+        height:30px;!important;
+        border: 1px solid #ccc;!important;
+        border-bottom: none;!important;
+    }
+    .laydate_body .laydate_table{
+        height:160px;!important;
+    }
+    tr:hover{
+        background:ghostwhite;
+    }
+</style>
+
+<link rel="stylesheet" href="/stylesheets/statistics.css">
+
+<!--<input id="laydate">-->
+
+<div style="height: 100%;overflow:scroll;" ng-app="main" ng-controller="mainController" class="main">
+
+    <!--<form ng-hide="isLogined" class="animated bounceIn" style="padding:20px;width:400px;position:fixed;top:50%;left:50%;margin-left:-200px;top:100px;background:rgba(0,0,0,.3);border-radius:20px;">
+
+        &lt;!&ndash;<div class="form-group">&ndash;&gt;
+        &lt;!&ndash;<label for="exampleInputEmail1">Email address</label>&ndash;&gt;
+        &lt;!&ndash;<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<div class="form-group">
+            <label for="exampleInputPassword1">请输入密码</label><br>
+            <input autofocus response-enter-action="submit" ng-model="pwd" type="password" class="form-control" id="exampleInputPassword1" placeholder="密码">
+        </div>&ndash;&gt;
+        &lt;!&ndash;<div class="form-group">&ndash;&gt;
+        &lt;!&ndash;<label for="exampleInputFile">File input</label>&ndash;&gt;
+        &lt;!&ndash;<input type="file" id="exampleInputFile">&ndash;&gt;
+        &lt;!&ndash;<p class="help-block">Example block-level help text here.</p>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<div class="checkbox">&ndash;&gt;
+        &lt;!&ndash;<label>&ndash;&gt;
+        &lt;!&ndash;<input type="checkbox"> Check me out&ndash;&gt;
+        &lt;!&ndash;</label>&ndash;&gt;
+        &lt;!&ndash;</div>&ndash;&gt;
+        &lt;!&ndash;<button type="button" ng-click="submit()" class="btn btn-default">进入页面</button>&ndash;&gt;
+    </form>-->
+    <!--<debuger ngobj="ms"></debuger>-->
+    <!--<div class="normalheader transition animated fadeIn">-->
+        <!--&lt;!&ndash;<debuger ngobj="ms"></debuger>&ndash;&gt;-->
+        <!--<div class="hpanel">-->
+            <!--&lt;!&ndash;<div class="panel-body">&ndash;&gt;-->
+                <!--&lt;!&ndash;<a class="small-header-action" href="##">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="clip-header">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<i class="fa fa-arrow-up"></i>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<div id="hbreadcrumb" class="pull-right m-t-lg">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<ol class="hbreadcrumb breadcrumb">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li><a href="##">奖品管理</a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<span>奖品列表</span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ol>&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<h2 class="font-light m-b-xs">&ndash;&gt;-->
+                    <!--&lt;!&ndash;奖品管理&ndash;&gt;-->
+                <!--&lt;!&ndash;</h2>&ndash;&gt;-->
+                <!--&lt;!&ndash;<small>奖品列表</small>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="awad_main" style="display:none;" ng-class="{show:ms.data.length!==0&&ms.selectedDate!==''}">
+        <div class="main-right" style="width:250px;">
+            <span><b>总pv：</b><i>{{ms.totalPV}}</i></span><br>
+            <span><b>总uv：</b><i>{{ms.totalUV}}</i></span><br>
+            <!-- <span><b>总uv：</b><i>{{ms.totalUV}}</i></span><br> 榜单页pv-->
+            <!--<span><b>去重后的pv：</b><i>{{ms.qcpv}}</i></span><br>-->
+            <span><b>去重后的uv：</b><i>{{ms.qcuv}}</i></span><br>
+            <span><b>总金额：</b><i>{{ms.totalMoney}}</i></span><br>
+            <span><b>总奖品数(非红包)：</b><i>{{ms.totalPrize}}</i></span>
+            <span><b>榜单数：</b><i>{{ms.bdcount}}</i></span>
+        </div>
+        <div class="main-left">
+            <!--<date-picker format="yyyy/MM/dd" msg="开始时间" ngmodel="ms.startDate"></date-picker>-->
+            <!--<date-picker format="yyyy/MM/dd" msg="结束时间" ngmodel="ms.endDate"></date-picker>-->
+            <label>时间：</label>
+
+            <laydate style="width:50%;float:left;" ngmodel="ms.selectedDate" class="form-control"></laydate>
+            <!--<date-picker id="selectedData" format="yyyy-MM-dd" msg="结束时间" ngmodel="ms.selectedDate"></date-picker>-->
+            <!--<button ng-click="search()" class="btn btn-primary">搜索</button>-->
+
+            <br><br>
+            <label>tvmid：</label>
+            <select style="width:50%;float:left;" none-select-msg class="form-control" ng-options="item for item in ms.tvmIds" ng-model="ms.searchedTvmId">
+                <!--<option value="请选择一个tvmid">请选择一个tvmid</option>-->
+            </select>
+            <br><br>
+            <label>总金额排名数量：</label>
+            <input style="float:left;width:50%;margin-right:10px;" ng-model="ms.topSum" class="form-control">
+            <button class="btn btn-primary" ng-click="viewTop('SUM')">查看</button>
+            <br><br>
+            <label>总数量排名数量：</label>
+            <input style="float:left;width:50%;margin-right:10px;" ng-model="ms.topNum" class="form-control">
+            <button class="btn btn-primary" ng-click="viewTop('NUM')">查看</button>
+
+        </div>
+    </div>
+
+    <!--<button class="btn btn-success" type="button" id="release">发布奖品</button>-->
+    <!--<button class="btn btn-info" type="button" id="cardManage">卡券管理</button>-->
+    <!--<div class="clearfix"></div>-->
+    <div class="main-table" style="display:none;margin-top:20px;" ng-class="{show:ms.data.length!==0&&ms.selectedDate!==''}">
+        <table class="table awad_table">
+            <thead>
+            <tr>
+                <th ng-repeat="item in ms.fieldsName">{{item}}</th>
+            </tr>
+            </thead>
+            <tbody id="awad_list">
+
+            <tr ng-repeat="(outerIndex,item) in ms.data track by $index">
+                <td>{{item.createTime}}</td>
+                <td>{{item.pv}}</td>
+                <td>{{item.uv}}</td>
+                <td>{{item.dati||0}}</td>
+                <td>{{item.ad_uv||0}}</td>
+                <td>{{item.totalPeople||0}}人</td>
+                <td>
+                    {{item.plan}}<br>
+                    <a href="javascript:;" ng-click="viewPlanDetail(outerIndex)" style="color:red;margin-top:5px;">查看开奖详情</a>
+                </td>
+                <td>{{item.totalMoney}}</td>
+                <td ng-repeat="subItem in item.rate">
+                    {{subItem.name}}
+                    <br>
+                    <!--------{{subItem}}-->
+                    <label ng-if="subItem.type&&['2','3',2,3].indexOf(subItem.type)!==-1">
+                        <a href="javascript:;" ng-click="viewCount(subItem,item.lottery_id)" style="color:red;margin-top:5px;">点击查看数量</a>
+                    </label>
+                </td>
+                <!--<td>{{}}</td>-->
+                <!--<td>{{}}</td>-->
+                <!--<td>{{}}</td>-->
+                <!--<td>{{}}</td>-->
+
+
+                <!--<td ng-if="[10,11].indexOf(index)===-1" ng-repeat="(index,item2) in item1 track by $index">-->
+                    <!--<label ng-if="index!==4">{{item2}}</label>-->
+                    <!--<label ng-if="index==4">-->
+                        <!--{{item2}}<br>-->
+                        <!--<a href="javascript:;" ng-click="viewPlanDetail(outerIndex)" style="color:red;margin-top:5px;">查看开奖详情</a>-->
+                    <!--</label>-->
+                <!--</td>-->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="text-align:right;margin-top:-20px;" id="page">
+        <ul class="pagination"></ul>
+    </div>
+
+</div>
+
+
+
+<script src="/components/laydate/laydate.js"></script>
+<script>
+    laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+</script>
+<script src="/javascripts/overview.table.js"></script>
+
+<!--<script type="text/template" id="loginTpl">-->
+
+<!--</script>-->
+
+<script type="text/template" id="top_sum">
+<table>
+    <tr>
+        <td>名次</td>
+        <td>总金额</td>
+        <td>openId</td>
+        <td>用户名</td>
+        <td>icon</td>
+    </tr>
+    <tr ng-repeat="item in list track by $index">
+        <td>{{item.rank}}</td>
+        <td>{{item.count | number:2}}</td>
+        <td>{{item.openId}}</td>
+        <td>{{item.userName}}</td>
+        <td>{{item.icon}}</td>
+    </tr>
+</table>
+</script>
+<script type="text/template" id="top_num">
+    <table>
+        <tr>
+            <td>名次</td>
+            <td>总数量</td>
+            <td>openId</td>
+            <td>用户名</td>
+            <td>icon</td>
+        </tr>
+        <tr ng-repeat="item in list track by $index">
+            <td>{{item.rank}}</td>
+            <td>{{item.count}}</td>
+            <td>{{item.openId}}</td>
+            <td>{{item.userName}}</td>
+            <td>{{item.icon}}</td>
+        </tr>
+    </table>
+</script>
+
+
+

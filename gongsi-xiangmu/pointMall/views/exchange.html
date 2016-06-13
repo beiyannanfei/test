@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>提交订单</title>
+<link href="/pointMall/stylesheets/common_mobile.css" rel="stylesheet" type="text/css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+<style type="text/css">
+    body{ background:#f6f6f6}
+    .main_title{ height:45px; background:#0090ff; text-align:center; color:#fff; font-size:15px; line-height:45px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
+    .order_info li{ clear:both; overflow:hidden; padding:13px 17px; border-top:solid 1px #fdfdfd;border-bottom:solid 1px #dbdbdb;}
+    .order_info li *{ font-size:14px; color:#666}
+    .order_info li strong{ float:left; font-weight:normal; color: #949494}
+    .order_info li span{ float:right;}
+    .order_info li span.num{ margin-right:8px}
+    .order_info li span .w1{ float:left; width:25px; padding:1px 0 2px; margin:0 4px 0 5px; text-align:center; background:#fff; border:solid 1px #ccc;}
+    .order_info li span .w2{ float:left; width:80px; padding:1px 0 2px; margin:0 2px 0 0; text-align:center; background:#fff; border:solid 1px #ccc;}
+    .order_info li span i{ float:left; width:14px; height:14px; margin-top:3px; }
+    .order_info li span .reduce{ background:url(/pointMall/images/pmall/less.png) no-repeat center center;background-size:14px 14px;}
+    .order_info li span .add{ background:url(/pointMall/images/pmall/more.png) no-repeat center center;background-size:14px 14px;}
+    .order_info li .label{ display:none; clear:both; overflow:hidden; padding:10px 0}
+    .order_info li .label label{ float:left; width:50%; margin:3px 0; color: #888}
+    .order_info li.s1 strong{ float:none}
+    .order_info li.s1 h3{background:url(/pointMall/images/pmall/arrow_n2.png) no-repeat right 5px;background-size:11px 12px; cursor:pointer}
+    .order_info li.s1.on h3{background:url(/pointMall/images/pmall/arrow_n2_1.png) no-repeat right 5px;background-size:17px 12px;}
+    .order_info li.on .label{ display:block}
+    .btn_order_container{margin: 5px 10px; padding:5px 10px;}
+    .btn_order{background:#0090ff; padding:6px 0; border-radius:5px; text-align:center; color:#fff; font-size:14px}
+    .btn_order:hover{ background:#007edf;}
+
+    .tip1{ padding:20px 0;border-top:solid 1px #fbfbfb; text-align:center;}
+    .tip1 strong{ padding-right:10px; background:url(/pointMall/images/pmall/arrow2.png) no-repeat right center;background-size:6px 10px; font-weight:normal; font-size:14px; color:#333; cursor:pointer}
+    .tip_rmsg{ padding:10px 0; background:#fbd89d; color:#e31616; font-size:14px; text-align:center}
+
+    .buyer_info{display: none;}
+    .buyer_info h2{ height:45px; padding:0 10px; line-height:45px; background:#ddd; font-size:14px;}
+    .buyer_info h2 strong{ float:right; width:24px; height:24px; margin:10px 3px 0 0; background:url(/pointMall/images/pmall/edit.png) no-repeat center center;background-size:14px 14px; text-indent:-9999px; cursor:pointer}
+    .info_list1 li{ padding:10px; border-top:solid 1px #fbfbfb;border-bottom:solid 1px #e0e0e0; font-size:14px;}
+    .info_list1 li strong{ display:table-cell; vertical-align:middle; width:65px; padding-right:12px; text-align:right; font-weight:normal; color:#949494; font-size:14px;}
+    .info_list1 li span{display:table-cell; font-size:14px; color:#333}
+
+    .popup{position:absolute;left:0;top:0;background:rgba(0,0,0,0.7);width:100%;height:100%;opacity:1;display: none;}
+    .popup_inner{width:90%;margin:0 auto;position:absolute;left:5%;top:30%;transform:translate(-50%,-50%);background:#e4e4e4;border-radius:10px;box-sizing:border-box;padding-top:15px;padding-bottom:15px;}
+    .popup_inner .ico{margin-left:-10px;margin-right:10px;width:30%;}
+    .popup_right{padding-top:20px;width:70%;}
+    .popup_right p{font-size:14px;font-weight:bolder;}
+    .popup_right span{font-size:14px;margin:10px 0 20px 0;display:inline-block;}
+    .popup_right .btn{width:60%;height:65px;line-height:65px;text-align:center;cursor:pointer; background:#ea473e;color:#fff;border-radius:30px;font-size:30px;}
+    .close{position:absolute;right:15px;top:10px;width:15px;}
+    .fl{float:left;}
+    .info_list1 li .title{display:inline-block;width:60px;text-align: right; font-size:14px;}
+    .info_list1 li .input{display:inline-block;border:none;background:none;outline: none; font-size:14px;}
+</style>
+</head>
+<body>
+<div id="tip" class="popup">
+    <div class="popup_inner">
+        <img class="close" src="/pointMall/images/pmall/close_ico.png">
+        <img src="/pointMall/images/pmall/suc_ico.png" class="ico fl">
+        <div class="popup_right fl">
+            <p>您的{{unit}}不够</p>
+            <span>快去赚取{{unit}}吧</span>
+        </div>
+    </div>
+</div>
+<!--<div class="tip_rmsg">请填写您的收货地址，以免货物丢失哦!</div>-->
+<input type="hidden" id="prizeType" value="{{goods.type}}">
+<input type="hidden" id="playType" value="{{goods.ext.playType}}">
+<input type="hidden" id="prizeId" value="{{goods._id}}">
+<input type="hidden" id="lotteryId" value="{{lotteryId}}">
+<input type="hidden" id="unit" value="{{unit}}">
+<h1 class="main_title">{{goods.name}}</h1>
+<ul class="order_info">
+    <li>
+        <strong>数量</strong>
+        <span>1</span>
+    </li>
+    <!--<li>
+        <strong>价值</strong>
+        <span class="num" id="price">￥{{goods.price}}</span>
+    </li>-->
+    {{#if goods.isExchange}}
+    <li>
+        <strong>花费积分</strong>
+        <span class="num">{{goods.ext.score}}</span>
+    </li>
+    {{/if}}
+</ul><!--//-->
+
+<div class="tip1" id="select-addInfo" style="display: none;">
+    <strong><a href="#">填写收货地址</a></strong>
+</div>
+<div class="buyer_info">
+    <h2><strong id="edit-address">编辑</strong>收货信息</h2>
+    <ul class="info_list1">
+        <li>
+            <input class="input" type="text" id="buyer-name" placeholder="姓名" style="width: 100%">
+        </li>
+        <li>
+            <input class="input" type="text" id="buyer-mobile" placeholder="手机号" style="width: 100%">
+        </li>
+        <li>
+            <strong>手机号</strong>
+            <span id="mobile"></span>
+        </li>
+        <li>
+            <strong>收件人</strong>
+            <span id="name"></span>
+        </li>
+        <li>
+            <strong>收货地址</strong>
+            <span id="add"></span>
+        </li>
+        <li>
+            <strong>邮政编码</strong>
+            <span id="zip"></span>
+        </li>
+    </ul>
+</div><!--//-->
+<div class="btn_order_container" id="submit-order">
+    <div class="btn_order">确定</div>
+</div>
+<script type="text/javascript" src="/pointMall/javascripts/jquery.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/hideWxMenu.js"></script>
+<script>
+    $(function(){
+        $.ajaxSetup({ cache: false });
+        var prizeType = $('#prizeType').val();
+        var playType = $('#playType').val();
+        var prizeId = $('#prizeId').val();
+        var lotteryId = $('#lotteryId').val();
+
+        var unit = $('#unit').val();
+        $('#tip').find('.close').click(function(){
+            $('#tip').hide();
+        })
+
+        function checkInt(count){
+            count = parseInt(count, 10);
+            if (isNaN(count) || count < 0){
+                return null;
+            } else {
+                return count;
+            }
+        }
+
+        var address = null;
+        var addressId = null;
+        var buyClick = false;
+        $('#submit-order').click(function(){
+            if (prizeType == '3' && !addressId){
+                return alert('请先选择地址')
+            }
+
+            if (buyClick){
+                return;
+            } else {
+                buyClick = true;
+            }
+            if (playType == 1){
+                doChange()
+            } else if (playType == 5){
+                doLotteryChange()
+            }
+        })
+
+        function doLotteryChange(){
+            var mobile = $('#buyer-mobile').val()
+            if (prizeType == 3){
+                if (!addressId){
+                    buyClick = false
+                    return alert('没有选择地址')
+                }
+            } else {
+                if (!/^1[0-9]{10}$/.test(mobile)){
+                    buyClick = false
+                    return alert('手机号格式不正确')
+                }
+                if ($('#buyer-name').val() && $('#buyer-name').val().length > 15){
+                    return alert('姓名格式不正确')
+                }
+            }
+            var data = {addressId: addressId, mobile: mobile}
+            if ($('#buyer-name').val()){
+                data.name = $('#buyer-name').val()
+            }
+            $.ajax({
+                method: "POST",
+                url: "/pointMall/lottery/" + lotteryId + "/exchange/goods/" + prizeId,
+                data: data,
+                success: function(data){
+                    if (data.status == '-1'){
+                        alert('失败请重试!')
+                    } else if (data.status == '-2'){
+                        $('#tip').find('p').text('该奖品已经没有了')
+                        $('#tip').find('span').text('请稍后再来领奖')
+                        $('#tip').show();
+                    } else if (data.status == '-3'){
+                        alert('失败请重试!')
+                    } else {
+                        window.location.href = '/pointMall/exchange/goods/' + prizeId + '/success'
+                    }
+                    buyClick = false
+                },
+                error: function(xhr){
+                    buyClick = false
+                    alert('失败请重试!')
+                }
+            })
+        }
+
+        function doChange(){
+            var mobile = $('#buyer-mobile').val()
+            if (prizeType == 3){
+                if (!addressId){
+                    buyClick = false
+                    return alert('没有选择地址')
+                }
+            } else {
+                if (!/^1[0-9]{10}$/.test(mobile)){
+                    return alert('手机号格式不正确')
+                }
+                if ($('#buyer-name').val() && $('#buyer-name').val().length > 15){
+                    return alert('姓名格式不正确')
+                }
+            }
+            var data = {addressId: addressId, mobile: mobile}
+            if ($('#buyer-name').val()){
+                data.name = $('#buyer-name').val()
+            }
+            $.ajax({
+                method: "POST",
+                url: "/pointMall/exchange/goods/" + prizeId,
+                data: data,
+                success: function(data){
+                    if (data.status == '-1'){
+                        $('#tip').find('p').text('您的'+unit+'不够')
+                        $('#tip').find('span').text('快去赚取'+unit+'吧')
+                        $('#tip').show();
+                    } else if (data.status == '-2'){
+                        $('#tip').find('p').text('该商品已经没有了')
+                        $('#tip').find('span').text('去看看其它商品吧')
+                        $('#tip').show();
+                    } else if (data.status == '-3'){
+                        $('#tip').find('p').text('您已经兑换过不能再兑换了')
+                        $('#tip').find('span').text('去看看其它商品吧')
+                        $('#tip').show();
+                    } else {
+                        window.location.href = '/pointMall/exchange/goods/' + prizeId + '/success'
+                    }
+                    buyClick = false
+                },
+                error: function(xhr){
+                    buyClick = false
+                    alert('换购失败请重试!')
+                }
+            })
+        }
+
+        var uid = 'order'
+        function goAddress(){
+            window.location.href = '/pointMall/address/list?uid=' + uid
+        }
+
+        $('#edit-address').click(function(){
+            if (prizeType == '3'){
+                goAddress()
+            } else {
+                window.location.href = '/pointMall/bind/mobile?showwxpaytitle=1'
+            }
+        })
+        $('#select-addInfo').click(function(){
+            if (prizeType == '3'){
+                goAddress()
+            } else {
+                window.location.href = '/pointMall/bind/mobile?showwxpaytitle=1'
+            }
+        })
+
+        function loadAddress(){
+            $.ajax({
+                type: 'GET',
+                url: '/pointMall/address/default',
+                success: function(data){
+                    if (!data._id){
+                        return
+                    }
+                    addressId = data._id
+                    var addInfo = data.addInfo
+                    address = {
+                        name: addInfo.name,
+                        tel: addInfo.tel,
+                        province: addInfo.province,
+                        city: addInfo.city,
+                        add: addInfo.add,
+                        zip: addInfo.zip,
+                        countryCode: addInfo.countryCode
+                    }
+                    $('#select-addInfo').hide()
+                    $('.buyer_info').show()
+                    $('#mobile').text(address.tel)
+                    $('#name').text(address.name)
+                    $('#zip').text(address.zip?address.zip:'')
+                    var detail = ''
+                    if (address.province){
+                        detail += address.province
+                    }
+                    if (address.city){
+                        detail += address.city
+                    }
+                    $('#add').text(detail + address.add);
+                },
+                error: function(){
+
+                }
+            })
+        }
+
+        function loadMobile(){
+            $.ajax({
+                method: "GET",
+                url: '/pointMall/user/bind/mobile',
+                success: function(data){
+                    $('#select-addInfo').hide()
+                    $('.buyer_info').show()
+                    $('#buyer-mobile').val(data.mobile)
+                    $('#buyer-name').val(data.name)
+                },
+                error: function(xhr){
+
+                }
+            })
+        }
+
+        if (prizeType == '3'){
+            $('#select-addInfo').show();
+            $('#buyer-name').closest('li').hide();
+            $('#buyer-mobile').closest('li').hide();
+            loadAddress();
+        } else {
+            $('#edit-address').hide()
+            $('#select-addInfo').show();
+            $('#select-addInfo').find('a').text('填写手机号')
+            $('.buyer_info').find('.info_list1 li').hide()
+            $('#buyer-mobile').closest('li').show();
+            $('#buyer-name').closest('li').show();
+            loadMobile()
+        }
+    });
+</script>
+</body>
+</html>

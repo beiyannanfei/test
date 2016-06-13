@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>卡券列表</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/card.css" />
+</head>
+<body style="margin:0 auto">
+    <div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">添加卡券</a></li>
+                    <li>
+                        <span>卡券列表</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                添加卡券 > <span class="cancel">返回</span>
+            </h2>
+            <small>卡券列表</small>
+        </div>
+    </div>
+</div>
+    <div class="addcards">
+        <div class="addcards_left">
+            <span class="background_img"></span>
+            <div class="addcards_content">
+                <div class="header">
+                    <p class="return">返回</p>
+                    <p class="title">优惠券</p>
+                    <i class="fa fa-share-square-o"></i>
+                </div>
+                <div class="nav" id="add_nav">
+                    <div class="nav_top">
+                        <dl>
+                            <dt><img src="/images/u6.png" alt="商家LOGO" title="商家LOGO" class="img-circle" id="phone-logo"></dt>
+                            <dd>商家名字</dd>
+                        </dl>
+                        <a href="##" id="presentation">赠送</a>
+                    </div>
+                    <h2 class="nav_thing">M5 迷你草莓新地2个</h2>
+                    <p class="nav_price">8.5元 迷你草莓新地2个（优惠券）</p>
+                    <p class="nav_data">有效期：<span id="time_start">2015.4.29</span>-<span id="time_over">2015.5.01</span></p>
+                </div>
+                <div class="section">
+                    <p><i class="pe-7s-angle-right"></i>优惠券详情</p>
+                    <p><i class="pe-7s-angle-right"></i>查看公众号</p>
+                    <p><i class="pe-7s-angle-right"></i><span id="ljsy">立即使用</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="addcards_right">
+            <div class="triangle"></div>
+            <div class="right_all">
+                <div class="all_header" style="position:relative;">
+                    <strong>上传LOGO：</strong>
+                    <p class="select_img">+
+                        <div style="position: absolute; width:79px; height: 80px;top:30px;left:87px;">
+                            <img id="logo_url" style="display:block;height:100%;width:100%;">
+                        </div>
+                    </p>
+                    <span style="float:left;margin-left:10px;margin-top:30px;">(300*300)</span>
+                    <input id="input-logo" type="file" name="logo" onchange="logoChange('input-logo', 'logo_url')"/>
+                </div>
+                <p class="shopper_name">
+                    <strong>卡券类型：</strong>
+                    <select class="form-control m-b" name="account" id="card_type">
+                        <option value="">卡券类型</option>
+                        <option value="GENERAL_COUPON">优惠券</option>
+                    </select>
+                </p>
+                <p class="shopper_name">
+                    <strong>商家名字：</strong>
+                    <input type="text" class="form-control" id="brand_name" maxlength="12" placeholder="最多12个汉字">
+                </p>
+                <p class="shopper_name">
+                    <strong>主标题：</strong>
+                    <input type="text" class="form-control" id="title" maxlength="9" placeholder="最多9个汉字">
+                </p>
+                <p class="shopper_name">
+                    <strong>副标题：</strong>
+                    <input type="text" class="form-control" id="sub_title" maxlength="18" placeholder="最多18个汉字">
+                </p>
+                <p class="shopper_name">
+                    <strong>使用提醒：</strong>
+                    <input type="text" class="form-control" id="notice" maxlength="12" placeholder="最多12个汉字">
+                </p>
+                <p class="shopper_name">
+                    <strong>面值：</strong>
+                    <input type="text" class="form-control" id="price">
+                </p>
+                <div class="shopper_name margin">
+                    <strong>颜色：</strong>
+                    <div class="input-group m-b" style="position:relative">
+                        <input type="text" class="form-control float" id="color-show">
+                        <span class="glyphicon glyphicon-triangle-bottom form-control-feedback" aria-hidden="true"></span>
+                        <b class="add_color"></b>
+                        <ul class="countenance" id="color">
+                            
+                        </ul>
+                    </div>
+                </div>
+                <div class="shopper_name margin">
+                    <strong class="strong">开始时间：</strong>
+                    <div class="input-group m-b" id="start_time">
+                        <input type="text" class="form-control" id="begin_timestamp">
+                        <div class="input-group-addon"><i class="pe-7s-keypad"></i></div>
+                    </div>
+                </div>
+                <div class="shopper_name margin">
+                    <strong class="strong">结束时间：</strong>
+                    <div class="input-group m-b" id="over_time">
+                        <input type="text" class="form-control" id="end_timestamp">
+                        <div class="input-group-addon"><i class="pe-7s-keypad"></i></div>
+                    </div>
+                </div>
+                <p class="shopper_name">
+                    <strong>每人限领：</strong>
+                    <input type="text" class="form-control" placeholder="不限张" id="get_limit">
+                </p>
+                <div class="shopper_name margin">
+                    <strong class="strong">发放总量：</strong>
+                    <div class="input-group m-b">
+                        <input type="text" class="form-control" id="quantity">
+                        <div class="input-group-addon">张</div>
+                    </div>
+                </div>
+                <!--<div class="shopper_name nonestyle"  id="endTime-tips">
+                    <strong>到期提醒：</strong>
+                    <div class="checkbox"><p class=""><div class="icheckbox_square-green checked" style="position: relative;"></div> 到期前4天提醒一次</p></div>
+                </div>-->
+                <div class="shopper_name nonestyle" id="can_give_friend">
+                    <strong>是否转赠：</strong>
+                    <div class="radio"><p class=""> <div class="iradio_square-green checked" v="1" style="position: relative;"></div> 是 </p></div>
+                    <div class="radio"><p class=""> <div class="iradio_square-green" v="0" style="position: relative;"></div> 否 </p></div>
+                </div>
+                <p class="shopper_name">
+                    <strong>入口名称：</strong>
+                    <input maxlength="5" type="text" class="form-control" placeholder="立即使用" id="enterance_name">
+                </p>
+                <p class="shopper_name">
+                    <strong>网页链接：</strong>
+                    <input type="text" class="form-control" value="http://" placeholder="请输入网页链接" id="webpage_link">
+                </p>
+                <p class="shopper_name position">
+                    <strong>优惠详情：</strong>
+                    <textarea id="default_detail" maxlength="100" placeholder="最多100个汉字" style="height: 80px; margin-bottom: 20px;"></textarea>
+                </p>
+                <p class="shopper_name position">
+                    <strong>使用须知：</strong>
+                    <textarea id="description" maxlength="1000" placeholder="最多1000个汉字" style="margin-bottom: 20px;"></textarea>
+                </p>
+                <p class="shopper_name">
+                    <strong>客服电话：</strong>
+                    <input type="text" class="form-control" id="service_phone">
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="addcards_bottom">
+        <button type="button" class="btn w-xs btn-success" id="save">保存</button>
+        <button type="button" class="btn w-xs btn-default cancel">取消</button>
+    </div>
+
+<script type="text/javascript" src="/javascripts/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+<script>
+
+    $(function(){
+        var $enterance_name=$('#enterance_name'),$tar=$('#ljsy');
+        $enterance_name.on('keypress keyup paste',function(){
+            var val=$(this).val();
+//            console.log('val is:',val);
+            $tar.html(val);
+        })
+    })
+
+    function logoChangeNotice(){
+        $('#phone-logo').attr('src', $('#logo_url').attr('src'))
+    }
+
+    function logoChange(fileId, imgId){
+        $.ajaxFileUpload({
+            type: 'POST',
+            secureuri: false,
+            url: "/admin/card/logo",
+            fileElementIds: [fileId],
+            success: function(data){
+                var res = JSON.parse($(data).text())
+                if (res && res.data && res.data.url){
+                    $('#' + imgId).attr('src', res.data.url);
+                    logoChangeNotice()
+                } else {
+                    alert('上传图片失败')
+                }
+            },
+            error: function(xhr){
+                var res = JSON.parse($(xhr.responseText).text())
+                if (res && res.data && res.data.url){
+                    $('#' + imgId).attr('src', res.data.url);
+                    logoChangeNotice()
+                } else {
+                    alert('上传图片失败')
+                }
+            }
+        })
+    }
+
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null)
+            return unescape(r[2]);
+        return null;
+    }
+
+    $(function(){
+        var cardData = {card: {}}
+
+        var cardId = GetQueryString('cardId')
+        console.log(cardId)
+
+        $('.iradio_square-green').click(function(){
+            var checked=$(this).attr('v');
+            if(checked == 1){
+                $('#presentation').show();
+            }else{
+                $('#presentation').hide();
+            }
+        })
+        $('#color-show').on('click',function(){
+            $('#color').toggleClass('block');
+        })
+        $('#color').on('click','li',function(){
+            $(this).closest('.countenance').removeClass('block');
+            var color = $(this).attr('v');
+            $('#add_nav').css({
+                'background':color
+            });
+            $('.add_color').css({
+                'background':color
+            })
+            $('#color-show').attr('color',color);
+            $('#color-show').attr('name', $(this).attr('name'));
+        })
+        $('#brand_name').on('input change', function(){
+            var val=$(this).val();
+            if(val){
+                $('.nav_top').find('dd').text(val);
+            }else{
+                $('.nav_top').find('dd').text('商家名字');
+            }
+        })
+        $('#title').on('input change',function(){
+            var val=$(this).val();
+            if(val){
+                $('.nav_thing').text(val);
+            }else{
+                $('.nav_thing').text('M5 迷你草莓新地2个');
+            }
+        })
+        $('#sub_title').on('input change',function(){
+            var val=$(this).val();
+            if(val){
+                $('.nav_price').text(val);
+            }else{
+                $('.nav_price').text('8.5元 迷你草莓新地2个（优惠券）');
+            }
+        })
+
+        $('.cancel').click(function(){
+            window.history.go(-1)
+        })
+
+        /*$('#endTime-tips .icheckbox_square-green').click(function(){
+            $(this).toggleClass('checked');
+        })*/
+
+        $('#can_give_friend .iradio_square-green').click(function(){
+            $('#can_give_friend').find('.iradio_square-green').each(function(){
+                $(this).removeClass('checked');
+            })
+            $(this).toggleClass('checked');
+        })
+
+        $('#begin_timestamp').focus(function () {
+            WdatePicker({dateFmt: 'yyyy/MM/dd'});
+        })
+        $('#end_timestamp').on('focus change', function () {
+            var startTime = $('#begin_timestamp').val()
+                endTime = $(this).val()
+            if (startTime || endTime) {
+                WdatePicker({dateFmt: 'yyyy/MM/dd', minDate: "#F{$dp.$D(\'begin_timestamp\',{d:1});}"});
+                $('#time_start').text(startTime);
+                $('#time_over').text(endTime);
+            } else {
+                $('#begin_timestamp').focus()
+            }
+        })
+
+        function renderColor(colors){
+            var domString = ''
+            $.each(colors.data, function(i, o){
+                domString += '<li style="background-color:' + o.value + '" v="' + o.value + '" name="' + o.name + '"></li>'
+            })
+            $('#color').append(domString)
+        }
+
+        function loadColor(cb){
+            $.ajax({
+                type: "GET",
+                url: "/admin/card/color",
+                success: function(data){
+                    renderColor(data);
+                    cb?cb():''
+                },
+                error: function(){
+                    swal({title: "网络错误", text: "获取微信卡券颜色表失败"});
+                }
+            })
+        }
+
+        function renderCard(card){
+
+            $('#enterance_name').val(card.general_coupon.base_info.custom_url_name||'');
+            $('#webpage_link').val(card.general_coupon.base_info.custom_url||'');
+            $('#ljsy').val(card.general_coupon.base_info.custom_url_name||'')
+
+
+            $('#card_type').val(card.card_type).attr('disabled', true)
+            $('#default_detail').val(card.general_coupon.default_detail).change()
+            $('#time_start').text(card.general_coupon.base_info.date_info.begin_timestamp)
+            $('#time_over').text(card.general_coupon.base_info.date_info.end_timestamp)
+            $('#logo_url').attr('src', card.general_coupon.base_info.logo_url)
+            logoChangeNotice()
+
+            $('#brand_name').val(card.general_coupon.base_info.brand_name).attr('disabled', true).change()
+            $('#title').val(card.general_coupon.base_info.title).attr('disabled', true).change()
+            $('#sub_title').val(card.general_coupon.base_info.sub_title).attr('disabled', true).change()
+            $('#color li[name=' + card.general_coupon.base_info.color + ']').click()
+            $('#notice').val(card.general_coupon.base_info.notice)
+            $('#service_phone').val(card.general_coupon.base_info.service_phone)
+            $('#description').val(card.general_coupon.base_info.description)
+            if (card.general_coupon.base_info.get_limit){
+                $('#get_limit').val(card.general_coupon.base_info.get_limit)
+            }
+
+            $('#begin_timestamp').val(card.general_coupon.base_info.date_info.begin_timestamp).attr('disabled', true)
+            $('#end_timestamp').val(card.general_coupon.base_info.date_info.end_timestamp).attr('disabled', true)
+
+            $('#quantity').val(card.general_coupon.base_info.sku.quantity)
+            var friend = card.general_coupon.base_info.can_give_friend;
+            if (friend && friend == true){
+                $('#can_give_friend .iradio_square-green[v=' + 1 + ']').addClass('checked')
+                $('#can_give_friend .iradio_square-green[v=' + 0 + ']').removeClass('checked')
+                $('#presentation').show()
+            } else if (friend == false){
+                $('#can_give_friend .iradio_square-green[v=' + 0 + ']').addClass('checked')
+                $('#can_give_friend .iradio_square-green[v=' + 1 + ']').removeClass('checked')
+                $('#presentation').hide()
+            }
+
+            $('#price').val(card.price)
+        }
+
+        function loadCard(){
+            $.ajax({
+                type: "get",
+                url: "/admin/card/info/" + cardId,
+                success: function(data){
+                    if (data.status == 'success'){
+                        renderCard(data.data)
+                    } else {
+                        swal({title: "网络错误", text: "获取微信卡券信息失败"});
+                    }
+
+                },
+                error: function(){
+                    swal({title: "网络错误", text: "获取微信卡券信息失败"});
+                }
+            })
+        }
+
+        function saveCard(){
+            var url = '/admin/card'
+            if (cardId){
+                url = '/admin/card/' + cardId + '/update'
+            }
+
+            var custom_url_name=$('#enterance_name').val().trim(),
+                    custom_url=$('#webpage_link').val().trim();
+
+
+            var strRegex = "^((https|http):\/\/)?"
+                    + "(((([0-9]|1[0-9]{2}|[1-9][0-9]|2[0-4][0-9]|25[0-5])[.]{1}){3}([0-9]|1[0-9]{2}|[1-9][0-9]|2[0-4][0-9]|25[0-5]))"
+                    + "|"
+                    + "([0-9a-zA-Z\u4E00-\u9FA5\uF900-\uFA2D-]+[.]{1})+[a-zA-Z-]+)"
+                    + "(:[0-9]{1,4})?"
+                    + "((/?)|(/[0-9a-zA-Z_!~*'().;?:@&=+$,%#-]+)+/?){1}";
+            var re=new RegExp(strRegex);
+
+
+            if(re.test(custom_url)){
+
+
+
+                if(custom_url_name===''){
+                    custom_url_name='立即使用'
+                }else{
+                    if(custom_url_name.length>5){
+                        swal({title: "警告", text: "入口名称限5个字以内，不能超过五个字哦"});
+                        return false;
+                    }
+                }
+
+                cardData.card.general_coupon.base_info.custom_url_name=custom_url_name;
+                cardData.card.general_coupon.base_info.custom_url=custom_url;
+
+
+            }else{
+                if(custom_url!==''){
+                    swal({title: "警告", text: "你输入的网页链接格式不合法，请修改为合法的；如果不需要该字段的话不用添些即可"});
+                    return false;
+                }
+
+            }
+
+
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: cardData,
+                success: function(data){
+                    window.location.href = '/admin/page/card-list'
+                },
+                error: function(){
+                    swal({title: "失败", text: "保存失败"});
+                }
+            })
+        }
+
+        function setValue(id, name, data){
+            $('#' + id).val(data[name]);
+        }
+
+        function genAndCheck(id, name, data, defaultValue){
+            var v = $('#' + id).val();
+            if (v){
+                data[name] = v
+            } else {
+                data[name] = defaultValue
+                console.log('value ' + name + ' not exists')
+            }
+            return v
+        }
+
+        $('#save').click(function(){
+            if (!genAndCheck('card_type', 'card_type', cardData.card)){
+                return
+            }
+
+            cardData.card.general_coupon = {base_info: {}}
+
+            if (!genAndCheck('default_detail', 'default_detail', cardData.card.general_coupon)){
+                return
+            }
+
+            var logo_url = $('#logo_url').attr('src')
+            if (!logo_url){
+                console.log('logo_url not')
+                return
+            }
+            cardData.card.general_coupon.base_info.logo_url = logo_url
+
+            if (!genAndCheck('brand_name', 'brand_name', cardData.card.general_coupon.base_info)){
+                return
+            }
+
+            genAndCheck('code_type', 'code_type', cardData.card.general_coupon.base_info, 'CODE_TYPE_QRCODE')
+
+            if (!genAndCheck('title', 'title', cardData.card.general_coupon.base_info)){
+                return
+            }
+
+            if (!genAndCheck('sub_title', 'sub_title', cardData.card.general_coupon.base_info)){
+                return
+            }
+
+            genAndCheck('color', 'color', cardData.card.general_coupon.base_info, 'Color010')
+            var colorName = $('#color-show').attr('name')
+            if (!colorName){
+                colorName = 'Color010'
+            }
+            cardData.card.general_coupon.base_info.color = colorName
+            cardData.colorValue = $('#color li[name=' + cardData.card.general_coupon.base_info.color + ']').attr('v');
+            if (!cardData.colorValue){
+                cardData.colorValue = '#55bd47'
+            }
+
+            if (!genAndCheck('notice', 'notice', cardData.card.general_coupon.base_info)){
+                return
+            }
+
+            if (!genAndCheck('service_phone', 'service_phone', cardData.card.general_coupon.base_info)){
+                return
+            }
+
+            if (!genAndCheck('description', 'description', cardData.card.general_coupon.base_info)){
+                return
+            }
+
+            genAndCheck('get_limit', 'get_limit', cardData.card.general_coupon.base_info, 0)
+
+            cardData.card.general_coupon.base_info.date_info = {}
+            genAndCheck('type', 'type', cardData.card.general_coupon.base_info.date_info, 1)
+
+            if (!genAndCheck('begin_timestamp', 'begin_timestamp', cardData.card.general_coupon.base_info.date_info)){
+                return
+            }
+
+            if (!genAndCheck('end_timestamp', 'end_timestamp', cardData.card.general_coupon.base_info.date_info)){
+                return
+            }
+
+            cardData.card.general_coupon.base_info.sku = {}
+            if (!genAndCheck('quantity', 'quantity', cardData.card.general_coupon.base_info.sku)){
+                return
+            }
+
+            var v = parseInt($('#can_give_friend .checked').attr('v'))
+            if (v) {
+                cardData.card.general_coupon.base_info.can_give_friend = v
+            };
+
+            cardData.endTimeTips = 1
+
+            if (!genAndCheck('price', 'price', cardData)){
+                return
+            }
+
+            saveCard();
+        })
+
+        if (cardId){
+            $(':text,textarea').attr({
+                disabled:'disabled'
+            })
+            $('.addcards_bottom').hide();
+            $('.iradio_square-green').addClass('disabled').off('click').on('click',function(e){
+                return false;
+                e.cancelBubble=true;
+                e.stopProgression();
+            })
+            loadColor(function(){
+                loadCard();
+            })
+        } else {
+            loadColor()
+        }
+    })
+</script>
+</body>
+</html>

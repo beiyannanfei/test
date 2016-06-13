@@ -1,0 +1,233 @@
+
+<style>
+    li{
+        list-style:none;
+    }
+
+
+    /*.ng-enter, .ng-leave {*/
+        /*transition: 2000ms ease-in transform;*/
+        /*position: relative;*/
+        /*display: block;*/
+        /*/!*top:0;*!/*/
+    /*}*/
+    /*.ng-leave{*/
+        /*transform: translate(0,0px);*/
+    /*}*/
+    /*.ng-leave.ng-leave-active{*/
+        /*transform: translate(0,-500px);*/
+    /*}*/
+    /*.ng-enter{*/
+        /*transform: translate(0,-500px);*/
+    /*}*/
+    .ng-enter.ng-enter-active {
+        /*left: 0;*/
+        /*top:0;*/
+        /*transform: translate(0,0px);*/
+    }
+    .ng-leave.ng-leave-active, .ng-enter {
+        /*left: 500px;*/
+        /*transform: translate(0,-500px);*/
+        /*top:-500px;*/
+    }
+</style>
+<link rel="stylesheet" href="/stylesheets/baseModule.directives.css">
+<link rel="stylesheet" href="/stylesheets/add-goods.css">
+
+<script type="text/javascript" src="/components/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/components/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/components/My97DatePicker/lang/zh-cn.js"></script>
+<script src="/javascripts/add-award.js"></script>
+<link rel="stylesheet" href="/components/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="/components/jquery-ui.multiselect/jquery.multiselect.css">
+<script src="/components/jquery-ui/jquery-ui.min.js"></script>
+<script src="/components/jquery-ui.multiselect/jquery.multiselect.js"></script>
+
+
+
+
+
+
+<div ng-app="main" ng-show="isPageLoaded" ng-class="{bounceIn:isPageLoaded,animated:isPageLoaded}" ng-controller="mainController" class="wrap_all">
+    <div class="normalheader transition animated fadeIn" style="margin-bottom:30px;">
+        <div class="hpanel">
+            <div class="panel-body">
+                <a class="small-header-action" href="#">
+                    <div class="clip-header">
+                        <i class="fa fa-arrow-up"></i>
+                    </div>
+                </a>
+
+                <div id="hbreadcrumb" class="pull-right m-t-lg">
+                    <ol class="hbreadcrumb breadcrumb">
+                        <li><a href="#">添加奖品</a></li>
+                        <li>
+                            <span>奖品列表</span>
+                        </li>
+                    </ol>
+                </div>
+                <h2 class="font-light m-b-xs">
+                    添加奖品
+                </h2>
+                <small>奖品列表</small>
+            </div>
+        </div>
+    </div>
+    <!--<debuger ngobj="ms"></debuger>-->
+    <ul class="wrap_add" style="border-bottom:none">
+        <li style="margin-top:15px;margin-bottom:0">
+            <strong class="tit">{{ms.award_types.name}}：</strong>
+            <select ng-if="ms.isUpdatePage!==true" ng-model="ms.selected_type" name="" class="w1 form-control m-b" ng-options="item.name for item in ms.award_types.types" style="width:50%"></select>
+            <input style="margin-bottom:10px;" class="form-control" ng-if="ms.isUpdatePage===true" type="text" value="{{ms.modifiedItemType}}" disabled>
+        </li>
+    </ul>
+    <ul class="wrap_add" ng-if="ms.formData.award_type==='SHI_WU'" style="border-top:none">
+        <texter msg="{{ms.formFields.SHI_WU.name.msg}}" ngmodel="ms.formData.SHI_WU.name"></texter>
+        <!--<texter msg="{{ms.formFields.SHI_WU.num.msg}}" ngmodel="ms.formData.SHI_WU.num"></texter>-->
+        <texter msg="领奖时效天数" ngmodel="ms.formData.SHI_WU.expiredDay"></texter>
+        <texter msg="库存" ngmodel="ms.formData.SHI_WU.count"></texter>
+        <texter msg="中奖须知url" ngmodel="ms.formData.SHI_WU.gainUrl"></texter>
+        <upload srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.SHI_WU.src" btntext="奖品图片" max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">
+            <img ng-src="{{ms.formData.SHI_WU.src}}">
+        </upload>
+
+        <li>
+            <strong class="tit">所需用户资料：</strong>
+            <jquery-ui-multi-select width="50%" options="multiSelectOptions" selected-change-fn="onMultiSelectChange"></jquery-ui-multi-select>
+        </li>
+
+
+
+
+
+
+    </ul>
+
+    <ul class="wrap_add" ng-if="ms.formData.award_type==='DIAN_ZI_QUAN'" style="border-top:none;">
+        <texter msg="{{ms.formFields.DIAN_ZI_QUAN.name.msg}}" ngmodel="ms.formData.DIAN_ZI_QUAN.name"></texter>
+        <!--<texter msg="{{ms.formFields.DIAN_ZI_QUAN.num.msg}}" ngmodel="ms.formData.DIAN_ZI_QUAN.num"></texter>-->
+        <!--<textareaer disabled msg="电子券" ngmodel="ms.formData.DIAN_ZI_QUAN.code"></textareaer>-->
+        <!--<texter msg="{{ms.formFields.DIAN_ZI_QUAN.code.msg}}" ngmodel="ms.formData.DIAN_ZI_QUAN.code"></texter>-->
+         <upload max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" style="display:none;" id="importConsumeCode" response-data-reader="{{CONFIG.UPLOADER.EXCEL_READER}}" srcmodel="ms.formData.DIAN_ZI_QUAN.code" key="excel" btntext="{{ms.formFields.DIAN_ZI_QUAN.code.msg}}" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.EXCEL_URL}}" ext="xls,xlsx" type="{{CONFIG.UPLOADER.EXCEL_TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">
+             <!--<img ng-src="{{ms.formData.SHI_WU.src}}">-->
+         </upload>
+        <li>
+            <strong class="tit">导入消费码：</strong>
+            <textarea ng-model="ms.formData.DIAN_ZI_QUAN.code" class="form-control" style="resize:none;display:inline-block;height:80px;"></textarea>
+            <label ng-if="ms.formData.DIAN_ZI_QUAN.code!==''" style="vertical-align:230%;margin-right:-90px;">{{ms.formData.DIAN_ZI_QUAN.code.split(',').length}}张电子券</label>
+            <!--<label ng-if="ms.formData.DIAN_ZI_QUAN.code===''">{{ms.formData.DIAN_ZI_QUAN.code.split(',').length}}张电子券</label>-->
+            <button onclick="$('#importConsumeCode :file').click()" type="button" class="btn btn-info" style="display:inline-block;margin-top:-30px;">导入消费码</button>
+            <a href="/docs/shoppingCards.xlsx" class="btn btn-info" style="display:inline-block;margin-top:-30px">下载模板</a>
+        </li>
+        <texter msg="URL" ngmodel="ms.formData.DIAN_ZI_QUAN.landing_page"></texter>
+        <!--<texter msg="库存" ngmodel="ms.formData.DIAN_ZI_QUAN.count"></texter>-->
+        <texter msg="中奖须知url" ngmodel="ms.formData.DIAN_ZI_QUAN.gainUrl"></texter>
+        <upload max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.DIAN_ZI_QUAN.src" btntext="奖品图片" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">
+            <img ng-src="{{ms.formData.DIAN_ZI_QUAN.src}}">
+        </upload>
+    </ul>
+
+    <!--{{ms.formData.award_type}}-->
+    <ul class="wrap_add" ng-if="ms.formData.award_type==='FLOW'" style="border-top:none">
+        <texter msg="{{ms.formFields.FLOW.name.msg}}" ngmodel="ms.formData.FLOW.name"></texter>
+        <!--<texter msg="{{ms.formFields.FLOW.num.msg}}" ngmodel="ms.formData.FLOW.num"></texter>-->
+        <texter msg="{{ms.formFields.FLOW.landing_page.msg}}" ngmodel="ms.formData.FLOW.landing_page"></texter>
+        <texter msg="库存" ngmodel="ms.formData.FLOW.count"></texter>
+        <texter msg="中奖须知url" ngmodel="ms.formData.FLOW.gainUrl"></texter>
+        <upload max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.FLOW.src" btntext="奖品图片" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">
+            <img ng-src="{{ms.formData.FLOW.src}}">
+        </upload>
+    </ul>
+
+    <ul class="wrap_add" ng-if="ms.formData.award_type==='WX_RED'" style="border-top:none">
+        <texter msg="{{ms.formFields.WX_RED.award_name.msg}}" ngmodel="ms.formData.WX_RED.award_name"></texter>
+        <texter msg="{{ms.formFields.WX_RED.red_name.msg}}" ngmodel="ms.formData.WX_RED.red_name"></texter>
+        <texter msg="{{ms.formFields.WX_RED.total_amount.msg}}" ngmodel="ms.formData.WX_RED.total_amount"></texter>
+        <!--<texter msg="库存" ngmodel="ms.formData.WX_RED.count"></texter>-->
+        <!--<texter msg="中奖须知url" ngmodel="ms.formData.WX_RED.gainUrl"></texter>-->
+        <texter ng-if="ms.formData.WX_RED.hb_type!=='NORMAL'" msg="{{ms.formFields.WX_RED.total_num.msg}}" ngmodel="ms.formData.WX_RED.total_num"></texter>
+        <upload max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" onclick="return false;" srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.WX_RED.src" btntext="奖品图片" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">
+            <img ng-src="{{ms.formData.WX_RED.src}}">
+        </upload>
+         <!--<radio-groups msg="{{ms.formFields.WX_RED.hb_type.msg}}" labels="普通红包,裂变红包" values="NORMAL,GROUP" ngmodel="ms.formData.WX_RED.hb_type"></radio-groups>-->
+
+
+
+
+        <beautiful-radio-group msg="红包类型"  labels="普通红包" values="NORMAL" ngmodel="ms.formData.WX_RED.hb_type"></beautiful-radio-group>
+
+        <textareaer type="textarea" msg="{{ms.formFields.WX_RED.wishing.msg}}" ngmodel="ms.formData.WX_RED.wishing"></textareaer>
+        <texter msg="{{ms.formFields.WX_RED.activity_name.msg}}" ngmodel="ms.formData.WX_RED.activity_name"></texter>
+        <texter msg="{{ms.formFields.WX_RED.mark.msg}}" ngmodel="ms.formData.WX_RED.mark"></texter>
+    </ul>
+
+    <ul class="wrap_add" ng-if="ms.formData.award_type==='WX_LOTTERY'" style="border-top:none">
+        <!-- <radio-groups msg="{{ms.formFields.WX_LOTTERY.type.msg}}" labels="优惠券" values="DISCOUNT" ngmodel="ms.formData.WX_LOTTERY.type"></radio-groups> -->
+        <!--<li>-->
+            <!--<strong class="tit">卡卷类型：</strong>-->
+            <!--<select name="" class="w1 form-control m-b">-->
+                <!--<option value="">优惠券</option>-->
+            <!--</select>-->
+        <!--</li>-->
+        <!--<div ng-if="ms.formData.WX_LOTTERY.type==='DISCOUNT'">-->
+
+            <texter msg="奖品名称" ngmodel="ms.formData.WX_LOTTERY.name"></texter>
+            <texter msg="奖品价值" ngmodel="ms.formData.WX_LOTTERY.price"></texter>
+            <!--<texter msg="奖品数量" ngmodel="ms.formData.WX_LOTTERY.num"></texter>-->
+            <texter msg="卡券id" ngmodel="ms.formData.WX_LOTTERY.card_id"></texter>
+        <texter msg="库存" ngmodel="ms.formData.WX_LOTTERY.count"></texter>
+        <texter msg="中奖须知url" ngmodel="ms.formData.WX_LOTTERY.gainUrl"></texter>
+            <upload max-img-width="{{CONFIG.UPLOADER.MAX_IMG_WIDTH}}" max-img-height="{{CONFIG.UPLOADER.MAX_IMG_HEIGHT}}" srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.WX_LOTTERY.src" btntext="奖品图片" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">
+                <img ng-src="{{ms.formData.WX_LOTTERY.src}}">
+            </upload>
+            <!--<upload srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.WX_LOTTERY.logo_src" btntext="商家logo" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">-->
+                <!--<img ng-src="{{ms.formData.WX_LOTTERY.logo_src}}">-->
+            <!--</upload>-->
+            <!--<upload srckey="{{CONFIG.UPLOADER.SRC_KEY}}" srcmodel="ms.formData.WX_LOTTERY.src" btntext="奖品图片" multi="{{CONFIG.UPLOADER.MULTI}}" url="{{CONFIG.UPLOADER.URL}}" ext="{{CONFIG.UPLOADER.EXT}}" type="{{CONFIG.UPLOADER.TYPE}}" maxsize="{{CONFIG.UPLOADER.MAX_SIZE}}" width="{{CONFIG.UPLOADER.WIDTH}}" height="{{CONFIG.UPLOADER.HEIGHT}}" auto="{{CONFIG.UPLOADER.AUTO}}">-->
+                <!--<img ng-src="{{ms.formData.WX_LOTTERY.src}}">-->
+            <!--</upload>-->
+            <!--<texter msg="商家名称" ngmodel="ms.formData.WX_LOTTERY.brand_name"></texter>-->
+            <!--<color-picker></color-picker>-->
+            <!--<texter msg="{{ms.formFields.WX_LOTTERY.main_title.msg}}" ngmodel="ms.formData.WX_LOTTERY.main_title"></texter>-->
+            <!--<texter msg="{{ms.formFields.WX_LOTTERY.sub_title.msg}}" ngmodel="ms.formData.WX_LOTTERY.sub_title"></texter>-->
+            <!--<texter msg="{{ms.formFields.WX_LOTTERY.value.msg}}" ngmodel="ms.formData.WX_LOTTERY.value"></texter>-->
+
+
+            <!--<date-picker format="yyyy/MM/dd" msg="{{ms.formFields.WX_LOTTERY.begin_time.msg}}" ngmodel="ms.formData.WX_LOTTERY.begin_time"></date-picker>-->
+            <!--<date-picker format="yyyy/MM/dd" msg="{{ms.formFields.WX_LOTTERY.end_time.msg}}" ngmodel="ms.formData.WX_LOTTERY.end_time"></date-picker>-->
+
+            <!--<number msg="{{ms.formFields.WX_LOTTERY.limit.msg}}" ngmodel="ms.formData.WX_LOTTERY.limit"></number>-->
+            <!--<number msg="{{ms.formFields.WX_LOTTERY.total_num.msg}}" ngmodel="ms.formData.WX_LOTTERY.total_num"></number>-->
+            <!--<number value="4" msg="{{ms.formFields.WX_LOTTERY.end_notice_day.msg}}" ngmodel="ms.formData.WX_LOTTERY.end_notice_day"></number>-->
+            <!--<beautiful-radio-group msg="是否转赠"  labels="是,否" values="1,0" ngmodel="ms.formData.WX_LOTTERY.is_trans"></beautiful-radio-group>-->
+            <!--<textareaer type="textarea" msg="{{ms.formFields.WX_LOTTERY.discount_details.msg}}" ngmodel="ms.formData.WX_LOTTERY.discount_details"></textareaer>-->
+            <!--<textareaer type="textarea" msg="{{ms.formFields.WX_LOTTERY.usage.msg}}" ngmodel="ms.formData.WX_LOTTERY.usage"></textareaer>-->
+            <!--<texter msg="{{ms.formFields.WX_LOTTERY.tel.msg}}" ngmodel="ms.formData.WX_LOTTERY.tel"></texter>-->
+            <!--<texter msg="{{ms.formFields.WX_LOTTERY.landing_page.msg}}" ngmodel="ms.formData.WX_LOTTERY.landing_page"></texter>-->
+        <!--</div>-->
+
+
+
+
+
+    </ul>
+
+    <button class="btn btn-primary submit" ng-click="submit($event)">提交</button>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+<style>
+    .dbx-uploader>div{
+        margin-left:-70px;
+    }
+</style>

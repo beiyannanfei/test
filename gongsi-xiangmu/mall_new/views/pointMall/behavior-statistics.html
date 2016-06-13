@@ -1,0 +1,686 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>行为分析统计</title>
+    <link href="/pointMall/stylesheets/mass-group.css" type="text/css" rel="stylesheet"/>
+    <link href="/pointMall/stylesheets/popup-group.css" type="text/css" rel="stylesheet"/>
+    <link href="/pointMall/stylesheets/style_mn-group.css" rel="stylesheet" type="text/css"/>
+    <link href="/pointMall/stylesheets/style_0815.css" rel="stylesheet" type="text/css"/>
+
+    <link href="/pointMall/javascripts/My97DatePicker/skin/WdatePicker.css" type="text/css" rel="stylesheet"/>
+
+
+    <style type="text/css">
+        .mass_content_top li.active {
+            border-color: #999999;
+        }
+
+        .s_tab_reply {
+            position: relative
+        }
+
+        .s_tab_reply ul li {
+            float: left;
+            border-radius: 5px;
+        }
+
+        .s_tab_reply ul li:hover {
+            background: #f1f1f1;
+        }
+
+        .s_tab_reply ul li.on {
+            background: #576477;
+            color: #fff
+        }
+
+        .s_tab_reply ul li strong {
+            display: inline-block;
+            border-left: solid 1px #ddd;
+            margin: 8px 0;
+            padding: 0 15px;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 14px;
+            cursor: pointer
+        }
+
+        .s_tab_reply ul li.on strong {
+            margin: 0;
+            line-height: 30px
+        }
+
+        .s_tab_reply ul li:first-child strong {
+            border: 0
+        }
+
+        .icos2 a.chou {
+            color: #5bc96d
+        }
+
+        .icos2 a.chou2 {
+            color: #f0081e
+        }
+
+        .s_tab_reply .tip_r {
+            position: absolute;
+            right: 0;
+            top: 30px;
+        }
+
+        .tip_r a {
+            width: 80px;
+            height: 32px;
+            border-radius: 4px;
+            background: #ef6e12;
+            display: block;
+            color: #fff;
+            text-align: center;
+            line-height: 32px;
+        }
+
+        .btn_clear .ico_fun_btn {
+            border: 0;
+            background: none;
+        }
+
+        .btn_clear .list_msg1 li, .btn_clear .ico_fun_btn li {
+            border: 0;
+            width: 40px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .ico_fun_btn li strong.push {
+            background: url(/pointMall/images/fabu_icon.png) no-repeat;
+            width: 23px;
+            height: 22px;
+            margin-top: 8px;
+        }
+
+        .ico_fun_btn li strong.down {
+            background: url(/pointMall/images/fabu_icon.png) no-repeat 0 bottom;
+            width: 23px;
+            height: 22px;
+            margin-top: 8px;
+        }
+
+        .msg_manage_top .search2 {
+            bottom: 13px;
+            position: absolute;
+            right: 0;
+        }
+
+        .snap {
+            background: none;
+            float: left;
+            padding: 0;
+        }
+
+        .snap label {
+            width: 74px;
+            height: 32px;
+            line-height: 32px;
+            margin-right: 8px;
+        }
+
+        .list_msg1 li {
+            padding: 25px 7px;
+        }
+
+        .list_msg1 .min_padding {
+            background: #eee;
+            padding: 7px;
+        }
+
+        .list_msg1 li .t1 td {
+            vertical-align: inherit;
+            text-align: center;
+            color: #666;
+        }
+
+        .list_msg1 li .t1 td.g_left {
+            text-align: left;
+        }
+
+        .btn_clear {
+            position: relative;
+        }
+
+        .btn_clear .ico_fun_btn {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            margin-left: -61px;
+        }
+
+        .ico_fun_btn li span {
+            left: 10%;
+        }
+
+        .pagenavi {
+            padding: 15px 20px 50px 0;
+        }
+
+        .layer_w {
+            width: 419px;
+            height: 220px;
+        }
+
+        .layer_w .con {
+            height: 110px;
+        }
+
+        .frm_d {
+            overflow: hidden;
+            padding: 40px 0 0 79px;
+        }
+
+        .frm_d label {
+            float: left;
+            font-size: 14px;
+            width: 50px;
+            line-height: 34px;
+        }
+
+        .frm_d input.frm_input {
+            border: 1px solid #e5e5e5;
+            font-size: 14px;
+            color: #333;
+            padding: 7px 10px;
+            width: 198px;
+        }
+
+        .layer_w {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin: -110px 0 0 -208px;
+        }
+
+        .bg {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.3;
+            position: fixed;
+            top: 0;
+            display: none;
+        }
+
+        .morebtn {
+            width: 93px;
+            height: 32px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 32px;
+            background: #ef6e12;
+            color: #fff;
+            float: right;
+            margin: 0 20px 20px 0;
+            cursor: pointer;
+        }
+
+        .morebtn:hover {
+            background: #de6610;
+        }
+
+        .tianjia {
+            float: left;
+            display: none;
+        }
+
+        .tianjia label {
+            display: inline-block;
+            width: 93px;
+            height: 32px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 32px;
+            background: #ef6e12;
+            color: #fff;
+        }
+
+        .top_l li {
+            margin-bottom: 15px;
+        }
+
+        .top_l li select, .top_l li input {
+            width: 128px;
+            height: 32px;
+            line-height: 32px;
+        }
+
+        .top_l li select option {
+            line-height: 28px;
+            display: inline-block;
+            height: 28px;
+        }
+
+        .top_l li label {
+            padding: 0 10px;
+        }
+
+        .top_l li input {
+            padding: 0 15px;
+            margin: 0 10px 0 0;
+        }
+
+        .add_pop {
+            display: none;
+            position: absolute;
+            right: -10px;
+            top: 40px;
+            width: 235px;
+            padding: 15px;
+            background: #fff;
+            border: solid 1px #d9dadc
+        }
+
+        .add_pop .arrow {
+            position: absolute;
+            right: 60px;
+            top: -7px;
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border: solid 1px #e7e7eb;
+            border-width: 1px 0 0 1px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+        }
+
+        .add_pop h3 {
+            font-size: 14px
+        }
+
+        .add_pop p {
+            margin-top: 10px;
+        }
+
+        .add_pop p input {
+            border: solid 1px #e7e7eb;
+            width: 225px;
+            padding: 6px 5px;
+        }
+
+        .add_pop .confirm_btn {
+            border: 0;
+            padding-top: 0
+        }
+
+        .add_pop .confirm_btn .save {
+            background: #44b549;
+        }
+
+        .add_pop .confirm_btn .save:hover {
+            background: #1f7e23;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .clearfix:before, .clearfix:after {
+            display: table;
+            line-height: 0;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both;
+            overflow: hidden;
+        }
+
+        .tip_gr {
+
+            height: 35px;
+            padding: 10px 15px 0 15px;
+            margin: 0 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="tip_gr clearfix">
+    <span class="current">行为分析统计(TOP20)</span>
+    <p style="float:right">使用帮助： 1、筛选出你的 类型、来源、行为 条件 >> 点击查看按钮</p>
+</div>
+<div class="mass_content mass_content2">
+    <div class=" clearfix have_border msg_manage_top">
+        <ul class="fl clearfix top_l">
+            <li>
+                <select id="type_name">
+                    <option value="">-----请选择-----</option>
+
+                </select><label>类型</label>
+
+                <select id="source_name" >
+                    <option value="">-----请选择-----</option>
+
+                </select><label>来源</label>
+
+                <select id="result_name">
+                    <option value="">-----请选择-----</option>
+
+                </select><label id="result_name_select">行为</label>
+
+            </li>
+            <li>
+                <label>开始时间：</label><input type="text" id="startTime" class="Wdate"
+                                           onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',disabledDates:['%y-%M-%d {%H-1}\:..\:..','%y-%M-%d {%H+1}\:..\:..']});"/>
+                <label>结束时间：</label><input type="text" id="lastTime" class="Wdate"
+                                           onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',disabledDates:['%y-%M-%d {%H-1}\:..\:..','%y-%M-%d {%H+1}\:..\:..']});"/>
+            </li>
+        </ul>
+        <div class="search2">
+            <div class="snap">
+                <label onclick="sub();">查看</label>
+            </div>
+        </div>
+    </div>
+    <!--<div id ="statistics_img">-->
+        <!--&lt;!&ndash; &ndash;&gt;-->
+
+    <!--</div>-->
+    <br/><br/>
+    <div class="chartBox">
+        <div class="statistics" id="statistics"></div>
+    </div>
+
+</div>
+
+
+<input id="wxToken" type="hidden" value="{{{wxToken}}}">
+<input id="tags" type="hidden" value="{{tags}}">
+<input id="wmhUrlUS" type="hidden" value="{{wmhUrlUS}}">
+
+
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/calendar.js" charset="utf-8"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/en.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-cn.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/My97DatePicker/lang/zh-tw.js"></script>
+<script src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/pointMall/javascripts/highcharts.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('.tianxiang').click(function () {
+            var num = $('.txt2').length;
+            var mytag = $('<input type="text" class="txt2" value="请输入搜索条件">');
+            $(this).prev().before(mytag);
+            if (num > 3) {
+                $('.tianxiang').css('display', 'none');
+            }
+        });
+    });
+    $('.save').click(function () {
+        $('.add_pop').css('display', 'none');
+    })
+    $('.tianjia').click(function () {
+        $('.add_pop').css('display', 'block');
+    })
+    $('.view').click(function () {
+        $('.add_pop').css('display', 'none');
+    })
+    function btnEdit() {
+
+    }
+    $(".snap label").click(function () {
+        $(".tianjia").show();
+    });
+
+    var wxToken = $('#wxToken').val();
+    var page = 1;
+    var pagecount = 10;
+    $('#queryGroup').hide();
+    var  startTime = '', lastTime = '',type_name='',source_name='',result_name='';
+    var isQuery = false;
+    var is_result_name = false;
+    var tags  = $("#tags").val();
+    var tagsJson = JSON.parse(tags);
+
+    $(function () {
+        var _html = '';
+        $.each(tagsJson,function(k,v){
+            _html += '<option value="'+k+'">'+k+'</option>';
+        });
+        $('#type_name').append(_html);
+        var num = 1;
+        $('.tianxiang').click(function () {
+            var num = $('.txt2').length;
+            var mytag = $('<input type="text" id="behavior_' + num + '" class="txt2" placeholder="请输入搜索条件">');
+            $(this).prev().after(mytag);
+            if (num > 3) {
+                $('.tianxiang').css('display', 'none');
+            }
+            num++
+        });
+    });
+
+
+    $('.close').click(function () {
+        $('.layer_w').css('display', 'none');
+        $('.bg').css('display', 'none');
+    });
+    $('.tianjia').click(function () {
+        if (isQuery === false) {
+            alert('请先点击查看按钮完成检索');
+            return false;
+        }
+        $('.layer_w').css('display', 'block');
+        $('.bg').css('display', 'block');
+    });
+    $('.btn_lg').click(function () {
+        // $('.layer_w').css('display','none');
+        // $('.bg').css('display','none');
+    });
+
+
+    $("#type_name").change(function() {
+        $('#source_name').html('');
+        $('#source_name').html('<option value="">-----请选择-----</option>');
+        var type_name = $("#type_name").val();
+        var wxToken = $("#wxToken").val();
+        var _html = '';
+        var _tags = tagsJson[type_name];
+        if(type_name=='活动' && wxToken=='GZRG9IQ7'){
+            getActivity(function(data){
+                if(data){
+                    for(var i=0;i<data.length;i++){
+                        _html += '<option value="'+ data[i].name+'">'+ data[i].name+'</option>';
+                    }
+                    $('#source_name').append(_html);
+                }
+            });
+        }else{
+            $.each(_tags,function(k,v){
+                _html += '<option value="'+ v.key+'">'+ v.key+'</option>';
+            });
+            $('#source_name').append(_html);
+        }
+
+        if(_tags){
+           var _results =  _tags[0].results;
+            for(var i = 0 ;i<_results.length;i++)
+            {
+                if(_results[i] == "" || typeof(_results[i]) == "undefined")
+                {
+                    _results.splice(i,1);
+                    i= i-1;
+                }
+            }
+           if(!_results[0] || _results[0]=='' || _results[0]=='undefined'){
+               is_result_name = false;
+               $('#result_name').hide();
+               $('#result_name_select').hide();
+           }else{
+               is_result_name = true;
+               $('#result_name').show();
+               $('#result_name_select').show();
+           }
+        }
+        console.log(_tags);
+
+    });
+
+
+    $("#source_name").change(function() {
+        $('#result_name').html('');
+        $('#result_name').html('<option value="">-----请选择-----</option>');
+        var type_name = $("#type_name").val();
+        var source_name = $("#source_name").val();
+        var _tags = tagsJson[type_name];
+        $.each(_tags,function(k,v){
+            if( v.key == source_name){
+                var _html = '';
+                $.each(v.results,function(k,v){
+                    if(v!=''){
+                        _html += '<option value="'+v+'">'+v+'</option>';
+                    }
+                });
+                if(_html!=''){
+                    $('#result_name').append(_html);
+                }
+            }
+        });
+    });
+
+    function queryBehavior() {
+        loadData();
+    }
+
+    function sub() {
+        var _type_name = $("#type_name").val();
+        if(_type_name==''){
+            alert('请选择类型');
+            return false;
+        }
+        var _source_name = $("#source_name").val();
+        var _result_name = $("#result_name").val();
+        var _startTime = $('#startTime').val();
+        var _lastTime = $('#lastTime').val();
+        if (_startTime != '' || _lastTime != '') {
+            if (_startTime === '') {
+                alert('请输选择起始时间');
+                return false;
+            } else {
+                _startTime = datetime_to_unix(_startTime);
+            }
+            if (_lastTime === '') {
+                alert('请输选择结束时间');
+                return false;
+            } else {
+                _lastTime = datetime_to_unix(_lastTime);
+            }
+            if (_startTime > _lastTime) {
+                alert('起始时间不能大于结束时间');
+                return false;
+            }
+        }
+        type_name=_type_name;
+        source_name=_source_name;
+        result_name=_result_name;
+        startTime = _startTime;
+        lastTime = _lastTime;
+        isQuery = true;
+        page = 1;
+        loadData();
+    }
+
+    function loadData() {
+        if(source_name && is_result_name==false){
+            result_name = 'result_name';
+        }
+        var url = '/pointMall/behavior/statistics?startTime=' + startTime + '&lastTime=' + lastTime + '&description=' + type_name + '&behavior=' + source_name+ '&result=' + result_name+'&r=1';
+        $.ajax({
+            type: 'GET',
+            url: url,
+            success: function (data) {
+                if (data && data.status == 'success') {
+                    var dataArray = data.data;
+                    var categories = [];
+                    var numArray = [];
+                    var namearray = [];
+                    for (var i = 0; i < dataArray.length; i++) {
+                        categories[i]=dataArray[i]._id;
+                        numArray[i]=dataArray[i].count;
+                        if(result_name && result_name!=''){
+                            if(dataArray[i].nickName){
+                                namearray[i]=dataArray[i].nickName;
+                            }else{
+                                namearray[i]=dataArray[i]._id;
+                            }
+                        }
+                    }
+                    if(result_name){
+                        categories = namearray;
+                    }
+                    var series_name = type_name;
+                    if(source_name){
+                        series_name = series_name +  ' >> '+source_name;
+                    }
+                    if(result_name && result_name!='result_name'){
+                        series_name = series_name +  ' >> '+result_name;
+                    }
+                    $('#statistics').highcharts({
+                        chart: {
+                            type: 'column'
+                        },
+                        title: {
+                            text: ''
+                        },
+                        credits: {enabled: false},
+                        xAxis: {
+                            categories:categories ,
+                            plotBands: []
+                        },
+                        yAxis: {
+                            title: {
+                                text: ''
+                            }
+                        },
+                        tooltip: {
+                            shared: true,
+                            borderColor:'#fff',
+                            valueSuffix: ''
+                        },
+                        credits: {enabled: false},
+                        plotOptions: {
+                            areaspline: {
+                                fillOpacity:0.5
+                            }
+                        },
+                        series: [{
+                            name: series_name,
+                            color:'#176DEE',
+                            data: numArray
+                        }]
+                    });
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    function datetime_to_unix(datetime) {
+        var tmp_datetime = datetime.replace(/:/g, '-');
+        tmp_datetime = tmp_datetime.replace(/ /g, '-');
+        var arr = tmp_datetime.split("-");
+        var now = new Date(Date.UTC(arr[0], arr[1] - 1, arr[2], arr[3] - 8, arr[4], arr[5]));
+        return parseInt(now.getTime());
+    }
+
+    function unix_to_datetime(unix) {
+        var now = new Date(parseInt(unix) * 1000);
+        return now.toLocaleString().replace(/年|月/g, "-").replace(/日/g, " ");
+    }
+
+</script>
+</body>
+</html>

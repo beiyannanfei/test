@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>奖品列表</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/style.css" />
+    <style type="text/css">
+       .top_tit01{ height:99px;line-height: 99px;background: #fff;padding-left: 30px;width:97%;margin:20px auto;font-size: 28px;}
+        .top_search{ overflow:hidden; clear:both; padding:10px 0 0; text-align:right}
+        .top_search *{ font-size:13px}
+        .top_search .w1{ width:160px; border:solid 1px #c9c9c9; padding:3px 4px;font-family:"微软雅黑"; border-radius:3px; box-shadow:inset 0 1px 3px #ddd; line-height:18px}
+        .top_search .btn{ width:50px; height:26px; padding:1px 0 3px;border:solid 1px #c9c9c9; background:#f9f9f9;border-radius:3px; cursor:pointer }
+        .top_search .btn:hover{ background:#eee}
+        .t_form1{position:relative; margin-top:20px}
+        .t_form1 dt{ clear:both; overflow:hidden; padding:6px 0; margin-bottom:10px; background:#95c2eb; color:#fff }
+        .t_form1 dd{ clear:both; margin-bottom:15px;padding:25px 0; border:solid 1px #e7e7eb;width:100%}
+        .t_form1 dd:hover{ background:#f9f9f9}
+        .t_form1 th{ font-size:14px}
+        .t_form1 td{ text-align:center; font-size:14px; color:#555}
+
+        .t_form1 td.address{ position:relative; }
+        .t_form1 td.address strong{display:inline-block; width:70px; border:solid 1px #ddd;padding:2px 0; background:#fff; border-radius:4px; font-size:14px; font-weight:normal; cursor:pointer}
+        .t_form1 td.address strong:hover,.t_form1 td.address.on strong{ border:solid 1px #0090ff; color:#0090ff}
+        .t_form1 td.address .url{ display:none; position:absolute; right:-50px; top:50%; margin-top:15px; background:#fff; border:solid 1px #ddd; padding:4px 6px; box-shadow:0 0 3px #ccc; border-radius:4px; white-space:nowrap }
+        .t_form1 td.address .url i{ margin-left:10px; cursor:pointer; color:#0090ff}
+
+        .t_form1 td.address.on .url{ display:block}
+        .t_form1 td .e1{ width:80%; border:solid 1px #e7e7eb; padding:3px 4px 4px; font-family:"微软雅黑"; font-size:14px}
+        .t_form1 td.good{ text-align:left}
+        .t_form1 td.good img{ float:left; padding:2px; border:solid 1px #ddd; margin:0 15px 0 30px; max-width:100px; max-height:100px}
+        .t_form1 td.good h3{ margin-top:7px;}
+        .t_form1 td.good p{ margin-top:4px;}
+        .operate1 strong{ display:inline-block; margin:0 5px; padding:3px 0; font-size:14px; border-radius:3px; font-weight:normal; color:#0090ff; cursor:pointer;}
+        .operate1 strong:hover{ color:#0068b9}
+
+        .pop_page1{ position:fixed; min-width:300px; background:#fff; border-radius:5px; box-shadow:0 1px 5px rgba(0,0,0,.2); display: none; top:50%; left:50%; width:420px;margin:-80px 0 0 -210px; z-index:10;}
+        .pop_page1 .title{ height:45px; background:#0090ff; padding:0 15px;border-radius:5px 5px 0 0;}
+        .pop_page1 .title strong{ float:left; color:#fff; font-size:14px; line-height:45px; font-weight:normal}
+        .pop_page1 .title .close{ float:right; width:15px; height:15px; margin:15px 0 0; background:url(/images/close.png) no-repeat center center; text-indent:-9999px; cursor:pointer}
+        .pop_page1 .title .close:hover{opacity:.8; background-color:#000}
+        .pop_page1 .cnt_code1{ margin:10px auto; text-align:center}
+        .pop_page1 .cnt_code1 img{ width:160px; height:160px;}
+        .pop_page1 .cnt_code1 p{ margin-top:8px; font-size:14px}
+        .pop_page1 .cnt2{ margin:20px auto;}
+        .pop_page1 .cnt2 .tip{ text-align:center; font-size:14px}
+        .pop_page1 .cnt2 .btn{ margin-top:20px; text-align:center}
+        .pop_page1 .cnt2 .btn strong{display:inline-block; width:85px; margin:0 5px; padding:5px 0; background:#0090ff; font-size:14px; border-radius:3px; font-weight:normal; color:#fff; cursor:pointer; text-align:center}
+        .pop_page1 .cnt2 .btn strong.cancel{ background:#ff5252}
+        .wrap01{background: #fff;margin: 0 40px 0 40px;}
+        .table{border: solid 1px #E4E5E7;margin-top: 30px;}
+        .table thead{background: #f7f9fa;}
+        .table thead tr{height:46px;}
+        .table thead tr th{text-align: center;color: #6A6C6F;font-size: 12px;line-height: 29px;}
+        .table tbody tr{height: 68px;}
+        .table tbody tr td{line-height: 68px;text-align: center;}
+        .table tbody tr td a{margin-right: 10px;}
+    </style>
+
+</head>
+<body style="margin:0 auto">
+    <div class="normalheader transition animated fadeIn">
+    <div class="hpanel">
+        <div class="panel-body">
+            <a class="small-header-action" href="">
+                <div class="clip-header">
+                    <i class="fa fa-arrow-up"></i>
+                </div>
+            </a>
+
+            <div id="hbreadcrumb" class="pull-right m-t-lg">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">营销应用</a></li>
+                    <li>
+                        <span>营销应用列表</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs" style="font-size:30px">
+                营销应用
+            </h2>
+            <small>营销应用列表</small>
+        </div>
+    </div>
+</div>
+<div class="hpanel" style="padding:20px 40px 0 40px;margin-bottom:0">
+    <div class="hpanel" style="margin-bottom:0">
+        <ul class="nav nav-tabs">
+            <li><a href="/admin/activity?way=1" aria-expanded="true">刮刮卡</a></li>
+            <li><a href="/admin/activity?way=2" aria-expanded="false">大转盘</a></li>
+            <li class="active"><a href="#" aria-expanded="false">抢红包</a></li>
+            <li><a href="/admin/goto/iframe?page=/admin/views/coupon.html" aria-expanded="false">优惠券</a></li>
+            <!--<li><a href="/admin/card" aria-expanded="false">卡卷管理</a></li>
+            <li><a href="http://business.dev.tvm.cn/Marketing/seckillList" aria-expanded="false">秒杀活动</a></li>-->
+        </ul>
+    </div>
+</div>
+<div class="wrap01">
+    <h3 class="tit02 fbhd" style="height:30px;padding-top:20px;margin-right:10px;"><a href="/admin/add/redPager/event" class="btn w-xs btn-success" style="background:#62cb31">+添加抢红包</a></h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>活动名字</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+            {{#each redPagerEvent}}
+            <tr goodId={{_id}}>
+                <td>{{name}}</td>
+                <td>{{dateTime}}</td>
+                <td>
+                    <a class="link" href="javascript:void(0)" url="{{url}}">查看链接</a>
+                    <a class="delete" href="javascript:void(0)">删除</a>
+                    <a href="/admin/redPager/event/{{_id}}/update">编辑</a>
+                    <a href="/admin/redPager/event/{{_id}}/statistics">统计</a>
+                    <a class="showId" href="#">查看抢红包ID</a></td>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $(function () {
+        
+        $('.delete').click(function(){
+            var goodId = $(this).closest('tr').attr('goodId');
+            swal({
+                title: "确定删除吗？",
+                text: "删除后不能撤销，请慎重考虑",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "确定",
+                cancelButtonText: "取消",
+                closeOnConfirm: false,
+                closeOnCancel: true },
+            function (isConfirm) {
+                if (isConfirm) {
+                    deleteGoods(goodId,function(err){
+                        if(err){
+                            swal("删除失败");
+                        }else{
+                            swal("删除成功");
+                        }
+                    })
+                }
+            })
+        })
+
+        $('.showId').click(function(){
+            var goodId = $(this).closest('tr').attr('goodId');
+            window.prompt("抢红包", goodId);
+        })
+
+        $('.link').click(function(){
+            var url = $(this).attr('url');
+            window.prompt("链接地址请复制", url);
+        })
+
+        function deleteGoods(goodsId,cb){
+            $.ajax({
+                type: 'DELETE',
+                url: "/admin/redPagerEvent/" + goodsId,
+                success: function(data){
+                    $('tr[goodId=' + goodsId + ']').slideUp();
+                    cb();
+                },
+                error: function(){
+                    cb('err')
+                }
+            })
+        }
+    });
+</script>
+</body>
+</html>
+

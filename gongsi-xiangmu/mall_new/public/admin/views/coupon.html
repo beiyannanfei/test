@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Page title -->
+  <title>优惠券列表</title>
+
+  <!-- Vendor styles -->
+  <link rel="stylesheet" href="../theme/vendor/fontawesome/css/font-awesome.css"/>
+  <link rel="stylesheet" href="../theme/vendor/animate.css/animate.css"/>
+  <link rel="stylesheet" href="../theme/vendor/bootstrap/dist/css/bootstrap.css"/>
+
+  <!-- App styles -->
+  <link rel="stylesheet" href="../theme/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css"/>
+  <link rel="stylesheet" href="../theme/fonts/pe-icon-7-stroke/css/helper.css"/>
+  <link rel="stylesheet" href="../theme/styles/style.css">
+  <link rel="stylesheet" href="../lib/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="../theme/vendor/toastr/build/toastr.min.css">
+
+  <link rel="stylesheet" href="../css/common.css"/>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    .btn-link, .link {
+      color: #337ab7;
+    }
+
+    .search {
+      width: 200px;
+    }
+
+    .search .btn-default {
+      padding-left: 4px;
+      padding-right: 0;
+      border-right: 0;
+      outline: none;
+    }
+
+    .search .btn-default:active {
+      outline: none;
+    }
+
+    .search .glyphicon-search {
+      vertical-align: -3px;
+    }
+
+    .search input {
+      border-left: none;
+      padding-left: 5px;
+    }
+  </style>
+</head>
+
+<body>
+<div id="wrapper">
+
+  <div class="content animate-panel" id="app">
+
+    <div class="row" >
+      <div class="col-sm-12">
+        <div class="hpanel">
+          <div class="panel-body">
+
+            <div class="col-sm-12">
+              <a href="coupon-edit.html" class="btn btn-success">新建优惠券</a>
+              <div class="pull-right search">
+                <div class="input-group m-b">
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" @click="searchAction"><i class="glyphicon glyphicon-search"></i></button>
+                  </span>
+                  <input class="form-control" placeholder="搜索" v-model="search.name" @keyup.enter="searchAction">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12" style="margin-top: 20px;">
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>优惠券名称</th>
+                  <th>价值(元)</th>
+                  <th>领取限制</th>
+                  <th>有效期</th>
+                  <th>领取人/次</th>
+                  <th>已使用</th>
+                  <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="item in tableData.result">
+                  <td>{{ item.name }}</td>
+                  <td>{{ item.value }}</td>
+                  <td>{{ item.limit || '不限张' }}</td>
+                  <td>{{ item.beginDate }} 至<br>{{ item.endDate }} </td>
+                  <td>{{ item.uv }}/{{item.pv }}</td>
+                  <td>
+                    <a href="coupon-use.html?id={{ item._id  }}&name={{ item.name  }}" class="link">{{ item.use }}</a>
+                  </td>
+                  <td>
+                    <template v-if="!item.disable">
+                      <a @click.prevent="copyLink(item)"  class="btn btn-link">链接</a>-
+                      <a href="coupon-edit.html?id={{ item._id  }}" class="btn btn-link"> 编辑</a>
+                    </template>
+                    <template v-else>
+                      <span class="text-muted">已失效</span>
+                    </template>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div id="tabPagination" v-if="tableData.count > 20">
+                <a class="btn btn-xs btn-info" @click.prevent="prevPage">上一页</a>
+                <span>{{ page.pageIndex  }}</span> / <span>{{ allPage  }}</span>
+                <a class="btn btn-xs btn-info" @click.prevent="nextPage" >下一页</a>
+                <input type="text" class="form-control input-xs" id="jumpPage" v-model="page.jumpPage">
+                <a  class="btn btn-xs btn-info" @click.prevent="jump">跳转</a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-self" :class="page.loading?'': 'hidden'">
+      <img src="../img/loading.svg" width="32" height="32"/>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- Vendor scripts -->
+<script src="../theme/vendor/jquery/dist/jquery.min.js"></script>
+<script src="../lib/vue/vue.min.js"></script>
+<script src="../theme/vendor/toastr/build/toastr.min.js"></script>
+
+<!-- custom js-->
+<script src="../js/common.js"></script>
+
+<!-- page js -->
+<script src="../js/coupon.js"></script>
+
+</body>
+
+</html>

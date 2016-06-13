@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>群组管理</title>
+    <link href="/pointMall/stylesheets/style_mn-group.css" rel="stylesheet" type="text/css"/>
+    <style>
+        .edit img {
+            width: 25px;
+        }
+
+        .s_user_list td {
+            padding: 10px 8px;
+        }
+
+        .s_user_list td .avatar .pic {
+            margin: 0 10px 0 10px;
+        }
+
+        .wrap_userlist .area_show_number {
+            padding-left: 10px;
+            position: relative;
+            box-sizing: border-box;
+            overflow: auto;
+            height:770px;
+        }
+
+        .s_number_list {
+            position: absolute;
+            width: 100%;
+            top: 10px;
+        }
+
+        .clearfix {
+            *zoom: 1;
+        }
+
+        .clearfix:before, .clearfix:after {
+            display: table;
+            line-height: 0;
+            content: "";
+        }
+
+        .clearfix:after {
+            clear: both;
+            overflow: hidden;
+        }
+
+        .tip_gr {
+            border-bottom: 1px #000 solid;
+            height: 35px;
+        }
+
+        .s_number_list strong {
+            display: inline-block;
+            max-width: 100px;
+            height: 20px;
+            vertical-align: middle;
+            line-height: 20px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-right: 5px;
+        }
+
+        .s_number_list span {
+            display: inline-block;
+            height: 20px;
+            line-height: 20px;
+            vertical-align: middle;
+        }
+
+        .s_number_list dd {
+            padding: 5px 0 5px 5px;
+            cursor: pointer;
+        }
+
+        .close_btn {
+            display: inline-block;
+            height: 15px;
+            float: right;
+            margin: 5px 20px 0 0;
+            width: 15px;
+            background: url(/pointMall/images/mass_ico.png) 0 -2504px no-repeat;
+            cursor: pointer;
+        }
+
+        .ofirst {
+            background: #04559b;
+            color: #fff;
+        }
+
+        .s_number_list span.ospan {
+            color: #fff;
+        }
+
+        .s_number_list span.hover_span {
+            color: #999;
+        }
+
+        .s_number_list dd.hover_dd {
+            background: #f4f5f9;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap01">
+    <div class="tip_gr clearfix">
+        <span class="current">群组管理</span>
+
+        <div class="add_group">
+            <a href="javascript:groupChat();"><strong class="new_add">群发送信息</strong></a>
+        </div>
+    </div>
+    <div class="wrap_userlist">
+        <div class="area_operate">
+            <div id="groupData" class="s_user_list">
+
+                {{#each dataArray}}
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <colgroup>
+                        <col width="*">
+                        <col width="60">
+                    </colgroup>
+                    <tr>
+                        <td>
+                            <div id="{{openId}}_txt" class="avatar">
+                                <div class="pic">
+                                    <a target="_blank" href="/pointMall/groups/chat?openId={{openId}}"><img id="{{openId}}_headImg"  src="{{headImg}}"/></a>
+                                </div>
+                                <span id="{{openId}}_nickName" class="username">{{nickName}}</span>
+                            </div>
+                        </td>
+                        <td id="{{openId}}" class="edit"><img src="/pointMall/images/u51.png"></td>
+                    </tr>
+                </table>
+                {{/each}}
+
+            </div>
+            <div class="pagenavi">
+                <em class="pre"><strong><!--上一页--></strong></em>
+                <span class="page_st"><label id="page_number">1</label>/<label id="page_count">{{pages}}</label></span>
+                <em class="next"><strong><!--下一页--></strong></em>
+                <span class="input_number"><input id="input_number" name="" type="text"/></span>
+                <span class="btn_send">跳转</span>
+            </div>
+        </div>
+        <div class="area_show_number">
+            <dl class="s_number_list">
+                {{#each groups}}
+                <dd id="{{_id}}"><strong>{{key}}</strong><span>(<label id="{{_id}}_number">{{number}}</label>)</span><label></label></dd>
+                {{/each}}
+            </dl>
+        </div>
+    </div>
+    <!--//wrap_userlist-->
+</div>
+
+<input type="hidden" id="group_id" value="{{id}}">
+<input type="hidden" id="group_pages" value="{{pages}}">
+<input type="hidden" id="wxToken" value="{{wxToken}}">
+{{#each groups}}
+    <input type="hidden" id="{{_id}}_activity" value="{{activity}}">
+{{/each}}
+
+
+<script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+
+<script>
+
+var page = 0;
+var pagecount = 10;
+var groups_number = true;
+
+$(function () {
+    $(".edit").live('click', function () {
+        if (!confirm("确认删除吗")) {
+            return false;
+        }
+        var parentsObj = $(this).parents("tr");
+        var _id = $('#group_id').val();
+        var openId = $(this).attr('id');
+        var arrary = [];
+        arrary.push(openId);
+        var parameters = JSON.stringify(arrary);
+        delGroupUser(_id, parameters, function (data) {
+            if (data) {
+                userNumber();
+                parentsObj.remove();
+            }
+        });
+    });
+
+    var _id = $('#group_id').val();
+    $('#' + _id).addClass("ofirst").removeClass("hover_dd").find("span").addClass("ospan").removeClass("hover_span");
+    $('#' + _id).siblings().removeClass("ofirst").find("span").removeClass("ospan");
+});
+
+var count, ovalue, ahtml;
+$(".s_number_list dd").dblclick(function () {
+    var _id = $(this).attr('id');
+    //--------------------------------------------------------------------------
+    var activity = $('#'+_id+'_activity').val();
+    if(activity!='自定义'){
+        alert('系统分组，不能修改组名（需要修改，请联系系统管理员）');
+        return ;
+    }
+
+    ovalue = $(this).find("strong").html();
+    ocount = $(this).find("span").html();
+
+    ovalue = $(this).find("strong").html();
+    ocount = $(this).find("span").html();
+    $(this).html('');
+
+    var ohtml = '<input type="text" style="height:20px;" value="' + ovalue + '">';
+    $(this).append(ohtml);
+
+    oinput = $(this).find("input").val();
+    ahtml = "<strong>" + oinput + "</strong><span class='ospan'>" + ocount + "</span>";
+    $(this).attr("edit", "1");
+
+
+
+    $("input").blur(function () {
+        oinput = $(this).val();
+        if (oinput == '') {
+            oinput = ovalue;
+        }
+        var parentObj = $(this).parent();
+        //$(this).parent().html("<strong>"+oinput+"</strong><span>"+ocount+"</span>");
+        if (oinput != ovalue) {
+            updateGroupName(_id, oinput, function (data) {
+                if (data) {
+                    ahtml = "<strong>" + oinput + "</strong><span class='ospan'>" + ocount + "</span>";
+                    parentObj.html(ahtml);
+                } else {
+                    ahtml = "<strong>" + ovalue + "</strong><span class='ospan'>" + ocount + "</span>";
+                    oinput = ovalue;
+                    parentObj.html(ahtml);
+                }
+            });
+        }
+    });
+    $(document).click(function (e) {
+        var target = $(e.target);
+        if (!target.is(".s_number_list input")) {
+            $(".s_number_list dd[edit='1']").html("<strong>" + oinput + "</strong><span>" + ocount + "</span>");
+            $(".s_number_list dd[edit='1']").attr("edit", "0");
+        }
+    });
+})
+
+$(".s_number_list dd").hover(function () {
+    var otitle = $(this).find("strong").html();
+    $(this).attr("title", otitle);
+    $(this).append("<label class='close_btn'></label>");
+    $(".close_btn").click(function () {
+
+        var _id = $(this).parents("dd").attr('id');
+        //---------------------------------------------------------------------
+        var activity = $('#'+_id+'_activity').val();
+//        if(activity!='自定义'){
+//            return ;
+//        }
+        if (!confirm("确认删除吗")) {
+            return false;
+        }
+
+        var _DLObj = $(this).parents("dl");
+        var parentsObj = $(this).parents("dd");
+        delGroup(_id, function (data) {
+            if (data) {
+                parentsObj.remove();
+                //没有组的时候，清除页面元素
+                var _html = $('.s_number_list').html();
+                _html= _html.trim();
+                if(_html==''){
+                    groups_number = false;
+                    $('#groupData').html('');
+                    $('.pagenavi').hide();
+                }else{
+                    var _groupId = _DLObj.children(":first").attr("id");
+                    $('#group_id').val(_groupId);
+                    page = 0;
+                    getData();
+                }
+            }
+        });
+    });
+}, function () {
+    $(this).find(".close_btn").remove();
+});
+
+$(".s_number_list dd").click(function () {
+    $(this).addClass("ofirst").removeClass("hover_dd").find("span").addClass("ospan").removeClass("hover_span");
+    $(this).siblings().removeClass("ofirst").find("span").removeClass("ospan");
+    //------------------------------------------------
+    var id = $(this).attr('id');
+    $('#group_id').val(id);
+    page = 0;
+    getData();
+    $('#input_number').val('');
+    $('#page_number').html('1');
+});
+
+$(".s_number_list dd").hover(function () {
+    if (!$(this).attr("class")) {
+        $(this).addClass("hover_dd").find("span").addClass("hover_span");
+    }
+}, function () {
+    $(this).removeClass("hover_dd").find("span").removeClass("hover_span")
+});
+
+
+$(".pre").click(function () {
+    if (page > 0) {
+        page--;
+        getData();
+        var number = $('#page_number').text();
+        number = parseInt(number);
+        if (number > 0) {
+            number--;
+            if(number==0){
+                number=1;
+            }
+            $('#page_number').html(number)
+        }
+    }
+});
+$(".next").click(function () {
+    page++;
+    var pages = $('#group_pages').val();
+    if (page < pages) {
+        getData();
+        var number = $('#page_number').text();
+        number = parseInt(number);
+        number++;
+        $('#page_number').html(number);
+    } else {
+        page--;
+    }
+});
+$(".btn_send").click(function () {
+    var number = $('#input_number').val();
+    if (number == '') {
+        alert('请填写跳转页数');
+        $('#input_number').focus();
+        return false;
+    }
+    if (isNaN(number)) {
+        alert("请输入数字（正整数）");
+        $('#input_number').focus();
+        return false;
+    }
+
+    if (number < 1) {
+        alert('请输入大于1的数字');
+        $('#input_number').focus();
+        return false;
+    }
+    number = parseInt(number);
+    page = (number - 1);
+    getData(function (data) {
+        if (data) {
+            $('#page_number').html(number);
+        } else {
+            alert('查询结果为空');
+            page=0;
+            getData();
+            $('#input_number').val('');
+            $('#page_number').html('1');
+        }
+    });
+
+});
+
+$(".avatar").live('mouseover',function () {
+    var openId = $(this).attr('id');
+    var index = openId.indexOf('_txt');
+    openId = openId.substr(0,index);
+    var object = $(this);
+    var nickName =$('#'+openId+'_nickName').html();
+    var headImg = $('#'+openId+'_headImg').attr('src');
+    findUser(openId,function(data){
+        if(data && data.username!=nickName){
+            $('#'+openId+'_nickName').html(data.username);
+        }
+        if(data && data.weixin_avatar_url!=headImg){
+            $('#'+openId+'_headImg').attr('src',data.weixin_avatar_url);
+        }
+        var ohtml = '<div class="pop_u">'
+                + '<span class="arrow"></span>'
+                + '<dl>'
+                + '<dt>详细资料</dt>'
+                + '<dd><strong class="c_l">用户名</strong><div class="c_r"><strong>'+data.username+'</strong><i class="user"></i></div></dd>'
+                + '<dd><strong class="c_l">地区</strong><div class="c_r">'+data.signature+'</div></dd>'
+                + '</dl>'
+                + '</div>';
+        object.append(ohtml);
+    });
+});
+
+function delGroupUser(_id, parameters, callback) {
+    var url = '/pointMall/groups/action';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {action: 'del', id: _id, parameters: parameters},
+        dataType: 'json',
+        success: function (data) {
+            if (data && data.status === 'success') {
+                callback(data);
+            } else {
+                console.log('操作失败，请重试');
+                callback(null);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            callback(null);
+        }
+    });
+}
+
+function delGroup(_id, callback) {
+    var url = '/pointMall/groups/update';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {action: 'del', id: _id},
+        dataType: 'json',
+        success: function (data) {
+            if (data && data.status == 'success') {
+                callback(data);
+            } else {
+                if(data && data.msg == '查不到组（'+_id+'）信息'){
+                    callback(data);
+                }else{
+                    console.log('操作失败，请重试');
+                    callback(null);
+                }
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            callback(null);
+        }
+    });
+}
+
+function getData(callback) {
+    var id = $('#group_id').val();
+    var url = '/pointMall/groups/queryGroupUser?id=' + id + '&page=' + page;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (data) {
+            if (data.status === 'success') {
+                var page_count = data.pagecount;
+                var data = data.data;
+                $('#page_count').html(page_count);
+                $('#group_pages').val(page_count);
+                var html = '';
+                $('#groupData').html("");
+                for (var i = 0, len = data.length; i < len; i += 1) {
+                    var obj = data[i];
+                    html += '<tr>' +
+                            '<td>' +
+                            '<div id="' + obj.openId + '_txt" class="avatar">' +
+                            '<div class="pic"><a target="_blank" href="/pointMall/groups/chat?openId=' + obj.openId + '">' +
+                            '<img id="'+ obj.openId+'_headImg"  src="' + obj.headImg + '"/></a></div>' +
+                            '<span id="'+ obj.openId+'_nickName" class="username">' + obj.nickName + '</span>' +
+                            '</div>' +
+                            '</td>' +
+                            '<td id="' + obj.openId + '" class="edit" ><img src="/pointMall/images/u51.png"></td>' +
+                            '</tr>';
+                }
+                var _html = '<table width="100%" border="0" cellspacing="0" cellpadding="0">' +
+                        '<colgroup>' +
+                        '<col width="*">' +
+                        '<col width="60">' +
+                        '</colgroup>' + html + '</table>';
+                $('#groupData').html(_html);
+                //
+                if (callback) {
+                    if (data.length < 1) {
+                        callback(null);
+                    } else {
+                        callback(data.length)
+                    }
+                }
+
+                //callback(null);
+            } else {
+                console.log('操作失败，请重试');
+                if (callback) {
+                    callback(null);
+                }
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            if (callback) {
+                callback(null);
+            }
+        }
+    });
+}
+
+function updateGroupName(_id, groupName, callback) {
+    var obj = {
+        groupName: groupName
+    };
+    var parameters = JSON.stringify(obj);
+    var url = '/pointMall/groups/action';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {action: 'update', id: _id, parameters: parameters},
+        dataType: 'json',
+        success: function (data) {
+            if (data && data.status === 'success') {
+                callback(data);
+            } else {
+                if (data.msg) {
+                    alert(data.msg);
+                }
+                console.log('操作失败，请重试');
+                callback(null);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            callback(null);
+        }
+    });
+}
+
+function findUser(openId,callback) {
+    var wxToken = $('#wxToken').val();
+    var url = '/pointMall/personal/queryUser?wxToken='+wxToken+'&openId='+openId;
+    $.ajax({
+        type: 'GET',
+        url: url,
+        success: function (data) {
+            if (data && data.status === 'success') {
+                callback(data.data);
+            } else {
+                console.log('操作失败，请重试');
+                callback(null);
+            }
+        },
+        error: function (error) {
+            console.log(error);
+            callback(null);
+        }
+    });
+}
+
+
+function userNumber() {
+    var _id = $('#group_id').val();
+    var number = $('#' + _id + '_number').text();
+    number = parseInt(number);
+    number--;
+    if (number < 0) {
+        number = 0;
+    }
+    $('#' + _id + '_number').html(number);
+}
+
+function groupChat() {
+    if(groups_number==false){
+        alert('您当前没有组、请点击菜单行为分析、创建分组');
+        return false;
+    }
+    var _id = $('#group_id').val();
+    var url = '/pointMall/groups/groupChat?id=' + _id;
+    window.location.href = url;
+}
+
+</script>
+</body>
+</html>

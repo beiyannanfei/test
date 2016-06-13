@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>微信卡券选择测试</title>
+    <!--<link rel="stylesheet" href="/pointMall/stylesheets/common_mobile.css">-->
+    <!--<link rel="stylesheet" href="/pointMall/stylesheets/receive-card.css">-->
+    <script type="text/javascript" src="/pointMall/javascripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/pointMall/javascripts/wxShareApi.js"></script>
+</head>
+<body>
+<button id="clickTest">点击使用</button>
+<button id="clickTest1">openCard test</button>
+<!--<input type="hidden" id="cardId" value="{{card.card_id}}">-->
+<!--<div class="wrapper">-->
+    <!--<div class="header" style="background-color: {{card.colorValue}}">-->
+        <!--<div class="header_content">-->
+            <!--<dl>-->
+                <!--<dt><img src="{{card.card.general_coupon.base_info.logo_url}}" alt=""></dt>-->
+                <!--<dd>{{card.card.general_coupon.base_info.brand_name}}</dd>-->
+            <!--</dl>-->
+            <!--<div class="clearfix"></div>-->
+            <!--<h2>{{card.card.general_coupon.base_info.title}}</h2>-->
+            <!--<h3>{{card.card.general_coupon.base_info.sub_title}}</h3>-->
+            <!--<p>有效期：<span>{{card.card.general_coupon.base_info.date_info.begin_timestamp}}</span>-<span>{{card.card.general_coupon.base_info.date_info.end_timestamp}}</span></p>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="footer">-->
+        <!--<button id="receive">领卡券</button>-->
+    <!--</div>-->
+<!--</div>-->
+
+<script>
+
+    $.extend({
+        parseUrl:function(href){
+            var url=href||location.href;
+            var a =  document.createElement('a');
+            a.href = url;
+            var ret = {},
+                    seg = a.search.replace(/^\?/,'').split('&'),
+                    len = seg.length, i = 0, s;
+            for (;i<len;i++) {
+                if (!seg[i]) { continue; }
+                s = seg[i].split('=');
+                ret[s[0]] = s[1];
+            }
+            return ret;
+        }
+    })
+
+    $(function(){
+        var urlMap= $.parseUrl(),cardId=urlMap.card_id||'';
+//        alert('cardId:'+cardId)
+        console.log('urlMap is:',urlMap);
+
+
+        window.loadShareParam = function(cb){
+            $.ajax({
+                type: 'post',
+                url: '/pointMall/card/choose/jssdk/param',
+                data: {url: location.href.split('#')[0], card_id: cardId},
+                success: function(data){
+
+                    console.log('data is:',data);
+                    alert('data:'+JSON.stringify(data))
+
+
+
+
+
+
+//                    cardExt = data.cardExt
+                    cb(null, data.jsParam);
+
+
+
+                    $('#clickTest1').click(function(){
+                        var obj={
+                            cardList: [{
+                                cardId: cardId,
+                                code: []
+                            }]// 需要打开的卡券列表
+                        }
+                        alert('obj:'+JSON.stringify(obj));
+                        wx.openCard(obj);
+                    })
+
+                    $('#clickTest').click(function(){
+                        var params= $.extend(data.chooseCard,{
+                            success:function(res){
+                                alert(JSON.stringify(res));
+                            }
+                        })
+                        wx.chooseCard(params);
+                    })
+
+
+                },
+                error: function(){
+                    cb('err');
+                }
+            })
+        }
+
+
+
+//        $.ajax({
+//            type:'post',
+//            url:'/pointMall/card/choose/jssdk/param',
+//            data:{
+//                card_id:'pegC6uE63dCd36BHHLQsukWbpMhY',
+//                url: location.href.split('#')[0]
+//            },
+//            success:function(e){
+//                console.log('e is:',e);
+//            }
+//        })
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+    $(function(){
+        return false;
+
+
+
+
+
+
+
+
+
+        return false;
+
+        var card_id = $('#cardId').val()
+        var cardExt = null
+        window.loadShareParam = function(cb){
+            $.ajax({
+                type: 'post',
+                url: '/pointMall/card/jssdk/param',
+                data: {url: location.href.split('#')[0], card_id: card_id},
+                success: function(data){
+                    cardExt = data.cardExt
+                    cb(null, data.jsParam);
+                },
+                error: function(){
+                    cb('err');
+                }
+            })
+        }
+
+        $('#receive').click(function(){
+            if (!cardExt){
+                return
+            }
+            wx.addCard({
+                cardList: [{
+                    cardId: card_id,
+                    cardExt: JSON.stringify(cardExt)
+                }],
+                success: function (res) {
+                    alert(JSON.stringify(res))
+                },
+                fail: function(res){
+                    alert(JSON.stringify(res))
+                }
+            });
+        })
+
+
+
+        $.ajax({
+            type:'post',
+            url:'/pointMall/card/choose/jssdk/param',
+            data:{
+                card_id:card_id
+            },
+            success:function(e){
+                console.log('e is:',e);
+            }
+        })
+
+
+
+
+    })
+</script>
+</body>
+</html>
