@@ -41,6 +41,18 @@ function isDigit(s) {
 console.log(isDigit("132a"));
 */
 
-console.log(/^\(?0\d{2}(\)|-|\b)?\d{8}$/.test("022-22334455"));
+//console.log(/^\(?0\d{2}(\)|-|\b)?\d{8}$/.test("022-22334455"));
+
+//console.log(/月/.test("1个月asdf"));
+//console.log(/\d/.match("1个月"));
+//console.log("1个12月".match(/\d{1,2}/));
+
+
+var test = "0.5年";
+var val = test.replace(/[^0-9.]/ig,"");
+console.log(val);
+
+
+
 
 
