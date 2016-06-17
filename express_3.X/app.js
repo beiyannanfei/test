@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var path = require('path');
 var config = require("./config.js");
 var appAdmin = require("./admin/adminApi.js");
 var appOpen = require("./open/openApi.js");
@@ -42,6 +43,8 @@ app.use("/midd", appMidd);
 app.use("/api", appApi);
 
 app.use(app.router);
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.set('port', config.port);
 exports.server = require('http').createServer(app);
 exports.server.listen(app.get('port'), function () {

@@ -9,14 +9,14 @@ var orderInfo = {
 	orderId: +new Date(),
 	timeStamp: ~~(+new Date() / 1000),
 	userId: "wyq_test",
-	mobile: "18810776836",
+	mobile: "4167c3266b67fc449172249550a55876",
 	productID: "测试2016",
 	productName: "wyq测试",
-	repayTime: "3天",
+	repayTime: "6个月",
 	incomeRate: "11.00",
 	money: 60001,
 	loantypeName: "到期后一次性还息还本",
-	feedback: "orEt2t9TyFNWO3XX5E-YTj61Hd0U|wx33dc1a5264b4e846|onC35t2vYse-MA-UPzvOt7HbMHzE|888"
+	feedback: "orEt2t9TyFNWO3XX5E-YTj61Hd0U|wx44490bbc768ce355|oxWE2s_3y2RcuEb1r6XSp2u9rZnQ|3"
 };
 
 var rkey = "tVmInInG&fIrStP2P";

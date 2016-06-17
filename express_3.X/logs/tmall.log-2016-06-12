@@ -1,0 +1,4 @@
+[2016-05-31 14:50:58.326] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-05-31 14:50:58.328] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-05-31 14:50:58.328] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-05-31 14:50:58.339] [FATAL] f:\work\tianmaijuyuan\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
