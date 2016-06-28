@@ -1,0 +1,17 @@
+[2016-06-17 16:28:47.184] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-06-17 16:28:47.185] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-06-17 16:28:47.186] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-06-17 16:28:47.187] [ERROR] e:\node_test\test\express_3.X\app.js - [Inside 'uncaughtException' event]ReferenceError: path is not defined
+    at Object.<anonymous> (e:\node_test\test\express_3.X\app.js:45:24)
+    at Module._compile (module.js:434:26)
+    at Object.Module._extensions..js (module.js:452:10)
+    at Module.load (module.js:355:32)
+    at Function.Module._load (module.js:310:12)
+    at Function.Module.runMain (module.js:475:10)
+    at startup (node.js:117:18)
+    at node.js:951:3
+[2016-06-17 16:29:39.702] [WARN] console - connect.multipart() will be removed in connect 3.0
+[2016-06-17 16:29:39.703] [WARN] console - visit https://github.com/senchalabs/connect/wiki/Connect-3.0 for alternatives
+[2016-06-17 16:29:39.703] [WARN] console - connect.limit() will be removed in connect 3.0
+[2016-06-17 16:29:39.718] [FATAL] e:\node_test\test\express_3.X\app.js - Express server listening on port 9001, redis: "127.0.0.1:6379"
+[2016-06-17 16:30:50.299] [INFO] e:\node_test\test\express_3.X\open\coTest.js - coSeries set redis success result: ["OK","OK"]
