@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title>表单的使用</title>
+ </head>
+
+ <body>
+  <form action="4.php" method="POST">
+   <fieldset>
+    <legend>基本信息</legend>
+	注册地：<input type="text" name="registeraddr" value="北京" disabled="true"><br/>
+	<label for="uname">用户名：</label>
+	<input type="text" id="uname" name="username"  value="请输入手机号/邮箱/微博"/><br/>
+	<label for="upwd">密码：</label>
+	<input type="password" id="upwd" name="userpwd" /><br/>
+	验证码：<input type="text" maxlength="4"/><br/>
+   </fieldset>
+   <fieldset>
+    <legend>扩展信息</legend>
+	性别：
+		<input type="radio" name="gender" value="m"/>男
+		<input type="radio" name="gender" value="f" checked="true"/>女
+	<br/>
+
+	兴趣：
+		<input type="checkbox" name="hobby" value="xy"/>洗衣
+		<input type="checkbox" name="hobby" value="zf" checked="true"/>做饭
+		<input type="checkbox" name="hobby" value="td" checked="true"/>拖地
+		<br/>
+	
+	所在地：
+		<select name="location">
+		  <optgroup label="北京市">
+			<option value="dcq">东城区</option>
+			<option value="hdq">海淀区</option>
+		  </optgroup>
+		  <optgroup label="上海市">
+			<option value="pdq" selected="true">浦东区</option>
+			<option value="pxq">浦西区</option>
+		  </optgroup>
+		</select><br/>
+	曾经的工作地：
+		<select name="workplace" size="6" multiple="true">
+		  <optgroup label="北京市">
+			<option value="dcq">东城区</option>
+			<option value="hdq">海淀区</option>
+		  </optgroup>
+		  <optgroup label="上海市">
+			<option value="pdq" selected="true">浦东区</option>
+			<option value="pxq">浦西区</option>
+		  </optgroup>
+		</select><br/>
+	</fieldset>
+
+	评论内容：
+		<textarea name="content" rows="5" cols="30">请在此处留下您的宝贵意见</textarea><br/>
+	上传头像：
+		<input type="file" name="headpic"/><br/>
+	<input type="submit" />
+	<input type="reset"/>
+  </form>
+ </body>
+</html>

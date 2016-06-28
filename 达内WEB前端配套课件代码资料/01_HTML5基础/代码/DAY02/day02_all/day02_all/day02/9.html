@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title>TABLE作页面布局</title>
+ </head>
+
+ <body>
+  <table width="980px" align="center" border="1">
+	<tr bgcolor="#ffaaaa">
+		<td height="100px" align="center">LOGO 欢迎文字</td>
+	</tr>
+	<tr bgcolor="#aaffaa">
+		<td height="40px" align="center">首页|新闻|动态|招聘</td>
+	</tr>
+	<tr>
+		<td>
+			<!--td中嵌套了一个表格-->
+			<table width="100%" border="1" height="350px">
+				<tr>
+					<td bgcolor="#aaaaff">主体</td>
+					<td width="200px" bgcolor="#ffffaa">侧边栏</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td height="80px" bgcolor="#aaffff" align="center">
+			页脚
+		</td>
+	</tr>
+  </table>
+ </body>
+</html>

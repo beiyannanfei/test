@@ -1,0 +1,62 @@
+﻿@charset "utf-8";
+/*----------------------------------------------------------------------------------------------
+首页样式 - 首页样式
+-------------------------------------------------------------------------------------------------*/
+/*banner 切换*/
+.banner{ position:relative;height:420px; overflow:hidden;width:100%;}
+
+.banner .show{ width:1920px; position:absolute; left:50%;top:0px; margin-left:-960px; height:420px; overflow:hidden; }
+
+.banner .show ul{ position:relative; height:420px; overflow:hidden;width:1920px; float:left; }
+
+.banner .show ul li{text-align:center;width:1920px; float:left; height:420px; position:absolute; display:none}
+
+.banner .focus {position:absolute;width:120px; padding-left:10px;padding-top:13px; bottom:0px; right:0px; background:url(bor02.png) no-repeat left center; height:29px;}
+
+.banner .focus a{width:14px; height:14px; background:url(ico01.png) no-repeat left -24px; float:left; margin-left:10px; display:inline-block}
+
+.banner .focus a.on{  background:url(ico01.png) no-repeat left top}
+
+/*新闻*/
+
+.hot{ width:100%; background:url(bg03.png) repeat-x; height:42px; line-height:42px; position:absolute; bottom:0; z-index:2}
+
+.hot .list{ float:left; width:860px; padding-left:10px; height:42px; position:relative; float:left;/* font-family:'Microsoft Yahei';*/}
+
+.hot .list .prev{ display:block; width:18px; height:15px; position:absolute; background-position:-42px -108px;top:13px;left:80px;}
+
+.hot .list .box_btn{ display:block; width:18px; height:15px; position:absolute;background-position:-61px -108px;top:13px;left:99px;}
+
+.hot .list .next{ display:block; width:18px; height:15px; position:absolute;background-position:-80px -108px;top:13px;left:118px}
+
+.hot .list h2.tit{font-size:16px; width:145px; float:left;}
+
+.hot .list  a{color:#000000}
+
+.hot .list  a:hover{color:#f08300}
+
+.hot .list div{ width:700px; float:left; height:42px; position:relative; overflow:hidden}
+
+.hot .list div ul{ width:700px; position:absolute}
+
+.hot .list div ul li em{color:#909090;}
+
+.news-show{ background:url(bg14.png) no-repeat; height:202px; position:absolute; width:968px; padding-left:30px; z-index:3; left:50%; margin-left:-499px; top:430px}
+.news-show span{padding:19px 23px 0 0; width:291px; float:left;}
+.news-show span img{border:1px solid #d5d5d5;}
+.news-show ul{float:left; width:584px; padding-top:10px;}
+.news-show ul li{border-bottom:1px solid  #44b7e3; line-height:35px; color:#d1d2d2; font-family:'Arial'}
+.news-show ul li a{ color:#FFF;}
+.news-show .close-btn{ width:32px; height:32px; float:left;margin-left:18px; display:inline-block; margin-top:10px;}
+
+
+/*首页方块*/
+
+.index-area{width:100%; background:url(bg04.jpg) repeat-x top #f7f5f8; min-height:200px; height:auto!important; height:200px; padding-bottom:20px; padding-top:33px}
+.index-area dl{width:315px; float:left;}
+.index-area dl dt{width:315px; background-position:-345px -294px; line-height:23px;height:113px;margin-bottom:10px}
+.index-area dl dt h2,.index-area dl dt a{font-size:18px;font-family:'Microsoft Yahei';color:#f08300;}
+.index-area dl dt img{ float:left; margin-right:20px;}
+.index-area dl dt h2{width:180px; float:left;padding-top:20px;}
+.index-area dl dd{padding:5px; width:305px; float:left;}
+.index-area dl.c{margin:0 17px; display:inline}

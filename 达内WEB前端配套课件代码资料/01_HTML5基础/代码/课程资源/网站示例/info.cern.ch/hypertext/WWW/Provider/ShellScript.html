@@ -1,0 +1,31 @@
+<html><TITLE>ShellScript -- /Provider</TITLE>
+<NEXTID 8>
+<H1>A Shell Server for HTTP</H1>The HTTP protocol is very simple. The following is an example of a
+server program written in sh:
+<XMP>#! /bin/sh
+read get docid
+echo "<TITLE>$docid</TITLE>"
+echo Here is the data
+
+</XMP>The docid may have a trailing carriage return to be stripped off on
+some systems. You can modify that script to produce the data you actually
+want. The <A NAME=1 HREF=%22../MarkUp/MarkUp.html%22 tppabs="http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html">HTML</A> syntax for marked-up text is fairly simple, but if
+you want just to send plain text, then just send the  &lt.PLAINTEXT&gt.
+tag first:
+<XMP>#! /bin/sh
+read get docid
+echo "<PLAINTEXT>"
+cat $docid
+
+</XMP>When you have written your script, set the execute bit and then configure
+the <A NAME=2 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/User/Installation.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/User/Installation.html#2%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/User/Installation.html#2">inet daemon to run it</A> . A few more examples:
+<UL>
+<LI><A NAME=5 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Tools/HTMLGeneration/dir2html.txt  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Tools/HTMLGeneration/dir2html.txt%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Tools/HTMLGeneration/dir2html.txt">A sh script to generate a menu for files in a directory</A>
+<LI><A NAME=6 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Tools/HTMLGeneration/ls2html.awk.txt  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Tools/HTMLGeneration/ls2html.awk.txt%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Tools/HTMLGeneration/ls2html.awk.txt">An awk script to generate menu from a list of files</A> .
+<LI><A NAME=7 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/asis.txt  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/asis.txt%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Implementation/asis.txt">A perl script for all kinds of stuff on the ASIS server</A>
+</UL>If you know the perl language, then that is a powerful (if otherwise
+incomprehensible) language with which to hack together a server. <P>
+See also<A NAME=3 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Provider/ServerWriter.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Provider/ServerWriter.html%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Provider/ServerWriter.html"> a case study of mapping a database onto the web</A> .<P>
+All contributions to these examples welcome!<P>
+_________________________________________________________________
+<ADDRESS><A NAME=0 HREF=%22javascript:if(confirm(%27http://info.cern.ch./hypertext/TBL_Disclaimer.html  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch./hypertext/TBL_Disclaimer.html%27%22 tppabs="http://info.cern.ch./hypertext/TBL_Disclaimer.html">Tim BL</A>

@@ -1,0 +1,23 @@
+<html><TITLE>Overview -- /Daemon</TITLE>
+<NEXTID 20>
+<H1>The basic W3 server:  Internals</H1>This describes the generic hypertext  <A NAME=19 HREF=%22../Terms.html#daemon%22 tppabs="http://info.cern.ch/hypertext/WWW/Terms.html#daemon">daemon</A> (server) program. The
+daemon is part of the <A NAME=8 HREF=%22../TheProject.html%22 tppabs="http://info.cern.ch/hypertext/WWW/TheProject.html">WWW</A> project. See also: 
+<UL>
+<LI><A NAME=1 HREF=%22User/Guide.html%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/User/Guide.html">User guide</A> . 
+<LI><A NAME=3 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/Bugs.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/Bugs.html%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Bugs.html">Bugs</A> and <A NAME=7 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/Features.html  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/Features.html%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Features.html">Features</A>
+<LI><A NAME=18 HREF=%22Overview.html%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Overview.html">Other servers</A>
+</UL>The hypertext daemon, like the ftp daemon, is a program which responds
+to an incomming tcp connection and provides a service to the caller.
+<H2><A NAME=13>Sources</A></H2>A compilation option (SELECT) controls whether more than one connection
+can be handled at a time. This is a function of whether the TCP/IP
+implementation beneath the application has a working "select()" routine.
+If  it is not true, this implementation services one connection, then
+drops it before accepting another one.  In neither case does the daemon
+concurrently serve two clients, nor does it fork off a process to
+do that.<P>
+The basic server loop is in the file <A NAME=10 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/HTDaemon.c  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/HTDaemon.c%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Implementation/HTDaemon.c">HTDaemon.c</A> .  A separate module
+(<A NAME=6 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/handle.c  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/handle.c%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Implementation/handle.c"> </A>for example <A NAME=11 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/HTRetrieve.c  \n\nThis file was not retrieved by Teleport Pro, because it is linked too far away from its Starting Address. If you increase the in-domain depth setting for the Starting Address, this file will be queued for retrieval.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/WWW/Daemon/Implementation/HTRetrieve.c%27%22 tppabs="http://info.cern.ch/hypertext/WWW/Daemon/Implementation/HTRetrieve.c">HTRetrieve.c</A> ) contains the code to handle one request.
+Various specific versions of this may be written for different flavours
+of server. Also used are various modules of WWW common code.
+<ADDRESS><A NAME=0 HREF=%22javascript:if(confirm(%27http://info.cern.ch/hypertext/TBL_Disclaimer.html  \n\nThis file was not retrieved by Teleport Pro, because it was unavailable, or its retrieval was aborted, or the project was stopped too soon.  \n\nDo you want to open it from the server?%27))window.location=%27http://info.cern.ch/hypertext/TBL_Disclaimer.html%27%22 tppabs="http://info.cern.ch/hypertext/TBL_Disclaimer.html">Tim BL</A></A>
+</ADDRESS>

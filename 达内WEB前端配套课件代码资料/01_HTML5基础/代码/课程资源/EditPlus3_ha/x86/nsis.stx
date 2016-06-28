@@ -1,0 +1,341 @@
+#TITLE=Nullsoft (SuperPiMP|Scriptable) Installation System Script
+; STX Version : 1.4 beta (2001-04-23)
+; NSIS syntax file written by Cha Gi-hyun.
+; E-mail : ckgfx@hotmail.com
+; ICQ UIN : 50921074
+; Homepage : http://user.chollian.net/~ckgfx/
+;
+; NSIS homepage : http://www.firehose.net/free/nsis/
+;                 http://www.firehose.net/~deadbeef/free/nsis/
+;                 http://genghis.winamp.com/~deadbeef/free/nsis/
+;                 http://www.nullsoft.com/free/nsis/
+;
+; This file is required for EditPlus 2.10c to run correctly.
+;
+; Support extensions : .nsi .psc
+;
+#DELIMITER="'\|
+#QUOTATION1="
+#QUOTATION2='
+#QUOTATION3=`
+#CONTINUE_QUOTE=N
+#LINECOMMENT=;
+#LINECOMMENT2=
+#WHOLELINE=y
+#COMMENTON=
+#COMMENTOFF=
+#COMMENTON2=
+#COMMENTOFF2=
+#ESCAPE=
+#CASE=y
+#PREFIX1=
+#PREFIX2=[
+#PREFIX3=
+#PREFIX4=
+#PREFIX5=
+#SUFFIX1==
+#SUFFIX2=]
+#SUFFIX3=
+#SUFFIX4=
+#SUFFIX5=
+#SPECIAL_STX=
+
+#KEYWORD=Header configuration commands
+; added to 1.0f
+Name
+Icon
+OutFile
+SilentInstall
+CRCCheck
+UninstallIcon
+UninstallText
+UninstallExeName
+; added to 1.1j
+;PackEXEHeader ; Removed at 1.32. replaced to !packhdr
+; added to 1.1s-SC4 *added by Jay Krivanek (http://www.shoutclub.com/nsis/)
+NewInterface
+; Banner Size : W94 x H203 x 16 color Bitmap file. (Exactly 9,862 bytes)
+StartUpText
+; StartUpText <Title> <Text>
+StartUpExec
+; StartUpExec <command> <program_full_path>
+; added to 1.2f
+Caption
+BGGradient
+InstallColors
+;; License page configuration commands
+; added to 1.0f
+LicenseText
+LicenseData
+;; Component page configuration commands
+; added to 1.0f
+ComponentText
+InstType
+EnabledBitmap
+DisabledBitmap
+
+#KEYWORD=Directory selection page configuration commands
+; added to 1.0f
+DirText
+InstallDir
+InstallDirRegKey
+; added to 1.1a
+DirShow
+;; Install page configuration commands
+; added to 1.1a
+ShowInstDetails
+AutoCloseWindow
+;; PiMP 1.31 only (.psc)
+Text
+DefaultDir
+;; Callback funtions
+; added to 1.4 beta
+.onInit
+.onUserAbort
+.onInstSuccess
+.onInstFailed
+.onVerifyInstDir
+
+#KEYWORD=Installation execution commands
+; added to 1.0f
+Section
+SectionIn
+SetOutPath
+SetOverwrite
+SetCompress
+File
+Exec
+Delete
+RMDir
+CreateShortCut
+RegDLL
+InstNSPlug
+DeleteNSPlug
+WriteRegStr
+WriteRegDword
+WriteRegBin
+DeleteRegValue
+DeleteRegKey
+WriteINIStr
+FindWindow
+MessageBox
+; added to 1.0i
+ExecWait
+UnRegDLL
+; added to 1.1a
+CreateDirectory
+CopyFiles
+SetDateSave
+Sleep
+BringToFront
+; added to 1.1b
+ExecShell
+HideWindow
+; added to 1.1i
+SetDatablockOptimize
+; added to 1.1n
+IfFileExists
+; added to 1.1q
+SectionDivider
+; added to 1.1s-SC4 *added by Jay Krivanek (http://www.shoutclub.com/nsis/)
+FindWindowText
+; added to 1.1t
+FindWindowByTitle
+SetDetailsView
+Abort
+; added to 1.1u
+Nop
+;Jump ; renamed to Goto
+DeleteINISec
+DeleteINIStr
+HideWindow
+; added to 1.2
+Rename
+; added to 1.2c
+SetFileAttributes
+; added to 1.2g
+IfErrors
+ClearErrors
+StrCpy
+StrCmp
+ReadRegStr
+ReadINIStr
+; added to 1.3 beta
+SectionEnd
+Function
+FunctionEnd
+Call
+; added to 1.4 beta
+Goto
+DetailPrint
+GetFullDLLPath
+CompareDLLVersions
+CompareFileTimes
+;; Compiler utility commands
+; added to 1.1d
+!system
+!include
+; added to 1.1f
+!define
+!ifdef
+!ifndef
+!endif
+!else
+; added to 1.1u (?)
+!error
+!warning
+; added to 1.32
+!packhdr
+;; PiMP 1.31 only (.psc)
+AddFile
+ExecFile
+
+#KEYWORD=Message Box Text
+; added to 1.0f
+MB_OK
+MB_OKCANCEL
+MB_ABORTRETRYIGNORE
+MB_RETRYCANCEL
+MB_YESNO
+MB_YESNOCANCEL
+MB_ICONEXCLAMATION
+MB_ICONINFORMATION
+MB_ICONQUESTION
+MB_ICONSTOP
+MB_TOPMOST
+MB_SETFOREGROUND
+MB_RIGHT
+; added to 1.1c
+IDABORT
+IDCANCEL
+IDIGNORE
+IDNO
+IDOK
+IDRETRY
+IDYES
+;; Attributes
+; added to 1.2c
+FILE_ATTRIBUTE_NORMAL
+FILE_ATTRIBUTE_ARCHIVE
+FILE_ATTRIBUTE_HIDDEN
+FILE_ATTRIBUTE_OFFLINE
+FILE_ATTRIBUTE_READONLY
+FILE_ATTRIBUTE_SYSTEM
+FILE_ATTRIBUTE_TEMPORARY
+; added to 1.2d
+SW_SHOWNORMAL
+SW_SHOWMAXIMIZED
+SW_SHOWMINIMIZED
+;; Registry Key String
+; added to 1.0f
+HKEY_CLASSES_ROOT
+HKEY_LOCAL_MACHINE
+HKEY_CURRENT_USER
+HKEY_USERS
+HKEY_CURRENT_CONFIG
+HKEY_DYN_DATA
+; added to 1.4 beta
+HKCR
+HKLM
+HKCU
+HKU
+HKCC
+HKDD
+NORMAL
+ARCHIVE
+HIDDEN
+OFFLINE
+READONLY
+SYSTEM
+TEMPORARY
+;; parameters
+; added to 1.2g
+$1
+$2
+$3
+$4
+$5
+$6
+$7
+$8
+$9
+$0
+
+#KEYWORD=Variables
+; added to 1.0f
+$PROGRAMFILES
+$DESKTOP
+$INSTDIR
+;$WAVISDIR    ; removed at 1.4 beta
+;$WADSPDIR    ; removed at 1.4 beta
+$WINDIR
+$SYSDIR
+$TEMP
+$STARTMENU
+$QUICKLAUNCH
+$$
+; added to 1.0i
+$SMPROGRAMS
+$SMSTARTUP
+; added to 1.1a
+$EXEDIR
+; added to 1.1q
+$\r
+$\n
+; added to 1.4 beta
+$OUTDIR
+;; parameters
+normal
+silent
+silentlog
+auto
+force
+on
+off
+try
+ifnewer
+sys
+hide
+show
+nevershow
+true
+false
+maxlen
+/r
+/REBOOTOK
+/NOCUSTOM
+close
+closeinstant
+prompt
+jump:
+<
+>
+<>
+=
+ignore
+-
++
+&
+|
+*.
+*.*
+.*
+0x
+un.
+uninst.ico
+setup.ico
+inst.ico
+main.ico
+bitmap1.bmp
+bitmap2.bmp
+bitmap3.bmp
+checked.bmp
+unchecked.bmp
+license.txt
+readme.txt
+faq.txt
+tips.txt
+faq_tips.txt
+file_id.diz
+
+#

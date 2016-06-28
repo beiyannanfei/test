@@ -1,0 +1,11 @@
+[15-04-11,11:02:24-443, tId=3340] config start...
+[15-04-11,11:02:24-448, tId=3340] config ...cfg_get_str: shared\trace\trace_ext
+[15-04-11,11:02:24-450, tId=3340] config ...cfg_open_key:shared\trace\trace_ext
+[15-04-11,11:02:24-452, tId=3340] config ...cfg_open
+[15-04-11,11:02:24-453, tId=3340] config ...cfg_close
+[15-04-11,11:02:24-456, tId=3340] config ...cfg_get_int32: shared\trace\trace_level
+[15-04-11,11:02:24-457, tId=3340] config ...cfg_open_key:shared\trace\trace_level
+[15-04-11,11:02:24-459, tId=3340] config ...cfg_open
+[15-04-11,11:02:24-461, tId=3340] config ...cfg_query_value
+[15-04-11,11:02:24-462, tId=3340] config ...cfg_close_key:
+[15-04-11,11:02:24-464, tId=3340] config ...cfg_close

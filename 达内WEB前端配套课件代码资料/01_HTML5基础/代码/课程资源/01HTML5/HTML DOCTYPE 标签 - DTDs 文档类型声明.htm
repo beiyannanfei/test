@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-hans"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/style.css" media="screen">	
+		<title>HTML DOCTYPE 标签 - DTDs 文档类型声明 - 标准网页设计 - HTML教程,XHTML教程</title>		
+		<link rel="start" type="text/html" href="http://www.dreamdu.com/xhtml/">
+		<link rel="prev" type="text/html" href="http://www.dreamdu.com/xhtml/standard_design/">
+		<link rel="next" type="text/html" href="http://www.dreamdu.com/xhtml/span_div/">
+		<meta name="keywords" content=" DOCTYPE 标签">
+		<meta name="description" content="HTML DOCTYPE 标签，DTDs 定义了标准文档的类型">	
+	<style></style></head>
+	<body><div style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;" id="BAIDU_DUP_fp_wrapper"><iframe style="width: 0px; height: 0px; visibility: hidden; display: none;" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/o.htm" id="BAIDU_DUP_fp_iframe"></iframe></div>
+		<div id="wrap">
+			<div id="body">
+				<div id="content">
+	
+					<h1>14.1. HTML DOCTYPE 标签 -- DTDs 文档类型声明</h1>
+					<!-- start content -->										
+					<div id="tag"><a href="http://www.dreamdu.com/xhtml/tag_doctype/">DOCTYPE</a> 标签  --  定义了标准文档的类型
+						<div class="indent">
+							<ul>
+								<li><code>DOCTYPE</code>标签是单独出现的</li>
+								<li>说明：
+									<ul>
+										<li>文档类型，会使浏览器使用相应标准加载网页并显示</li>
+										<li>文档类型定义在HTML文档的第一行，在html标签之前</li>
+										<li>文档不定义DOCTYPE，浏览器将无法获知HTML或XHTML文档的类型，因此会进入混乱模式，详见：<a href="http://www.dreamdu.com/webbuild/browser_mode/">浏览器模式</a></li>
+									</ul>
+								</li><li>引用网址：http://www.dreamdu.com/xhtml/tag_doctype/</li>
+								<li>DOCTYPE，简称为<code>DTDs</code>，是英文Document type的缩写，中文“文档类型”</li>
+							</ul>
+						</div>                     
+					</div>
+					<h2>HTML DOCTYPE文档类型举例说明</h2>
+					<p>HTML4.01文档过渡定义类型，此类型定义的文档可以使用HTML中的标签与元素包括一些不被W3C推荐的标签（例如：font、b等），不可以使用框架</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">HTML</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD HTML 4.01 Transitional//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/html4/loose.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>HTML4.01文档严格定义类型，此类型定义的文档可以使用HTML中的标签与元素，不能包含不被W3C推荐的标签（例如：font、b等），不可以使用框架</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">HTML</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD HTML 4.01//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/html4/strict.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>HTML4.01文档框架定义类型，此类型等同于HTML4.01文档过渡定义类型，但可以使用框架</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">HTML</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD HTML 4.01 Frameset//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/html4/frameset.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>XHTML1.0文档过渡定义类型，此类型定义的文档可以使用HTML中的标签与元素包括一些不被W3C推荐的标签（例如：font、b等），不可以使用框架</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">html</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD XHTML 1.0 Transitional//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>XHTML1.0文档严格定义类型，此类型定义的文档只可以使用HTML中定义的标签与元素，不能包含不被W3C推荐的标签（例如：font、b）(梦之都就使用了此类型)，不可以使用框架</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">html</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD XHTML 1.0 Strict//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>XHTML1.0文档框架定义类型，等同于XHTML1.0文档过渡定义类型，但可以使用框架</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">html</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD XHTML 1.0 Frameset//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>XHTML1.1文档严格定义类型，等同于XHTML1.0文档过渡定义类型</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">html</code> <code class="attr">PUBLIC</code> <code class="attrvalue">"</code><code class="attrvalue">-//W3C//DTD XHTML 1.1//EN</code><code class="attrvalue">"</code> <code class="attrvalue">"</code><code class="attrvalue">http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd</code><code class="attrvalue">"</code><code class="tag">&gt;</code>
+</pre>
+					<p>HTML5文档类型</p>
+<pre class="html"><code class="tag">&lt;</code><code class="tag">!</code><code class="attr">DOCTYPE</code> <code class="attr">html</code><code class="tag">&gt;</code>
+</pre>
+					<p class="notice">猴子提示: HTML声明中使用的标签是很特殊的(不同于前面介绍的<a href="http://www.dreamdu.com/xhtml/tag/">标签语法</a>),使用<strong>&lt;!</strong>开始,结束也不用关闭符.</p>
+					
+
+					<div class="copyright">From "<a href="http://www.dreamdu.com/xhtml/tag_doctype/">HTML DOCTYPE 标签 - DTDs 文档类型声明 - 标准网页设计 - HTML教程,XHTML教程</a>"</div>
+					<!-- end content -->
+					<div id="docnav"><a rel="prev" href="http://www.dreamdu.com/xhtml/standard_design/" title="标准网页设计" accesskey="b" tabindex="6">上一页</a> / <a rel="next" href="http://www.dreamdu.com/xhtml/span_div/" title="HTML span与div" accesskey="n" tabindex="7">下一页</a> / <a rel="contents" href="http://www.dreamdu.com/xhtml/" title="HTML教程,XHTML教程" accesskey="l" tabindex="8">教程列表</a></div>
+					<div id="docnavsub"><a href="#" title="返回" accesskey="t" tabindex="5">向上</a> / <a rel="prev" href="http://www.dreamdu.com/xhtml/standard_design/" title="标准网页设计" accesskey="b" tabindex="6">上一页</a> / <a rel="next" href="http://www.dreamdu.com/xhtml/span_div/" title="HTML span与div" accesskey="n" tabindex="7">下一页</a> / <a rel="contents" href="http://www.dreamdu.com/xhtml/" title="HTML教程,XHTML教程" accesskey="l" tabindex="8">教程列表</a></div>					
+﻿					<div class="clear"></div>
+					<div><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/t.js" charset="utf-8"></script><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/ga.js" async="" type="text/javascript"></script><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/ca-pub-1380153598658129.js" type="text/javascript" async=""></script><script type="text/javascript">google_ad_client = "pub-1380153598658129";google_ad_slot = "3281266698";google_ad_width = 728;google_ad_height = 90;</script><script type="text/javascript" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/show_ads.js"></script><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;" width="728" frameborder="0" height="90"></iframe></ins></ins></div>
+					<div id="hm_t_30209"><div style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: none repeat scroll 0% 0% transparent; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 730px; height: 184px;"><iframe style="display: block; margin: 0px; padding: 0px; float: none; clear: none; overflow: hidden; position: relative; border: 0px none; background: none repeat scroll 0% 0% transparent; max-width: none; max-height: none; border-radius: 0px; box-shadow: none; transition: none 0s ease 0s ; text-align: left; box-sizing: content-box; width: 100%; height: 100%;" scrolling="no" frameborder="0"></iframe></div></div>
+					<div><div class="bottombox1"><script async="" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/adsbygoogle.js"></script><ins data-adsbygoogle-status="done" class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-1380153598658129" data-ad-slot="8139911234"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><ins id="aswift_1_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:336px;background-color:transparent"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;" width="336" frameborder="0" height="280"></iframe></ins></ins></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><div class="bottombox2"><script type="text/javascript">var cpro_id = "u1552408";</script><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/c_002.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1552408_0"><iframe id="cproIframe_u1552408_1" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/acom.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" width="336" frameborder="0" height="280"></iframe></div><script charset="utf-8" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/acom"></script></div></div>
+				</div>
+			</div>
+			<div id="siderbar">
+				<div id="slist"><div class="gray1"></div><ul><li class="top"><a href="http://www.dreamdu.com/xhtml/">HTML教程,XHTML教程</a></li></ul><div class="gray2"></div><ul><li class="p"><a href="http://www.dreamdu.com/xhtml/standard_design/">14 标准网页设计</a></li><li class="self">14.1 HTML DOCTYPE 标签</li><li><a href="http://www.dreamdu.com/xhtml/span_div/">14.2 HTML span与div</a></li></ul><div class="gray2"></div></div>
+﻿				<div id="slistbox" class="orangebox"><ul><li>教程中有什么不懂的地方？发现教程的错误！对教程有什么建议！快快联系猴子呀dreamdu@163.com，:)</li></ul></div>
+				<div id="topright"><script type="text/javascript">var cpro_id = 'u1023627';</script><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/c.js" type="text/javascript"></script><div style="width: 200px; height: 200px; display: inline-block; z-index: 2147483646;" height="200px" width="200px" id="BAIDU_DUP_wrapper_u1023627_0"><iframe id="cproIframe_u1023627" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/acom_002.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" width="200" frameborder="0" height="200"></iframe></div><script charset="utf-8" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/acom_002"></script></div>
+				<div id="toplogo"><div id="logo"><a href="http://www.dreamdu.com/" tabindex="1">梦之都</a></div><div id="maintag">为初学者提供一个在线的自学之地,<br>为设计者提供一个网络编程的中文参考之地</div><div id="topad"><script type="text/javascript">var cpro_id = "u1156920";</script><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/c_002.js" type="text/javascript"></script><div id="BAIDU_DUP_wrapper_u1156920_0"><iframe id="cproIframe_u1156920_3" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/acom_003.htm" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="true" align="center,center" width="468" frameborder="0" height="60"></iframe></div><script charset="utf-8" src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/acom_003"></script></div></div>
+				<div id="navmain"> | <a href="http://www.dreamdu.com/webbuild/" accesskey="w" tabindex="2" class="w">网站建设与制作教程</a> | <a href="http://www.dreamdu.com/xhtml/" accesskey="h" tabindex="3" class="w">HTML教程</a> | <a href="http://www.dreamdu.com/css/" accesskey="c" tabindex="4" class="w">CSS教程</a> | <a href="http://www.dreamdu.com/javascript/" accesskey="j" tabindex="5" class="w">JavaScript教程</a> | </div>
+				<div id="navsub"> | <a href="http://www.dreamdu.com/xhtml/video/" tabindex="6">HTML视频教程</a> | </div>
+			</div>
+﻿			<div id="footer"><p><a href="http://www.dreamdu.com/blog/about/" rel="nofollow">关于我们</a> <a href="http://www.dreamdu.com/blog/" rel="nofollow">网站博客</a></p><p>Copyright © 2006-2015 梦之都(www.dreamdu.com) All rights reserved.</p><p>Powered by HTML CSS PHP MYSQL</p><p>梦之都教程允许非商业用途的转载，但须保持内容的原始性并以链接的方式注明教程出处，梦之都保留教程的一切权利。</p></div>
+		</div><script type="text/javascript">var _gaq = _gaq || [];_gaq.push(['_setAccount', 'UA-556982-2']);_gaq.push(['_trackPageview']);(function(){var ga = document.createElement('script');ga.type = 'text/javascript'; ga.async = true;ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga, s);})();</script><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0b5059fb2e0522719e25d555c50c97ac' type='text/javascript'%3E%3C/script%3E"));</script><script src="HTML%20DOCTYPE%20%E6%A0%87%E7%AD%BE%20-%20DTDs%20%E6%96%87%E6%A1%A3%E7%B1%BB%E5%9E%8B%E5%A3%B0%E6%98%8E_files/h.txt" type="text/javascript"></script>		
+	
+<iframe style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_4097648951422"></iframe></body></html>
