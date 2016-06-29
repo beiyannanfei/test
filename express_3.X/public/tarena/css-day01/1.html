@@ -1,0 +1,417 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Tencent-CDC"/>
+    <meta name="Robots" content= "all">
+    <meta name="mobile-agent" content="format=html5;url=http://pay.qq.com/h5/index.shtml">
+    <link rel='canonical' href='http://pay.qq.com/ipay/index.shtml' />
+    <meta name="Description" content="Q币,Q点,QB,QD,QQ,腾讯,充值中心,帐户充值,帐户管理,Q点充值,Q币充值,Q点查询,Q币查询,QB查询,QD查询" />
+    <meta name="Keywords" content="Q币,Q点,QB,QD,QQ,腾讯,充值中心,帐户充值,帐户管理,Q点充值,Q币充值,Q点查询,Q币查询,QB查询,QD查询" />
+    <meta content="Tencent" name="Copyright">
+    <script type="text/javascript">
+        var _startTime = +new Date(), g_cssLoadedTime;
+        (function() { var DM = window.location.host.match(/\.(\w*\.com)/);document.domain = DM && DM[1] ? DM[1] : 'qq.com'; })();
+        function cssLoaded(link) {if(link.readyState === 'complete') {g_cssLoadedTime = +new Date();}}
+        (function () {
+            function f() {
+                var a = "";
+                var b = function () {
+                    if (arguments.callee.caller.caller) {
+                        var j = arguments.callee.caller.caller, c, i = [];
+                        while (j) {
+                            c = j;
+                            i.push(d(Array.prototype.slice.call(j.arguments)) + c.toString().replace(/[\t\n\r]/g, "").substring(0, 100));
+                            j = j.caller
+                        }
+                        return i.join(":")
+                    } else {
+                        return ""
+                    }
+                };
+                window.onerror = function (c, l, m) {
+                    c = (c || "").toString();
+                    var n = b(), k = c.replace(/\n/g, " ") + "|" + encodeURIComponent(l + ":" + n) + "|" + m;
+                    window._last_err_msg = {msg: c, url: l, l: m, stack: n};
+                    if (a.indexOf(k) == -1 || window._badjs_allow_resend) {
+                        a += k + ",";
+                        e(c, l, m + ":" + n)
+                    }
+                    return false
+                }
+            }
+
+            function e(a, b, c) {
+                var m = navigator.userAgent.toLowerCase(), k = window.ActiveXObject ? "IE" + m.match(/msie ([\d.]+)/)[1] : (m.indexOf("firefox") != -1) ? "Firefox" + m.match(/firefox\/([\d.]+)/)[1] : (m.indexOf("chrome") != -1) ? "Chrome" + m.match(/chrome\/([\d.]+)/)[1] : window.opera ? "Opera" + m.match(/opera.([\d.]+)/)[1] : window.openDatabase ? "Safari" + m.match(/version\/([\d.]+)/)[1] : m.replace(/\s*/g, ""), l = a.replace(/\n/g, " ").replace(/\|/g, ";") + "|" + encodeURIComponent(b) + "|" + c.replace(/\|/g, ";");
+                setTimeout(function () {
+                    new Image().src = "//upayportal.qq.com/cgi-bin/action_report.fcg?ch=self&uin=" + (LOGIN_UIN || "") + "&service=" + ((IPAY && IPAY.data && IPAY.data.code) || "") + "&sessionid=0&action=stats.js.error&extend=" + k + "|" + l + "&_=" + (+new Date())
+                }, 1000)
+            }
+
+            function d(a) {
+                if (a == undefined) {
+                    return ""
+                }
+                var b = [];
+                if (typeof a == "string") {
+                    return '"' + a.replace(/([\"\\])/g, "\\$1").replace(/(\n)/g, "\\n").replace(/(\r)/g, "\\r").replace(/(\t)/g, "\\t") + '"'
+                }
+                if (typeof a == "object") {
+                    if (!a.sort) {
+                        for (var c in a) {
+                            b.push('"' + c + '":' + d(a[c]))
+                        }
+                        if (!!document.all && !/^\n?function\s*toString\(\)\s*\{\n?\s*\[native code\]\n?\s*\}\n?\s*$/.test(a.toString)) {
+                            b.push("toString:" + a.toString.toString())
+                        }
+                        b = "{" + b.join() + "}"
+                    } else {
+                        for (var h = 0; h < a.length; h++) {
+                            b.push(d(a[h]))
+                        }
+                        b = "[" + b.join() + "]"
+                    }
+                    return b
+                }
+                return a.toString().replace(/\"\:/g, '":""')
+            }
+
+            f();
+            window._sendBadjs = e
+        })();
+    </script>
+    <link rel="stylesheet" charset="utf-8" href="//imgcache.gtimg.cn/c/=/bossweb/ipay/css/pay/global.css,/bossweb/ipay/css/pay/ipay.css?max_age=31104000&v=98585d5c83f4657e88e878a71c9b792a" onreadystatechange="cssLoaded(this);"/>
+    <title>账户充值 - 腾讯充值中心</title>
+</head>
+<body>
+<map class="top_menu">
+    <div class="menu">
+        <div class="txt_left">
+            <a target="_blank" href="http://pay.qq.com/app/mobile.shtml">手机版</a>
+        </div>
+
+        ﻿<span><input type="hidden" name="flag" id="flag" value="1" /> <input type="hidden" name="loginUin" id="loginUin" value="805490859" /><input type="hidden" name="priUin" id="priUin" value="805490859" /><input type="hidden" name="loginNickName" id="loginNickName" value="北艳难菲 (805490859)" /><input type="hidden" name="escapeNickName" id="escapeNickName" value="北艳难菲 (805490859)" /> <font color="#1D57BB">欢迎您，北艳难菲 (805490859)</font>&nbsp;&nbsp;<a id="logout" href="/cgi-bin/login/user_logout.cgi" target="_self">退出</a><script type="text/javascript">var LOGIN_UIN="805490859";var setLogoutUrl=function(url)
+    { var url=url||window.location.href.replace(/[;<>\(\)\'\"]/g,""); document.getElementById("logout").href = "/cgi-bin/login/user_logout.cgi?url=" + encodeURI(url);}</script> </span>
+        <script type="text/javascript">
+            (function (){
+                var ID = function(id){
+                    if (typeof id === 'string') {
+                        return document.getElementById(id);
+                    } else {
+                        return '';
+                    }
+                };
+                if (ID('flag') && ID('flag').value == '1') {
+                    ID('logout').previousSibling.previousSibling.className = 'login-user';
+                }
+            })();
+        </script>
+    </div>
+</map>
+<div id="wrapper-loading" class="wrap-loading"><i class="icon-load"></i>正在加载，请稍后……</div>
+<div id="wrapper" class="wrapper" style="display: none;">
+    <div class="header">
+        <div class="header-layer cf">
+            <h1 class="logo"><a href="http://pay.qq.com/index.shtml?aid=pay.ipay.logo.home&ADTAG=pay.ipay.logo.home"><img src="http://imgcache.qq.com/bossweb/pay/pay_v4/images/public/logo.png" alt="腾讯充值中心"></a></h1>
+            <div class="nav">
+                <ul>
+                    <li><a href="http://pay.qq.com/index.shtml?aid=pay.ipay.header.home&ADTAG=pay.ipay.header.home" title="首页"><i class="title_index"></i></a></li>
+                    <li stype="recharge"><a href="http://pay.qq.com/paycenter/index.shtml?aid=pay.ipay.header.paycenter&ADTAG=pay.ipay.header.paycenter" title="账户充值"><i class="title_pay"></i></a></li>
+                    <li stype="game"><a href="http://pay.qq.com/paygame/index.shtml?aid=pay.ipay.header.paygame&ADTAG=pay.ipay.header.paygame" title="游戏充值"><i class="title_paygame"></i></a></li>
+                    <li stype="service"><a href="http://pay.qq.com/service/index.shtml?aid=pay.ipay.header.service&ADTAG=pay.ipay.header.service" title="服务开通"><i class="title_openby"></i></a></li>
+                    <li><a id="nav-myaccount" href="http://my.pay.qq.com/account/index.shtml?aid=pay.ipay.header.acct&ADTAG=pay.ipay.header.acct" title="我的帐户"><i class="title_acc"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="breadcrumb">
+            <span>您当前位置：</span><a id="where">...</a> &gt; <span stype="name"></span>
+        </div>
+        <div class="container" id="pay_result_container" style="display:none;">
+            <div class="wrap-padding ">
+                <div class="confirm success cf pay-result" style="display:none;">
+                    <i class="icon-confirm "></i>
+                    <div class="confirm-cont">
+                        <h5>您的订单号 ：<em class="pay_billNo"></em>,已成功提交(<em>请注意保存订单号</em>)!</h5>
+                        <p class="pay_result_tip">购买结果会有延时，您可以点击下面“查询结果”链接查询</p><p>&nbsp;</p>
+                        <p class="pay_query_loading" style="display:none;"><i class="icon-load"></i>查询中</p>
+                        <p><a href="javascript:void(0)" class="pay_query_result">查询结果</a></p>
+                    </div>
+                </div>
+                <div class="confirm success cf pay-sucess" style="display:none;">
+                    <i class="icon-confirm "></i>
+                    <div class="confirm-cont">
+                        <h5>系统扣费成功，24小时内到账，感谢您的支持。</h5>
+                        <h5>您的订单号 ：<em class="pay_billNo"></em></h5>
+                    </div>
+                </div>
+                <div class="confirm success cf pay-load" style="display:none;">
+                    <i class="icon-confirm "></i>
+                    <div class="confirm-cont">
+                        <h5>系统正在处理中，您的订单号 ：<em class="pay_billNo"></em></h5>
+                        <p class="pay_result_tip">购买结果会有延时，您可以点击下面“查询结果”链接查询</p><p>&nbsp;</p>
+                        <p class="pay_query_loading" style="display:none;"><i class="icon-load"></i>查询中</p>
+                        <p><a href="javascript:void(0)" class="pay_query_result">查询结果</a></p>
+                    </div>
+                </div>
+                <div class="confirm error cf pay-failed" style="display:none;">
+                    <i class="icon-confirm "></i>
+                    <div class="confirm-cont">
+                        <h5>系统扣费失败，请重新充值，或选择其它充值方式，感谢您的支持。</h5>
+                        <h5>您的订单号 ：<em class="pay_billNo"></em></h5>
+                    </div>
+                </div>
+                <div class="confirm-article" style="padding: 10px 10px 20px 85px;">
+                    <div class="form-actions"><button type="submit" class="btn btn-primary" id="go_charge" onclick="SMS.goPreStep();"><span>继续充值</span></button>&nbsp;</div>
+                </div>
+            </div>
+            <div id="pay_rcmd" style="display:none;"></div>
+        </div>
+        <div id="result_success" class="container pay-result" style="display:none;">
+            <div id="result_ad_area"></div>
+            <div id="success_wrapper" class="wrap-padding success">
+                <div class="confirm cf">
+                    <i class="icon-confirm"></i>
+                    <div class="confirm-cont">
+                        <h5 id="result_msg"></h5>
+                        <div id="result_ser_msg"></div>
+                        <p id="jifenLink"></p>
+                        <p><a id="success_more_link" href="#" target="_blank">更多详情&gt;&gt;</a></p>
+                    </div>
+                    <div id="continue_actions" class="form-actions"></div>
+                </div>
+                <div id="open_service_for_recharge" class="form-horizontal" style="display:none;">
+                    <div class="control-group">
+                        <label class="control-label" data-type="service_field_label">开通服务：</label>
+                        <div class="controls">
+                            <h5 id="open_service_for_recharge_name" class="title-primary"><span id="open_service_for_recharge_price" class="help-inline">元/月</span></h5>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" data-type="target_uin_field_label">开通帐户：</label>
+                        <div class="controls">
+                            <h5 id="open_service_for_recharge_uin" class="title-primary"></h5>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" data-type="amount_field_label">开通时长：</label>
+                        <div class="controls">
+                            <h5 id="open_service_for_recharge_month" class="title-primary"></h5>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">应付金额：</label>
+                        <div class="controls">
+                            <h5 id="open_service_for_recharge_fee" class="title-primary"></h5>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="open_service_for_recharge_submit" type="button" class="btn-primary" data-type="submit_button"><span>确认开通</span></button>&nbsp;
+                        <a id="open_service_for_recharge_modify" href="#">修改订单</a>
+                    </div>
+                </div>
+            </div>
+            <div id="result_rcmd" style="display:none;"></div>
+        </div>
+        <div id="result_error" style="display:none;">
+            <div class="wrap-padding warn">
+                <div class="confirm cf">
+                    <i class="icon-confirm"></i>
+                    <div class="confirm-cont">
+                        <p id='open_service_for_recharge_errmsg'></p>
+                    </div>
+                    <div class="form-actions">
+                        <button id="open_service_for_recharge_errbtn" type="submit" class="btn-primary"><span>重新支付</span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="pay_main" class="container column-pay cf">
+            <div class="layout-sidebar">
+                <div class="pay-info">
+                    <div class="bu-logo"><a stype="home"><img stype="logo"></a></div>
+                    <p class="price" stype="price"></p>
+                </div>
+                <div class="mod-pop-layer box-remind" id="about-vipstatus" style="display:none;">
+                    <i class="icon-caret-top t1"></i>
+                    <i class="icon-caret-top t2"></i>
+                    <h5>您当前服务状态</h5>
+                    <ul>
+                        <li id="li_about_vipstatus" style="display:none;"></li>
+                        <li id="li_y_about_vipstatus" style="display:none;"></li>
+                    </ul>
+                </div>
+                <div class="wrap-padding">
+                    <div class="about-info" stype="desc" style="display:none;"></div>
+                    <div id="agree_term_field" class="box-agree" style="display: none;">
+                        <p id="service_time_limit">月服务期限：开通当日起31天</p>
+                        <label id="agree_term_checkbox" class="selected"><a href="javascript:void(0);" class="checkbox"><i class="icon-checkbox"></i>同意 </a><a stype="term" href="#" target="_blank"><span stype="name"></span><span id="term_title">服务条款</span></a></label>
+                        <div id="agree_term_warning" class="help-block"><i class="icon-help"></i>必须同意以上条款才能开通</div>
+                    </div>
+                    <div class="box-entry" id="pay_actions">
+                        <p id="ask_link" style="display: none;"><a id="a_ask_link" stype="ask" href="javascript:void(0);" target="_blank">向好友索要&gt;&gt;</a></p>
+                    </div>
+                    <div stype="kf" class="box-kf" style="display: none;"><a id="div_kf" href="###" target="_blank"><i class="icon-kf"></i>客服帮助</a></div>
+                </div>
+            </div>
+            <div  class="layout-content">
+                <div class="wrap-padding">
+                    <div id="pay_tips_or_actions"></div>
+                    <div id="pay_form" class="form-horizontal">
+                        <div id="pay_form_inner">
+                            <div id="recharge_tips" class="form-title" style="display: none;">
+                                <i class="icon_wake"></i>
+                                <p>尊敬的<em><i id="recharge_tips_type"></i>(<i id="recharge_tips_lv"></i>)</em>用户， 给<i id="recharge_tips_pay_for"></i>充值可享当月累计不超过<i id="recharge_tips_amount"></i>&nbsp;Q币的<em><i id="recharge_tips_off"></i>折</em>优惠！<span>(仅限快捷支付、财付通)</span></p>
+                            </div>
+                            <div id="recharge_tips_mobile" class="form-title" style="display: none;">
+                                <i class="icon_wake"></i>
+                                <p>尊敬的用户，梦网短信开通的QQ会员暂时不享受充值Q币优惠。</p>
+                            </div>
+                            <div class="anchor">
+                                <div class="newApp" id="wxpay" style="display:none;"></div>
+                            </div>
+                            <div id="service_selector_field" class="control-group" style="display: none;">
+                                <label id="service_field_label" class="control-label">开通服务：</label>
+                                <div id="service_select_list" class="controls"></div>
+                            </div>
+                            <div id="target_uin_input_field" class="control-group">
+                                <label id="target_uin_field_label" class="control-label">开通帐号：</label>
+                                <div class="controls">
+                                    <span id="target_uin_value" class="title-primary" style="display: none;"></span>
+                                    <div id="target_uin_wrapper" class="input-append user-append open">
+                                        <input id="target_uin_input" class="input-user" type="text" maxlength="12">
+                                        <div class="dropdown">
+                                            <div id="friend_list_outer" class="bind_friend">
+                                                <div class="f_qqlist" id="f_list" style="display: none;"></div>
+                                                <div class="f_qqlist" id="f_search" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                        <span class="help-text"><a data-action="show-friend-list" href="javascript:void(0);">赠送好友</a></span>
+                                    </div>
+                                    <div id="target_uin_tips" class="help-normal help-normal-empty"></div>
+                                    <div id="target_uin_warning" class="help-block"></div>
+                                </div>
+                            </div>
+                            <div id="pay_mode_field" class="control-group" style="display:none;">
+                                <span id="mode_field_label" class="control-label">付费模式：</span>
+                                <div class="controls">
+                                    <div id="mode_select_list" class="controls-option">
+                                        <label _type="mode_radio" _value="upgrade" style='display:none'><a class="radio-box" href="javascript:void(0);">升级<i class="icon-check"></i></a></label>
+                                        <label _type="mode_radio" _value="month"><a class="radio-box" href="javascript:void(0);">按月付费<i class="icon-check"></i></a></label>
+                                        <label _type="mode_radio" _value="year"><a class="radio-box" href="javascript:void(0);">按年付费<i class="icon-check"></i></a></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="server_selector_field" class="control-group" style="display: none;">
+                                <label class="control-label">游戏大区：</label>
+                                <div class="controls">
+                                    <span class="title-primary" data-type="loading">加载中...</span>
+                                    <span id="server_selector_tips" class="help-text"></span>
+                                    <div id="server_selector_warning" class="help-block"></div>
+                                </div>
+                            </div>
+                            <div id="amount_input_field" class="control-group">
+                                <label id="amount_field_label" class="control-label">开通时长：</label>
+                                <div class="controls">
+                                    <span id="amount_value" class="title-primary" style="display: none;"></span>
+                                    <input id="amount_input" class="input-min" type="text" data-value="其它"/>&nbsp;&nbsp;<span id="amount_unit">月</span> <span id="amount_helper" class="help-text"></span> <span id="amount_unit_tips" class="help-text"></span>
+                                    <div id="amount_tips" class="help-normal help-normal-empty"></div>
+                                    <div id="amount_warning" class="help-block"></div>
+                                </div>
+                            </div>
+                            <div id="pay_channel_field" class="control-group">
+                                <span id="channel_field_label" class="control-label">开通方式：</span>
+                                <div class="controls">
+                                    <div id="channels_loading" class="controls-expanded"><div class="loading warning"><div class="load"><i class="icon-load"></i>加载中，请稍候……</div></div></div>
+                                    <div id="channel_select_list" class="controls-option"></div>
+                                    <div id="channel_tips" class="help-normal help-normal-empty"></div>
+                                </div>
+                            </div>
+                            <div id="main_template"></div>
+                        </div>
+                        <div id="cft_template" style="display:none;"></div>
+                        <div id="kj_template" style="display:none;"></div>
+                        <div id="cftCB_template" style="display:none;"></div>
+                        <div id="kj_bank_template" style="display:none;"></div>
+                        <div id="kj_kj_template" style="display:none;"></div>
+                    </div>
+                </div>
+                <div id="warm_tips_wrapper" class="geniality-tip" style="display:none;">
+                    <p class="g-title"><i class="icon-warn-g"></i>温馨提示</p>
+                    <div id="warm_tips_content" class="g-cont"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer" class="footer">
+        <p>Copyright © 1998 - 2016 Tencent. All Rights Reserved <br />
+            腾讯公司 <a class="clink" target="_blank" href="http://www.tencent.com/zh-cn/le/copyrightstatement.shtml">版权所有</a> <a class="clink" target="_blank" href="http://www.qq.com/contract.shtml">服务条款</a>
+        </p>
+    </div>
+</div>
+<div id="login_div" style="display:none;">
+    <iframe id="login_frame" frameborder="0" scrolling="no" width="100%" height="100%" src="about:blank"></iframe>
+</div>
+<div class="float" style="display:none;width:392px;height:335px;" id="back_div">
+    <div class="float-header">
+        <h3><a href="javascript:void(0)" class="close" onclick="IPAY.alertHide();return false;">×</a><span id="ts_title"></span></h3>
+    </div>
+    <div class="float-content cf">
+        <iframe id="dataSend" style="width:392px;height:290px" frameborder="no" scrolling="no"></iframe>
+    </div>
+</div>
+<!--弹出推荐层 S-->
+<div class="bottom-layer" id="div-ad-tips" style="display:none;">
+    <div class="bottom-act" id="div-ad-tips-act" style="bottom:-190px;">
+        <h4>您好！<span id="div-ad-tips-nick"></span></h4>
+        <div class="act-main">
+            <div class="act_pic">
+                <img id="div-ad-tips-img" src="http://imgcache.qq.com/bossweb/ipay/images/pic/bottom_tips.jpg">
+            </div>
+        </div>
+        <a class="close" href="javascript:void 0;" onclick="javascript:$('#div-ad-tips-act').animate({bottom:-190}, 'slow', function(){});return false;">×</a>
+    </div>
+</div>
+<!--弹出推荐层 E-->
+<script type="text/javascript" charset="utf-8" src="//imgcache.qq.com/c/=/bossweb/ipay/js/lib/jquery-1.8.3.min.js,/bossweb/ipay/js/lib/main.js,/bossweb/ipay/js/lib/util.js,/bossweb/ipay/js/lib/abtest.js,/bossweb/ipay/js/lib/performance.js?max_age=31104000&v=4fc586fdc25e7b683698fcf24b948a56" ></script>
+<script type="text/javascript" charset="utf-8" src="//imgcache.qq.com/c/=/bossweb/ipay/js/info/define_v15.js,/bossweb/ipay/js/info/langs_v15.js,/bossweb/ipay/js/info/configs_v15.js,/bossweb/ipay/js/info/channels_v15.js,/bossweb/ipay/js/info/banks_v15.js,/bossweb/ipay/js/info/services_v15.js,/bossweb/ipay/js/ipay_v15.js?max_age=31104000&v=01c58117da67bb5931a58cf2b589a82f" ></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=14602590" charset="utf-8"></script>
+<script type="text/javascript" src="http://pingjs.qq.com/tcss.ping.js"></script>
+<script type="text/javascript">
+    /*try{
+     setTimeout(function(){
+     !LIB.cookie.get(LOGIN_UIN+'__divadtips') && $(document).ready(function(){
+     var temp_dom = document.createElement("div"), t = document.createTextNode($('#loginNickName').val().split(' ')[0]), res = temp_dom.appendChild(t).parentNode.innerHTML;;
+     temp_dom.innerHTML = "";
+     $('#div-ad-tips-img').attr('src', 'http://imgcache.qq.com/bossweb/ipay/images/pic/pay_service_20141204.jpg');
+     $('#div-ad-tips').show();
+     $('#div-ad-tips-nick').html(res);
+     $('#div-ad-tips-act').animate({bottom:0}, 1500, function(){
+     LIB.cookie.set(LOGIN_UIN+'__divadtips',1,{time: 24 * 3600 * 1000});
+     });
+     });
+     }, 3000);
+     }catch(e){};*/
+    // for stat
+    var g_pageLoaded = +new Date(), _RenderTime = g_pageLoaded - _startTime;
+    ('function' === typeof pgvMain) && pgvMain();
+    (function(){
+        setTimeout(function(){
+            new Image().src="http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7713&flag2=1&flag3=15&20="+_RenderTime+"&r="+Math.random();
+            if (g_cssLoadedTime) {
+                new Image().src="http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7713&flag2=1&flag3=15&21="+(g_cssLoadedTime - _startTime)+"&r="+Math.random();
+                new Image().src="http://isdspeed.qq.com/cgi-bin/r.cgi?flag1=7713&flag2=1&flag3=15&22="+(g_pageLoaded - g_cssLoadedTime)+"&r="+Math.random();
+            }
+        }, 1000);
+    })();
+    try {
+        $.each(IPAY.serviceList, function(idx, code) {
+            LIB.log('http://pay.qq.com/cgi-bin/account/LoginStatics.cgi?servicetype='+code.toUpperCase()+'&uin='+IPAY.uin+'&aid='+LIB.getUrlParam('aid')+"&rr="+Math.random());
+        });
+    } catch(e){}
+</script>
+</body>
+</html>
