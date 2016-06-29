@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title>浮动定位</title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	div#container{
+		width: 500px;
+		border: 1px solid #aaa;
+		margin: 0 auto;
+	}
+	div.product{
+		width: 80px;
+		height: 100px;
+	}
+	div#d2,#d3{
+		float:right;
+	}
+	div#d4, #d5{
+		float: left;
+	}
+	#d8{
+		float: right;
+	}
+  </style>
+ </head>
+
+ <body>
+  <div id="container">
+	<div class="product" style="background:#faa">商品介绍1</div>
+	<div class="product" id="d2" style="background:#afa">商品介绍2</div>
+	<div class="product" id="d3" style="background:#aaf">商品介绍3</div>
+	<div class="product" id="d4" style="background:#ffa">商品介绍4</div>
+	<div class="product" id="d5" style="background:#faf">商品介绍5</div>
+	<div class="product" style="background:#aff">商品介绍6</div>
+	<div class="product" style="background:#ff0">商品介绍7</div>
+	<div class="product" id="d8" style="background:#0ff">商品介绍8</div>
+	<div class="product" style="background:#f0f;clear:right">商品介绍9</div>
+  </div>
+ </body>
+</html>

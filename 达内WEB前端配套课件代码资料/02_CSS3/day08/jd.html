@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	body{
+		12px;
+	}
+	div.search_container{
+		position: relative;
+	}
+	.search_container input{
+		border: 2px solid #E4393C;
+	}
+	input[value="搜索"]{
+		background-color: #E4393C;
+		font-family:'黑体';
+		color: #fff;
+		font-size: 0.8em;
+	}
+	#hint{
+		position: absolute;
+		border: 1px solid #E4393C;
+		width: 195px;
+		height: 100px;
+		box-shadow: 0 0 2px 1px #aaa;
+		display: none;
+		background-color: #fff;
+	}
+  </style>
+  <script>
+	function showHint(){
+		document.getElementById('hint').style.display = 'block';
+	}
+	function hideHint(){
+	document.getElementById('hint').style.display = 'none';
+	}
+  </script>
+ </head>
+
+ <body>
+  <br/>
+  <br/>
+  <div class="search_container">
+	<input id="search" onfocus="showHint()" onblur="hideHint()"/><input type="button" value="搜索"/>
+	<div id="hint">
+	</div>
+  </div>
+  <div>abdfasfasdfasdfljsadlfjsldfjklsdjfsdjf</div>
+ </body>
+</html>

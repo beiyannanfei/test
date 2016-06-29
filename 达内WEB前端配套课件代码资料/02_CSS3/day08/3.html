@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	div + span{
+		background-color: #faa;
+	}
+
+	div ~ span{
+		border: 1px solid #00f;
+	}
+
+	input + span{
+		color: red;
+	}
+	[href]{
+		text-decoration: none;
+		color: pink;
+	}
+	[type='text']{
+		border: 2px double green;
+	}
+	[class~='strong']{
+		background-color: #f00;
+	}
+	[class*='str']{
+		color: yellow;
+	}
+	[class^='str']{
+		padding: 20px;
+	}
+	[class$='t']{
+		font-style: italic;
+	}
+	[class|='maint']{
+		text-decoration: line-through;
+	}
+  </style>
+ </head>
+
+ <body>
+  <div>
+	<span>0</span>
+	<div>1<span>1111</span></div>
+	<span>2</span>
+	<p>3</p>
+	<span>4</span>
+  </div>
+	<br/>
+ <!-- <div>
+	<div>5</div>
+	<span>6</span>
+	<p>7</p>
+	<span>8</span>
+  </div> -->
+
+  密码：<input /><span>长度在6-12位</span>ABCD
+  <hr/>
+  <a href="#chapter1">跳转到第一章</a>
+  <br/>
+  <a name="chapter1">锚点1</a>
+  <div href="#" type="text">区块元素8</div>
+  <hr/>
+  用户名：<input type="text"/><br/>
+  密码：<input type="password"/><br/>
+  邮箱：<input type="text"/><br/>
+  电话：<input type="text"/><br/>
+  性别：<input type="radio"/>男<br/>
+  <hr/><br/>
+  <span class="strong">行内元素1</span>
+  <span class="maintweakstr">行内元素2</span>
+  <span class="maint-strong">行内元素3</span>
+  <span class="strong content">行内元素4</span>
+  <span class="mystrongspan">行内元素5</span>
+  <br/>
+  <hr/>
+  
+ </body>
+</html>

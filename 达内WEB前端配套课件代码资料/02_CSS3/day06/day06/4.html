@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	p{
+		width: 100px;
+		border: 1px solid #666;
+	}
+	#p1{
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	#p2{
+		word-wrap: break-word; /*单词包裹：只打断即使自己占一整行也放不下*/
+	}
+	#p3{
+		word-break: break-all; /*可能打断很多单词*/
+	}
+	#d4{
+		white-space: pre-wrap;
+	}
+  </style>
+ </head>
+
+ <body>
+  <p id="p1">This is a very longlonglonglonglonglonglonglong sentence</p>
+  
+  <p id="p2">This is a very longlonglonglonglonglonglonglong sentence</p>
+
+  <p id="p3">This is a very longlonglonglonglonglonglonglong sentence</p>
+
+  <div id="d4">
+  function submitForm(fid){
+	for(  ;  ;  ){
+		document.form.submit();
+	}
+  }
+  </div>
+ </body>
+</html>

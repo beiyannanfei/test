@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	body{
+		font-size: 12px;
+	}
+	a{
+		text-decoration:none;
+	}
+	#nav{
+		width: 980px;
+		height: 40px;
+		margin: 0 auto;
+		background-color: #E64346;
+		font: 16px '黑体' bold;
+		color: #fff;
+	}
+	#nav a{
+		color: #fff;
+	}
+	#category{
+		width: 200px;
+		background-color:#ff0;
+		float: left;
+		border: 1px solid #CD2A2C;
+	}
+	div#all_cate{
+		height: 40px;
+		background-color:#CD2A2C;
+	}
+	#all_cate a{
+		line-height: 40px;
+		padding-left: 10px;
+	}
+	div#cate_list{
+		min-height: 150px;
+		background-color: #FAFAFA;
+	}
+	#cate_list{
+		color: #000;
+		font: 14px '宋体' normal;
+	}
+	#cate_list a{
+		color: #000;
+		font: 14px '宋体' normal;
+		line-height: 28px;
+	}
+	#cate_list .one_cate{
+		height: 28px;
+		line-height: 28px;
+		padding-left: 10px;
+		border-bottom: 2px solid #FFF;
+		position: relative;/*为了子元素定位方便*/
+	}
+	/*平时隐藏、鼠标悬停时出现的DIV*/
+	div.cate_detail{
+		display: none;
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		border: 1px solid #aaa;
+		box-shadow: 0 0 2px 2px #eee;
+		left: 200px;
+		top:2px;
+	}
+	#nav ul{
+		float: left;
+	}
+	#nav li{
+		float: left;
+		list-style:none;
+		width: 80px;
+		line-height: 40px;
+		text-align: center;
+	}
+	#nav li:hover{
+		background-color: #A40000;
+	}
+  </style>
+ </head>
+
+ <body>
+	<br/>
+	<br/>
+  <div id="nav">
+	<div id="category">
+		<div id="all_cate">
+			<a href="#">全部商品分类</a>
+		</div>
+		<div id="cate_list">
+			<div class="one_cate">
+				<a href="#">图书</a>、<a href="#">音像</a>、<a href="#">数字商品</a>
+				<div class="cate_detail" style="display:block">
+					图书、音像的详情
+				</div>
+			</div>
+			<div class="one_cate">
+				<a href="#">家用电器</a>
+				<div class="cate_detail">
+					家用电器的详情
+				</div>
+			</div>
+			<div class="one_cate">
+				<a href="#">手机</a>、<a href="#">数码</a>、<a href="#">京东通信</a>
+				<div class="cate_detail">
+					手机数码的详情
+				</div>
+			</div>
+			<div class="one_cate">
+				<a href="#">电脑</a>、<a href="#">办公</a>
+				<div class="cate_detail">
+					电脑办公的详情
+				</div>
+			</div>
+		</div>
+	</div>
+	<ul>
+		<li><a href="#">首页<a/></li>
+		<li><a href="#">服装城</a></li>
+		<li><a href="#">食品</a></li>
+		<li><a href="#">团购</a></li>
+		<li><a href="#">夺宝岛</a></li>
+		<li><a href="#">闪购</a></li>
+		<li><a href="#">金融</a></li>
+	</ul>
+  </div>
+ </body>
+</html>

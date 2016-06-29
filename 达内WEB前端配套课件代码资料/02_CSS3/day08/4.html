@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	:target{
+		border: 1px solid #f00;
+	}
+	div{
+		display: none;
+	}
+	div:target{
+		display: block;
+	}
+  </style>
+ </head>
+
+ <body>
+  <a href="#lian1">链接1</a>
+  <a href="#lian2">链接2</a>
+  <a href="#lian3">链接3</a>
+  <a href="#lian4">链接4</a>
+  <br/>
+  <br/>
+  <a name="lian1">锚点1：链接1的目标元素</a>
+  <a name="lian2">锚点2：链接2的目标元素</a>
+  <div id="lian3">区块3：链接3的目标元素</div>
+  <div id="lian4">区块4：链接4的目标元素</div>
+  <div id="lian5">区块5：目标元素</div>
+ </body>
+</html>

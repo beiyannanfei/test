@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	body{
+		/*初始化计数器*/
+		/*counter-reset: mc*/
+		counter-reset: mc1 0 mc2 1 mc3 10;
+	}
+	p:before{
+		/*使用计数器的当前值*/
+		content: counter(mc3);
+		counter-increment: mc3 10;  /*计数器改变*/
+	}
+  </style>
+ </head>
+
+ <body>
+  <p>鹅，鹅，鹅，</p>
+  <p>曲项向天歌；</p>
+  <p>白毛浮绿水，</p>
+  <p>红掌拨清波。</p>
+ </body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.container{
+		width: 500px;
+		border: 1px solid #aaa;
+		padding: 10px;
+		overflow: hidden;
+	}
+	.btn{
+		border: 1px solid #aaa;
+		border-radius: 3px;
+		padding: 5px;
+		background-image: linear-gradient(to bottom, #fff 0%, #999 100%);
+		cursor: pointer;
+		float: right;
+	}
+	.cuxiao, .tejia{
+		width: 80px;
+		height:60px;
+		border: 1px solid #aaa;
+	}
+  </style>
+ </head>
+
+ <body>
+  <h2>内联元素的浮动</h2>
+  <div class="container">
+	<span class="btn">有用(5)</span>
+	<span class="btn">回复(8)</span>
+  </div>
+  <br/>
+  <div class="container">
+	<div class="cuxiao" style="float:left">产品介绍1</div>
+	<div class="cuxiao" style="float:left">产品介绍2</div>
+	<div class="cuxiao" style="float:left">产品介绍3</div>
+	<hr style="clear:both;"/>
+	<div class="tejia">产品介绍4</div>
+	<div class="tejia">产品介绍5</div>
+	<div class="tejia">产品介绍6</div>
+  </div>
+ </body>
+</html>

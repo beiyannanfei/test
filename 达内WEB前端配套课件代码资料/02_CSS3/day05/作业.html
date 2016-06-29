@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>渐变</title>
+        <meta http-equiv="content-type" content="text/html;charset=utf-8" />   
+        <style type="text/css">
+            #comment
+            {
+                padding: 10px 15px 5px;
+                border: 1px solid #d0e4c2;
+                background-color: #fcfffa;
+                width:838px;
+                min-height:50px;
+            }
+            div.topic
+            {
+                padding: 0 0 2px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid #d0e4c2;
+            }
+            div.star
+            {
+                margin: 1px 0 3px 5px;
+                width: 75px;
+                height: 14px;
+                background-image: url("images/iconlist_1.png")/*tpa=http://code.tarena.com.cn/WEBCode/wfd1501/02_CSS3/day05/images/iconlist_1.png*/;
+                background-repeat: no-repeat;
+                background-position: -109px -239px;
+            }
+            #comment p b
+            {
+                height: 21px;
+                padding: 5px 7px;
+                margin-right: 5px;
+                background-color: #fdedd2;
+            }
+            
+            p.btns input
+            {
+                margin-right: 10px;
+                padding: 10px 10px;
+                border: 1px solid #d5d5d5;
+                background-color: #f2f2f2;
+                border-radius: 3px;
+                color: #333;
+                width:80px;
+                background-image : linear-gradient(to bottom,#fafafa,#ccc);
+            }
+            #pages
+            {
+                color: #666;
+                width:838px;
+                margin-top:10px;
+            }
+            #pages a
+            {
+                padding: 3px 10px;
+                border: 1px solid #ccc;
+                margin-left: 2px;                
+                border-radius: 5px;
+            }
+            #pages a:hover
+            {
+                background-color: #005aa0;
+                color: #fff;
+            }
+            #pages a.current
+            {
+                border: 0;
+                padding: 4px 11px;
+            }
+            #pages a.current
+            {
+                background-color:#fff;
+            }
+        </style>  
+    </head>
+    <body>
+        <div id="comment">
+            <div class="topic">
+                <div class="star"></div>
+            </div>
+            <p>
+                <span>标&nbsp;&nbsp;&nbsp;&nbsp;签：</span>
+                <b>比洗衣粉好</b>
+                <b>去污能力强</b>
+            </p>
+            <p>
+                <span>心&nbsp;&nbsp;&nbsp;&nbsp;得：</span>
+                买了几次了，挺好用的，洗的衣服很干净，以后就它了！
+            </p>
+            <p>
+                <span>购买日期：</span>
+                2014-12-01
+            </p>
+            <p class="btns">
+                <input value="有用(3)" type="button" />
+                <input value="回复(3)" type="button" />
+            </p>
+        </div>
+        <div id="pages">
+            <a class="current">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,222 @@
+@charset "utf-8";
+
+html { height:100%;}
+body { margin:0 auto; font-size:12px; line-height:24px; font-family:"宋体"; color:#444; background:#49433b; height:100%;}
+ul,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,p,img,input { margin:0; padding:0;}
+ul { list-style:none;}
+img { border:0px;}
+a { color:#646464; text-decoration:none;}
+a:hover { color:#f30; text-decoration:none; cursor:pointer;}
+
+.clearfloat:after{content:"."; display:block; height:0; clear:both; visibility:hidden;}
+.clearfloat {zoom:1;}
+
+.fl_left { float:left;}
+.fl_right { float:right;}
+#box{width:440px; height:428px; padding:0 8px; position:absolute; top:50%; left:50%; margin:-214px 0 0 -228px;  background:url(../images/student/img_login.png) center bottom no-repeat;}
+.logo { height: 30px; background: url(../images/student/logo.png) 0 0 no-repeat;}
+
+#main{ margin-top:22px; padding:0 35px; width:370px; height:358px; background:#fff; border-radius:5px; color: #646464; font-size: 14px; line-height:44px;} 
+#main ul li { padding-top: 30px; position:relative;}
+#main ul li.btn { padding-top:20px;}
+#main ul li.forget { padding-top:10px;}
+#main ul li p { position:absolute; top:8px; left:0; font-size:12px; color:#f00; line-height:24px;}
+#main ul li span { display:block; float:left; padding-right:10px;}
+#main ul li span img { padding-top:2px;}
+#main input { border:1px solid #b7b7b7; padding:0 4px; width: 360px; height: 44px; line-height: 44px; font-size: 14px; color: #828281;}
+#main input.captcha { width:100px;}
+#main input.btn { width:370px; height:50px; font-family:"微软雅黑"; font-size:20px; color:#fff; background:#49433b; border:0; border-radius:5px; cursor:pointer;}
+#main input.btn:hover { background:#36322c;}
+
+.but{padding-left:38px}
+
+.one a{
+	font-size:12px;
+	color:#fff;
+	line-height:10px;
+	font-weight:bold;
+	}
+
+
+
+.hidden-box
+{
+    display:none;
+    visibility:hidden;
+}
+.popup-box 
+{
+    margin: 0px;    
+    background: #e5e5e5 url('../images/bg-content-box.gif') top left repeat-x;
+    border:1px solid #ccc;
+}
+.popup-box-header
+{    
+    margin-top: 1px;
+    height: 25px;
+    border:1px solid transparent;
+    padding-top:5px;
+    padding-left:15px;
+    font-size:13px;
+    font-weight:bold;
+}
+.popup-box-header a
+{    
+    display:block;
+    float:right;
+    padding-right:10px;
+    padding-top:2px;
+}
+.popup-box-header a img
+{    
+    width:10px;
+}
+.popup-box-content
+{
+    background: #fff;
+    padding: 10px 15px;
+    font-size: 13px;
+    border-top: 1px solid #ccc;
+    height:200px;
+    overflow-y:auto;
+}
+.test-content,.popup-box-content .test-content
+{
+    margin:5px 0px 10px 0px;
+}
+.test-content .test-title,
+.popup-box-content .test-content .test-title
+{
+    font-weight:bold;
+    display:block;
+    /*height:25px;*/
+    color:#555;
+}
+.test-content textarea
+{
+    height:150px;
+    width:370px;
+    vertical-align:top;
+    margin-bottom:5px;
+    margin-left:5px;
+}
+.test-content p,
+.popup-box-content  p
+{
+    margin:0px;
+    line-height:15px;
+    padding-bottom:5px;
+    padding-left:10px !important;
+}
+.test-content p label,
+.popup-box-content p label
+{
+    padding-left:5px;
+}
+div.test .test-content>p>label
+{
+    margin-left:5px;
+    margin-right:75px;
+}
+div.test .test-content textarea
+{
+    height:100px;
+    width:500px;
+    vertical-align:top;
+    margin-bottom:10px;
+    margin-left:5px;
+}
+.popup-box-content-title
+{
+    font-size: 13px;
+    height:20px;
+    padding: 10px 0px 5px 30px;
+    border-top: 1px solid #e6db55;
+    font-size: 13px;
+    font-weight:bold;
+    background-color: #fffbcc;
+    color: #666452;
+}
+.popup-box-content-title span
+{
+    margin-right:25px;
+}
+.popup-box-footer
+{
+    text-align:right;
+    padding:5px 15px 4px 15px;
+}
+.popup-box table 
+{
+    width: 100%;
+    border-collapse: collapse;
+    font-size:12px;
+    color:#555;
+}                
+.popup-box table thead th 
+{
+    font-weight: bold;
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+}                
+.popup-box tbody 
+{
+    border-bottom: 1px solid #ddd;
+}                
+.popup-box tbody tr 
+{
+    background: #fff;
+    text-align:center;
+}
+.popup-box tbody tr.alt-row 
+{
+    background: #f3f3f3;
+}   
+.popup-box tbody tr:hover,
+.popup-box tbody tr.alt-row:hover
+{
+    background: #e0e0e0;
+}             
+.popup-box table td,
+.popup-box table th 
+{
+    padding: 10px;
+    line-height: 1.3em;
+    vertical-align:top;
+}
+.popup-box table td.content 
+{
+    width:330px;
+    text-align:left;    
+}
+div.test
+{
+    height:220px !important;
+    overflow-y:auto;
+}
+.popup-box-content .text-info
+{
+    float:left;
+    height:25px;
+    padding-top:10px;
+    width:80px;
+    text-align:right;
+}
+.popup-box-content .input-info
+ {
+    float:left;
+    height:25px;
+    padding:5px;
+    text-align:left;
+}
+.popup-box-content .input-info textarea
+ {
+    height:125px;
+    width:280px;
+}
+
+
+
+
+
+

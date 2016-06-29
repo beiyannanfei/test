@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	:enabled{
+		border: 1px solid #88f;
+		background-color: #bbf;
+	}
+	:disabled{
+		border: 1px solid #f88;
+		background-color: #fbb;
+	}
+	:checked{
+		box-shadow: 5px 5px #8f8;
+	}
+  </style>
+ </head>
+
+ <body>
+  <form action="5.do.php" method="GET">
+	<input /><br/>
+	<input type="password"/><br/>
+	<input type="radio" name="g" checked="true"/>男<input type="radio" name="g"/>女<br/>
+	<input type="checkbox"/>洗衣<input type="checkbox"/>做饭<br/>
+	<select>
+		<option value="bj">北京</option>
+		<option value="sh">上海</option>
+		<option value="tj">天津</option>
+	</select><br/>
+	<textarea>请输入您的签名...</textarea><br/>
+	<input type="checkbox"/>同意网站的注册条款<br/>
+	<input type="submit" disabled="true"/>
+	<input type="reset"/>
+
+  </form>
+ </body>
+</html>
