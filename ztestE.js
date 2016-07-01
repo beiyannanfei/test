@@ -1,13 +1,6 @@
-/**
- * Created by wyq on 2016/5/10.
- */
-var ztest = require("./ztestD.js");
+var rc = require("redis").createClient();
 
-var funList = [];
-for (var i = 0; i < 10; ++i) {
-	funList.push(new ztest(i));
-}
-
-funList.forEach(fun => {
-	fun.start();
+var fileds = ['aa', 'bb', 'cc'];
+rc.HDEL("test", fileds, function (err, o) {
+	console.log(arguments);
 });
