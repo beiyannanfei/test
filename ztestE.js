@@ -1,6 +1,13 @@
-var rc = require("redis").createClient();
+var list = [
+	{num: 50},
+	{num: 20},
+	{num: 30},
+	{num: 80},
+	{num: 25}
+];
 
-var fileds = ['aa', 'bb', 'cc'];
-rc.HDEL("test", fileds, function (err, o) {
-	console.log(arguments);
+list.sort(function (a, b) {
+	return a.num > b.num ? -1 : 1;
 });
+
+console.log(list);
