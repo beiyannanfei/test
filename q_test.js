@@ -173,4 +173,4 @@ var Q_allSettled = function () {
 		});
 };
 
-Q_spread_1();
+Q_allSettled();
