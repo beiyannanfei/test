@@ -3380,3 +3380,65 @@ coroutine 0:
 2016/03/09 16:08:11 [notice] 28768#31376: exit
 2016/03/09 16:08:11 [notice] 13068#15920: worker process 28768 exited with code 0
 2016/03/09 16:08:11 [notice] 13068#15920: exit
+2016/07/08 11:27:28 [emerg] 3824#10904: unexpected ";" in ./dzp/dzp.conf:16
+2016/07/08 11:29:05 [notice] 10292#10108: signal process started
+2016/07/08 11:30:36 [alert] 4904#3928: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:30:36 [alert] 9904#10792: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:36:23 [alert] 9740#10884: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:36:23 [notice] 9740#10884: signal process started
+2016/07/08 11:36:26 [alert] 544#9664: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:36:26 [alert] 5264#7992: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:40:18 [notice] 32#8272: signal process started
+2016/07/08 11:41:13 [alert] 9636#10592: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:41:13 [notice] 9636#10592: signal process started
+2016/07/08 11:41:21 [alert] 10992#5628: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:41:21 [alert] 4944#7200: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:46:09 [alert] 32#10948: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:46:09 [notice] 32#10948: signal process started
+2016/07/08 11:46:11 [alert] 10624#9672: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:46:11 [alert] 7948#11220: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:53:49 [alert] 10512#8792: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:53:49 [notice] 10512#8792: signal process started
+2016/07/08 11:55:04 [alert] 7916#11012: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 11:55:04 [alert] 10092#8448: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:10:35 [alert] 10256#10792: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:10:35 [notice] 10256#10792: signal process started
+2016/07/08 12:10:39 [alert] 11064#3552: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:10:40 [alert] 1428#160: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:17:17 [alert] 10480#5212: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:17:17 [notice] 10480#5212: signal process started
+2016/07/08 12:17:20 [alert] 3108#9756: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:17:20 [alert] 1860#10704: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:26:56 [alert] 4496#7312: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:26:56 [notice] 4496#7312: signal process started
+2016/07/08 12:26:59 [alert] 9408#9280: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:26:59 [alert] 11128#5496: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:43:52 [alert] 3408#10956: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:43:52 [notice] 3408#10956: signal process started
+2016/07/08 12:43:55 [alert] 6688#10228: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:43:55 [alert] 8480#10224: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:47:24 [alert] 1420#11152: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:47:24 [notice] 1420#11152: signal process started
+2016/07/08 12:47:30 [alert] 10160#3912: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:47:30 [alert] 4380#10316: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:55:13 [alert] 96#10532: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:55:13 [notice] 96#10532: signal process started
+2016/07/08 12:55:15 [alert] 10664#9732: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:55:15 [alert] 8772#188: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:57:42 [alert] 9300#9948: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:57:42 [notice] 9300#9948: signal process started
+2016/07/08 12:57:47 [alert] 10356#6304: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:57:47 [notice] 10356#6304: signal process started
+2016/07/08 12:57:47 [error] 10356#6304: CreateFile() "./dzp/nginx.pid" failed (2: The system cannot find the file specified)
+2016/07/08 12:57:51 [alert] 9952#10768: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:57:51 [alert] 9856#1296: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:58:17 [alert] 10972#10260: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:58:17 [notice] 10972#10260: signal process started
+2016/07/08 12:58:20 [alert] 1520#9732: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 12:58:20 [alert] 10664#9828: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 14:35:11 [alert] 11228#10640: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 14:35:11 [notice] 11228#10640: signal process started
+2016/07/08 14:41:21 [alert] 10412#10636: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 14:41:22 [alert] 7312#11168: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 16:39:27 [alert] 11028#9896: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/08 16:39:27 [notice] 11028#9896: signal process started

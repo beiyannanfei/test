@@ -4,9 +4,9 @@ var util = require("util");
 var httpUtil = require("./superagent.js");
 
 
-var url = 'http://qa.pmall.yaotv.tvm.cn/open/financial/huaren/order';
+var url = 'http://qa.pmall.yaotv.tvm.cn/open/financial/order';
 var orderInfo = {
-	orderId: "188247_18",
+	orderId: "188247_27",
 	timeStamp: "1466412888",
 	userId: "526321",
 	mobile: "4167c3266b67fc449172249550a55876",
@@ -14,7 +14,7 @@ var orderInfo = {
 	productName: "华金8天投",
 	repayTime: "6个月",
 	incomeRate: "6.00",
-	money: 10000,
+	money: 1002300,
 	loantypeName: "到期后一次性还息还本",
 	feedback: "orEt2t9TyFNWO3XX5E-YTj61Hd0U|wx44490bbc768ce355|oxWE2s_3y2RcuEb1r6XSp2u9rZnQ|3"
 };
