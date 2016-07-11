@@ -3442,3 +3442,17 @@ coroutine 0:
 2016/07/08 14:41:22 [alert] 7312#11168: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
 2016/07/08 16:39:27 [alert] 11028#9896: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
 2016/07/08 16:39:27 [notice] 11028#9896: signal process started
+2016/07/11 15:23:49 [alert] 2636#1312: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 15:23:49 [alert] 6868#10496: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 17:25:10 [notice] 8248#11428: signal process started
+2016/07/11 17:25:10 [error] 8248#11428: CreateFile() "./logs/nginx.pid" failed (2: The system cannot find the file specified)
+2016/07/11 17:25:48 [alert] 7188#1432: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 17:25:48 [notice] 7188#1432: signal process started
+2016/07/11 17:26:28 [alert] 12060#4192: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 17:26:28 [alert] 11936#10024: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 17:45:54 [alert] 10340#5560: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 17:45:54 [notice] 10340#5560: signal process started
+2016/07/11 17:50:50 [alert] 5148#2148: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 17:50:50 [alert] 4320#9252: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 18:02:52 [alert] 5784#11984: lua_code_cache is off; this will hurt performance in ./dzp/dzp.conf:10
+2016/07/11 18:02:52 [notice] 5784#11984: signal process started

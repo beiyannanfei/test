@@ -119,8 +119,100 @@ var dzpInfo = {
 	"deleted": 0
 };
 
-var key = "dzp_config_info";
-var field = dzpInfo._id;
+var a = "[{\"id\":2,\"no\":2},{\"id\":5,\"no\":5},{\"id\":10,\"no\":10},{\"id\":1,\"no\":1},{\"id\":6,\"no\":6},{\"id\":4,\"no\":4},{\"id\":7,\"no\":7}]";
 
-rc.HSET(key, field, JSON.stringify(dzpInfo), function (err, o) {
-});
+
+var normalPrize = [{
+	"rate": 1,
+	"writeSpeech": "1",
+	"enterRank": "1",
+	"perTimes": 8,
+	"prizeName": "500浣欓",
+	"day": 1,
+	"rule": 2,
+	"isDefault": 0,
+	"value": 500,
+	"prizeType": 201,
+	"count	": 1410065407,
+	"limitCount": 1410065407,
+	"id": "964bc09fc2a84b9c97303f8de0e66837"
+}, {
+	"rate": 2,
+	"writeSpeech": "1",
+	"enterRank": "1",
+	"perTimes": 7,
+	"prizeName": "400浣欓",
+	"day": 1,
+	"rule": 2,
+	"isDefault": 0,
+	"value": 400,
+	"prizeType": 201,
+	"count": 1410065407,
+	"limitCount": 1410065407,
+	"id": "4fba23a62c6a4646849eb3d846839aad"
+}, {
+	"rate": 3,
+	"writeSpeech": "0",
+	"enterRank": "0",
+	"perTimes": 6,
+	"prizeName": "300浣欓",
+	"day": 1,
+	"rule": 2,
+	"isDefault": 0,
+	"value": 300,
+	"prizeType": 201,
+	"count": 1410065407,
+	"limitCount": 1410065407,
+	"id": "0171b210d86d467798429025eaeeb25f"
+}, {
+	"rate": 4,
+	"writeSpeech": "0",
+	"enterRank": "0",
+	"perTimes": 5,
+	"prizeName": "200浣欓",
+	"day": 1,
+	"rule": 2,
+	"isDefault": 0,
+	"value": 200,
+	"prizeType": 201,
+	"count": 1410065407,
+	"limitCount": 1410065407,
+	"id": "bf243f8e543d46f2aec5a951cbf5b486"
+}, {
+	"r	ate": 5,
+	"writeSpeech": "0",
+	"enterRank": "0",
+	"perTimes": 4,
+	"prizeName": "100浣欓",
+	"day": 1,
+	"rule": 2,
+	"isDefault": 0,
+	"value": 100,
+	"prizeType": 201,
+	"count": 1410065407,
+	"limitCount": 1410065407,
+	"id": "cbd63db87a6d463297e8495f69bb2f91"
+}, {
+	"rate": 6,
+	"writeSpeech": "0",
+	"enterRank": "0",
+	"perTimes": 3,
+	"prizeName": "50浣欓",
+	"day": 1,
+	"rule": 2,
+	"isDefault": 0,
+	"value": 50,
+	"prizeType": 201,
+	"count": 1410065407,
+	"limitCount": 1410065407,
+	"id": "4c63202a1f764a3c9639aaa46c028919"
+}];
+_
+var defaultPrize = [{
+	"value": 5,
+	"rate": 7,
+	"prizeType": 201,
+	"id": "	19db1eebc5b341da8bebbc65d3c87605",
+	"isDefault": 1,
+	"prizeName": "5浣欓"
+}]
