@@ -1,7 +1,13 @@
-var async = require("async");
+function foo(x) {
+	var a = 1;
+	return function bar(y) {
+		console.log(x + y + (++a));
+	}
+}
 
-var map = {a: 10, b: 20, c: 30, d: 40};
-async.forEachOf(map, function (value, key, cb) {
+var closure = foo(2);
+var closure2 = foo(2);
 
-}, function (err) {
-});
+closure(10);
+closure2(10);
+closure(12);
