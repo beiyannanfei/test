@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  用户名：<input id="userName"/><br/>
+  手机号：<input id="tele"/><br/>
+  <input type="button" value="提交" onclick="check()"/>
+  <script>
+	//document.querySelector('#userName').focus();
+	function check(){
+		var patt = /^1[3589]\d{9}$/;
+		var tele = document.querySelector('#tele');
+		if(patt.test(tele.value)){
+			console.log('电话号码合法');
+		}else{
+			console.log('电话号码非法');
+			tele.focus();	//申请获得焦点
+			tele.select();	//选择全部文本
+		}
+	}
+  </script>
+ </body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <button onclick="console.log(1);console.log(2);" onclick="console.log(11)">按钮1</button><br/>
+  
+  
+  <button onclick="f1()" onclick="f2()">按钮2</button><br/>
+
+  <button id="bt3">按钮3</button><br/>
+
+  <button id="bt4" onclick="f2()">按钮4</button><br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+	var bt3 = document.getElementById('bt3');
+	/*bt3.onclick = function(){
+		console.log(5);	
+		console.log(6);	
+	};
+	bt3.onclick = function(){
+		console.log(55);	
+		console.log(66);	
+	};*/
+
+	bt3.setAttribute('onclick', 'f1()');
+	bt3.setAttribute('onclick', 'f2()');
+
+	var bt4 = document.getElementById('bt4');
+	bt4.onclick = function(){
+		console.log(9999);	
+	};
+	
+	
+	function f1(){
+		console.log(3);
+		console.log(4);
+		console.log(arguments.length);
+	}
+	function f2(){
+		console.log(33);
+		console.log(44);
+		console.log(arguments.length);
+	}
+
+  </script>
+ </body>
+</html>

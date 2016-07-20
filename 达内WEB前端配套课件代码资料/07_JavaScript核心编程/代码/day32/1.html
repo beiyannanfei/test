@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.aphoto{
+		padding: 10px 0 10px 10px;
+	}
+  </style>
+  <script src="1.js">
+	copyright===="达内科技'
+  </script>
+  <script>
+	function addPhoto(){
+		var inputFile = document.createElement('input');
+		inputFile.setAttribute('type','file');
+		inputFile.setAttribute('name','myphoto');
+		var inputBtn = document.createElement('input');
+		inputBtn.setAttribute('type','button');
+		inputBtn.setAttribute('value','删除');
+
+		var div = document.createElement('div');
+		div.setAttribute('class', 'aphoto');
+
+		div.appendChild(inputFile);
+		div.appendChild(inputBtn);
+
+		document.getElementById('photoContainer').appendChild(div);
+	}
+  </script>
+ </head>
+
+ <body>
+  <button onclick="addPhoto()">添加更多</button>
+  <div id="photoContainer">
+	  <div class="aphoto">
+		<input type="file" name="myphoto"/><input type="button" value="删除"/>
+	  </div>
+  </div>
+ </body>
+</html>

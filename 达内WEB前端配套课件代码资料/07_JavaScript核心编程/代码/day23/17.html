@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>猜数字游戏V1.0</h2>
+  <script>
+	var num = parseInt(Math.random()*10);
+	//console.log(num);
+	var input = -1;
+	while( input != num ){
+		input = window.prompt('请输入');
+		if(input>num){
+			console.log('猜大啦！');
+		}else if(input<num){
+			console.log('猜小啦！');
+		}
+	}
+	console.log('恭喜！猜中啦！');
+	console.log('游戏结束！');
+  </script>
+ </body>
+</html>

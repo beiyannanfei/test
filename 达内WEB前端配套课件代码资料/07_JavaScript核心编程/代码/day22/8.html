@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <script>
+	var input = window.prompt('请输入一个字符');
+	console.log('您输入了：'+typeof(input));
+	var result1 = input>='0' && input<='9';
+	console.log('您输入的是数字吗：'+result1);
+	
+	var result2 = input>='\u4E00' && input<='\u9FA5';
+	console.log('您输入的是汉字吗：'+result2);
+
+	var result3 = (input>='A'&& input<='Z') || (input>='a' && input<='z');
+	console.log('您输入的是字母吗：'+result3);
+  </script>
+
+  <hr/>
+  <script>
+	var input2 = window.prompt('请输入一个年份数字');
+	input2 = parseInt(input2);
+	var isLeapYear = (input2%4==0 && input%100!=0) || (input2%400==0);
+	console.log(input2+'是闰年吗：'+isLeapYear);
+  </script>
+ </body>
+</html>

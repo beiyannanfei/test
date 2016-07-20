@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>使用try...catch...实现浏览器兼容性检验</h2>
+
+  <script>
+	//AJAX应用需要使用到一个宿主对象——XmlHttpRequest
+	try{
+		var x = new XMLHttpRequest();
+		window.alert("AJAX核心对象已经创建完成...");
+	}catch(err){
+		window.alert("捕捉到错误！您的浏览器不支持XMLHttpRequest对象");+
+	}finally{
+		window.alert('AJAX对象使用完成，正在销毁...');
+	}
+  </script>
+ </body>
+</html>

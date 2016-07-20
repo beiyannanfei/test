@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>示例5</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<script type="text/javascript">
+	/**
+	*登录成功提示页面
+	*/
+
+	//为String类添加裁剪方法，cookie名中可能被浏览器添加空格
+	String.prototype.trim = function(){
+		return this.replace(/(^\s*)|(\s*$)/g, '');
+	}
+	function getLoginInfo(){
+		var userName = null;
+		var userPwd = null;
+		var cookies = document.cookie; 
+		console.log(cookies);
+		if(cookies){
+			var arr = cookies.split(';');
+			for( var i=0; i<arr.length; i++){
+				var cookie = arr[i];		//键值对用=分割
+				var cookiePair = cookie.split( '=' );
+				if(cookiePair[0].trim()=='userName'){
+					userName = cookiePair[1];
+				}else if(cookiePair[0].trim()=='userPwd'){
+					userPwd = cookiePair[1];
+				}
+			}
+		}
+		document.getElementById('uname').innerHTML = decodeURIComponent(userName);
+	} 
+</script>
+</head>
+<body onload="getLoginInfo()">
+	<h2>欢迎回来：<span id="uname"></span></h2>
+</body>
+</html>

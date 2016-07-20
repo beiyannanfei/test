@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <form id="searchForm" action="9-1.php">
+	产品搜索：<input name="kw" value="123"/>
+	<!--
+	<input type="button" onclick="sub()" value="搜索"/>
+	-->
+	<input type="submit" onclick="return sub2();" value="搜索"/>
+  </form>
+
+  <script>
+	function sub2(){
+		var input = document.getElementsByName('kw')[0];
+		//var kw = input.getAttribute('value');
+		var kw = input.value;
+		if(kw.length == 0){
+			alert('搜索关键字不能为空');
+			return false;
+		}
+		return true;
+	}
+	
+	function sub(){
+		document.getElementById('searchForm').submit();
+	}
+	
+  </script>
+ </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>添加商品</h2>
+  <form id="addProductForm">
+	用户名：<input type="text" name="userName" value="请输入QQ号/邮箱/手机号"/><br/>
+	<input type="checkbox" name="agree" value="agree" onclick="checkAgree(this)"/>同意使用条款<br/>
+	<input id="btSubmit" type="submit" disabled="1"/>
+  </form>
+  <script>
+	var f1 = document.querySelector('#addProductForm');
+	var f2 = document.forms[0];  //HTML DOM
+	//console.log(f1===f2);
+	f2.action = '12.php';
+	f2.method = 'GET';
+	f2.enctype = 'application/x-www-form-urlencoded';  //Encoded Type
+
+	//查看Text对象的属性
+	var userName = f2.elements[0];
+	console.log(userName.type);
+	console.log(userName.name);
+	console.log(userName.value);
+	//userName.readOnly = true;	//HTML中只要出现就是只读，DOM中其类型为boolean
+	//console.log(userName.readOnly);
+	//userName.disabled = true;	//DOM中也是boolean
+	//console.log(userName.disabled);
+
+	function checkAgree(checkbox){
+		//console.log( checkbox.checked );
+		document.querySelector('#btSubmit').disabled = !checkbox.checked;
+	}
+  </script>
+ </body>
+</html>

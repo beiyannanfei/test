@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <script>
+	/*var names = [];*/
+	/*
+	names[0] = 'Tom';
+	names[1] = 'Mary';
+	names[2] = 'John';
+	*/
+	/*
+	names[ names.length ] = 'Tom';
+	names[ names.length ] = 'Mary';
+	names[ names.length ] = 'Leon';
+	*/
+
+	
+	/*
+	“信息录入系统”可以不停的接收录入的员工姓名，直到输入exit为止，将这些姓名保存在一个数组中，控制台中输出所有的元素。
+	*/
+	//(1)接收并保存数据
+	var empNames = [];
+	/*do{
+		var input = window.prompt('请求输入一个姓名:');
+		if(input != 'exit'){
+			empNames[empNames.length] = input;
+		}
+	}while( input!='exit' );*/
+	/*var input = '';
+	while( input != 'exit' ){
+		input = window.prompt('请求输入一个姓名:');
+		if(input != 'exit'){
+			empNames[empNames.length] = input;
+		}
+	}*/
+	/*while(true){
+		var input = window.prompt('请求输入一个姓名:');
+		if(input=='exit'){
+			break;
+		}
+		empNames[empNames.length] = input;
+	}*/
+	var input = '';
+	while( (input=window.prompt('请求输入一个姓名:')) != 'exit' ){
+		empNames[empNames.length] = input;
+	}
+
+
+	//(2)输出所有数据
+	for(var i=0; i<empNames.length; i++){
+		console.log( empNames[i] );
+	}
+
+
+
+  </script>
+ </body>
+</html>

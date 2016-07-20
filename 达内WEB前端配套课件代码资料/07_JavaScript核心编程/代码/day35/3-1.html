@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>3-1.html  在客户端磁盘中保存cookie数据</h2>
+  <script>
+	var uname = '唐木';
+	var lastLoginTime = new Date('2012-10-10 22:22:22');
+	var viewedProduct = ['洗衣粉','洗衣皂','洗衣液'];
+
+	var oneDay = new Date( new Date().getTime()+1000*3600*24).toGMTString();
+
+	//将上述数据保存为cookie——保存在客户端
+	uname = encodeURIComponent(uname);
+	document.cookie = 'un='+uname+';expires='+oneDay;
+
+	lastLoginTime = lastLoginTime.getTime();
+	document.cookie = 'llt='+lastLoginTime+';expires='+oneDay;
+
+	viewedProduct = encodeURIComponent(JSON.stringify(viewedProduct));
+	document.cookie = 'vp='+viewedProduct+';expires='+oneDay;
+
+	console.log('cookie数据保存完成');
+  </script>
+ </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>homework1</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		div{
+			float: left;
+			margin:20px;
+			padding:2px;
+			width:200px;
+			height: 180px;
+		}
+		img{
+			width:200px;
+			height:180px;
+		}
+		.bor{
+			padding:0;
+			border:2px solid #e4393c;
+		}
+		.dis{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div id="pic1" onclick="choose(this)"><img src="images/juhua.jpg"></div>
+
+	<div id="pic2" onclick="choose(this)"><img src="images/baxianhua.jpg"></div>
+
+	<div id="pic3" onclick="choose(this)"><img src="images/kaola.jpg"></div>
+
+	<div id="pic4" onclick="choose(this)"><img src="images/shamo.jpg"></div>
+
+	<button onclick="dis()">点击隐藏</button>
+
+	<script type="text/javascript">
+		function choose(pic){
+			if(pic.hasAttribute('class')){
+				pic.removeAttribute('class');
+			}else{
+				pic.setAttribute('class', 'bor');	
+			}
+		}
+		function dis(){
+			var divList = document.getElementsByClassName('bor');
+			// console.log(divList.length);
+			for (var i = 0; i < divList.length; i++) {
+				//console.log(divList[i]);
+				/*var attr = document.createAttribute('class');
+				attr.value = 'dis';
+				divList[0].setAttributeNode(attr);*/
+				//divList[i].removeAttribute('class');
+				divList[i].style.display = "none";
+			}
+		}
+	</script>
+</body>
+</html>

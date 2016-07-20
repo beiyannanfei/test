@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.red1{
+		color: #f00;
+		background: #0ff;
+	}
+	.green1{
+		color: #0f0;
+		background: #f0f;
+	}
+	.blue1{
+		color: #00f;
+		background: #ff0;
+	}
+  </style>
+  <script>
+	function changeColor( className ){
+		var div = document.getElementById('msg');
+		//div.setAttribute('class', className);//<div class="red1">
+		//使用document对象创建一个不存在的节点
+		var attr = document.createAttribute('class');
+		attr.value = className; //nodeValue已过时
+		
+		div.setAttributeNode(attr);
+	}
+  </script>
+ </head>
+
+ <body>
+  <div id="msg">HELLO WORLD</div>
+
+  <button onclick="changeColor('red1')">变绿</button>
+  <button onclick="changeColor('green1')">变红</button>
+  <button onclick="changeColor('blue1')">变蓝</button>
+ </body>
+</html>

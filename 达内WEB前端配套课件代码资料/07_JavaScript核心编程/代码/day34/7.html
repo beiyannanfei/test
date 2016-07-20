@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body onload="init()" onerror="alert('您的浏览器版本太低了！')">
+  <button id="btn1">按钮1</button>
+  <button id="btn2">按钮2</button>
+  <img src='1.jpg' onerror="alert('待显示图片不存在');"/>
+  <script>
+	function init(){
+		document.getElementById('btn2').onclick = function(){
+			console.log('world');
+		}
+	}
+	document.getElementById('btn1').onclick = function(event){
+		alert('hello');
+	}
+	
+  </script>
+ </body>
+</html>

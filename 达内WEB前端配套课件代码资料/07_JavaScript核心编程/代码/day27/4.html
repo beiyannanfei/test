@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <table border="1" width="100%">
+	<script>
+		//var num = 16;
+		//console.log( num.toString(16) );
+		/*
+		返回一个随机颜色值的函数 random color
+		形如： #FFCC95
+		*/
+		function rc(){
+			var result = '#';
+			for(var i=0; i<6; i++){
+				var num = parseInt(Math.random()*16);
+				result += num.toString(16);
+			}
+			return result;
+		}
+
+		for(var i=0; i<10; i++){
+			var row = '<tr style="background:'+rc()+'"><td>&nbsp;</td></tr>';
+			document.write(row);
+		}
+	</script>
+  </table>
+ </body>
+</html>

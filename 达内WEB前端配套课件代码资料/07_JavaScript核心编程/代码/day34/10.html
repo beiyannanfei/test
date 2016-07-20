@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <table id="table1" border="1" width="200">
+	<tr>
+		<td>AA</td>
+		<td>BB</td>
+	</tr>
+	<tr>
+		<td>CC</td>
+		<td>DD</td>
+	</tr>
+  </table>
+
+ 
+  <script>
+	var table = document.querySelector('#table1');
+	console.log( table.id );
+	console.log( table.border );
+	console.log( table.width );
+
+	console.log( table.rows );
+	//console.log( table.cells );
+
+
+	//var t2 = new Table();
+
+	var c = table.createCaption();
+	c.innerHTML = '第一季销售统计';
+  </script>
+ </body>
+</html>

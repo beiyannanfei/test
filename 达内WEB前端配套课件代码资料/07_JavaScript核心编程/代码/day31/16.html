@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+ </head>
+ <!--body开始了-->
+ <body>
+	<span class="header">遍历元素树</span>
+	<div>一个<span>区</span>块</div>
+	<script>
+		console.log('nodeType\tnodeName\t\tnodeValue');
+
+		//遍历整个元素树
+		function triverse(node){
+			if(node.nodeType==1 || node.nodeType==9){
+				console.log(node.nodeType+'\t\t'+node.nodeName+'\t\t'+node.nodeValue);
+				for(var i=0; i<node.children.length; i++){
+					var child = node.children[i];
+					triverse(child);
+				}
+			}
+		}
+		triverse(document);
+	</script>
+ </body>
+</html>

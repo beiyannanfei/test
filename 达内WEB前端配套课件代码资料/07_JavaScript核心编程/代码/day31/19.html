@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+  <script>
+	function showData(){
+		var str = '[{"ename":"Tom","salary":3500,"age":25},{"ename":"Mary","salary":3800,"age":26},{"ename":"John","salary":5500,"age":35}]';
+		var arr = JSON.parse(str);
+		var tbody = document.querySelectorAll('table tbody')[0];
+
+		for(var i=0; i<arr.length; i++){
+			var emp = arr[i];
+			var ename = emp.ename;
+			var salary = emp.salary;
+			var age  = emp.age;
+
+			var tr = document.createElement('tr');
+			var td0 = document.createElement('td');
+			var td1 = document.createElement('td');
+			var td2 = document.createElement('td');
+			var td3 = document.createElement('td');
+
+		}
+		
+	}
+  </script>
+ </head>
+
+ <body>
+	<button onclick="showData()">获取数据</button>
+  <table border="1" width="500">
+	<thead>
+		<tr>
+			<th>姓名</th>
+			<th>工资</th>
+			<th>年龄</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+  </table>
+ </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title>Window对象的属性</title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>window对象的常见属性aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
+  <a href="#" target="_parent">链接</a>
+  <button onclick="window.open('1.html','','channelmode=1')">打开新窗口</button>
+  <script>
+	console.log(window.defaultStatus);
+	console.log('innerheight:'+innerHeight);
+	console.log('innerwidth:'+innerWidth);
+	console.log('outerheight:'+outerHeight);
+	console.log('outerwidth:'+outerWidth);
+	console.log('pageXOffset:'+pageXOffset);
+	console.log('pageYOffset:'+pageYOffset);
+	console.log('title:'+document.title);
+	document.title = '欢迎来到魔兽世界';
+	var counter = 0;
+	function changeTitle(){
+		if(counter%8==0){
+			document.title ='欢迎来到';
+		}else if(counter%8==1){
+			document.title ='迎来到魔';
+		}else if(counter%8==2){
+			document.title ='来到魔兽';
+		}else if(counter%8==3){
+			document.title ='到魔兽世';
+		}else if(counter%8==4){
+			document.title ='魔兽世界';
+		}else if(counter%8==5){
+			document.title ='兽世界欢';
+		}else if(counter%8==6){
+			document.title ='世界欢迎';
+		}else if(counter%8==7){
+			document.title ='界欢迎来';
+		}
+		counter++;
+	}
+	setInterval(changeTitle, 300);
+  </script>
+ </body>
+</html>

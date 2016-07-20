@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <div id="main">
+	<span>行内元素1</span>
+	<span>行内元素2</span>
+  </div>
+  <span>行内元素3</span>
+  <script>
+	var list = document.getElementsByTagName('span');
+	console.log(list.length);
+
+	var divNode = document.getElementById('main');
+	var list2 = divNode.getElementsByTagName('span');
+	console.log(list2.length);
+  </script>
+ </body>
+</html>

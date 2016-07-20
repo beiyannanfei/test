@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	thead tr{
+		background: #aaf;
+	}
+	.odd{
+		background: #ccf;
+	}
+  </style>
+ </head>
+
+ <body>
+  <table id='empData' border="1" width="500px">
+	<thead>
+		<tr><th>编号</th><th>姓名</th></tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>10000</td>
+			<td>Tom0</td>
+		</tr>
+		<tr>
+			<td>10001</td>
+			<td>Tom1</td>
+		</tr>
+		<tr>
+			<td>10002</td>
+			<td>Tom2</td>
+		</tr>
+		<tr>
+			<td>10003</td>
+			<td>Tom3</td>
+		</tr>
+		<tr>
+			<td>10004</td>
+			<td>Tom4</td>
+		</tr>
+		<tr>
+			<td>10005</td>
+			<td>Tom5</td>
+		</tr>
+	</tbody>
+  </table>
+  <script>
+	//查找tbody tr
+	/*var table = document.getElementById('empData');
+	var tbody = table.getElementsByTagName('tbody')[0];
+	var trList = tbody.getElementsByTagName('tr');*/
+	var trList = document.querySelectorAll('#empData tbody tr');
+	for(var i=0; i<trList.length; i++){
+		if(i%2==1){
+			var tr = trList[i];
+			//tr.setAttribute('class', 'odd');
+		}
+	}
+  </script>
+ </body>
+</html>

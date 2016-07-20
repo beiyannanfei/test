@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.red{
+		color: red;
+	}
+  </style>
+ </head>
+
+ <body>
+  <script>
+	var h2 = document.createElement('h2');
+	//h2.innerHTML = '二号标题';
+	var txt = document.createTextNode('二号标题2');
+	h2.appendChild(txt);
+
+	var div = document.createElement('div');
+	var txt2 = document.createTextNode('一个区块');
+	div.appendChild(txt2);
+	var attr = document.createAttribute('class');
+	attr.value = 'red';
+	div.setAttributeNode(attr);
+
+	var fragment = document.createDocumentFragment();
+	fragment.appendChild(h2);
+	fragment.appendChild(div);
+
+	document.body.appendChild(fragment);
+  </script>
+ </body>
+</html>

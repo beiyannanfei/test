@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <select name="city">
+  </select>
+
+  <script>
+	var select = document.getElementsByName('city')[0];
+	console.log(select.name);
+	console.log(select.value);
+	console.log(select.multiple);
+	console.log(select.size);
+	console.log(select.options);
+
+	var opt0 = new Option('北京市', 'bj');
+	select.add(opt0);
+	var arr = [
+			{text:'天津市', value:'tj'},
+			{text:'河北省', value:'hb'}
+			];
+	for(var i=0; i<arr.length; i++){
+		var p = arr[i];
+		var opt = new Option(p.text,  p.value);
+		select.add(opt);
+	}
+
+	//设定“天津市”为默认选定项
+	//select.selectedIndex = 1;
+	//console.log(select.selectedIndex);
+	for(var i=0; i<select.options.length; i++){
+		var txt = select.options[i].text;
+		if(txt === '天津市'){
+			select.selectedIndex = i;
+			break;
+		}
+	}
+
+
+
+  </script>
+ </body>
+</html>

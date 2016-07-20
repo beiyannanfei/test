@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.fav{
+		border: 2px solid #faa;
+	}
+  </style>
+ </head>
+
+ <body>
+  <img src="images/dengta.jpg" width="100"/>
+  <script>
+	var img = new Image();
+	img.src = 'images/dengta.jpg';
+	//console.log(img.width);
+	//console.log(typeof img.width);
+	img.width = 100;   //HTML DOM width:number
+	img.title = '灯塔';
+	img.id = 'mydengta';
+	img.className = 'fav';
+	console.log( img.style );
+	img.style.boxShadow = '5px 5px 2px 2px #aff';
+	document.body.appendChild(img);
+  </script>
+ </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+ </head>
+ <!--body开始了-->
+ <body>
+	<span class="header">遍历元素树</span>
+	<div>一个<span>区</span>块</div>
+	<script>
+		console.log('nodeType\tnodeName\t\tnodeValue');
+		var node0 = document;
+		console.log(node0.nodeType+'\t\t\t'+node0.nodeName+'\t\t'+node0.nodeValue);
+
+		var node1 = node0.firstElementChild; //HTML
+		console.log(node1.nodeType+'\t\t\t'+node1.nodeName+'\t\t'+node1.nodeValue);
+
+		//console.log(node1.childNodes.length);
+		//console.log(node1.children.length);
+
+		var node2 = node1.firstElementChild; //HEAD
+		console.log(node2.nodeType+'\t\t\t'+node2.nodeName+'\t\t'+node2.nodeValue);
+
+		var node3 = node2.nextElementSibling; //BODY
+		console.log(node3.nodeType+'\t\t\t'+node3.nodeName+'\t\t'+node3.nodeValue);
+
+		//console.log(node3.children.length); //3
+		var node4 = node3.children[1]; //DIV
+		console.log(node4.nodeType+'\t\t\t'+node4.nodeName+'\t\t'+node4.nodeValue);
+
+		console.log(node4.children.length); //1
+		console.log(node4.children[0].children.length); //0
+
+		console.log(node1 === document.documentElement);
+		console.log(node3 === document.body);
+	</script>
+ </body>
+</html>

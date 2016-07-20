@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	div{
+		width: 200px;
+		height: 200px;
+		float: left;
+		border: 1px solid #aaa;
+		text-align: center;
+	}
+	#d2{
+		background: #afa;
+	}
+	h2{
+		height: 50px;
+	}
+  </style>
+ </head>
+
+ <body>
+  <h2>事件发生的坐标</h2>
+  <div>1111</div>
+  <div id="d2">2222</div>
+  <div>3333</div>
+
+  <script>
+	document.body.onkeydown = function(event){
+		console.log('DOWN:'+event.keyCode);
+	};
+	document.body.onkeyup = function(event){
+		console.log(' UP :'+event.keyCode);
+	};
+
+	document.getElementById('d2').onmousemove = function(event){
+		console.log(event);
+		console.log(event.clientX+'-'+event.clientY);
+	}
+  </script>
+ </body>
+</html>

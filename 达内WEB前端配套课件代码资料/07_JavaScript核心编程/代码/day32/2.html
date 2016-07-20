@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <ul id="menu">
+	<li>首页</li>
+	<li>联系我们</li>
+  </ul>
+  <button onclick="deleteLi()">删除</button>
+  <button onclick="replaceLi()">替换</button>
+  <script>
+	function replaceLi(){
+		var ul = document.getElementById('menu');
+		var newLi = document.createElement('li');
+		newLi.innerHTML = '招聘';
+		var result = ul.replaceChild(newLi, ul.lastElementChild);
+		console.log(result);
+	}
+	function deleteLi(){
+		var ul = document.getElementById('menu');
+		//console.log(ul.childNodes.length);
+		//ul.removeChild( ul.lastChild );
+		//console.log(ul.childNodes.length);
+		console.log(ul.children.length);
+		ul.removeChild( ul.lastElementChild );
+		console.log(ul.children.length);
+	}
+  </script>
+ </body>
+</html>

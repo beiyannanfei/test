@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <table border="1" width="500px">
+	<thead>
+		<tr>
+			<th>编号</th>
+			<th>姓名</th>
+			<th>生日</th>
+		</tr>
+	</thead>
+	<tbody>
+	<script>
+		var data = [];
+		data.push([101,'Tom', '2012-5-5']);
+		data.push([102,'Mary', '2013-5-25']);
+		data.push([103,'John', '2014-3-5']);
+		console.log( data );
+		for(var i=0; i<data.length; i++){
+			var row = data[i];	//一行元素，也是一个小数组
+			document.write("<tr>");
+			for(var j=0; j<row.length; j++){
+				document.write("<td>"+row[j]+"</td>");
+			}
+			document.write("</tr>");
+		}
+	</script>
+	</tbody>
+  </table>
+ </body>
+</html>

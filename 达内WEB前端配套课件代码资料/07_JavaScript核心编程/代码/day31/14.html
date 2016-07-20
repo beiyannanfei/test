@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	ul li li{
+		padding-left: 20px;
+	}
+	ul li span{
+		cursor: pointer;
+	}
+	.dispear{
+		display: none;
+	}
+  </style>
+ </head>
+
+ <body>
+  <ul>
+	<li><span onclick="toggle(this)">部门管理</span>
+		<ul>
+			<li>添加部门</li>
+			<li>删除部门</li>
+			<li>浏览部门</li>
+		</ul>
+	</li>
+	<li><span onclick="toggle(this)">员工管理</span>
+		<ul class="dispear">
+			<li>添加员工</li>
+			<li>删除员工</li>
+			<li>浏览员工</li>
+		</ul>
+	</li>
+	<li><span onclick="toggle(this)">考勤管理</span>
+		<ul class="dispear">
+			<li>导出考勤</li>
+			<li>恢复考勤</li>
+			<li>按员工查找</li>
+		</ul>
+	</li>
+  </ul>
+  <script>
+	function toggle(span){
+		//让其它的已显示的li ul隐藏
+		var ulList = document.querySelectorAll('ul li ul');
+		for(var i=0; i<ulList.length; i++){
+			var ul = ulList[i];
+			if(!ul.hasAttribute('class')){
+				ul.setAttribute('class', 'dispear');
+			}
+		}
+
+		//让当前span下的ul隐藏或显示
+		var ul = span.nextElementSibling;
+		if( ul.hasAttribute('class') ){
+			ul.removeAttribute('class');
+		}else{
+			ul.setAttribute('class', 'dispear');
+		}
+	}
+  </script>
+ </body>
+</html>

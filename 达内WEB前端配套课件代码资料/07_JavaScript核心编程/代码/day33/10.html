@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	body{
+		background:#ffa;
+	}
+	div{
+		background:#aaf;
+		height: 50px;
+	}
+	button{
+		background:#afa;
+	}
+  </style>
+ </head>
+
+ <body>
+  <div>
+	<button>按钮</button>
+  </div>
+  <p>
+	aaadfdf
+  </p>
+  <script>
+	document.body.onclick = function(){
+		console.log('body.....');
+	}
+	
+	document.getElementsByTagName('div')[0].onclick = function(){
+		console.log('div.....');
+	};
+
+	document.getElementsByTagName('button')[0].onclick = function(){
+		console.log('button.....');
+		//console.log(event.cancelBubble);//false
+		//event.cancelBubble = true;//取消事件冒泡
+	};
+  </script>
+ </body>
+</html>

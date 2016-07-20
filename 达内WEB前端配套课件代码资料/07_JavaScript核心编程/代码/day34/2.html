@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.block{
+		width: 200px;
+		height: 200px;
+		background: #afa;
+		margin: 50px;
+		border: 10px solid #faf;
+		padding: 10px;
+	}
+  </style>
+ </head>
+
+ <body>
+  <div class="block">ABCD</div>
+  <script>
+	var div = document.querySelector('.block');
+	div.onclick = function(){
+		console.log(1);	
+	};
+	div.ondblclick = function(){
+		console.log(2);
+	};
+	div.onmousedown = function(){
+		console.log('mouse down...');
+	};
+	div.onmouseup = function(){
+		console.log('mouse up');
+	};
+	div.onmouseover = function(){
+		console.log('mouse over');
+	};
+	div.onmouseout = function(){
+		console.log('mouse out');
+	}
+	div.onmousemove = function(){
+		console.log('mouse move')
+	}
+  </script>
+ </body>
+</html>

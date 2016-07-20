@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>使用HTML DOM创建一个表格</h2>
+  <script>
+	var t = document.createElement('table');
+	
+	t.border = 1;
+	t.width = 200;
+	//创建标题
+	var caption = t.createCaption();
+	caption.innerHTML = '员工统计表';
+	//添加THEAD
+	//var thead = t.createTHead();
+	//添加TBODY
+	var tr0 = t.insertRow();
+	var td00 = tr0.insertCell();
+	td00.innerHTML = 'AA';
+	var td01 = tr0.insertCell();
+	td01.innerHTML = 'BB';
+
+	var tr1 = t.insertRow(0);
+	var td10 = tr1.insertCell();
+	td10.innerHTML = 'CC';
+	var td11 = tr1.insertCell(0);
+	td11.innerHTML = 'DD';
+
+
+
+	document.body.appendChild(t);
+  </script>
+ </body>
+</html>

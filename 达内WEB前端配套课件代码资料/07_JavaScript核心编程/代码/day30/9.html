@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+  </style>
+ </head>
+
+ <body>
+  <h2>ElementNode.innerHTML</h2>
+  <div id="main">一个<span>区</span>块</div>
+  <script>
+	var div = document.lastChild.lastChild.firstChild.nextSibling.nextSibling.nextSibling;
+	var div = document.getElementById('main');
+
+	//console.log(div.innerHTML);
+	div.innerHTML = '新<span style="color:red">闻</span>标题<table border="1"><tr><td>ABC</td></tr></table>';
+
+	console.log('TEXTCONTENT:'+div.textContent);
+	console.log('INNERTEXT:'+div.innerText);
+  </script>
+
+ </body>
+</html>
