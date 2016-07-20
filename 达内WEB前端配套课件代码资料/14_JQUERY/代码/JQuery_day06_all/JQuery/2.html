@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <link rel="stylesheet" href="ztree/css/zTreeStyle/zTreeStyle.css" />
+  <script src="ztree/js/jquery-1.4.4.min.js"></script>
+  <script src="ztree/js/jquery.ztree.all-3.5.min.js"></script>
+  <script src="ztree/js/jquery.ztree.exhide-3.5.min.js"></script>
+  <script>
+	
+	/**
+	 * zTree控件的 onExpand事件
+	 */
+	function ztreeOnExpand(event,treeId,treeNode){
+		console.log(event.target);
+		if(treeNode.id == "0"){
+			return;
+		}
+		console.log("您选择的国家/城市是:"+treeNode.name);
+	}
+
+	
+	//1、配置树控件
+	var setting = {
+		//配置data
+		data:{
+			//配置simpleData
+			simpleData:{
+				enable:true,
+				idKey:"id",
+				pIdKey:"pid"
+			}
+		},
+		//配置callback,节点的各个事件
+		callback:{
+			beforeExpand:function(treeId,treeNode){
+				/*if(treeNode.name == "日本"){
+					return false;
+				}*/
+				return true;
+			},
+			onExpand:ztreeOnExpand
+		},
+		//配置check,节点的单/多选的关联设置
+		check:{
+			enable:true,
+			chkboxType:{"Y":"ps","N":"ps"}
+		},
+		//配置edit,节点是否允许被编辑
+		edit:{
+			enable:true
+		},
+		//配置view,节点的显示相关的信息
+		view:{
+			showIcon:false,
+			showLine:false
+		}
+	}
+	//2、构建数据
+	var zNodes = [
+		{name:"国家",id:"0",pid:"0",desc:"所有国家信息 "},
+		{name:"中国",id:"10",pid:"0",desc:"中华人民共和国"},
+		{name:"日本",id:"20",pid:"0",desc:"岛国"},
+		{name:"北京市",id:"101",pid:"10",desc:"北京市"},
+		{name:"上海市",id:"102",pid:"10",desc:"上海市"},
+		{name:"天津市",id:"103",pid:"10",desc:"天津市"},
+		{name:"重庆市",id:"104",pid:"10",desc:"重庆市"},
+		{name:"东京都",id:"201",pid:"20",desc:"TOKYO"},
+		{name:"北海道",id:"202",pid:"20",desc:"HOKKAYIDO"},
+	];
+
+	$(document).ready(function(){
+		//3、加载树控件
+		$.fn.zTree.init($("#ztree"),setting,zNodes);
+
+		//其他
+		$("#btnGetTree").click(function(){
+			var $zTree = $.fn.zTree.getZTreeObj("ztree");
+			console.log($zTree);
+		});
+
+		$("#btnAddRoot").click(function(){
+			var rootNM = $("#rootNM").val();
+			var newNode = {name:
+			rootNM,id:"1",pid:"1",desc:"所有国家信息 "}
+			$.fn.zTree.getZTreeObj("ztree").addNodes(null,newNode);
+		});
+
+		$("#btnSelectNode").click(function(){
+			var city = $("#searchText").val();
+			var $zTree=$.fn.zTree.getZTreeObj("ztree");
+			var nodes = $zTree.getNodes();
+			for(var i = 0 ; i < nodes.length;i++){
+				/*if(i == 0){
+					$zTree.selectNode(nodes[i]);
+				}*/
+				var node = nodes[i];
+				if(node.name == city){
+					$zTree.selectNode(node);
+				}
+			}
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+  <!-- 树控件容器(ul|ol) -->
+  <ul class="ztree" id="ztree"></ul>
+  <div>
+	<input type="button" value="获取树控件" id="btnGetTree" /><br />
+	<input type="text" id="rootNM" />
+	<input type="button" value="添加根节点" id="btnAddRoot" />
+	<br />
+	<input type="text" id="searchText" />
+	<input type="button" value="选中节点" id="btnSelectNode" />
+  </div>
+ </body>
+</html>

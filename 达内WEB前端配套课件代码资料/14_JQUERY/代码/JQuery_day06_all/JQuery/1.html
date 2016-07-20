@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <link rel="stylesheet" href="formValidator/style/validator.css" />
+  <script src="formValidator/jquery-1.11.1.js"></script>
+  <script src="formValidator/formValidator_min.js"></script>
+  <script src="formValidator/formValidatorRegex.js"></script>
+  <script>
+	$(document).ready(function(){
+		//1、表单验证初始化($.formValidator.initConfig)
+		$.formValidator.initConfig();
+
+		//2、初始化uname
+		$("#uname").formValidator({
+			onempty:"用户名称不能为空",
+			onshow:"请输入用户名称,6-18位",
+			onfocus:"字母、数字、下划线组成",
+			oncorrect:"恭喜你,用户名称可用"
+		}).InputValidator({
+			type:"size", //默认值，可以省略
+			min:6,
+			max:18,
+			onerror:"用户名称必须是6-18位"
+		});
+
+		//3、表单验证事件
+		$("#frmLogin").submit(function(){
+			return $.formValidator.PageIsValid();
+		});
+
+	});
+  </script>
+ </head>
+
+ <body>
+  <form id="frmLogin" method="get">
+	<table>
+		<tr>
+			<td>用户名称</td>
+			<td>
+				<input type="text" name="uname" id="uname" />
+			</td>
+			<td>
+				<div id="unameTip"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>用户密码</td>
+			<td>
+				<input type="password" name="upwd" id="upwd" />
+			</td>
+			<td>
+				<div id="upwdTip"></div>
+			</td>
+		</tr>
+		<tr>
+			<td>确认密码</td>
+			<td>
+				<input type="text" name="uConfimPwd" id="uConfimPwd" />
+			</td>
+			<td>
+				<div id="uConfimPwdTip"></div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<input type="submit" value="提交" />
+			</td>
+		</tr>
+	</table>
+  </form>
+ </body>
+</html>

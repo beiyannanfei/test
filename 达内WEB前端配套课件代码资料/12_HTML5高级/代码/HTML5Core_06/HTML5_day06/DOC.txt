@@ -1,0 +1,122 @@
+﻿回顾:
+
+1、Canvas绘图
+   1.1 drawImage(img,x,y)
+       drawImage(img,x,y,width,height)
+
+       注意:
+       img.onload = function(){
+	 drawImage(img,x,y);
+       }
+   1.2 createPattern(img,repeatMod)
+       repeatMode:
+          repeat:即横又纵
+	  repeat-x:横
+	  repeat-y:纵
+	  no-repeat:无平铺
+       var ptn = createPattern(img,"repeat");
+       ctx.fillStyle = ptn;
+       ctx.fillRect();
+   1.3 clip()
+       说明：切割图像，会按照当前路径进行切割。落在路径内的内容会被保留，其余的都被删除
+2、API - Web拖拽
+   2.1 两种元素
+       1) 源元素 - 被拖拽的元素
+       2) 目标元素 - 投放区域
+   2.2 事件
+       1) 源元素事件(3个)
+          dragstart:开始拖拽源元素
+	  drag:移动源元素，会周期性触发
+	  dragend:拖拽结束(释放源元素)
+
+       2) 目标元素事件(4个)
+          dragenter:拖拽的元素进入到目标区域(目标元素)
+	  dragover:在目标元素中移动,会周期性的触发
+	  drop:在目标元素内进行投放
+	  dragleave:离开目标元素
+
+	  注意：在执行目标元素事件时，需要阻止浏览器默认行为 : e.preventDefault();
+   2.3 传递数据
+       e.dataTransfer.setData(type,value);
+       type:text
+       value:要保存的值
+
+       e.dataTransfer.getData(type);
+       根据type获取指定的value值
+
+       通常情况：会在源元素中去setData，到达目标元素后，再getData
+
+       e.dataTranfer.clearData();
+       移除内容
+
+       注意：传递复杂类型数据,
+             1)、JSON
+	     2)、通过自定义分隔符来连接数据
+   2.4 设置拖拽过程中鼠标的图像
+       e.dataTransfer.setDragImage(img,x,y);
+
+==========================================================
+2015-4-20:
+Web存储相关API
+1、浏览器保存数据
+   cookie
+
+   缺点:
+   1、大小有限制(取决于浏览器)
+   2、个数有限制
+   3、每个cookie所存储的数据长度固定
+
+   session:临时性保存数据到服务器中
+     临时性：浏览器关闭后，数据就会消失
+     服务器: 将数据保存在服务器上
+
+2、localStorage、sessionStorage 两个存储系统
+   localStorage:本地存储
+       特点：长时间保存用户数据
+   sessionStorage:
+       特点：针对浏览器窗口有效，如果浏览器窗口被关闭的话，namesessionStorage中的所有的数据都会被清空
+
+   两者共同的特点：
+      都可以将数据保存在本地浏览器中
+   注意：如果安全性要求较高的数据，还是要存放在服务器的session中
+
+   2.1 API
+       sessionStorage:只对当前窗口(标签页)有效
+       方法 ：
+          setItem(key,value) 
+	  getItem(key)
+	  removeItem(key)
+	  clear()
+
+	  key(index):根据index获得指定所引处的key值
+       属性 :
+          length:保存数据的长度(个数)
+3、storage事件
+   localStorage的storage事件
+   storage事件:
+      只要有localStorage的数据更新，浏览器会自动通知其他窗口触发 storage事件
+   注意:当前只在safari浏览器中能体现出效果，其他浏览器暂不支持.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

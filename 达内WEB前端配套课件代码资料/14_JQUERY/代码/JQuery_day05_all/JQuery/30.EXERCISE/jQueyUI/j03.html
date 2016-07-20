@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <link href="jquery-ui.min.css" />
+  <link href="jquery-ui.theme.min.css" />
+  <style>
+	#myDiv{width:200px;height:200px;background:yellow;}
+	li{list-style:none;margin:10px;padding:10px;border:1px solid black;}
+  </style>
+  <script src="jquery-1.11.1.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script>
+	$(document).ready(function(){
+		$("#myDiv").draggable();
+		$("ul").sortable({axis:"y"});
+	});
+  </script>
+ </head>
+
+ <body>
+  <div id="myDiv"></div>
+  <div>
+	<ul>
+		<li>李文华</li>
+		<li>李小华</li>
+		<li>李雪峰</li>
+		<li>叶智</li>
+		<li>宋哲石</li>
+		<li>李小峰</li>
+	</ul>
+  </div>
+ </body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+
+	function btn_click(){
+		console.log("你打我呀，你打我呀!!!");
+	}
+
+	function copy_click(e){
+		var newBtn = $("#btnTest").clone(true);
+		//console.log(e);
+		$(e).before(newBtn);
+	}
+
+	window.onload = function(){
+		$("#btnTest").bind("click",function(){
+			console.log("你打我呀，你打我呀... ...");
+		});
+	}
+  </script>
+ </head>
+
+ <body>
+  <input id="btnTest" type="button" value="测试" />
+  <input type="button" value="复制" onclick="copy_click(this)" />
+ </body>
+</html>

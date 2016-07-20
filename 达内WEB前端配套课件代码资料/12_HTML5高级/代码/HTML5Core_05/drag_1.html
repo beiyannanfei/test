@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style>
+	#srcDiv,#tarDiv{width:300px;height:500px;border:1px solid red;float:left;}
+	#srcDivTip{width:300px;height:150px;border:1px solid red;clear:both;float:left;}
+	#tarDivTip{width:300px;height:150px;border:1px solid red;float:left;}
+  </style>
+  <script src="drag_1.js"></script>
+ </head>
+
+ <body>
+  <div id="srcDiv">
+	<img id="img" src="img/bike.jpg"/>
+  </div>
+  <div id="tarDiv"></div>
+  <div id="srcDivTip">
+	<div id="d_start"></div>
+	<div id="d_drag"></div>
+	<div id="d_end"></div>
+  </div>
+  <div id="tarDivTip">
+	<div id="d_enter"></div>
+	<div id="d_over"></div>
+	<div id="d_drop"></div>
+	<div id="d_leave"></div>
+  </div>
+ </body>
+</html>

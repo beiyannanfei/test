@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+	function test_click(){
+		//通过属性过滤选择器获取页面元素
+		var userName=$("input[name='userName']");
+		console.log(userName.val());
+	}
+
+	function insert_click(){
+		//创建新元素
+		var $div=$("<div>Hello Tarena</div>");
+		$("body").append($div);
+		$("body").append("<hr />");
+		$("body").append("<div>Hello World</div>");
+
+		var $td=$("<td>Tarena</td>");
+		var $tr=$("<tr></tr>");
+		var $table=$("<table></table>");
+		$table.append($tr);
+		$tr.append($td);
+		$("body").append($table);
+	}
+  </script>
+ </head>
+
+ <body>
+  <form>
+	用户名称:<input type="text" name="userName" /><br />
+	用户密码:<input type="password" name="userPass" /><br />
+	<input type="button" value="Test" onclick="test_click()" />
+	<input type="button" value="Insert" onclick="insert_click()" /> 
+  </form>
+ </body>
+</html>

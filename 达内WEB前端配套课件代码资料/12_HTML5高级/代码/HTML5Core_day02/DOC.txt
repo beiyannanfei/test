@@ -1,0 +1,80 @@
+﻿1、新表单元素
+   type:
+       color:调色板，通过该控件最终可以获取6位16进制颜色数据
+       email:电子邮件，只允许输入电子邮件格式的数据
+       url:网址，只允许输入http://...  类型的数据
+       number:只能是数字类型
+              属性:
+	           min : 最小值
+		   max : 最大值
+		   step : 步长
+       range:范围，可通过滑块选取指定范围内的数字
+	      属性同上
+	      使用场合:
+	          1、透明度的选取
+		  2、颜色的选取
+
+       tel:电话号码类型,主要应用在移动终端
+       search:查找数据相关
+       date:选取日期, 格式:yyyy-MM-dd
+       week:与周相关 2015W17
+       month:与月相关
+       datetime:日期与时间 格式:yyyy-MM-dd HH:mm:ss T
+       datetime-local:本地日期与时间 格式:yyyy-MM-dd HH:mm:ss
+2、新表单属性
+   placeholder:文本框默认显示的文字(不属于value)
+   required:必须的,非空
+   multiple:允许录入多个数据，多个数据之间用 "," 区分
+   autofocus:初始化时获取焦点，类似于 focus()
+   pattern:自定义验证的正则表达式 "^$"
+   form:在表单外声明表单元素
+3、新表单元素（与显示数据相关）
+   datalist:数据列表，定义好后，可以提供给文本域使用
+       <datalist name="list" id="list">
+          <option value="" label=""></option>
+       </datalist>
+
+       <input type="text" list="list" />
+      
+   progress:进度条
+       max:最大值
+       value:当前值
+   meter:刻度条
+       max
+       value
+       min
+
+       low:合理下限
+       high:合理上限
+   output:动态输出表单内元素进行运算的结果
+       for:可选,关联要显示的控件的名称
+
+
+----------------------------------------------------------
+1、setCustomValidity
+   注意：有错误时，可以设置setCustomValidity用于更改错误提示信息。如果错误更改后，一定要将setCustomValidity设置为空 setCustomValidity("") 显示清除错误消息，否则，表单永远无法提交
+
+2、
+  2.1  setCustomValidity()  
+       用于设置用户自定义的验证消息
+  2.2  checkValidity()
+       通过代码的方式实现表单以及表单元素的验证
+  2.3  invalid事件
+       表单提交产生错误时所激发的事件，获取引发错误的表单元素
+  2.4  ValidateState 属性 
+       验证表单元素的各种违规状态
+       2.4.1 获取ValidateState属性
+             var v = element.validity;
+       2.4.2 validity的属性
+             不同的属性验证不同的违规状态
+	     1)、valid
+	         验证元素是否通过所有验证
+	     2)、valueMissing
+	         与required属性相关联，设置了required属性，但是没有赋值，该属性为true
+	     3)、typeMismatch
+	         与type属性相关联,如果输入的数据违反了type类型定义的格式，该属性为true
+	     4)、patternMismatch
+	         与patter属性相关联,如果输入的数据违反了patter属性定义的格式，该属性为true
+	     5)、customError
+	         与setCustomValidity()方法相关的，如果用户设置了setCustomValidity()并且没有清空，该值为true
+   

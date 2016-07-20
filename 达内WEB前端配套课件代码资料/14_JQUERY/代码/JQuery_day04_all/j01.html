@@ -1,0 +1,124 @@
+<!DOCTYPE html >
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+	function changeColor(){
+		$("tr:not(:first):not(:last):odd").css({background:"#e4393c"});
+		$("tr:not(:first):not(:last):even").css({background:"#c3934e"});
+	}
+
+	function initial(){
+		changeColor();
+		//为增加按钮绑定事件
+		$("input[value='增加']").click(function(){
+			//1、获取三个文本框的值
+			var bName=$("#bookName").val();
+			var bPrice=$("#bookPrice").val();
+			var bStorage=$("#bookStorage").val();
+			
+			//2、创建四td一个tr
+			var $td1 = $("<td>"+bName+"</td>");
+			var $td2 = $("<td></td>");
+			$td2.text(bPrice);
+			var $td3 = $("<td>"+bStorage+"</td>");
+			var $td4 = $("<td></td>");
+			//2.1 克隆修改和删除
+			var $update = $($("input[value='修改']").get(0)).clone(true);
+			var $delete = $($("input[value='删除']").get(0)).clone(true);
+			$td4.append($update);
+			$td4.append(" ");
+			$td4.append($delete);
+			var $tr = $("<tr></tr>");
+			//3、将td添加到tr中
+			$tr.append($td1);
+			$tr.append($td2);
+			$tr.append($td3);
+			$tr.append($td4);
+			//4、将tr添加到table的不是最后一行的最后一行中
+			$("tr:last").before($tr);
+			
+			$("#bookName").val('');
+			$("#bookPrice").val('');
+			$("#bookStorage").val('');
+
+			changeColor();
+		});
+
+		// 为删除按钮增加事件
+		$("input[value='删除']").click(function(e){
+			//$(this.parentNode.parentNode).remove();
+			$(this).parent().parent().remove();
+			changeColor();
+		});
+
+		//为修改按钮增加事件
+		$("input[value='修改']").click(function(){
+			//this , e
+			if($(this).val() == '修改'){
+				//将按钮变成确定,将td的文本更换成input
+				$(this).val("确定");
+				var tds = $(this).parent().siblings();
+				for(var i=0;i<tds.length;i++){
+					var $td = $(tds.get(i));
+					$td.html("<input value='"+$td.text()+"' />");
+				}
+			}else{
+				//将按钮变成修改,将td的input换成文本
+				$(this).val("修改");
+				var tds = $(this).parent().siblings();
+				for(var i=0;i<tds.length;i++){
+					var $td = $(tds[i]);
+					var $ipt = $($td.children()[0]);
+					$td.text($ipt.val());
+				}
+			}
+		});
+	}
+
+	window.onload = function(){
+		initial()
+	}
+  </script>
+  <style>
+	table{width:700px;border-collapse:collapse;}
+	td{border:1px solid black;}
+  </style>
+ </head>
+
+ <body>
+  <table>
+	<tr>
+		<td>书名</td>
+		<td>价格</td>
+		<td>库存</td>
+		<td>操作</td>
+	</tr>
+	<tr>
+		<td>机器猫</td>
+		<td>3.6</td>
+		<td>100</td>
+		<td>
+			<input type="button" value="修改" />
+			<input type="button" value="删除" />
+		</td>
+	</tr>
+	<tr>
+		<td>机器狗</td>
+		<td>3.6</td>
+		<td>200</td>
+		<td>
+			<input type="button" value="修改" />
+			<input type="button" value="删除" />
+		</td>
+	</tr>
+	<tr>
+		<td><input id="bookName" /></td>
+		<td><input id="bookPrice" /></td>
+		<td><input id="bookStorage" /></td>
+		<td><input type="button" value="增加" /></td>
+	</tr>
+  </table>
+ </body>
+</html>

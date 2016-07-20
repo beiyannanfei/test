@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <link rel="stylesheet" href="jquery-ui.min.css" />
+  <link rel="stylesheet" href="jquery-ui.theme.min.css" />
+  <script src="jquery-1.11.1.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script>
+	$(function(){
+		//设置对话框
+		$("#myDialog").dialog({
+			autoOpen:false,
+			/*buttons:{
+				"OK":function(){
+					$(this).dialog("close");
+				},"Cancel":function(){
+					$(this).dialog("close");
+				}
+			}*/
+			buttons:[
+				{
+					text:"OK",
+					click:function(){}
+				},
+				{
+					text:"Cancel",
+					click:function(){
+						$(this).dialog("close");
+						$(this).dialog("destroy");
+					}
+				}
+			]
+		});
+
+		$("#btnOpen").click(function(){
+			$("#myDialog").dialog("open");
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+  <div id="myDialog" title="Dialog Title">
+	用户名称:李晓峰<br />
+	用户年龄:19<br />
+	用户爱好:Programming<br />
+	<input type="button" value="Test" />
+  </div>
+  <input id="btnOpen" type="button" value="打开" />
+ </body>
+</html>

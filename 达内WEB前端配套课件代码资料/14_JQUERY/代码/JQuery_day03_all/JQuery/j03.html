@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+	function btn_click(){
+		var value=$("#txtSearch").val();
+		//var value = $("#txtSearch").attr("value");
+		console.log(value);
+		//筛选出li中包含value文本的元素
+		$("#container li:contains('"+value+"')").css("background","yellow");
+	}
+  </script>
+ </head>
+
+ <body>
+ <div id="container">
+	  <ul>
+		<li>Java开发</li>
+		<li>数据库应用</li>
+		<li>Java Web企业级应用</li>
+		<li>Web前端工程师</li>
+		<li>挖掘机培训</li>
+		<li>新东方厨师培训</li>
+		<li>Web详解</li>
+	  </ul>
+	  <input id="txtSearch" />
+	  <input type="button" value="显示" onclick="btn_click()" />
+  </div>
+ </body>
+</html>

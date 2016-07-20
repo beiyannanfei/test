@@ -1,0 +1,73 @@
+jQuery --> JS库
+1、TQuery --> Tarena Query 
+   模拟jQuery的常用操作，对自己的JS库进行封装
+2、jQuery
+   选择器
+   操作方法
+   动画
+3、jQuery插件
+   插件使用
+   插件制作
+=========================================================
+1、选择器 
+2、$(".redBorder").size();
+3、tQuery对象:-->TQObject
+   tQuery对象 拥有属于tQuery的方法(自定义方法)，不能直接访问dom方法
+   $("#myDiv").innerHTML = "";错误
+   DOM对象: -->通过dom方法获得，没有进行封装
+   DOM对象可以访问DOM方法，但不能访问tQuery方法
+   document.getElementById("myDiv").size(); //错误
+4、
+  $("div #myDiv");
+  $("div#myDiv")
+  $("#myDiv,.redBorder")
+  $("div[class=redBorder]")
+
+5、$("div").html("<a href='http://www.baidu.com'>百度</a>");
+   $("div").html(); 得到第一个元素的html值
+   html()：对innerHTML属性的封装...
+6、方法的连缀调用
+   已经存在方法 addClass()
+   $("#myDiv").addClass("c1").addClass("c2").addClass("c3").html("<h1>..").addClass();
+
+   如果想在方法中实现连缀调用，只需要在方法执行完毕后，return this; 即可
+   什么时候可以做连缀调用:
+   1、方法执行完成后对返回值没有硬性要求的，可以考虑返回this，以便方便其他的操作
+   2、如果方法返回值，有固定要求，比如必须返回整数(size())，这种方法不适合做连缀
+7、text()方法
+   对 innerText 属性进行封装
+   注意:兼容性问题，
+         FireFox textContent
+	 其他浏览器 innerText
+   
+
+   if(window.navigator.userAgent.toLowerCase().indexOf("firefox") != -1){
+		//火狐浏览器
+	}
+8、tQuery - val([value])方法
+   主要针对有value属性的标签
+9、tQuery - attr(name[,value])方法
+   attr("id") : 获取ID值
+   attr("value","Hello World") : 设置某一标签的value为Hello World
+10、tQuery - addClass(className)方法
+   为某一个(一组)元素，追加className样式
+   <div class="redBorder"></div>
+   $("div").addClass("bigFont");
+11、tQuery - removeClass([className]);
+    removeClass(className); 移除指定样式
+    removeClass() : 移除所有样式
+
+12、$("<div>Hello World</div>")
+
+
+
+
+
+
+
+
+
+
+
+
+

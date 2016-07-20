@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script src="tquery-1.1.0.js"></script>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+	jQuery.noConflict();//交出$控制权
+	function btn_click(){
+		$("#myDiv").css("border","1px solid red");
+	}
+
+	jQuery(document).ready(function($){
+		//$表示的是jQuery的工厂函数
+		console.log($("#myDiv"));
+	});
+
+	jQuery(function($){
+		//$表示的是jQuery的工厂函数
+	});
+  </script>
+ </head>
+
+ <body>
+  <div id="myDiv">HTML</div>
+  <input type="button" value="Click" onclick="btn_click()" />
+ </body>
+</html>

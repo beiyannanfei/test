@@ -1,0 +1,89 @@
+1、elem.style.opacity 获取透明度
+2、window.getComputedStyle(elem).样式名称
+   window.getComputedStyle(elem).getPropertyValue("样式名称");
+3、事件绑定
+   $("").bind("click",fn);
+
+
+
+================================
+1、什么是jQuery
+2、jQuery对象
+3、jQuery对象与DOM对象之间的转换
+   3.1 DOM -> jQuery
+   3.2 jQuery -> DOM
+      $obj.get() : 将当前jQuery对象转换成DOM数组
+      $("#id"):jQuery对象中封装一个元素
+      $("div"):jQuery对象中封装一组元素
+
+      $obj.get()[0] : 获取第一个DOM元素
+      $obj.get(0) : 获取第一个DOM元素
+
+4、选择器
+   4.1 基本选择器
+   4.2 层次选择器
+       4.2.3 $(select1+select2)
+             获取select1下一个兄弟select2
+	     注意：select2必须紧挨着select1，否则获取不到
+       4.2.4 $(select1~select2)
+             获取select1下面的所有select2兄弟元素
+	     注意：位于select1之上的无法获取
+
+5、属性过滤选择器
+   [attribute]:
+   [attribute=value]
+   [attribute!=value]
+   [attribute^=value]
+   [attribute$=value]
+6、子元素过滤选择器
+   $("ul:nth-child(2)"):获取第二个ul元素
+   $("ul :nth-child(2)"):获取ul的第二个子元素
+
+
+
+
+
+修改所有td的背景颜色
+$("td").css("background","red");
+$("td").hide();
+
+$("#btn").get(0).onclick = function(){
+	
+}
+
+elem.onclick = function(){}
+
+click()
+click(fn)
+click(data,fn)
+
+练习:
+step1:为添加按钮增加事件,click
+step2:在click事件中，获取三个填入的信息(name,price,storage)
+step3:通过jQuery创建三个td，分别显示name,price,storage
+step4:通过jQuery创建tr,并且将td追加到tr后面
+step5:将tr追加到表格的倒数第二行的位置上
+注意：新增加的行，要遵循隔行变色的条件
+
+$("<input type='button' value='' />")
+
+练习:
+完成数据更新功能
+描述：用户点击更新时，当前行的数据全部变成由文本框显示，按钮文字变成确定。当用户点击确定按钮时，将更新好的数据以文本的形式显示在td中，按钮文字变成修改。
+step1:更新修改按钮的文字为确定
+step2:通过按钮，找到所有的与数据相关的td
+      parent() siblings()
+step3:获取td中的文本,向td中追加input元素，将文本设置给input的value
+step4:点击确定,文本切换成修改
+step5:找到各个数据对应的td，并且获取input的value
+step6:将各个value设置各个td
+
+
+
+
+
+
+
+
+
+

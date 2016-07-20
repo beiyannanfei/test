@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>实现验证码图片</title>
+	<link rel="stylesheet" type="text/css" href="css/1.css" />
+	<script type="text/javascript">
+		function changeVcode(img){
+			//URL与之前相同，若有缓存，则不再重新加载
+			//img.src = 'vcode.php'; 
+
+			////每次的URL都与之前"不同"，浏览器不会使用缓存图片
+			img.src = 'vcode.php?'+Math.random();	
+		}
+	</script>
+</head>
+
+<body>
+	<h2>用户登录</h2>
+	<form action="2.do.php" method="post">
+		<label for="uname">用户名：</label><input id="uname" name="uname"/><br/>
+		<label for="upwd">密码：</label><input id="upwd" name="upwd" type="password"/><br/>
+		<label for="vcode">验证码：</label><input id="vcode" name="vcode"/><img src="vcode.php" onclick="changeVcode(this)"/><br/>
+		<input type="submit" value="提交"/>
+	</form>
+</body>
+</html>

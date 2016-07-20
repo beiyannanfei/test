@@ -1,0 +1,23 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/tqueryUI.js"></script>
+  <script>
+	$(document).ready(function(){
+		$("#btnChange").click(function(){
+			$("#myDiv").changeBgColor();
+		});
+	});
+  </script>
+  <style>
+	#myDiv{width:100px;height:100px;border:1px solid blue;}
+  </style>
+ </head>
+
+ <body>
+  <div id="myDiv"></div>
+  <input type="button" value="更改背景颜色" id="btnChange" />
+ </body>
+</html>

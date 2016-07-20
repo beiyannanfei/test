@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/shadow.js"></script>
+  <script>
+	$(document).ready(function(){
+		//$("h1").shadow_simple(50,0.1,-1);
+		/*$("h1").shadow_map({
+			slices:10,
+			opacity:0.1,
+			zIndex:-1
+		});*/
+
+		//默认参数值
+		/*$("h1").shadow_default({opacity:0.2,slices:5});*/
+
+		//调用毁掉函数
+		var option = {
+			slices:10,
+			opacity:0.2,
+			offset:function(i){
+				return {x:i,y:i*2};
+			}
+		};
+		$("h1").shadow_dingzhi(option);
+
+		/*var obj1 = {name:"Jimmy",age:18,hobby:"Read"};
+		var obj2 = {name:"Tommy",gender:"Male"};
+		
+		var newObj = $.extend({},obj1,obj2);
+		console.log(obj1);
+		console.log(obj2);
+		console.log(newObj);*/
+	});
+  </script>
+ </head>
+
+ <body>
+  <h1>Hello My name is Handsome , i'm 19 year's old</h1>
+ </body>
+</html>

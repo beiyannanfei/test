@@ -1,0 +1,120 @@
+jqGrid
+1、jQuery UI
+2、My97
+
+3、formValidator
+   1、公共函数
+      1)、$.formValidator.initConfig() : 对验证操作做初始化 
+      可以没有参数，但必须出现在所有验证的最上方
+      2)、$.formValidator.PageIsValid() : 指定组的表单元素是否都已经通过验证，通过为true，否则为false
+
+
+     
+   2、formValidator
+      表单元素:txtLoginName
+                txtLoginNameTip
+
+   3、InputValidator 函数
+      对输入值进行验证
+      1)、type : 比较类型，默认值 size
+                 可选值 : size , value
+      2)、min : 范围的最小值
+      3)、max : 范围的最大值
+      4)、onerror:错误的提示,注意，如果元素值为空，将覆盖掉onempty定义的属性值
+   4、CompareValidator 函数
+      控件与控件间值比较验证函数
+      desID : 要比较的控件ID
+      operateor : 比较运算符 , 默认值 = 
+      datatype : 比较的数据类型,string(默认),number
+      onerror:错误的提示信息
+   5、校验组
+      1、why ....
+      2、how ....
+         1、设置控件校验组
+	    $("#trueName").formValidator({
+		validatorGroup:"1", //设置校验组
+		onshow:"",
+		onfocus:"",
+		onempty:""
+
+	    }).InputValidator({
+		
+	    });
+
+	    $("#idCard").formValidator({
+		validatorGroup:"1",
+		onshow:"",
+		onfocus:"",
+		onempty:""
+
+	    }).InputValidator({
+		
+	    });
+	    
+
+	    $("#hobby").formValidator({
+		validatorGroup:"2",
+		onshow:"",
+		onfocus:"",
+		onempty:""
+
+	    }).InputValidator({
+		
+	    });
+
+	    $("#phone").formValidator({
+		validatorGroup:"2",
+		onshow:"",
+		onfocus:"",
+		onempty:""
+
+	    }).InputValidator({
+		
+	    });
+
+	 2、初始化校验组
+	    $.formValidator.initConfig({
+		validatorGroup:"1"
+	    })
+		
+	    //选填资料 click事件
+	    $("#choose").click(function(){
+		if(this.checked){
+		$.formValidator.initConfig({validatorGroup:"2"
+			})
+		}
+	    });
+	 3、判断校验组中的元素是否可以提交
+	    var v1 = $.formValidator.PageIsValid("1");
+	    var v2 = true;
+	    if($("#choose").attr("checked") == true){
+		v2 = $.formValidator.PageIsValid("2");
+	    }
+
+	    if(v1 && v2){
+		return true;
+	    }
+	    return false;
+   6、RegexValidator
+      datatype:
+           string:与自己写的验证规则进行匹配(regexp属性为主)
+	   enum:调用formValidator中已经定制好的验证规则名称
+
+      $("#email").formValidator({}).RegexValidator({
+	regexp:"email",
+	datatype:"enum"
+      });
+
+
+练习:
+ 完成密码的验证设置
+ 1、用户密码:必须是6-12位
+ 2、确认密码:必须与用户密码相同
+
+ 推荐步骤:
+   1、对两个控件进行初始化formValidator函数
+   2、对用户密码进行校验设置 InputValidator
+   3、对确认密码进行校验设置 CompareValidator
+
+zTree树控件:
+1、$.fn.zTree.init($("#tree"), setting, zTreeNodes);

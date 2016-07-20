@@ -1,0 +1,118 @@
+1、TQuery
+2、选择器
+   #id
+   .class
+   element
+3、方法
+   属性
+      val()
+      attr()
+   文本
+      html()
+      text()
+   样式相关
+      addClass()
+      removeClass()
+4、方法连缀
+   调用形式:$("#id").addClass().addClass().removeClass().html();
+5、核心
+   TQObject 对象
+      属性：数组
+      方法：val(),attr() ... ....
+6、$()对象
+   封装选择器并且返回TQObject对象
+
+=========================================================
+1、方法
+   1.1 $("<div>Hello World</div>"):创建新元素
+   1、判断是否为HTML标签
+      以<开始 以>结束
+      indexOf("<") == 0
+      indexOf(">") == selector.length - 1
+   2、提取标签名称
+      $("div")
+      $("<<div")
+      $("<div>")
+
+      substring(索引,长度) substring(1,4);
+   3、document.createElement("div");
+   4、封装标签内容
+      innerHTML =   
+   5、将元素封装到TQObject中
+	
+   1.2 append()
+       $("a").append(b);
+       将b追加到a的里面
+       $("body").append($("<div>Hello World</div>"));
+
+       $("body").append($(".myClass"));
+   1.3 appendTo()
+       $("a").appendTo(b);
+       将a追加到b的里面
+       $("<div>Hello World</div>").appendTo($("body"));
+
+       DOM : appendChild()
+       语法:elem1.appendChild(elem2);
+   1.4 insertBefore()
+       $("a").insertBefore(b);
+       $("<div>Hello World</div>").insertBefore($("#myDiv"));
+
+       <div>Hello World</div>
+       <div id="myDiv"></div>
+
+       DOM : parentNode.insertBefore(newElem,oldElem);
+   1.5 remove()
+       $("#myDiv").remove();
+
+       DOM : parentNode.removeChild(removeElem);
+
+2、动画
+   2.1 基本显示隐藏
+       $("").hide() 隐藏
+       $("").show() 显示
+   2.2 收缩式的显示隐藏
+       $("").slideUp() 隐藏
+       30毫秒刷一次
+       更新的高度为1
+
+       $("").slideDown() 显示
+   2.3 透明度相关的显示隐藏
+       $("").fadeOut() 隐藏
+       $("").fadeIn() 显示
+
+       //设置默认透明度:以行内样式设置
+       <div style="opacity:0.8;"></div>
+   2.4 扩展基本显示隐藏效果
+       $("").hide() 隐藏
+       $("").show() 显示
+   
+   --扩展: 自定义动画
+   $("").animate({width:100px,height:100px;},1000);
+   $("").animate({left:150px,top:200px;},1000);
+   $("").animate(obj,time);
+   obj:动画完成后最终的状态效果
+   time:动作完成的时间
+
+分析:
+   slideUp为例
+   1、计时器setInterval,默认300
+      $("").slideUp();
+      $("").slideUp(1000);
+   2、修改高度
+      2.1 修改之前记录元素的高度
+      2.2 更改高度
+      2.3 处理元素的内容与元素宽高之间的关系
+   3、 隐藏元素
+   4、 隐藏后，将之前保存的高度再设置给元素
+
+   slideDown
+   1、获取元素，并且取得高度
+   2、将高度设置为0，并且显示
+   3、通过计时器，将元素的高度逐渐增加并且显示
+
+
+
+
+3、事件绑定
+   $("").bind("eventName",fn);
+       

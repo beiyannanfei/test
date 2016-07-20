@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+
+	function fn1(){
+		console.log("Hello I'm fn1");
+	}
+	
+	/**
+	 * e : 事件对象
+	 * e.target ： 为事件源
+	 */
+	function fn2(e){
+		//console.log("Hello I'm fn2");
+		//e.pageX , e.pageY
+		//e.target
+		console.log($(this).val());
+		console.log($(e.target).val());
+	}
+
+	$(document).ready(function(){
+		//1、为btnBind绑定事件
+		$("#btnBind").click(fn1);
+		$("#btnBind").click(fn2);
+		//2、解绑
+		$("#btnClick").click(function(){
+			$("#btnBind").unbind("click",fn1);
+		});
+		
+	});
+  </script>
+ </head>
+
+ <body>
+  <input id="btnBind" type="button" value="绑定/反绑" />
+  <input id="btnClick" type="button" value="Click" />
+ </body>
+</html>

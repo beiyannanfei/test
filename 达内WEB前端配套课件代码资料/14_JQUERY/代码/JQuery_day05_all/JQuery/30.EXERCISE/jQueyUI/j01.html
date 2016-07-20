@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+	$(document).ready(function(){
+		//1、获取所有的li
+		var $li = $("ul li");
+		//2、打印元素个数
+		console.log("元素个数为:"+$li.length);
+		//3、通过each方法循环遍历数组中的元素
+		$li.each(function(i){
+			//i表示当前遍历的元素索引
+			//this表示当前遍历出来的dom元素
+			console.log("索引:"+i);
+			console.log("dom元素:"+this);
+			console.log("转换为jQuery元素:"+$(this));
+			$(this).html($(this).html()+i);
+
+			console.log("当前元素的索引为:"+$li.index(this));
+			console.log("当前元素的索引为:"+$li.index($(this)));
+		});
+
+		$("input[type='button']").click(function(){
+			var index = parseInt($("#txtIndex").val());
+			var $li = $("li").eq(index);
+			console.log($li.html());
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+  <ul>
+	<li>USA</li>
+	<li>CN</li>
+	<li>JP</li>
+	<li>UK</li>
+	<li>CA</li>
+  </ul>
+  <input id="txtIndex"  /><input type="button" value="打印" />
+ </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="tQuery-1.1.0.js"></script>
+  <script>
+	function slideUp_click(){
+		$("#myDiv").slideUp(3000);
+	}
+
+	function slideDown_click(){
+		$("#myDiv").slideDown(3000);
+	}
+
+	function hide_click(){
+		$("#myDiv").hide(3000);
+	}
+
+	function fadeOut_click(){
+		$("#myDiv").fadeOut(3000);
+	}
+  </script>
+  <style>
+	#myDiv{width:200px;height:500px;background:red;}
+  </style>
+ </head>
+
+ <body>
+  <div id="myDiv"></div>
+  <input type="button" value="slideUp" onclick="slideUp_click()" />
+  <input type="button" value="slideDown" onclick="slideDown_click()" />
+  <input type="button" value="hide" onclick="hide_click()" />
+  <input type="button" value="fadeOut" onclick="fadeOut_click()" />
+ </body>
+</html>

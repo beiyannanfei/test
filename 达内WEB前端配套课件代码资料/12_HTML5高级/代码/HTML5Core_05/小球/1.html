@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function initial(){
+		var x=10,y=10,WIDTH,HEIGHT,RADIUS=10;
+		//小球方向,默认为1，即向右下滚动
+		var direction=1; 
+
+		//0、准备
+		var canvas = document.getElementById("canvas");
+		ctx=canvas.getContext("2d");
+		WIDTH=canvas.width;
+		HEIGHT=canvas.height;
+		console.log(WIDTH+":"+HEIGHT);
+		
+		//1、绘制小球
+		/*ctx.beginPath();
+		ctx.fillStyle="#ff0000";
+		ctx.arc(x,y,10,0,Math.PI*2,false);
+		ctx.fill();
+		ctx.closePath();*/
+
+		//2、让小球走
+		setInterval(function(){
+			//1、判断方向值，决定小球的横纵坐标
+			//2、判断方向变化值
+			if(direction == 1){
+				x ++;
+				y ++;
+
+				if(y >= HEIGHT - RADIUS){
+					direction = 2;
+				}
+
+				if(x >= WIDTH - RADIUS){
+					direction = 4;
+				}
+			} else if(direction == 2){
+				x ++;
+				y --;
+
+				if(x >= WIDTH - RADIUS){
+					direction = 3;
+				}
+
+				if(y <= RADIUS){
+					direction = 1;
+				}
+			} else if(direction == 3){
+				x --;
+				y --;
+				
+				if(y <= RADIUS){
+					direction = 4;
+				}
+
+				if(x <= RADIUS){
+					direction = 2;
+				}
+			} else if(direction == 4){
+				x --;
+				y ++;
+
+				if(x <= RADIUS){
+					direction = 1;
+				}
+
+				if(y >= HEIGHT - RADIUS){
+					direction = 3;
+				}
+			}
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+			ctx.beginPath();
+			ctx.fillStyle="#ff0000";
+			ctx.arc(x,y,RADIUS,0,Math.PI*2,false);
+			ctx.fill();
+			ctx.closePath();
+		},10);
+	}
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <canvas id="canvas" width="400" height="300" style="border:1px solid red;"></canvas>
+ </body>
+</html>

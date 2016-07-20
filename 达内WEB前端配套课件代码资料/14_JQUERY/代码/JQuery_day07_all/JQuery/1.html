@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/array_option.js"></script>
+  <script>
+	//1、添加一个全局函数
+	/*jQuery.myFunction = function(){
+		console.log("Hello World");
+	}
+
+	jQuery.myFunction1 = function(msg){
+		console.log(msg);
+	}*/
+
+	jQuery.extend({
+		myFunction:function(){
+			console.log("Hello World");
+		},
+
+		myFunction1:function(msg){
+			console.log("Today is fine");
+		}
+	});
+
+	$(document).ready(function(){
+		/*$.myFunction(); //调用全局函数
+		$.myFunction1("Today is Xing Qi Er");
+
+		$.array_option.myFunction();//调用插件中的myFunction函数
+		$.array_option.myFunction1("Today is Fine");*/
+
+		//创建一个数组
+		var array = [12,85,7,67,98,128];
+		var sum = $.array_option.sum(array);
+		console.log(sum);
+	});
+  </script>
+ </head>
+
+ <body>
+  
+ </body>
+</html>

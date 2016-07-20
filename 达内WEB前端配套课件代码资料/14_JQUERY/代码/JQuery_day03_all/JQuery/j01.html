@@ -1,0 +1,36 @@
+<!DOCTYPE html >
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <!-- 引入jquery文件 -->
+  <script src="jquery-1.11.1.js"></script>
+  <script>
+	function btn_click(){
+		//1、通过选择器定位节点
+		var $anchor = $("#myAnchor");
+		//2、调用方法完成操作
+		$anchor.html("Google");
+		$anchor.attr('href','http://www.google.com');
+		//$anchor.css('font-size','30px');
+		$anchor.css({'font-size':'30px','background':'red'});
+	}
+
+	function btn1_click(){
+		//DOM -> jQuery
+		/*var elem = document.getElementById("myAnchor");
+		var $obj = $(elem);//DOM -> jQuery
+		$obj.css({'font-size':'30px','background':'red'});*/
+
+		//jQuery -> DOM
+		var $obj = $("#myAnchor");
+		//var elem = $obj.get(0);
+		var elem = $obj.get()[0];
+		console.log(elem.id);
+	}
+  </script>
+ </head>
+
+ <body>
+  <a id="myAnchor" href="http://www.baidu.com">百度</a>
+  <input type="button" value="更换" onclick="btn1_click()" />
+ </body>
+</html>

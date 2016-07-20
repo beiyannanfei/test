@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="tQuery-1.0.2.js"></script>
+  <script>
+	function btn_click(){
+		//console.log($(".redBorder").html("<h1>Hello World</h1>").size());
+		
+		/*var html=$("div").html();
+		console.log(html);*/
+
+		//获取btnName的值
+		console.log($("#btnName").val());
+
+	}
+
+	function btn_setValue(){
+		$("#btnName").val("Hello World");
+	}
+
+	function attr_click(){
+		//$("div").attr("class","setWidth");
+		console.log($("#container").attr("class"));
+	}
+
+	function addClass_click(){
+		$("div").addClass("setWidth");
+	}
+
+	function removeClass_click(){
+		//$("#myDiv").removeClass("redBorder");
+		$("div").removeClass();
+	}
+  </script>
+  <style>
+	.setWidth{width:100px;height:100px;}
+	.redBorder{border:1px solid red;}
+  </style>
+ </head>
+
+ <body>
+  <div class="redBorder setWidth" id="myDiv"><h1>Hello World</h1></div>
+  <div class="redBorder" id="container">2</div>
+  <div>3</div>
+  <br />
+  用户名称:<input type="text" id="btnName" />
+  <input type="button" value="测试"  onclick="btn_click()" />
+  <input type="button" value="设置值" onclick="btn_setValue()" />
+  <input type="button"value="attr" onclick="attr_click()"/>
+  <input type="button" value="addClass" onclick="addClass_click()" />
+  <input type="button" value="removeClass" onclick="removeClass_click()" />
+ </body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	li{list-style:none;padding:5px;margin-top:10px;border:1px solid  black;width:100px;}
+	.bold{font-weight:bold;}
+	.italic{font-style:italic;}
+  </style>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/tqueryUI.js"></script>
+  <script>
+	$(document).ready(function(){
+		$("#btnSwap").click(function(){
+			$("ul li").swapClass("bold","italic").css("background","red");
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+  <ul>
+	<li class="bold">红楼梦</li>
+	<li class="italic">西游记</li>
+	<li class="italic">三国演义</li>
+	<li class="bold">水浒传</li>
+	<li class="italic">史记</li>
+	<li class="italic">资治通鉴</li>
+	<li class="bold">诗经</li>
+  </ul>
+  <input type="button" value="SwapClass" id="btnSwap" />
+ </body>
+</html>

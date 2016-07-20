@@ -1,0 +1,70 @@
+1、添加新的全局函数
+   全局函数:属于jQuery，通过$/jQuery直接调用
+            $.each(array,function(i,value){}) -->$(array).each(function(i,value){});
+   对象函数:属于具体某一jQuery对象来调用的函数
+            $("#uname").val();
+
+   jQuery UI : $obj.accordion(); --> 对象函数
+   $.get(),jQuery.post(),$.ajax() --> 全局函数
+
+   添加一个myFunction函数， $.myFunction()
+
+   语法:
+        jQuery.myFunction = function(){}
+	$.myFunction = function(){}
+2、通过extend函数，整合全局函数
+   jQuery.extend({
+	myFunction:function(){},
+	myFunction1:function(){}
+   });
+
+3、jQuery命名空间
+   1、为什么需要命名空间
+      解决各个插件间命名冲突的问题
+   2、什么时候使用命名空间
+      只要制作插件时，就可以使用命名空间
+   3、如何使用命名空间
+      jQuery.myPlugin = {
+	
+      }
+
+      jQuery.myPlugin.myFunction
+4、练习
+   创建一个函数(在自己的命名空间中),完成功能，接收一个数组作为参数，将数组的和求出来，并进行返回
+   [25,88,96,12,4,8]
+
+5、简单参数DEMO
+   <h1>Hello World</h1>
+   <h1>Hello Tarena</h1>
+
+6、参数
+   6.1 简单参数
+       按照参数的数量、位置定义到函数当中,使用时按照[数量、]位置传递
+   6.2 参数映射
+       $("#div").dialog({
+	buttons:[],
+	width:15,
+	height:30
+       });
+
+       通过JSON对象的方式传递参数，参数具体信息由JSON对象来封装
+   6.3 参数默认值
+       通过参数默认值，能够让参数映射更加灵活，有些数据可以不必传递，如果传递，则覆盖默认。
+
+       通过$.extend()合并对象
+       语法:var newObj = $.extend(obj,obj1,obj2,obj3...);
+
+       var newObj = $.extend({},obj,obj1,obj2....);
+   6.4 带回调函数的参数
+   6.5 可定制的默认值
+
+练习 ：
+$("#advDiv").imageScroll({
+	images:[
+		"img/1.jpg",
+		"img/2.jpg",
+		"img/3.jpg",
+		"img/4.jpg"
+	]
+});
+       

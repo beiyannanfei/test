@@ -1,0 +1,167 @@
+1、回顾
+jQuery的核心理念:write less , do more
+jQuery对象:为解决浏览器兼容性而提出的统一的对象封装描述
+   注意:jQuery对象与DOM对象不能相互使用
+jQuery对象与DOM对象之间的转换:
+   1、jQuery -> DOM
+      $obj.get(0);
+      $obj.get()[0];
+
+      $obj.get() : 负责将当前jQuery对象转换成DOM数组
+   2、DOM -> jQuery
+      var elem = document.getElementById();
+      var $elem = $(elem);
+jQuery工厂函数:创建jQuery对象,$() --> jQuery()
+	jQuery("#myDiv") -->$("#myDiv")
+	什么时候使用 "jQuery()" : 网页引入多框架，并且$()冲突时，jquery可以通过jQuery()来实现工厂函数
+选择器:
+    1、基本选择器
+       $("#id"):根据ID获取一个元素
+       $(".class"):根据class获取一组元素
+       $("element"):获取指定标签的一组元素
+       $("selector1,selector2"):满足选择器的所有元素
+       $("*") : 获取所有元素
+    2、层次选择器
+       $("s1 s2"):获取s1下面的所有s2元素(直接、间接都可以获取)
+       $("s1>s2"):获取s1下面的直接子节点s2元素
+       $("s1+s2"):获取s1下一个兄弟节点s2(必须紧挨着)
+       $("s1~s2"):获取s1下所有的兄弟节点s2
+    3、过滤选择器
+       3.1 基本过滤选择器
+           :first
+	   :last
+	   :even
+	   :odd
+	   :eq(index)
+	   :gt(index)
+	   :lt(index)
+	   :not(selector)
+       3.2 内容过滤选择器
+	   :contains(text)
+	   :empty
+	   :has(selector)
+	   :parent
+       3.3 可见性过滤选择器
+	   :hidden  匹配所有的隐藏元素，包括input type=hidden
+	   :visible
+       3.4 属性过滤选择器
+           [attribute]
+	   [attribute=name]
+	   [attribute!=name]
+	   [attribute^=name]
+	   [attribute$=name]
+       3.5 子元素过滤选择器
+           :eq(index) : 获取指定所引出元素
+	   :nth-child(position):获取指定位置处的元素
+方法:
+   1、创建元素
+      $("创建内容")
+   2、插入、删除、复制
+      插入:
+          append():
+	  prepend():
+	  after():当前元素的下一个兄弟元素的位置追加
+	  before():当前元素的上一个兄弟元素的位置追加
+   3、样式
+      attr("style")
+      css(""):
+      css({}):
+      css("",""):
+      addClass()
+      removeClass("")
+      removeClass()
+      toggleClass():切换样式
+   4、文本
+      html()
+      text()
+      val()
+      attr()
+   5、遍历
+      children()/children(selector):查找(符合指定选择器)子元素
+      parent():查找父元素
+      next():下一个兄弟
+      prev():上一个兄弟
+      siblings():所有的兄弟
+
+
+
+$("p").click( function () { $(this).hide(); });
+
+=======================================================
+1、页面加载后执行
+   DOM : window.onload 
+
+   浏览器解析HTML的步骤:
+   1、解析服务器端返回的内容
+   2、在客户端内存中生成一颗DOM树
+   3、渲染成最后的画面
+
+   在jQuery中，如何处理页面加载事件
+   1、$(document).ready(function(){
+	 //初始化操作
+	 //事件绑定
+      });
+   2、简写
+      $(function(){
+	//初始化操作
+      });
+
+   jQuery初始化事件与window.onload的不同:
+   1、window.onload 在一个页面中，只能有一个
+      而jquery的初始化事件，在一个页面中，可以有若干多个
+   2、window.onload要在整个页面加载完毕时执行
+      而jquery的初始化事件，是在DOM树加载完毕时，就已经开始执行了
+2、多个库并存时，$的控制权
+   可以让jQuery将$的控制权交出
+   jQuery.noConflict();
+
+   TQObject {data: Array[1], size: function, html: function, val: function, attr: function…}
+
+   [div#myDiv, context: document, selector: "#myDiv", jquery: "1.11.1", constructor: function, toArray: function…]
+
+3、jQuery事件绑定
+   3.1 $obj.bind(事件名称,执行函数)
+       事件名称：jQuery所支持的事件名称
+       执行行数：待执行的function
+
+       $obj.bind("click",function(){
+	//事件操作
+       });
+   3.2 事件简写
+       $obj.事件名称(fn); --绑定事件
+       $obj.事件名称(); --执行事件
+   3.3 解绑事件
+       $obj.unbind(事件名称); --解绑指定事件对应的所有函数
+       $obj.unbind(事件名称,fnName);--解绑指定事件对应的指定函数
+4、事件对象
+   绑定事件时,直接定义一个参数，该参数则为当前事件的事件对象。可以通过事件对象，获取鼠标坐标，按下的键盘键位，以及事件源，阻止事件冒泡
+   $obj.click(function(event){
+	
+   });
+
+   4.1 获取事件源
+      1、event.target
+      2、this
+
+      注意:获取到的事件源全部是DOM对象
+5、事件冒泡
+6、模拟操作
+   1、$obj.trigger(type);
+      $obj.trigger("click"); --激发$obj的click事件
+   2、$obj.click(); -- 为上段代码的简写模式
+7、动画
+   7.1 基本显示与隐藏相关
+       hide(speed,fn)
+        speed:动画完成的时间(毫秒)
+	    默认值
+	    slow,normal,fast:
+	    自定义毫秒:
+	fn:动画完成后的回调函数
+       show(speed,fn)
+
+   7.2 动画排队效果
+       可以通过动画的方法连缀调用来实现
+   7.3 自定义动画
+       $obj.animate({},speed);
+
+       

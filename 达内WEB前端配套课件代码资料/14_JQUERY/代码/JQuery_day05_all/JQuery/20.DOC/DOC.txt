@@ -1,0 +1,157 @@
+1、页面加载
+   $(document).ready(function(){});
+   $(function(){});
+   注意:DOM树加载完毕，就会执行
+        window.onload : 所有内容加载完毕时菜会执行
+
+   真正的实现样式与行为的分离
+2、jQuery处理多库并存
+   通过一个方法将控制权交出:jQuery.noConflict();
+   使用jQuery
+   1、jQuery() 工厂函数
+   2、特殊化处理，页面加载时期，手动传入$作为工厂函数
+      2.1 jQuery(document).ready(function($){});
+      2.2 jQuery(function($){});
+3、事件处理
+   3.1 事件绑定
+       $obj.bind(type,fn);
+       type:jQuery中所支持的事件类型
+       fn:事件执行的函数
+
+
+       简写版:$obj.type(function(){});
+       type:jQuery中所支持的事件类型
+   3.2 事件解绑
+       unbind(type) : 解绑所指定的事件
+       unbind(type,fn) : 解绑指定事件所对应的指定函数
+   3.3 事件对象
+       $obj.click(function(e){
+	
+       });
+
+       3.3.1 获取事件源
+          1)、this表示当前事件的事件源的DOM对象
+	  2)、e.target 表示当前事件源的DOM对象
+       3.3.2 获取相关的事件参数
+          1)、鼠标事件，能够获取坐标点
+	  2)、键盘事件，能够获取键位值
+       3.3.3 阻止事件冒泡
+             e.stopPropagation();
+   3.4 模拟操作
+       通过代码激发指定的事件
+       1)、通过触发器完成
+           $obj.trigger(type);
+       2)、$obj.click();
+4、动画
+   4.1 基本动画
+       hide(),show()
+       语法规范:
+          hide(speed,fn):
+	    speed:动画运行的速度
+	       1、默认
+	       2、slow,normal,fast
+	       3、自定义事件(以毫秒为单位)
+	    fn:动画完成之后的回调函数
+   4.2 滑动显示与隐藏
+       slideDown() 显示
+       slideUp() 隐藏
+   4.3 透明度显示与隐藏
+       fadeIn() 显示
+       fadeOut() 隐藏
+
+       所有方法使用方式与hide()一样
+   4.4 自定义动画
+       $obj.animate({},speed);
+=======================================================
+jQuery中类数组的操作
+类:类似
+属性:
+    length : 当前jquery对象所封装的数据长度（元素个数）
+方法:
+    1、循环遍历数组中的每一个元素
+       $obj.each(function(i){
+		//this:当前循环遍历出来的DOM元素
+       });
+    2、eq(index)
+       获取当前数组中指定索引处的jQuery元素
+       var td = $("td").eq(0);
+
+    3、get()
+       返回由DOM元素组成的数组
+    4、index(obj)
+       获取obj在当前数组中的索引
+       obj 可以是dom对象，也可以是jQuery对象
+
+====================================================
+1、插件的查找与帮助
+   http://plugins.jquery.com 官网
+   http://www.oschina.net 开源中国社区
+	    
+
+2、animate
+    $(this).animate({ backgroundColor: "black" }, 1000);
+
+
+     $(this).show("explode", { pieces: 16 }, 2000);
+
+3、Effect(效果)
+   animate、hide、show、effect 为调用方法
+   Blind,Bounce .... 为效果选项
+4、Interactions(交互组件)
+   Draggable : 元素是否能拖拽
+   语法:$obj.draggable(options);
+
+   $(document).ready(function() {
+    $("#draggable").draggable();
+   });
+
+   $( ".selector" ).draggable({ disabled: true });
+
+5、Widget(小部件)
+   1、accordion
+      $("#accordion").accordion();
+   2、dialog
+      $( ".selector" ).dialog(
+	{ buttons: 
+		{ 
+			"Ok": 
+			function() { $(this).dialog("close"); }
+		} 
+	});
+
+
+6、My97 DatePicker
+   动态变量:
+   %y:当前年
+   %M:当前月
+   %d:当前日
+   %ld:本月最后一天
+   %H:
+   %m:
+   %s:
+   {}:运算表达式,{%d+19}
+   #F{"2015-04-30||%y-%M-{%d+19}"}:
+
+   最小日期为今天:
+   minDate:"%y-%M-%d"
+   maxDate:"%y-%M-{%d+19}"
+
+   "#F($dp.$D('txtDate',{M:3,d:-7}))"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

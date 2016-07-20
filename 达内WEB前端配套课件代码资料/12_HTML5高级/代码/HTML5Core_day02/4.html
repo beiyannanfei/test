@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	function initial(){
+		div1=$("div1");
+		div2=$("div2");
+
+		div1.addEventListener("click",div1_click,false);
+		div2.addEventListener("click",div2_click,false);
+	}
+
+	function div1_click(){
+		alert("Hello Div1");
+	}
+
+	function div2_click(e){
+		//阻止事件冒泡,让操作到当前元素就停止
+		alert("Hello Div2");
+		e.stopPropagation();
+		//e.cancelBubble=true;
+	}
+
+	window.addEventListener("load",initial,false);
+  </script>
+  <style>
+	#div1{width:200px;height:200px;border:1px solid red;}
+	#div2{width:100px;height:100px;border:1px solid green;}
+  </style>
+ </head>
+
+ <body>
+  <div id="div1">
+	<div id="div2"></div>
+  </div>
+ </body>
+</html>
