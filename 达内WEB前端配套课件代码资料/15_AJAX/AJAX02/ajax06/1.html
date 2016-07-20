@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script>
+	$(function(){
+		$("#btnClick").click(function(){
+			var option = {
+				name:$("#txtName").val()
+			};
+
+			$("#content").load("server/server.php",option);
+
+		});
+
+		$("#btnGet").click(function(){
+			var option = {name:$("#txtName").val()};
+			$.get(
+				"server/server.php",
+				option,
+				function(data){
+					//data 由服务器响应回来的数据
+					$("#content").html(data);
+				},
+				"html"
+			);
+		});
+
+		$("#btnXml").click(function(){
+			$.get("server/xml.php",function(data){
+				console.log(data);
+			},"xml");
+		});
+
+		$("#btnAjax").click(function(){
+			$.ajax({
+				url:"server/server.php",
+				type:"post",
+				dataType:"json",
+				async:false,
+				data:{name:$("#txtName").val()},
+				success:function(data){
+					console.log(data.a+","+data.b+","+data.c);
+				},
+				error:function(msg){
+					console.log("Error:");
+					console.log(msg);
+				}
+			});
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+  <div id="content"></div>
+  <input type="text" id="txtName" />
+  <input type="button" value="获取" id="btnClick" />
+  <input type="button" value="ajax Get()" id="btnGet" />
+  <input type="button" value="ajax xml()" id="btnXml" />
+  <input type="button" value="ajax ajax()" id="btnAjax" />
+ </body>
+</html>

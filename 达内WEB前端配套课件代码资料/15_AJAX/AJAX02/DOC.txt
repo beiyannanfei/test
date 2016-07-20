@@ -1,0 +1,87 @@
+1、ajax注册
+   步骤:
+    1、验证用户名称是否存在
+    2、获取所有的数据，拼参数
+    3、ajax提交
+
+    服务器：
+    1、获取请求提交参数
+
+
+2、省市级联
+   1、加载省份信息(ajax)
+   2、根据用户选择的省份信息，加载显示对应的市级信息
+
+3、XML
+   eXtensible Markup Language 
+
+   XML主要用于描述数据
+   HTML主要用于显示数据
+
+   Web Service
+4、模拟天气预报
+   描述(北京、上海)城市的（周1-周5）的天气、温度信息
+
+   北京
+   Mon:晴 15-20
+   星期2:多云 18-20
+   ...
+   星期5:小雨 15-17
+
+   上海
+   Mon:大雨转暴雨 14-19
+
+5、XML解析
+   5.1 XML解析器
+       将XML文档或文本转换成XML DOM对象。
+   5.2 解析XML文档
+       主要通过XMLHttpRequest对象完成，responseXML属性可将文档直接转换成XML DOM
+       方法：
+           xmlDom.getElementById("id");
+	   xmlDom.getElementsByTagName("tagName");
+	   xmlDom.getElementsByName("name");
+       属性:
+           childNodes:获取当前节点下的子元素
+	   children:获取当前节点下的元素节点
+	   nodeValue:获取某一节点的文本
+	   nodeType:节点类型
+	      1:元素节点
+	      2:属性节点
+	      3:文本节点
+	   nodeName:获取节点名称
+	   getAttribute(""):获取指定属性值
+
+
+   5.3 解析XML字符串
+       IE7.8.9 FF CHROME
+       DOMParser()
+       方法 ：parseFromString(xmlTxt,"text/xml")
+
+       var parser = new DOMParser();
+       var xmlDom = parser.parseFromString("<User>admin</User>","text/xml");
+
+       IE 
+       xmlDom = ActiveXObject("Microsoft.XMLDOM");
+       xmlDom.async=false;
+       xmlDom.loadXML("<User>admin</User>");
+
+6、AJAX 与 XML
+   6.1 
+   6.2 服务器端返回XML文档给客户端
+       1)、服务器更改响应类型(响应消息头)
+           Content-Type
+	   php:header("content-type:text/xml");
+       2)、前台
+           xhr.responseXML;
+
+ {"a":"orange","b":"banana","c":"apple"}
+
+
+
+
+
+
+
+
+
+

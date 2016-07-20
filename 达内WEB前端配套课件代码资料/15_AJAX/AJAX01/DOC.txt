@@ -1,0 +1,110 @@
+1、Ajax
+   Asynchronous Javascript And Xml
+
+   异步的Javascript 和 Xml
+   核心：异步的Javascript对象 XMLHttpRequest (xhr)
+   IE 5.5 、6 : ActiveXObject("Microsoft.XMLHttp")
+   IE7,8,9.. Chrome FireFox : new XMLHttpRequest()
+
+   if(window.XMLHttpRequest){
+	//该浏览器支持XMLHttpRequest 可以直接new
+   }else{
+	//创建ActiveXObject("Microsoft.XMLHttp");
+   }
+
+2、方法
+   1、open(method,url,asyn)
+      asyn:bool类型值，表示是同步(false)还是异步(true)提交，默认true
+   2、send(body)
+      发送请求,body是请求体
+      当请求方式为get的时候，body必须为null
+      当请求方式为post的时候，body为具体请求提交的数据，格式为:"key=value&key1=value1&key2=value2"
+      "name=zhangsan&age=18&gender=male"
+   3、setRequestHeader()
+      指定请求消息头
+      什么时候用？当请求方式为post时，必须使用setRequestHeader重新设置请求消息头，否则请求数据获取不到
+   4、abort()
+      取消请求
+   5、getAllResponseHeaders()
+      获取所有响应消息头
+   6、getRequestHeader()
+      获取指定的响应消息头
+3、属性
+   1、onreadystatechange
+      当准备状态改变的时候，要调用的函数(回调函数)是谁
+   2、readyState
+      xhr的请求状态,请求状态必为以下5种状态之一
+      0:尚未初始化
+      1:初始化完成，正在发送请求
+      2:请求完成
+      3:正在接受响应数据
+      4:xhr数据接收(响应)成功
+      注意：readyState为4的时候，可以处理响应数据
+   3、status
+      由服务器返回的状态码
+      200 : 请求成功
+      404 : 资源未找到
+      500 : 服务器内部错误，如php代码写错了....
+
+      注意：完整的判断xhr是否与服务器进行成功的请求响应必须是 xhr.readyState == 4 && xhr.status == 200
+   4、responseText
+      服务器返回的文本
+   5、respnoseXML
+      服务器返回的xml文本
+4、发送异步请求的步骤
+   1、获取(创建)Ajax对象:获取XMLHttpRequests对象
+   2、创建请求:调用xhr的open方法
+   3、设置回调函数:指定xhr的onreadystatechange事件
+   4、发送请求
+
+5、请求提交方式
+   1、get
+      http://url/aaa.php?name=abc&age=18&gender=male
+      php:$_REQUEST["name"]
+   2、post
+      xhr.open("post",url,true);
+      xhr.send("name=zs&age=18&gender=male");
+
+      注意：必须使用setRequestHeader()显示更改Content-Type消息头的值为application/x-www-form-urlencoded
+
+6、表单提交数据的Content-Type 请求消息头
+   <form enctype=""></form>
+
+   text/plain
+   application/x-www-form-urlencoded (默认)
+   multipart/form-data
+
+
+   CREATE TABLE users (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  loginname varchar(20) DEFAULT NULL,
+  loginpwd varchar(20) DEFAULT NULL,
+  nickname varchar(20) DEFAULT NULL);
+
+  使用的函数:
+  mysqli_connect()
+  mysqli_query()
+  mysqli_affected_rows()
+
+  相关SQL:
+     1、select * from users where loginname='admin'
+     2、insert into users values(default,'Dulaemeng','dlem','多啦A梦')
+
+思路:
+1、构建页面
+2、判断用户名称是否存在
+   2.1 将用户名称异步提交给checkname.php
+   2.2 到checkname.php中接收用户名称$loginname
+   2.3 根据用户名称拼sql语句 $sql = "select * from users where loginame=$loginname";
+   2.4 根据查询结果的记录数量通知前台是否允许注册
+       $resutl_count > 0 ：用户名称已存在
+       $result_count == 0 : 可以注册
+3、注册信息
+   3.1 判断错误提示信息是什么(是不是用户名称已存在)
+   3.2 将三个信息(用户名、密码、昵称)以异步的方式提交给后台服务器 regist.php(post提交方式)
+   3.3 拼sql语句 : $sql="insert into users values(default,$loginname,$loginpwd,$nickname)";
+   3.4 执行sql
+   3.5 将nickname值响应给前端:echo "欢迎".$nickname;
+
+
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script>
+	$(function(){
+		getStock();
+		setInterval(function(){
+			getStock();
+		},3000);
+	});
+
+	function getStock(){
+		$.ajax({
+			url:"server/getStock.php",
+			type:"get",
+			dataType:"json",
+			success:function(data){
+				var html = "";
+				$(data).each(function(){
+					html += "<tr>";
+					html += "<td>"+this.code+"</td>";
+					html += "<td>"+this.name+"</td>";
+					html += "<td>"+this.price+"</td>";
+					html += "</tr>";
+				});
+				$("#body").html(html);
+			}
+		});
+	}
+  </script>
+  <style>
+	table{background:black;width:500px;}
+	.white{color:white;}
+	tbody{color:yellow;font-style:italic;text-align:center;}
+  </style>
+ </head>
+
+ <body>
+  <table>
+	<thead>
+		<tr class="white">
+			<th>编码</th>
+			<th>名称</th>
+			<th>价格</th>
+		</tr>
+	</thead>
+	<tbody id="body">
+		
+	</tbody>
+  </table>
+ </body>
+</html>

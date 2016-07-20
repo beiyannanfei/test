@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <script src="js/jquery-1.6.2.min.js"></script>
+  <script>
+	function createXhr(){
+		if(window.XMLHttpRequest){
+			return new XMLHttpRequest();
+		}else {
+			return new ActiveXObject("Microsoft.XMLHTTP");
+		}
+	}
+
+	function getXml(){
+		var trStr = "";
+		var xhr = createXhr();
+		xhr.open("get","Books.xml",true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var xmlDoc = xhr.responseXML;
+				var citys = xmlDoc.getElementsByTagName("city");
+				for(var i=0;i<citys.length;i++){
+					var city = citys[i];
+					console.log(city.getAttribute("id"));
+					for(var j=0;j<city.childNodes.length;j++){
+						var info = city.childNodes[j];
+						
+						//var nodeName = info.nodeName;
+						if(info.nodeType == 1){
+							//console.log(info.nodeName);
+							console.log(info.nodeName + ","+info.getAttribute("date")+","+info.getAttribute("weather")+","+info.childNodes[0].nodeValue);
+							/*console.log(info.getAttribute("weather"));
+							console.log(info.nodeName);
+							console.log(info.childNodes[0].nodeValue);*/
+							trStr += "<tr>";
+							trStr += "<td>"+city.getAttribute("id")+"</td>";
+							trStr += "<td>"+info.getAttribute("date")+"</td>";
+							trStr += "<td>"+info.getAttribute("weather")+"</td>";
+							trStr += "<td>"+info.childNodes[0].nodeValue+"</td>";
+							trStr += "</tr>";
+						}
+					}
+				}
+				document.getElementById("tBody").innerHTML = trStr;
+			}
+		}
+		xhr.send(null);
+	}
+  </script>
+ </head>
+ <body>
+   <input type="button" value="Test" onclick="getXml()" />
+   <table id="tbl" width="60%" border="1">
+	<thead>
+		<th>城市</th>
+		<th>日期</th>
+		<th>天气</th>
+		<th>温度</th>
+	</thead>
+	<tbody id="tBody">
+		
+	</tbody>
+   </table>
+ </body>
+</html>

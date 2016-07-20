@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script>
+	/**
+	 * 创建XMLHttpRequest对象
+	 */
+	function createXhr(){
+		var xhr = null;
+		//浏览器的判断
+		if(window.XMLHttpRequest){
+			//IE789 Chrome FF ... ...
+			xhr = new XMLHttpRequest();
+		}else{
+			//IE5.5 6 
+			xhr = new ActiveXObject("Microsoft.XMLHttp");
+		}
+		return xhr;
+	}
+
+	function testXhr(){
+		var xhr = createXhr();
+		window.alert(xhr);
+	}
+  </script>
+ </head>
+
+ <body>
+  <input type="button" value="测试XHR" onclick="testXhr()" />
+ </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script src="js/jquery-1.11.1.js"></script>
+  <script src="js/jquery.form.js"></script>
+  <script>
+	$(function(){
+		$("#btnSubmit").click(function(){
+			
+			/*var txtName = $("#txtName").val();
+			var txtPwd = $("#txtPwd").val();
+			var gender = $("input[name='rdoGender']:checked").val();
+			var hobbys = $("input[name='chkHobby']:checked");
+			
+			var arg = "name="+txtName+"&pwd="+txtPwd+"&gender="+gender;
+
+			hobbys.each(function(){
+				arg += "&hobby[]="+this.value;
+			});
+			console.log(arg);*/
+
+			//通过表单序列化方法 $formObj.serialize()
+			//var arg = $("#frmRegist").serialize();
+			//console.log(arg);
+
+			//通过表单序列化方法 $formObj.serializeArray() 序列化成JSON结构对象
+			var arg = $("#frmRegist").serializeArray();
+			console.log(arg);
+
+			$.ajax({
+				url:$("#frmRegist").attr("action"),
+				type:$("#frmRegist").attr("method"),
+				data:arg,
+				success:function(data){
+					console.log(data);
+				}
+			});
+			//阻止表单提交
+			return false;
+		});
+		
+		/**
+		 * 提交前的验证，
+		 * 返回值 true : 可以提交表单 , false : 不能提交表单
+		 */
+		function showRequest(formData,jqForm,opts){
+			//console.log(formData);
+					var form = jqForm.get(0);
+					if(form.txtName.value == ""){
+						console.log("用户名称不能为空 !");
+						return false;
+					}
+					if(form.txtPwd.value == ""){
+						console.log("密码不能为空!");
+						return false;
+					}
+
+					return true;
+		}
+
+		/**
+		 * 请求成功后的回调函数
+		 * responseText : 服务器端响应的数据
+		 * statusText : 服务器端状态文本
+		 */
+		function showResponse(responseText,statusText){
+			console.log("响应的数据:"+responseText);
+			console.log("服务器状态文本:"+statusText);
+		}
+
+		//使用jQuery.form插件进行提交
+		$("#btnAjax").click(function(){
+			var option = {
+				target:"#showResponse",
+				beforeSubmit:showRequest,
+				success:showResponse,
+				clearForm:true
+				
+			};
+
+			$("form").ajaxSubmit(option);
+			
+			//阻止表单默认提交
+			return false;
+		});
+	});
+  </script>
+ </head>
+
+ <body>
+	<div id="showResponse"></div>
+  <form id="frmRegist" action="server/regist.php" method="get">
+	<table>
+		<tr>
+			<td>用户名</td>
+			<td>
+				<input type="text" name="txtName" id="txtName" />
+			</td>
+		</tr>
+		<tr>
+			<td>密码</td>
+			<td>
+				<input type="password" name="txtPwd" id="txtPwd" />
+			</td>
+		</tr>
+		<tr>
+			<td>性别</td>
+			<td>
+				<input type="radio" name="rdoGender" value="0" />男
+				<input type="radio" name="rdoGender" value="1" />女
+			</td>
+		</tr>
+		<tr>
+			<td>爱好</td>
+			<td>
+				<input type="checkbox" name="chkHobby[]" value="0" />吃
+				<input type="checkbox" name="chkHobby[]" value="1" />喝
+				<input type="checkbox" name="chkHobby[]" value="2" />玩
+				<input type="checkbox" name="chkHobby[]" value="3" />乐
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input id="btnSubmit" type="submit" value="提交" />
+				<input id="btnAjax" type="submit" value="Ajax Form" />
+			</td>
+		</tr>
+	</table>
+  </form>
+ </body>
+</html>

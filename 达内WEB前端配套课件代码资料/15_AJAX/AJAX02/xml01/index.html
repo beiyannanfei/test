@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function createXhr(){
+		var xhr = null;
+		if(window.XMLHttpRequest)
+			xhr = new XMLHttpRequest();
+		else
+			xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		return xhr;
+	}
+	
+	/**
+	 * 解析XML文档
+	 */
+	function getXml(){
+		var xhr = createXhr();
+		xhr.open("get","Person.xml",true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				//获取响应回来的xml dom对象
+				//var xmlDom = xhr.responseXML;
+				//console.log(xmlDom);
+				//获取文档中所有的user标签
+				/*var users = xmlDom.getElementsByTagName("user");
+				console.log(users);*/
+				/*var user = xmlDom.getElementById("1001");
+				console.log(user);*/
+
+				var xmlDom = xhr.responseXML;
+				//获取所有的user节点
+				var users = xmlDom.getElementsByTagName("user");
+				for(var i=0;i<users.length;i++){
+					var user = users[i];
+					//获取user的节点名称以及id属性值
+					var nodeName = user.nodeName;
+					var id=user.getAttribute("id");
+					console.log("节点名称:"+nodeName+",id:"+id);
+					for(var j=0;j<user.childNodes.length;j++){
+						var child = user.childNodes[j];
+						if(child.nodeType == 1){
+							//筛选出元素节点
+							console.log(child.nodeName+":"+child.firstChild.nodeValue);
+						}
+					}
+				}
+			}
+		}
+		xhr.send(null);
+	}
+
+	function loadXmlTxt(){
+		var xmlTxt = "<?xml version='1.0' encoding='utf-8' ?>";
+		xmlTxt += "<User><Name>Jimmy</Name></User>";
+		var xmlDom;
+		if(window.DOMParser){
+			var parser = new DOMParser();
+			xmlDom = parser.parseFromString(xmlTxt,"text/xml");
+		}else{
+			xmlDom = new ActiveXObject("Microsoft.XMLDOM");
+			xmlDom.loadXML(xmlTxt);
+		}
+
+		console.log(xmlDom);
+	}
+
+	window.onload = function(){
+		//getXml();
+		loadXmlTxt();
+	}
+  </script>
+ </head>
+
+ <body>
+  
+ </body>
+</html>

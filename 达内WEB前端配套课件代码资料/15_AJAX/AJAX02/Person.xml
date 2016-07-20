@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 根节点， 有且只有一个 -->
+<Person>
+	<users>
+		<user id="1001">
+			<name>李文华</name>
+			<age>35</age>
+			<gender>男</gender>
+		</user>
+		<user id="1002">
+			<name>李小华</name>
+			<age>1</age>
+			<gender>男</gender>
+		</user>
+	</users>
+</Person>

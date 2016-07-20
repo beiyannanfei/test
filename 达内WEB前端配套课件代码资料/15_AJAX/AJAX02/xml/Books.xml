@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<weather>
+	<city id="北京">
+		<Mon date="2015-05-04" weather="晴">15-20</Mon>
+		<Tue date="2015-05-05" weather="中雨">14-19</Tue>
+		<Wed date="2015-05-06" weather="晴转多云">15-21</Wed>
+	</city>
+	<city id="上海">
+		<Mon date="2015-05-04" weather="大雨">18-19</Mon>
+		<Tue date="2015-05-05" weather="中雨">14-19</Tue>
+		<Wed date="2015-05-06" weather="晴转多云">15-21</Wed>
+	</city>
+</weather>

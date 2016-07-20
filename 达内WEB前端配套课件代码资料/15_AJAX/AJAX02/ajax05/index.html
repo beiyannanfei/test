@@ -1,0 +1,65 @@
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <script>
+	function createXhr(){
+		var xhr = null;
+		if(window.XMLHttpRequest)
+			xhr = new XMLHttpRequest();
+		else
+			xhr = new ActiveXObject("Microsoft.XMLHTTP");
+		return xhr;
+	}
+	
+	/**
+	 * 加载省份信息
+	 */
+	function loadProvince(){
+		var xhr = createXhr();
+		xhr.open("get","province.php",false);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var resText=xhr.responseText;
+				var province=JSON.parse(resText);
+				for(var i=0;i<province.length;i++){
+					var pro = province[i];
+					var option = new Option(pro,pro);
+					document.getElementById("province").options.add(option);
+				}
+			}
+		}
+		xhr.send(null);
+	}
+
+	function loadCity(pro){
+		//document.getElementById("city").innerHTML="";
+		document.getElementById("city").options.length=0;
+		var xhr = createXhr();
+		xhr.open("get","city.php?province="+pro,true);
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				var citys = JSON.parse(xhr.responseText);
+				for(var i=0;i<citys.length;i++){
+					var option = new Option(citys[i],citys[i]);
+					document.getElementById("city").options.add(option);
+				}
+			}
+		}
+		xhr.send(null);
+	}
+
+	window.onload = function(){
+		loadProvince();
+		var pro=document.getElementById("province").value;
+		loadCity(pro);
+	}
+  </script>
+  
+ </head>
+
+ <body>
+  <select id="province" onchange="loadCity(this.value)"></select>
+  <select id="city"></select>
+ </body>
+</html>

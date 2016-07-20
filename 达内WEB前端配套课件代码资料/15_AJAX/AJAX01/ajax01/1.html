@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+ <script>
+	/**
+	 * 创建XMLHttpRequest对象
+	 */
+	function createXhr(){
+		var xhr = null;
+		if(window.XMLHttpRequest){
+			xhr = new XMLHttpRequest();
+		}else{
+			xhr = new ActiveXObject("Microsoft.XMLHttp");
+		}
+		return xhr;
+	}
+	
+	/**
+	 * 异步请求方法
+	 */
+	function getServerText(){
+		//1、获取xhr
+		var xhr = createXhr();
+		//2、创建请求
+		xhr.open("get","server.php",true);
+		//3、设置回调函数
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				//服务器已经正确处理请求，并且正确响应数据到客户端
+				var resText = xhr.responseText;
+				document.getElementById("showTxt").innerHTML=resText;
+			}
+		}
+		//4、发送请求
+		xhr.send(null);
+	}
+
+
+ </script>
+ </head>
+
+ <body>
+  <div id="showTxt"></div>
+  <a href="javascript:getServerText();">提交数据</a>
+ </body>
+</html>
