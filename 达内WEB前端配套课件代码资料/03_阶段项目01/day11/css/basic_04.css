@@ -1,0 +1,204 @@
+@charset "utf-8";
+/*通用基础样式*/
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body{
+	font-size:12px;
+	font-family: "宋体",Arial;
+	color: #666;
+	background: #fff;
+}
+a{
+	text-decoration: none;
+	color: #666;
+}
+a:hover{
+	text-decoration: underline;
+	color: #E4393C;
+}
+.lt{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.clr{
+	clear: both;
+}
+
+/*页面基本布局样式*/
+#top{
+	width: 100%;
+	background:#F7F7F7;
+	border-bottom: 1px solid #EEE;
+	height: 30px;
+}
+#top_bar,#top_main,#nav,#main,#may_like,#recent_view,#foot_bar,#footer{
+	width: 1210px;
+	margin: 0 auto;
+}
+#top_bar{
+	line-height: 30px;
+}
+#top_bar>img:first-child:hover{
+	transform: rotate(360deg);
+	transition: transform 300ms linear 0;
+}
+#top_bar > ul > li{
+	float: left;
+	margin-right: 10px;
+	position: relative;
+}
+#top_bar li b{
+	border-left: 1px solid #ddd;
+	margin-right: 10px;
+}
+#vip a{
+	padding-left: 27px;
+	background: url(../images/vip.jpg) left center no-repeat;
+}
+#dakehu a{
+	padding-left: 27px;
+	background: url(../images/dakehu.jpg) left center no-repeat;
+}
+#app_jd > span > a{
+	padding-right: 15px;
+	background: url(../images/jt_down.jpg) right center no-repeat;
+}
+#app_jd > span{
+	padding: 7px 3px 7px 18px;
+	border: 1px solid transparent;
+	background: url(../images/iconlist_2.png) -125px -358px no-repeat;
+	position: relative;
+	z-index: 3;
+}
+#app_jd > span:hover{
+	background-position: -125px -397px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: #fff;
+}
+#app_jd > span > a:hover{
+	background: url(../images/jt_up.jpg) right center no-repeat;
+}
+#customer_service > a{
+	padding: 7px 18px 7px 3px;
+	background: url(../images/jt_down.jpg) 55px center no-repeat;
+	border: 1px solid transparent;
+	position: relative;
+	z-index: 3;
+}
+#customer_service > a:hover{
+	background: url(../images/jt_up.jpg) 55px center no-repeat;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: #fff;
+}
+#site_map > a{
+	padding: 7px 18px 7px 3px;
+	background: url(../images/jt_down.jpg) 55px center no-repeat;
+	border: 1px solid transparent;
+	position: relative;
+	z-index:3;
+}
+#site_map > a:hover{
+	background: url(../images/jt_up.jpg) 55px center no-repeat;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-bottom-color: #fff;
+}
+div.top_bar_dropdown{
+	position: absolute;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	box-shadow: 0 0 2px 2px #eee;
+	z-index:2;
+	display: none;
+	top: 27px;
+}
+#cs_dropdown{	/*客户服务下拉菜单*/
+	width: 68px;
+	text-align: center;
+	left: 11px;
+}
+#sm_dropdown{	/*站点地图 下拉框*/
+	width: 215px;
+	padding: 15px;
+	left: -165px;
+}
+#sm_dropdown li{
+	float: left;
+	margin: 0 10px;
+}
+#sm_dropdown .clr{
+	border-bottom: 1px solid #ddd;
+}
+#aj_dropdown{	/*手机京东 下拉框*/
+	width: 220px;
+	background: #fff url(../images/app_jd_1.png) center 10px no-repeat;
+	padding: 10px;
+	left: 11px;
+	z-index:2;
+}
+#aj_dropdown  > div:first-child{
+	margin-top: 35px;
+	padding-left: 105px;
+	height: 100px;
+	background: url(../images/app_jd_erwei.jpg) 25px 20px no-repeat;
+}
+#aj_dropdown  > div:last-child{
+	margin-top: 5px;
+	padding-left: 105px;
+	height: 100px;
+	background: url(../images/app_jd_wangyin.png) 25px 20px no-repeat;
+}
+
+#aj_dropdown  div div{
+	width: 97px;
+	height: 30px;
+	background: url(../images/iconlist_2.png) 0 -360px no-repeat;
+	cursor: pointer;
+	margin: 4px 0;
+}
+
+
+
+
+
+
+#top_main{
+	background: #ffa;
+	height:90px;
+}
+#nav{
+	background-image: linear-gradient(to top, #E13335 0%, #E64346 100%);
+	height:40px;
+}
+#main{
+	background: #afa;
+	height:100px;
+}
+#may_like{
+	border: 1px solid #ddd;
+	border-top: 2px solid #999;
+	height: 276px;
+	background: #faa;
+}
+#recent_view{
+	border: 1px solid #ddd;
+	border-top: 2px solid #999;
+	height: 156px;
+	background: #faf;
+}
+#foot_bar{
+	background: #ffa;
+	height: 296px;
+}
+#footer{
+	background: #aff;
+	height: 344px;
+}
+

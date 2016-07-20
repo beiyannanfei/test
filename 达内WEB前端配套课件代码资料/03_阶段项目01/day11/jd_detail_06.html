@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" href="css/basic_06.css" type="text/css"/>
+  <title>京东网上商城</title>
+  <script type="text/javascript">
+	/*根据传递进来的元素的id值，查找该元素，将其display属性赋值为传进来的第二个参数dp*/
+	function showOrHide(id, dp){
+		document.getElementById(id).style.display=dp;
+	}
+	function showMyJd(){
+		document.getElementById("my_jd").style.backgroundColor="#fff";
+		document.getElementById("my_jd").style.backgroundPosition="-118px -55px";
+		document.getElementById("my_jd").style.borderBottomColor="#fff";
+		document.getElementById("my_jd_dropdown").style.display="block";
+	}
+	function hideMyJd(){
+		document.getElementById("my_jd").style.backgroundColor="#f7f7f7";
+		document.getElementById("my_jd").style.backgroundPosition="-118px -25px";
+		document.getElementById("my_jd").style.borderBottomColor="#efefef";
+		document.getElementById("my_jd_dropdown").style.display="none";
+	}
+  </script>
+ </head>
+
+ <body>
+  <!--收藏和登录条-->
+  <div id="top">
+	<div id="top_bar">
+		<img src="images/star.jpg"/>
+		<a href="javascript:void(0)">收藏京东</a>
+		<ul class="rt">
+			<li>
+				您好！欢迎来到京东！
+				<a href="#">[登录]</a>
+				<a href="#">[免费注册]</a>
+			</li>
+			<li>
+				<b></b>
+				<a href="#">我的订单</a>
+			</li>
+			<li id="vip">
+				<b></b>
+				<a href="#">
+					会员俱乐部
+				</a>
+			</li>
+			<li id="dakehu">
+				<b></b>
+				<a href="#">企业频道</a>
+			</li>
+			<li id="app_jd" onmouseover="showOrHide('aj_dropdown','block')" onmouseout="showOrHide('aj_dropdown','none')">
+				<b></b>
+				<span><a href="#">手机京东</a></span>
+				<div id="aj_dropdown" class="top_bar_dropdown">
+					<div>
+						京东客户端
+						<div></div>
+						<div></div>
+					</div>
+					<div>
+						网银钱包客户端
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			</li>
+			<li id="customer_service" onmouseover="showOrHide('cs_dropdown','block')" onmouseout="showOrHide('cs_dropdown','none')">
+				<b></b>
+				<a href="#">客户服务</a>
+				<div id="cs_dropdown" class="top_bar_dropdown">
+					<ul>
+						<li><a href="#">帮助中心</a></li>
+						<li><a href="#">售后服务</a></li>
+						<li><a href="#">在线客服</a></li>
+						<li><a href="#">投诉中心</a></li>
+						<li><a href="#">客服邮箱</a></li>
+					</ul>
+				</div>
+			</li>
+			<li id="site_map" onmouseover="showOrHide('sm_dropdown','block')" onmouseout="showOrHide('sm_dropdown','none')">
+				<b></b>
+				<a href="#">网站导航</a>
+				<div id="sm_dropdown" class="top_bar_dropdown">
+					<h3>特色栏目</h3>
+					<ul>
+						<li><a href="#">京东通信</a></li>
+						<li><a href="#">校园之星</a></li>
+						<li><a href="#">视频购物</a></li>
+						<li><a href="#">京东社区</a></li>
+						<li><a href="#">在线读书</a></li>
+						<li><a href="#">装机大师</a></li>
+						<li><a href="#">京东 E 卡</a></li>
+						<li><a href="#">家装城</a></li>
+						<li><a href="#">搭配购</a></li>
+						<li><a href="#">我喜欢</a></li>
+						<li><a href="#">游戏社区</a></li>
+					</ul>
+					<div class="clr"></div>
+					<h3>企业服务</h3>
+					<ul>
+						<li><a href="#">企业采购</a></li>
+						<li><a href="#">办公直通车</a></li>
+					</ul>
+					<div class="clr"></div>
+					<h3>旗下网站</h3>
+					<ul>
+						<li><a href="#">English Site</a></li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+  </div>
+
+  <!--LOGO和搜索栏-->
+  <div id="top_main">
+	<img src="images/logo-201305.png" class="lt"/>
+	<div id="search_box" class="lt">
+		<div id="search">
+			<input type="text" name="keywords" onfocus="showOrHide('search_dropdown', 'block')" onblur="showOrHide('search_dropdown','none')"/>
+			<input type="button" value="搜索"/>
+		</div>
+		<div id="hot_search">
+		热门搜索：
+		<a href="#">家纺11大促</a>
+		<a href="#">彩虹电热毯</a>
+		<a href="#">博洋家纺</a>
+		<a href="#">霞诊</a>
+		<a href="#">床褥床垫</a>
+		<a href="#">九州鹿被子</a>
+		<a href="#">南极人家纺</a>
+		</div>
+		<div id="search_dropdown">
+			<p class="item">
+				<a href="#" class="lt">卫<b>衣</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>新</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>生纸</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>衣</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>浴</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>裤</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>衣 男</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+			<p class="item">
+				<a href="#" class="lt">卫<b>生纸 套装</b></a>
+				<span class="rt">约1120个商品</span>
+				<div class="clr"></div>
+			</p>
+		</div>
+	</div>
+	<div id="my_jd_box" class="lt" onmouseover="showMyJd()" onmouseout="hideMyJd()">
+		<div id="my_jd">
+			我的京东
+			<b></b>
+		</div>
+		<div id="my_jd_dropdown">
+		</div>
+	</div>
+
+	<div id="settle_up_box" class="lt" onmouseover="" onmouseout="">
+		<div id="settle_up">
+			去购物车结算
+			<b></b>
+		</div>
+		<div id="settle_up_dropdown"></div>
+	</div>
+  </div>
+  
+  <!--导航栏-->
+  <div id="nav">导航栏
+  </div>
+  
+  <!--主体区-->
+  <div id="main">主体区
+  </div>
+  
+  <!--猜你喜欢-->
+  <div id="may_like">猜你喜欢
+	
+  </div>
+  
+  <!--最近浏览-->
+  <div id="recent_view">
+	<p>
+		最近浏览
+		<span class="rt">更多浏览记录</span>
+		<div class="clr"></div>
+	</p>
+	<div class="product lt">
+		<img src="images/products/p001.jpg"/>
+		<p>￥59.9</p>
+	</div>
+	<div class="product lt">
+		<img src="images/products/p002.jpg"/>
+		<p>￥59.9</p>
+	</div>
+	<div class="product lt">
+		<img src="images/products/p003.jpg"/>
+		<p>￥59.9</p>
+	</div>
+	<div class="product lt">
+		<img src="images/products/p004.jpg"/>
+		<p>￥59.9</p>
+	</div>
+	<div class="product lt">
+		<img src="images/products/p005.jpg"/>
+		<p>￥59.9</p>
+	</div>
+	<div class="clr"></div>
+  </div>
+  
+  <!--购物指南-->
+  <div id="foot_bar">
+	<div id="icon1" class="icon lt"></div>
+	<div class="guide lt">
+		<h3>购物指南</h3>
+		<a href="#">购物流程</a><br/>
+		<a href="#">会员介绍</a><br/>
+		<a href="#">团购/机票</a><br/>
+		<a href="#">常见问题</a><br/>
+		<a href="#">大家电</a><br/>
+		<a href="#">联系客服</a>
+	</div>
+	<div id="icon2" class="icon lt"></div>
+	<div class="guide lt">
+		<h3>配送方式</h3>
+		<a href="#">上门自提</a><br/>
+		<a href="#">211限时达</a><br/>
+		<a href="#">配送服务查询</a><br/>
+		<a href="#">配送费收取标准</a><br/>
+		<a href="#">海外配送</a>
+	</div>
+	<div id="icon3" class="icon lt"></div>
+	<div class="guide lt">
+		<h3>支付方式</h3>
+		<a href="#">货到付款</a><br/>
+		<a href="#">在线支付</a><br/>
+		<a href="#">分期付款</a><br/>
+		<a href="#">邮局汇款</a><br/>
+		<a href="#">公司转账</a>
+	</div>
+	<div id="icon4" class="icon lt"></div>
+	<div class="guide lt">
+		<h3>售后服务</h3>
+		<a href="#">售后政策</a><br/>
+		<a href="#">价格保护</a><br/>
+		<a href="#">退款说明</a><br/>
+		<a href="#">返修/退换货</a><br/>
+		<a href="#">取消订单</a>
+	</div>
+	<div id="icon5" class="icon lt"></div>
+	<div class="guide lt">
+		<h3>特色服务</h3>
+		<a href="#">夺宝岛</a><br/>
+		<a href="#">DIY装机</a><br/>
+		<a href="#">延保服务</a><br/>
+		<a href="#">京东E卡</a><br/>
+		<a href="#">节能补贴</a><br/>
+		<a href="#">京东通信</a>
+	</div>
+	<div class="clr"></div>
+  </div>
+  
+  <!--页脚-->
+  <div id="footer">
+	<p>
+		<a href="#">关于我们</a> |
+		<a href="#">联系我们</a> |
+		<a href="#">人才招聘</a> |
+		<a href="#">商家驻入</a> |
+		<a href="#">广告服务</a> |
+		<a href="#">手机京东</a> |
+		<a href="#">友情链接</a> |
+		<a href="#">联盟销售</a> |
+		<a href="#">京东社区</a> |
+		<a href="#">京东公益</a>
+	</p>
+	北京市公安局朝阳分局备案编号110105014669 | 京ICP证070359号 | 互联网药品信息服务资格证编号(京)-非经营性-2011-0034<br/>
+音像制品经营许可证苏宿批005号  | 出版物经营许可证编号新出发(苏)批字第N-012号 | 互联网出版许可证编号新出网证(京)字150号<br/>
+网络文化经营许可证京网文[2011]0168-061号  Copyright © 2004-2014 京东JD.com 版权所有 <br/>
+ 京东旗下网站： English Site 拍拍网 网银在线 <br/>
+	<img src="images/jy.jpg" />
+	<img src="images/kx.jpg" />
+	<img src="images/cy.jpg" />
+	<img src="images/cx.jpg" />
+  </div>
+  
+ </body>
+</html>

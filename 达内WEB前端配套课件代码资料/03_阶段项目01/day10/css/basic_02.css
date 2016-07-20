@@ -1,0 +1,77 @@
+@charset "utf-8";
+/*通用基础样式*/
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+body{
+	font-size:12px;
+	font-family: "宋体",Arial;
+	color: #666;
+	background: #fff;
+}
+a{
+	text-decoration: none;
+	color: #666;
+}
+a:hover{
+	text-decoration: underline;
+	color: #E4393C;
+}
+.lt{
+	float: left;
+}
+.rt{
+	float: right;
+}
+.clr{
+	clear: both;
+}
+
+/*页面基本布局样式*/
+#top{
+	width: 100%;
+	background:#F7F7F7;
+	border-bottom: 1px solid #EEE;
+	height: 30px;
+}
+#top_bar,#top_main,#nav,#main,#may_like,#recent_view,#foot_bar,#footer{
+	width: 1210px;
+	margin: 0 auto;
+}
+#top_bar{
+}
+#top_main{
+	background: #ffa;
+	height:90px;
+}
+#nav{
+	background-image: linear-gradient(to top, #E13335 0%, #E64346 100%);
+	height:40px;
+}
+#main{
+	background: #afa;
+	height:100px;
+}
+#may_like{
+	border: 1px solid #ddd;
+	border-top: 2px solid #999;
+	height: 276px;
+	background: #faa;
+}
+#recent_view{
+	border: 1px solid #ddd;
+	border-top: 2px solid #999;
+	height: 156px;
+	background: #faf;
+}
+#foot_bar{
+	background: #ffa;
+	height: 296px;
+}
+#footer{
+	background: #aff;
+	height: 344px;
+}
+

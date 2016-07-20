@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	span{
+		border: 1px solid #000;
+	}
+  </style>
+  <script>
+	function showAndHide(id, dp){
+		//alert(value);
+		document.getElementById(id).style.display = dp;
+	}
+  </script>
+ </head>
+
+
+ <body>
+
+	<span onmouseover="showAndHide('hiddenDiv', 'block')"  onmouseout="showAndHide('hiddenDiv', 'none')">ABCD</span>
+
+	<br/>
+	<br/>
+	<br/>
+	<div id="hiddenDiv" style="display:none;">
+		一个隐藏的区块
+	</div>
+ </body>
+</html>

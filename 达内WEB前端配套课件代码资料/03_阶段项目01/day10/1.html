@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	*{margin:0; padding:0;}
+	.header, .footer{
+		border: 1px solid #000;
+	}
+	.main1{
+		background: #afa;
+	}
+	.main2{
+		background: #ffa;
+	}
+	.main1 :first-child{
+		/*padding: 10px;*/
+		line-height: 3em;
+		/*margin: 10px 0;*/
+	}
+	.main2 :only-child{
+		/*padding: 10px 0;可以*/
+		margin: 10px 0;
+	}
+	.main2{
+		overflow:hidden;
+		/*padding: 10px 0; 可以*/
+		/*margin: 10px 0;不行*/
+	}
+  </style>
+ </head>
+
+ <body>
+  <div class="header">头部</div>
+  
+  <div class="main1">
+	<span>免费注册</span>
+  </div>
+  
+  <div class="main2">
+	<div>立即登录</div>
+  </div>
+  
+  <div class="footer">尾部</div>
+ </body>
+</html>
