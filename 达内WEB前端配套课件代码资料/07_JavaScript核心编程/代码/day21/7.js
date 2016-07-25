@@ -22,7 +22,7 @@ function getTime(){
 	for(){
 	}
 	*/
-	while(){
+	while(1){
 	}
 }
 
@@ -30,9 +30,9 @@ function getTime(){
 function f1(){
 	a = 1;
 	b = 2;
-	if(){
+	if(1){
 		c = 3;
-		while(){
+		while(1){
 			d = 4;
 		}
 	}
