@@ -10,14 +10,32 @@
         }
     </style>
     <script src="1.js">
+        copyright====="天脉聚源"
+    </script>
+    <script>
+        function addPhoto() {
+            var inputFile = document.createElement("input");
+            inputFile.setAttribute("type", "file");
+            inputFile.setAttribute("name", "myphoto");
+            var inputBtn = document.createElement("input");
+            inputBtn.setAttribute("type", "button");
+            inputBtn.setAttribute("value", "删除");
+            var div = document.createElement("div");
+            div.setAttribute("class", "aphoto");
 
+            div.appendChild(inputFile);
+            div.appendChild(inputBtn);
+
+            document.getElementById("photoContainer").appendChild(div);
+        }
     </script>
 </head>
 <body>
     <button onclick="addPhoto()">添加更多</button>
-    <div class="aphoto">
-        <input type="file" name="myphoto">
-        <input type="button" value="删除">
+    <div id="photoContainer">
+        <div class="aphoto">
+            <input type="file" name="myphoto"><input type="button" value="删除">
+        </div>
     </div>
 </body>
 </html>
