@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>01_node</title>
+</head>
+<!--body开始了-->
+<body>
+<h2>2号标题</h2>
+<div class="main">一个<span>区</span>块</div>
+</body>
+<script>
+    console.log("nodeType\tnodeName\tnodeValue");
+    var node0 = document;
+    console.log(node0.nodeType + "\t\t\t" + node0.nodeName + "\t" + node0.nodeValue);
+
+    var node1 = document.firstChild;    //docType
+    console.log(node1.nodeType + "\t\t\t" + node1.nodeName + "\t" + node1.nodeValue);
+
+    var node2 = node1.nextSibling;  //html
+    console.log(node2.nodeType + "\t\t\t" + node2.nodeName + "\t" + node2.nodeValue);
+
+    var node3 = node2.attributes[0];    //类数组对象  xmlns
+    console.log(node3.nodeType + "\t\t\t" + node3.nodeName + "\t" + node3.nodeValue);
+
+    var node4 = node2.firstChild;   //head
+    console.log(node4.nodeType + "\t\t\t" + node4.nodeName + "\t" + node4.nodeValue);
+
+    var node5 = node4.nextSibling;  //text
+    console.log(node5.nodeType + "\t\t\t" + node5.nodeName + "\t" + node5.nodeValue);
+
+    var node6 = node5.nextSibling;  //comment
+    console.log(node6.nodeType + "\t\t\t" + node6.nodeName + "\t" + node6.nodeValue);
+
+    var node7 = node6.nextSibling;  //text
+    console.log(node7.nodeType + "\t\t\t" + node7.nodeName + "\t" + node7.nodeValue);
+
+    var node8 = node7.nextSibling;  //body
+    console.log(node8.nodeType + "\t\t\t" + node8.nodeName + "\t" + node8.nodeValue);
+
+    var node9 = node8.firstChild;   //text
+    console.log(node9.nodeType + "\t\t\t" + node9.nodeName + "\t" + node9.nodeValue);
+
+    var node10 = node9.nextSibling; //h2
+    console.log(node10.nodeType + "\t\t\t" + node10.nodeName + "\t" + node10.nodeValue);
+
+    var node11 = node10.firstChild; //text
+    console.log(node11.nodeType + "\t\t\t" + node11.nodeName + "\t" + node11.nodeValue);
+
+    var node12 = node10.nextSibling;    //text
+    console.log(node12.nodeType + "\t\t\t" + node12.nodeName + "\t" + node12.nodeValue);
+
+    var node13 = node12.nextSibling;    //div
+    console.log(node13.nodeType + "\t\t\t" + node13.nodeName + "\t" + node13.nodeValue);
+
+    var node14 = node13.firstChild; //text
+    console.log(node14.nodeType + "\t\t\t" + node14.nodeName + "\t" + node14.nodeValue);
+
+    var node15 = node14.nextSibling; //span
+    console.log(node15.nodeType + "\t\t\t" + node15.nodeName + "\t" + node15.nodeValue);
+
+    var node16 = node15.nextSibling; //text
+    console.log(node16.nodeType + "\t\t\t" + node16.nodeName + "\t" + node16.nodeValue);
+
+    var node17 = node15.firstChild; //text
+    console.log(node17.nodeType + "\t\t\t" + node17.nodeName + "\t" + node17.nodeValue);
+
+    var node18 = node13.nextSibling;    ////text
+    console.log(node18.nodeType + "\t\t\t" + node18.nodeName + "\t" + node18.nodeValue);
+
+    console.log(node8.childNodes.length);
+    for (var i = 0; i < node8.childNodes.length; ++i) {
+        var node = node8.childNodes[i];
+        console.log(i+ ":" + node.nodeName);
+    }
+</script>
+</html>

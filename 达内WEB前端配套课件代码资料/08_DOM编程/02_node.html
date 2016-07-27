@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_node</title>
+</head>
+<body>
+<h2>ElementNode.innerHTML</h2>
+<div id="main">一个<span>区</span>块</div>
+<script>
+//    var node = document.lastChild.lastChild.firstChild.nextSibling.nextSibling.nextSibling;    //div
+    var div = document.getElementById("main");
+    console.log(div.innerHTML + " type:" + typeof div.innerHTML);
+    div.innerHTML = '新<span style="color:red">闻</span>标题<table border="1"><tr><td>A&nbsp;BC</td></tr></table>';
+
+    console.log("textContent:" + div.textContent);   //新闻标题ABC
+    console.log("innerText: " + div.innerText)
+
+</script>
+</body>
+</html>
+
+
