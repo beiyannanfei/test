@@ -1,0 +1,31 @@
+1、让小球动
+   更改x,y坐标
+2、限制范围
+   x*-1
+   y*-1
+3、代码
+   3.1 canvas
+       绘图上下文:getContext("2d");
+   3.2 非基本图形  
+       必须通过路径进行绘制
+       方法:
+          beginPath()
+	  closePath()
+
+	  moveTo(x,y) 移动笔触
+	  lineTo(x,y) 从笔触位置到(x,y)处绘制一条直线
+
+	  arc(x,y,radius,sAngle,eAngle,bool)
+	     bool:
+	         true:逆时针
+		 false:顺时针
+
+          stroke() : 绘制路径
+	  fill() : 填充图形
+
+	  fillStyle : 指定填充颜色
+	  strokeStyle :指定路径颜色
+   3.3 基本图形(矩形)
+       fillRect(x,y,width,height)
+       strokeRect
+       clearRect

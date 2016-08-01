@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function initial(){
+		//1、获取canvas元素
+		var canvas = document.getElementById("canvas");
+		//2、通过canvas元素获取绘图上下文
+		var ctx = canvas.getContext("2d");
+		//3、通过上下文进行绘图(图形、图像、文本)
+		//3.1 绘制矩形
+		ctx.fillRect(0,0,200,100);
+	}
+
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <canvas id="canvas" width="400" height="300">
+	您的浏览器不支持canvas绘图
+  </canvas>
+ </body>
+</html>

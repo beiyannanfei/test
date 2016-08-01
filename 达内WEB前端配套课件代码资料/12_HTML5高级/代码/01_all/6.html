@@ -1,0 +1,44 @@
+<!DOCTYPE html >
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	function initial(){
+		var myPro = $("myPro");
+		setInterval(function(){
+			var value = parseInt(myPro.value);
+			if(value >= parseInt(myPro.max)){
+				value = 0;
+			}
+			myPro.value = ++ value;
+		},300);
+	}
+
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <datalist id="list">
+	<option value="010" label="北京" />
+	<option value="021" label="上海" />
+	<option value="022" label="天津" />
+	<option value="023" label="重庆" />
+  </datalist>
+  <input type="text" id="txtAddress" list="list" />
+  <hr />
+  <progress id="myPro" max="100" value="20"></progress>
+  <hr />
+  <meter min="0" max="450" low="60" high="350" value="400"></meter>
+  <hr />
+  <form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+	<input type="range" min="0" max="50" name="a" />+
+	<input type="text" name="b" value="50" />=
+	<output name="result"></output>
+  </form>
+ </body>
+</html>

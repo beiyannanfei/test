@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	function initial(){
+		document.frmLogin.addEventListener("invalid",frmLogin_invalid,true);
+	}
+
+	//表单执行遇到错误时激发的事件
+	function frmLogin_invalid(e){
+		//获取产生错误的元素
+		var tar = e.target;
+		tar.style.backgroundColor="red";
+		var tipId = tar.id + "Tip";
+		$(tipId).innerHTML="请输入正确数据";
+	}
+
+
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <form name="frmLogin">
+	用户名称:<input type="text" id="txtName" required />
+	<span id="txtNameTip"></span><br />
+	用户Email:<input type="email" id="txtEmail" />
+	<span id="txtEmailTip"></span><br />
+	<input type="submit" value="提交" />
+  </form>
+ </body>
+</html>

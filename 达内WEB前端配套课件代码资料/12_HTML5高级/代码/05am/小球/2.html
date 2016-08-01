@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function initial(){
+		var x=10,y=10,WIDTH,HEIGHT,RADIUS=10;
+		var xx = 1, yy=1;
+
+		//0、准备
+		var canvas = document.getElementById("canvas");
+		ctx=canvas.getContext("2d");
+		WIDTH=canvas.width;
+		HEIGHT=canvas.height;
+		
+		//1、绘制小球
+		/*ctx.beginPath();
+		ctx.fillStyle="#ff0000";
+		ctx.arc(x,y,10,0,Math.PI*2,false);
+		ctx.fill();
+		ctx.closePath();*/
+
+		//2、让小球走
+		setInterval(function(){
+			//判断小球横向边界
+			if(x < RADIUS || x >= WIDTH-RADIUS){
+				xx *= -1;
+			}
+			//判断小球纵向边界
+			if(y < RADIUS || y >= HEIGHT-RADIUS){
+				yy *= -1;
+			}
+			x += xx;
+			y += yy;
+			console.log(x + ":" + y);
+
+			ctx.clearRect(0,0,canvas.width,canvas.height);
+			ctx.beginPath();
+			ctx.fillStyle="#ff0000";
+			ctx.arc(x,y,RADIUS,0,Math.PI*2,false);
+			ctx.fill();
+			ctx.closePath();
+		},10);
+	}
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <canvas id="canvas" width="400" height="300" style="border:1px solid red;"></canvas>
+ </body>
+</html>

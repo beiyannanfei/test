@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	#myDiv{width:100px;height:100px;background-color:red;}
+  </style>
+  <script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	function initial(){
+		//1、获取元素
+		myDiv=$("myDiv");
+		range=$("range");
+		//2、绑定事件
+		range.addEventListener("change",range_change,false);
+	}
+
+	function range_change(){
+		//1、获取range.value
+		var value = range.value;
+		//2、这是myDiv的透明度
+		myDiv.style.filter="alpha("+value+")";
+		myDiv.style.opacity=value/100;
+	}
+
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <div id="myDiv"></div>
+  <input type="range" id="range" min="0" max="100" />
+ </body>
+</html>

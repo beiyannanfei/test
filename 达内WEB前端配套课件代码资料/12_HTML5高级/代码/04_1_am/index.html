@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <style type="text/css">
+	body{font-family:微软雅黑;}
+	#container{width:500px;margin:10px auto;border:1px solid #ccc;background:#999999;border-radius:5px;padding:10px;}
+	#mName{float:left;width:250px;}
+	#mTime{float:left;width:250px;text-align:right;}
+	#player{margin-top:20px;}
+	#media{width:450px;}
+	ul{list-style:none;padding-left:5px;}
+	ul li{margin-top:5px;}
+	#mList{height:200px;}
+	#changeMusic{text-align:right;}
+	a{text-decoration:none;color:black;}
+	a:hover{color:red;}
+  </style>
+  <script>
+	//声明两个数组，用来存储歌曲名称和文件地址
+	var musicNames=[],musicSrcs=[],randomNums=[];
+	var RANDOMNUM=5;//随机的歌曲数量
+
+	function $(id){
+		return document.getElementById(id);
+	}
+
+	function initial(){
+		//为数组赋值
+		musicNames[0]="Blood Money.mp3";
+		musicNames[1]="California Hotel.mp3";
+		musicNames[2]="Loving You.mp3";
+		musicNames[3]="Miracle.mp3";
+		musicNames[4]="SantaFe.mp3";
+		musicNames[5]="Wonderful Tonight.mp3";
+
+		musicSrcs[0]="music/Blood Money.mp3";
+		musicSrcs[1]="music/CalifoniaHotel.mp3";
+		musicSrcs[2]="music/Loving You.mp3";
+		musicSrcs[3]="music/Miracle.mp3";
+		musicSrcs[4]="music/SantaFe.mp3";
+		musicSrcs[5]="music/Wonderful Tonight.mp3";
+	    //获取元素
+		media = $("media");
+	    //绑定事件
+		media.addEventListener("canplay",media_canplay,false);
+		media.addEventListener("play",media_play,false);
+
+
+		//获取歌曲
+		loadMusic();
+	}
+    
+	/**
+	 * 判断r在randomNums中是否已经存在
+	 * return true : 已经存在
+	 * return false : 不存在
+	 */
+	function checkRExists(r){
+		for(var i=0;i<randomNums.length;i++){
+			if(randomNums[i] == r){
+				//存在
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * 方法：用于生成指定个数随机数
+	 * 如果碰到重复的数字，则重新生成
+	 */
+	function generateRandom(){
+		var i=0;
+		for(;;){
+			var r = parseInt(Math.random() * musicNames.length);
+			
+			//判断r是否已经生成过
+			if(checkRExists(r)){
+				//数字已经存在，不能存进数组中
+				continue;
+			}
+
+			//将r保存进randomNums中，并且i++
+			randomNums[i] = r;
+			i++;
+			//循环退出条件
+			if(i == RANDOMNUM){
+				return;
+			}
+			
+		}
+	}
+	
+	/**
+	 * 方法：加载&更换歌曲的方法
+	 * 随机读取3首歌曲
+	 */
+	function loadMusic(){
+		$("uMusic").innerHTML = "";
+		//借助randomNums数组 获取指定的歌曲
+		//生成三个不重复的数字并且存进randomNums中
+		generateRandom();
+		//console.log(randomNums);
+		for(var i=0;i<randomNums.length;i++){
+			//获取 歌曲名称、文件路径
+			//生成 <li><a href="javascript:;">歌曲名称</a></li>
+
+			//1、获取歌曲名称以及文件路径
+			var mName=musicNames[randomNums[i]];
+			var mSrc=musicSrcs[randomNums[i]];
+			//2、构建a标签
+			var aTar = document.createElement("a");
+			aTar.innerHTML=mName;
+			aTar.setAttribute("href","javascript:play('"+mName+"','"+mSrc+"');");
+			//3、构建li，并且将a添加到li中
+			var liTar=document.createElement("li");
+			liTar.appendChild(aTar);
+			//4、将li 添加到 ul中
+			$("uMusic").appendChild(liTar);
+		}
+
+	}
+	
+	/**
+	 * 播放音乐 
+	 * name:播放的音乐名称,用于显示
+	 * src:音乐路径，用于指定给"audio.src"
+	 */
+	function play(name,src){
+		//1、更新歌曲名称
+		$("mName").innerHTML=name;
+		//2、更新audio.src
+		media.src=src;
+		
+	}
+	
+	/**
+	 * 当媒体下载可放帧时激发的事件
+	 */
+	function media_canplay(e){
+		var duration = Math.ceil(e.target.duration);
+		//1、更新时长
+		//duration : 媒体总时长(以秒为单位)
+		var fTime=formatTime(duration);
+		$("mTime").innerHTML = fTime;
+		e.target.play();
+	}
+	
+	/**
+	 * 媒体播放时触发的事件
+	 * 1、更新媒体播放时长
+	 */
+	function media_play(e){
+		loop = setInterval(function(){
+			var left = Math.ceil(e.target.duration - e.target.currentTime);
+			var fTime = formatTime(left);
+			$("mTime").innerHTML = fTime;
+		},1000);
+	}
+	
+	/**
+	 * 格式化时间
+	 * seconds : 要格式化的 秒数
+	 * 格式化后返回: 00:00 格式的时间
+	 */
+	function formatTime(seconds){
+		var mm = parseInt(seconds / 60);
+		var ss = parseInt(seconds % 60);
+		if(mm < 10){
+			mm = "0" + mm;
+		}
+		if(ss < 10){
+			ss = "0" + ss;
+		}
+
+		return mm + ":" + ss;
+	}
+
+	window.addEventListener("load",initial,false);
+  </script>
+ </head>
+
+ <body>
+  <section id="container">
+	<nav id="menu">
+		<div id="mName">歌曲名称</div>
+		<div id="mTime">00:00</div>
+		<div style="clear:both;"></div>
+	</nav>
+	<nav id="player">
+		<audio id="media" controls>
+		</audio>
+	</nav>
+	<nav id="mList">
+		<div>
+			<ul id="uMusic">
+				
+			</ul>
+		</div>
+	</nav>
+	<nav>
+		<div id="changeMusic">
+			<a href="javascript:loadMusic();">换歌</a>
+		</div>
+	</nav>
+  </section>
+ </body>
+</html>

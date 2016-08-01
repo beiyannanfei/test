@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <title></title>
+  <script>
+	function $(id){
+		return document.getElementById(id);
+	}
+	
+	function initial(){
+		//1、获取元素
+		txtDate = $("txtDate");
+		txtWeek = $("txtWeek");
+		btn=$("btn");
+
+
+		btnFill = $("btnFill");
+		myDiv=$("myDiv");
+		txtColor=$("txtColor");
+		//2、绑定事件
+
+		btn.addEventListener("click",btn_click,false);
+		btnFill.addEventListener("click",btnFill_click,false);
+	}
+
+	function btnFill_click(){
+		var color=txtColor.value;
+		console.log(color);
+		myDiv.style.backgroundColor=color;
+	}
+
+	function btn_click(){
+		console.log("日期类型:"+txtDate.value);
+		console.log("周类型:"+txtWeek.value);
+	}
+
+	window.addEventListener("load",initial,false);
+  </script>
+  <style>
+	#myDiv{width:100px;height:100px;background-color:black;}
+  </style>
+ </head>
+
+ <body>
+   日期类型:<input type="date" id="txtDate" /><br />
+   周类型:<input type="week" id="txtWeek" /><br />
+   本地日期与事件:<input type="datetime-local" id="local" /><br />
+   <input type="button" value="View" id="btn" />
+   <hr />
+   <div id="myDiv"></div><br/>
+   <input type="color" id="txtColor" /><br />
+   <input type="button" id="btnFill" value="填充" />
+ </body>
+</html>
+
