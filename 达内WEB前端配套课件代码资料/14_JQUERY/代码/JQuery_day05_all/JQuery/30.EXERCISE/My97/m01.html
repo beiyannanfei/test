@@ -13,6 +13,7 @@
 				firstDayOfWeek:1
 			});*/
 			console.log("去程日期:"+$("#txtDate").val() + ",返程日期:"+$("#txtNewDate").val());
+            alert(+new Date($("#txtDate").val()));
 		});
 
 		$("#txtDate").focus(function(){
@@ -25,7 +26,6 @@
 				onpicked:function(){
 					$("#txtNewDate").val($(this).val());
 					$("#txtNewDate").focus();
-					
 				}
 			});
 		});

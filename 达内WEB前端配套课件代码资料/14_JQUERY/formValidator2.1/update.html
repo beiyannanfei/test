@@ -1,0 +1,216 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-cn">
+<title> jQuery formValidator表单验证插件</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<SCRIPT LANGUAGE="JavaScript" src="site.js"></SCRIPT>
+</head>
+
+<body>
+
+<SCRIPT LANGUAGE="JavaScript">writeTop();</SCRIPT>
+
+<table cellpadding="10" width="760" cellspacing="0" align="center" class="ContentTable">
+<tr>
+    <td valign="top" class="Nav"> 
+      <SCRIPT LANGUAGE="JavaScript">writeNav();</SCRIPT>
+    </td>
+    <td valign="top"> <br>
+      <strong></strong> <p><font color="#0066CC" size="5"><b><u>更新记录</u></b></font> 
+        <br>
+        <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%">2008/3/9 13:01:00 jQuery formValidator 2.1 ver<br>
+            第一个压缩版已经放在压缩包里：formValidator_min.js；修改了GetLenght的代码；更新了demo1；更新了帮助。<br>
+              1、<font color="#FF0000"><strong>第一个压缩版，包括版权申明在内，只有8.66k。</strong></font><br>
+              2、修改了getLenght函数。
+            <table width="100%" border="1">
+              <tr> 
+                <td width="11%" rowspan="2">GetLength</td>
+                <td width="23%" rowspan="2">function(&quot;表单元素id&quot;)</td>
+                <td width="66%">判断表单元素的选择长度（个数）</td>
+              </tr>
+              <tr> 
+                <td>checkbox或radiobutton表示(同组)选择的个数。<br>
+                  <font color="#FF0000">对select-one，InputValidator里的参数min和max表示选择的索引号范围 
+                  <br>
+                  对select-more，InputValidator里的参数min和max表示选择的个数</font><br>
+                  其它input表示的表示字符长度。 </td>
+              </tr>
+            </table>
+            
+          </td>
+        </tr>
+      </table>
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/3/1 0:53:00 jQuery formValidator 2.0 ver</b><br>
+            这次又做了一次比较大的调整：增加了FunctionValidator这种校验方式，现在你可以调用外部函数了；调整了内部部分算法；更新了demo1。<br>
+            1、<font color="#FF0000"><strong>增加FunctionValidator校验方式。</strong></font>作用：你可以用外部函数对表单元素进行校验和处理，返回true/false表示校验是否成功;返回字符串表示自定义错误信息，校验失败;如果没有返回值表示处理过程，校验成功。范例代码如下：<br>
+            $(&quot;#sfzh&quot;).formValidator({onshow:&quot;请输入15或18位的身份证&quot;,onfocus:&quot;输入15或18位的身份证&quot;,oncorrect:&quot;输入正确&quot;}).FunctionValidator({fun:isCardID});<br>
+            fun这个参数给你的函数传递了2个参数(该表单元素的值,表单元素element) 。具体情况，请看API帮助文档 <br>
+            2、当你调用PageIsValid的时候，如果未校验通过，则<font color="#FF0000"><strong>给onError传递2个参数</strong></font>(第一个校验没通过元素的错误信息,第一个校验没通过元素element)。范例代码如下：<br>
+            $.formValidator.initConfig({onError:function(msg){alert(msg)}}); <br>
+            3、AjaxValidator校验方式增加一个配置参数buttons（你点提交的按钮(组)jQuery对象）。作用：当你触发了ajax校验，buttons里对应的按钮（组）就会灰掉，一直等待服务器返回数据为止。范例代码如下：<br>
+            $(&quot;#test1&quot;).formValidator({...}).InputValidator({...}).AjaxValidator({<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;url : &quot;Default.aspx&quot;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;datatype : &quot;json&quot;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;success : function(data){...},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF0000">&nbsp;<strong>buttons: 
+            $(&quot;#button_id&quot;),</strong></font><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;error: function(){alert(&quot;服务器没有返回数据，可能服务器忙，请重试&quot;);},<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onerror : &quot;该用户名不可用，请更换用户名重新&quot;,<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;onwait : &quot;正在对用户名进行合法性校验，请稍候...&quot;<br>
+            }); <br>
+            4、由于<strong><font color="#FF0000">增加了自定义错误信息的功能</font></strong>，为了跟FunctionValidator校验方式里&quot;fun&quot;函数返回意义统一，<font color="#FF0000"><strong>更改了formValidator里的onvalid参数返回的意义，给大家带来不便请谅解</strong></font>。返回true/false表示校验是否成功；返回字符串表示自定义错误信息，校验失败；如果没有返回值表示处理过程，校验成功。</td>
+        </tr>
+      </table>
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/2/24 0:53:00 jQuery formValidator 1.3 ver</b><br>
+            由于工作忙，网友提了很多珍贵的意见，到现在才更新插件，真的对不住！这次修改了几处不合理的地方。<br>
+            特别增加了DefaultPassed函数，并且调整了表单元素校验的顺序。<br>
+            1、增加DefaultPassed函数，作用：如果你的表单元素有默认值，而且是合法的，你可以通过这个，设置默认校验通过，示例代码如下：<br>
+            $(&quot;#sex&quot;).formValidator({onshow:&quot;请选择你的性别&quot;,onfocus:&quot;没有第三种性别了，你选一个吧&quot;,oncorrect:&quot;输入正确&quot;,defaultvalue:&quot;1&quot;}).InputValidator({min:1,max:1,onerror:&quot;性别忘记选了,请确认&quot;}).DefaultPassed();<br>
+            2、修正了showalert模式下，只有值发生改变的时候才触发校验<br>
+            3、修改了表单提交的时候，表单元素校验的顺序，现在按照表单元素的流顺序进行校验<br>
+            4、demo1里集成了datatimemask插件，具体应用，请见“出生日期”的代码<br>
+            5、避免了插件与别的javascript类库的$符号的冲突<br>
+            6、修改了api帮助文档</td>
+  </tr>
+</table><br>
+<table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/2/3 22:30:44 jQuery formValidator 1.2.1 ver</b><br>
+            1、修复表单元素额外校验失败还会提交得bug,即formValidator里的onvalid属性</td>
+  </tr>
+</table><br>
+
+<table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/1/25 23:30:56 jQuery formValidator 1.2.0 ver</b><br>
+            这个版本，内部函数做了比较大的调整，开放了更多的函数提供给大家使用，使插件灵活性更大<br>
+            特别申明：请保留插件的版权申明，谢谢<br>
+            1、修改插件文件名为:formValidator.js ； 对应的正则表达式的库也被命名为formValidatorRegex.js。<br>
+            2、SelectValidator被合并到InputValidtor中去，请大家赶紧修改，语法兼容，只要替换名称即可。<br>
+            3、因为InputValidtor合并了SelectValidator，所以API帮助里列举了InputValidtor各属性能起作用的各种表单类型<br>
+            4、开放3个公共函数，这些函数跟你的配置相关：<br>
+            <table width="100%" border="1">
+              <tr> 
+                <td width="13%">SetFailState</td>
+                <td width="31%">function(&quot;tipid&quot;,&quot;显示的信息&quot;)</td>
+                <td width="56%">在showword模式下，如果你的额外校验没有通过，你可以通过它来设置成失败信息和状态。</td>
+              </tr>
+              <tr> 
+                <td>IsOneValid</td>
+                <td>function(&quot;表单元素id&quot;)</td>
+                <td>主要来判断单个表单元素是否验证通过。</td>
+              </tr>
+              <tr> 
+                <td rowspan="2">GetLength</td>
+                <td rowspan="2">function(&quot;表单元素id&quot;)</td>
+                <td>判断表单元素的选择长度（个数）</td>
+              </tr>
+              <tr>
+                <td>checkbox或radiobutton表示(同组)选择的个数。<br>
+                  select表示选择的selectedIndex值。<br>
+                  其它的表示字符长度。 </td>
+              </tr>
+            </table>
+            5、formValidator里的onvalid属性，增加了返回值，即插件校验成功后，你还可以额外校验。例子请参见demo1里的【额外校验】<br>
+            return true表示这个表单元素校验成功<br>
+            return false表示这个表单元素校验失败<br>
+            错误信息，你可以通过SetFailState函数要写<br>
+            6、修复在firefox下，长度验证出错的bug。发现jQuery1.2不支持这么写：$(&quot;#textarea&quot;).attr(&quot;type&quot;)</td>
+  </tr>
+</table><br>
+<table class="NewsTable" width="100%" cellpadding="4px">
+  <tr>
+          <td width="100%"><b>2008/1/22 23:58:57 jQuery formValidator 1.1.2 ver</b><br>
+            1、为AjaxValidator添加一个addidvalue属性(是否自动添加id和值到url参数后面)<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为了修复AjaxValidator在配置信息的时候,取不到运行时候值的bug<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;插件将自动在url后面自动添加,形式为&quot;id=value&quot;的网页参数<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在服务器端,你可以通过Request.querystring[&quot;id&quot;]来取值<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;具体演示请看demo1里的用户名输入和Default.aspx</td>
+  </tr>
+</table>
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/1/22 18:35:38 jsvalidation 1.1.1 ver</b><br>
+            1、紧急修复AjaxValidator校验状态出错,以及显示状态的bug<br>
+            2、调整了内部OneIsValid和formValidator函数的算法,使判断更加合理、有效</td>
+        </tr>
+      </table>
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/1/22 9:23:44 jQuery formValidator 1.1.0 ver</b><br>
+            1、开放AjaxValidator表单验证,主要对$.ajax()的调用,具体演示请看demo1里的用户名输入和Default.aspx<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名在服务器端的校验，我是用了随机数取模，但是每次运行返回要么都是偶数要么都是奇数（不知道什么问题）。<br>
+            先是长度校验，再是格式校验，最后才是服务器端校验<br>
+            2、修正AjaxValidator校验状态出错,以及显示状态的问题bug。<br>
+            3、修正对AjaxValidator的api帮助。<br>
+            4、修正内部几个函数的一些bug。<br>
+            5、未了适应AjaxValidator，调整formValidator初始化的一部分功能。</td>
+        </tr>
+      </table> 
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/1/17 20:25:29 jQuery formValidator 1.0.3 ver</b><br>
+            1、把InputValidator的属性defaultvalue移到formValidator下。<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前defaultvalue属性只支持input和select两种tag<br>
+            2、增加demo1里的范例内容，增加了性别的选择和默认值的设置（性别、学历、爱国、国家区号、你的描述）。<br>
+            3、增加RegexValidator的一个属性：datatype，支持外置正则表达式的枚举类型，具体请见demo3.html<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;你可以额外包含这个js文件，定义一个数据类型,你可以自由的修改里面的名称和对应的值<br>
+            var regexEnum = <br>
+            {<br>
+            intege:&quot;^([+-]?)\\d+$&quot; //整数<br>
+            }<br>
+            如何调用范例：$(&quot;#zs&quot;).formValidator({onshow:&quot;请输入整数&quot;,oncorrect:&quot;谢谢你的合作，你的整数正确&quot;}).RegexValidator({regexp:&quot;intege&quot;,datatype:&quot;enum&quot;,onerror:&quot;整数格式不正确&quot;});<br>
+            4、修正自动纠错的一个bug<br>
+            5、修正了api帮助文档</td>
+        </tr>
+      </table> 
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/1/15 0:50:40 jQuery formValidator 1.0.2 ver</b><br>
+            1、为formValidator增加tipid属性。<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要为了解决多个表单元素共用一个TIP的问题，提示错误的原则:后面的成功或失败信息都不覆盖前面的失败信息。针对这个属性，已经更新了demo1和源码，具体请看范例<br>
+            2、修正了部分bug和api说明文档疏漏的地方</td>
+        </tr>
+      </table> 
+      <br>
+      <table class="NewsTable" width="100%" cellpadding="4px">
+        <tr> 
+          <td width="100%"><b>2008/1/11 20:35:08 jQuery formValidator 1.0.1 ver</b><br>
+            1、修改formValidator下的属性onvalid<br>
+            增加2个参数，参数1：对象本身 参数2：值。主要是校验通过后，你还希望执行一些操作，你可以方便的取到对象和值<br>
+            2、去掉InputValidator、SelectValidator、CompareValidator、RegexValidator、AjaxValidator下的onvalid属性<br>
+            写文档的时候太过匆忙，所以属性加多了，帮助文档和源码都已经修正<br>
+            3、为formValidator增加属性:automodify,默认值：false。<br>
+            这个属性只要针对，如果你输入的是非法的，离开焦点的时候将自动恢复上次的值,并且先都有提示,showword模式的提示变成onshow状态<br>
+            4、为formValidator增加onfocusevent和onblurevent<br>
+            因为jQuery的事件注册是覆盖的，不是attachEvent追加的，所以再托管出这两个被插件霸占住的事件onfocus和onblur<br>
+            onfocusevent:获得焦点的时候，处理系统自动处理的代码后，继续你希望再执行的代码<br>
+            onblurevent:失去焦点的时候，处理系统自动处理的代码后，继续你希望再执行的代码<br>
+            5、提交验证过程中，如果没有验证通过，则第一个出错的获得焦点<br>
+            6、申明一点：RegexValidator采用的是显式构造函数new RegExp(&quot;pattern&quot;[,&quot;flags&quot;]); 
+            由于Javascript 中'\' 被用作转义字符，所以在使用显示构造函数构造实例对象的时候，需要使用'\\' 代替'\' </td>
+        </tr>
+      </table> 
+    </td>
+</tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">writeBottom();</SCRIPT>
+
+</body>
+
+</html>

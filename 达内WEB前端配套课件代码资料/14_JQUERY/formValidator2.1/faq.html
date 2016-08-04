@@ -1,0 +1,102 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<meta http-equiv="Content-Language" content="zh-cn">
+<title> jQuery formValidator表单验证插件</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<SCRIPT LANGUAGE="JavaScript" src="site.js"></SCRIPT>
+</head>
+
+<body>
+
+<SCRIPT LANGUAGE="JavaScript">writeTop();</SCRIPT>
+
+<table cellpadding="10" width="760" cellspacing="0" align="center" class="ContentTable">
+  <tr>
+    <td valign="top" class="Nav"> 
+      <SCRIPT LANGUAGE="JavaScript">writeNav();</SCRIPT>
+    </td>
+    <td valign="top"> <b>FAQ</b> 
+      <p><b>常见问题</b></p>
+      <ol>
+        <li><a href="#1">如何实现一个控件，根据不同的情况，实现不同的控制？</a></li>
+        <li><a href="#2">一个页面上我有几个tab页，如何实现每个Tab页上的控件单独校验？</a></li>
+        <li><a href="#3">我采用的页面上文字问题的方式，点提交的时候，有校验未通过的，除了文字提示外，还可以再弹出窗口提示吗？</a></li>
+        <li><a href="#4">所有校验通过后，我还要再做别的判断可以吗？我自己的判断没有通过可以中断提交吗？</a></li>
+        <li><a href="#5">我有一组的checkbox（radiobutton）如何设置校验？</a></li>
+        <li><a href="#6">我有2个表单元素，任意一个元素输入东西就算验证通过，如何写代码？比如要求输入中文名字和英文名字任意一个即算校验通过。</a></li>
+        <li><a href="#7">一个表单元素校验通过了，但是我想额外再进行其它的校验，出错要自定义错误，如何写代码？</a></li>
+        <li><a href="#8">如何让赋了初始值的表单元素默认校验通过<b>？</b></a></li>
+        <li><a href="#9">AjaxValidator校验，离开焦点的时候，马上点击提交按钮，这个时候服务器还没有返回怎么办？</a></li>
+        <li><a href="#10">我想在表单没有校验通过的时候，弹出第一个没有校验通过元素的错误信息，如何实现？</a></li>
+      </ol>
+      <p><b><a name="1"></a>1. 如何实现一个控件，根据不同的情况，实现不同的控制？[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; 你只需要在你的不同种情况下，重新设置你的【一行代码】<b>。例如：</b></p>
+      <p> if(条件)<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(&quot;#id&quot;).formValidator({配置1}).InputValidator({配1});<br>
+        else<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $(&quot;#id&quot;).formValidator({配置2}).InputValidator({配2}); 
+      </p>
+      <p><b><a name="2"></a>2. 一个页面上我有几个tab页，如何实现每个Tab页上的控件单独校验？[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; 每个Tab页上需要校验的控件，你在写【一行代码】的时候，显式的声明组号<b>。<br>
+        </b>&nbsp;&nbsp;&nbsp; $.formValidator.initConfig({validatorGroup:&quot;1&quot;});<br>
+        &nbsp;&nbsp;&nbsp; $.formValidator.initConfig({validatorGroup:&quot;2&quot;});<br>
+        &nbsp;&nbsp;&nbsp; 再在formValidator里显式的声明组号validatorGroup，例如：<br>
+        &nbsp;&nbsp;&nbsp; $(&quot;#id&quot;).formValidator({validatorGroup:&quot;2&quot;...}).InputValidator({...}); 
+      </p>
+      <p><b><a name="3"></a>3. 我采用的页面上文字问题的方式，点提交的时候，有校验未通过的，除了文字提示外，还可以再弹出窗口提示吗？[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; 这个问题很简单，你只要设置改组的全局配置，<br>
+        jQuery.formValidator.initConfig({onError:function(){alert(&quot;有部分校验没有通过，请看页面具体提示&quot;);}})<b>。</b>
+<p><b><a name="4"></a>4. 所有校验通过后，我还要再做别的判断可以吗？我自己的判断没有通过可以中断提交吗？[<a href="#">top</a>]</b></p>
+      <p>同样很简单，你页只需设置该组的全局配置，<br>
+        jQuery.formValidator.initConfig({onSuccess:function()<br>
+        {<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; if(你的额外判断失败)<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+        return false;<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; else<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 
+        return true;<br>
+        }})</p>
+<p><b><a name="5"></a>5. 我有一组的checkbox（radiobutton）如何设置校验？[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; 你只需在该组的第一个checkbox上设置校验信息即可，具体请参考demo1里的范例<br>
+        1、如果你该组的第一个控件的ID ，你可以这么写:<br>
+        $(&quot;sex_1&quot;).InputValidator({...})<br>
+        2、如果你只知道该组的name，你可以这么写:<br>
+        $(&quot;input:check[@name='sex']&quot;).slice(0,1).InputValidator({...})</p>
+<p><b><a name="6"></a>6. 我有2个表单元素，任意一个元素输入东西就算验证通过，如何写代码？比如要求输入中文名字和英文名字任意一个即算校验通过。[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; 正在开发这个功能</p> 
+      <p><b><a name="7"></a>7. 一个校验组校验通过了，但是我想额外再进行其它校验，出错要自定义错误，如何写代码？[<a href="#">top</a>]</b></p>
+      <p>$(&quot;#ewjy&quot;).formValidator({<br>
+        &nbsp;&nbsp;&nbsp; onshow:&quot;无论你输入什么，都会提示你额外校验出错，错误信息自定义&quot;,<br>
+        &nbsp;&nbsp;&nbsp; onfocus:&quot;至少输入一个字符&quot;,<br>
+        &nbsp;&nbsp;&nbsp; oncorrect:&quot;你怎么可能输入正确了，难道是bug?&quot;,<br>
+        &nbsp;&nbsp;&nbsp; onvalid:function()<br>
+        &nbsp;&nbsp;&nbsp; {<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; $.formValidator.SetFailState(&quot;ewjyTip&quot;,&quot;额外校验失败&quot;);<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; alert(&quot;额外校验失败&quot;);<br>
+        &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; return false;<br>
+        &nbsp;&nbsp;&nbsp; }}).InputValidator({min:1,onerror:&quot;这里至少要一个字符,请确认&quot;});</p>
+      <p><b><a name="8"></a>8. 如何让赋了初始值的表单元素默认校验通过<b>？</b>[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; $(&quot;#xueli&quot;).formValidator({onshow:&quot;请选择你的学历&quot;,onfocus:&quot;学历必须选择&quot;,oncorrect:&quot;谢谢你的配合&quot;,defaultvalue:&quot;b&quot;}).InputValidator({onerror: 
+        &quot;你是不是忘记选择学历了!&quot;}).<strong>DefaultPassed()</strong>;</p>
+      <p><a name="9"></a>9.<b> </b><strong>AjaxValidator校验，离开焦点马上点击提交按钮，这个时候如果服务器还没有返回数据怎么办？<b>[<a href="#">top</a>]</b></strong></p>
+      <p>&nbsp;&nbsp;&nbsp; 新版本的AjaxValidator提供了一个配置参数buttons（你点提交的按钮(组)jQuery对象），如果你触发了ajax校验，buttons里对应的按钮就会灰掉，一直等待服务器返回数据为止。例如：<br>
+        $(&quot;#test1&quot;).formValidator({...}).InputValidator({...}).AjaxValidator({<br>
+        &nbsp;&nbsp;&nbsp; url : &quot;Default.aspx&quot;,<br>
+        &nbsp;&nbsp;&nbsp; datatype : &quot;json&quot;,<br>
+        &nbsp;&nbsp;&nbsp; success : function(data){...},<br>
+        &nbsp;&nbsp;&nbsp; buttons: $(&quot;#button_id&quot;),<br>
+        &nbsp;&nbsp;&nbsp; error: function(){alert(&quot;服务器没有返回数据，可能服务器忙，请重试&quot;);},<br>
+        &nbsp;&nbsp;&nbsp; onerror : &quot;该用户名不可用，请更换用户名重新&quot;,<br>
+        &nbsp;&nbsp;&nbsp; onwait : &quot;正在对用户名进行合法性校验，请稍候...&quot;<br>
+        }); </p>
+      <p><a name="10"></a><b>10. 我想在表单没有校验通过的时候，弹出第一个没有校验通过元素的错误信息，如何实现？[<a href="#">top</a>]</b></p>
+      <p>&nbsp;&nbsp;&nbsp; onError有2个参数：第一个“第一个没有校验通过元素的错误信息”;第二个“第一个没有校验通过元素对象”；代码如下设置：<br>
+        jQuery.formValidator.initConfig({onError:function(msg){alert(msg);}})<b>。</b></tr>
+</table>
+<SCRIPT LANGUAGE="JavaScript">writeBottom();</SCRIPT>
+</body>
+
+</html>

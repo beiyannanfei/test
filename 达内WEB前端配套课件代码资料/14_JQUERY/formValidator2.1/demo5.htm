@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>jQuery formValidator表单验证插件 -- by:猫冬，email:wzmaodong@126.com</title>
+    <script src="jquery_last.js" type="text/javascript"></script>
+	<link type="text/css" rel="stylesheet" href="style/validator.css"></link>
+	<script src="formValidator.js" type="text/javascript"></script>
+	<script src="formValidatorRegex.js" type="text/javascript"></script>
+    <script>
+    $(document).ready(function(){
+        $.formValidator.initConfig({onError:function(msg){alert(msg)}});
+        $("#sfz").formValidator({onshow:"请输入15或18位的身份证",onfocus:"输入15或18位的身份证",oncorrect:"输入正确"}).RegexValidator({regexp:"idcard",datatype:"enum",onerror:"你输入的身份证格式不正确"});;
+        $("#sfz1").formValidator({onshow:"请输入15或18位的身份证",onfocus:"输入15或18位的身份证",oncorrect:"输入正确"}).FunctionValidator({fun:isCardID});
+    })
+function Button1_onclick() {
+    return jQuery.formValidator.PageIsValid();
+}
+
+
+    </script>
+</head>
+<body style="font-size:12px">
+    <form name="form1" method="post" action="Default2.aspx" id="form1">
+
+  <h2></h2>
+  <br />
+<p><a href="http://wzmaodong.cnblogs.com">猫冬的博客</a></p>
+	
+  <FIELDSET style="width:520px;">
+  
+  <LEGEND>调用正则表达式库和外部函数</LEGEND>
+  <p>
+  调用正则表达式库</p><p>
+  身份证： 
+  <input name="min" type="text" id="sfz" />
+  <div id="sfzTip"></div>
+   </p>     
+  <p>调用外部函数</p><p>
+    身份证： 
+    <input name="max" type="text" id="sfz1" />
+	<div id="sfz1Tip"></div>
+  </p>
+  <div id="maxTip">
+            <input id="Button1" type="submit" value="提交" language="javascript" onclick="return Button1_onclick()" /></div>
+ </FIELDSET>
+  <FIELDSET style="width:520px;">
+  <LEGEND></LEGEND>
+  </FIELDSET>
+   
+
+</form>
+</body>
+</html>
