@@ -13,8 +13,11 @@
   <script src="jquery-ui.min.js"></script>
   <script>
 	$(document).ready(function(){
-		$("#myDiv").draggable();
+		$("#myDiv").draggable().click(function () {
+            alert("可以拖拽");
+        });
 		$("ul").sortable({axis:"y"});
+
 	});
   </script>
  </head>
