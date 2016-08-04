@@ -22,8 +22,21 @@
 			$("#myDiv").slideUp("slow");
 		});
 
+        $("#sd").click(function () {
+            $("#myDiv").slideDown(5000);
+        });
+
+        $("#fo").click(function () {
+            $("#myDiv").fadeOut(3000);
+        });
+
+        $("#fi").bind("click", function () {
+            $("#myDiv").fadeIn(3000);
+        });
+
 		$("input[value='animate()']").click(function(){
-			$("#myDiv").animate({width:"200px",height:"100px",left:"500px",top:"300px",borderRadius:"50%"},5000).animate({width:"100px",height:"200px",left:"0px",top:"50px"},5000);
+			$("#myDiv").animate({width:"200px",height:"100px",left:"500px",top:"300px",borderRadius:"50%"},5000)
+                    .animate({width:"100px",height:"200px",left:"0px",top:"50px"},5000);
 			
 			$("#myDiv").animate({width:"200px",height:"100px",left:"500px",top:"300px"},5000);
 
@@ -44,9 +57,9 @@
   <input type="button" value="hide()" />
   <input type="button" value="show()" />
   <input type="button" value="slideUp()" />
-  <input type="button" value="slideDown()" />
-  <input type="button" value="fadeOut()" />
-  <input type="button" value="fadeIn()" />
+  <input id = "sd" type="button" value="slideDown()" />
+  <input id = "fo" type="button" value="fadeOut()" />
+  <input id = "fi" type="button" value="fadeIn()" />
   <input type="button" value="animate()" />
  </body>
 </html>
