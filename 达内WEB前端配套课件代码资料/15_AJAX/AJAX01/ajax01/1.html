@@ -28,6 +28,7 @@
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				//服务器已经正确处理请求，并且正确响应数据到客户端
+                alert(xhr.responseText);
 				var resText = xhr.responseText;
 				document.getElementById("showTxt").innerHTML=resText;
 			}

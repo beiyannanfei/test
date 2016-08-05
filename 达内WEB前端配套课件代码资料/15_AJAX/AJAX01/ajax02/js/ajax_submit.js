@@ -8,7 +8,9 @@ function createXhr(){
 }
 
 $(document).ready(function(){
+	// alert("初始化成功");
 	$("#txtName").blur(function(){
+		alert("文本框市区焦点");
 		//1、获取xhr
 		var xhr = createXhr();
 		//2、创建请求
