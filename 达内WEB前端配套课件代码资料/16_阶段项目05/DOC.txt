@@ -1,0 +1,43 @@
+1、数据库
+   用户表:users
+      uid
+      loginname
+      loginpwd
+      nickname
+
+2、登录
+   用户输入用户名和密码,正确的话直接登录，否则给出错误提示
+
+   插件:
+     1、jQuery
+     2、jQuery UI (Dialog)
+     3、formValidator
+     4、jquery form (ajaxSubmit)
+
+3、后台验证登录操作
+   1、接收传递的数据
+   2、select * from users where loginname='$loginname' and loginpwd='$loginpwd'
+   3、登录失败返回"ERROR"
+      成功返回 由 uid 和 nickname 组成的json字符串
+   4、将uid 和nickname 保存起来
+
+
+4、AjaxValidator({
+	url:
+	type:
+	success:function(data){
+		return true ; 验证通过
+		return false; 验证未通过
+	}
+	onerror:
+   });
+
+5、保存分数
+   数据表：score
+   列：
+      sid : score表中的主键列 自增
+      uid : 关联users表中的uid列
+      score : 保存游戏分数
+
+6、
+   select nickname,score from users inner join score on users.id=score.uid order by score desc limit 0,10
