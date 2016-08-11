@@ -4,3 +4,4 @@ koa_2.X/node_modules/babel-core/
 koa_2.X/node_modules/babel-preset-es2015-node5/
 koa_2.X/node_modules/babel-preset-stage-3/
 .idea/
+/node_modules/joi/
