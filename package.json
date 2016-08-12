@@ -53,6 +53,7 @@
     "is-relative": "^0.2.1",
     "isarray": "^1.0.0",
     "jade": "^1.11.0",
+    "joi": "^9.0.4",
     "jsontoxml": "0.0.11",
     "kafka": "^0.2.3",
     "kafka-node": "file:kafka-node",
