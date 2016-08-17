@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "node-schedule": "^1.1.1",
     "require-directory": "^2.1.1"
   },
   "devDependencies": {},
