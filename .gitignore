@@ -8,3 +8,4 @@ koa_2.X/node_modules/babel-preset-stage-3/
 /koa_test/node_modules/
 /express_3.X/logs/*
 /express_4.X/logs/*
+/SENSORO/node_modules/
