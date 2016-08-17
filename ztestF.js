@@ -1,63 +1,39 @@
+var xml2js = require("xml2js");
 
 
-var list = [
-	{"_id": ("578cadcc0a41822563ea0682"), "order_id": "20260320212", "status": 4},
-	{"_id": ("578cae420a41822563ea0686"), "order_id": "20330608000", "status": 4},
-	{"_id": ("578cae430a41822563ea0689"), "order_id": "20303023079", "status": 4},
-	{"_id": ("578cae440a41822563ea068a"), "order_id": "20260357796", "status": 4},
-	{"_id": ("578cae440a41822563ea068b"), "order_id": "20260357780", "status": 4},
-	{"_id": ("578cae430a41822563ea0688"), "order_id": "20303023047", "status": 4},
-	{"_id": ("578caec20a41822563ea0695"), "order_id": "20407727035", "status": 4},
-	{"_id": ("578caec30a41822563ea0696"), "order_id": "20407721683", "status": 4},
-	{"_id": ("578caec50a41822563ea069a"), "order_id": "20260392276", "status": 4},
-	{"_id": ("578caf340a41822563ea06a4"), "order_id": "20260448748", "status": 4},
-	{"_id": ("578cafaa0a41822563ea06a9"), "order_id": "20330710752", "status": 4},
-	{"_id": ("578cafac0a41822563ea06ac"), "order_id": "20252526782", "status": 4},
-	{"_id": ("578cb0240a41822563ea06b4"), "order_id": "20330738648", "status": 4},
-	{"_id": ("578cb0210a41822563ea06ae"), "order_id": "20407830155", "status": 4},
-	{"_id": ("578cb0220a41822563ea06af"), "order_id": "20407830155", "status": 4},
-	{"_id": ("578cb09d0a41822563ea06c3"), "order_id": "20330772560", "status": 4},
-	{"_id": ("578cb18d0a41822563ea06d7"), "order_id": "20330828752", "status": 4},
-	{"_id": ("578cb2050a41822563ea06e0"), "order_id": "20303309503", "status": 4},
-	{"_id": ("578cb2f30a41822563ea06ee"), "order_id": "20330932312", "status": 4},
-	{"_id": ("578cb36a0a41822563ea06f7"), "order_id": "20303430911", "status": 4},
-	{"_id": ("578cb36d0a41822563ea06fe"), "order_id": "20402922186", "status": 4},
-	{"_id": ("578cb3e20a41822563ea0707"), "order_id": "20260794436", "status": 4},
-	{"_id": ("578cb3e50a41822563ea070e"), "order_id": "20408073691", "status": 4},
-	{"_id": ("578cb45b0a41822563ea0718"), "order_id": "20252875486", "status": 4},
-	{"_id": ("578cb45c0a41822563ea0719"), "order_id": "20397734793", "status": 4},
-	{"_id": ("578cb45c0a41822563ea071a"), "order_id": "20276894077", "status": 4},
-	{"_id": ("578cb45d0a41822563ea071b"), "order_id": "20303482247", "status": 4},
-	{"_id": ("578cb4d20a41822563ea0728"), "order_id": "20303522655", "status": 4},
-	{"_id": ("578cb4d60a41822563ea0730"), "order_id": "20276920349", "status": 4},
-	{"_id": ("578cb4d80a41822563ea0734"), "order_id": "20397750337", "status": 4},
-	{"_id": ("578cb4da0a41822563ea0738"), "order_id": "20260828420", "status": 4},
-	{"_id": ("578cb54e0a41822563ea0745"), "order_id": "20403037314", "status": 4},
-	{"_id": ("578cb5500a41822563ea0748"), "order_id": "20252926750", "status": 4},
-	{"_id": ("578cb4d70a41822563ea0732"), "order_id": "20276916437", "status": 4},
-	{"_id": ("578cb5ca0a41822563ea0760"), "order_id": "20397810593", "status": 4},
-	{"_id": ("578cb5c30a41822563ea0753"), "order_id": "20260920596", "status": 4},
-	{"_id": ("578cb5c30a41822563ea0754"), "order_id": "20260920596", "status": 4},
-	{"_id": ("578cb5c50a41822563ea0757"), "order_id": "20403075154", "status": 4},
-	{"_id": ("578cb6b10a41822563ea0776"), "order_id": "20277066013", "status": 4},
-	{"_id": ("578cb6b40a41822563ea077b"), "order_id": "20331182624", "status": 4},
-	{"_id": ("578cb6b60a41822563ea077f"), "order_id": "20253015526", "status": 4},
-	{"_id": ("578cb7df0a41822563ea0788"), "order_id": "20277146109", "status": 4},
-	{"_id": ("578cb7e00a41822563ea078a"), "order_id": "20303727031", "status": 4},
-	{"_id": ("578cb7e00a41822563ea078b"), "order_id": "20261058836", "status": 4},
-	{"_id": ("578cb7e10a41822563ea078c"), "order_id": "20408345707", "status": 4},
-	{"_id": ("578cb7e30a41822563ea0790"), "order_id": "20303704559", "status": 4},
-	{"_id": ("578cb7e30a41822563ea0791"), "order_id": "20397951921", "status": 4},
-	{"_id": ("578cb7e40a41822563ea0793"), "order_id": "20303698295", "status": 4},
-	{"_id": ("578cb7e90a41822563ea079c"), "order_id": "20397933257", "status": 4},
-	{"_id": ("578cb7ed0a41822563ea07a4"), "order_id": "20277074237", "status": 4},
-	{"_id": ("578cb7ec0a41822563ea07a1"), "order_id": "20253064822", "status": 4},
-	{"_id": ("578cb90e0a41822563ea07ba"), "order_id": "20253167654", "status": 4},
-	{"_id": ("578cb90f0a41822563ea07bb"), "order_id": "20408395795", "status": 4},
-	{"_id": ("578cb9120a41822563ea07c2"), "order_id": "20277164701", "status": 4},
-	{"_id": ("578caf320a41822563ea06a0"), "order_id": "20397387713", "status": 4},
-	{"_id": ("578cb09b0a41822563ea06be"), "order_id": "20303238655", "status": 4},
-	{"_id": ("578cad530a41822563ea0676"), "order_id": "20397216521", "status": 4},
-	{"_id": ("578cb3e70a41822563ea0711"), "order_id": "20397686865", "status": 4}
-];
+function xml2Json(xml, cb) {
+	xml2js.parseString(buf, {explicitArray: false, trim: true, explicitRoot: false}, function (err, json) {
+		if (!!err) {
+			return cb("parse xml err");
+		}
+		if (!json) {
+			return cb("no response");
+		}
+		return cb(null, json);
+	});
+}
 
+function json2xml(obj) {
+	var builder = new xml2js.Builder({
+		allowSurrogateChars: true
+	});
+	var xml = builder.buildObject({
+		xml:obj
+	});
+	return xml;
+}
+
+var request = require('superagent');
+
+var obj = {
+	out_trade_no: "123456798",
+	appid: "abcdefg"
+};
+
+request
+	.post("127.0.0.1:4000/wxpay/cb")
+	.set('Content-Type', 'text/xml')
+	.send(json2xml(obj))
+	.end(function () {
+		console.log("xhr: %j", arguments);
+	});
