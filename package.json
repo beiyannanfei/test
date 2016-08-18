@@ -115,7 +115,7 @@
     "spade": "^0.52.6",
     "step": "0.0.6",
     "string_decoder": "^0.10.31",
-    "superagent": "^1.7.2",
+    "superagent": "^2.2.0",
     "tar": "^2.2.1",
     "thunk-redis": "^1.6.5",
     "thunkify": "^2.1.2",

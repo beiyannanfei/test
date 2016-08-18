@@ -38,5 +38,8 @@ var t2 = function () {
 	 });*/
 };
 
-t2();
+superagent("http://www.baidu.com/search")
+	.end(function (err,res) {
+		console.log(arguments);
+	});
 
