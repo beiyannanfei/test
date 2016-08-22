@@ -5,7 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "crontab": "^1.1.3",
+    "ioredis": "^2.3.0",
     "jsontoxml": "0.0.11",
+    "lodash": "^3.10.1",
     "node-schedule": "^1.1.1",
     "request": "^2.74.0",
     "require-directory": "^2.1.1",
