@@ -169,3 +169,8 @@ show(moment().toString());  //now: 2016-05-11 16:47:37 -- Wed May 11 2016 16:47:
 
 
 */
+
+
+console.log("=============================");
+
+show(moment(new Date()).diff(moment(new Date("2016-08-25 17:01:12")), 'm'));

@@ -30,30 +30,39 @@ var myDel = function (key) {
 		})
 	})
 };
+/*
+ co(function *() {
+ var res = yield {
+ setA: mySet("aa", 10),
+ setB: mySet("bb", 20)
+ }
+ console.log("res: %j", res);
+ try {
+ var res1 = yield mySet("cc", JSON.stringify(res), 1);
+ }
+ catch (e) {
+ console.log("e: %j", e);
+ yield myDel("aa");
+ yield myDel("bb");
+ }
+ console.log("res1: %j", res1);
+ return [res, res1];
+ }).then(val => {
+ console.log("val: %j", val);
+ process.exit();
+ }).catch(function (err) {
+ console.log("err: " + err);
+ process.exit();
+ });*/
 
-co(function *() {
-	var res = yield {
-		setA: mySet("aa", 10),
-		setB: mySet("bb", 20)
-	}
-	console.log("res: %j", res);
-	try {
-		var res1 = yield mySet("cc", JSON.stringify(res), 1);
-	}
-	catch (e) {
-		console.log("e: %j", e);
-		yield myDel("aa");
-		yield myDel("bb");
-	}
-	console.log("res1: %j", res1);
-	return [res, res1];
-}).then(val => {
-	console.log("val: %j", val);
-	process.exit();
-}).catch(function (err) {
-	console.log("err: " + err);
-	process.exit();
-});
+/*co(function *() {
+ return yield mySet("cc", "asdf", 1);
+ }).then(val=> {
+ console.log("val: %j", val);
+ }).catch(err=> {
+ console.log("err: %j", err);
+ });*/
+
 
 /*var fn = co.wrap(function *(k, v, err) {
  return yield mySet(k, v, err);
@@ -66,22 +75,36 @@ co(function *() {
  });*/
 
 
-co(function *(){
-	try {
-		yield Promise.reject(new Error('boom'));
-	} catch (err) {
-		console.error(err.message); // "boom"
-		yield Promise.reject(new Error('boom1'));
-	}
-}).catch(onerror);
+/*co(function *(){
+ try {
+ yield Promise.reject(new Error('boom'));
+ } catch (err) {
+ console.error(err.message); // "boom"
+ yield Promise.reject(new Error('boom1'));
+ }
+ }).catch(onerror);
 
-function onerror(err) {
-	// log any uncaught errors
-	// co will not throw any errors you do not handle!!!
-	// HANDLE ALL YOUR ERRORS!!!
-	console.error("onerror " + err.message);
+ function onerror(err) {
+ // log any uncaught errors
+ // co will not throw any errors you do not handle!!!
+ // HANDLE ALL YOUR ERRORS!!!
+ console.error("onerror " + err.message);
+ }*/
+
+function test(flag) {
+	if (flag) {
+		return "ok1"
+	}
+	return Promise.resolve("ok2");
 }
 
+co(function *() {
+	return yield test(1);
+}).then(val=> {
+	console.log("val: %j", val);
+}).catch(err=> {
+	console.log("err: %j", err);
+});
 
 
 
