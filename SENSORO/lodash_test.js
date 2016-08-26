@@ -13,7 +13,10 @@ var _ = require("lodash");
 _.delay(aaaa, 1000, "test");*/
 
 
-
+var a  = {
+	status: 10
+};
+console.log(_.isNumber(a.status));
 
 
 

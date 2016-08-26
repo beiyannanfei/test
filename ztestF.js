@@ -1,39 +1,12 @@
-var xml2js = require("xml2js");
-
-
-function xml2Json(xml, cb) {
-	xml2js.parseString(buf, {explicitArray: false, trim: true, explicitRoot: false}, function (err, json) {
-		if (!!err) {
-			return cb("parse xml err");
-		}
-		if (!json) {
-			return cb("no response");
-		}
-		return cb(null, json);
-	});
-}
-
-function json2xml(obj) {
-	var builder = new xml2js.Builder({
-		allowSurrogateChars: true
-	});
-	var xml = builder.buildObject({
-		xml:obj
-	});
-	return xml;
-}
-
-var request = require('superagent');
-
-var obj = {
-	out_trade_no: "123456798",
-	appid: "abcdefg"
-};
-
-request
-	.post("127.0.0.1:4000/wxpay/cb")
-	.set('Content-Type', 'text/xml')
-	.send(json2xml(obj))
-	.end(function () {
-		console.log("xhr: %j", arguments);
-	});
+var schema = module.exports = new mongoose.Schema({
+	shopId: {type: String, required: true},       //门店id
+	openId: {type: String, required: true},       //用户openId
+	appId: {type: String, required: true},        //商户appId
+	mchId: {type: String, required: true},        //商户号
+	money: {type: Number, required: true},        //订单金额
+	outTradeNo: {type: String, required: true},   //商户订单号
+	beforeStatue: {type: Number, required: true}, //之前订单状态
+	newStatue: {type: Number, required: true},    //最新订单状态
+	changeTime: {type: Date, default: Date.now},  //变化时间
+	paylog: {type: mongoose.Schema.Types.ObjectId, ref: "Wxpaylog"}   //微信订单id
+});
