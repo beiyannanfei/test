@@ -12,6 +12,7 @@ var _ = require("lodash");
 }
 _.delay(aaaa, 1000, "test");*/
 
+//test
 
 var a  = {
 	status: 10
