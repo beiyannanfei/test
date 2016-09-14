@@ -16,6 +16,16 @@ morgan.token("date", function () {
 });
 app.use(morgan('[:date] - :method :url :status :response-time ms - :res[content-length]'));   //todo POST /test 200 76.091 ms - 14
 
+app.all('*', function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+	res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+	if(req.method=="OPTIONS") {
+		return res.send(200);
+	}
+	next();
+});
+
 app.get("/test", (req, res) => {
 	var _headers = ['id', 'name', 'age', 'country', 'remark'];
 	var _data = [
@@ -63,6 +73,11 @@ app.get("/test", (req, res) => {
 // 导出 Excel
 	XLSX.writeFile(wb, 'output.xlsx', {type: 'buffer'});
 	res.end("AAAAAA");
+});
+
+app.get("/a1", (req, res) => {
+	console.log(req.query);
+	res.send("<h1>Hello World</h1>");
 });
 
 app.listen(9001, function () {

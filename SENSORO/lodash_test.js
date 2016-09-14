@@ -53,9 +53,28 @@ var _ = require("lodash");
  console.log(_.extend(a, {a: 11, b: 22}));
  console.log(a);*/
 
-var a = ['a', 'b', 'c', 'd', 'e'];
-var b = ['b', 'd', 'f'];
-console.log(_.difference(a, b));
+/*var a = ['a', 'b', 'c', 'd', 'e'];
+ var b = ['b', 'd', 'f'];
+ console.log(_.difference(a, b));
+ console.log(a);
+ console.log(b);*/
+
+/*var a = ['awdf', 'werg', 'awaf', 'werg', 'zaqwfr', 'gasda'];
+ var b = _.sortBy(a);
+ console.log(b);
+ var c = _.uniq(b);
+ console.log(c);*/
+
+/*var a = "asdf";
+ console.log(a);
+ if (_.isString(a)) {
+ a = [a];
+ }
+ console.log(a);*/
+
+var a = {};
 console.log(a);
+var b = _.values(a);
 console.log(b);
+
 

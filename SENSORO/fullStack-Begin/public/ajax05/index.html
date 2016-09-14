@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>ajax-05</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script src="ajax_submit.js"></script>
+    <style>
+        .redColor {
+            color: red
+        }
+
+        .blueColor {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <td>登陆名称</td>
+        <td><input id="txtLoginName"/></td>
+        <td>
+            <div id="txtLoginNameTip" class="redColor">*</div>
+        </td>
+    </tr>
+    <tr>
+        <td>登陆密码</td>
+        <td><input id="txtLoginPwd"/></td>
+        <td>
+            <div id="txtLoginPwdTip">*</div>
+        </td>
+    </tr>
+    <tr>
+        <td>用户昵称</td>
+        <td><input id="txtNickName"/></td>
+        <td>
+            <div id="txtNickNameTip">*</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <input type="button" value="注册" id="btnRegist"/>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
