@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax09-xml</title>
+    <script>
+        var xmlTxt = "<?xml version='1.0' encoding='utf-8' ?><User><Name>Jimmy</Name><Age>18</Age></User>";
+        function createXmlDoc() {
+            if (window.DOMParser) {
+                return new DOMParser().parseFromString(xmlTxt, "text/xml");
+            }
+            else {
+                var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+                xmlDoc.async = false;
+                xmlDoc.loadXML(xmlTxt);
+                return xmlDoc;
+            }
+        }
+
+        function getText() {
+            var xmlDoc = createXmlDoc();
+            var user = xmlDoc.getElementsByTagName('User');
+            console.log(user);
+            var info = user[0].childNodes[0];
+            console.log(user[0].childNodes);
+            console.log(info);  //<Name>Jimmy</Name>
+            console.log(info.nodeName); //Name
+            console.log(info.childNodes[0].nodeValue);  //Jimmy
+            console.log(user[0].childNodes[1]); //<Age>18</Age>
+            console.log(user[0].childNodes[1].nodeName);    //Age
+            console.log(user[0].childNodes[1].childNodes[0].nodeValue); //18
+        }
+
+        window.onload = getText();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

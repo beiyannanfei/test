@@ -1,4 +1,4 @@
-var Rx = require('rx');
+var Rx = require("rxjs");
 
 Rx.Observable.of('hello world')
 	.subscribe(function(x) { console.log(x); });
