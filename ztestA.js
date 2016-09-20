@@ -1,14 +1,16 @@
-var a = "a|b|c|d";
-var b = "{\"a\":10,\"b\":20}";
+var _ = require("lodash");
 
-try {
-	var c = JSON.parse(a);
-	console.log("c = %j", c);
-} catch (e) {
-	console.log("e = %j", e.message);
-	var d = JSON.parse(b);
-	console.log("d = %j", d);
+var codelist = [];
+payCode:"1234"
+console.time("make code");
+for (var i = 0; i < 1000; ++i) {
+	codelist.push(Math.random().toString().substring(2, 6));
 }
+console.timeEnd("make code");
 
+console.log(codelist.length);
+codelist = _.sortBy(codelist);
+codelist = _.uniq(codelist, true);
+console.log(codelist.length);
 
 
