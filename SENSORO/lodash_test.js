@@ -72,9 +72,17 @@ var _ = require("lodash");
  }
  console.log(a);*/
 
-var a = {};
-console.log(a);
-var b = _.values(a);
+/*var a = {};
+ console.log(a);
+ var b = _.values(a);
+ console.log(b);*/
+
+var a = [1, 2, 3];
+var b = _.map(a, item => {
+	t: item
+});
+
 console.log(b);
+
 
 

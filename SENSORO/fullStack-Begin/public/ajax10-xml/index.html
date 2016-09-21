@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>ajax10-xml</title>
+    <script>
+        function loadXmlTxt() {
+            var xmlTxt = "<?xml version='1.0' encoding='utf-8' ?>";
+            xmlTxt += "<User><Name>Jimmy</Name></User>";
+            var xmlDom;
+            if (window.DOMParser) {
+                xmlDom = new DOMParser().parseFromString(xmlTxt, "text/xml");
+            }
+            else {
+                xmlDom = new ActiveXObject("Microsoft.XMLDOM");
+                xmlDom.loadXML(xmlTxt);
+            }
+            console.log(xmlDom);
+            console.log(xmlDom.nodeName);
+            var user = xmlDom.getElementsByTagName("User");
+            console.log(user);
+            console.log(user[0].nodeName);
+            console.log(user[0].childNodes[0].nodeName);
+            console.log(user[0].childNodes[0].childNodes[0].nodeValue);
+        }
+
+        function createXhr() {
+            if (window.XMLHttpRequest)
+                return new XMLHttpRequest();
+            return new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        function getXml() {
+            var xhr = createXhr();
+            xhr.open("get", "Person.xml", true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var xmlDom = xhr.responseXML;
+                    var users = xmlDom.getElementsByTagName("user");
+                    for (var i = 0; i < users.length; i++) {
+                        var user = users[i];
+                        var nodeName = user.nodeName;
+                        var nId = user.getAttribute("id");
+                        var nType = user.nodeType;
+                        console.log("节点名称: %s, id: %s, nType: %s", nodeName, nId, nType);
+                        for (var j = 0; j < user.childNodes.length; j++) {
+                            var child = user.childNodes[j];
+                            if (child.nodeType == 1) {
+                                console.log(child.nodeName + ":" + child.firstChild.nodeValue);
+                            }
+                        }
+                    }
+                }
+            };
+            xhr.send(null);
+        }
+
+        window.onload = function () {
+            loadXmlTxt();
+            console.log("==========================");
+            getXml();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
