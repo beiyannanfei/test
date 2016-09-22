@@ -1,4 +1,1 @@
-var a = 1;
-if (a) {
-	console.log("===");
-}
+console.log("================== env: " + process.env.NODE_ENV);
