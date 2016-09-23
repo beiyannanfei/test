@@ -77,12 +77,16 @@ var _ = require("lodash");
  var b = _.values(a);
  console.log(b);*/
 
-var a = [1, 2, 3];
+/*var a = [1, 2, 3];
 var b = _.map(a, item => {
 	t: item
 });
 
-console.log(b);
+console.log(b);*/
+
+var f = _.property("length");
+console.log(f("asdf"));
+console.log("asdf"["length"]);
 
 
 

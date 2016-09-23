@@ -423,6 +423,6 @@ exports.curlStrFile = function (url, cb) {
 }
 
 
-exports.postXmlHttp("127.0.0.1:3000/p", {a: 10, b: 20, c: 30, d: 40}, function (err, o) {
+/*exports.postXmlHttp("127.0.0.1:3000/p", {a: 10, b: 20, c: 30, d: 40}, function (err, o) {
 	console.log(arguments);
-});
+});*/
