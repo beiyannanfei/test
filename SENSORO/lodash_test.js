@@ -78,15 +78,27 @@ var _ = require("lodash");
  console.log(b);*/
 
 /*var a = [1, 2, 3];
-var b = _.map(a, item => {
-	t: item
-});
+ var b = _.map(a, item => {
+ t: item
+ });
 
-console.log(b);*/
+ console.log(b);*/
 
-var f = _.property("length");
-console.log(f("asdf"));
-console.log("asdf"["length"]);
+/*var f = _.property("length");
+ console.log(f("asdf"));
+ console.log("asdf"["length"]);*/
+/*
+ var a = [
+ {a: 10}, {b: 20}, {a: 30}
+ ];
+
+ var b = _.pluck(a, 'a');
+ console.log(b);
+ b = _.compact(b);
+ console.log(b);*/
+
+var a = [["a", 10], ["b", 20], ["c", 30]];
+console.log(_.zipObject(a));
 
 
 

@@ -12,3 +12,4 @@ console.log("--------------------");
 foo.subscribe(y => {
 	console.log("========= y: " + y);
 });
+
