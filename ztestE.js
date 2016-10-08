@@ -1,6 +1,8 @@
-var util = require("util");
-var url = "http://localhost:3000/pay";
-var shopId = "asf";
-console.log(util.format("%s/render?id=%s", url, shopId));
-
-
+var count = 0;
+for (var i = 1; i <= 96; ++i) {
+	var temp = i * (i + 1) * (i + 2);
+	if (temp % 8 == 0) {
+		++count;
+	}
+}
+console.log(count / 96);
