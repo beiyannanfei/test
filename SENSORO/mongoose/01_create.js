@@ -32,12 +32,13 @@ function test1() {
 	t1Model.create(doc, function (err, response) {
 		console.log(response);
 		let doc = {
+			_id: "57fb035353121ec02ce78a09",
 			job: "chengxuyuan",
 			love: "changge",
 			t1Id: response._id
 		};
 		t2Model.create(doc, function (err, response) {
-			console.log(response);
+			console.log(arguments);
 		});
 	});
 }
