@@ -1,8 +1,14 @@
-var count = 0;
-for (var i = 1; i <= 96; ++i) {
-	var temp = i * (i + 1) * (i + 2);
-	if (temp % 8 == 0) {
-		++count;
+var a = [
+	{status: 1},
+	{status: 2},
+	{status: 3},
+	{status: 4}
+];
+
+var b = a.map(item => {
+	if (item.status == 2) {
+		return item.status;
 	}
-}
-console.log(count / 96);
+});
+
+console.log(b);
