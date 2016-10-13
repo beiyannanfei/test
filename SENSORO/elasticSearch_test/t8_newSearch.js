@@ -463,8 +463,325 @@ function aggsAvgTest() {
 			return console.log(err.message);
 		}
 		console.log("%j", response);
+		setTimeout(calAvgValue, 1000);
 	});
+	var calAvgValue = function () {
+		let condition = {
+			index: "myindex1",
+			type: "mytype1",
+			body: {
+				aggs: {
+					myAvgVal: {
+						avg: {field: "a"}
+					}
+				}
+			}
+		};
+		client.search(condition, function (err, val) {
+			if (!!err) {
+				return console.log(err.message);
+			}
+			console.log("%j", val);
+		});
+	};
 }
-// deleteAll();
 
+function aggsCardinalityTest() {  //计算某个字段共有多少种取值
+	let doc = {
+		body: [
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 1, b: "a"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 2, b: "b"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 3, b: "c"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 4, b: "d"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 5, b: "e"}
+		]
+	};
+	client.bulk(doc, function (err, response) {
+		if (!!err) {
+			return console.log(err.message);
+		}
+		console.log("%j", response);
+		setTimeout(cardinality, 1000);
+	});
+	var cardinality = function () {
+		let condition = {
+			index: "myindex1",
+			type: "mytype1",
+			body: {
+				aggs: {
+					b_count: {
+						cardinality: {field: "b"}
+					}
+				}
+			}
+		};
+		client.search(condition, function (err, val) {
+			if (!!err) {
+				return console.log(err.message);
+			}
+			console.log("%j", val);
+		});
+	};
+}
+
+function aggsPersentiles() {  //暂时没懂是什么意思
+	let doc = {
+		body: [
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 1, b: "a"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 2, b: "b"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 3, b: "c"}
+		]
+	};
+	client.bulk(doc, function (err, response) {
+		if (!!err) {
+			return console.log(err.message);
+		}
+		console.log("%j", response);
+		setTimeout(percentiles, 1000);
+	});
+	let percentiles = function () {
+		let condition = {
+			index: "myindex1",
+			type: "mytype1",
+			body: {
+				aggs: {
+					b_persent: {
+						percentile_ranks: {
+							field: "a",
+							values: [1, 2, 3, 4, 5]
+						}
+					}
+				}
+			}
+		};
+		client.search(condition).then(val => {
+			console.log("val: %j", val);
+		}).catch(err => {
+			console.log(err.message);
+		});
+	};
+}
+
+function aggsStats() {
+	let doc = {
+		body: [
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 1, b: "a"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 2, b: "b"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 3, b: "c"}
+		]
+	};
+	client.bulk(doc, function (err, response) {
+		if (!!err) {
+			return console.log(err.message);
+		}
+		console.log("%j", response);
+		setTimeout(stats, 1000);
+	});
+	let stats = function () {
+		let condition = {
+			index: "myindex1",
+			type: "mytype1",
+			body: {
+				aggs: {
+					a_stats: {
+						stats: {field: "a"}
+					}
+				}
+			}
+		};
+		client.search(condition).then(val => {
+			console.log("val: %j", val);
+		}).catch(err => {
+			console.log(err.message);
+		});
+	};
+}
+
+function aggsExtendStats() {
+	let doc = {
+		body: [
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 1, b: "a"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 2, b: "b"},
+			{index: {_index: "myindex1", _type: "mytype1"}},
+			{a: 3, b: "c"}
+		]
+	};
+	client.bulk(doc, function (err, response) {
+		if (!!err) {
+			return console.log(err.message);
+		}
+		console.log("%j", response);
+		setTimeout(extendStats, 1000);
+	});
+	let extendStats = function () {
+		let condition = {
+			index: "myindex1",
+			type: "mytype1",
+			body: {
+				aggs: {
+					grades_stats: {
+						extended_stats: {field: "a"}
+					}
+				}
+			}
+		};
+		client.search(condition).then(val => {
+			console.log("val: %j", val);
+		}).catch(err => {
+			console.log(err.message);
+		});
+	};
+}
+
+function aggsTerms() {  //分类统计
+	let doc = {
+		body: [
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 1, b: "a", c: "boy"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 2, b: "a", c: "girl"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 3, b: "b", c: "boy"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 4, b: "b", c: "girl"}
+		]
+	};
+	client.bulk(doc).then(response => {
+		console.log("response: %j", response);
+		setTimeout(aggregate, 1000);
+	}).catch(err => {
+		console.log(err.message);
+	});
+	let aggregate = function () {
+		let condition = {
+			index: "myindex2",
+			type: "mytype2",
+			body: {
+				query: {
+					term: {c: "girl"}
+				},
+				aggs: {
+					b: {
+						terms: {field: "b"}
+					}
+				}
+			}
+		};
+		client.search(condition).then(val => {
+			console.log("val: %j", val);
+		}).catch(err => {
+			console.log(err.message);
+		});
+	};
+}
+
+function aggsTerms1() {
+	let doc = {
+		body: [
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 1, b: "a", c: "boy"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 2, b: "a", c: "girl"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 3, b: "b", c: "boy"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 4, b: "b", c: "girl"}
+		]
+	};
+	client.bulk(doc).then(response => {
+		console.log("response: %j", response);
+		setTimeout(aggregate, 1000);
+	}).catch(err => {
+		console.log(err.message);
+	});
+	let aggregate = function () {
+		let condition = {
+			index: "myindex2",
+			type: "mytype2",
+			body: {
+				aggs: {
+					b: {
+						terms: {
+							field: "b"
+						},
+						aggs: {
+							c: {
+								stats: {
+									field: "a"
+								}
+							}
+						}
+					}
+				}
+			}
+		};
+		client.search(condition).then(val => {
+			console.log("val: %j", val);
+		}).catch(err => {
+			console.log(err.message);
+		});
+	};
+}
+
+function aggsTerms2() {
+	let doc = {
+		body: [
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 1, b: "a", c: "boy"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 2, b: "a", c: "girl"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 3, b: "b", c: "boy"},
+			{index: {_index: "myindex2", _type: "mytype2"}},
+			{a: 4, b: "b", c: "girl"}
+		]
+	};
+	client.bulk(doc).then(response => {
+		console.log("response: %j", response);
+		setTimeout(aggregate, 1000);
+	}).catch(err => {
+		console.log(err.message);
+	});
+	let aggregate = function () {
+		let condition = {
+			index: "myindex2",
+			type: "mytype2",
+			body: {
+				aggs: {
+					b: {
+						terms: {
+							field: "b"
+						}
+					},
+					c: {
+						terms: {
+							field: "c"
+						}
+					}
+				}
+			}
+		};
+		client.search(condition).then(val => {
+			console.log("val: %j", val);
+		}).catch(err => {
+			console.log(err.message);
+		});
+	};
+}
+
+aggsTerms2();
+// deleteAll();
 

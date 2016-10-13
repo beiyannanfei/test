@@ -8,6 +8,7 @@ mongoose.connect("mongodb://localhost/test");
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
 
+console.log(mongoose.Types.ObjectId()); //生成一个_id
 let t1Schema = new Schema({
 	name: {type: String},
 	age: {type: Number},
@@ -82,5 +83,15 @@ function test5() {
 		console.log(err.message);
 	});
 }
+
+function test6() {
+	t2Model.count({}).then(val => {
+		console.log(val);
+	}).catch(err => {
+		console.log(err.message);
+	});
+}
+
+test6();
 
 
