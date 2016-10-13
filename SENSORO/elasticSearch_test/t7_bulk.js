@@ -5,10 +5,10 @@ const client = require("./esClient.js").esClient;
 function test1() {
 	let condition = {
 		body: [
-			{
-				index: {_index: "megacorp", _type: "employee", _id: 4}
-			},
-			{title: "foo"}
+			{index: {_index: "megacorp", _type: "employee"}},
+			{title: "foo"},
+			{index: {_index: "megacorp1", _type: "employee1"}},
+			{title: "bar"}
 		]
 	};
 	client.bulk(condition, function (err, response) {
@@ -48,4 +48,4 @@ function test3() {
 	});
 }
 
-test3();
+test1();

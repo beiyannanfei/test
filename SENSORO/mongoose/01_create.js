@@ -3,6 +3,7 @@
  */
 "use strict";
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 mongoose.connect("mongodb://localhost/test");
 const Schema = mongoose.Schema;
 const ObjectId = Schema.ObjectId;
@@ -49,13 +50,37 @@ function test2() {
 	});
 }
 
-test2();
+function test3() {
+	let doc = {
+		name: "a1",
+		age: 2010,
+		addr: "shanghai 0001"
+	};
+	t1Model.update({name: doc.name}, {$set: doc}, {upsert: true}, function (err, response) {
+		console.log(arguments);
+		console.log(response);
+		console.log(response.upserted);
+	});
+}
 
+function test4() {
+	t1Model.findById("57fb69c90ae727410c61c2b4")
+		.then(val => {
+			console.log(val);
+			return t1Model.findById("57fb6a360ae727410c61c2b5")
+		}).then(val => {
+		console.log(val);
+	}).catch(err => {
+		console.log(err.message);
+	})
+}
 
-
-
-
-
-
+function test5() {
+	t2Model.find({_id: {$in: ["57fb035353121ec02ce78a09"]}}).populate("t1Id").exec().then(val => {
+		console.log(val);
+	}).catch(err => {
+		console.log(err.message);
+	});
+}
 
 

@@ -38,8 +38,41 @@ var t2 = function () {
 	 });*/
 };
 
-superagent("http://www.baidu.com/search")
-	.end(function (err,res) {
-		console.log(arguments);
-	});
+/*superagent("http://www.baidu.com/search")
+ .end(function (err,res) {
+ console.log(arguments);
+ });*/
+
+function test(url, param, cb) {
+	superagent.post(url)
+		.type("application/x-www-form-urlencoded")
+		.send(param)
+		.timeout(10000)
+		.accept("text/json")
+		.end(function (err, xhr) {
+			if (!!err) {
+				return cb(err);
+			}
+			if (xhr.statusCode != 200) {
+				return cb(xhr.statusCode);
+			}
+			if (!xhr.body) {
+				return cb("response has not content");
+			}
+			let body;
+			try {
+				body = JSON.parse(xhr.text);
+			}
+			catch (e) {
+				console.log(e.message);
+				body = xhr.text;
+			}
+			return cb(null, body);
+		});
+}
+
+test("http://127.0.0.1:5000/admin/test", {a: 10, b: 20}, function (err, response) {
+	console.log(arguments);
+});
+
 

@@ -97,8 +97,13 @@ var _ = require("lodash");
  b = _.compact(b);
  console.log(b);*/
 
-var a = [["a", 10], ["b", 20], ["c", 30]];
-console.log(_.zipObject(a));
+/*var a = [["a", 10], ["b", 20], ["c", 30]];
+ console.log(_.zipObject(a));*/
+
+var a = [1, 2, 3];
+var b = [3, 4, 5];
+
+console.log(_.intersection(a, b));
 
 
 
