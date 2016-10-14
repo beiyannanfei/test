@@ -9,5 +9,10 @@
     "connect-redis": "^1.4.7",
     "moment": "^2.13.0",
     "pug": "^0.1.0"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

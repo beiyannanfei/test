@@ -70,12 +70,14 @@ exports.getXmlHttp = function (url, cb) {
 
 exports.postXmlHttp = function (url, params, cb) {
 	var options = _.extend({}, params);
-	var xml = jsonxml(options, {})
-	xml = '<xml>' + xml + '</xml>'
+	var xml = jsonxml(options, {});
+	xml = '<xml>' + xml + '</xml>';
+	console.log(xml);
 	request.post(url)
-		.type('text/html')
+		.type('text/xml')
 		.send(xml)
-		.end(function (xhr) {
+		.end(function (err, xhr) {
+			console.log("xhr: %j", xhr);
 			if (xhr.statusCode == 200) {
 				if (xhr.text) {
 					parseString(xhr.text, {
@@ -419,3 +421,8 @@ exports.curlStrFile = function (url, cb) {
 		}
 	});
 }
+
+
+/*exports.postXmlHttp("127.0.0.1:3000/p", {a: 10, b: 20, c: 30, d: 40}, function (err, o) {
+	console.log(arguments);
+});*/

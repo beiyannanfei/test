@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>ajax-06</title>
+    <script>
+        function createXhr() {
+            if (window.XMLHttpRequest) {
+                return new XMLHttpRequest();
+            }
+            else {
+                return new ActiveXObject("Microsoft.XMLHTTP");
+            }
+        }
+
+        function loadProvince() {
+            var xhr = createXhr();
+            xhr.open("get", "/ajax/a6/province", false);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var resText = xhr.responseText;
+                    resText = JSON.parse(resText);
+                    resText.forEach(function (item) {
+                        document.getElementById("province").options.add(new Option(item, item));
+                    });
+                }
+            };
+            xhr.send(null);
+        }
+
+        function loadCity(pro) {
+            document.getElementById("city").options.lenth = 0;
+            var xhr = createXhr();
+            xhr.open("get", "/ajax/a6/city?province=" + pro, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var citys = xhr.responseText;
+                    citys = JSON.parse(citys);
+                    citys.forEach(function (item) {
+                        document.getElementById("city").options.add(new Option(item, item));
+                    });
+                }
+            };
+            xhr.send(null);
+        }
+
+        window.onload = function () {
+            loadProvince();
+            var pro = document.getElementById("province").value;
+            loadCity(pro);
+        };
+    </script>
+</head>
+<body>
+<select id="province" onchange="loadCity(this.value)"></select>
+<select id="city"></select>
+</body>
+</html>

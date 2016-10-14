@@ -1,639 +1,996 @@
-/**
- * Created by wyq on 2016/3/22.
- * 联盟商城订单获取
- */
-
-var config = require("../../config.js");
-var kafka = require('kafka-node');
-var HighLevelConsumer = kafka.HighLevelConsumer;
-var Client = kafka.Client;
-var topic = "cps_occur_oder";
-var client = new Client(config.kafka.connectionStr);
-var topics = [{topic: topic}];
-var options = {autoCommit: true, fetchMaxBytes: 100 * 1024 * 1024};
-var consumer = new HighLevelConsumer(client, topics, options);
-
-
-var dbUtils = require('../../mongoSkin/mongoUtils.js');
-var unionOrderCollection = new dbUtils("unionorder");
-var unionOrderCollectionSlave = new dbUtils("unionorder", 1);
-var exec = require('child_process').exec;
-var _ = require('underscore');
-var async = require('async');
+var _ = require('lodash');
 var moment = require('moment');
-var typeConfig = require("../../routes/typeConfig.js");
-var redis_client = require('../../redis/redis_client.js');
-var lotteryApi = require("../../interface/lotteryApi.js");
-var redisClient = redis_client.redisClient();
-var newredisClient = redis_client.redisClient();
-var mUnionOrderPaySate = typeConfig.unionOrderPaySate;
-var mUnionMallRed = require("../../routes/unionMallRed.js");
-var mWxhb = require("../../routes/wxhb.js");
-var util = require("util");
+var Promise = require('bluebird');
+var Joi = require('joi');
+var config = require('config');
+var logger = require('../utils/log')('lotteryCtrl');
+var logCtrl = require('./log');
 
-console.log("[%j] unionMallOrderConsumer start *******", new Date().toLocaleString());
+var n = 0;
 
-consumer.on('message', function (message) {
-	console.log("[%j] unionMallOrderConsumer get message: %j", new Date().toLocaleString(), message);
-	redisClient.LPUSH("unionMallOrderConsumer", JSON.stringify(message), function (err, data) {
-		if (!!err) {
-			console.log("[%j] unionMallOrderConsumer LPUSH err: %j, message: %j", new Date().toLocaleString(), err, message);
+/**
+ * 根据 ID 获取抽奖规则信息
+ * @param  {String}            lotteryId  抽奖规则信息 ID
+ * @return {Promise}
+ */
+var getLotteryById = function(lotteryId, uid, appid) {
+	/* istanbul ignore if */
+	if (!lotteryId) {
+		return Promise.resolve(null);
+	}
+	var query = {
+		_id: lotteryId,
+		isDeleted: false
+	};
+	if (uid) {
+		query.uid = uid;
+	}
+	if (appid) {
+		query.appid = appid;
+	}
+	return Lottery.findOne(query);
+};
+
+/**
+ * 获取抽奖日志列表
+ *
+ * @param {Object}  query  过滤规则
+ * @param {Number}  page   分页参数
+ * @param {Number}  count  分页参数
+ *
+ * @return {Promise}
+ */
+var getLogs = function(query, page, count, sortBy) {
+	page = Math.abs(page) || 1;
+	count = Math.abs(count) || 20;
+	if (!sortBy) {
+		sortBy = {drawTime: -1};
+	}
+	return LotteryLog.find(query)
+		.limit(count)
+		.skip(count * (page - 1))
+		.sort(sortBy);
+};
+
+/**
+ * 抽奖次数修改
+ * @param  {String}  lotteryId 抽奖规则 ID
+ * @param  {Number}  count     抽奖规则的人次最大限制
+ * @param  {Number}  num       次数加一(发奖) 或 减一(回滚) ( 1 or -1 )
+ * @param  {Object}  prize     奖品信息
+ * @return {Promise}
+ */
+var lotteryCountInc = function(lotteryId, count, prize, type, fOpenId, rollback) {
+	var query = {
+		_id: lotteryId,
+		isDeleted: false
+	};
+
+	// 总抽奖次数修改数值，卡券发放数值
+	var chanceNum, cardNum;
+	// 若是发放卡券，则需要加上抽奖规则次数上限条件
+	/* istanbul ignore else */
+	if (!rollback) {
+		query['rules.use'] = {
+			$lt: count
+		};
+		chanceNum = 1;
+		cardNum = 1;
+	} else {
+		chanceNum = -1;
+		cardNum = -1;
+	}
+
+	if (type === 'multi') {
+		cardNum = cardNum * ((fOpenId && fOpenId.length || 0) + 1);
+	}
+
+	var updated = {
+		$inc: {
+			'rules.use': chanceNum
 		}
-		else {
-			console.log("[%j] unionMallOrderConsumer push to redis success offset: %j", new Date().toLocaleString(), message.offset);
+	};
+
+	// 中奖，需要发放卡券 或 回滚
+	if (prize && prize.cardId) {
+		// 若是发放卡券，则需要以不大于卡券库存作为条件
+		if (!rollback) {
+			query['cardSentInfo.' + prize.id] = {
+				$lte: prize.quantity - cardNum
+			};
 		}
+		updated['$inc']['cardSentInfo.' + prize.id] = cardNum;
+	}
+	return Lottery.update(query, updated).then(function (ret) {
+		/* istanbul ignore if */
+		if (!ret || !ret.n) {
+			return Promise.reject({
+				errcode: 4240006,
+				errmsg: 'Draw error',
+				info: _.pick(prize, 'remainDailyChanceCount', 'drawTime')
+			});
+		}
+
+		return prize;
 	});
-});
+};
 
-consumer.on('error', function (err) {
-	console.error("[%j] unionMallOrderConsumer err: %j, financialDaemon will restart 10mins later", new Date().toLocaleString(), err);
-	setTimeout(function () {    //kafka出错后587s后重启脚本(587为600以下比较合适的一个质数)
-		console.log("[%j] exec forever restart /opt/mall_play/tools/cron/financialDaemon.js", new Date().toLocaleString());
-		var cmd = "forever restart /opt/mall_play/tools/cron/financialDaemon.js";
-		exec(cmd, function (err, stdout, stderr) {
-			console.log("[%j] unionMallOrderConsumer forever restart err: %j, stdout: %j, stderr: %j", new Date().toLocaleString(), err, stdout, stderr);
+/**
+ * 写抽奖记录 log 日志
+ * @param  {Object} data [description]
+ * @return {Promise}
+ */
+var writeLotteryLog = function(data, prize, type, fOpenId) {
+	var time = Date.now();
+	data.drawTime = time;
+	var _friendDrawLog;
+	if (type === 'multi') {
+		data.friends = fOpenId;
+		_friendDrawLog = _.map(fOpenId, function(id) {
+			return {
+				lotteries: data.lotteries,
+				type: 'follow',
+				multi: true,
+				friends: _.union(_.without(fOpenId, id), [data.openId]),
+				dOpenId: data.openId,
+				openId: id,
+				status: data.status,
+				cardInfo: data.cardInfo,
+				drawTime: time
+			};
 		});
-	}, 587 * 1000);
-});
-
-function saveOrder(orderStr) {      //保存订单到数据库
-	var order = JSON.parse(orderStr.value);
-	if (!order || "null" == order) {
-		return console.log("[%j] saveOrder order null, orderStr: %j", new Date().toLocaleString(), orderStr);
 	}
-	var order_date = order.order_date;      //下单日期
-	var back_time = +order.back_time || 0;  //返现延时
-	var uniqueId = order.uniqueId;          //订单唯一性id
-	var tOpenId = order.open_id;          //用户openid
-	var yyy_openid = order.yyy_openid;        //用户摇一摇平台openId
-	if (!tOpenId || !yyy_openid || !uniqueId) {
-		return console.log("[%j] tOpenId or yyy_openid or uniqueId null, orderStr: %j", new Date().toLocaleString(), orderStr);
+	var docs = [data];
+	if (_friendDrawLog) {
+		docs = docs.concat(_friendDrawLog);
 	}
-
-	order.product_num ? (order.product_num = +order.product_num) : "";
-	order.product_price ? (order.product_price = +order.product_price) : "";
-	order.commission ? (order.commission = +order.commission) : "";
-	order.expect_cash ? (order.expect_cash = +order.expect_cash) : "";
-	order.back_time ? (order.back_time = +order.back_time) : "";
-	order.status ? (order.status = +order.status) : (order.status = 0);
-	order.fromstatus ? (order.fromstatus = +order.fromstatus) : (order.fromstatus = 0);
-
-	if (order.action == "update") {     //订单更新
-		return updateOrder(order, orderStr.offset);
-	}
-	mUnionMallRed.setNewUser(order);    //设置新用户信息
-	var sendRedDate = new Date(new Date(order_date).getTime() + back_time * 1000);
-	order.sendRedDate = sendRedDate;    //发送红包的时间
-	order.redState = typeConfig.unionMallOrderState.wait;   //红包状态
-	if (order.expect_cash <= 0 || order.status != mUnionOrderPaySate.pay) {   //无需返现
-		order.redState = typeConfig.unionMallOrderState.not_need_cash;
-	}
-	order.dateTime = new Date();
-	order.dateTimeStr = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-
-	delete order._id;
-	order._id = new dbUtils.ObjectID();
-
-	async.auto({
-		checkUnique: function (cb) {        //检测订单是否已经存在
-			findOrderByuniqueId(uniqueId, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer checkUnique err: %j, order: %j, offset: %j", new Date().toLocaleString(), err, order, orderStr.offset);
-					return cb(err);
-				}
-				if (data) { //订单已经存在
-					console.log("[%j] unionMallOrderConsumer checkUnique data exists, order: %j, uniqueId: %j, offset: %j", new Date().toLocaleString(), order, uniqueId, orderStr.offset);
-					return cb(uniqueId + " order already exists");
-				}
-				return cb(null, orderStr.offset);
-			});
-		},
-		/*isFirstOrder: function (cb) {   //是不是首单
-		 if (order.redState != typeConfig.unionMallOrderState.wait) {    //未支付
-		 return cb(null, "not pay");
-		 }
-		 //if (order.fromstatus != typeConfig.lifanState[order.from]) {    //不是立返状态
-		 // return cb(null, "not liFan");
-		 // }
-		 if (order.from != "yhd") {      //一号店立返
-		 return cb(null, "not from yhd");
-		 }
-		 var key = "union_mall_order_first_list";
-		 var field = yyy_openid;
-		 redisClient.HINCRBY(key, field, 1, function (err, data) {
-		 if (!!err) {
-		 console.log("[%j] unionMallOrderConsumer isFirstOrder err: %j, key: %j, field: %j", new Date().toLocaleString(), err, key, field);
-		 }
-		 if (data == 1) {    //首单
-		 order.sendRedDate = new Date();
-		 }
-		 return cb(null, data);
-		 });
-		 },
-		 minusUserCv: function (cb) {        //扣除用户余额
-		 minusCv(order, function (err, payInfo) {
-		 if (!!err || !payInfo) {
-		 return cb(null, payInfo);
-		 }
-		 order.redInfo = payInfo;
-		 return cb(null, payInfo);
-		 });
-		 },*/
-		doPreCheck: ["checkUnique", function (cb) {     //发红包前获取参数
-			preCheck(order, function (err, payInfo) {
-				if (!!err || !payInfo) {
-					return cb(null, payInfo);
-				}
-				order.redInfo = payInfo;
-				return cb(null, payInfo);
-			});
-		}],
-		sendRed: ["doPreCheck", function (cb) {      //发红包
-			var redInfo = order.redInfo;
-			if (!redInfo) {
-				return cb(null, data);
+	return LotteryLog.create(docs).then(function(logs) {
+		var lidMap = {}, log;
+		_.each(logs, function(item) {
+			lidMap[item.openId] = item._id;
+			if (item.type === 'draw') {
+				log = item.toJSON();
 			}
-			var sendMoneyNum = redInfo.firstSpend;
-			sendWxRed(order, function (err, data) {
-				if (!!err) {
-					order.redState = typeConfig.unionMallOrderState.sendRedError;
-					return cb(null, "send red err: " + err);
-				}
-				order.redState = typeConfig.unionMallOrderState.success;
-				if (sendMoneyNum < order.expect_cash) {
-					order.redState = typeConfig.unionMallOrderState.partSuccess;
-				}
-				return cb(null, "success");
-			});
-		}],
-		saveOrder: ["sendRed", function (cb) {      //保存订单
-			unionOrderCollection.save(order, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer saveOrder err: %j, order: %j, offset: %j", new Date().toLocaleString(), err, order, orderStr.offset);
-					return cb(err);
-				}
-				return cb(null, data);
-			});
-		}]
-	}, function (err, results) {
-		if (!!err) {
-			return console.log("[%j] unionMallOrderConsumer_err: %j, order: %j, uniqueId: %j, offset: %j", new Date().toLocaleString(), err, order, uniqueId, orderStr.offset);
-		}
-		satisticsBuyNumPerProduct(order);
-		mUnionMallRed.sendMsg(order, order.status);
-		return console.log("[%j] ================= save unionMallOrderConsumer success, uniqueId: %j, offset: %j, _id: %j", new Date().toLocaleString(), uniqueId, orderStr.offset, results.saveOrder._id.toString());
+		});
+		log.lidMap = lidMap;
+		return log;
+	}).catch(function(err) {
+		// 出错回滚
+		lotteryCountInc(data.lotteries, null, prize, type, fOpenId, true);
+		return Promise.reject(err);
 	});
-}
+};
 
-function preCheck(order, cb) {       //发送红包前检测，返回红包参数
-	if (order.redState != typeConfig.unionMallOrderState.wait) {    //不是待返现状态
-		return cb ? cb(null, null) : "";
-	}
-	if (!order.open_id || !order.yyyapp_id || !order.yyy_openid) {  //参数不全
-		return cb ? cb(null, null) : "";
-	}
-	var payInfo = {
-		yyyappId: order.yyyapp_id,
-		openId: order.yyy_openid,
-		tOpenId: order.open_id
+/**
+ * 抽奖此次检查
+ *   1. 是否达到个人总共参数次数上线
+ *   2. 是否达到当天抽奖次数上线
+ *   3. 是否达到中间次数上线
+ * @param  {String}  lotteryId 抽奖规则 ID
+ * @param  {String}  openid    抽奖用户 openid
+ * @param  {Object}  rules     抽奖规则
+ * @retrun {Promise}           [已抽奖次数，已中奖次数，今日抽奖次数]
+ */
+var drawCountCheck = function(lotteryId, openid, rules) {
+	var query = {
+		lotteries: lotteryId,
+		openId: openid,
+		type: 'draw'
 	};
-	var userRefundNum = 0;      //用户欠款
-	var userCv = 0;             //用户余额
-	async.auto({
-		getRefundNum: function (cb) {       //获取用户欠款
-			var key = "union_mall_order_refund_red_money";
-			var field = order.open_id;
-			redisClient.HGET(key, field, function (err, value) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-preCheck-getRefundNum err: %j, order: %j", new Date().toLocaleString(), err, order);
-					return cb(err);
-				}
-				userRefundNum = +(value || 0);
-				return cb(null, value);
-			});
-		},
-		getUserCv: function (cb) {      //获取用户余额
-			lotteryApi.getVirtualCurrency(payInfo.yyyappId, payInfo.openId, function (err, num) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-preCheck-getUserCv err: %j, order: %j", new Date().toLocaleString(), err, order);
-					return cb(err);
-				}
-				userCv = +num || 0;
-				return cb(null, num);
-			});
-		},
-		calcMoney: ["getRefundNum", "getUserCv", function (cb) {     //计算各种参数
-			if (userCv < 100) {
-				return cb("user_daypay_notenough");
-			}
-			if (userRefundNum <= 0) {       //用户无欠款
-				payInfo.RefundNum = 0;
-				payInfo.spend = order.expect_cash;     //返现金额
-				return cb(null, payInfo);
-			}
-			var newValue = 0;   //设置最新欠款金额
-			if (order.expect_cash <= value) {      //返现金额小于欠款
-				newValue = value - order.expect_cash;
-				payInfo.spend = 0;
-				payInfo.RefundNum = order.expect_cash;
-			}
-			else {      //返现金额大于欠款
-				newValue = 0;
-				payInfo.RefundNum = value;
-				payInfo.spend = (order.expect_cash - value >= 100) ? (order.expect_cash - value) : 0;
-			}
-			var key = "union_mall_order_refund_red_money";
-			var field = order.open_id;
-			redisClient.HSET(key, field, newValue, function (err, o) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-calcMoney-HSET err: %j, order: %j, payInfo: %j", new Date().toLocaleString(), err, order, payInfo);
-					return cb(err);
-				}
-				return cb(null, o);
-			});
-		}],
-		minusCv: ["calcMoney", function (cb) {       //扣除余额
-			if (payInfo.spend <= userCv) {  //红包金额小于余额，一次全反
-				payInfo.firstSpend = payInfo.spend;
-			}
-			else {
-				payInfo.firstSpend = userCv;
-			}
-			var mallId = order._id.toString();
-			var note = typeConfig.fromMap[order.from] + ":" + order.order_id + " 返现扣除";
-			lotteryApi.minusVirtualCurrency(payInfo.yyyappId, payInfo.openId, mallId, userCv, payInfo.spend, note, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-calcMoney-minusCv err: %j, order: %j, payInfo: %j", new Date().toLocaleString(), err, order, payInfo);
-					return cb(err);
-				}
-				payInfo.cV = +(data.body ? data.body.virtualCurrency || 0 : 0);
-				return cb(null, data);
-			});
-		}]
-	}, function (err, results) {
-		console.log("[%j] unionMallOrderConsumer-preCheck err: %j, results: %j, order: %j", new Date().toLocaleString(), err, results, order);
-		if (!!err) {
-			return cb(err);
+	return getLogs(query, 1, 1).then(function(logs) {
+		var log = logs && logs[0] && logs[0].toJSON() || {};
+		// 个人总共抽奖次数达到上限
+		if ((log.totalCount || 0) >= rules.personChanceCount) {
+			throw {
+				errcode: 4240007,
+				errmsg: 'PersonChanceCount reach limit',
+				info: {openId: openid}
+			};
 		}
-		return cb(null, payInfo);
-	});
-}
 
-function sendWxRed(order, cb) {     //发送微信红包
-	var act_name = "去购物得返现活动";
-	var remark = util.format("返现%s元到账。订单来源:%s %s %s", (+order.redInfo.firstSpend / 100).toFixed(2), typeConfig.fromMap[order.from], order.order_id, order.product_name);
-	mWxhb.sendHb(1, order._id.toString(), order.yyyapp_id, order.yyy_openid, +order.redInfo.firstSpend, order.open_id, act_name, remark, function (err, doc) {
-		if (!!err) {
-			console.log("[%j] unionMallOrderConsumer-sendWxRed err: %j, order: %j", new Date().toLocaleString(), err, order);
-			return cb(err);
+		var _dailyCount = 0;
+		var _totalCount = log.totalCount || 0;
+		var _winCount = log.winCount || 0;
+		var time = moment().startOf('day').valueOf();
+		if (log.drawTime && log.drawTime > time) {
+			_dailyCount = log.dailyCount;
 		}
-		return cb(null, doc)
-	});
-}
 
-function updateOrder(order, offset) {       //订单更新
-	var uniqueId = order.uniqueId;          //订单唯一性id
-
-	var unionOrder;
-	async.auto({
-		findOrder: function (cb) {      //获取已存order
-			findOrderByuniqueId(uniqueId, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-findOrderByuniqueId err: %j, order: %j, offset: %j", new Date().toLocaleString(), err, order, offset);
-					return cb(err);
-				}
-				unionOrder = data;
-				return cb(null, data);
-			});
-		},
-		/*isFirstOrder: ["findOrder", function (cb) {
-		 if (!unionOrder) {      //订单不存在
-		 return cb("update_order_not_exists");
-		 }
-
-		 if (order.status != mUnionOrderPaySate.pay) {   //未支付
-		 return cb(null, "not pay " + order.status);
-		 }
-
-		 //if (order.fromstatus != typeConfig.lifanState[unionOrder.from]) {    //不是立返状态
-		 // return cb(null, "not liFan");
-		 // }
-		 if (unionOrder.from != "yhd") {     //一号店立返
-		 return cb(null, "not from yhd");
-		 }
-
-		 if (unionOrder.expect_cash <= 0) {
-		 return cb(null, "expect_cash=0");
-		 }
-		 var key = "union_mall_order_first_list";
-		 var field = unionOrder.yyy_openid;
-		 redisClient.HINCRBY(key, field, 1, function (err, data) {
-		 if (!!err) {
-		 console.log("[%j] unionMallOrderConsumer-updateOrder-isFirstOrder err: %j, order: %j, offset: %j",
-		 new Date().toLocaleString(), err, order, offset);
-		 return cb(null, "mongoerr: " + err);
-		 }
-		 if (data == 1) {    //首单
-		 order.sendRedDate = new Date();
-		 }
-		 return cb(null, data);
-		 });
-		 }],*/
-		minusUserCv: ["findOrder", function (cb) {      //扣除用户余额
-			if (!unionOrder) {      //订单不存在
-				return cb("update_order_not_exists");
-			}
-			if (unionOrder.expect_cash <= 0 ||      //无需返现情况
-				order.status == mUnionOrderPaySate.refund ||
-				order.status == mUnionOrderPaySate.cancel) {
-				return cb(null, "not minusUserCv");
-			}
-			if (order.status != mUnionOrderPaySate.pay) {
-				return cb(null, "no pay");
-			}
-			if (unionOrder.status == mUnionOrderPaySate.pay) {
-				return cb(null, "already pay");
-			}
-
-
-
-
-
-
-			if (unionOrder.redInfo) {   //订单存在支付参数，说明已经扣除
-				return cb(null, "already minusUserCv");
-			}
-			minusCv(unionOrder, function (err, o) {
-				if (!!err || !o) {
-					return cb(null, o);
-				}
-				order.redInfo = o;
-				return cb(null, o);
-			});
-		}],
-		revertCv: ["findOrder", function (cb) {     //恢复用户余额及欠款
-			if (!unionOrder) {      //订单不存在
-				return cb("update_order_not_exists");
-			}
-			revertUserCv(unionOrder, order, function (err, data) {
-				if (!!err || !data) {
-					return cb(null, data);
-				}
-				order["redInfo.revertUserCv"] = "finish";
-				return cb(null, data);
-			});
-		}],
-		updateOrder: ["isFirstOrder", "minusUserCv", "revertCv", function (cb) {      //更新订单
-			if (!unionOrder) {      //订单不存在则执行保存逻辑
-				return cb("update_order_not_exists");
-				/*var sendRedDate = new Date(new Date(order.order_date).getTime() + (order.back_time || 0) * 1000);
-				 order.sendRedDate = sendRedDate;
-				 order.redState = typeConfig.unionMallOrderState.wait;   //红包状态
-				 if (order.expect_cash <= 0) {   //无需返现
-				 order.redState = typeConfig.unionMallOrderState.not_need_cash;
-				 }
-				 order.dateTime = new Date();
-				 order.dateTimeStr = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-				 delete order._id;
-				 unionOrderCollection.save(order, function (err, data) {
-				 if (!!err) {
-				 console.log("[%j] unionMallOrderConsumer-updateOrder-save err: %j, order: %j, offset: %j", new Date().toLocaleString(), err, order, offset);
-				 return cb(err);
-				 }
-				 return cb(null, data);
-				 });*/
-			}
-			delete order._id;
-			delete order.order_date;
-			delete order.back_time;
-			if (unionOrder.redState != typeConfig.unionMallOrderState.success) {    //如果红包未发送成功更改红包状态
-				order.redState = typeConfig.unionMallOrderState.wait;   //红包状态
-				if (unionOrder.expect_cash <= 0 || order.status != mUnionOrderPaySate.pay) {   //无需返现
-					order.redState = typeConfig.unionMallOrderState.not_need_cash;
-				}
-			}
-			var UPDOC = {$set: order};
-
-			unionOrderCollection.updateById(unionOrder._id, UPDOC, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-updateOrder-updateById err: %j, order: %j, unionOrder: %j, offset: %j",
-						new Date().toLocaleString(), err, order, unionOrder, offset);
-					return cb(err);
-				}
-				if (unionOrder.status == mUnionOrderPaySate.pay
-					&& (order.status == mUnionOrderPaySate.refund || order.status == mUnionOrderPaySate.cancel)) {    //退货状态
-					//退款订单处理流程
-					dealRefundOrder(unionOrder);
-				}
-				return cb(null, data);
-			});
-		}]
-	}, function (err, results) {
-		if (!!err) {
-			return console.log("[%j] unionMallOrderConsumer updateOrder err: %j, order: %j, unionOrder: %j, offset: %j",
-				new Date().toLocaleString(), err, order, unionOrder, offset);
+		// 个人今日剩余抽奖次数达到上限
+		if (_dailyCount >= rules.personDailyChanceCount) {
+			throw {
+				errcode: 4240008,
+				errmsg: 'PersonDailyChanceCount reach limit',
+				info: {openId: openid}
+			};
 		}
-		mUnionMallRed.sendMsg(unionOrder, order.status);
-		return console.log("[%j] ================= update unionMallOrderConsumer success offset: %j, results: %j", new Date().toLocaleString(), offset, results);
-	});
-}
 
-function findOrderByuniqueId(uniqueId, cb) {        //根据uniqueId获取order
-	if (!uniqueId) {
-		return cb("param_incomplete");
+		var result = [_totalCount, _winCount, _dailyCount];
+
+		return result;
+	});
+};
+
+/**
+ * 往 base-service 写 log 日志
+ * @param  {Object} logData 活动访问日志信息
+ * @param  {String} action  用户进行的动作
+ * @return {Promise}
+ */
+var writeLog = function(logData, action, cardId) {
+	var _data = _.cloneDeep(logData);
+	_data.action = action;
+	_data.cardId = cardId;
+	baseTool.writeLog(_data);
+};
+
+/**
+ * 抽奖
+ * @param  {Number}   drawCount 已抽奖次数
+ * @param  {Number}   winCount  已中奖次数
+ * @return {Promise}            若中奖则返回奖品信息，否则返回空
+ */
+var luck = function (lottery, drawCount, winCount, todayDrawCount) {
+	var result = {};
+
+	// 个人中奖次数超过限制
+	if (lottery.rules.personMustGetPrizeMaxCount && winCount >= lottery.rules.personMustGetPrizeMaxCount) {
+		return result;
 	}
-	unionOrderCollectionSlave.findOne({uniqueId: uniqueId}, function (err, data) {
-		return cb(err, data);
-	});
-}
 
-function popOrder() {
-	newredisClient.BRPOP("unionMallOrderConsumer", 0, function (err, data) {
-		if (data && _.isArray(data) && data.length > 1) {
-			var doc = JSON.parse(data[1]);
-			saveOrder(doc);
+	var cardSentInfo = lottery.cardSentInfo;
+	/* istanbul ignore if */
+	if (!cardSentInfo) {
+		return result;
+	}
+
+	// 规则剩余的抽奖总次数
+	var randomMax = (lottery.rules.count || 0) - lottery.rules.use;
+	// 个人剩余的抽奖次数
+	var remainChangeCount = (lottery.rules.personChanceCount || 0) - drawCount;
+	// 个人剩余的必中次数
+	var remainMustCount = (lottery.rules.personMustGetPrizeMinCount || 0) - winCount;
+
+	// 若用户的剩余必中次数不大于抽奖次数，则进入必中逻辑
+	/* istanbul ignore else */
+	if (remainChangeCount > 0 && remainChangeCount <= remainMustCount) {
+		randomMax = 0;
+		lottery.cardInfoList.forEach(function(cardInfo) {
+			var _opportunity = cardInfo.quantity - cardSentInfo[cardInfo.id];
+			/* istanbul ignore else */
+			if (_opportunity > 0) {
+				randomMax += _opportunity;
+			}
+		});
+	}
+
+	var random = _.random(0, randomMax);
+	for (var i = lottery.cardInfoList.length - 1; i >= 0; i--) {
+		var prize = lottery.cardInfoList[i];
+		// 卡券信息不完整（无意义，基本不存在此情况）
+		/* istanbul ignore if */
+		if (!prize || !prize.quantity || !prize.id || !prize.cardId) {
+			continue;
 		}
-		setTimeout(popOrder, 500);
-	});
-}
-
-function dealRefundOrder(order) {
-	if (order.from == "self") {     //自营的不处理退货欠款
-		return;
-	}
-	if (order.redState != typeConfig.unionMallOrderState.success) {     //未发红包不处理
-		return;
-	}
-	if (!order.redInfo || !order.redInfo.spend) {       //没有红包信息
-		return;
-	}
-	var key = "union_mall_order_refund_red_money";
-	var field = order.open_id;
-	var value = order.redInfo.spend || 0;
-	redisClient.HINCRBY(key, field, value, function (err, o) {
-		console.log("[%j] dealRefundOrder err: %j, o: %j, field: %j, value: %j, id: %j",
-			new Date().toLocaleString(), err, o, field, value, order._id.toString());
-	});
-}
-
-function minusCv(order, cb) {       //扣除用户余额,返回支付参数
-	if (order.expect_cash <= 0 ||
-		order.status == mUnionOrderPaySate.cancel ||
-		order.status == mUnionOrderPaySate.refund) {     //无需返现
-		return cb ? cb(null, null) : "";
+		var probability = prize.quantity - (cardSentInfo[prize.id] || 0);
+		// 卡券库存量为 0，不发放次卡券
+		if (probability <= 0) {
+			continue;
+		} else if (random <= probability) {// 找到中奖卡券
+			result.id = prize.id;
+			result.cardId = prize.cardId;
+			result.quantity = prize.quantity;
+			if (prize.appid) {
+				result.appid = prize.appid;
+			}
+			break;
+		} else { // 中的不是此卡券，继续
+			random = random - probability;
+		}
 	}
 
-	if (!order.open_id || !order.yyyapp_id || !order.yyy_openid) {
-		return cb ? cb(null, null) : "";
+	return result;
+};
+
+/**
+ * 根据中奖信息选取中奖位置
+ */
+var choosePosition = function(prize, position) {
+	if (!position || !position.length) {
+		return null;
 	}
-	var payInfo = {
-		yyyappId: order.yyyapp_id,
-		openId: order.yyy_openid,
-		tOpenId: order.open_id
-	};
-	var userCv = 0; //用户余额
-	async.auto({
-		getRefundNum: function (cb) {       //获取用户欠款
-			var key = "union_mall_order_refund_red_money";
-			var field = order.open_id;
-			redisClient.HGET(key, field, function (err, value) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-minusCv-HGET err: %j, order: %j", new Date().toLocaleString(), err, order);
-					return cb(err);
+	if (prize && prize.cardId) {
+		position = _.filter(position, function(item) {
+			return item.cardId === prize.cardId;
+		});
+	} else {
+		position = _.filter(position, function(item) {
+			return !item.cardId;
+		});
+	}
+
+	var len = position && position.length;
+	if (!len) {
+		return null;
+	}
+	var random = Math.round(Math.random() * (len - 1));
+	if (random >= len) random = len -1;
+	return position[random].index;
+};
+
+/**
+ * 保证数字不小于 0
+ */
+var ensureGtZero = function(num) {
+	num = +num;
+	if (!num || num < 0) {
+		num = 0;
+	}
+	return num;
+};
+
+/**
+ * 计算count
+ */
+var getCount = function(query) {
+	query.isDeleted = false;
+	return Lottery.count(query);
+};
+
+/**
+ * 抽奖规则数据合法性校验
+ */
+var _dataRulesCheck = function(data) {
+	// 个人参与次数不能大于活动总次数
+	if (data.rules.personChanceCount > data.rules.count) {
+		return {
+			errcode: 4240260,
+			errmsg: 'PersonChanceCount can not more than count'
+		}
+	}
+
+	// 个人每天参与次数不能大于个人总参与次数
+	if (data.rules.personDailyChanceCount > data.rules.personChanceCount) {
+		return  {
+			errcode: 4240261,
+			errmsg: 'PersonDailyChanceCount can not more than personChanceCount'
+		}
+	}
+
+	// 个人最大中奖次数不能大于个人总参与次数
+	if (data.rules.personMustGetPrizeMaxCount > data.rules.personChanceCount) {
+		return {
+			errcode: 4240262,
+			errmsg: 'PersonMustGetPrizeMaxCount can not more than personChanceCount'
+		}
+	}
+
+	// 个人最小中奖次数不能大于个人总参与次数
+	if (data.rules.personMustGetPrizeMinCount > data.rules.personChanceCount) {
+		return {
+			errcode: 4240263,
+			errmsg: 'PersonMustGetPrizeMinCount can not more than personChanceCount'
+		}
+	}
+
+	// 若个人最大中奖次数有效
+	// 个人最小中奖次数不能大于个人最大中奖次数
+	if (data.rules.personMustGetPrizeMaxCount && data.rules.personMustGetPrizeMinCount > data.rules.personMustGetPrizeMaxCount) {
+		return {
+			errcode: 4240264,
+			errmsg: 'PersonMustGetPrizeMinCount can not more than personMustGetPrizeMaxCount'
+		}
+	}
+
+	return null;
+};
+
+/**
+ * 修改抽奖规则前的数据校验
+ * 检测抽奖规则数据是否合法
+ * @param  {String} lotteryId 抽奖规则 ID
+ * @param  {Object} lottery   原始抽奖规则信息
+ * @param  {Object} data      新的抽奖信息
+ * @return {Promise}          返回一个 object，修改以后的抽奖规则信息
+ */
+var _updateFileds = ['count', 'personChanceCount', 'personDailyChanceCount', 'personMustGetPrizeMinCount', 'personMustGetPrizeMaxCount'];
+var _updateDataCheck = function(uid, appid, lotteryId, data) {
+	return getLotteryById(lotteryId, uid, appid).then(function(lottery) {
+		if (!lottery) {
+			return Promise.reject({
+				errcode: 4240151,
+				errmsg: 'Lottery not found'
+			});
+		}
+
+		lottery = lottery.toJSON();
+
+		// 规则修改信息检测
+		var updatedObj = {'$set': {}, '$unset': {}};
+		/* istanbul ignore else */
+		if (!_.isEmpty(data.rules)) {
+			_.each(_updateFileds, function(f) {
+				var _target_num = +data.rules[f] || 0;
+				var _use = lottery.rules.use || 0;
+				/* istanbul ignore else */
+				if (!data.rules.hasOwnProperty(f)) {
+					throw {
+						errcode: 4010093,
+						errmsg: 'Params invalid',
+						info: f + ' is missing'
+					};
 				}
-				value = +(value || 0);
-				if (value <= 0) {   //欠款为0
-					payInfo.spend = order.expect_cash;     //返现金额
-					payInfo.RefundNum = 0;                  //扣除用户欠款金额
-					return cb(null, value);
+				/* istanbul ignore else */
+				if (_target_num < 0) {
+					throw {
+						errcode: 4240251,
+						errmsg: 'Can not less than 0',
+						info: f
+					};
 				}
-				var newValue = 0;   //设置最新欠款金额
-				if (order.expect_cash <= value) {      //返现金额小于欠款
-					newValue = value - order.expect_cash;
-					payInfo.spend = 0;
-					payInfo.RefundNum = order.expect_cash;
+				/* istanbul ignore else */
+				if (f === 'count' && _target_num < _use) {
+					throw {
+						errcode: 4240252,
+						errmsg: 'Count can not less than use',
+						info: _use
+					};
 				}
-				else {      //返现金额大于欠款
-					newValue = 0;
-					payInfo.RefundNum = value;
-					payInfo.spend = (order.expect_cash - value >= 100) ? (order.expect_cash - value) : 0;
+				updatedObj['$set']['rules.' + f] = _target_num;
+			});
+		}
+
+		// 卡券信息检测
+		var cardObj = {};
+		var updateCardList = [], index = 0;
+		_.each(lottery.cardInfoList, function(item) {
+			cardObj[item.cardId] = {
+				id: item.id,
+				sent: lottery.cardSentInfo[item.id],
+				quantity: item.quantity
+			};
+			/* istanbul ignore else */
+			if (item.id > index) {
+				index = item.id;
+			}
+		});
+		index++;
+
+		if (data.hasOwnProperty('cardInfoList')) {
+			var _cardInfoList = data.cardInfoList || [];
+			for(var i=0,len = _cardInfoList.length; i < len; i++) {
+				var item = _cardInfoList[i] || {};
+				var _cardId = item.cardId;
+				// 卡券 ID 不存在，或未传 quantity 参数
+				if (!_cardId || !item.hasOwnProperty('quantity')) {
+					throw {
+						errcode: 4010093,
+						errmsg: 'Params invalid',
+						info: 'cardId or quantity is missing'
+					};
 				}
-				redisClient.HSET(key, field, newValue, function (err, o) {
-					if (!!err) {
-						console.log("[%j] unionMallOrderConsumer-minusCv-HSET err: %j, newValue: %j, order: %j", new Date().toLocaleString(), err, newValue, order);
-						return cb(err);
+
+				if (item.quantity < 0) {
+					throw {
+						errcode: 4240251,
+						errmsg: 'Can not less than 0',
+						info: _cardId
+					};
+				}
+
+				// 卡券的投放量修改不能小于发放量
+				if (cardObj[_cardId] && cardObj[_cardId].sent > item.quantity) {
+					throw {
+						errcode: 4240253,
+						errmsg: 'Card quantity can not less than sent',
+						info: _cardId
+					};
+				}
+
+				var _obj = {
+					id: index,
+					cardId: _cardId,
+					quantity: item.quantity
+				};
+				/* istanbul ignore if */
+				if (item.appid) {
+					_obj.appid = item.appid;
+				}
+
+				if (cardObj[_cardId]) { // 修改已存在的卡券
+					_obj.id = cardObj[_cardId].id;
+					cardObj[_cardId].holdon = true;
+				} else { // 新添加的卡券
+					_obj.id = index;
+					index++;
+					updatedObj['$set']['cardSentInfo.' + _obj.id] = 0;
+				}
+				updateCardList.push(_obj);
+			}
+
+			// 检测需要删除的卡券是否能删除
+			_.each(cardObj, function(item, cardId) {
+				if (!item.holdon) {
+					if (item.sent) {
+						throw {
+							errcode: 4240255,
+							errmsg: 'Can not remove more than 0 sent',
+							info: cardId
+						};
+					} else {
+						updatedObj['$unset']['cardSentInfo.' + item.id] = 1;
 					}
-					return cb(null, value);
-				});
-			});
-		},
-		getUserCv: function (cb) {          //获取用户余额
-			lotteryApi.getVirtualCurrency(payInfo.yyyappId, payInfo.openId, function (err, num) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-getUserCv err: %j, order: %j, payInfo: %j", new Date().toLocaleString(), err, order, payInfo);
-					return cb(err);
 				}
-				userCv = +num || 0;
-				if (userCv < 100) {
-					console.log("[%j] unionMallOrderConsumer-getUserCv less userCv: %j, order: %j, payInfo: %j", new Date().toLocaleString(), userCv, order, payInfo);
-					return cb("user_daypay_notenough");
-				}
-				return cb(null, userCv);
 			});
-		},
-		minusCv: ["getRefundNum", "getUserCv", function (cb) {      //扣除用户余额
-			if (payInfo.spend > userCv) {
-				payInfo.spend = userCv;
+
+			if (updateCardList.length > 20) {
+				throw {
+					errcode: 4240257,
+					errmsg: 'CardInfoList length is more than 20'
+				};
 			}
-			var mallId = order._id.toString();
-			var note = typeConfig.fromMap[order.from] + ":" + order.order_id + " 返现扣除";
-			lotteryApi.minusVirtualCurrency(payInfo.yyyappId, payInfo.openId, mallId, userCv, payInfo.spend, note, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-minusCv err: %j, order: %j, payInfo: %j, userCv: %j", new Date().toLocaleString(), err, order, payInfo, userCv);
-					return cb(err);
-				}
-				payInfo.cV = +(data.body ? data.body.virtualCurrency || 0 : 0);
-				return cb(null, data);
-			});
-		}]
-	}, function (err, results) {
-		console.log("[%j] unionMallOrderConsumer minusCv err: %j, results: %j, order: %j", new Date().toLocaleString(), err, results, order);
-		if (!!err) {
-			return cb(err);
 		}
-		return cb(null, payInfo);
+
+		if (updateCardList.length) {
+			updatedObj.cardInfoList = updateCardList;
+		}
+		if (_.isEmpty(updatedObj['$set'])) {
+			delete updatedObj['$set'];
+		}
+		if (_.isEmpty(updatedObj['$unset'])) {
+			delete updatedObj['$unset'];
+		}
+
+		return updatedObj;
 	});
-}
+};
 
-function revertUserCv(order, updateDoc, cb) {   //当用户退款或者取消订单且余额已扣恢复用户余额
-	var redInfo = order.redInfo;
-	if (!redInfo) {     //没有支付参数
-		return cb ? cb(null, null) : "";
-	}
-	if (order.redState == typeConfig.unionMallOrderState.success) {     //红包已发
-		return cb ? cb(null, null) : "";
-	}
-	if (-1 == [typeConfig.unionOrderPaySate.unknown,
-			typeConfig.unionOrderPaySate.noPay,
-			typeConfig.unionOrderPaySate.pay].indexOf(order.status)) {   //原订单状态不是0、1、2
-		return cb ? cb(null, null) : "";
-	}
-	if (updateDoc.status != typeConfig.unionOrderPaySate.cancel &&
-		updateDoc.status != typeConfig.unionOrderPaySate.refund) {      //新订单状态不是取消或退款
-		return cb ? cb(null, null) : "";
-	}
-	if (redInfo.revertUserCv == "finish") {     //当用户退款或取消订单且已恢复用户余额不再继续
-		return cb ? cb(null, null) : "";
-	}
-	var spendUserCv = redInfo.spend;    //扣除的用户余额
-	var refundUserCv = redInfo.RefundNum;   //扣除的用户欠款
-
-	var key = "union_mall_order_refund_red_money";
-	var field = order.open_id;
-	async.parallel({
-		revertCv: function (cb) {       //恢复余额
-			var mallId = order._id.toString() + "_revert";
-			var note = typeConfig.fromMap[order.from] + ":" + order.order_id + " 返现扣除返还";
-			lotteryApi.addVirtualCurrency(redInfo.yyyappId, redInfo.openId, mallId, spendUserCv, 0, note, function (err, data) {
-				if (!!err) {
-					console.log("[%j] revertUserCv-revertCv err: %j, order: %j", new Date().toLocaleString(), err, order);
-					return cb(err);
-				}
-				return cb(null, data);
-			});
-		},
-		revertRefund: function (cb) {   //恢复欠款
-			redisClient.HINCRBY(key, field, refundUserCv, function (err, data) {
-				if (!!err) {
-					console.log("[%j] revertUserCv-revertRefund err: %j, order: %j", new Date().toLocaleString(), err, order);
-					return cb(err);
-				}
-				return cb(null, data);
-			});
-		}
-	}, function (err, resulsts) {
-		console.log("[%j] revertUserCv err: %j, resulsts: %j", new Date().toLocaleString(), err, resulsts);
-		if (!!err) {
-			return cb ? cb(err) : "";
-		}
-		return cb ? cb(null, "finish") : "";
+/**
+ * 修改抽奖规则
+ */
+var _update = function(query, updateObj) {
+	query.isDeleted = false;
+	return Lottery.update(query, updateObj).then(function(ret) {
+		return ret && ret.n;
 	});
-}
+};
 
-function satisticsBuyNumPerProduct(order) {     //统计一个人谋个产品的购买数量(退货、取消不减)
-	var from = order.from || "";                    //来源
-	var openId = order.yyy_openid || "";            //yOpenId
-	var buyNum = order.product_num || 1;            //购买数量
-	var productId = order.product_id || "";         //产品id
+/**
+ * 卡券签名
+ */
+var cardSign = function(appid, data) {
+	return new Promise(function(resolve, reject) {
+		baseTool.cardSign(appid, data, function(err, ret) {
+			if (err) {
+				reject(err);
+			} else {
+				resolve(ret);
+			}
+		});
+	});
+};
 
-	var key = "satisticsBuyNumPerProduct_" + from;
-	var field = moment(new Date()).format('YYYYMMDD') + "_" + productId + "_" + openId;
+exports.getLotteryById = getLotteryById;
 
-	redisClient.HINCRBY(key, field, +buyNum, function (err, data) {
-		if (!!err) {
-			console.log("[%j] satisticsBuyNumPerProduct err: %j, order: %j", new Date().toLocaleString(), err, order);
+/**
+ * 微信用户抽奖
+ * @param {String}   appid      公众号 appid
+ * @param {String}   lotteryId  抽奖规则信息 ID
+ * @param {String}   cOpenId    cookie 中的 openid，当前抽奖用户的 openid
+ * @param {String}   openIds    本次多屏互动抽奖所有用户 openid
+ * @return {Promise}            抽奖记录信息，详细请查看 lotteryLog Model
+ */
+exports.run = function(appid, lotteryId, type, openidObj, logData, position) {
+	var lottery, _drawLog, _friendDrawLog, resultLog;
+	var dOpenId;
+	if (type === 'multi') {
+		dOpenId = openidObj.dOpenId;
+	} else {
+		dOpenId = openidObj.mOpenId;
+	}
+
+	return getLotteryById(lotteryId).then(function(ret) {
+		// 对应的抽奖规则不存在
+		if (!ret) {
+			throw {
+				errcode: 4240151,
+				errmsg: 'Lottery not found'
+			};
+		}
+
+		lottery = ret.toJSON();
+		// 抽奖总人次达到上限
+		if (lottery.rules.count <= lottery.rules.use) {
+			throw {
+				errcode: 4240005,
+				errmsg: 'Lottery have reach person limit'
+			};
+		}
+
+		// 检测用户是否还有抽奖机会
+		// 若没有则抛出错误
+		// 若有则用户返回 [总抽奖次数，中奖次数，今日抽奖次数]
+		return drawCountCheck(lotteryId, dOpenId, lottery.rules);
+	}).then(function(result) {
+		writeLog(logData, 'try');
+		_drawLog = {
+			lotteries: lotteryId,
+			type: 'draw',
+			openId: dOpenId,
+			totalCount: result[0] + 1,
+			winCount: result[1],
+			dailyCount: result[2] + 1,
+			status: 0
+		};
+
+		// 抽奖
+		var prize = luck(lottery, result[0], result[1], result[2]);
+
+		// 有 cardId 表示中奖
+		if (prize && prize.cardId) {
+			_drawLog.status = 1;
+			_drawLog.cardInfo = {
+				cardId: prize.cardId,
+				appid: prize.appid
+			};
+			// 中奖数次加 1
+			_drawLog.winCount += 1;
+		}
+
+		if (type === 'multi') {
+			_drawLog.multi = true;
+		} else {
+			_drawLog.multi = false;
+		}
+
+		// 修改抽奖规则的总抽奖次数。若中奖还需修改卡券的发放量
+		return lotteryCountInc(lotteryId, lottery.rules.count, prize, type, openidObj.fOpenId);
+	}).then(function(prize) {
+		// 中奖后写中奖 log
+		if (prize.cardId) {
+			writeLog(logData, 'adward', prize.cardId);
+		}
+
+		// 记录抽奖 log 日志
+		return writeLotteryLog(_drawLog, prize, type, openidObj.fOpenId);
+	}).then(function(log) {
+		// 返回数据需要返回当日还剩余的抽奖次数
+		log.remainDailyChanceCount = lottery.rules.personDailyChanceCount - log.dailyCount;
+		log.remainChanceCount = lottery.rules.personChanceCount - log.totalCount;
+		log.eventRemainCount = lottery.rules.count - lottery.rules.use - 1;
+		// 现阶段不考虑多屏应用抽奖情况
+		// 多屏奖位 TODO
+		if (type !== 'multi') {
+			var index = choosePosition(log.cardInfo, position);
+			if (index !== null) {
+				log.positionIndex = index;
+			}
+		}
+		// 获取卡券信息
+		return logCtrl.get(appid, log);
+	});
+};
+
+/**
+ * 领取奖品
+ * @param  {String} lid        活动记录 ID
+ * @param  {String} lotteryId  抽奖规则 ID (选传)
+ *
+ * @return {Promise}
+ */
+exports.token = function(lid, lotteryId, retry) {
+	var query = {
+		_id: lid,
+		status: 1
+	};
+	/* istanbul ignore else */
+	if (lotteryId) {
+		query.lotteries = lotteryId;
+	}
+
+	return LotteryLog.update(query, {
+		$set: {
+			status: 2,
+			tokenTime: _.now()
+		}
+	}).catch(function(err) {
+		if (!retry) {
+			return exports.token(lid, lotteryId, true);
+		} else {
+			return Promise.reject({
+				errcode: 4240009,
+				errmsg: 'Add card notice failure',
+				info: lid
+			});
 		}
 	});
-}
+};
 
-popOrder();
+/**
+ * 卡券签名
+ * @param {String}   appid      公众号 appid
+ * @param {String}   lotteryId  抽奖规则信息 ID
+ * @param {String}   lid        抽奖记录 ID
+ * @param {String}   opendId    用户 openid
+ */
+exports.sign = function(appid, appName, eid, lotteryId, lid, openId) {
+	var query = {
+		_id: lid,
+		lotteries: lotteryId,
+		openId: openId
+	};
+	return getLogs(query, 1, 1).then(function(logs) {
+		var log = logs && logs[0];
+		if (!log) {
+			throw {
+				errcode: 4240302,
+				errmsg: 'Lottery log not exist'
+			};
+		}
+
+		if (log.status === 0 || !log.cardInfo || !log.cardInfo.cardId) {
+			throw {
+				errcode: 4240303,
+				errmsg: 'Not win'
+			};
+		}
+
+		if (log.status === 2) {
+			throw {
+				errcode: 4240304,
+				errmsg: 'Have token'
+			};
+		}
+
+		var data = {
+			card_id: log.cardInfo.cardId,
+			event: appName,
+			eventId: eid
+		};
+		return cardSign(appid, data);
+	});
+};
+
+
+exports.geLotteryLogs = function(appid, lotteryId, openId, options) {
+	options = options || {};
+	var page = +options.page || 1;
+	var count = +options.count || 20;
+	if (count > (config.perPageMaxCount || 100)) {
+		return Promise.reject({
+			errcode: 4010001,
+			errmsg: 'Per page count over the limit',
+			info: {maxCount: config.perPageMaxCount || 100}
+		});
+	}
+
+	var query = {
+		lotteries: lotteryId
+	};
+
+	// all 表示是否查询整个平台此活动的抽奖记录
+	// 只允许查询最经 20 条
+	if (!options.all) {
+		query.openId = openId;
+	} else {
+		page = 1;
+		count = 20;
+	}
+
+	// 抽检记录类型，draw or follow
+	if (options.type) {
+		query.type = options.type;
+	}
+
+	// 抽奖记录状态，未中奖（0），已中奖（1），已领取（2）
+	var status = options.status;
+	if (status) {
+		if (_.isString(status)) {
+			status = status.split(',');
+		}
+		status = _.uniq(_.map(status, Number));
+		query.status = {
+			$in: status
+		};
+	}
+
+	return getLogs(query, page, count).then(function(logs) {
+		return logCtrl.list(appid, logs);
+	});
+};
+
+/**
+ * 获取页面显示时的 log 日志
+ * @return {[type]} [description]
+ */
+exports.getViewLogs = function(lotteryId, openId, options) {
+	var result = {
+		remainDailyChanceCount: 0,
+		remainChanceCount: 0,
+		eventRemainCount: 0
+	};
+	/* istanbul ignore if */
+	if (!lotteryId || !openId) {
+		return Promise.resolve(result);
+	}
+	options = options || {};
+	var execArr = [
+		// 获取抽奖规则信息
+		getLotteryById(lotteryId),
+		// 获取自己最后一次抽奖记录信息
+		getLogs({lotteries: lotteryId, openId: openId,  type: 'draw'}, 1, 1)
+	];
+
+
+	var nowTime = moment().startOf('day').valueOf();
+	return Promise.all(execArr).then(function(arr) {
+		var lottery = arr[0];
+		var lastLog = arr[1] && arr[1][0] || {};
+		if (_.isFunction(lastLog.toJSON)) {
+			lastLog = lastLog.toJSON();
+		}
+		/* istanbul ignore else */
+		if (lottery && lottery.rules) {
+			result.eventRemainCount = ensureGtZero(lottery.rules.count - lottery.rules.use);
+			result.remainChanceCount = ensureGtZero(lottery.rules.personChanceCount - (lastLog.totalCount || 0));
+			if (lastLog.drawTime > nowTime) {
+				result.remainDailyChanceCount = ensureGtZero(lottery.rules.personDailyChanceCount - (lastLog.dailyCount || 0));
+			} else {
+				result.remainDailyChanceCount = ensureGtZero(lottery.rules.personDailyChanceCount);
+			}
+		}
+		return result;
+	});
+};
+
+// 抽奖规则数据校验规则
+var schema = Joi.object().keys({
+	rules: Joi.object().keys({
+		count: Joi.number().min(0).max(10000000).required(),
+		personChanceCount: Joi.number().min(0).required(),
+		personDailyChanceCount: Joi.number().min(0).required(),
+		personMustGetPrizeMinCount: Joi.number().min(0),
+		personMustGetPrizeMaxCount: Joi.number().min(0)
+	}),
+	cardInfoList: Joi.array().min(1).max(20).items(Joi.object().keys({
+		cardId: Joi.string().required(),
+		appid: Joi.string().empty(''),
+		quantity: Joi.number().min(0).required()
+	}))
+});
+exports.lotterySchema = schema;
+exports.dataCheck = function(req, res, next) {
+	Joi.validate(req.body, schema, function (err, value) {
+		if (err) {
+			err = {
+				status: 400,
+				errcode: 4010093,
+				errmsg: 'Params invalid',
+				info: err.details
+			};
+			next(err);
+		} else {
+			next();
+		}
+	});
+};
+
+/**
+ * 新建抽奖规则
+ */
+exports.create = function(data) {
+	var err = _dataRulesCheck(data);
+	if (err) {
+		return Promise.reject(err);
+	}
+	// 给卡券信息赋值 ID，并初始化卡券发放信息
+	data.cardSentInfo = {};
+	_.each(data.cardInfoList, function(item, index) {
+		item.id = (index + 1);
+		data.cardSentInfo[item.id] = 0;
+	});
+	logger.info('uid %s appid %s create lottery data %s', data.uid, data.appid, data);
+	return Lottery.create(data).then(function(ret) {
+		logger.info('uid %s appid %s create lottery success and lotteryId %s', data.uid, data.appid, ret.id);
+		return ret.toJSON();
+	});
+};
+
+/**
+ * 修改抽奖规则
+ * @param  {String} uid       账户 Id
+ * @param  {String} appid     公众号 appid
+ * @param  {String} lotteryId 抽奖规则 ID
+ * @param  {Object} data      需要修改的数据字段
+ *   {
+ *     rules: {
+ *       count: 100, # 总抽奖次数
+ *       personChanceCount: 10, # 每人总抽奖次数
+ *       personDailyChanceCount: 3, # 每人每天总抽奖次数
+ *       personMustGetPrizeMinCount: 1, # 每人最小中奖次数
+ *       personMustGetPrizeMaxCount: 3 # 每人最大中奖次数
+ *     },
+ *     cardInfoList: [
+ *       {
+ *         cardId: '',
+ *         appid: '',
+ *         quantity: 100
+ *       }
+ *     ]
+ *   }
+ * 一次只能修改一个值 或 删除一个奖品
+ */
+exports.update = function(uid, appid, lotteryId, data) {
+	if (data.rules) {
+		var err = _dataRulesCheck(data);
+		if (err) {
+			return Promise.reject(err);
+		}
+	}
+	return _updateDataCheck(uid, appid, lotteryId, data).then(function(data) {
+		logger.info('uid %s appid %s update lottery %s data %s', uid, appid, lotteryId, data);
+		return _update({
+			_id: lotteryId,
+			uid: uid,
+			appid: appid
+		}, data);
+	});
+};
+
+/**
+ * 列表抽奖规则
+ * @param  {Object} query 过滤条件
+ * @param  {Number} page  分页参数，第几页
+ * @param  {Number} count 分页参数，每页多少条
+ * @return {Promise}
+ */
+exports.list = function(query, page, count) {
+	page = Math.abs(page) || 1;
+	count = Math.abs(count) || 20;
+	if(count > (config.perPageMaxCount || 100)) {
+		return Promise.reject({
+			errcode: 4010001,
+			errmsg: 'Per page count over the limit',
+			info: {maxCount: config.perPageMaxCount || 100}
+		});
+	}
+	query.isDeleted = false;
+	var data;
+
+	return Lottery.find(query)
+		.skip(count * (page - 1))
+		.limit(count)
+		.sort({createdTime: -1})
+		.then(function(list) {
+			data = _.map(list, function(item) {
+				item = item.toJSON();
+				_.each(item.cardInfoList, function(info) {
+					info.sent = item.cardSentInfo[info.id];
+				});
+				delete item.cardSentInfo;
+				return item;
+			});
+			return getCount(query);
+		}).then(function(len) {
+			return {data: data, count: len};
+		});
+};
+
+/**
+ * 删除抽奖规则
+ * @param  {String} uid       账户 Id
+ * @param  {String} appid     公众号 appid
+ * @param  {String} lotteryId 抽奖规则 ID
+ */
+exports.remove = function(uid, appid, lotteryId) {
+	return getLotteryById(lotteryId, uid, appid).then(function(lottery) {
+		if (!lottery) {
+			return Promise.reject({
+				errcode: 4240151,
+				errmsg: 'Lottery not found'
+			});
+		}
+
+		return _update({_id: lotteryId}, {$set: {isDeleted: true}});
+	});
+};

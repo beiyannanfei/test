@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <title>ajax-07</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#btnClick").click(function () {
+                var option = {name: $("#txtName").val()};
+                $("#content").load("/ajax/a7/load", option)
+            });
+
+            $("#btnGet").click(function () {
+                var option = {name: $("#txtName").val()};
+                $.get("/ajax/a7/get", option, function (data) {
+                    $("#content").html(data);
+                }, "html");
+            });
+
+            $("#btnXml").click(function () {
+                $.get("/ajax/a7/xml", function (data) {
+                    console.log(data);
+                }, "xml");
+            });
+
+            $("#btnAjax").click(function () {
+                $.ajax({
+                    url: "/ajax/a7/post",
+                    type: "post",
+                    dataType: "json",
+                    async: false,
+                    data: {name: $("#txtName").val()},
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (msg) {
+                        console.log("error: %j", msg);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="content"></div>
+<input type="text" id="txtName"/>
+<input type="button" value="获取" id="btnClick"/>
+<input type="button" value="ajax Get()" id="btnGet"/>
+<input type="button" value="ajax xml()" id="btnXml">
+<input type="button" value="ajax ajax()" id="btnAjax"/>
+</body>
+</html>

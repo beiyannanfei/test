@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax-01</title>
+    <script>
+        function createXhr() {
+            var xhr = null;
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            }
+            else {
+                xhr = new ActiveXObject("Microsoft.XMLHttp");
+            }
+            return xhr;
+        }
+        function getServerText() {
+            var xhr = createXhr();
+            xhr.open('get', '/ajax/a1', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                    document.getElementById('showTxt').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send(null);
+        }
+    </script>
+</head>
+<body>
+<div id="showTxt"></div>
+<a href="javascript:getServerText();">提交数据</a>
+</body>
+</html>
