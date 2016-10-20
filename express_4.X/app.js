@@ -32,8 +32,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
 app.use(bodyParser.json());
 
-app.post("/test", function (req, res) {
-	console.log(req.body);
+app.get("/test", function (req, res) {
+	// console.log(req.body);
 	res.status(200);
 	return res.send("test post body");
 });
