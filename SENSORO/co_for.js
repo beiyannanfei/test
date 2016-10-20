@@ -12,10 +12,21 @@ function show(a) {
 	});
 }
 
-co(function *() {
-	for (let i = 0; i < 10; ++i) {
-		yield show(i);
-	}
-}).then(val => {
-}).catch(err => {
+show(1).then(v1 => {
+	console.log("v1: " + v1);
+	return show(2);
+}).then(v2 => {
+	console.log("v2: " + v2);
+	return show(3);
+}).then(v3 => {
+	console.log("v3: " + v3);
 });
+
+/*co(function *() {
+ for (let i = 0; i < 10; ++i) {
+ yield show(i);
+ }
+ }).then(val => {
+ console.log("val: %j", val);
+ }).catch(err => {
+ });*/

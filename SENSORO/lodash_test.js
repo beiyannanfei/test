@@ -100,10 +100,19 @@ var _ = require("lodash");
 /*var a = [["a", 10], ["b", 20], ["c", 30]];
  console.log(_.zipObject(a));*/
 
-var a = [1, 2, 3];
-var b = [3, 4, 5];
+/*var a = [1, 2, 3];
+ var b = [3, 4, 5];
 
-console.log(_.intersection(a, b));
+ console.log(_.intersection(a, b));*/
+
+let a = {a: 1, b: 2};
+let b = {b: 20, c: 30};
+console.log(a);
+console.log(b);
+let c = _.assign(a, b);
+console.log(a);
+console.log(b);
+console.log(c);
 
 
 

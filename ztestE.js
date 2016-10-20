@@ -1,1 +1,5 @@
-console.log(Math.random().toString().substring(2, 4));
+var r = [1];
+
+if (r && r.length) {
+	console.log(r);
+}

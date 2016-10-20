@@ -4,8 +4,9 @@
 
 var Redis = require("ioredis");
 var rc = new Redis(6379, "127.0.0.1");
+var rc1 = new Redis(6379, "127.0.0.1");
 var co = require("co");
-
+/*
 var t1 = function () {
 	rc.set("t1", "aaa", function (err, o) {
 		console.log("err: %j, o: %j", err, o);
@@ -50,8 +51,24 @@ var t4 = function () {
 	rc.keys("*", function (err, res2) {   //上一个阻塞函数没有执行的情况下该函数不会执行
 		console.log("err: %j, res2: %j", err, res2);
 	});
-};
+};*/
 
+function test1() {
+	console.log("=========begin test1");
+	rc.brpop("test1", 0, function (err, val) {
+		console.log("test1: %j", arguments);
+	});
+}
+
+function test2() {
+	console.log("=========begin test2");
+	rc1.keys("*", function (err, val) {
+		console.log("test2: %j", arguments);
+	});
+}
+
+test1();
+setTimeout(test2, 5000);
 
 
 

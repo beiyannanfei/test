@@ -4,3 +4,5 @@
 	3. export PATH
 	4. nginx -p `pwd`/ -c conf/nginx.conf		启动
 	5. nginx -s quit -p `pwd`/ -c conf/nginx.conf	停服
+	6. nginx -s reload          //重新启动
+	7. access_log off;         //关闭access的log输出,需要配置在server下
