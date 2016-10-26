@@ -1,5 +1,1 @@
-var r = [1];
-
-if (r && r.length) {
-	console.log(r);
-}
+console.log([].splice.call([1], 0, 1));

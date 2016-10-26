@@ -9,5 +9,8 @@ setInterval(function () {
 
 //pm2 start printLog.js -l pm2_log.log
 //pm2 list
-//pm2 monit
+//pm2 monit   查看cpu使用情况
 //pm2 stop ID
+//pm2 flush   清除日志
+//pm2 desc ID  查看详情
+

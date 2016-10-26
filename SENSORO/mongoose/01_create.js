@@ -92,6 +92,6 @@ function test6() {
 	});
 }
 
-test6();
+
 
 

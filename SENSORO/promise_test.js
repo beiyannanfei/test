@@ -51,4 +51,39 @@ function test3() {
 	});
 }
 
-test3();
+function test4() {
+	Promise.resolve(test5(1)).then(val => {
+		console.log("val: %j", val);
+	}).catch(err => {
+		console.log("err: %j", err);
+	});
+}
+
+function test5(flag) {
+	return new Promise((resolve, reject)=> {
+		if (flag) {
+			return reject("test error");
+		}
+		return resolve("AAAA");
+	});
+}
+
+
+function test6_p() {
+	return new Promise((resolve, reject) => {
+		setTimeout(resolve, 1000, 10);
+	});
+}
+
+function test6(flag) {
+	if (flag) {
+		return test6_p().then(val => {
+			return console.log("====== val: %j", val);
+		}).catch(err => {
+			return console.log("====== err: %j", err);
+		});
+	}
+	console.log("AAAAAAAAA");
+}
+
+test6(1);
