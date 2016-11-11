@@ -1,7 +1,12 @@
 var xlsx = require("node-xlsx");
 var fs = require("fs");
 
-var buffer = fs.readFileSync("./excel1.xlsx");
+try {
+	var buffer = fs.readFileSync("./excel1.xlsx");
+} catch (e) {
+	console.log("e: %s", e.message);
+}
+
 console.log(buffer);
 console.log(typeof buffer);
 var result;

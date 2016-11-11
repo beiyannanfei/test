@@ -1,21 +1,12 @@
-global.Promise = require('bluebird');
+if (!param || !param.appid || !param.sub_appid || !param.mch_id || !param.sub_mch_id || !param.nonce_str || !param.sign
+	|| !param.body || !param.out_trade_no || !param.total_fee || !param.spbill_create_ip || !param.auth_code) {
+}
 
-Promise.all([test(1), test(2), test(3)]).spread((v1, v2, v3)=> {
-	console.log(v1, v2, v3);
-	return Promise.all([test(4), test(5)]);
-}).spread((v1, v2) => {
-	console.log(v1, v2);
-}).catch(err => {
-});
+if (!param.appid || !param.mch_id || !param.out_trade_no || !param.nonce_str || !param.sign || !param.sub_appid || !param.sub_mch_id) {
+}
 
-function test(num) {
-	return new Promise((resolve, reject) => {
-		setTimeout(resolve, 1000, num);
-	});
+if (!wxSSL || !param.appid || !param.mch_id || !param.out_trade_no || !param.nonce_str || !param.sign || !param.sub_appid || !param.sub_mch_id) {
 }
 
 
-
-
-
-
+var key = config.servicePayKey;

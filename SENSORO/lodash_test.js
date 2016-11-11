@@ -105,14 +105,22 @@ var _ = require("lodash");
 
  console.log(_.intersection(a, b));*/
 
-let a = {a: 1, b: 2};
-let b = {b: 20, c: 30};
+/*let a = {a: 1, b: 2};
+ let b = {b: 20, c: 30};
+ console.log(a);
+ console.log(b);
+ let c = _.assign(a, b);
+ console.log(a);
+ console.log(b);
+ console.log(c);*/
+
+var a = {a: 10, b: 20};
+console.log(a);
+var b = _.omit(a, "b");
 console.log(a);
 console.log(b);
-let c = _.assign(a, b);
-console.log(a);
-console.log(b);
-console.log(c);
+
+
 
 
 
