@@ -18,5 +18,5 @@ app.post("/test/p", function (req, res) {
 
 exports.server = require('http').createServer(app);
 exports.server.listen(5000, function () {
-	console.log("server start...");
+	console.log("server start port 5000...");
 });
