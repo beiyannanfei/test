@@ -1,0 +1,128 @@
+mac账号密码： Thtfpc123
+
+Wifi密码：ManInTheMirror
+
+wangyanqiang   WqNL4G71RoOQ
+
+npm install --registry=http://npm.sensoro.com
+
+mongod --config /usr/local/etc/mongod.conf
+
+redis-server /usr/local/etc/redis.conf
+
+elasticsearch
+
+NODE_ENV=default node service/sendHbPack.js
+
+
+mongoose update返回数据 { ok: 1, nModified: 1, n: 1 } 或 { ok: 1, nModified: 0, n: 0 }
+
+findOneAndUpdate(		//原子操作
+			{
+				eId: "a"
+			},
+			{
+				$set: {"openId": "b"},
+				$inc: {"totalTimes": 1, "dayRecord.20160812": 1}
+			},
+			{
+				new: true,	//返回新文档
+				fields: {}
+			}
+
+mongo数组修改方法
+db.getCollection('test').update({a: "a", "list.id": "a"},{$inc: {"list.$.num": 1}})
+mongo或条件操作
+db.getCollection('test').update({a: "asdf", $or: [{"obj.b": {$exists: false}},{"obj.b":{$lte: 2}}]}, {$inc: {"obj.b": 1}});
+
+
+ NODE_ENV=test mocha test/routes/wxpay/cb.test.js
+
+
+curl -H "Content-Type: application/json" "127.0.0.1:5000/qrcode/update" -d '{"shopId": "asdf", "appId": "wx123456789", "mchId": "101000", "others": {"a": 123}}'
+
+myArr: Joi.array().min(2).max(5).unique().items(Joi.number().min(1).max(5))
+
+
+http://127.0.0.1:5000/wxpay/order/build?appid=wxd678efh567hg6787&mch_id=1230000109&total_fee=123&openid=oUpF8uMuAJO_M2pxb1Q9zNjWeS6o&branch=1
+
+
+ssh release
+sudo su git    密码：123456
+cd
+ls
+cd base-pay_deploy/
+
+PORT=29003 pm2 start app.js --name 'base-pay'		--pm2启动app.js  PORT为环境变量中的PORT  name指定进程名称  -i可指定进程id
+pm2 list
+pm2 logs 55
+
+git push mocha master
+
+
+release
+Host release
+User wangyanqiang
+HostName 192.168.208.33
+IdentityFile ~/.ssh/id_rsa
+ForwardAgent yes
+
+
+production
+Host pay
+User wangyanqiang
+HostName 192.168.208.52
+IdentityFile ~/.ssh/id_rsa
+
+
+
+git pull origin develop		//将develop分支的代码pull到当前分支
+
+
+"openId" : "okrUcwN3HUYwiAHnQ0ozj2zpGc-s"	//云子实验室openid
+
+
+
+To have launchd start elasticsearch now and restart at login:
+  brew services start elasticsearch
+Or, if you don't want/need a background service you can just run:
+  elasticsearch
+
+
+sudo ./libexec/bin/plugin install mobz/elasticsearch-head --verbose  安装elasticsearch-head工具
+
+只是脚本的配置项
+script.groovy.sandbox.enabled: true
+script.inline: on
+script.indexed: on
+
+http://localhost:9200/_plugin/head/
+
+
+git remote -v
+git remote add production git@pay:pay
+
+git remote add mocha git@release:base-service
+
+
+PROT=3000 NODE_ENV=production pm2 start app.js --name pay
+
+root@sensoro.com -p 2nVUUH7zsU4z				正式环境    x.sensoro.com
+
+leaf@sensoro.com -p 123456							测试环境    x.mocha.server.sensoro.com
+
+wxmp2@sensoro.com -p 4rfv5tgb6yhn				微信公账户账号 mp.weixin.qq.com
+wxmp@sensoro.com  -p ETKVAy87bQeR
+
+root@sensoro.com -p UkR1u5UdsfAd				测试环境    x.mocha.server.sensoro.com
+
+
+http://qing.mocha.server.sensoro.com/pay/admin/order/statistics/all
+
+
+
+sub_mch_id： 1396286202
+
+sub_app_id:  wx3763889cf8825b9a
+
+openid: o5MEJuKwylCDaIiCg6YGDN3wfZa0

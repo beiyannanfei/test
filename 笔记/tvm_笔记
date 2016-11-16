@@ -1,0 +1,454 @@
+test3/tvmining@1234%
+test4/tvmining12345()
+linshi2/tvm123@TVm
+
+203.195.162.229  bynf  -p yanqiang.wang
+
+北京市东城区安定门东大街28号雍和大厦E座808天脉聚源
+
+天脉wifi密码：f00ec889e6
+
+禅道：wangyanqiang -p 123456
+
+工作邮箱：wangyanqiang@tvmining.com   -P thtfpc145236
+
+git clone http://10.10.72.63:3000//chenjie/mall_ads.git   获取代码
+
+http://10.10.72.63:3000/chenjie/mall_play.git
+
+wangyanqiang  -p  tvm2015
+
+git status  查看修改文件
+
+git add config.js   添加准备提交的文件(添加到本地)
+
+git commit -m "update test"
+
+git config --global user.email "wangyanqiang@tvmining.com"	git添加邮箱
+
+git config --global user.name "wangyanqiang"	git添加用户
+
+git commit -m "update test"
+
+git pull  更新别人的到本地
+
+git push  提交到网络
+
+git branch -a	//查看分支
+
+git checkout dev	//切换到dev分支
+
+git merge dev  将dev分支合并到当前分支
+
+git push origin dev_seckill   提交分支
+
+git remote set-url origin http://code.tvmining.com/chenjie/mall_play.git
+
+git branch -d dev  删除本地dev分支
+git push origin --delete dev  删除本地分支传送到远端
+
+D:\redis-client\redis-client\64bit> .\redis-cli.exe -h 10.10.42.25
+
+git stash   保存当前修改
+git stash pop  将修改恢复
+pmall ws120.55.193.169     TvM1ning123
+
+http://10.10.82.22:3000/chenjie/mall_new.git
+
+访问该页面一次就相当于登录了
+http://localhost:6003/admin/menu?tvmid=15901093637&yyyappid=wxddd09c59c4c73c99&entry=awadList
+
+http://localhost:6003/admin/menu?tvmid=15901093637&yyyappid=wxddd09c59c4c73c99&entry=html
+
+http://localhost:6003/admin/menu?tvmid=13522414321&yyyappid=wxddd09c59c4c73c99&entry=order_chart
+
+http://localhost:6003/admin/menu?tvmid=15822393199&yyyappid=wxddd09c59c4c73c99&entry=order_chart
+
+http://localhost:6003/admin/menu?tvmid=15822393199&yyyappid=wxddd09c59c4c73c99&entry=order_chart
+
+
+http://10.10.82.22:3000/
+
+陈杰:
+@王艳强   老平台需要增加2个功能，，，
+陈杰:
+1， 订单管理需要导出用户姓名和email
+2,    统计视频点播点击量
+陈杰:
+老平台    模拟微信打开第一步
+localhost:6001/pointMall/lottery/rule?wx_token=tvmty&openid=oux1puBfVrHCUDnvqSIjwxh2NQ0Q
+
+localhost:6001/pointMall/home
+
+http://localhost:6001/pointMall/order/list
+
+var hUrl = 'http://ana.mtq.tvm.cn/ana?id=55a5c4464a7ebdbfb0000001&event_code=117000&token=' + $('#token').val() + '&create_time=' + Math.floor(new Date().getTime() / 1000) + '&title=' + $('title').text()
+        $('body').append('< img style="width:0px; height: 0px;" src="' + hUrl + '">')
+
+http://localhost:6001/pointMall/goto/video/goods/player/556569dbe9eec79c16000010
+
+http://localhost:6001/pointMall/goods/detail?id=556569dbe9eec79c16000010&demandId=550a71888c2b825c4a000036
+
+cd /opt/pointMall
+
+git branch
+
+git pull
+
+cd /opt/pointMall
+git  pull
+sh startup.sh reload
+
+
+ssh  root  10.10.42.25
+ShareTest@CC@)!$
+
+edit this cookie
+
+(function(prize,currentUser){	//闭包写法
+    sysLotteryRedis.HSET(lottery.key+"wins", currentUser.openId, JSON.stringify(winUser),function(err,doc){
+            console.log("to redis wins "+doc)
+        });
+})(prize,currentUser);
+
+var result=[];
+function foo(){
+    var i= 0;
+    for (;i<3;i=i+1){
+        result[i]=(function(j){
+            return function(){
+                alert(j);
+            };
+        })(i);
+    }
+};
+foo();
+result[0](); // 0
+result[1](); // 1
+result[2](); // 2
+npm install -g cnpm --registry=http://registry.npm.taobao.org
+
+http://ads.mtq.tvm.cn/Register/channelList.html
+15822393199   ANRU3199
+
+mall_new
+http://localhost:6002/admin/auth?id=15901093637&entry=lotteryStatistics&token=tvmty
+
+http://localhost:6002/admin/lottery/statistics/index
+
+
+http://localhost:6002/admin/auth?id=15901093637&entry=goods&token=tvmcj&
+
+帐号： 15901093637
+密码： 11676596
+【媒体桥】您的新密码是：11676596，请妥善保管以防泄漏。
+
+
+localhost:6002/pointMall/lottery/rule?wx_token=tvmty&openid=oux1puBfVrHCUDnvqSIjwxh2NQ0Q		模拟微信打开，然后
+localhost:6002/pointMall/goods/detail?id=55b85c1e6571f20e1100002e			id替换成要测试的id即可
+
+localhost:6002/pointMall/inter/store/55ae0933af85178428000018
+
+http://localhost:6002/pointMall/redirect/lottery/bound
+http://localhost:6002/pointMall/inner/redPager/556d1e87dc1d911c6b39eeba
+http://localhost:6002/pointMall/inner/redPager/55c47f89769222bc11c20b22
+
+http://localhost:6002/pointMall/lottery/activity/5562c3cff322fff817000006/draw
+
+
+grep "unionMallOrderConsumer success, uniqueId" /opt/logs/help/financiallog.log | awk '{print $13}' | awk -F ',' '{print $1}'| sort -r
+
+
+陈杰:
+getTagCategory
+陈杰:
+checkLotteryEnable
+陈杰:
+http://localhost:6002/admin/add/activity?way=1
+
+-----------------------------------------------------------------------------------------------------------------
+HOST+/userGroup/query		查询用户是否在组内aaa
+
+请求方式：GET
+返回格式：JSON
+参数说明:
+	openId				//微信用户openid           					必填
+   	wxToken				//微信token           						必填
+	activity			//活动类型（pk、答题、 活动、社区等）     	必填
+    title				//活动类型的主题（如：社区，答题）    		必填
+    result				//活动，用户的最终结果，            		选填
+
+-----------------------------------------------------------------------------------------------------------------
+HOST+/group/query		用户分组信息查询aaa
+
+请求方式：GET
+返回格式：JSON
+参数说明:
+	wxToken				//微信token									必填
+
+返回数据描述
+    {
+        status: "success",
+        data: [
+                {
+                    _id: "559368d1e8cf8ee74900002f",            //ID
+                    key: "手机",                                //组名称
+                    activity: "兑换",                           //组属于那个分类  如 社区、PK、活动
+                    number: 1                                   //人数
+                },
+                .........
+            ]
+    }
+核桃
+-----------------------------------------------------------------------------------------------------------------
+
+
+http://mb.dev.tvm.cn/point/group/query?wxToken=tvmty
+
+http://localhost:6002/pointMall/redPagerEvent/555c2d60cf0d62b816000010/result
+
+localhost:6002/pointMall/wxpay/result
+
+
+
+http://t8.dev.tvm.cn/index.php
+
+test test111111
+
+
+http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html
+微信jssdk文档
+
+老平台
+主页：
+http://localhost:6001/pointMall/home
+
+
+http://localhost:6001/pointMall/lottery/entry/activity/55658f73a0a9254277000022
+中奖名单页面:
+http://localhost:6001/pointMall/redirect/lottery/bound
+
+老平台加token的链接：
+http://localhost:6001/pointMall/lottery/rule?wx_token=tvmty&openid=oux1puFy4TVqou3GO0A-v99lXwK
+
+老平台播放视频页面:
+http://localhost:6001/pointMall/goto/video/goods/player/556569dbe9eec79c16000010
+
+
+6002添加卡券的页面在：
+http://localhost:6002/admin/add/card (没有公众号进来才可以正常使用：【http://localhost:6002/admin/auth?entry=goods&id=15901093637】先进入这个链接再进入上述链接才可以)
+
+
+{
+13717950126
+54081815
+t9.dev.tvm.cn
+}
+
+{
+	13717950126
+	54081815
+	ads.dev.tvm.cn
+}
+
+http://localhost:6004/admin/menu?wxToken=tvmty&channelId=1782&yyyappId=tvmty&entry=coinConfig&planId=320
+http://pmall.dev.tvm.cn/
+
+
+http://localhost:6004/admin/menu?wxToken=tvmty&channelId=1782&yyyappId=tvmty&entry=coinConfig&planId=320
+
+http://qa.pmall.yaotv.tvm.cn/admin/menu?wxToken=tvmty&channelId=1782&yyyappId=tvmty&entry=coinConfig&planId=326
+
+
+
+{
+13810153028
+12345678
+qa.ads.mtq.tvm.cn	广告投放
+
+15010546856 密码用户名一样		崔国勇
+}
+
+{
+13810153028
+12345678
+http://qa.yao.mtq.tvm.cn/	播控平台
+
+15010546856 密码用户名一样		崔国勇
+}
+
+
+qa.admin.yaotv.tvm.cn
+18513379185    22731346
+
+mongo 10.10.42.26:27017/mall_play
+
+
+qa数据库
+mongo 10.105.66.115:27017/mall_play
+
+正式数据库
+mongo 10.247.41.10:27017/mall_play
+
+卫视数据库
+mongo 10.46.70.32:27017/mall_play
+
+mongo 10.46.72.8:27017/mall_play
+
+
+qa Redis
+redis-cli -h 10.105.51.52 -p 6393
+
+正式 Redis
+redis-cli -h 10.131.158.220 -p 6383
+
+砸金蛋redis
+redis-cli -h 10.66.103.27 -p 6379
+auth crs-lp7mqm2g:chenjie1234
+
+{
+tvmzabbix@qq.com
+TvM1ning!#%
+http://q.cdn.mtq.tvm.cn/adsmall/release/
+}
+
+金币兑换平台openid和wxtoken
+http://qa.mb.mtq.tvm.cn/point/integral/query?openId=oxWE2s_3y2RcuEb1r6XSp2u9rZnQ&wxToken=wx44490bbc768ce355
+
+curl使用方法
+get方式									ULR
+curl -k "http://qa.pmall.yaotv.tvm.cn/open/scratch/detail/561c8c98145e11e71b65921b/tvmtb3nw"
+curl -k "http://qa.pmall.yaotv.tvm.cn/open/scratch/brand/list/561c8c98145e11e71b65921b"
+post方式											参数																						URL
+curl -k -d "openId=oxWE2swUjKHO6Vi9Co4PCXgyeL58&id=561c8c98145e11e71b65921b&yyyappId=wx44490bbc768ce355&brandId=tvmtb3nw" "http://qa.pmall.yaotv.tvm.cn/open/scratch/order"
+
+ab使用方式
+post    参数			协议						并发	总数	url
+ab -p t.json -T "application/x-www-form-urlencoded" -c 100 -n 5000 http://10.105.44.215:6004/open/scratch/order
+t.json 形式openId=oxWE2swUjKHO6Vi9Co4PCXgyeL58&id=561c8c98145e11e71b65921b&yyyappId=wx44490bbc768ce355&brandId=tvmtb3nw&i=9999
+i为随机数
+get形式
+ab -c 100 -n 10000 http://qa.pmall.yaotv.tvm.cn/open/scratch/brand/list/561c8c98145e11e71b65921b
+
+
+kafka-qa 10.247.36.21
+kafka-ol  10.105.42.93
+ 端口 2181
+
+
+
+
+
+localhost:6004/admin/menu?wxToken=tvmty&channelId=1782&yyyappId=tvmty&entry=coinConfig&planId=320
+http://localhost:6004/admin/tpl/hardads.html?channelId=1782&
+
+
+db.exchangeorder.count({isGood: {$exists: 0}, totalPrice: {$gt: 0}, payResult: {$exists: 0}, wxOrderState: {$in:[2,6,7]}});
+
+微信支付文档
+https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_4&index=6
+
+find / -name redis_iresty.lua	//linux查找文件命令
+
+
+"open_id" : "orEt2t9TyFNWO3XX5E-YTj61Hd0U",
+"yyyapp_id" : "wx33dc1a5264b4e846",
+"yyy_openid" : "onC35t2vYse-MA-UPzvOt7HbMHzE",
+
+cut -d '分隔符' -f 1
+
+
+
+
+
+
+
+
+curl "http://qa.pmall.yaotv.tvm.cn/open/reset/refund?tOpenId=orEt2t-p47EYkrGc7i0Q1BUV-Bv4&value=0"		//设置用户欠款
+
+{
+        "_id" : "orEt2t9TyFNWO3XX5E-YTj61Hd0U",
+        "phone" : "18810776836",
+        "md5Phone" : "4167c3266b67fc449172249550a55876",
+        "dateTime" : ISODate("2016-03-30T09:14:37.292Z"),
+        "dateTimeStr" : "2016-03-30 17:14:37",
+        "userInfo" : {
+                "wx33dc1a5264b4e846" : {
+                        "openId" : "onC35t2vYse-MA-UPzvOt7HbMHzE",
+                        "channelId" : "1782",
+                        "yyyappId" : "wx33dc1a5264b4e846"
+                }
+        }
+}
+
+
+{
+        "_id" : "orEt2tzeBXjh1TVth3NQho3dIwuI",
+        "phone" : "13671278480",
+        "md5Phone" : "8cb0c320502536f234f382277d0ae3db",
+        "dateTime" : ISODate("2016-03-31T12:44:46.118Z"),
+        "dateTimeStr" : "2016-03-31 20:44:46",
+        "userInfo" : {
+                "wx33dc1a5264b4e846" : {
+                        "openId" : "onC35tyF2efQB_LeMPJcLIxvNYbI",
+                        "channelId" : "1782",
+                        "yyyappId" : "wx33dc1a5264b4e846"
+                }
+        }
+}
+
+
+{
+        "_id" : "orEt2t_UF1QO8fV8E_i57onelLjk",
+        "phone" : "15133600586",
+        "md5Phone" : "6e45ad19c8b3d550682e1f9eef78931a",
+        "dateTime" : ISODate("2016-04-13T12:27:59.399Z"),
+        "dateTimeStr" : "2016-04-13 20:27:59",
+        "userInfo" : {
+                "wx33dc1a5264b4e846" : {
+                        "openId" : "onC35t6D38LsqvDVXCDLSRQ3Sqeo",
+                        "channelId" : "1782",
+                        "yyyappId" : "wx33dc1a5264b4e846"
+                }
+        }
+}
+
+
+{
+        "_id" : "orEt2twn-fU3jwEHeHB6qZFPwOhk",
+        "phone" : "15133606783",
+        "md5Phone" : "ea8ce63646b02eb216de881a45ca49f7",
+        "dateTime" : ISODate("2016-04-13T12:44:27.665Z"),
+        "dateTimeStr" : "2016-04-13 20:44:27",
+        "userInfo" : {
+                "wx33dc1a5264b4e846" : {
+                        "openId" : "onC35ty-7r-xCAqmvN0llxaTHimo",
+                        "channelId" : "1782",
+                        "yyyappId" : "wx33dc1a5264b4e846"
+                }
+        }
+}
+
+
+
+
+http://pmall.yaotv.tvm.cn/open/reset/refund?tOpenId=orEt2t9TyFNWO3XX5E-YTj61Hd0U
+
+
+
+
+http://sms.yaotv.tvm.cn/point/personal/mobile/user?mobile=13474285385&wxToken=46497107fa23		//根据手机号获取tOpenId
+
+2.4.2
+
+
+
+
+
+
+
+		上班时间   路程时间    工资     其他待遇			其他         技术挑战    每月到手工资
+立水桥   10~20		 30分	  22*13     全额七险一金 		三餐+话补     一般			15151+2327*2=19805
+望  京   10~19       60分     22*13     基数五险避税		无			  稍高			22000-666+360*2-426=21628
+
+
