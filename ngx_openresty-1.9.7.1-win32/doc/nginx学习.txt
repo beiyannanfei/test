@@ -6,3 +6,4 @@
 	5. nginx -s quit -p `pwd`/ -c conf/nginx.conf	停服
 	6. nginx -s reload          //重新启动
 	7. access_log off;         //关闭access的log输出,需要配置在server下
+	8. lua_package_path         //设置lua文件的搜索目录,需要配置在http下(是lua文件中require的搜索路径)
