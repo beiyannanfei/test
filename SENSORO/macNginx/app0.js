@@ -2,7 +2,7 @@ var express = require("../../express_3.X/node_modules/express");
 var app = express();
 
 app.get("/", function (req, res) {
-	console.log("visit port / 5001 server");
+	// console.log("visit port / 5001 server");
 	return res.send("port:5001");
 });
 
