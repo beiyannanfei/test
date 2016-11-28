@@ -1,0 +1,13 @@
+01. 练习hello world
+02. 与其他 location 配合 internal get_uri_args capture capture_multi  流水线方式跳转 ngx.exec  alias  外部重定向 ngx.redirect
+03. 练习获取uri参数 encode_args get_uri_args get_post_args
+    获取body参数 ngx.req.read_body();lua_need_request_body on;ngx.req.get_body_data();只读取不解析;ngx.req.get_post_args();读取并解析
+04. 日志输出  error_log 输出级别
+05. api server 接口 lua_package_path  lua_code_cache
+06. 使用 Nginx 内置绑定变量  下载限速 访问黑名单
+07. 不同阶段共享变量 ngx.ctx 表
+08. 连接redis
+09. 使用redispool操作redis
+10. json
+11. 执行阶段概念
+12. 禁止某些终端访问
