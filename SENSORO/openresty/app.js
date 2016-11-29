@@ -3,12 +3,12 @@ var app = express();
 
 app.get("/", function (req, res) {
 	console.log("visit port / 5001 server");
-	return res.send("port:5001");
+	return res.send("hello world /");
 });
 
 app.get("/a", function (req, res) {
 	console.log("visit port 5001 server");
-	return res.send("port:5001");
+	return res.send("hello world /a");
 });
 
 exports.server = require('http').createServer(app);
