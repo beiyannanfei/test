@@ -1,8 +1,7 @@
-var _ = require("lodash");
+var Promise = require("bluebird");
 
-var a = {a: 10, c: 5};
-var b = {b: 10, c: 6};
-
-console.log(_.assign({}, a, b));
-console.log(a);
-console.log(b);
+Promise.resolve().then(val => {
+	console.log("val: %j", val);
+}).catch(err => {
+	console.log("err: %j", err);
+});

@@ -114,11 +114,15 @@ var _ = require("lodash");
  console.log(b);
  console.log(c);*/
 
-var a = {a: 10, b: 20};
-console.log(a);
-var b = _.omit(a, "b");
-console.log(a);
-console.log(b);
+/*var a = {a: 10, b: 20};
+ console.log(a);
+ var b = _.omit(a, "b");
+ console.log(a);
+ console.log(b);*/
+
+var a = [1, 2, 3];
+var b = [2, 3, 4];
+console.log(_.difference(a, b));
 
 
 

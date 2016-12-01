@@ -10,10 +10,10 @@ const ObjectId = Schema.ObjectId;
 
 console.log(mongoose.Types.ObjectId()); //生成一个_id
 let t1Schema = new Schema({
-	name: {type: String},
+	name: {type: String, unique: true},
 	age: {type: Number},
 	addr: {type: String}
-});
+}, {versionKey: false});
 
 let t1Model = mongoose.model("t1", t1Schema);
 
@@ -92,6 +92,24 @@ function test6() {
 	});
 }
 
+function test7() {
+	let doc = {
+		name: "AAAA",
+		age: 20,
+		addr: "beijing"
+	};
+	t1Model.create(doc, function (err, response) {
+		console.log(response);
+	});
+}
 
+function test8() {
+	t1Model.find(function (err, response) {
+		console.log(err);
+		console.log(response);
+	});
+}
+
+test8();
 
 
