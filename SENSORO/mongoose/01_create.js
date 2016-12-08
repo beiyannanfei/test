@@ -110,6 +110,23 @@ function test8() {
 	});
 }
 
-test8();
+function test9() {
+	t1Model.find(function (err, response) {
+		console.log(response);
+		console.log(response[0]);
+		response[0].a = 111;
+		console.log(response);
+		console.log(response[0]);
+		response = response.map(item => {
+			return item.toJSON();
+		});
+		response[0].a = 111;
+		console.log(response);
+	});
+}
+
+test9();
+
+
 
 

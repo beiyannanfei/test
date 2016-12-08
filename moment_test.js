@@ -178,3 +178,7 @@ for (var i = startDay; i <= endDay; ++i) {
 */
 
 console.log(moment().add(-0, 'd').format('YYYY-MM-DD'));
+
+console.log(moment().toDate()); //2016-12-07T06:46:51.389Z
+
+
