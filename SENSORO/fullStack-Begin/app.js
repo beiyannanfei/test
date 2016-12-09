@@ -7,6 +7,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var morgan = require("morgan");
 var mApi = require("./routes/api.js");
+var mJade = require("./routes/jade.js");
 process.on('uncaughtException', err => {
 	console.error('[Inside \'uncaughtException\' event]' + err.stack || err.message);
 });
@@ -15,6 +16,9 @@ morgan.token("date", () => {
 	return new Date();
 });
 app.use(morgan('[:date] - :method :url :status :response-time ms - :res[content-length]'));   //todo POST /test 200 76.091 ms - 14
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 app.all('*', (req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -30,6 +34,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use("/ajax", mApi);
+
+app.use("/jade", mJade);
 
 
 app.use(express.static(path.join(__dirname, 'public')));

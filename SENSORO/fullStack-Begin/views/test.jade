@@ -1,0 +1,109 @@
+p hello jade1
+
+p
+    | foo bar baz
+    | rawr rawr
+
+p.
+    foo bar baz
+    rawr rawr
+<hr>
+
+- console.log("在服务端执行的代码");
+- var s  = "Hello world";
+p #{s}
+h6= s
+<hr>
+
+- var s = "world";
+p hello #{s}
+h5= 'hello ' + s
+<hr>
+
+//-   下面的变量是通过res.render传递过来的
+
+- console.log(val);
+p #{val.a}
+h3= val.b
+<hr>
+
+h3= "if 判断 方式一"
+- var user = {description: "我喜欢猫"};
+- if (user.description)
+    h2 描述
+    p.description= user.description
+- else
+    h1 描述
+    p.description 用户无描述
+<hr>
+
+h3= "if 判断 方式二"
+#user
+    if user.description
+        h2 描述
+        p.descr= user.description
+    else
+        h1 描述
+        p.descr= user.description
+<hr>
+
+h3= "if 判断 方式三"
+- var user = {name: 'Alan', isVip: false};
+unless user.isVip
+    p 亲爱的 #{user.name} 您并不是 VIP
+<hr>
+
+h3 "循环 for 循环"
+- var array = [1,2,3];
+ul
+    - for(var i = 0; i < array.length; ++i)
+        li hello #{array[i]}
+<hr>
+
+h3 "循环 each 循环"
+ul
+    each val, index in ['西瓜', '苹果', '梨子']
+        li= index + ": " + val
+<hr>
+
+h3 "循环 each 循环 json"
+ul
+    each val, index in {1:'苹果',2:'梨子',3:'乔布斯'}
+        li= index + ": " + val
+<hr>
+
+h3 "Case"
+- var friends = 10;
+case friends
+    when 0
+        p you have no firends
+    when 1
+        p you hava a friend
+    default
+        p you hava #{friends} friends
+<hr>
+
+h3 "Case 简略写法"
+- var friends = 1;
+case friends
+    when 0: p you have no friends
+    when 1: p you have a friend
+    default: p you have #{friends} friends
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

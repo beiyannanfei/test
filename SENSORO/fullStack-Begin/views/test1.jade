@@ -1,0 +1,44 @@
+//- Created by wyq on 16/12/9.
+h3= "可重用的 jade 块 (Mixins)"
+//- 声明可重用的块
+mixin list
+    ul
+        li foo
+        li bar
+        li baz
+//- 调用
++list()
++list()
+<hr>
+
+h3= "重用块制定参数"
+mixin pets(pets)
+    ul.pets
+        - each pet in pets
+            li= pet
++pets(['cat', 'dog', 'pig'])
+<hr>
+
+h3= "在外部传入 jade 块"
+mixin article(title)
+    .article
+        .article-vrapper
+            h2= title
+            //- block 为 jade 关键字代表外部传入的块
+            if block
+                block
+            else
+                p 该文章没有内容
+
++article("hello world")
++article("hello Jade")
+    p 这里是外部传入的块
+    p 在写两句
+<hr>
+
+h3= "从外部获取属性"
+mixin link(href, name)
+    a(class!= attributes.class, href= href)= name
++link("https://www.baidu.com/", "百度")(class = "btn")
+<hr>
+
