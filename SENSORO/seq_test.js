@@ -38,23 +38,35 @@ var Seq = require("seq");
  console.dir(sizes);
  });*/
 
-var fs = require('fs');
-var exec = require('child_process').exec;
+/*
+ var fs = require('fs');
+ var exec = require('child_process').exec;
 
-var Seq = require('seq');
-Seq().seq(function () {
-	exec('whoami', this)
-}).par(function (who) {
-	console.log("who: %j", who);
-	exec('groups ' + who, this);
-}).par(function (who) {
-	console.log("who: %j", who);
-	fs.readFile(__filename, 'ascii', this);
-}).seq(function (groups, src) {
-	console.log('Groups: ' + groups.trim());
-	console.log('This file has ' + src.length + ' bytes');
+ var Seq = require('seq');
+ Seq().seq(function () {
+ exec('whoami', this)
+ }).par(function (who) {
+ console.log("who: %j", who);
+ exec('groups ' + who, this);
+ }).par(function (who) {
+ console.log("who: %j", who);
+ fs.readFile(__filename, 'ascii', this);
+ }).seq(function (groups, src) {
+ console.log('Groups: ' + groups.trim());
+ console.log('This file has ' + src.length + ' bytes');
+ });*/
+
+Seq().par(function () {
+	var self = this;
+	console.log("[%j] ============= par1", new Date().toLocaleString());
+	setTimeout(self, 1000, null, "par1");
+}).par(function () {
+	var self = this;
+	console.log("[%j] ============= par2", new Date().toLocaleString());
+	setTimeout(this, 1000, null, "par2");
+}).seq(function (v1, v2) {
+	console.log("[%j] ==== seq v1: %j, v2: %j", new Date().toLocaleString(), v1, v2);
 });
-
 
 
 

@@ -1,0 +1,1259 @@
+[2016-11-23 16:07:35.334] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:07:51.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求头 -- ctx.header: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}
+[2016-11-23 16:07:51.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求方法 -- ctx.method: "GET"
+[2016-11-23 16:07:51.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-11-23 16:07:51.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/test?a=10&b=20"
+[2016-11-23 16:07:51.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/test"
+[2016-11-23 16:07:51.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-11-23 16:07:51.878] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-11-23 16:07:51.878] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-11-23 16:07:51.879] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-11-23 16:07:51.881] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-11-23 16:07:51.881] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-11-23 16:07:51.882] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-11-23 16:07:51.883] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-11-23 16:07:51.883] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-11-23 16:07:51.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-11-23 16:08:33.367] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求头 -- ctx.header: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*","content-length":"9","content-type":"application/x-www-form-urlencoded"}
+[2016-11-23 16:08:33.367] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求方法 -- ctx.method: "POST"
+[2016-11-23 16:08:33.367] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 req 对象的 Content-Length (Number) -- ctx.length: undefined
+[2016-11-23 16:08:33.368] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/post/test?a=10&b=20"
+[2016-11-23 16:08:33.368] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/post/test"
+[2016-11-23 16:08:33.369] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 url 中的查询字符串，去除了头部的 '?' -- ctx.querystring: "a=10&b=20"
+[2016-11-23 16:08:33.369] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 url 中的查询字符串，包含了头部的 '?' -- ctx.search: "?a=10&b=20"
+[2016-11-23 16:08:33.370] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求主机名，不包含端口；当 app.proxy 设置为 true 时，支持 X-Forwarded-Host。 -- ctx.host: "127.0.0.1:9101"
+[2016-11-23 16:08:33.370] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回 req 对象的 Content-Type，不包括 charset 属性 -- ctx.type: ""
+[2016-11-23 16:08:33.370] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回经过解析的查询字符串 -- ctx.query: {"a":"10","b":"20"}
+[2016-11-23 16:08:33.370] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求协议名 -- ctx.protocol: "http"
+[2016-11-23 16:08:33.371] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 判断请求协议是否为 HTTPS 的快捷方法 -- ctx.secure: false
+[2016-11-23 16:08:33.371] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求IP -- ctx.ip: "::ffff:127.0.0.1"
+[2016-11-23 16:08:33.371] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求IP列表 -- ctx.ips: []
+[2016-11-23 16:08:33.371] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求对象中的子域名数组 -- ctx.subdomains: ["0","127"]
+[2016-11-23 16:08:33.371] [FATAL] /Users/sensoro/bynf/test/koa_2.X/app_3.js - get args: {"a":"10","b":"20"}, post args: {"c":"30","d":"40"}
+[2016-11-23 16:15:04.058] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:15:19.419] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123","id":"123"}
+[2016-11-23 16:16:24.354] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:16:26.093] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123","id":"123"}
+[2016-11-23 16:16:26.093] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123"
+[2016-11-23 16:16:54.744] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:16:58.278] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:16:58.278] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:17:39.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:17:41.035] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:17:41.036] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:17:41.036] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:19:04.750] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:19:04.960] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:19:04.961] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:19:04.962] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:19:04.962] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - { request: 
+   { method: 'GET',
+     url: '/context/get/123/456',
+     header: 
+      { host: '127.0.0.1:9101',
+        'user-agent': 'curl/7.43.0',
+        accept: '*/*' } },
+  response: { status: 404, message: 'Not Found', header: {} },
+  app: { subdomainOffset: 2, proxy: false, env: 'development' },
+  originalUrl: '/context/get/123/456',
+  req: '<original node req>',
+  res: '<original node res>',
+  socket: '<original node socket>' }
+[2016-11-23 16:19:40.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:19:42.657] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:19:42.657] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:19:42.657] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:19:42.658] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:22:43.302] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:22:44.897] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:22:44.898] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:22:44.898] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:22:44.901] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:22:44.901] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - "/context/get/123/456"
+[2016-11-23 16:22:54.953] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:22:55.821] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:22:55.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:22:55.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:22:55.824] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:22:55.838] [ERROR] console - 
+[2016-11-23 16:22:55.838] [ERROR] console -   TypeError: Converting circular structure to JSON
+      at Object.stringify (native)
+      at router.get.ctx (/Users/sensoro/bynf/test/koa_2.X/app_3.js:73:19)
+      at dispatch (/Users/sensoro/bynf/test/koa_2.X/node_modules/koa-compose/index.js:44:32)
+      at next (/Users/sensoro/bynf/test/koa_2.X/node_modules/koa-compose/index.js:45:18)
+      at /Users/sensoro/bynf/test/koa_2.X/node_modules/koa-router/lib/router.js:321:16
+      at dispatch (/Users/sensoro/bynf/test/koa_2.X/node_modules/koa-compose/index.js:44:32)
+      at next (/Users/sensoro/bynf/test/koa_2.X/node_modules/koa-compose/index.js:45:18)
+      at /Users/sensoro/bynf/test/koa_2.X/app_3.js:19:8
+      at next (native)
+      at step (/Users/sensoro/bynf/test/koa_2.X/app_3.js:3:191)
+[2016-11-23 16:22:55.838] [ERROR] console - 
+[2016-11-23 16:24:04.670] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:24:07.620] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:24:07.620] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:24:07.620] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:24:07.621] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:24:07.621] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":null,"ended":false,"endEmitted":false,"reading":false,"sync":true,"needReadable":false,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":true,"decoder":null,"encoding":null}
+[2016-11-23 16:24:07.621] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:24:07.622] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:24:07.622] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:24:07.623] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:24:07.623] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:24:07.626] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:24:07.627] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:24:07.627] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMajor", value: 1
+[2016-11-23 16:24:07.627] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMinor", value: 1
+[2016-11-23 16:24:07.627] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersion", value: "1.1"
+[2016-11-23 16:24:07.627] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "complete", value: false
+[2016-11-23 16:24:07.627] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headers", value: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}
+[2016-11-23 16:24:07.628] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawHeaders", value: ["Host","127.0.0.1:9101","User-Agent","curl/7.43.0","Accept","*/*"]
+[2016-11-23 16:24:07.628] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "trailers", value: {}
+[2016-11-23 16:24:07.628] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawTrailers", value: []
+[2016-11-23 16:24:07.628] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "upgrade", value: false
+[2016-11-23 16:24:07.628] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "url", value: "/context/get/123/456"
+[2016-11-23 16:24:07.629] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "method", value: "GET"
+[2016-11-23 16:24:07.629] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: null
+[2016-11-23 16:24:07.629] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: null
+[2016-11-23 16:24:07.629] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "client", value: [Circular]
+[2016-11-23 16:24:07.630] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: false
+[2016-11-23 16:24:07.630] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dumped", value: false
+[2016-11-23 16:24:07.630] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parsedUrl", value: {"protocol":null,"slashes":null,"auth":null,"host":null,"port":null,"hostname":null,"hash":null,"search":null,"query":null,"pathname":"/context/get/123/456","path":"/context/get/123/456","href":"/context/get/123/456","_raw":"/context/get/123/456"}
+[2016-11-23 16:24:07.631] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:24:07.631] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:24:07.631] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:24:07.632] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:24:07.632] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLines", value: undefined
+[2016-11-23 16:24:07.633] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLine", value: undefined
+[2016-11-23 16:24:07.633] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dump", value: undefined
+[2016-11-23 16:24:07.633] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:24:07.633] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:24:07.634] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:24:07.634] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:24:07.634] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:24:07.634] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:24:07.634] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:24:07.635] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:24:07.635] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:24:07.635] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:24:07.635] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:24:07.649] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:24:07.650] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:24:07.650] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:24:07.650] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:25:27.927] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:25:28.577] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:25:28.577] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:25:28.578] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:25:28.579] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:25:28.579] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:25:28.579] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:25:28.579] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:25:28.579] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:25:28.580] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "output", value: undefined
+[2016-11-23 16:25:28.580] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputEncodings", value: undefined
+[2016-11-23 16:25:28.581] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputCallbacks", value: undefined
+[2016-11-23 16:25:28.581] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputSize", value: undefined
+[2016-11-23 16:25:28.581] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: undefined
+[2016-11-23 16:25:28.581] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_last", value: undefined
+[2016-11-23 16:25:28.582] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "chunkedEncoding", value: undefined
+[2016-11-23 16:25:28.582] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "shouldKeepAlive", value: undefined
+[2016-11-23 16:25:28.583] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "useChunkedEncodingByDefault", value: undefined
+[2016-11-23 16:25:28.583] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "sendDate", value: undefined
+[2016-11-23 16:25:28.585] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_removedHeader", value: undefined
+[2016-11-23 16:25:28.586] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_contentLength", value: undefined
+[2016-11-23 16:25:28.587] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hasBody", value: undefined
+[2016-11-23 16:25:28.588] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_trailer", value: undefined
+[2016-11-23 16:25:28.589] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "finished", value: undefined
+[2016-11-23 16:25:28.589] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headerSent", value: undefined
+[2016-11-23 16:25:28.589] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:25:28.599] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:25:28.599] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_header", value: undefined
+[2016-11-23 16:25:28.600] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headers", value: undefined
+[2016-11-23 16:25:28.600] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headerNames", value: undefined
+[2016-11-23 16:25:28.600] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onPendingData", value: undefined
+[2016-11-23 16:25:28.601] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: null
+[2016-11-23 16:25:28.601] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "__onFinished", value: undefined
+[2016-11-23 16:25:28.601] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_finish", value: undefined
+[2016-11-23 16:25:28.601] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: null
+[2016-11-23 16:25:28.601] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "assignSocket", value: undefined
+[2016-11-23 16:25:28.601] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "detachSocket", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeContinue", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_implicitHeader", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeHead", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeHeader", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_send", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeRaw", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_buffer", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_storeHeader", value: undefined
+[2016-11-23 16:25:28.602] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setHeader", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getHeader", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeHeader", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_renderHeaders", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headersSent", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addTrailers", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_flush", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_flushOutput", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "flushHeaders", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "flush", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:25:28.603] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:25:28.604] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:25:28.604] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:25:28.604] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:25:28.607] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:25:28.607] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:25:28.608] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:25:28.608] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:25:28.608] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:25:28.608] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:25:28.608] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:25:28.609] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:25:28.609] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:25:47.120] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:25:48.857] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:25:48.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:25:48.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:25:48.859] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:25:48.859] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connecting", value: undefined
+[2016-11-23 16:25:48.859] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hadError", value: undefined
+[2016-11-23 16:25:48.860] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: undefined
+[2016-11-23 16:25:48.860] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parent", value: undefined
+[2016-11-23 16:25:48.860] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_host", value: undefined
+[2016-11-23 16:25:48.861] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":null,"ended":false,"endEmitted":false,"reading":false,"sync":true,"needReadable":false,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":true,"decoder":null,"encoding":null}
+[2016-11-23 16:25:48.863] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:25:48.863] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:25:48.864] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:25:48.864] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:25:48.864] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:25:48.864] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writableState", value: undefined
+[2016-11-23 16:25:48.865] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: undefined
+[2016-11-23 16:25:48.865] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: undefined
+[2016-11-23 16:25:48.865] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroyed", value: undefined
+[2016-11-23 16:25:48.866] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_bytesDispatched", value: undefined
+[2016-11-23 16:25:48.866] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_sockname", value: undefined
+[2016-11-23 16:25:48.866] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingData", value: undefined
+[2016-11-23 16:25:48.867] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingEncoding", value: undefined
+[2016-11-23 16:25:48.867] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "server", value: undefined
+[2016-11-23 16:25:48.867] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_server", value: undefined
+[2016-11-23 16:25:48.867] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleTimeout", value: undefined
+[2016-11-23 16:25:48.867] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: undefined
+[2016-11-23 16:25:48.869] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: undefined
+[2016-11-23 16:25:48.869] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleStart", value: undefined
+[2016-11-23 16:25:48.870] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "parser", value: undefined
+[2016-11-23 16:25:48.870] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:25:48.870] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_paused", value: undefined
+[2016-11-23 16:25:48.870] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:25:48.870] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: false
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_httpMessage", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefTimer", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onTimeout", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroySoon", value: undefined
+[2016-11-23 16:25:48.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_destroy", value: undefined
+[2016-11-23 16:25:48.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:25:48.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getpeername", value: undefined
+[2016-11-23 16:25:48.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: undefined
+[2016-11-23 16:25:48.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteAddress", value: undefined
+[2016-11-23 16:25:48.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteFamily", value: undefined
+[2016-11-23 16:25:48.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remotePort", value: undefined
+[2016-11-23 16:25:48.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getsockname", value: undefined
+[2016-11-23 16:25:48.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localAddress", value: undefined
+[2016-11-23 16:25:48.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localPort", value: undefined
+[2016-11-23 16:25:48.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:25:48.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeGeneric", value: undefined
+[2016-11-23 16:25:48.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writev", value: undefined
+[2016-11-23 16:25:48.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_write", value: undefined
+[2016-11-23 16:25:48.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesWritten", value: undefined
+[2016-11-23 16:25:48.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:25:48.878] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:25:48.879] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:25:48.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "cork", value: undefined
+[2016-11-23 16:25:48.881] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "uncork", value: undefined
+[2016-11-23 16:25:48.883] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setDefaultEncoding", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:25:48.884] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:25:48.892] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:25:48.892] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:25:48.892] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:25:48.892] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:25:48.892] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:25:48.892] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:25:48.893] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:26:19.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:26:21.462] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:26:21.463] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:26:21.463] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:26:21.464] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:26:21.464] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":null,"ended":false,"endEmitted":false,"reading":false,"sync":true,"needReadable":false,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":true,"decoder":null,"encoding":null}
+[2016-11-23 16:26:21.464] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:26:21.464] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:26:21.464] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:26:21.465] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:26:21.465] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:26:21.466] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:26:21.467] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:26:21.467] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMajor", value: 1
+[2016-11-23 16:26:21.467] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMinor", value: 1
+[2016-11-23 16:26:21.467] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersion", value: "1.1"
+[2016-11-23 16:26:21.468] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "complete", value: false
+[2016-11-23 16:26:21.468] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headers", value: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}
+[2016-11-23 16:26:21.468] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawHeaders", value: ["Host","127.0.0.1:9101","User-Agent","curl/7.43.0","Accept","*/*"]
+[2016-11-23 16:26:21.468] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "trailers", value: {}
+[2016-11-23 16:26:21.468] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawTrailers", value: []
+[2016-11-23 16:26:21.469] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "upgrade", value: false
+[2016-11-23 16:26:21.469] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "url", value: "/context/get/123/456"
+[2016-11-23 16:26:21.469] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "method", value: "GET"
+[2016-11-23 16:26:21.469] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: null
+[2016-11-23 16:26:21.469] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: null
+[2016-11-23 16:26:21.469] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "client", value: [Circular]
+[2016-11-23 16:26:21.472] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: false
+[2016-11-23 16:26:21.472] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dumped", value: false
+[2016-11-23 16:26:21.472] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parsedUrl", value: {"protocol":null,"slashes":null,"auth":null,"host":null,"port":null,"hostname":null,"hash":null,"search":null,"query":null,"pathname":"/context/get/123/456","path":"/context/get/123/456","href":"/context/get/123/456","_raw":"/context/get/123/456"}
+[2016-11-23 16:26:21.472] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:26:21.472] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:26:21.472] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLines", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLine", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dump", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:26:21.473] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:26:21.474] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:26:21.474] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:26:21.474] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:26:21.474] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:26:21.474] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:26:21.475] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:26:21.475] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:26:21.475] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:26:21.475] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:26:21.476] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:26:21.476] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:26:21.476] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:26:21.476] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:26:21.477] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:28:03.309] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:28:04.030] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:28:04.030] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:28:04.031] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:28:04.032] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:28:04.032] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req--------------
+[2016-11-23 16:28:04.032] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":null,"ended":false,"endEmitted":false,"reading":false,"sync":true,"needReadable":false,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":true,"decoder":null,"encoding":null}
+[2016-11-23 16:28:04.033] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:28:04.033] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:28:04.034] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:28:04.035] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:28:04.036] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMajor", value: 1
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMinor", value: 1
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersion", value: "1.1"
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "complete", value: false
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headers", value: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}
+[2016-11-23 16:28:04.038] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawHeaders", value: ["Host","127.0.0.1:9101","User-Agent","curl/7.43.0","Accept","*/*"]
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "trailers", value: {}
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawTrailers", value: []
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "upgrade", value: false
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "url", value: "/context/get/123/456"
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "method", value: "GET"
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: null
+[2016-11-23 16:28:04.039] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: null
+[2016-11-23 16:28:04.040] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "client", value: [Circular]
+[2016-11-23 16:28:04.040] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: false
+[2016-11-23 16:28:04.041] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dumped", value: false
+[2016-11-23 16:28:04.041] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parsedUrl", value: {"protocol":null,"slashes":null,"auth":null,"host":null,"port":null,"hostname":null,"hash":null,"search":null,"query":null,"pathname":"/context/get/123/456","path":"/context/get/123/456","href":"/context/get/123/456","_raw":"/context/get/123/456"}
+[2016-11-23 16:28:04.041] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:28:04.041] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLines", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLine", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dump", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:28:04.042] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:28:04.058] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:28:04.058] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:28:04.058] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:28:04.059] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:28:04.060] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:28:04.060] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:28:04.060] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:28:04.060] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:28:04.060] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:28:04.060] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:28:04.061] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:28:04.061] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.res--------------
+[2016-11-23 16:28:04.061] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:28:04.061] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"finish":[null,null]}
+[2016-11-23 16:28:04.061] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 2
+[2016-11-23 16:28:04.063] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:28:04.064] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "output", value: []
+[2016-11-23 16:28:04.066] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputEncodings", value: []
+[2016-11-23 16:28:04.066] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputCallbacks", value: []
+[2016-11-23 16:28:04.066] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputSize", value: 0
+[2016-11-23 16:28:04.066] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:28:04.066] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_last", value: false
+[2016-11-23 16:28:04.066] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "chunkedEncoding", value: false
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "shouldKeepAlive", value: true
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "useChunkedEncodingByDefault", value: true
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "sendDate", value: true
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_removedHeader", value: {}
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_contentLength", value: null
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hasBody", value: true
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_trailer", value: ""
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "finished", value: false
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headerSent", value: false
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:28:04.067] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_header", value: null
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headers", value: null
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headerNames", value: {}
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onPendingData", value: undefined
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: 404
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "__onFinished", value: undefined
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_finish", value: undefined
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: undefined
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "assignSocket", value: undefined
+[2016-11-23 16:28:04.068] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "detachSocket", value: undefined
+[2016-11-23 16:28:04.084] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeContinue", value: undefined
+[2016-11-23 16:28:04.084] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_implicitHeader", value: undefined
+[2016-11-23 16:28:04.085] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeHead", value: undefined
+[2016-11-23 16:28:04.085] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeHeader", value: undefined
+[2016-11-23 16:28:04.085] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:28:04.085] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_send", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeRaw", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_buffer", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_storeHeader", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setHeader", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getHeader", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeHeader", value: undefined
+[2016-11-23 16:28:04.086] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_renderHeaders", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headersSent", value: false
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addTrailers", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_flush", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_flushOutput", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "flushHeaders", value: undefined
+[2016-11-23 16:28:04.087] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "flush", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:28:04.088] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:28:04.089] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:28:04.089] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:28:04.089] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:28:04.089] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:28:04.089] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:28:04.091] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:28:04.092] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:28:04.092] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.socket--------------
+[2016-11-23 16:28:04.098] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connecting", value: false
+[2016-11-23 16:28:04.099] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hadError", value: false
+[2016-11-23 16:28:04.100] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:28:04.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parent", value: null
+[2016-11-23 16:28:04.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_host", value: null
+[2016-11-23 16:28:04.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":true,"ended":false,"endEmitted":false,"reading":true,"sync":false,"needReadable":true,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":false,"decoder":null,"encoding":null}
+[2016-11-23 16:28:04.120] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:28:04.120] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:28:04.120] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"end":[null,null],"drain":[null,null],"error":[null,null],"close":[null,null,null]}
+[2016-11-23 16:28:04.120] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 10
+[2016-11-23 16:28:04.120] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:28:04.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writableState", value: {"objectMode":false,"highWaterMark":16384,"needDrain":false,"ending":false,"ended":false,"finished":false,"decodeStrings":false,"defaultEncoding":"utf8","length":0,"writing":false,"corked":0,"sync":true,"bufferProcessing":false,"writecb":null,"writelen":0,"bufferedRequest":null,"lastBufferedRequest":null,"pendingcb":0,"prefinished":false,"errorEmitted":false,"bufferedRequestCount":0,"corkedRequestsFree":{"next":null,"entry":null}}
+[2016-11-23 16:28:04.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:28:04.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:28:04.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroyed", value: false
+[2016-11-23 16:28:04.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_bytesDispatched", value: 0
+[2016-11-23 16:28:04.121] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_sockname", value: null
+[2016-11-23 16:28:04.122] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingData", value: null
+[2016-11-23 16:28:04.122] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingEncoding", value: ""
+[2016-11-23 16:28:04.122] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "server", value: [Circular]
+[2016-11-23 16:28:04.122] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_server", value: [Circular]
+[2016-11-23 16:28:04.122] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleTimeout", value: 120000
+[2016-11-23 16:28:04.123] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:28:04.123] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:28:04.123] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleStart", value: 2645
+[2016-11-23 16:28:04.123] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "parser", value: [Circular]
+[2016-11-23 16:28:04.123] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:28:04.123] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_paused", value: false
+[2016-11-23 16:28:04.124] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:28:04.124] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: true
+[2016-11-23 16:28:04.124] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_httpMessage", value: [Circular]
+[2016-11-23 16:28:04.144] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefTimer", value: undefined
+[2016-11-23 16:28:04.144] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:28:04.144] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:28:04.144] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onTimeout", value: undefined
+[2016-11-23 16:28:04.144] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:28:04.144] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroySoon", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_destroy", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getpeername", value: undefined
+[2016-11-23 16:28:04.145] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: 97
+[2016-11-23 16:28:04.146] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:28:04.146] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteFamily", value: "IPv6"
+[2016-11-23 16:28:04.146] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remotePort", value: 51461
+[2016-11-23 16:28:04.146] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getsockname", value: undefined
+[2016-11-23 16:28:04.146] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:28:04.146] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localPort", value: 9101
+[2016-11-23 16:28:04.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:28:04.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeGeneric", value: undefined
+[2016-11-23 16:28:04.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writev", value: undefined
+[2016-11-23 16:28:04.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_write", value: undefined
+[2016-11-23 16:28:04.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesWritten", value: 0
+[2016-11-23 16:28:04.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:28:04.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:28:04.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:28:04.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "cork", value: undefined
+[2016-11-23 16:28:04.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "uncork", value: undefined
+[2016-11-23 16:28:04.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setDefaultEncoding", value: undefined
+[2016-11-23 16:28:04.149] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:28:04.149] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:28:04.149] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:28:04.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:28:04.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:28:04.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:28:04.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:28:04.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:28:04.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:30:25.413] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:30:27.099] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:30:27.100] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:30:27.100] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:30:27.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:30:27.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req--------------
+[2016-11-23 16:30:27.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":null,"ended":false,"endEmitted":false,"reading":false,"sync":true,"needReadable":false,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":true,"decoder":null,"encoding":null}
+[2016-11-23 16:30:27.101] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:30:27.102] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:30:27.102] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:30:27.102] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:30:27.102] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:30:27.103] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:30:27.104] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:30:27.105] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMajor", value: 1
+[2016-11-23 16:30:27.105] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMinor", value: 1
+[2016-11-23 16:30:27.105] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersion", value: "1.1"
+[2016-11-23 16:30:27.105] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "complete", value: false
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headers", value: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawHeaders", value: ["Host","127.0.0.1:9101","User-Agent","curl/7.43.0","Accept","*/*"]
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "trailers", value: {}
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawTrailers", value: []
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "upgrade", value: false
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "url", value: "/context/get/123/456"
+[2016-11-23 16:30:27.106] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "method", value: "GET"
+[2016-11-23 16:30:27.107] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: null
+[2016-11-23 16:30:27.107] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: null
+[2016-11-23 16:30:27.107] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "client", value: [Circular]
+[2016-11-23 16:30:27.109] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: false
+[2016-11-23 16:30:27.110] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dumped", value: false
+[2016-11-23 16:30:27.110] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parsedUrl", value: {"protocol":null,"slashes":null,"auth":null,"host":null,"port":null,"hostname":null,"hash":null,"search":null,"query":null,"pathname":"/context/get/123/456","path":"/context/get/123/456","href":"/context/get/123/456","_raw":"/context/get/123/456"}
+[2016-11-23 16:30:27.110] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:30:27.112] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLines", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLine", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dump", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:30:27.114] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:30:27.126] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:30:27.126] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:30:27.126] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:30:27.127] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:30:27.128] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:30:27.128] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:30:27.129] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:30:27.130] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket--------------
+[2016-11-23 16:30:27.130] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connecting", value: false
+[2016-11-23 16:30:27.131] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hadError", value: false
+[2016-11-23 16:30:27.131] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:30:27.132] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parent", value: null
+[2016-11-23 16:30:27.133] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_host", value: null
+[2016-11-23 16:30:27.134] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":true,"ended":false,"endEmitted":false,"reading":true,"sync":false,"needReadable":true,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":false,"decoder":null,"encoding":null}
+[2016-11-23 16:30:27.135] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:30:27.135] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:30:27.135] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"end":[null,null],"drain":[null,null],"error":[null,null],"close":[null,null,null]}
+[2016-11-23 16:30:27.135] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 10
+[2016-11-23 16:30:27.147] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writableState", value: {"objectMode":false,"highWaterMark":16384,"needDrain":false,"ending":false,"ended":false,"finished":false,"decodeStrings":false,"defaultEncoding":"utf8","length":0,"writing":false,"corked":0,"sync":true,"bufferProcessing":false,"writecb":null,"writelen":0,"bufferedRequest":null,"lastBufferedRequest":null,"pendingcb":0,"prefinished":false,"errorEmitted":false,"bufferedRequestCount":0,"corkedRequestsFree":{"next":null,"entry":null}}
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroyed", value: false
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_bytesDispatched", value: 0
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_sockname", value: null
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingData", value: null
+[2016-11-23 16:30:27.148] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingEncoding", value: ""
+[2016-11-23 16:30:27.149] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "server", value: [Circular]
+[2016-11-23 16:30:27.149] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_server", value: [Circular]
+[2016-11-23 16:30:27.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleTimeout", value: 120000
+[2016-11-23 16:30:27.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:30:27.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:30:27.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleStart", value: 3342
+[2016-11-23 16:30:27.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "parser", value: [Circular]
+[2016-11-23 16:30:27.150] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:30:27.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_paused", value: false
+[2016-11-23 16:30:27.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:30:27.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: true
+[2016-11-23 16:30:27.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_httpMessage", value: [Circular]
+[2016-11-23 16:30:27.151] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefTimer", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onTimeout", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroySoon", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_destroy", value: undefined
+[2016-11-23 16:30:27.152] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:30:27.153] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getpeername", value: undefined
+[2016-11-23 16:30:27.153] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: 97
+[2016-11-23 16:30:27.153] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:30:27.153] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteFamily", value: "IPv6"
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remotePort", value: 51492
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getsockname", value: undefined
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localPort", value: 9101
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeGeneric", value: undefined
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writev", value: undefined
+[2016-11-23 16:30:27.154] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_write", value: undefined
+[2016-11-23 16:30:27.155] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesWritten", value: 0
+[2016-11-23 16:30:27.155] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:30:27.155] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:30:27.155] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:30:27.155] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "cork", value: undefined
+[2016-11-23 16:30:27.156] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "uncork", value: undefined
+[2016-11-23 16:30:27.156] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setDefaultEncoding", value: undefined
+[2016-11-23 16:30:27.156] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:30:27.157] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:30:27.157] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:30:27.157] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:30:27.158] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:30:27.159] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:30:27.159] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:30:27.162] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:30:27.163] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:30:27.164] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:30:27.164] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:30:27.165] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:30:27.165] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:30:27.166] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:30:27.167] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.connection--------------
+[2016-11-23 16:30:27.167] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connecting", value: false
+[2016-11-23 16:30:27.167] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hadError", value: false
+[2016-11-23 16:30:27.167] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:30:27.167] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parent", value: null
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_host", value: null
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":true,"ended":false,"endEmitted":false,"reading":true,"sync":false,"needReadable":true,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":false,"decoder":null,"encoding":null}
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"end":[null,null],"drain":[null,null],"error":[null,null],"close":[null,null,null]}
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 10
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writableState", value: {"objectMode":false,"highWaterMark":16384,"needDrain":false,"ending":false,"ended":false,"finished":false,"decodeStrings":false,"defaultEncoding":"utf8","length":0,"writing":false,"corked":0,"sync":true,"bufferProcessing":false,"writecb":null,"writelen":0,"bufferedRequest":null,"lastBufferedRequest":null,"pendingcb":0,"prefinished":false,"errorEmitted":false,"bufferedRequestCount":0,"corkedRequestsFree":{"next":null,"entry":null}}
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:30:27.168] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroyed", value: false
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_bytesDispatched", value: 0
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_sockname", value: {"address":"::ffff:127.0.0.1","family":"IPv6","port":9101}
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingData", value: null
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingEncoding", value: ""
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "server", value: [Circular]
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_server", value: [Circular]
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleTimeout", value: 120000
+[2016-11-23 16:30:27.169] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleStart", value: 3342
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "parser", value: [Circular]
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_paused", value: false
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:30:27.170] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: true
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_httpMessage", value: [Circular]
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_peername", value: {"address":"::ffff:127.0.0.1","family":"IPv6","port":51492}
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefTimer", value: undefined
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onTimeout", value: undefined
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:30:27.171] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroySoon", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_destroy", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getpeername", value: undefined
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: 97
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteFamily", value: "IPv6"
+[2016-11-23 16:30:27.172] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remotePort", value: 51492
+[2016-11-23 16:30:27.173] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getsockname", value: undefined
+[2016-11-23 16:30:27.174] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:30:27.174] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localPort", value: 9101
+[2016-11-23 16:30:27.174] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:30:27.174] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeGeneric", value: undefined
+[2016-11-23 16:30:27.174] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writev", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_write", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesWritten", value: 0
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "cork", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "uncork", value: undefined
+[2016-11-23 16:30:27.175] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setDefaultEncoding", value: undefined
+[2016-11-23 16:30:27.176] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:30:27.176] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:30:27.176] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:30:27.196] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:30:27.196] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:30:27.196] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:30:27.196] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:30:27.196] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:30:27.196] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:30:27.197] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:30:27.214] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:30:27.215] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.client--------------
+[2016-11-23 16:30:27.215] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connecting", value: false
+[2016-11-23 16:30:27.215] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hadError", value: false
+[2016-11-23 16:30:27.215] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:30:27.216] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parent", value: null
+[2016-11-23 16:30:27.216] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_host", value: null
+[2016-11-23 16:30:27.216] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":true,"ended":false,"endEmitted":false,"reading":true,"sync":false,"needReadable":true,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":false,"decoder":null,"encoding":null}
+[2016-11-23 16:30:27.221] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:30:27.221] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:30:27.221] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"end":[null,null],"drain":[null,null],"error":[null,null],"close":[null,null,null]}
+[2016-11-23 16:30:27.221] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 10
+[2016-11-23 16:30:27.221] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:30:27.222] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writableState", value: {"objectMode":false,"highWaterMark":16384,"needDrain":false,"ending":false,"ended":false,"finished":false,"decodeStrings":false,"defaultEncoding":"utf8","length":0,"writing":false,"corked":0,"sync":true,"bufferProcessing":false,"writecb":null,"writelen":0,"bufferedRequest":null,"lastBufferedRequest":null,"pendingcb":0,"prefinished":false,"errorEmitted":false,"bufferedRequestCount":0,"corkedRequestsFree":{"next":null,"entry":null}}
+[2016-11-23 16:30:27.222] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:30:27.222] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:30:27.222] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroyed", value: false
+[2016-11-23 16:30:27.222] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_bytesDispatched", value: 0
+[2016-11-23 16:30:27.223] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_sockname", value: {"address":"::ffff:127.0.0.1","family":"IPv6","port":9101}
+[2016-11-23 16:30:27.223] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingData", value: null
+[2016-11-23 16:30:27.223] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingEncoding", value: ""
+[2016-11-23 16:30:27.223] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "server", value: [Circular]
+[2016-11-23 16:30:27.224] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_server", value: [Circular]
+[2016-11-23 16:30:27.224] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleTimeout", value: 120000
+[2016-11-23 16:30:27.224] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:30:27.224] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleStart", value: 3342
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "parser", value: [Circular]
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_paused", value: false
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: true
+[2016-11-23 16:30:27.225] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_httpMessage", value: [Circular]
+[2016-11-23 16:30:27.226] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_peername", value: {"address":"::ffff:127.0.0.1","family":"IPv6","port":51492}
+[2016-11-23 16:30:27.226] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefTimer", value: undefined
+[2016-11-23 16:30:27.227] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:30:27.227] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:30:27.227] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onTimeout", value: undefined
+[2016-11-23 16:30:27.227] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:30:27.227] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroySoon", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_destroy", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getpeername", value: undefined
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: 97
+[2016-11-23 16:30:27.251] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteFamily", value: "IPv6"
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remotePort", value: 51492
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getsockname", value: undefined
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localPort", value: 9101
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeGeneric", value: undefined
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writev", value: undefined
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_write", value: undefined
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesWritten", value: 0
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:30:27.252] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "cork", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "uncork", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setDefaultEncoding", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:30:27.253] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:30:27.254] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:30:27.254] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:30:27.254] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:30:27.254] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:30:27.254] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:30:27.255] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:30:27.255] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:30:27.255] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:30:27.255] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:30:27.255] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:30:27.255] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:30:27.256] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:30:27.256] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:30:27.256] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:30:27.256] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:30:27.256] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:30:27.256] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:34:02.837] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - server start listen post: 9101
+[2016-11-23 16:34:05.796] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - url params: {"0":"/context/get/123/456","id1":"123","id2":"456"}
+[2016-11-23 16:34:05.796] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 url -- ctx.url: "/context/get/123/456"
+[2016-11-23 16:34:05.796] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - 返回请求 pathname -- ctx.path: "/context/get/123/456"
+[2016-11-23 16:34:05.797] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - {"request":{"method":"GET","url":"/context/get/123/456","header":{"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/context/get/123/456","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+[2016-11-23 16:34:05.797] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req--------------
+[2016-11-23 16:34:05.798] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":null,"ended":false,"endEmitted":false,"reading":false,"sync":true,"needReadable":false,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":true,"decoder":null,"encoding":null}
+[2016-11-23 16:34:05.798] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:34:05.798] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:34:05.798] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:34:05.799] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 0
+[2016-11-23 16:34:05.800] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:34:05.800] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:34:05.800] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:34:05.800] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMajor", value: 1
+[2016-11-23 16:34:05.800] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersionMinor", value: 1
+[2016-11-23 16:34:05.801] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpVersion", value: "1.1"
+[2016-11-23 16:34:05.801] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "complete", value: false
+[2016-11-23 16:34:05.801] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headers", value: {"host":"127.0.0.1:9101","user-agent":"curl/7.43.0","accept":"*/*"}
+[2016-11-23 16:34:05.801] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawHeaders", value: ["Host","127.0.0.1:9101","User-Agent","curl/7.43.0","Accept","*/*"]
+[2016-11-23 16:34:05.803] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "trailers", value: {}
+[2016-11-23 16:34:05.803] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "rawTrailers", value: []
+[2016-11-23 16:34:05.804] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "upgrade", value: false
+[2016-11-23 16:34:05.804] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "url", value: "/context/get/123/456"
+[2016-11-23 16:34:05.804] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "method", value: "GET"
+[2016-11-23 16:34:05.804] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: null
+[2016-11-23 16:34:05.804] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: null
+[2016-11-23 16:34:05.804] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "client", value: [Circular]
+[2016-11-23 16:34:05.806] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: false
+[2016-11-23 16:34:05.806] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dumped", value: false
+[2016-11-23 16:34:05.807] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parsedUrl", value: {"protocol":null,"slashes":null,"auth":null,"host":null,"port":null,"hostname":null,"hash":null,"search":null,"query":null,"pathname":"/context/get/123/456","path":"/context/get/123/456","href":"/context/get/123/456","_raw":"/context/get/123/456"}
+[2016-11-23 16:34:05.807] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:34:05.807] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:34:05.809] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:34:05.810] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:34:05.821] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLines", value: undefined
+[2016-11-23 16:34:05.821] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_addHeaderLine", value: undefined
+[2016-11-23 16:34:05.821] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_dump", value: undefined
+[2016-11-23 16:34:05.821] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:34:05.822] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:34:05.823] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:34:05.824] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket--------------
+[2016-11-23 16:34:05.824] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connecting", value: false
+[2016-11-23 16:34:05.824] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hadError", value: false
+[2016-11-23 16:34:05.824] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:34:05.825] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_parent", value: null
+[2016-11-23 16:34:05.828] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_host", value: null
+[2016-11-23 16:34:05.829] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_readableState", value: {"objectMode":false,"highWaterMark":16384,"buffer":{"head":null,"tail":null,"length":0},"length":0,"pipes":null,"pipesCount":0,"flowing":true,"ended":false,"endEmitted":false,"reading":true,"sync":false,"needReadable":true,"emittedReadable":false,"readableListening":false,"resumeScheduled":false,"defaultEncoding":"utf8","ranOut":false,"awaitDrain":0,"readingMore":false,"decoder":null,"encoding":null}
+[2016-11-23 16:34:05.829] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readable", value: true
+[2016-11-23 16:34:05.830] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:34:05.830] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"end":[null,null],"drain":[null,null],"error":[null,null],"close":[null,null,null]}
+[2016-11-23 16:34:05.830] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 10
+[2016-11-23 16:34:05.830] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:34:05.830] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writableState", value: {"objectMode":false,"highWaterMark":16384,"needDrain":false,"ending":false,"ended":false,"finished":false,"decodeStrings":false,"defaultEncoding":"utf8","length":0,"writing":false,"corked":0,"sync":true,"bufferProcessing":false,"writecb":null,"writelen":0,"bufferedRequest":null,"lastBufferedRequest":null,"pendingcb":0,"prefinished":false,"errorEmitted":false,"bufferedRequestCount":0,"corkedRequestsFree":{"next":null,"entry":null}}
+[2016-11-23 16:34:05.846] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:34:05.846] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:34:05.846] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroyed", value: false
+[2016-11-23 16:34:05.846] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_bytesDispatched", value: 0
+[2016-11-23 16:34:05.846] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_sockname", value: null
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingData", value: null
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingEncoding", value: ""
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "server", value: [Circular]
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_server", value: [Circular]
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleTimeout", value: 120000
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleStart", value: 4710
+[2016-11-23 16:34:05.847] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "parser", value: [Circular]
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_paused", value: false
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "read", value: undefined
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consuming", value: true
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_httpMessage", value: [Circular]
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefTimer", value: undefined
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:34:05.848] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onTimeout", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_read", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroySoon", value: undefined
+[2016-11-23 16:34:05.849] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_destroy", value: undefined
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getpeername", value: undefined
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: 97
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remoteFamily", value: "IPv6"
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "remotePort", value: 51526
+[2016-11-23 16:34:05.850] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_getsockname", value: undefined
+[2016-11-23 16:34:05.851] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localAddress", value: "::ffff:127.0.0.1"
+[2016-11-23 16:34:05.851] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "localPort", value: 9101
+[2016-11-23 16:34:05.851] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:34:05.851] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeGeneric", value: undefined
+[2016-11-23 16:34:05.851] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writev", value: undefined
+[2016-11-23 16:34:05.851] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_write", value: undefined
+[2016-11-23 16:34:05.852] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesWritten", value: 0
+[2016-11-23 16:34:05.852] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:34:05.852] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:34:05.852] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:34:05.852] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "cork", value: undefined
+[2016-11-23 16:34:05.852] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "uncork", value: undefined
+[2016-11-23 16:34:05.853] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setDefaultEncoding", value: undefined
+[2016-11-23 16:34:05.853] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "push", value: undefined
+[2016-11-23 16:34:05.853] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unshift", value: undefined
+[2016-11-23 16:34:05.853] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "isPaused", value: undefined
+[2016-11-23 16:34:05.853] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setEncoding", value: undefined
+[2016-11-23 16:34:05.855] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:34:05.855] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unpipe", value: undefined
+[2016-11-23 16:34:05.856] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:34:05.856] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:34:05.856] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:34:05.857] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "wrap", value: undefined
+[2016-11-23 16:34:05.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:34:05.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:34:05.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:34:05.858] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:34:05.871] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket._handle--------------
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bytesRead", value: 97
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_externalStream", value: {}
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "fd", value: 16
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "reading", value: true
+[2016-11-23 16:34:05.872] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "owner", value: [Circular]
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "onread", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "onconnection", value: null
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeQueueSize", value: 0
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "close", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "hasRef", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setBlocking", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readStart", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "readStop", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "shutdown", value: undefined
+[2016-11-23 16:34:05.873] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writev", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeBuffer", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeAsciiString", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeUtf8String", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeUcs2String", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeLatin1String", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "open", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bind", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "bind6", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connect6", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getsockname", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getpeername", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setNoDelay", value: undefined
+[2016-11-23 16:34:05.874] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setKeepAlive", value: undefined
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket.server--------------
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 2
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_connections", value: 1
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:34:05.875] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_usingSlaves", value: false
+[2016-11-23 16:34:05.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_slaves", value: []
+[2016-11-23 16:34:05.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unref", value: false
+[2016-11-23 16:34:05.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:34:05.876] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pauseOnConnect", value: false
+[2016-11-23 16:34:05.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpAllowHalfOpen", value: false
+[2016-11-23 16:34:05.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "timeout", value: 120000
+[2016-11-23 16:34:05.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingResponseData", value: 0
+[2016-11-23 16:34:05.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_connectionKey", value: "6::::9101"
+[2016-11-23 16:34:05.877] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:34:05.878] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_listen2", value: undefined
+[2016-11-23 16:34:05.879] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listening", value: true
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getConnections", value: undefined
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "close", value: undefined
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_emitCloseIfDrained", value: undefined
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenFD", value: undefined
+[2016-11-23 16:34:05.880] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_setupSlave", value: undefined
+[2016-11-23 16:34:05.910] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:34:05.911] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket._server--------------
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {}
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 2
+[2016-11-23 16:34:05.912] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_connections", value: 1
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_handle", value: [Circular]
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_usingSlaves", value: false
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_slaves", value: []
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unref", value: false
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "allowHalfOpen", value: true
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pauseOnConnect", value: false
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "httpAllowHalfOpen", value: false
+[2016-11-23 16:34:05.913] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "timeout", value: 120000
+[2016-11-23 16:34:05.914] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_pendingResponseData", value: 0
+[2016-11-23 16:34:05.914] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_connectionKey", value: "6::::9101"
+[2016-11-23 16:34:05.914] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:34:05.914] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_listen2", value: undefined
+[2016-11-23 16:34:05.914] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listen", value: undefined
+[2016-11-23 16:34:05.914] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listening", value: true
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "address", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getConnections", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "close", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_emitCloseIfDrained", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenFD", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_setupSlave", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "ref", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unref", value: undefined
+[2016-11-23 16:34:05.915] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:34:05.930] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket._idleNext--------------
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:34:05.931] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_timer", value: [Circular]
+[2016-11-23 16:34:05.932] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefed", value: true
+[2016-11-23 16:34:05.932] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "msecs", value: 120000
+[2016-11-23 16:34:05.932] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket._idlePrev--------------
+[2016-11-23 16:34:05.932] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idleNext", value: [Circular]
+[2016-11-23 16:34:05.933] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_idlePrev", value: [Circular]
+[2016-11-23 16:34:05.933] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_timer", value: [Circular]
+[2016-11-23 16:34:05.933] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_unrefed", value: true
+[2016-11-23 16:34:05.933] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "msecs", value: 120000
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket.parser--------------
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "0", value: undefined
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "1", value: undefined
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "2", value: undefined
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "3", value: undefined
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "4", value: undefined
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headers", value: []
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_url", value: ""
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_consumed", value: true
+[2016-11-23 16:34:05.934] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "incoming", value: [Circular]
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outgoing", value: null
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "maxHeaderPairs", value: 2000
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "onIncoming", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "close", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "execute", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "finish", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "reinitialize", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pause", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "resume", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "consume", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "unconsume", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getCurrentBuffer", value: undefined
+[2016-11-23 16:34:05.935] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - ------------ctx.req.socket._httpMessage--------------
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "domain", value: null
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_events", value: {"finish":[null,null]}
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_eventsCount", value: 2
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_maxListeners", value: undefined
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "output", value: []
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputEncodings", value: []
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputCallbacks", value: []
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "outputSize", value: 0
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writable", value: true
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_last", value: false
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "chunkedEncoding", value: false
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "shouldKeepAlive", value: true
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "useChunkedEncodingByDefault", value: true
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "sendDate", value: true
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_removedHeader", value: {}
+[2016-11-23 16:34:05.936] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_contentLength", value: null
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_hasBody", value: true
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_trailer", value: ""
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "finished", value: false
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headerSent", value: false
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "socket", value: [Circular]
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "connection", value: [Circular]
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_header", value: null
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headers", value: null
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_headerNames", value: {}
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_onPendingData", value: undefined
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusCode", value: 404
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "__onFinished", value: undefined
+[2016-11-23 16:34:05.937] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_finish", value: undefined
+[2016-11-23 16:34:05.938] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "statusMessage", value: undefined
+[2016-11-23 16:34:05.938] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "assignSocket", value: undefined
+[2016-11-23 16:34:05.939] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "detachSocket", value: undefined
+[2016-11-23 16:34:05.940] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeContinue", value: undefined
+[2016-11-23 16:34:05.940] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_implicitHeader", value: undefined
+[2016-11-23 16:34:05.940] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeHead", value: undefined
+[2016-11-23 16:34:05.941] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "writeHeader", value: undefined
+[2016-11-23 16:34:05.941] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setTimeout", value: undefined
+[2016-11-23 16:34:05.941] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "destroy", value: undefined
+[2016-11-23 16:34:05.942] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_send", value: undefined
+[2016-11-23 16:34:05.943] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_writeRaw", value: undefined
+[2016-11-23 16:34:05.943] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_buffer", value: undefined
+[2016-11-23 16:34:05.943] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_storeHeader", value: undefined
+[2016-11-23 16:34:05.943] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setHeader", value: undefined
+[2016-11-23 16:34:05.944] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getHeader", value: undefined
+[2016-11-23 16:34:05.944] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeHeader", value: undefined
+[2016-11-23 16:34:05.944] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_renderHeaders", value: undefined
+[2016-11-23 16:34:05.944] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "headersSent", value: false
+[2016-11-23 16:34:05.944] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "write", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addTrailers", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "end", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_flush", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "_flushOutput", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "flushHeaders", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "flush", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "pipe", value: undefined
+[2016-11-23 16:34:05.945] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "setMaxListeners", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "getMaxListeners", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "emit", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "addListener", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "on", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependListener", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "once", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "prependOnceListener", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeListener", value: undefined
+[2016-11-23 16:34:05.946] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "removeAllListeners", value: undefined
+[2016-11-23 16:34:05.963] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listeners", value: undefined
+[2016-11-23 16:34:05.963] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "listenerCount", value: undefined
+[2016-11-23 16:34:05.963] [INFO] /Users/sensoro/bynf/test/koa_2.X/app_3.js - key: "eventNames", value: undefined
