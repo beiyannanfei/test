@@ -124,7 +124,7 @@ sarah.liu@sensoro.com -p Xsensoro2015           云子 X 实验室公众号：
 
 
 
-
+curl "http://qing.mocha.server.sensoro.com/pay/admin/sendmsg" -d "mobile=15133606783&msg=短信发送测试"
 
 http://qing.mocha.server.sensoro.com/pay/admin/order/statistics/all
 
