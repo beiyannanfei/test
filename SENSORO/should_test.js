@@ -10,3 +10,9 @@ try {
 } catch (e) {
 	console.log(e.message);
 }
+
+try {
+	console.log(should(1).null());
+} catch (e) {
+	console.log(e.message);
+}
