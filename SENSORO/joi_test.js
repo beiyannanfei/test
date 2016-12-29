@@ -73,34 +73,53 @@ var Joi = require("joi");
  }
  console.log(value);
  });*/
+/*
+ var a = {
+ a: ["1", "2", "3"],
+ b: ["4", "6", "6"],
+ c: ["7", "8", "9"],
+ d: []
+ };
 
-var a = {
-	a: ["1", "2", "3"],
-	b: ["4", "6", "6"],
-	c: ["7", "8", "9"],
-	d: []
-};
+ let aScheam = {};
+ for (var index in a) {
+ aScheam[index] = Joi.array().min(0).unique().items(Joi.string().min(1)).required();
+ }
+ let schema = Joi.object().keys({
+ a: Joi.object().keys(aScheam)
+ });
 
-let aScheam = {};
-for (var index in a) {
-	aScheam[index] = Joi.array().min(0).unique().items(Joi.string().min(1)).required();
-}
+ let checkObj = {
+ a: a
+ };
+ */
 let schema = Joi.object().keys({
-	a: Joi.object().keys(aScheam)
+	a: Joi.number().min(0).required()
 });
 
 let checkObj = {
-	a: a
+	a: "a"
 };
+
 
 Joi.validate(checkObj, schema, (err, value)=> {
 	if (!!err) {
-		return console.log(err.message);
+		console.log(err.message);
+		var msgList = err.message.split("because ");
+		console.log(msgList);
+		var errDesc = msgList[1];
+		console.log(errDesc);
+		var m1 = errDesc.split("\" ");
+		console.log(m1[0]);
+		console.log(m1[1]);
+		var arg = m1[0].substr(2, m1[0].length - 2);
+		console.log(arg);
+		var errmsg = m1[1].substr(0, m1[1].length - 1);
+		console.log(errmsg);
 	}
-	console.log(value);
 });
 
-
+// 大凡媚上者多傲下
 
 
 

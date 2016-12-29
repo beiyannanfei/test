@@ -17,7 +17,9 @@ Promise.join(promResolve("AAA"), promResolve("BBB"), promResolve("CCC"), (v1, v2
 	console.log("[%j]", new Date().toLocaleString(), v1, v2, v3);
 });
 
-Promise.join(promResolve("DDD"), promResolve("EEE")).then(val => {
-	console.log("val: %j", val);
+Promise.join(promResolve("DDD"), promResolve("EEE")).timeout(1100).spread((v1, v2) => {
+	console.log("v1: %j, v2: %j", v1, v2);
+}).catch(err => {
+	console.log("err: %j", err.message);
 });
 
