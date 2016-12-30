@@ -105,7 +105,7 @@ let checkObj = {
 Joi.validate(checkObj, schema, (err, value)=> {
 	if (!!err) {
 		console.log(err.message);
-		var msgList = err.message.split("because ");
+		/*var msgList = err.message.split("because ");
 		console.log(msgList);
 		var errDesc = msgList[1];
 		console.log(errDesc);
@@ -115,7 +115,7 @@ Joi.validate(checkObj, schema, (err, value)=> {
 		var arg = m1[0].substr(2, m1[0].length - 2);
 		console.log(arg);
 		var errmsg = m1[1].substr(0, m1[1].length - 1);
-		console.log(errmsg);
+		console.log(errmsg);*/
 	}
 });
 

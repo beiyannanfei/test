@@ -1,105 +1,85 @@
-function minusCv(order, cb) {       //扣除用户余额,返回支付参数
-	if (order.expect_cash <= 0 ||
-		order.status == mUnionOrderPaySate.cancel ||
-		order.status == mUnionOrderPaySate.refund) {     //无需返现
-		return cb ? cb(null, null) : "";
-	}
+module.exports = {
+	//错误码对应关系
+	"-1": {cn: "系统错误", en: "System error", errcode: -1},
+	//授权相关
+	"user_auth-no_permission": {cn: "没有权限", en: "", errcode: -2},
+	"user_auth-account_locked": {cn: "账号被停用", en: "", errcode: 4010017},
+	"user_auth-user_overdue": {cn: "用户已过期", en: "", errcode: 4010026},
+	"user_auth-not_bind_wechat": {cn: "此账号没有绑定公众号", en: "", errcode: 4010063},
+	"user_auth-not_bind_wxmch": {cn: "未绑定商户信息", en: "", errcode: 4010101},
 
-	if (!order.open_id || !order.yyyapp_id || !order.yyy_openid) {
-		return cb ? cb(null, null) : "";
-	}
+	//获取原有卡券
+	"card_get-card_null": {cn: "卡券不存在", en: "", errcode: 4010076},
 
-	var payInfo = {
-		yyyappId: order.yyyapp_id,
-		openId: order.yyy_openid,
-		tOpenId: order.open_id
-	};
-	var userCv = 0; //用户余额
-	async.auto({
-		getUserCv: function (cb) {      //获取用户余额
-			lotteryApi.getVirtualCurrency(payInfo.yyyappId, payInfo.openId, function (err, num) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-getUserCv err: %j, order: %j, payInfo: %j", new Date().toLocaleString(), err, order, payInfo);
-					return cb(err);
-				}
-				userCv = +num || 0;
-				if (userCv < 100) {
-					console.log("[%j] unionMallOrderConsumer-getUserCv less userCv: %j, order: %j, payInfo: %j", new Date().toLocaleString(), userCv, order, payInfo);
-					payInfo.firstSpend = 0;
-					payInfo.spend = 0;
-					payInfo.RefundNum = 0;
-					payInfo.cV = userCv;
-					return cb("user_daypay_notenough");
-				}
-				return cb(null, userCv);
-			});
-		},
-		minusCv: ["getUserCv", function (cb) {      //扣除用户余额
-			if (order.expect_cash <= userCv) {          //余额大于应返现，一次全反
-				payInfo.firstSpend = order.expect_cash;
-				payInfo.spend = order.expect_cash;
-			}
-			else {
-				payInfo.firstSpend = userCv;
-				payInfo.spend = userCv;
-			}
-			var mallId = order._id.toString();
-			var note = typeConfig.fromMap[order.from] + ":" + order.order_id + " 返现扣除";
-			lotteryApi.minusVirtualCurrency(payInfo.yyyappId, payInfo.openId, mallId, userCv, +payInfo.firstSpend, note, function (err, data) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-minusCv err: %j, order: %j, payInfo: %j, userCv: %j", new Date().toLocaleString(), err, order, payInfo, userCv);
-					return cb(err);
-				}
-				payInfo.cV = +(data.body ? data.body.virtualCurrency || 0 : 0);
-				return cb(null, data);
-			});
-		}],
-		getRefundNum: ["minusCv", function (cb) {
-			var key = "union_mall_order_refund_red_money";
-			var field = order.open_id;
-			redisClient.HGET(key, field, function (err, value) {
-				if (!!err) {
-					console.log("[%j] unionMallOrderConsumer-minusCv-HGET err: %j, order: %j", new Date().toLocaleString(), err, order);
-					return cb(err);
-				}
-				value = +(value || 0);
-				if (value <= 0) {   //欠款为0
-					payInfo.RefundNum = 0;                  //扣除用户欠款金额
-					return cb(null, value);
-				}
-				var newValue = 0;   //设置最新欠款金额
-				if (payInfo.firstSpend <= value) {      //返现金额小于欠款
-					newValue = value - payInfo.firstSpend;
-					payInfo.RefundNum = payInfo.firstSpend;
-				}
-				else {      //返现金额大于欠款
-					newValue = 0;
-					payInfo.RefundNum = value;
-				}
-				redisClient.HSET(key, field, newValue, function (err, o) {
-					if (!!err) {
-						console.log("[%j] unionMallOrderConsumer-minusCv-HSET err: %j, newValue: %j, order: %j", new Date().toLocaleString(), err, newValue, order);
-						return cb(err);
-					}
-					return cb(null, value);
-				});
-			});
-		}]
-	}, function (err, results) {
-		console.log("[%j] unionMallOrderConsumer minusCv err: %j, results: %j, order: %j", new Date().toLocaleString(), err, results, order);
-		if (!!err) {
-			if (err == "user_daypay_notenough") {   //用户余额不足
-				return cb(null, payInfo);
-			}
-			return cb(err);
-		}
-		return cb(null, payInfo);
-	});
-}
+	//卡券颜色相关
+	"card_color-appid_null": {cn: "参数appid为空", en: "", errcode: 4010071},
+	"card_color-api_error": {cn: "获取卡券颜色接口错误", en: "", errcode: 4010071},
 
-function start() {
-	var a = 0;
-	a ? (console.log("============")) : "";
-}
+	//添加卡券相关
+	"card_add-card_type_null": {cn: "卡券类型字段为空", en: "", errcode: 4010078},
+	"card_add-base_info_null": {cn: "卡券基本信息字段为空", en: "", errcode: 4010078},
+	"card_add-member_info_null": {cn: "会员卡信息字段为空", en: "", errcode: 4010078},
+	"card_add-special_info_null": {cn: "卡券自定义信息字段为空", en: "", errcode: 4010078},
+	"card_add-color_null": {cn: "卡券颜色字段为空", en: "", errcode: 4010078},
+	"card_add-logo_url_null": {cn: "卡券logo字段为空", en: "", errcode: 4010078},
+	"card_add-brand_name_null": {cn: "卡券商户名字字段为空", en: "", errcode: 4010078},
+	"card_add-title_null": {cn: "卡券名字字段为空", en: "", errcode: 4010078},
+	"card_add-notice_null": {cn: "卡券使用提醒字段为空", en: "", errcode: 4010078},
+	"card_add-description_null": {cn: "卡券使用说明字段为空", en: "", errcode: 4010078},
+	"card_add-sku_null": {cn: "卡券商品信息字段为空", en: "", errcode: 4010078},
+	"card_add-sku.quantity_null": {cn: "卡券库存的数量字段为空", en: "", errcode: 4010078},
+	"card_add-date_info_null": {cn: "卡券使用日期字段为空", en: "", errcode: 4010078},
+	"card_add-date_info.type_null": {cn: "卡券使用时间的类型字段为空", en: "", errcode: 4010078},
+	"card_add-deal_detail_null": {cn: "团购详情字段为空", en: "", errcode: 4010078},
+	"card_add-reduce_cost_null": {cn: "减免金额字段为空", en: "", errcode: 4010078},
+	"card_add-discount_null": {cn: "打折额度字段为空", en: "", errcode: 4010078},
+	"card_add-gift_null": {cn: "兑换内容名称字段为空", en: "", errcode: 4010078},
+	"card_add-default_detail_null": {cn: "优惠详情字段为空", en: "", errcode: 4010078},
+	"card_add-activate_url_null": {cn: "激活会员卡url字段为空", en: "", errcode: 4010078},
+	"card_add-supply_balance_null": {cn: "是否支持储值字段为空", en: "", errcode: 4010078},
+	"card_add-prerogative_null": {cn: "会员卡特权说明字段为空", en: "", errcode: 4010078},
+	"card_add-abstract_null": {cn: "封面摘要简介字段为空", en: "", errcode: 4010078},
+	"card_add-icon_url_list_null": {cn: "封面图片列表字段为空", en: "", errcode: 4010078},
+	"card_add-text_image_list_null": {cn: "图文列表字段为空", en: "", errcode: 4010078},
 
-start();
+	//修改卡券相关
+	"card_modify-data_empty": {cn: "修改数据为空", en: "", errcode: 4010094},
+	"card_modify-forbid_modify": {cn: "已审核卡券只能修改base_info字段", en: "", errcode: 4010079},
+	"card_modify-updateCard_api_error": {cn: "更新卡券微信接口返回错误", en: "", errcode: 4010077},
+
+	//卡券库存相关
+	"card_quantity-quantity_invalid": {cn: "卡券库存量需大于0", en: "", errcode: 4010080},
+	"card_quantity-api_error": {cn: "修改卡券微信端库存接口错误", en: "", errcode: 4010077},
+
+	//修改 应用 对卡券的需求量(接口作废)
+	//导入code接口相关
+	"card_code_import-card_id_invalid": {cn: "卡券ID字段为空", en: "", errcode: 4010075},
+	"card_code_import-code_list_null": {cn: "导入卡券code列表为空", en: "", errcode: 4010083},
+	"card_code_import-code_list_too_large": {cn: "导入卡券code列表太大", en: "", errcode: 4010084},
+	"card_code_import-code_repeat": {cn: "导入卡券code列表有重复", en: "", errcode: 4010088},
+	"card_code_import-code_length_invalid": {cn: "导入卡券code长度非法", en: "", errcode: 4010083},
+	"card_code_import-card_status_invalid": {cn: "卡券状态不合法", en: "", errcode: 4010086},
+	"card_code_import-code_import_repeat": {cn: "重复导入", en: "", errcode: 4010087},
+	"card_code_import-code_import_faild": {cn: "卡券导入失败", en: "", errcode: 4010085},
+
+	//获取卡券列表相关
+	"card_list-per_page_num_large": {cn: "单页数据条数超限", en: "", errcode: 4010001},
+
+	//同步卡券相关
+	"card_sync-card_id_invalid": {cn: "卡券ID字段为空", en: "", errcode: 4010075},
+	"card_sync-card_date_invalid": {cn: "卡券日期字段为空", en: "", errcode: 4010082},
+	"card_sync-sync_api_error": {cn: "创建微信卡券失败", en: "", errcode: 4010077},
+
+
+
+
+
+
+
+
+
+
+
+
+
+};
