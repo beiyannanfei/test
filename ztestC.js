@@ -1,6 +1,7 @@
 module.exports = {
 	//错误码对应关系
 	"-1": {cn: "系统错误", en: "System error", errcode: -1},
+	"-2": {cn: "没有权限", en: "No permission", errcode: -2},
 	//授权相关
 	"user_auth-no_permission": {cn: "没有权限", en: "", errcode: -2},
 	"user_auth-account_locked": {cn: "账号被停用", en: "", errcode: 4010017},
@@ -70,16 +71,62 @@ module.exports = {
 	"card_sync-card_date_invalid": {cn: "卡券日期字段为空", en: "", errcode: 4010082},
 	"card_sync-sync_api_error": {cn: "创建微信卡券失败", en: "", errcode: 4010077},
 
+	//同步公众号卡券到本地
+	"card_sync_local-getCardList_api_error": {cn: "获取卡券列表接口错误", en: "", errcode: 4010071},
+	"card_sync_local-cardInfo_api_error": {cn: "获取卡券详情接口错误", en: "", errcode: 4010071},
 
+	//同步其它公众号卡券相关
+	"card_sync_admin-query_param_invalid": {cn: "查询参数错误", en: "", errcode: 4010091},
+	"card_sync_admin-query_info_null": {cn: "查询内容错误", en: "", errcode: 4010091},
 
+	//删除卡券相关
+	"card_del-card_null": {cn: "删除的卡券不存在", en: "", errcode: 4010076},
+	"card_del-api_error": {cn: "删除卡券接口错误", en: "", errcode: 4010071},
 
+	//获取卡券详情相关
+	"card_detail-appid_null": {cn: "appid参数为空", en: "", errcode: 4010054},
+	"card_detail-cardId_null": {cn: "卡券id参数错误", en: "", errcode: 4010075},
+	"card_detail-page_count_over": {cn: "每页数据条数超过限制", en: "", errcode: 4010001},
 
+	//卡券发放相关
+	"card_issue-card_null": {cn: "发放卡券不存在", en: "", errcode: 4010076},
+	"card_issue-card_type_invalid": {cn: "卡券发放时通知数据 type 不合法", en: "", errcode: 4010073},
 
+	//核销卡卷相关
+	"card_consume-param_invalid": {cn: "参数错误", en: "", errcode: 4010093},
+	"card_consume-failure": {cn: "卡券核销失败", en: "", errcode: 4010081},
 
+	//获取当前卡券的领取人列表相关
+	"card_code_list-page_count_over": {cn: "每页数据条数超过限制", en: "", errcode: 4010001},
 
+	//创建互通卡券相关
+	"card_cross-param_invalid": {cn: "创建互通卡券参数错误", en: "", errcode: 4010093},
+	"card_cross-user_invalid": {cn: "用户不合法，请确定用户已绑定公众号，并且是有效状态", en: "", errcode: 4010020},
+	"card_cross-user_overdue": {cn: "用户已过期", en: "", errcode: 4010020},
+	"card_cross-api_error": {cn: "互通卡券微信接口错误", en: "", errcode: 4010152},
 
+	//接收互通卡券相关
+	"card_cross_receive-card_null": {cn: "互通卡券不存在", en: "", errcode: 4010150},
+	"card_cross_receive-api_errror": {cn: "接收互通卡券微信接口错误", en: "", errcode: 4010151},
+	"card_cross_receive-update_status_failure": {cn: "接收互通卡券时，修改互通卡券状态失败", en: "", errcode: 4010153},
 
-
-
+	//列表互通卡券相关
+	"card_cross_list-page_count_over": {cn: "每页数据条数超过限制", en: "", errcode: 4010001},
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

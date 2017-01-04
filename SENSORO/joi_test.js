@@ -73,6 +73,7 @@ var Joi = require("joi");
  }
  console.log(value);
  });*/
+
 /*
  var a = {
  a: ["1", "2", "3"],
@@ -93,34 +94,50 @@ var Joi = require("joi");
  a: a
  };
  */
-let schema = Joi.object().keys({
-	a: Joi.number().min(0).required()
+
+/*
+ let schema = Joi.object().keys({
+ a: Joi.number().min(0).required()
+ });
+
+ let checkObj = {
+ a: "a"
+ };
+
+
+ Joi.validate(checkObj, schema, (err, value)=> {
+ if (!!err) {
+ console.log(err.message);
+ var msgList = err.message.split("because ");
+ console.log(msgList);
+ var errDesc = msgList[1];
+ console.log(errDesc);
+ var m1 = errDesc.split("\" ");
+ console.log(m1[0]);
+ console.log(m1[1]);
+ var arg = m1[0].substr(2, m1[0].length - 2);
+ console.log(arg);
+ var errmsg = m1[1].substr(0, m1[1].length - 1);
+ console.log(errmsg);
+ }
+ });*/
+
+// 大凡媚上者多傲下
+//一个汉字的utf8编码占3个字节
+var schema = Joi.object().keys({
+	name: Joi.string().min(1).max(7, 'utf8')
 });
 
 let checkObj = {
-	a: "a"
+	name: "你好aa"
 };
-
 
 Joi.validate(checkObj, schema, (err, value)=> {
 	if (!!err) {
-		console.log(err.message);
-		/*var msgList = err.message.split("because ");
-		console.log(msgList);
-		var errDesc = msgList[1];
-		console.log(errDesc);
-		var m1 = errDesc.split("\" ");
-		console.log(m1[0]);
-		console.log(m1[1]);
-		var arg = m1[0].substr(2, m1[0].length - 2);
-		console.log(arg);
-		var errmsg = m1[1].substr(0, m1[1].length - 1);
-		console.log(errmsg);*/
+		return console.log(err.message);
 	}
+	console.log(value);
 });
-
-// 大凡媚上者多傲下
-
 
 
 

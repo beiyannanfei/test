@@ -14,7 +14,8 @@ function promResolve(args) {
 let taskMap = {
 	a: promResolve("aaa"),
 	b: promResolve("bbb"),
-	c: promResolve("ccc")
+	c: promResolve("ccc"),
+	d: null
 };
 
 Promise.props(taskMap).then(val => {
