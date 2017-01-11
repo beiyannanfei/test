@@ -16,8 +16,8 @@ let t13Model = mongoose.model("t13", t13Schema);
 
 function create() {
 	//{ ok: 1,	nModified: 0,	n: 1,	upserted: [ { index: 0, _id: 586c63c9588512fdfc0589d4 } ] } 没有数据执行插入
-// { ok: 1, nModified: 0, n: 1 }    //数组中存在插入的元素 nModified为0
-// { ok: 1, nModified: 1, n: 1 }    //数组插入成功nModified为1
+	// { ok: 1, nModified: 0, n: 1 }    //数组中存在插入的元素 nModified为0
+	// { ok: 1, nModified: 1, n: 1 }    //数组插入成功nModified为1
 	t13Model.update({name: "AAA"}, {$addToSet: {list: "B"}}, {upsert: true}, function (err, response) {
 		console.log(response);
 	});

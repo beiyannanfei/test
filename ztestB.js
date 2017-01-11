@@ -1,1 +1,58 @@
-"{\"errcode\":0,\"count\":1,\"data\":[{\"id\":\"57b142c852f81a7a5457be51\",\"uid\":\"54c0e6cf23a911e82a73584c\",\"appid\":\"wxdffb76ac2ccc4311\",\"mchid\":\"1287859301\",\"key\":\"LM7KHt5RLAPusq94KAm2Dn77trm6IiSS\",\"createdTime\":1454067060783,\"updatedTime\":1454067060785,\"certificate\":\"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\"}]}"
+var a = {
+	"uid": "507f1f77bcf86cd799100000",
+	"label": "私有标签A",
+	"labelId": "586f6b8e6129cefc3f5274fa",
+	"userType": "private",
+	"card_type": "GROUPON",
+	"isOpen": true,
+	"advanced_info": {
+		"time_limit": [{
+			"end_minute": 59,
+			"begin_minute": 10,
+			"end_hour": 10,
+			"begin_hour": 0,
+			"type": "MONDAY"
+		}],
+		"business_service": ["BIZ_SERVICE_FREE_WIFI", "BIZ_SERVICE_WITH_PET", "BIZ_SERVICE_FREE_PARK", "BIZ_SERVICE_DELIVER"],
+		"text_image_list": [{
+			"text": "此菜品精选食材，以独特的烹饪方法，最大程度地刺激食 客的味蕾",
+			"image_url": "http://mmbiz.qpic.cn/mmbiz/p98FjXy8LacgHxp3sJ3vn97bGLz0ib0Sfz1bjiaoOYA027iasqSG0sjpiby4vce3AtaPu6cIhBHkt6IjlkY9YnDsfw/0"
+		}, {
+			"text": "此菜品迎合大众口味，老少皆宜，营养均衡",
+			"image_url": "http://mmbiz.qpic.cn/mmbiz/p98FjXy8LacgHxp3sJ3vn97bGLz0ib0Sfz1bjiaoOYA027iasqSG0sj piby4vce3AtaPu6cIhBHkt6IjlkY9YnDsfw/0"
+		}],
+		"abstract": {
+			"abstract": "微信餐厅推出多种新季菜品，期待您的光临",
+			"icon_url_list": ["http://mmbiz.qpic.cn/mmbiz/p98FjXy8LacgHxp3sJ3vn97bGLz0ib0Sfz1bjiaoOYA027iasqSG0sj  piby4vce3AtaPu6cIhBHkt6IjlkY9YnDsfw/0"]
+		},
+		"use_condition": {"can_use_with_other_discount": true}
+	},
+	"special_info": {"deal_detail": "以下锅底2选1（有菌王锅、麻辣锅、大骨锅、番茄锅、清补凉锅、酸菜鱼锅可选）：\n大锅1份 12元\n小锅2份 16元 "},
+	"base_info": {
+		"logo_url": "http://mmbiz.qpic.cn/mmbiz/iaL1LJM1mF9aRKPZJkmG8xXhiaHqkKSVMMWeN3hLut7X7hicFNjakmxibMLGWpXrEXB33367o7zHN0CwngnQY7zb7g/0",
+		"code_type": "CODE_TYPE_TEXT",
+		"brand_name": "海底捞",
+		"title": "测试1",
+		"color": "Color010",
+		"notice": "使用时向服务员出示此券",
+		"description": "不可与其他优惠同享\n如需团购券发票，请在消费时向商户提出\n店内均可使用，仅限堂食",
+		"use_custom_code": true,
+		"bind_openid": false,
+		"service_phone": "020-88888888",
+		"source": "大众点评",
+		"custom_url_name": "立即使用",
+		"custom_url": "http://www.qq.com",
+		"custom_url_sub_title": "6个汉字tips",
+		"promotion_url_name": "更多优惠",
+		"promotion_url": "http://www.qq.com",
+		"get_custom_code_mode": "GET_CUSTOM_CODE_MODE_DEPOSIT",
+		"use_all_locations": true,
+		"get_limit": 3,
+		"location_id_list": [],
+		"date_info": {"type": "DATE_TYPE_FIX_TIME_RANGE", "begin_timestamp": 1397577600000, "end_timestamp": 1422724261000},
+		"sku": {"quantity": 0}
+	},
+	"isDel": false,
+	"createTime": "2017-01-09T09:03:51.015Z",
+	"id": "587351f79213dc1207fddd61"
+};

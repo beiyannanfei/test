@@ -124,13 +124,47 @@ var Joi = require("joi");
 
 // 大凡媚上者多傲下
 //一个汉字的utf8编码占3个字节
+/*var schema = Joi.object().keys({
+ name: Joi.string().min(1).max(7, 'utf8')
+ });
+
+ let checkObj = {
+ name: "你好aa"
+ };*/
+/*
+
+ var schema = Joi.object().keys({
+ obj: Joi.object().keys({
+ type: Joi.string().min(1).required()
+ }).required(),
+ msg: Joi.string().min(1).max(100).when("obj.type", {is: "a", then: Joi.required()})
+ });
+
+ var checkObj = {
+ obj:{
+ type: "a"
+ },
+ msg: "asdf"
+ };
+ */
+
 var schema = Joi.object().keys({
-	name: Joi.string().min(1).max(7, 'utf8')
+	type: Joi.string().min(1).required(),
+	obj: Joi.object().keys({
+		msg1: Joi.string().min(1),
+		msg2: Joi.string().min(1)
+	}).required().when(
+		"type", {is: "GROUPON1", then: Joi.object({msg1: Joi.required()})}
+	).when(
+		"type", {is: "GROUPON2", then: Joi.object({msg2: Joi.required()})}
+		)
 });
 
-let checkObj = {
-	name: "你好aa"
+var checkObj = {
+	type: "GROUPON",
+	obj: {}
 };
+
 
 Joi.validate(checkObj, schema, (err, value)=> {
 	if (!!err) {

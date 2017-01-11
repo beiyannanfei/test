@@ -111,7 +111,15 @@ app.get("/getacceptedCharsets", function (req, res) {
 	return res.send(acceptedCharsets);
 });
 
-
+//curl "127.0.0.1:9001/api/changebody" -d "a=10&b=20&c=30"
+app.post("/changebody", function (req, res, next) {
+	console.log(req.body);
+	req.body.a = 123;
+	return next();
+}, function (req, res) {
+	console.log(req.body);
+	return res.send("success");
+});
 
 
 
