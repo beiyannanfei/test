@@ -3,6 +3,7 @@
  */
 var Joi = require("joi");
 
+
 /*
  var schema = Joi.object().keys({
  name: Joi.string().min(1).max(5, 'utf8')
@@ -147,28 +148,50 @@ var Joi = require("joi");
  msg: "asdf"
  };
  */
+/*
+ var schema = Joi.object().keys({
+ type: Joi.string().min(1).required(),
+ obj: Joi.object().keys({
+ msg1: Joi.string().min(1),
+ msg2: Joi.string().min(1)
+ }).required().when(
+ "type", {is: "GROUPON1", then: Joi.object({msg1: Joi.required()})}
+ ).when(
+ "type", {is: "GROUPON2", then: Joi.object({msg2: Joi.required()})}
+ )
+ });
+
+ var checkObj = {
+ type: "GROUPON",
+ obj: {}
+ };*/
 
 var schema = Joi.object().keys({
 	type: Joi.string().min(1).required(),
-	obj: Joi.object().keys({
-		msg1: Joi.string().min(1),
-		msg2: Joi.string().min(1)
-	}).required().when(
-		"type", {is: "GROUPON1", then: Joi.object({msg1: Joi.required()})}
-	).when(
-		"type", {is: "GROUPON2", then: Joi.object({msg2: Joi.required()})}
-		)
+	advanced_info: Joi.object().keys({
+		text_image_list: Joi.array().items(Joi.object().keys({
+			image_url: Joi.string().min(1).max(128),
+			text: Joi.string().min(1).max(512),
+		}))
+	}).when("type", {is: "GENERAL_COUPON", then: Joi.object({text_image_list: Joi.array().min(1).required()}).required()})
 });
 
 var checkObj = {
-	type: "GROUPON",
-	obj: {}
+	type: "GENERAL_COUPON",
+	advanced_info: {
+		text_image_list: []
+	}
 };
-
 
 Joi.validate(checkObj, schema, (err, value)=> {
 	if (!!err) {
-		return console.log(err.message);
+		console.log("name: %j", err.name);
+		console.log("isJoi: %j", err.isJoi);
+		console.log("message: %j", err.message);
+		console.log("path: %j", err.path);
+		console.log("type: %j", err.type);
+		console.log("context: %j", err.context);
+		return;
 	}
 	console.log(value);
 });
