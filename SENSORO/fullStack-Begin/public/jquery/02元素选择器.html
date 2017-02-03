@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素选择器</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $("p").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<h2>this is a title</h2>
+<p>this is a paragraph</p>
+<p>this is a other paragraph</p>
+<button>隐藏所有段落</button>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#click").click(function () {
+        alert("单击按钮");
+      });
+      $("#dbclick").dblclick(function () {
+        alert("双击按钮");
+      });
+      $("#p1").mouseenter(function () {
+        console.log("鼠标进入");
+      });
+      $("#p1").mouseleave(function () {
+        console.log("鼠标离开");
+      });
+      $("#down_up").mousedown(function () {
+        console.log("鼠标按下");
+      });
+      $("#down_up").mouseup(function () {
+        console.log("鼠标抬起");
+      });
+      $("#p2").hover(function () {
+        console.log("鼠标进入(hover实现)");
+      }, function () {
+        console.log("鼠标离开(hover实现)");
+      });
+      $("input").focus(function () {
+        $(this).css("background-color", "#cccccc");
+      });
+      $("input").blur(function () {
+        $(this).css("background-color", "#ffffff");
+      });
+    });
+  </script>
+</head>
+<body>
+<button id="click">单击事件</button>
+<button id="dbclick">双击事件</button>
+<button id="down_up">鼠标按下/抬起(控制台查看)</button>
+<br><br><br>
+<p id="p1">鼠标进入/离开事件(在控制台查看)</p>
+<br><br><br>
+<p id="p2">鼠标进入/离开事件(在控制台查看)</p>
+<br><br><br>
+Name:<input type="text" name="fullname"><br>
+Email:<input type="text" name="email">
+</body>
+</html>

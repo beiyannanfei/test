@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>隐藏和显示</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#hide").click(function () {
+        $("#p1").hide();
+      });
+      $("#show").click(function () {
+        $("#p1").show();
+      });
+
+      $("#hide_3s").click(function () {
+        $("#p2").hide(3000, function () {
+          alert("p2隐藏完毕");
+        });
+      });
+      $("#show_slow").click(function () {
+        $("#p2").show(function () {
+          alert("p2显示完毕");
+        });
+      });
+
+      $("#show_hide").click(function () {
+        $("#p3").toggle(2000, function () {
+          alert("exec over");
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<p id="p1">显示、隐藏效果演示</p>
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+<br><br>
+<p id="p2">设置显示、隐藏速度</p>
+<button id="hide_3s">3s隐藏</button>
+<button id="show_slow">slow显示</button>
+<br><br>
+<p id="p3">交替设置显示、隐藏</p>
+<button id="show_hide">显示\隐藏</button>
+</body>
+</html>

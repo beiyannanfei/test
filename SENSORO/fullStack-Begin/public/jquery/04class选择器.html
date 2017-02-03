@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>.class选择器</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("#hide").click(function () {
+                $(".test").hide();
+            });
+            $("#show").click(function () {
+                $(".test").show();
+            });
+        });
+    </script>
+</head>
+<body>
+<h2 class="test">这是一个标题</h2>
+<p class="test">这是一个段落</p>
+<p>这是另外一个段落</p>
+<button id="hide">隐藏</button>
+<button id="show">显示</button>
+</body>
+</html>

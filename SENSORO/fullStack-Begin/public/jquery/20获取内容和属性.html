@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取内容和属性</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#btn1").click(function () {
+        alert("Text: " + $("#test").text());
+      });
+      $("#btn2").click(function () {
+        alert("HTML: " + $("#test").html());
+      });
+      $("#btn3").click(function () {
+        alert("值为: " + $("#t1").val());
+      });
+      $("#btn4").click(function () {
+        alert("属性: " + $("#runoob").attr("href"));
+      });
+    });
+  </script>
+</head>
+<body>
+<p id="test">这是段落中的 <b>粗体</b> 文本.</p>
+<button id="btn1">显示文本</button>
+<button id="btn2">显示HTML</button>
+<hr/>
+<p>名称: <input type="text" id="t1" value="菜鸟教程"></p>
+<button id="btn3">显示值</button>
+<hr/>
+<p><a href="http://www.runoob.com" id="runoob">菜鸟教程</a></p>
+<button id="btn4">显示href属性的值</button>
+</body>
+</html>

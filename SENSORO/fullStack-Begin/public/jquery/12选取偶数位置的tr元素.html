@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>选取偶数位置的tr元素</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#even").click(function () {
+        $("tr:even").css("background-color", "yellow");
+      });
+      $("#odd").click(function () {
+        $("tr:odd").css("background-color", "blue");
+      });
+    });
+  </script>
+</head>
+<body>
+<h1>欢迎访问我的主页</h1>
+<table border="1">
+  <tr>
+    <th>网站名</th>
+    <th>网址</th>
+  </tr>
+  <tr>
+    <td>google</td>
+    <td>http://www.google.com</td>
+  </tr>
+  <tr>
+    <td>baidu</td>
+    <td>http://www.baidu.com</td>
+  </tr>
+  <tr>
+    <td>菜鸟教程</td>
+    <td>http://www.runoob.com</td>
+  </tr>
+  <tr>
+    <td>淘宝</td>
+    <td>http://www.taobao.com</td>
+  </tr>
+  <tr>
+    <td>facebook</td>
+    <td>http://www.facebook.com</td>
+  </tr>
+</table>
+<br>
+<button id="even">偶数行变色</button>
+<button id="odd">基数行变色</button>
+</body>
+</html>

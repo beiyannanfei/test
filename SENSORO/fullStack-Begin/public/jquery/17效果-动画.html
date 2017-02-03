@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>效果-动画</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      var flag = true;
+      $("#b1").click(function () {
+        if (flag)
+          $("#d1").animate({left: "250px"});
+        else
+          $("#d1").animate({left: "0px"});
+        flag = !flag;
+      });
+
+      $("#b2").click(function () {
+        $("#d2").animate({
+          left: "250px",    //左边距
+          opacity: "0.1",   //透明度
+          height: "150px",
+          width: "+=150px"  //使用相对值
+        });
+      });
+
+      $("#b3").click(function () {
+        $("#d3").animate({
+          height: "toggle",
+          width: "toggle"
+        });
+      });
+
+      $("#b4").click(function () {
+        var div = $("#d4");
+        div.animate({height: "300px", opacity: "0.4"}, "slow");
+        div.animate({width: "300px", opacity: "0.8"}, "slow");
+        div.animate({height: "100px", opacity: "0.4"}, "slow");
+        div.animate({width: "100px", opacity: "0.8"}, "slow");
+      });
+
+      $("#b5").click(function () {
+        var div = $("#d1");
+        div.animate({left: "+=100"}, "slow");
+        div.animate({fontSize: '+=3em'}, "slow");
+      });
+    });
+  </script>
+</head>
+<body>
+<button id="b1">开始动画</button>
+<button id="b5">开始动画</button>
+<br><br>
+<div id="d1" style="background:#98bf21;height:100px;width:100px;position:absolute;">A</div>
+<br><br><br><br><br><br><br><br>
+<button id="b2">开始动画</button>
+<br><br>
+<div id="d2" style="background:#98bf21;height:100px;width:100px;position:absolute;">B</div>
+<br><br><br><br><br><br><br><br>
+<button id="b3">开始动画</button>
+<br><br>
+<div id="d3" style="background:#98bf21;height:100px;width:100px;position:absolute;">C</div>
+<br><br><br><br><br><br><br><br>
+<button id="b4">动画队列</button>
+<br><br>
+<div id="d4" style="background:#98bf21;height:100px;width:100px;position:absolute;">D</div>
+</body>
+</html>

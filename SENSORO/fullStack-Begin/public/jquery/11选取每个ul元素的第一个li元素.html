@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选取带有 href 属性的元素</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script>
+        $(function () {
+            $("button").click(function () {
+                $("[href]").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<h2>这是标题</h2>
+<p>只是一个段落</p>
+<p>只是另外一个段落</p>
+<p><a href="http://www.runoob.com/html/">html 教程</a></p>
+<p><a href="http://www.runoob.com/css/">css 教程</a></p>
+<button>隐藏带有href属性的元素</button>
+</body>
+</html>

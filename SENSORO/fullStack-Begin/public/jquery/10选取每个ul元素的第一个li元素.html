@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选取每个ul元素的第一个li元素</title>
+    <script src="../lib/jquery-1.11.1.js"></script>
+    <script>
+        $(() => {
+            $("button").click(function () {
+                $("ul li:first-child").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<p>List: 1</p>
+<ul>
+    <li>coffee</li>
+    <li>milk</li>
+    <li>tea</li>
+</ul>
+<p>List: 2</p>
+<ul>
+    <li>coffee</li>
+    <li>milk</li>
+    <li>tea</li>
+</ul>
+<button>隐藏每个ul元素的第一个li元素</button>
+</body>
+</html>
