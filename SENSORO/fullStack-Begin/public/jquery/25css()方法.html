@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>css()方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(document).ready(function () {
+    });
+    function getCss(elem, attr) {
+      alert(attr + ": " + $(elem).css(attr));
+    }
+    function setCss(elem, attr, value) {
+      $(elem).css(attr, value);
+    }
+    function setMultiCss(elem, map) {
+      $(elem).css(map);
+    }
+  </script>
+</head>
+<body>
+<p id="p1" style="background-color: lightblue" onclick="getCss(this, 'background-color')">点击这个段落获取background-color</p>
+<h3 id="h1" ondblclick="setCss(this, 'background-color', 'yellow')">"双击"标题设置background-color</h3>
+<p id="p2" onclick="setMultiCss(this, {'background-color': 'yellow', 'font-size': '200%'})">点击设置多个css样式</p>
+</body>
+</html>

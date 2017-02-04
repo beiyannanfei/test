@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>添加元素</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $(".p1").append("<b>追加文本... </b>");
+      });
+      $("#b2").click(function () {
+        $("#o1").append("<li>追加列表项</li>");
+      });
+      $("#b3").click(function () {
+        $(".p1").prepend("<b>在开头追加文本.</b>");
+      });
+      $("#b4").click(function () {
+        $("#o1").prepend("<li>在开头追加列表项</li>");
+      });
+
+      $("#b5").click(function () {
+        $("#i1").before("<b>之前插入...</b>");
+      });
+      $("#b6").click(function () {
+        $("#i1").after("<i>...之后插入</i>");
+      });
+    });
+
+    function appendText() {
+      var txt1 = "<p>使用 HTML 标签创建文本</p>";                 //使用 HTML 标签创建文本
+      var txt2 = $("<p></p>").text("使用 jQuery 创建文本");      //使用 jQuery 创建文本
+      var txt3 = document.createElement("p");
+      txt3.innerHTML = "使用 DOM 创建文本 text with DOM";       //使用 DOM 创建文本 text with DOM
+      $("#p2").append(txt1, txt2, txt3);                       //<=> $("#p2").append([txt1, txt2, txt3]);
+    }
+
+    function afterText(elem) {
+      var txt1 = "<b> I </b>";
+      var txt2 = $("<i></i>").text("love ");
+      var txt3 = document.createElement("big");
+      txt3.innerHTML = "jQuery!";
+      $(elem).after(txt1, txt2, txt3);
+    }
+  </script>
+</head>
+<body>
+<p class="p1">这是一个段落。</p>
+<p class="p1">这是另外一个段落。</p>
+<ol id="o1">
+  <li>List item 1</li>
+  <li>List item 2</li>
+  <li>List item 3</li>
+</ol>
+<button id="b1">尾部追加文本</button>
+<button id="b2">尾部追加列表项</button>
+<button id="b3">头部添加文本</button>
+<button id="b4">头部添加列表项</button>
+<hr/>
+<p id="p2">这是一个段落。</p>
+<button onclick="appendText()">追加多个文本</button>
+<hr/>
+<img id="i1" src="../image/logo.png"><br/><br/>
+<button id="b5">图片之前插入</button>
+<button id="b6">图片之后插入</button>
+<hr/>
+<p>点击图片和按钮效果相同</p>
+<img id="i2" onclick="afterText(this)" src="../image/logo2.png"><br/><br/>
+<button id="b7" onclick="afterText('#i2')">图片之后插入多个元素</button>
+</body>
+</html>

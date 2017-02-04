@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>设置内容和属性</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $("#p1").text("Hello World!");
+      });
+      $("#b2").click(function () {
+        $("#p2").html("<h2>Hello World!</h2>")
+      });
+      $("#b3").click(function () {
+        $("#i1").val("RUNOOB");
+      });
+
+      $("#b4").click(function () {
+        $("#p3").text(function (i, oldText) {
+          return "旧文本: " + oldText + " 新文本: Hello World! (index: " + i + ")";
+        });
+      });
+      $("#b5").click(function () {
+        $("#p4").html(function (i, oldText) {
+          return "旧html: " + oldText + " 新html: <i>Hello World</i>(index: " + i + ")";
+        });
+      });
+
+      $("#b6").click(function () {
+        $("#a1").text("菜鸟教程").attr({href: "http://www.runoob.com"});
+      });
+
+      $("#b7").click(function () {
+        $("#a2").text(function (i, oldText) {
+          return "旧(index: " + i + "): " + oldText + " 新: jquery教程";
+        }).attr("href", function (i, oldValue) {
+          alert("旧值(index: " + i + "): " + oldValue);
+          return oldValue + "/jquery";
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<p id="p1">这是一个段落</p>
+<p id="p2">这是另外一个段落</p>
+<p>输入框: <input type="text" id="i1" value="菜鸟教程"></p>
+<button id="b1">设置文本</button>
+<button id="b2">设置HTML</button>
+<button id="b3">设置文本框值</button>
+<hr/>
+<p id="p3">这是一个有 <b>粗体</b> 字的段落。</p>
+<p id="p4">这是另外一个有 <b>粗体</b> 字的段落。</p>
+<button id="b4">显示 新/旧 文本</button>
+<button id="b5">显示 新/旧 HTML</button>
+<hr/>
+<p><a href="http://www.baidu.com" id="a1">百度搜索</a></p>
+<button id="b6">修改链接</button>
+<hr/>
+<p><a id="a2" href="http://www.runoob.com">菜鸟教程</a></p>
+<button id="b7">通过回调修改链接</button>
+<hr/>
+</body>
+</html>

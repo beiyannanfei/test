@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>遍历-同胞(siblings)</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#h1").click(function () {
+        $(this).siblings().css({color: "red", border: "2px solid red"});
+      });
+      $("#h2").click(function () {
+        $(this).siblings("p").css({color: "green", border: "4px solid green"});
+      });
+      $("#h3").click(function () {
+        $(this).next().css({color: "blue", border: "3px solid blue"});  //prev为向前
+      });
+      $("#h4").click(function () {
+        $(this).nextAll().css({color: "yellow", border: "4px solid yellow"});//prevAll为向前
+      });
+      $("#h5").click(function () {
+        $(this).nextUntil("h6").css({color: "#123456", border: "4px solid #123456"}); //prevUntil为向前
+      });
+    });
+  </script>
+  <style type="text/css">
+    .siblings * {
+      display: block;
+      border: 2px solid lightgrey;
+      color: lightgrey;
+      padding: 5px;
+      margin: 15px;
+    }
+  </style>
+</head>
+<body class="siblings">
+<div>div(父元素)
+  <p>p</p>
+  <span>span</span>
+  <h2 id="h1">h2点击获取所有同胞元素</h2>
+  <h2 id="h2">h2点击获取所有p标签的同胞元素</h2>
+  <h2 id="h3">h2点击获下一个同胞元素</h2>
+  <h2 id="h4">h2点击获所有跟随的同胞元素</h2>
+  <h2 id="h5">h2点击获到h6之间的同胞元素</h2>
+  <h3>h3</h3>
+  <h4>h4</h4>
+  <h5>h5</h5>
+  <h6>h6</h6>
+  <p>p</p>
+</div>
+</body>
+</html>

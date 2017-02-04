@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>遍历-过滤</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $("div p").first().css("background-color", "yellow");
+      });
+      $("#b2").click(function () {
+        $("div p").last().css("background-color", "lightgrey");
+      });
+      $("#b3").click(function () {
+        $("p").eq(1).css("background-color", "green");
+      });
+      $("#b4").click(function () {
+        $("p").filter(".url").css("background-color", "blue");
+      });
+      $("#b5").click(function () {
+        $("p").not(".url").css("background-color", "red");
+      });
+    });
+  </script>
+</head>
+<body>
+<div>
+  <p>这是第一个div中的第一个段落</p>
+  <p>这是第一个div中的第二个段落</p>
+</div>
+<div>
+  <p class="url">这是第二个div中的第一个段落</p>
+  <p>这是第二个div中的第二个段落</p>
+</div>
+<p class="url">这是一个不在div中的单独的段落</p>
+<button id="b1">点击获取第一个div的第一个p标签</button>
+<button id="b2">点击获取最后一个div的最后一个p标签</button>
+<button id="b3">点击获取下标为1的p标签</button>
+<button id="b4">点击获取带有类名url的p标签</button>
+<button id="b5">点击获取不是带有类名url的p标签</button>
+</body>
+</html>

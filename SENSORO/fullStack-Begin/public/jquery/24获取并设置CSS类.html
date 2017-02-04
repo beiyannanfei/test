@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>获取并设置CSS类</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(document).ready(function () {
+    });
+    function addClass() {
+      $("#h1, #h2, #p1, #p2").addClass("blue");
+      $("#d1").addClass("important");
+    }
+    function addMultiClass(elem) {
+      $(elem).addClass("important blue");
+    }
+    function removeClass() {
+      $("#h1, #h2, #p1, #p2").removeClass("blue");
+    }
+    function toggleClass() {
+      $("#p3, #p4").toggleClass("blue");
+    }
+  </script>
+
+  <style type="text/css">
+    .important {
+      font-weight: bold;
+      font-size: xx-large;
+    }
+
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+<h1 id="h1">标题1</h1>
+<h2 id="h2">标题2</h2>
+<p id="p1">这是一个段落</p>
+<p id="p2">这是另外一个段落</p>
+<div id="d1">这是一些重要的文本</div>
+<br/>
+<button onclick="addClass()">为元素添加class</button>
+<button onclick="removeClass()">从元素删除class</button>
+<br/><br/>
+<div id="d2" onclick="addMultiClass(this)">点击增加多个类</div>
+<hr/>
+<p id="p3" class="blue">AAAAAAAAAAA</p>
+<p id="p4">BBBBBBBBBBB</p>
+<button onclick="toggleClass()">交替class</button>
+</body>
+</html>

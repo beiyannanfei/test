@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>尺寸</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        var txt = "";
+        txt += "div的宽度是: " + $("#d1").width() + "<br/>";
+        txt += "div的高度是: " + $("#d1").height() + "<br/>";
+        txt += "div包含内边距的宽度是: " + $("#d1").innerWidth() + "<br/>";
+        txt += "div包含内边距的高度是: " + $("#d1").innerHeight() + "<br/>";
+        txt += "div包含内边距和边框的宽度是: " + $("#d1").outerWidth() + "<br/>";
+        txt += "div包含内边距和边框的高度是: " + $("#d1").outerHeight() + "<br/>";
+        txt += "div包含内边距和边框及Margin的宽度是: " + $("#d1").outerWidth(true) + "<br/>";
+        txt += "div包含内边距和边框及Margin的高度是: " + $("#d1").outerHeight(true) + "<br/>";
+        $("#d1").html(txt);
+      });
+    });
+  </script>
+  <style type="text/css">
+    .t1 {
+      height: 200px;
+      width: 400px;
+      padding: 10px;
+      margin: 5px;
+      margin-bottom: 15px;
+      border: 3px solid blue;
+      background-color: lightblue;
+    }
+  </style>
+</head>
+<body>
+<div id="d1" class="t1"></div>
+<button id="b1">显示div元素的尺寸</button>
+</body>
+</html>

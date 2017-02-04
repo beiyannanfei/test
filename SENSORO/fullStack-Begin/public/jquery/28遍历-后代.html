@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>遍历-后代</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $("div").children().css({color: "red", border: "2px solid red"});
+      });
+      $("#b2").click(function () {
+        $("div").children("p.1").css({color: "red", border: "2px solid blue"});
+      });
+      $("#b3").click(function () {
+        $("div").children("p#p2").css({color: "red", border: "2px solid green"});
+      });
+
+      $("#b4").click(function () {
+        $("div").find("*").css({color: "red", border: "2px solid yellow"});
+      });
+      $("#b5").click(function () {
+        $("div").find("span").css({color: "red", border: "2px solid lightcoral"});
+      });
+    });
+  </script>
+  <style type="text/css">
+    .descendants * {
+      display: block;
+      border: 2px solid lightgrey;
+      color: lightgrey;
+      padding: 5px;
+      margin: 15px;
+    }
+  </style>
+</head>
+<body>
+<div class="descendants" style="width: 500px">div(当前元素)
+  <p id="p1" class="1">p(儿子元素)
+    <span>span(孙子元素)</span>
+  </p>
+  <p id="p2" class="2">p(儿子元素)
+    <span>span(孙子元素)</span>
+  </p>
+</div>
+<button id="b1">点击按钮获取div的直接子元素</button>
+<button id="b2">点击按钮获取div的类名称为1直接p子元素</button>
+<button id="b3">点击按钮获取div的id为p2直接p子元素</button>
+<br/><br/>
+<button id="b4">点击按钮获取div的所有子元素</button>
+<button id="b5">点击按钮获取div的所有span子元素</button>
+</body>
+</html>

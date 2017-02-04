@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>遍历-祖先</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $("span").parent().css({color: "red", border: "2px solid red"});
+      });
+      $("#b2").click(function () {
+        $("span").parents().css({color: "red", border: "2px solid red"});
+      });
+      $("#b3").click(function () {
+        $("span").parents("ul").css({color: "red", border: "2px solid red"});
+      });
+      $("#b4").click(function () {
+        $("span").parentsUntil("div").css({color: "red", border: "2px solid red"});
+      });
+    });
+  </script>
+  <style type="text/css">
+    .ancestors * {
+      display: block;
+      border: 2px solid lightgrey;
+      color: lightgrey;
+      padding: 5px;
+      margin: 15px;
+    }
+  </style>
+</head>
+<body>
+<div class="ancestors">
+  <div style="width: 500px;">div(曾祖父元素)
+    <ul>ul(祖父元素)
+      <li>li(父元素)
+        <span>span</span>
+      </li>
+    </ul>
+  </div>
+
+  <div style="width: 500px;">div(祖父元素)
+    <p>p(父元素)
+      <span>span</span>
+    </p>
+  </div>
+</div>
+<button id="b1">点击按钮显示每个span元素的直接父元素</button>
+<button id="b2">点击按钮显示每个span元素的所有祖先元素</button>
+<button id="b3">点击按钮显示每个span元素的ul祖先元素</button>
+<button id="b4">点击按钮显示每个span元素的和div之间的所有祖先元素</button>
+</body>
+</html>
