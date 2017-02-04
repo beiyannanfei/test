@@ -85,3 +85,15 @@ app.post("/a7/post", (req, res) => {
 	return res.send({a: 111, b: 222, c: 333});
 });
 
+app.get("/jquery", function (req, res) {
+	return res.end("这是个从Nodejs服务器中读取的数据。");
+});
+
+app.post("/jquery", function (req, res) {
+	var text = "";
+	for (var index in req.body) {
+		text += index + ": " + req.body[index] + "\n";
+	}
+	return res.end(text);
+});
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX load()</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $("#d1").load("/file/demo_test.txt"); //需要启动app.js在访问才能找到demo_test.txt文件
+      });
+      $("#b2").click(function () {
+        $("#d1").load("/file/demo_test.txt #p1"); //需要启动app.js在访问才能找到demo_test.txt文件
+      });
+      $("#b3").click(function () {
+        $("#d1").load("/file/demo_test.txt", function (responseTxt, statusTxt, xhr) {
+          alert("responseTxt: " + responseTxt);
+          alert("statusTxt: " + statusTxt);
+          alert("xhr: " + JSON.stringify(xhr));
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<div id="d1">
+  <h2>
+    使用jQuery AJAX修改文本内容
+  </h2>
+</div>
+<button id="b1">获取外部内容</button>
+<button id="b2">获取外部内容并筛选</button>
+<button id="b3">获取外部内容回调练习</button>
+</body>
+</html>

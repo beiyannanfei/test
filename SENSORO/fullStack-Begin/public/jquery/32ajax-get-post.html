@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AJAX get() 和 post() 方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $.get("/ajax/jquery", function (data, status) {
+          alert("data: " + data + "\nstatus: " + status);
+        });
+      });
+      $("#b2").click(function () {
+        $.post("/ajax/jquery", {name: "baidu", url: "http://www.baidu.com"}, function (data, status) {
+          alert("data: " + data + "\nstatus: " + status);
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+<button id="b1">发送http get请求获取返回结果</button>
+<br/><br/>
+<button id="b2">发送http post请求获取返回结果</button>
+</body>
+</html>
