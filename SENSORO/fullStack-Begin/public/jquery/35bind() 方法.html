@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bind() 方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#p1").bind("click", function () {
+        $(this).text("这个段落被点击了!");
+      });
+      $("#p2").bind("mouseover mouseout", function () {
+        $(this).toggleClass("intro");
+      });
+
+      $("#b1").bind({
+        click: function () {
+          $("#d1").slideToggle();
+        },
+        mouseover: function () {
+          $("#d1").css("background-color", "#E9E9E4");
+        },
+        mouseout: function () {
+          $("#d1").css("background-color", "#FFFFFF");
+        }
+      });
+
+      function handlerName(e) {
+        alert(JSON.stringify(e.data));
+      }
+
+      $("#p4").bind("click", {msg: "你刚点击了!"}, handlerName);
+    });
+  </script>
+  <style type="text/css">
+    .intro {
+      font-size: 150%;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<p id="p1">向p元素添加一个单击事件</p>
+<hr/>
+<p id="p2">将鼠标移动到该段落上(测试绑定多个事件)。</p>
+<hr/>
+<div id="d1"
+     style="width: 300px; height: 120px; border: 2px solid lightblue; background-color: lightgrey; margin-bottom: 15px">
+  <p id="p3">使用事件映射</p>
+</div>
+<button id="b1">事件映射绑定</button>
+<hr/>
+<p id="p4">点击测试"向函数传递数据"</p>
+</body>
+</html>

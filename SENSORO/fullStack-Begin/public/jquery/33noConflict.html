@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>noConflict</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    var jq = $.noConflict();
+    jQuery(function () {
+      jQuery("#b1").click(function () {
+        jQuery("#p1").text("jQuery仍然在工作!");
+      });
+    });
+    jq(document).ready(function () {
+      jq("#b2").click(function () {
+        jq("#p1").text("jq也可以工作!");
+      });
+    });
+    jQuery(document).ready(function ($) {
+      $("#b3").click(function () {
+        $("#p1").text("ready方法内$依然可用!");
+      });
+    });
+    jQuery(function ($) {
+      $("#b4").click(function () {
+        $("#p1").text("简写ready方法内$依然可用!");
+      });
+    });
+  </script>
+</head>
+<body>
+<p id="p1">这是一个段落</p>
+<button id="b1">使用jQuery代替$符号</button>
+<button id="b2">使用jQuery的引用代替$符号</button>
+<button id="b3">把$符号传递给ready方法</button>
+<button id="b4">把$符号传递给ready方法(简写ready)</button>
+</body>
+</html>
