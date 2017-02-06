@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>change() 方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#i1").change(function () {
+        alert("文本已经被修改!" + this.value);
+      });
+
+      $("#b1").click(function () {
+        $("#i2").change();
+      });
+
+      $(".field").change(function () {
+        $(this).css("background-color", "#d6d6ff");
+      });
+    });
+  </script>
+  <style type="text/css">
+    .s1 {
+      width: 300px;
+      height: 120px;
+      border: 3px solid red;
+      background-color: lightgrey;
+      margin-bottom: 15px;
+      padding-top: 10px;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="s1">
+  <input id="i1" type="text">
+  <p>在输入框写一些东西，然后按下 enter 键或点击输入框外部。</p>
+</div>
+<hr/>
+<div class="s1" style="width: 400px">
+  <button id="b1" style="color: rebeccapurple;">点击按钮触发下边输入框的change事件(即使元素没有改变)</button>
+  <p>输入你的名字: <input id="i2" type="text" value="Runoob" onchange="alert(this.value)"></p>
+</div>
+<hr/>
+<div class="s1" style="height: 200px">
+  <p>元素改变后执行一个函数</p>
+  输入你的名字: <input class="field" type="text">
+  <p>在输入框中写一些东西，按下 enter 键或点击输入框外的区域。</p>
+  <p>汽车匹配:
+    <select class="field" name="cars">
+      <option>volvo</option>
+      <option>saab</option>
+      <option>fiat</option>
+      <option>audi</option>
+    </select>
+  </p>
+  <p>在下拉列表选择一个选项.</p>
+</div>
+</body>
+</html>

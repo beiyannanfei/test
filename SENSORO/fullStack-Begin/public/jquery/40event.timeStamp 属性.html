@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.timeStamp 属性</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function (event) {
+        $("#s1").text(event.timeStamp);
+      });
+    });
+  </script>
+</head>
+<body>
+<p>点击事件发生在距 1970 年 1 月 1 日后的<span id="s1" style="color: red">unkonwn</span> 毫秒。</p>
+<button id="b1">点我</button>
+</body>
+</html>

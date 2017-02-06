@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.pageX 属性</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $(document).mousemove(function (event) {
+        $("#s1").text("X: " + event.pageX + ", Y: " + event.pageY);
+      });
+    });
+  </script>
+</head>
+<body>
+<p>鼠标指针在: <span id="s1"></span></p>
+</body>
+</html>

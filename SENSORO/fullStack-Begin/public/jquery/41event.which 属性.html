@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event.which 属性</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#i1").keydown(function (event) {
+        $("#s1").text(event.which);
+      });
+
+      $("#d2").mousedown(function (event) {
+        $("#s2").text(event.which);
+      });
+    });
+  </script>
+  <style type="text/css">
+    .st1 {
+      width: 300px;
+      height: 120px;
+      border: 2px solid red;
+      background-color: lightgrey;
+      margin-bottom: 15px;
+      padding-top: 10px;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="st1" id="d1">
+  输入名称: <input id="i1" type="text">
+  <p id="p1">你在输入框输入的ascii码为: <span id="s1" style="color: rebeccapurple"></span></p>
+</div>
+<hr/>
+<div class="st1" id="d2">
+  <p id="p2">你在div中按下的鼠标键码为: <span id="s2" style="color: red;"></span></p>
+</div>
+</body>
+</html>

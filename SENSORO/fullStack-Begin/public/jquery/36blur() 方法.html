@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>blur() 方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#i1").blur(function () {
+        alert("输入框失去焦点");
+      });
+
+      $("#b1").click(function () {
+        $("#i2").focus();
+      });
+      $("#b2").click(function () {
+        $("#i2").blur();
+      });
+
+      $(".i3").focus(function () {
+        $(this).css("background-color", "#cccccc");
+      });
+      $(".i3").blur(function () {
+        $(this).css("background-color", "#ffffff");
+      });
+    });
+  </script>
+  <style type="text/css">
+    .s1 {
+      width: 300px;
+      height: 120px;
+      border: 2px solid red;
+      background-color: lightskyblue;
+      margin-bottom: 15px;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="s1">
+  输入你的名字: <input id="i1" type="text">
+  <p>在输入框写些东西，然后点击输入框外，让其失去焦点。</p>
+</div>
+<hr/>
+<div class="s1">
+  输入你的名字: <input id="i2" type="text"><br/><br/>
+  <button id="b1">触发focus事件</button>
+  <button id="b2">触发blur事件</button>
+</div>
+<hr/>
+<div class="s1">
+  名字: <input class="i3" type="text" name="fullname"><br/><br/>
+  电邮: <input class="i3" type="text" name="email">
+</div>
+</body>
+</html>

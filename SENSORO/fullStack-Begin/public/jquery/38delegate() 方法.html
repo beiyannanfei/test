@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>delegate() 方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#d1").delegate("p", "click", function () {
+        $("p").css("background-color", "pink");
+      });
+
+      $("#d2").delegate("p", "click", function () {
+        $(this).slideToggle();
+      });
+      $("#b1").click(function () {
+        $("<p>这是一个新的段落</p>").insertAfter("#b1");
+      });
+
+      function handlerName(e) {
+        alert(JSON.stringify(e.data));
+      }
+
+      $("#p1").delegate({msg: "你刚点击我了!"}, "click", handlerName);
+    });
+  </script>
+  <style type="text/css">
+    .s1 {
+      width: 300px;
+      height: 150px;
+      border: 3px solid red;
+      background-color: lightskyblue;
+      margin-bottom: 15px;
+      padding-top: 10px;
+      padding-left: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="d1" class="s1">点击div中得段落设置子元素底色
+  <p>这个段落在div中1</p>
+  <h3>这个标题在div中</h3>
+  <p>这个段落在div中2</p>
+</div>
+<p>这个段落在最外边</p>
+<hr/>
+<div id="d2" class="s1" style="background-color: yellow;">
+  <p>这是一个段落</p>
+  <p>点击任意一个p元素,使其消失,包括这个</p>
+  <button id="b1">在这个按钮后增加一个p元素</button>
+</div>
+<p><b>注意:</b>只有在div元素中得p元素才有效果。</p>
+<hr>
+<p id="p1">点我</p>
+</body>
+</html>
