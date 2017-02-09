@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>addClass() 方法</title>
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script>
+    $(function () {
+      $("#b1").click(function () {
+        $("#d1 p:first").addClass("addClass");
+      });
+
+      $("#b2").click(function () {
+        $("#d2 p:first").addClass("addClass addNote");
+      });
+
+      $("#b3").click(function () {
+        $("#d3 p").addClass(function (n) {
+          return "par_" + n;
+        });
+      });
+
+      $("#b4").click(function () {
+        $("#p1").removeClass("c1").addClass("c2");
+      });
+    });
+  </script>
+  <style type="text/css">
+    .intro {
+      width: 300px;
+      height: 130px;
+      border: 2px solid blue;
+      background-color: lightgrey;
+      margin-bottom: 15px;
+      padding-left: 10px;
+      /*padding-top: 10px;*/
+    }
+
+    .addClass {
+      font-size: 150%;
+      color: red;
+    }
+
+    .addNote {
+      background-color: yellow;
+    }
+
+    .par_0 {
+      color: blue;
+    }
+
+    .par_1 {
+      color: red;
+    }
+
+    .c1 {
+      color: red;
+    }
+
+    .c2 {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+<div class="intro" id="d1">
+  <p>这是一个段落</p>
+  <p>这是另外一个段落</p>
+  <button id="b1">给第一个p元素添加一个类名</button>
+</div>
+<hr/>
+<div class="intro" id="d2">
+  <p>这是一个段落</p>
+  <p>这是另外一个段落</p>
+  <button id="b2">给第一个p元素添加两个类名</button>
+</div>
+<hr/>
+<div class="intro" id="d3">
+  <p>这是一个段落</p>
+  <p>这是另外一个段落</p>
+  <button id="b3">使用函数给p元素添加类名</button>
+</div>
+<hr/>
+<p id="p1" class="c1">如何使用 addClass() 和 removeClass() 来移除一个类名，并添加一个新的类名。</p>
+<button id="b4">点击改变元素的类名</button>
+</body>
+</html>
