@@ -1,0 +1,23 @@
+p.serif {
+    font-family: "Times New Romani", Times, serif; /*字体*/
+}
+
+p.normal {
+    font-style: normal; /*正常字体样式*/
+}
+
+p.italic {
+    font-style: oblique; /*倾斜字体*/
+}
+
+#font1 {
+    font-size: 20px; /*字体大小*/
+}
+
+#font2 {
+    font-weight: bold; /*字体加粗*/
+}
+
+#font3 {
+    font-variant: small-caps; /*字体转变*/
+}

@@ -1,0 +1,30 @@
+body {
+    background-color: #b0c4de; /*背景颜色*/
+    background-image: url("../image/smiley.gif");
+    background-repeat: no-repeat;
+    background-attachment: fixed; /*背景图像是固定的*/
+}
+
+#background1 {
+    margin-left: 200px;
+    width: 300px;
+    height: 200px;
+    background-image: url("../image/paper.gif"); /*背景图像*/
+}
+
+#background2 {
+    width: 200px;
+    height: 200px;
+    background-image: url("../image/gradient.png");
+    background-repeat: repeat-x; /*水平平铺*/
+}
+
+#background3 {
+    width: 1000px;
+    height: 500px;
+    background-image: url("../image/img_tree.png");
+    background-color: #e0ffff;
+    background-repeat: no-repeat; /*不平铺*/
+    background-position: right top; /*显示位置*/
+}
+

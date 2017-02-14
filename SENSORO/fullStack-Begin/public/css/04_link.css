@@ -1,0 +1,96 @@
+.a:link {
+    color: #ff0000; /* 未访问链接*/
+}
+
+.a:visited {
+    color: #00ff00; /* 已访问链接 */
+}
+
+.a:hover {
+    color: #ff00ff; /* 鼠标移动到链接上(注意: hover必须在:link和 a:visited之后定义才有效) */
+}
+
+.a:active {
+    color: #0000ff; /* 鼠标点击时(注意:active必须在hover之后定义是有效的) */
+}
+
+a.one:link {
+    color: #0000ff;
+}
+
+a.one:visited {
+    color: #ff0000;
+}
+
+a.one:hover {
+    color: #ffcc00;
+}
+
+a.two:link {
+    color: #ff0000;
+}
+
+a.two:visited {
+    color: #0000ff;
+}
+
+a.two:hover {
+    font-size: 150%;
+}
+
+a.three:link {
+    color: #ff0000;
+}
+
+a.three:visited {
+    color: #0000ff;
+}
+
+a.three:hover {
+    background-color: #66ff66;
+}
+
+a.four:link {
+    color: #ff0000;
+}
+
+a.four:visited {
+    color: #0000ff;
+}
+
+a.four:hover {
+    font-family: monospace;
+}
+
+a.five:link {
+    color: #ff0000;
+    text-decoration: none;
+}
+
+a.five:visited {
+    color: #0000ff;
+    text-decoration: none;
+}
+
+a.five:hover {
+    text-decoration: underline line-through overline;
+}
+
+a.six:link, a.six:visited {
+    display: block;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #98bf21;
+    width: 120px;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+}
+
+a.six:hover, a.six:active {
+    background-color: #7a43b6;
+}
+
+
+
+

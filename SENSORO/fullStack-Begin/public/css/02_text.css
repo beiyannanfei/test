@@ -1,0 +1,79 @@
+#text1 {
+    color: red;
+}
+
+#text2 {
+    color: #00ff00;
+}
+
+#text3 {
+    color: rgb(0, 0, 255);
+}
+
+#text4 {
+    text-align: center; /*居中对齐*/
+    color: #0a0a0a;
+}
+
+#text5 {
+    text-align: right; /*右对齐*/
+    color: #0a0a0a;
+}
+
+#text6 {
+    text-align: justify; /*两端对齐*/
+    color: #0a0a0a;
+}
+
+#text7 {
+    text-decoration: none; /*设置或删除文本的装饰(主要用来删除链接的下划线)*/
+}
+
+#text8 {
+    text-decoration: overline line-through underline;
+}
+
+#text9 {
+    text-transform: uppercase; /*将字母大写*/
+}
+
+#textA {
+    text-transform: lowercase; /*将字母小写*/
+}
+
+#textB {
+    text-transform: capitalize; /*每个单词首字母大写*/
+}
+
+#textC {
+    text-indent: 50px; /*文本缩进*/
+    color: #000;
+}
+
+#textD {
+    letter-spacing: 2px; /*字符间距可以为负值*/
+}
+
+#textE {
+    line-height: 200%; /*行高*/
+}
+
+#textF {
+    direction: rtl; /*文本书写方向*/
+}
+
+#textG {
+    word-spacing: 30px; /*单词间距*/
+}
+
+#textH {
+    white-space: nowrap; /*禁用文字环绕*/
+}
+
+img.top {
+    vertical-align: text-top; /*垂直对齐图像*/
+}
+
+#textI {
+    text-shadow: 2px 2px #ff0000; /*文本阴影*/
+}

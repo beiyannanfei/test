@@ -1,0 +1,75 @@
+p {
+    width: 100px;
+}
+
+p.none {
+    border-style: none; /*边框(无边框)*/
+}
+
+p.dotted {
+    border-style: dotted; /*虚点边框*/
+}
+
+p.dashed {
+    border-style: dashed; /*虚线边框*/
+}
+
+p.solid {
+    border-style: solid; /*实线边框*/
+}
+
+p.double {
+    border-style: double; /*双线边框*/
+}
+
+p.groove {
+    border-style: groove; /*凹槽边框*/
+}
+
+p.ridge {
+    border-style: ridge; /*垄状边框*/
+}
+
+p.inset {
+    border-style: inset; /*嵌入边框*/
+}
+
+p.outset {
+    border-style: outset; /*外凸边框*/
+}
+
+p.hidden {
+    border-style: hidden; /*隐藏边框*/
+}
+
+p.width {
+    border-style: solid;
+    border-width: 5px; /*边框宽度*/
+}
+
+p.color {
+    border-style: solid;
+    border-color: red;
+}
+
+p.mixed {
+    border-width: 5px;
+    border-color: lightgrey;
+    border-top-style: dotted;
+    border-bottom-style: dashed;
+    border-left-style: solid;
+    border-right-style: double;
+}
+
+p.mixed2 {
+    border-width: 5px;
+    border-top-style: double;
+    border-top-color: #ff0000;
+    border-bottom-style: dashed;
+    border-bottom-color: #00a2d4;
+    border-left-style: solid;
+    border-left-color: #00ff00;
+    border-right-style: groove;
+    border-right-color: rgb(250, 0, 250);
+}
+

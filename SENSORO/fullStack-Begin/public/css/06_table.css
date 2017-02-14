@@ -1,0 +1,58 @@
+table.a, th.a, td.a {
+    border: 2px solid lightblue;
+}
+
+table.b {
+    border-collapse: collapse; /*折叠边框*/
+}
+
+table.c {
+    border: 2px solid black;
+    width: 100%; /*表格宽度*/
+}
+
+th.c {
+    border: 2px solid black;
+    height: 50px; /*表格高度*/
+}
+
+td.c {
+    border: 2px solid black;
+}
+
+td.d {
+    border: 2px solid lightblue;
+    text-align: right; /*文字对齐*/
+}
+
+table.e, th.e {
+    border: 1px solid black;
+}
+
+td.e {
+    border: 1px solid black;
+    height: 50px;
+    vertical-align: bottom;
+}
+
+table.f, th.f {
+    border: 1px solid red;
+}
+
+td.f {
+    border: 1px solid red;
+    padding: 15px; /*表格填充*/
+}
+
+table.g, td.g, th.g {
+    border: 1px solid green;
+}
+
+th.g {
+    background-color: green;
+    columns: white;
+}
+
+caption.h {
+    caption-side: bottom; /*表格标题的位置*/
+}
