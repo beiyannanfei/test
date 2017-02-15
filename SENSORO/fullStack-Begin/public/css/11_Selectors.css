@@ -1,0 +1,18 @@
+h1, h2, h3 { /*分组选择器*/
+    color: green;
+}
+
+/*以下为嵌套选择器*/
+p {
+    color: blue;
+    text-align: center;
+}
+
+.marked {
+    background-color: red;
+}
+
+.marked p {/*class为marked的元素内的p标签颜色*/
+    color: white;
+}
+

@@ -1,0 +1,11 @@
+p {
+    width: 150px;
+    background-color: #0d8ba1;
+}
+
+p.margin {/*设置外边框*/
+    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-right: 50px;
+}

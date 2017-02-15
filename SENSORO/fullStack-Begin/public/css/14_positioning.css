@@ -1,0 +1,55 @@
+p.pos_fixed {
+    position: fixed;
+    top: 30px;
+    right: 5px;
+}
+
+p.pos_left {
+    position: relative;
+    left: -20px;
+}
+
+p.pos_right {
+    position: relative;
+    left: 20px;
+}
+
+h2.pos_abs {
+    position: absolute;
+    left: 100px;
+    top: 50px;
+}
+
+img.pos_abs {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1; /*堆叠顺序*/
+}
+
+img.clip {
+    position: absolute;
+    top: 200px;
+    left: 0px;
+    clip: rect(0px, 60px, 200px, 0px); /*切割图片*/
+}
+
+div.scroll {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    background-color: #00ffff;
+    width: 100px;
+    height: 100px;
+    overflow: scroll; /*滚动条*/
+}
+
+div.cursor {
+    position: absolute;
+    top: 50px;
+    left: 500px;
+    background-color: #0d8ba1;
+    width: 500px;
+    height: 600px;
+    overflow: auto;
+}

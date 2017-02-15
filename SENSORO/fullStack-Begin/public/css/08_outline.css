@@ -1,8 +1,22 @@
 p {
     width: 150px;
+    border: 1px solid red;
 }
 
 p.a {
-    border: 1px solid red;
     outline: green dotted thick;
+}
+
+p.dotted {
+    outline-style: dotted; /*轮廓样式(dotted dashed solid double groove ridge inset outset)*/
+}
+
+p.color {
+    outline-style: dashed;
+    outline-color: #00a2e0;
+}
+
+p.width {
+    outline-style: double;
+    outline-width: 10px;
 }

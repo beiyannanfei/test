@@ -1,0 +1,15 @@
+h1.hidden { /*设置为隐藏(但是依然占用空间,影响布局)*/
+    visibility: hidden;
+}
+
+p.hidden { /*设置为隐藏(隐藏后不占用空间)*/
+    display: none;
+}
+
+li.inline { /*设置列表项为内联样式*/
+    display: inline;
+}
+
+span.block { /*设置span元素为区块元素*/
+    display: block;
+}

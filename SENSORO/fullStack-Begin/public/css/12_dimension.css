@@ -1,0 +1,25 @@
+img.normal {
+    height: auto;
+}
+
+img.big {
+    height: 120px;
+}
+
+p.ex {
+    background-color: #2b669a;
+    height: 100px;
+    width: 100px;
+}
+
+p.maxH {
+    max-height: 50px;
+    max-width: 100px;
+    background-color: #2b669a;
+}
+
+p.minH {
+    min-height: 100px;
+    min-width: 100px;
+    background-color: #0a4d6d;
+}

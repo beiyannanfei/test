@@ -1,0 +1,11 @@
+p {
+    width: 200px;
+    border: 2px solid lightblue;
+}
+
+p.padding {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    padding-right: 50px;
+}
