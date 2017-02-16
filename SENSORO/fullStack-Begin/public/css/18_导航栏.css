@@ -1,0 +1,33 @@
+ul.nostyle {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li.sp { /*水平导航栏*/
+    display: inline;
+}
+
+ul.s1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.sp2:link, .sp2:visited {
+    display: block;
+    width: 120px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #98bf21;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.sp2:hover, .sp2:active {
+    background-color: #7a991a;
+}

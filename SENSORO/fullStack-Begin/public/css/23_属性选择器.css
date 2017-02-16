@@ -1,0 +1,28 @@
+[title] { /*包含title属性的选择下边的样式*/
+    color: lightblue;
+}
+
+[title=runoob] { /*包含title属性且值为runoob的选择器*/
+    border: 2px solid lightgreen;
+}
+
+[title~=hello] { /*title的取值包含hello的选择器*/
+    background-color: lightgreen;
+}
+
+[lang|=en] { /*包含lang属性且起始值为en的元素样式*/
+    color: blueviolet;
+}
+
+input[type="text"] {
+    width: 150px;
+    display: block;
+    margin-bottom: 10px;
+    background-color: lightgoldenrodyellow;
+}
+
+input[type="button"] {
+    width: 120px;
+    margin-left: 20px;
+    display: block;
+}

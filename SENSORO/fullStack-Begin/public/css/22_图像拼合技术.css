@@ -1,0 +1,64 @@
+img.home {
+    width: 93px;
+    height: 88px;
+    background: url("../image/img_navsprites.gif") 0 0;
+}
+
+img.next {
+    width: 88px;
+    height: 88px;
+    background: url("../image/img_navsprites.gif") -93px 0;
+}
+
+img.pre {
+    width: 88px;
+    height: 88px;
+    background: url("../image/img_navsprites.gif") -181px 0;
+}
+
+#navlist {
+    position: relative;
+}
+
+#navlist li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: absolute;
+    top: 0px;
+}
+
+#navlist li, #navlist a {
+    height: 87px;
+    display: block;
+}
+
+#home {
+    left: 0px;
+    width: 91px;
+    background: url("../image/img_navsprites_hover.gif") 0 0;
+}
+
+#home a:hover {
+    background: url("../image/img_navsprites_hover.gif") 0 -91px;
+}
+
+#prev {
+    left: 130px;
+    width: 84px;
+    background: url("../image/img_navsprites_hover.gif") -95px 0;
+}
+
+#prev a:hover {
+    background: url("../image/img_navsprites_hover.gif") -95px -91px;
+}
+
+#next {
+    left: 248px;
+    width: 85px;
+    background: url("../image/img_navsprites_hover.gif") -183px 0;
+}
+
+#next a:hover {
+    background: url("../image/img_navsprites_hover.gif") -183px -91px;
+}

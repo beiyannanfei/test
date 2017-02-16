@@ -1,0 +1,19 @@
+p {
+    width: 200px;
+}
+
+div p { /*后代选择器*/
+    background-color: lightgrey;
+}
+
+div > span { /*子元素选择器*/
+    background-color: yellow;
+}
+
+h2 + p { /*相邻兄弟选择器(只有后边第一个相邻的会选取)*/
+    border: 3px double blue;
+}
+
+h3 ~ p { /*普通相邻兄弟选择器*/
+    border: 3px dashed red;
+}
