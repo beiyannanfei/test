@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>列表</title>
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.min.css">
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script src="../lib/bootstrap/bootstrap.min.js"></script>
+  <style type="text/css">
+    div {
+      width: 150px;
+      height: 150px;
+      background-color: lightcyan;
+      float: left;
+      margin: 20px;
+      border: 1px solid lightcoral;
+    }
+  </style>
+</head>
+<body>
+<p style="position: relative; left: 15px; top: 20px">
+  Bootstrap 支持有序列表、无序列表和定义列表。<br/>
+  有序列表：有序列表是指以数字或其他有序字符开头的列表。<br/>
+  无序列表：无序列表是指没有特定顺序的列表，是以传统风格的着重号开头的列表。<br/>
+  如果您不想显示这些着重号，您可以使用 class .list-unstyled 来移除样式。<br/>
+  您也可以通过使用 class .list-inline 把所有的列表项放在同一行中。<br/>
+  定义列表：在这种类型的列表中，每个列表项可以包含 &lt;dt&gt; 和 &lt;dd&gt; 元素。<br/>
+  &lt;dt&gt; 代表 定义术语，就像字典，这是被定义的属于（或短语）。<br/>
+  接着，&lt;dd&gt; 是 &lt;dt&gt; 的描述。您可以使用 class dl-horizontal 把 &lt;dl&gt; 行中的属于与描述并排显示。
+</p>
+<div>
+  <h4>有序列表</h4>
+  <ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ol>
+</div>
+<div>
+  <h4>无序列表</h4>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+</div>
+<div>
+  <h4>未定义样式列表</h4>
+  <ul class="list-unstyled">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+</div>
+<div style="width: 210px">
+  <h4>内联样式</h4>
+  <ul class="list-inline">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+</div>
+<div>
+  <h4>定义列表</h4>
+  <dl>
+    <dt>Description 1</dt>
+    <dd>Item 1</dd>
+    <dt>Description 2</dt>
+    <dd>Item 2</dd>
+  </dl>
+</div>
+<div style="width: 240px">
+  <h4>水平的定义列表</h4>
+  <dl class="dl-horizontal">
+    <dt>Description 1</dt>
+    <dd>Item 1</dd>
+    <dt>Description 2</dt>
+    <dd>Item 2</dd>
+  </dl>
+</div>
+</body>
+</html>

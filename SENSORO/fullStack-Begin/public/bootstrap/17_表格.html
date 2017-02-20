@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap 表格</title>
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap/bootstrap.min.css">
+  <script src="../lib/jquery-1.11.1.js"></script>
+  <script src="../lib/bootstrap/bootstrap.min.js"></script>
+  <style type="text/css">
+    div {
+      width: 340px;
+      height: 249px;
+      border: 1px solid lightcoral;
+      float: left;
+      margin: 15px 0 0 10px;
+      padding: 0 10px 0 10px;
+    }
+
+    h4 {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h4>表格</h4>
+  <p>.table 为任意表格添加基本样式 (只有横向分隔线):</p>
+  <table class="table">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h4>表格</h4>
+  <p>.table-striped 类在 tbody 内添加斑马线形式的条纹 ( IE8 不支持):</p>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h4>表格</h4>
+  <p>.table-bordered 类为所有表格的单元格添加边框:</p>
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h4>表格</h4>
+  <p>.table-hover 类启用表格中 tbody 上的行的悬停效果：</p>
+  <table class="table table-hover">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h4>表格</h4>
+  <p>.table-condensed 类让表格更加紧凑:</p>
+  <table class="table table-condensed">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h4>表格</h4>
+  <p>联合使用所有表格类:</p>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="clear: left">
+  <h4>表格</h4>
+  <p>
+    <small>.active 类将悬停的颜色应用在行或者单元格上,.success 类表示执行成功的操作,.info 类表示信息变化的操作</small>
+  </p>
+  <table class="table">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="active">
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr class="success">
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr class="info">
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <h4>表格</h4>
+  <p>
+    <small>.warning 类表示一个警告操作, .danger 类表示一个危险的操作</small>
+  </p>
+  <table class="table">
+    <thead>
+    <tr>
+      <td>#</td>
+      <td>FirstName</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="warning">
+      <td>1</td>
+      <td>Anna</td>
+    </tr>
+    <tr class="danger">
+      <td>2</td>
+      <td>Debbie</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>John</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
