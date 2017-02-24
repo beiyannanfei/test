@@ -97,3 +97,7 @@ app.post("/jquery", function (req, res) {
 	return res.end(text);
 });
 
+app.post("/urllib", function (req, res) {
+	console.log("req.body: %j", req.body);
+	res.send({a: 10, b: 20});
+});

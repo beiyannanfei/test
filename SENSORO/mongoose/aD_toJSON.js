@@ -25,3 +25,5 @@ var t = new t2Model({name: "Hello", last: "World"});
 console.log(t.toObject());
 console.log(t.toJSON());
 console.log(JSON.stringify(t));
+
+
