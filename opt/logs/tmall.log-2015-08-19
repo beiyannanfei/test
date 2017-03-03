@@ -1,5 +1,0 @@
-[2015-08-19 11:39:47.323] [INFO] F:\工作积累\天脉聚源\test\async_auto.js - *******getDate
-[2015-08-19 11:39:47.329] [INFO] F:\工作积累\天脉聚源\test\async_auto.js - *******mkdir
-[2015-08-19 11:39:50.336] [INFO] F:\工作积累\天脉聚源\test\async_auto.js - *******writeFile
-[2015-08-19 11:39:54.338] [INFO] F:\工作积累\天脉聚源\test\async_auto.js - *******emailFiles
-[2015-08-19 11:39:54.339] [FATAL] F:\工作积累\天脉聚源\test\async_auto.js - ****** err: null, result: {"getDate":"getDate","mkDir":"mkdir","writeFile":"writeFile","emailFiles":"emailFiles"}

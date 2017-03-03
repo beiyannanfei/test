@@ -18,8 +18,15 @@ co(function *() {
 	console.log(res.toString());
 	var res1 = yield testSync(url, options);
 	console.log(res1.toString());
+	var res2 = yield urllib.request(url, options);
+	console.log(res2.data.toString());
+	var res3 = yield test1(url, options);
+	console.log(res3.data.toString());
 });
 
+function test1(url, options) {
+	return urllib.request(url, options);
+}
 
 function test(url, options) {   //该方法也可以返回promise
 	return function (cb) {

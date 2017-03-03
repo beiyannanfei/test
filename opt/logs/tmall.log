@@ -1,9 +1,9 @@
-[2016-05-06 12:09:11.863] [TRACE] f:\work\tianmaijuyuan\test\logger.js - aaaaa
-[2016-05-06 12:09:11.867] [DEBUG] f:\work\tianmaijuyuan\test\logger.js - aaaaa
-[2016-05-06 12:09:11.868] [INFO] f:\work\tianmaijuyuan\test\logger.js - aaaaa
-[2016-05-06 12:09:11.868] [WARN] f:\work\tianmaijuyuan\test\logger.js - aaaaa
-[2016-05-06 12:09:11.868] [ERROR] f:\work\tianmaijuyuan\test\logger.js - aaaaa
-[2016-05-06 12:09:11.868] [FATAL] f:\work\tianmaijuyuan\test\logger.js - aaaaa
-[2016-05-06 12:09:11.868] [INFO] f:\work\tianmaijuyuan\test\logger.js - begin: 1462507751868
-[2016-05-06 12:09:15.593] [INFO] console - a: 3725ms
-[2016-05-06 12:09:15.597] [INFO] f:\work\tianmaijuyuan\test\logger.js - end: 1462507755597
+[2017-03-03 12:11:29.706] [TRACE] /Users/sensoro/bynf/test/logger.js - aaaaa
+[2017-03-03 12:11:29.709] [DEBUG] /Users/sensoro/bynf/test/logger.js - aaaaa
+[2017-03-03 12:11:29.709] [INFO] /Users/sensoro/bynf/test/logger.js - aaaaa
+[2017-03-03 12:11:29.709] [WARN] /Users/sensoro/bynf/test/logger.js - aaaaa
+[2017-03-03 12:11:29.710] [ERROR] /Users/sensoro/bynf/test/logger.js - aaaaa
+[2017-03-03 12:11:29.710] [FATAL] /Users/sensoro/bynf/test/logger.js - aaaaa
+[2017-03-03 12:11:29.710] [INFO] /Users/sensoro/bynf/test/logger.js - begin: 1488514289710
+[2017-03-03 12:11:34.402] [INFO] console - a: 4689.837ms
+[2017-03-03 12:11:34.406] [INFO] /Users/sensoro/bynf/test/logger.js - end: 1488514294406
