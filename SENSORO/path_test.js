@@ -39,4 +39,4 @@ console.log(path.isAbsolute('E:/github/nodeAPI/abc/efg'));
 console.log(path.isAbsolute('/temp/../..'));
 console.log(path.isAbsolute('../testFiles/secLayer'));
 
-
+console.log(path.basename("sfd", ".js"));
