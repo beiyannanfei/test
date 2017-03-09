@@ -46,10 +46,19 @@ function test1() {
 }
 
 function test2() {
-	t2Model.findOne({_id: "57fb035353121ec02ce78a09"}).populate("t1Id").exec(function (err, response) {
+	t2Model.findOne({_id: "57fb035353121ec02ce78a09"}).populate(
+		/*"t1Id"*/
+		{
+		 path: "t1Id", //关联查询
+		 select: "name -_id age" //关联查询过滤字段(有name age 没有_id字段)
+		 }
+		/*"t1Id", "name"*/  //当只需要返回关联表的第一个字段时可以改方式(第一个字段为表名称,第二个字段为过滤字段),注意:只能过滤一个字段且_id也存在
+	).exec(function (err, response) {
 		console.log(response);
 	});
 }
+
+test2();
 
 function test3() {
 	let doc = {
@@ -125,7 +134,7 @@ function test9() {
 	});
 }
 
-test9();
+// test9();
 
 
 
