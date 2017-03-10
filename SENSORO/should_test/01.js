@@ -362,15 +362,18 @@ function size() {
 
 function value() {
 	try {
-		({a: 1}).should.have.value('a', 1); //ok
-		({a: 1}).should.have.value('a', 10); //expected 1 to have key a
-		({a: 1}).should.have.value('b', 1); //expected Object { a: 1 } to have key b
-		[1, 2, 3].should.have.value(1, 2, 3);
-		[1, 2, 3].should.have.value(2); //expected 3 to have key 2
+		// ({a: 1}).should.have.value('a', 1); //ok
+		// ({a: 1}).should.have.value('a', 10); //expected 1 to have key a
+		// ({a: 1}).should.have.value('b', 1); //expected Object { a: 1 } to have key b
+		// [1, 2, 3].should.have.value(1, 2, 3);
+		should([1, 2, 3]).have.value(1, 2, 3);
+		// [1, 2, 3].should.have.value(2); //expected 3 to have key 2
 	} catch (e) {
 		console.log(e.message || e);
 	}
 }
+
+value();
 
 function endWith() {
 	try {

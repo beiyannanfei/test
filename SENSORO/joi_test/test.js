@@ -27,20 +27,34 @@ var _ = require("lodash");
  text_image_list: []
  }
  };*/
-var o = {};
+/*var o = {};
+
+ var schema = Joi.object().keys({
+ type: Joi.object().keys({
+ a: Joi.number()
+ }).required()
+ });
+
+ var checkObj = {
+ type: {
+ a: 10,
+ b: o.b
+ }
+ };*/
 
 var schema = Joi.object().keys({
-	type: Joi.object().keys({
-		a: Joi.number()
-	}).required()
+	name: Joi.string().max(2)
 });
 
 var checkObj = {
-	type: {
-		a: 10,
-		b: o.b
-	}
+	name: "你还a"
 };
+
+var result = Joi.validate(checkObj, schema);
+if (result.error) {
+	return console.log(filterJoiErrMsg(result.error));
+}
+return console.log(result);
 
 Joi.validate(checkObj, schema, {allowUnknown: true}, (err, value)=> {
 	if (!!err) {
@@ -51,7 +65,6 @@ Joi.validate(checkObj, schema, {allowUnknown: true}, (err, value)=> {
 	}
 	console.log(value);
 });
-
 
 
 function filterJoiErrMsg(err) {
