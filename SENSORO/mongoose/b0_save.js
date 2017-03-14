@@ -10,20 +10,46 @@ const Schema = mongoose.Schema;
 let t1Schema = new Schema({
 	name: {type: String, unique: true},
 	age: {type: Number},
-	addr: {type: String}
+	addr: {type: String, default: "unknown address"}
 }, {versionKey: false});
 
 let t1Model = mongoose.model("t1", t1Schema);
 
-t1Model.findOne(function (err, response) {
-	if (!!err || !response) {
-		return console.log(err.message || "no data");
-	}
-	console.log(response);
-	response.name += "_TEST";
-	console.log(response);
-	response.save(function (err, newDoc) {
+function t1() {
+	t1Model.findOne(function (err, response) {
+		if (!!err || !response) {
+			return console.log(err.message || "no data");
+		}
+		console.log(response);
+		response.name += "_TEST";
+		console.log(response);
+		response.save(function (err, newDoc) {
+			console.log(arguments);
+			process.exit(1);
+		});
+	});
+}
+
+function t2() {
+	t1Model.findOne(function (err, response) {
+		if (!!err || !response) {
+			return console.log(err.message || "no data");
+		}
+		console.log(response);
+		t3(response);
+	});
+}
+
+var _ = require("underscore");
+function t3(info) {
+	// info = _.pick(info, "_id", "name", "age", "save");
+	info.addr = undefined;
+	console.log(info);
+	info.save(function (err, response) {
 		console.log(arguments);
 		process.exit(1);
 	});
-});
+}
+
+t2();
+

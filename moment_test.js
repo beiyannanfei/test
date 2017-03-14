@@ -181,4 +181,4 @@ console.log(moment().add(-0, 'd').format('YYYY-MM-DD'));
 
 console.log(moment().toDate()); //2016-12-07T06:46:51.389Z
 
-
+console.log(moment().diff(moment([2017, 2, 14, 10, 53, 3]), 's'));
