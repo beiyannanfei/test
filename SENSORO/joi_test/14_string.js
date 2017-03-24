@@ -148,3 +148,4 @@ function isoDate() {
 	result = schema.validate(new Date().toLocaleString());
 	console.log(result.error.message);//"value" must be a valid ISO 8601 date
 }
+

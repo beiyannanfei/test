@@ -71,8 +71,30 @@ function test(url, param, cb) {
 		});
 }
 
-test("http://127.0.0.1:5000/admin/test", {a: 10, b: 20}, function (err, response) {
-	console.log(arguments);
-});
+/*test("http://127.0.0.1:5000/admin/test", {a: 10, b: 20}, function (err, response) {
+ console.log(arguments);
+ });*/
 
+/*test("http://127.0.0.1:3000/geofence/add",
+	{
+		name: "TEST",
+		applyType: ["all"],
+		multiPoint: [
+			{lat: 0, lon: 0},
+			{lat: 0, lon: 10},
+			{lat: 10, lon: 10},
+			{lat: 10, lon: 0}
+		]
+	},
+	function (err, response) {
+		console.log(arguments);
+	});*/
+
+
+superagent.post("http://127.0.0.1:3000/tools/images/upload1")
+	.type('multipart/form-data')
+	.attach("file", "./1.jpeg")
+	.end(function (err, xhr) {
+		console.log(xhr.body);
+	});
 

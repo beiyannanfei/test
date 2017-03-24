@@ -449,3 +449,12 @@ function types() {
 	}
 }
 
+function notEqual() {
+	try {
+		// should.notEqual(123, 124);
+		should.notEqual(124, 124);  //expected 124 != 124
+	} catch (e) {
+		console.log(e.message || e);
+	}
+}
+notEqual();

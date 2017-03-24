@@ -41,13 +41,24 @@ var _ = require("lodash");
  b: o.b
  }
  };*/
+var a = {};
+let schema = Joi.object().keys({
+	name: Joi.string().max(50),
+	applyType: Joi.array().items(Joi.string().valid([1, 2, 3]))
+});
+let checkObj = {
+	name: a.name,
+	applyType: [1, 2]
+};
+let error = Joi.validate(checkObj, schema);
+return console.log(error);
 
-var schema = Joi.object().keys({
-	name: Joi.string().max(2)
+schema = Joi.object().keys({
+	name: Joi.string().min(1).max(20)
 });
 
-var checkObj = {
-	name: "你还a"
+checkObj = {
+	name: ""
 };
 
 var result = Joi.validate(checkObj, schema);

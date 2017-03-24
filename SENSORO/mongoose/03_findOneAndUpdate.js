@@ -30,3 +30,4 @@ function test() {
 		});
 }
 
+test();

@@ -10,12 +10,12 @@ function array() {
 		a: Joi.array().items(Joi.string().valid('a', 'b'))
 	};
 	let checkObj = {
-		a: ['a', 'b', 'a']
+		a: ['a', 'b', 'c']
 	};
 	let results = Joi.validate(checkObj, schema);
-	console.log(results);//{ error: null, value: { a: [ 'a', 'b', 'a' ] } }
+	console.log(results.error.details[0].message);//{ error: null, value: { a: [ 'a', 'b', 'a' ] } }
 }
-
+array();
 function sparse() { //稀疏数组
 	let schema = Joi.array();
 	let checkObj = [1, 2, undefined, 3];
