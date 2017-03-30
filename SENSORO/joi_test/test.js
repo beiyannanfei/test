@@ -41,7 +41,9 @@ var _ = require("lodash");
  b: o.b
  }
  };*/
-var a = {};
+
+
+/*var a = {};
 let schema = Joi.object().keys({
 	name: Joi.string().max(50),
 	applyType: Joi.array().items(Joi.string().valid([1, 2, 3]))
@@ -75,7 +77,20 @@ Joi.validate(checkObj, schema, {allowUnknown: true}, (err, value)=> {
 		return
 	}
 	console.log(value);
-});
+});*/
+
+let flag = true;
+let schema = {
+	a: Joi.any(),
+	b: Joi.string().when(flag, {is: true, then: Joi.required()})
+};
+let obj1 = {
+	a: "other",
+	b: "a"
+};
+let results1 = Joi.validate(obj1, schema);
+console.log(results1.error.message);//child "other" fails because ["other" is required]
+console.log(results1.error.details[0].message);//"other" is required
 
 
 function filterJoiErrMsg(err) {
