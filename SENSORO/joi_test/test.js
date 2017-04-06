@@ -79,6 +79,8 @@ Joi.validate(checkObj, schema, {allowUnknown: true}, (err, value)=> {
 	console.log(value);
 });*/
 
+/*
+
 let flag = true;
 let schema = {
 	a: Joi.any(),
@@ -91,9 +93,17 @@ let obj1 = {
 let results1 = Joi.validate(obj1, schema);
 console.log(results1.error.message);//child "other" fails because ["other" is required]
 console.log(results1.error.details[0].message);//"other" is required
+*/
 
+
+
+let results1 = Joi.validate("14810776836", Joi.string().regex(/^(\+86){0,1}1[3|4|5|7|8](\d){9}$/));
+console.log(results1);//child "other" fails because ["other" is required]
+console.log(results1.error.message);
+// console.log(results1.error.details[0].message);//"other" is required
 
 function filterJoiErrMsg(err) {
 	return (err && err.details && err.details[0] && err.details[0].message) || err.message || err;
 }
 
+// https://resource-city.sensoro.com/188db5760db0a5a5acaba8f187ab446f.png

@@ -1,0 +1,24 @@
+1. 修改计算机名称
+    a. cat hosts    127.0.1.1       Tracker-API
+    b. cat hostname     Tracker-API
+    c. 重启服务器 reboot
+2. 安装nodejs
+    a. wget https://nodejs.org/dist/v6.10.2/node-v6.10.2.tar.gz   下载
+    b. tar zxvf node-v6.10.2.tar.gz  解压
+    c. apt-get install python    apt-get install gcc    apt-get install g++  apt-get install make
+        安装python gcc g++ make
+    d. cd node-v6.10.2
+    e. ./configure  make  make install
+    f. cp /usr/local/bin/node /usr/sbin/
+3. 安装git
+    a. apt-get install git
+4. 安装redis
+    a. wget http://download.redis.io/releases/redis-3.2.8.tar.gz  下载
+    b. tar -zxvf redis-3.2.8.tar.gz
+    c. cd redis-3.2.8
+    d. make
+    e. mkdir /usr/redis
+    f. cp redis-server redis-benchmark redis-cli  /usr/redis/
+    g. cp redis.conf /usr/redis/
+    h.
+

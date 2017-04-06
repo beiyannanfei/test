@@ -58,7 +58,7 @@ function test2() {
 	});
 }
 
-// test2();
+test2();
 
 function test3() {
 	let doc = {
@@ -146,7 +146,6 @@ function testA() {
 	});
 }
 
-testA();
 
 
 
