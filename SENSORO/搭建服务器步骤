@@ -20,5 +20,89 @@
     e. mkdir /usr/redis
     f. cp redis-server redis-benchmark redis-cli  /usr/redis/
     g. cp redis.conf /usr/redis/
-    h.
+    h. vi /usr/redis/redis.conf
+        daemonize no -> yes     修改redis为后台启动
+        logfile "" -> /var/log/redis/redis-server.log   知道redis的日志文件(需要提前新建完成)
+        dir ./ -> /usr/redis    启动时读取该绝对目录下的dump.rdb
+    i. vi /etc/rc.local  添加 /usr/local/bin/redis-server /usr/redis/redis.conf  设置开机启动
+    j. /usr/local/bin/redis-server /usr/redis/redis.conf  启动redis
+5. 安装mongodb
+    a. wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1404-3.4.3.tgz  下载mongodb
+    b. tar -zxvf mongodb-linux-x86_64-ubuntu1404-3.4.3.tgz  解压
+    c. mkdir -p /usr/local/mongodb  创建mongodb的专用目录并将上一步解压的文件全部复制到该目录
+    d. cd /usr/local/mongodb    进入mongodb目录
+        mkdir data  创建数据存放目录
+        touch logs.log 创建日志文件
+    e. vi mongo.conf    创建mongo配置文件
+        fork=true                                   以守护进程的方式运行MongoDB，创建服务器进程
+        dbpath=/usr/local/mongodb/data/             指定数据库路径
+        logpath=/usr/local/mongodb/logs.log         指定MongoDB日志文件
+        logappend=true                              使用追加的方式写日志
+        port=27017                                  指定服务端口号，默认端口27017
+        directoryperdb=true                         设置每个数据库将被保存在一个单独的目录
+        httpinterface=true                          提供http接口
+    f. vi /etc/rc.local  添加 /usr/local/mongodb/bin/mongod --config /usr/local/mongodb/mongo.conf  设置开机启动
+    g. /usr/local/mongodb/bin/mongod --config /usr/local/mongodb/mongo.conf     启动mongo
+            (停止方法 /usr/local/mongodb/bin/mongod -shutdown --config /usr/local/mongodb/mongo.conf)
+    h. cp /usr/local/mongodb/bin/mongo /usr/local/bin/  将mongo复制到环境变量下可以全局调用
+6. 安装cnpm pm2并配置
+    a. npm install cnpm -g  安装cnpm
+    b. npm install pm2 -g   安装pm2
+    c. npm install apidoc -g 安装api文档生成包
+    d. $ sudo su git    设置pm2的log保存90天
+       $ pm2 list
+       $ pm2 install pm2-logrotate
+       $ pm2 set pm2-logrotate:retain 90
+       $ pm2 set pm2-logrotate:compress true
+7. 配置gitreceive
+    a. cd /usr/local/bin  环境变量目录
+    b. wget https://raw.githubusercontent.com/progrium/gitreceive/master/gitreceive 下载,会生成gitreceive文件
+    c. chmod a+x gitreceive 修改gitreceive为可执行文件
+    d. gitreceive init 创建git用户
+    e. adduser wangyanqiang  创建一个用户
+    f. cd /home/wangyanqiang/   进入创建用户的目录
+    g. mkdir .ssh && cd .ssh/ 创建并进入.ssh目录
+    h. touch authorized_keys  创建文件
+    i. vi authorized_keys  将本机的.ssh/id_rsa.pub文件内容写入
+    j. cat ./authorized_keys | gitreceive upload-key wangyanqiang   将密钥添加到ssh命令管理中(wangyanqiang为刚才新建的用户)
+    k. su git && cd && ls => receiver  登录到git用户进入根目录,此时会有文件receiver
+    l. vi /etc/group  修改 sudo:x:27:ubuntu,wangyanqiang  将用户wangyanqiang添加到root组
+    m. 修改receiver   类似
+        deploy_dir=/home/git/$1_deploy
+        mkdir -p $deploy_dir && cat | tar -x -C $deploy_dir
+        pushd $deploy_dir
+        if [ "$1" = "tracker-api" ]; then
+        cnpm install --loglevel error --production
+        pm2 restart tracker-api
+        echo 'refresh app base-delay'
+        fi
+        popd
+    n. 修改processes.json 类似
+        [
+            {
+                 "name": "tracker-api",
+                 "cwd": "/home/git/tracker-api_deploy",
+                 "script": "app.js",
+                 "env": {
+                        "NODE_ENV": "development",
+                        "PORT": "3000"
+                },
+                "exec_mode": "fork_mode"
+            }
+        ]
+    o. 本机修改 vi /Users/sensoro/.ssh/config  添加类似
+        Host Tracker-Mocha
+        User wangyanqiang           (登录名称)
+        HostName 192.168.211.18     (远程服务器ip)
+        IdentityFile ~/.ssh/id_rsa
+    p. git remote add mocha git@Tracker-Mocha:tracker-api 添加git remote
+        其中Tracker-Mocha为步骤o中的Host
+        tracker-api为步骤中m中的if中的变量
+    q. git push mocha master:master 将本地master的代码推送到mocha的master分支
+    r. 创建development.json 配置文件
+    s. pm2 start /home/git/processes.json
+
+
+
+
 
