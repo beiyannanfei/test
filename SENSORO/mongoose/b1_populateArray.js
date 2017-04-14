@@ -16,12 +16,23 @@ let t1Schema = new Schema({
 }, {versionKey: false});
 
 let t1Model = mongoose.model("t1", t1Schema);
+
 //10811017C6CCF7A7
 let t2Schema = new Schema({
 	job: {type: String},
 	love: {type: String},
 	t1Id: [{type: mongoose.Schema.Types.ObjectId, ref: "t1"}]
 });
+
+if (!t2Schema.options.toJSON) {
+	t2Schema.options.toJSON = {};
+}
+
+t2Schema.options.toJSON.transform = function (doc, ret) {
+	// console.log("==== ret: %j", ret);
+	delete ret._id;
+};
+
 
 let t2Model = mongoose.model("t2", t2Schema);
 
@@ -56,14 +67,17 @@ function test1() {
 		});
 	});
 }
-// test1();
 
 function test2() {
 	t2Model.findOne({"love": "changge"}).populate({path: "t1Id"}).exec(function (err, response) {
-		console.log(response);
+		console.log(response.toJSON());
+		t2Model.update({_id: response._id}, {$push: {t1Id: "58eb5a60cb01aedee33f7279"}}, function (err, response) {
+			console.log(arguments);
+		});
 	});
 }
 
+// test1();
 test2();
 var a = {
 	t1Id: [
