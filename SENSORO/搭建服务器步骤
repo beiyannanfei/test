@@ -102,7 +102,16 @@
     r. 创建development.json 配置文件
     s. pm2 start /home/git/processes.json
 
-
-
-
-
+8. 安装nginx&配置前端访问
+    a. apt-get install nginx  安装nginx
+    b. cd /etc/nginx/sites-enabled  进入配置目录
+    c. vi tracker-web.conf 新建配置文件,写入形如如下内容:
+        server {
+            listen 8090;
+            set $root /home/git/tracker-web_deploy/dist;
+            root $root;
+            location / {
+                try_files $uri /index.html;
+            }
+        }
+    d. nginx -s reload 重启nginx
