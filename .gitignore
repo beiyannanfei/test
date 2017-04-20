@@ -9,4 +9,5 @@ koa_2.X/node_modules/babel-preset-stage-3/
 /express_3.X/logs/*
 /express_4.X/logs/*
 /SENSORO/node_modules/
+!/SENSORO/node_modules/bcrypt*
 /SENSORO/fullStack-Begin/node_modules/
