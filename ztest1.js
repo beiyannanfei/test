@@ -1,42 +1,27 @@
-var data = [
-	{
-		"_id": "58eafb50ecdead4d90756373",
-		"updatedTime": 1492663272536,
-		"email": "business1@sensoro.com",
-		"nickname": "business1",
-		"appId": "appId000003",
-		"appKey": "qQRgOxIwR4ODan6J4hKDpaBfBPKTh8eQdAF6ts6xTAP",
-		"appSecret": "MKLFSYfBgZJgdCNsN3xGdmKZBi6bRXi0",
-		"addBy": "58eafb50ecdead4d90756371",
-		"grants": {"user": ["update"], "device": ["get", "delete", "update", "list", "modifyCycle", "fence"]},
-		"baseInfo": {
-			"mobile": "18600945636",
-			"headUrl": "http://7u2jeb.com1.z0.glb.clouddn.com/d6afe7f957e5f280fbb9819ebab5e583.png"
-		},
-		"createdTime": 1491882153110,
-		"isDeleted": false,
-		"config": {"businessCount": 0, "businessLimit": 0},
-		"roles": "business",
-		"id": "58eafb50ecdead4d90756373"
+var a = {
+	"fenceName": "围栏名称1",
+	"fenceIcon": "circle",
+	"deviceNum": 0,
+	"users": ObjectId("58eafb50ecdead4d9075637c"),
+	"tags": ["t1", "t2"],
+	"indexTags": ["t1", "t2", "围栏名称1"],
+	"createTime": "2017-04-19T04:06:04.121Z",
+	"ruler": {
+		"enterCycle": [0, 1, 2, 3, 4, 5, 6],
+		"enterStartTime": 0,
+		"enterEndTime": 1440,
+		"enterIsEnable": true,
+
+		"leaveCycle": [0, 1, 2, 3, 4, 5, 6],
+		"leaveCycle": 0,
+		"leaveEndTime": 1440,
+		"leaveIsEnable": false
 	},
-	{
-		"_id": "58eafb50ecdead4d90756374",
-		"updatedTime": 1492663272536,
-		"email": "business2@sensoro.com",
-		"nickname": "business2",
-		"appId": "appId000004",
-		"appKey": "qQRgOxIwR4ODan6J4hKDpaBfBPKTh8eQdAF6ts6xTAP",
-		"appSecret": "MKLFSYfBgZJgdCNsN3xGdmKZBi6bRXi0",
-		"addBy": "58eafb50ecdead4d90756371",
-		"grants": {"user": ["update"], "device": ["get", "delete", "update", "list", "modifyCycle", "fence"]},
-		"baseInfo": {
-			"mobile": "18600945636",
-			"headUrl": "http://7u2jeb.com1.z0.glb.clouddn.com/d6afe7f957e5f280fbb9819ebab5e583.png"
-		},
-		"createdTime": 1491882153110,
-		"isDeleted": false,
-		"config": {"businessCount": 0, "businessLimit": 0},
-		"roles": "business",
-		"id": "58eafb50ecdead4d90756374"
-	}
-];
+	"isDeleted": false,
+	"range": {      //围栏范围
+		"type": "circle",
+		"circleCenter": [10,10],
+		"circleRadius": 100
+	},
+	"srcData": {}
+};
