@@ -9,7 +9,7 @@ const _ = require("lodash");
 let config = {
 	appSecret: "abc123",
 	appKey: "4z04NBTlokkUjNZHK9WCfPPquYzkChtiRYHU4BHkHpf",    //必须为43位长度
-	appId: "cde789"
+	appId: "cde7890"
 };
 let msg = "wangyanqiang";
 let crypter = new MsgCrypt(config.appSecret, config.appKey, config.appId);
