@@ -12,4 +12,6 @@ a9. docker rm 109a0a988662 删除容器
 b0. docker create -it ubuntu:latest 创建容器(新建的容器处于停止状态)
 b1.
 b2.
-
+b3.
+b4.
+b5.
