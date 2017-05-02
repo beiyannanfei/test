@@ -39,3 +39,28 @@ function _is() {
 }
 _is();
 
+function _keys() {
+	let arr = ["a", "b", "c"];
+	console.log(Object.keys(arr));
+
+	let obj = {a: 10, b: 20, c: 30};
+	console.log(Object.keys(obj));
+
+	let str = "foo";
+	console.log(Object.keys(str));  //ES6: [ '0', '1', '2' ], ES5: Object.keys called on non-object
+}
+_keys();
+
+function _hasOwnProperty() {
+	let o = {};
+	o.prop = "exists";
+	console.log(o.hasOwnProperty("prop"));
+	delete o.prop;
+	console.log(o.hasOwnProperty("prop"));
+}
+_hasOwnProperty();
+
+
+
+
+
