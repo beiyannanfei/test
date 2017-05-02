@@ -11,3 +11,5 @@ a8. docker rmi docker.io/ubuntu:14.04  删除镜像(当一个镜像有多个标�
 a9. docker rm 109a0a988662 删除容器
 b0. docker create -it ubuntu:latest 创建容器(新建的容器处于停止状态)
 b1.
+b2.
+
