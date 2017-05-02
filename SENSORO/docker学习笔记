@@ -1,0 +1,13 @@
+CentOS操作系统为例:
+a0. 安装 yum install -y docker
+a1. 启动docker服务 service docker start / stop(停止)
+a2. sudo docker run hello-world 允许hello-world
+a3. docker images 列出本地主机上的镜像
+a4. docker tag docker.io/ubuntu:14.04 ubuntu:latest  为名称docker.io/ubuntu标签为14.04的镜像添加标签名称为ubuntu标签为latest
+a5. docker inspect 302fa07d8117 查看镜像302fa07d8117的详细信息
+a6. docker inspect 302fa07d8117 查看镜像302fa07d8117的详细信息
+a7. docker search mysql 搜寻mysql相关镜像
+a8. docker rmi docker.io/ubuntu:14.04  删除镜像(当一个镜像有多个标签时,只删除标签,只有一个标签时才会彻底删除)
+a9. docker rm 109a0a988662 删除容器
+b0. docker create -it ubuntu:latest 创建容器(新建的容器处于停止状态)
+b1.
