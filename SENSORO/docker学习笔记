@@ -11,7 +11,7 @@ a8. docker rmi docker.io/ubuntu:14.04  删除镜像(当一个镜像有多个标�
 a9. docker rm 109a0a988662 删除容器
 b0. docker create -it ubuntu:latest 创建容器(新建的容器处于停止状态)
 b1. docker ps 查看所有在运行的容器 (docker ps -a 所有容器)
-b2.
+b2. docker run -it -v /dbdata --name dbdata ubuntu     docker run -it --volumes-from dbdata --name db1 ubuntu
 b3.
 b4.
 b5.
