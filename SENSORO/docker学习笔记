@@ -10,7 +10,7 @@ a7. docker search mysql 搜寻mysql相关镜像
 a8. docker rmi docker.io/ubuntu:14.04  删除镜像(当一个镜像有多个标签时,只删除标签,只有一个标签时才会彻底删除)
 a9. docker rm 109a0a988662 删除容器
 b0. docker create -it ubuntu:latest 创建容器(新建的容器处于停止状态)
-b1.
+b1. docker ps 查看所有在运行的容器 (docker ps -a 所有容器)
 b2.
 b3.
 b4.
