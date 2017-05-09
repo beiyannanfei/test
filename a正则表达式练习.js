@@ -48,11 +48,11 @@ console.log(isDigit("132a"));
 //console.log("1个12月".match(/\d{1,2}/));
 
 
-var test = "0.5年";
-var val = test.replace(/[^0-9.]/ig,"");
-console.log(val);
+// var test = "0.5年";
+// var val = test.replace(/[^0-9.]/ig,"");
+// console.log(val);
 
 
-
+console.log(/^[0-5]\d:[0-5]\d$/.test("01-:01"));
 
 

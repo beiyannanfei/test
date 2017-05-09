@@ -431,7 +431,7 @@ function types() {
 		// ({}).should.be.String();    //expected Object {} to be a string
 
 		[].should.be.instanceof(Array);   //ok
-		// ({}).should.be.instanceof(Array); //expected Object {} to be an instance of Array
+		// ({}).should.be.inst anceof(Array); //expected Object {} to be an instance of Array
 
 		should(null).be.null();   //ok
 		// ({}).should.be.null();    //expected Object {} to be null
