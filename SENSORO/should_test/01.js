@@ -457,4 +457,10 @@ function notEqual() {
 		console.log(e.message || e);
 	}
 }
-notEqual();
+// notEqual();
+
+try {
+	[1, 2, 3].sort().should.deepEqual([2, 1, 3].sort());
+} catch (e) {
+	console.log(e.message || e);
+}
