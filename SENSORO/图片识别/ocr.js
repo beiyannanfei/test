@@ -11,7 +11,8 @@ let filePath = path.join(__dirname, "b.png");
 
 ocr.scan({
 	url: filePath,
-	type: "text"
+	type: "line", //text line character
+	language: "CHN" //CHE_ENG CHE ENG
 }).then(val => {
 	console.log(JSON.stringify(val));
 }).catch(err => {
