@@ -46,4 +46,13 @@ let gpsc = {latitude: 3959.8717, longitude: 11628.7075, lat: 39.99786166666667, 
 let gpsd = {latitude: 3959.9717, longitude: 11628.8075, lat: 39.99952833333334, lon: 116.48012500000002};
 // console.log(transGps(gpsd.longitude));
 // a->b=233.46  a->c=466.92  b->c=233.46 a->d=700.38 c->d=233.45 b->d=466
-console.log(getFlatternDistance(gpsb.lon, gpsb.lat, gpsd.lon, gpsd.lat));
+// console.log(getFlatternDistance(gpsb.lon, gpsb.lat, gpsd.lon, gpsd.lat));
+
+// "longitude" : 11628.5471,
+// 	"latitude" : 3959.6335
+
+// 11628.5726,
+// 	"latitude" : 3959.6192
+
+console.log(transGps(11628.5726));
+console.log(transGps(3959.6192));
