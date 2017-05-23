@@ -59,8 +59,8 @@
 
 
 {
-	"sn" : "01521117C69ED23E",
-	"deviceName" : "真实设备01521117C69ED23E",
+	"sn" : "01581117C645CAB9",
+	"deviceName" : "真实设备01581117C645CAB9",
 	"deviceType" : "default",
 	"appId" : "lUn0eDNDHOMs",
 	"owners" : ObjectId("5909a7e08fc0634c63459139"),
@@ -81,3 +81,37 @@
 	"createTime" : ISODate("2017-05-17T07:52:24.066Z")
 }
 
+
+{
+	"sn" : "01581117C645CAB9",
+	"taskId" : 123,
+	"appSecret" : "nmqI0e3c586Ywn77rzIiOMBGypl8gsC8",
+	"appId" : "lUn0eDNDHOMs",
+	"type" : "cycle",
+	"content" : "20",
+	"status" : 2,
+	"createdTime" : "2017-05-17T07:52:24.066Z"
+}
+
+{
+	"sn" : "01581117C6E54A93",
+	"deviceName" : "真实设备01581117C6E54A93",
+	"deviceType" : "default",
+	"appId" : "lUn0eDNDHOMs",
+	"owners" : ObjectId("5909a7e08fc0634c63459139"),
+	"status" : 2,
+	"tags" : [
+	"标签1",
+	"标签2"
+],
+	"indexTags" : [
+	"01521117C69ED23E",
+	"真实设备01521117C69ED23E",
+	"default",
+	"标签1",
+	"标签2"
+],
+	"sensorData" : {},
+	"geofences" : [],
+	"createTime" : ISODate("2017-05-17T07:52:24.066Z")
+}
