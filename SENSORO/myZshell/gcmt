@@ -2,5 +2,5 @@
 if [ ! -n "$1" ] ;then
     git commit -m "update" -n
 else
-    git commit -m {$1} -n
+    git commit -m $1 -n
 fi
