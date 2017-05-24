@@ -115,3 +115,16 @@
 	"geofences" : [],
 	"createTime" : ISODate("2017-05-17T07:52:24.066Z")
 }
+
+* @apiSuccessExample Success-Response:
+* HTTP/1.1 200 OK
+*     {
+*       "errcode": 0,
+*       "data": {
+*         _id: '5840175bc869c181f0f3cea2',
+*         email: '13888888888',
+*         nickname: '路人甲',
+*         sessionID: 'xxxxxxxxxxxxxxxxxx',
+*         createdTime: 1471937884044
+*       }
+*     }
