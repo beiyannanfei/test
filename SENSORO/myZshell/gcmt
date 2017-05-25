@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+echo $1
 if [ ! -n "$1" ] ;then
-    git commit -am "update" -n
+    git commit -m "update" -n
 else
-    git commit -am $1 -n
+    git commit -m "$1" -n
 fi
