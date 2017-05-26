@@ -37,3 +37,4 @@ console.log('版本: ' + process.version);
 console.log(process.versions);
 
 console.log('当前CPU架构是：' + process.arch);
+
