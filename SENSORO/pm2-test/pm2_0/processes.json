@@ -1,0 +1,17 @@
+[
+  {
+    "name": "pm2-exec_mode",      //名称
+    "cwd": "/Users/sensoro/bynf/test/SENSORO/pm2-test/pm2_0",   //路径
+    "script": "pm2-exec_mode.js", //脚本名称
+    "env": {    //设置环境变量
+      "NODE_ENV": "development",
+      "PORT": "8910"
+    },
+    "log_date_format": "YYYY-MM-DD HH:mm:ss.SSS Z",   //日志时间输出格式
+    "exec_mode": "fork_mode",    //程序启动模式,默认fork_mode, 集群模式(cluster_mode)
+    "error_file": "/Users/sensoro/bynf/test/SENSORO/pm2-test/pm2_0/error.log",  //自定义错误日志文件,不写的话默认pm2安装目录logs目录
+    "out_file": "/Users/sensoro/bynf/test/SENSORO/pm2-test/pm2_0/out.log",  //程序日志文件
+    "pid_file": "/Users/sensoro/bynf/test/SENSORO/pm2-test/pm2_0/pid_file",//程序pid文件
+    "watch": false  //是否启用监控模式，默认是false。如果设置成true，当应用程序变动时，pm2会自动重载
+  }
+]

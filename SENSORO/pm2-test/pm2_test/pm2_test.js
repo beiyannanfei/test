@@ -13,4 +13,5 @@ setInterval(function () {
 //pm2 stop ID
 //pm2 flush   清除日志
 //pm2 desc ID  查看详情
+//pm2 delete <pm2-exec_mode|0>    从列表中删除
 
