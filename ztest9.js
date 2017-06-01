@@ -40,19 +40,28 @@ function getFlatternDistance(lon1, lat1, lon2, lat2) {
 	return distance
 }
 
-let gpsa = {latitude: 3959.6717, longitude: 11628.5075, lat: 39.994528333333335, lon: 116.47512499999999};
-let gpsb = {latitude: 3959.7717, longitude: 11628.6075, lat: 39.996195, lon: 116.47679166666667};
-let gpsc = {latitude: 3959.8717, longitude: 11628.7075, lat: 39.99786166666667, lon: 116.47845833333334};
-let gpsd = {latitude: 3959.9717, longitude: 11628.8075, lat: 39.99952833333334, lon: 116.48012500000002};
-// console.log(transGps(gpsd.longitude));
-// a->b=233.46  a->c=466.92  b->c=233.46 a->d=700.38 c->d=233.45 b->d=466
-// console.log(getFlatternDistance(gpsb.lon, gpsb.lat, gpsd.lon, gpsd.lat));
+let center = {lon: 116, lat: 39};
 
-// "longitude" : 11628.5471,
-// 	"latitude" : 3959.6335
+let a0 = {lon: 117, lat: 39};let a1 = {lon: 118, lat: 39};let a2 = {lon: 119, lat: 39};let a3 = {lon: 120, lat: 39};
 
-// 11628.5726,
-// 	"latitude" : 3959.6192
+let b0 = {lon: 117, lat: 40};let b1 = {lon: 118, lat: 41};let b2 = {lon: 119, lat: 42};let b3 = {lon: 120, lat: 43};
 
-console.log(transGps(11628.5726));
-console.log(transGps(3959.6192));
+let c0 = {lon: 116, lat: 40};let c1 = {lon: 116, lat: 41};let c2 = {lon: 116, lat: 42};let c3 = {lon: 116, lat: 43};
+
+console.log("center -> b0: ", getFlatternDistance(center.lon, center.lat, b0.lon, b0.lat));
+console.log("b0 -> b1: ", getFlatternDistance(b0.lon, b0.lat, b1.lon, b1.lat));
+console.log("b1 -> b2: ", getFlatternDistance(b1.lon, b1.lat, b2.lon, b2.lat));
+console.log("b2 -> b3: ", getFlatternDistance(b2.lon, b2.lat, b3.lon, b3.lat));
+console.log("=======================");
+console.log("center -> c0: ", getFlatternDistance(center.lon, center.lat, c0.lon, c0.lat));
+console.log("c0 -> c1: ", getFlatternDistance(c0.lon, c0.lat, c1.lon, c1.lat));
+console.log("c1 -> c2: ", getFlatternDistance(c1.lon, c1.lat, c2.lon, c2.lat));
+console.log("c2 -> c3: ", getFlatternDistance(c2.lon, c2.lat, c3.lon, c3.lat));
+console.log("=======================");
+console.log("center -> a0: ", getFlatternDistance(center.lon, center.lat, a0.lon, a0.lat));
+console.log("a0 -> a1: ", getFlatternDistance(a0.lon, a0.lat, a1.lon, a1.lat));
+console.log("a1 -> a2: ", getFlatternDistance(a1.lon, a1.lat, a2.lon, a2.lat));
+console.log("a2 -> a3: ", getFlatternDistance(a2.lon, a2.lat, a3.lon, a3.lat));
+
+
+
