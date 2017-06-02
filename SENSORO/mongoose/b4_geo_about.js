@@ -202,6 +202,39 @@ function t6() {
 	});
 }
 
+/**
+ * 查找距离中心141km的点, spherical为true， dis的值为弧度，不指定则为度
+ */
+function t7() {
+	t1Model.geoNear(center, {maxDistance: 141 / 6371, spherical: true}, function (err, results, stats) {
+		if (!!err) {
+			return console.log("t7 err: %j", err.message || err);
+		}
+		console.log(results);
+		/**
+		 * { dis: 0.013563687613269046,   //与center的距离,单位为弧度,转换为米方法: dis * 6371 * 1000
+         obj:
+         { _id: 592fcba368c554fe139e9109,
+          __v: 0,
+          lonlat2: [ 117, 39 ],
+          lonlat: [ 117, 39 ],
+          name: 'a0'
+         }
+      }
+		 */
+		console.log(stats);
+		/**
+		 { nscanned: 23,
+			 objectsLoaded: 8,
+			 avgDistance: 0.017687252042861673,   //平均距离
+			 maxDistance: 0.022044775995372724,   //最大距离
+			 time: 1
+		 }
+		 */
+	});
+}
+
+
 
 
 
