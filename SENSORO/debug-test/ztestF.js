@@ -14,3 +14,5 @@ http.createServer(function(req, res){
 });
 
 require("./ztestE");
+
+//DEBUG=http,worker node SENSORO/debug-test/ztestF.js  启动方式
