@@ -1,81 +1,8 @@
-var a = [{
-	"sn": "20320117C5A02400",
-	"appId": "appId123890",
-	"owners": "507f1f77bcf86cd799100002",
-	"name": "望京涵洞监控点水位A",
-	"updatedTime": 1471937884044,
-	"createTime": 1496658555981,
-	"alarmsRecords": [],
-	"alarmStatus": 1,
-	"status": 0,
-	"alarms": {"createTime": "2017-06-05T10:29:15.981Z", "notification": {"types": "phone"}, "rules": []},
-	"lonlat": [116.481918, 40.003284],
-	"tags": ["望京", "第一批次"],
-	"sensorData": {"battery": 90, "water": 16, "customer": "8"},
-	"deviceType": "module",
-	"sensorTypes": ["water"],
-	"_level": 1,
-	"level_display": "水位 10cm-20cm",
-	"alarms_display": "",
-	"_updatedTime": "2016-08-23 15:38:04"
-}, {
-	"sn": "20320117C5A02401",
-	"appId": "appId123890",
-	"owners": "507f1f77bcf86cd799100002",
-	"name": "望京涵洞监控点水位A",
-	"updatedTime": 1471937884044,
-	"createTime": 1496658555982,
-	"alarmsRecords": [],
-	"alarmStatus": 1,
-	"status": 1,
-	"alarms": {"createTime": "2017-06-05T10:29:15.982Z", "notification": {"types": "phone"}, "rules": []},
-	"lonlat": [116.481918, 40.003284],
-	"tags": ["望京", "第一批次"],
-	"sensorData": {"battery": 90, "water": 16, "customer": "8"},
-	"deviceType": "module",
-	"sensorTypes": ["water"],
-	"_level": 1,
-	"level_display": "水位 10cm-20cm",
-	"alarms_display": "",
-	"_updatedTime": "2016-08-23 15:38:04"
-}, {
-	"sn": "20320117C5A02402",
-	"appId": "appId123890",
-	"owners": "507f1f77bcf86cd799100002",
-	"name": "望京涵洞监控点水位A",
-	"updatedTime": 1471937884044,
-	"createTime": 1496658555983,
-	"alarmsRecords": [],
-	"alarmStatus": 1,
-	"status": 2,
-	"alarms": {"createTime": "2017-06-05T10:29:15.983Z", "notification": {"types": "phone"}, "rules": []},
-	"lonlat": [116.481918, 40.003284],
-	"tags": ["望京", "第一批次"],
-	"sensorData": {"battery": 90, "water": 16, "customer": "8"},
-	"deviceType": "module",
-	"sensorTypes": ["water"],
-	"_level": 1,
-	"level_display": "水位 10cm-20cm",
-	"alarms_display": "",
-	"_updatedTime": "2016-08-23 15:38:04"
-}, {
-	"sn": "20320117C5A02403",
-	"appId": "appId123890",
-	"owners": "507f1f77bcf86cd799100002",
-	"name": "望京涵洞监控点水位A",
-	"updatedTime": 1471937884044,
-	"createTime": 1496658555986,
-	"alarmsRecords": [],
-	"alarmStatus": 1,
-	"status": 3,
-	"alarms": {"createTime": "2017-06-05T10:29:15.986Z", "notification": {"types": "phone"}, "rules": []},
-	"lonlat": [116.481918, 40.003284],
-	"tags": ["望京", "第一批次"],
-	"sensorData": {"battery": 90, "water": 16, "customer": "8"},
-	"deviceType": "module",
-	"sensorTypes": ["water"],
-	"_level": 1,
-	"level_display": "水位 10cm-20cm",
-	"alarms_display": "",
-	"_updatedTime": "2016-08-23 15:38:04"
-}]
+"use strict";
+const should = require("should");
+
+try {
+	[1, 2, 3].should.containDeepOrdered([2, 1]);
+} catch (e) {
+	console.log(e.message || e);//expected Array [ 1, 2, 3 ] to contain Array [ 2, 1 ]
+}
