@@ -55,6 +55,7 @@ function toWhere1() {
 				return true;
 			}
 		}
+		return false;
 	};
 	t1Model.find({$where: q}).then(val => {
 		console.log("val: %j", val);
