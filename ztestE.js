@@ -1,20 +1,4 @@
-var a = require('debug')('worker:a')
-	, b = require('debug')('worker:b');
+let sns = ["001", "002", "003", "004", "005"];
+console.log(sns[Math.floor(Math.random() * sns.length)]);
 
-function work() {
-	a('doing lots of uninteresting work');
-	setTimeout(work, Math.random() * 1000);
-}
-
-work();
-
-function workb() {
-	b('doing some work');
-	setTimeout(workb, Math.random() * 2000);
-}
-
-workb();
-
-setTimeout(function(){
-	b(new Error('fail'));
-}, 5000);
+console.log(Math.random() * 30);
