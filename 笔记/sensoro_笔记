@@ -8,8 +8,6 @@ CSDN: danyanqifei -p wangyanqiang123
 
 hub.docker.com: wangyanqiang_ting@163.com wangyanqiang123
 
-Wifi密码：ManInTheMirror
-
 tuliu88  -p  tuliu.com
 sht -p sht6996BJ
 
@@ -118,20 +116,7 @@ git remote add mocha git@release:base-service
 
 PROT=3000 NODE_ENV=production pm2 start app.js --name pay
 
-leaf@sensoro.com -p 123456						测试环境    x.mocha.server.sensoro.com
-superadmin@sensoro.com -p 123456                测试环境    x.mocha.server.sensoro.com
-root@sensoro.com -p UkR1u5UdsfAd				测试环境    x.mocha.server.sensoro.com
 
-
-root@sensoro.com -p 2nVUUH7zsU4z				正式环境    x.sensoro.com
-
-
-wxmp2@sensoro.com -p 4rfv5tgb6yhn				微信公账户账号 mp.weixin.qq.com
-wxmp@sensoro.com  -p ETKVAy87bQeR               sensoro 公众号
-sarah.liu@sensoro.com -p Xsensoro2015           云子 X 实验室公众号：
-15010059091@163.com -p liushuoyang418           天谷佳田
-
-wangyanqiang_ting@163.com -p wangyanqiang123    我的订阅号
 
 
 curl "http://qing.mocha.server.sensoro.com/pay/admin/sendmsg" -d "mobile=15133606783&msg=短信发送测试"
