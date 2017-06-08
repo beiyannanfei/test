@@ -1,6 +1,6 @@
-function _filter() {
-	let arr1 = [1, 2, 3, 10, 20, 30];
-	let arr2 = arr1.filter(item => item < 10);
-	console.log(arr1, arr2);
-}
-_filter();
+let a1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let a2 = [2, 4, 6, 8];
+
+let a3 = a1.filter(item => !a2.includes(item));
+console.log(a3);
+console.log(a1);
