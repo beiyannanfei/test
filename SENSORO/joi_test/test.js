@@ -104,13 +104,14 @@ var _ = require("lodash");
 
 
 let schema = {
-	a: Joi.any().required(),
-	b: Joi.any(),
-	c: Joi.any().when("b", {is: Joi.any(), then: Joi.required()})
+	a: Joi.string().required(),
+	b: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().required()}),
+	c: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().greater().required()})
 };
 
 let checkObj = {
-	a: "CCC"
+	a: "a",
+	b: "" + +new Date()
 };
 
 let results1 = Joi.validate(checkObj, schema);
