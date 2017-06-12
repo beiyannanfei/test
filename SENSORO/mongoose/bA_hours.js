@@ -13,7 +13,7 @@ const _ = require("underscore");
 
 let t1Schema = new Schema({
 	name: String,
-	timeStr: String
+	createTime: {type: Date, default: Date.now}
 });
 let t1Model = mongoose.model("hour_test", t1Schema);
 
@@ -21,15 +21,15 @@ function toSave() {
 	let doc = [
 		{
 			name: "AAA",
-			timeStr: "2017-06-12 12:19:35"
+			createTime: "2017-06-12 12:19:35"
 		},
 		{
 			name: "BBB",
-			timeStr: "2017-06-12 11:19:35"
+			createTime: "2017-06-12 11:19:35"
 		},
 		{
 			name: "CCC",
-			timeStr: "2017-06-12 10:19:35"
+			createTime: "2017-06-12 10:19:35"
 		}
 	];
 	t1Model.create(doc).then(val => {
@@ -44,10 +44,16 @@ function toAgg() {
 		{
 			$group: {
 				_id: {
-					year: {$year: "$timeStr"},
-					month: {$month: "$timeStr"},
-					day: {$dayOfMonth: "$timeStr"},
-					hour: {$hour: "$timeStr"}
+					year: {$year: "$createTime"},
+					month: {$month: "$createTime"},
+					day: {$dayOfMonth: "$createTime"},
+					hour: {$hour: "$createTime"}  //由于保存到数据库中的时间是ISOdate,和实际时间有八个小时的时差,统计出来的数据也有八个小时的误差
+					// 解决方案
+					// const timeZoneOffset = -new Date().getTimezoneOffset() * 60 * 1000; //时区偏移毫秒数
+					// year: {$year: [{$add: ['$createTime', timeZoneOffset]}]},
+					// month: {$month: [{$add: ['$createTime', timeZoneOffset]}]},
+					// day: {$dayOfMonth: [{$add: ['$createTime', timeZoneOffset]}]},
+					// hour: {$hour: [{$add: ['$createTime', timeZoneOffset]}]}
 				},
 				count: {$sum: 1}
 			}
