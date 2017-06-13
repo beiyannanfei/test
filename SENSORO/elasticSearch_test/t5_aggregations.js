@@ -11,7 +11,7 @@ function test1() {
 		type: 'employee',     //table
 		body: {
 			aggs: {
-				all_interests: {
+				all_interests: {  //"all_interests" 是我们定义的返回值的key,不是关键字
 					terms: {field: "interests"}   //按照兴趣爱好分组
 				}
 			}
@@ -22,6 +22,7 @@ function test1() {
 		console.log(response.aggregations.all_interests);
 	});
 }
+test1();
 
 function test2() {
 	let condition = {
@@ -32,7 +33,7 @@ function test2() {
 				match: {last_name: 'smith'}   //过滤条件
 			},
 			aggs: {
-				all_interests: {
+				all_interests: {//"all_interests" 是我们定义的返回值的key,不是关键字
 					terms: {
 						field: "interests"    //分组条件
 					}
@@ -52,10 +53,10 @@ function test3() {
 		type: 'employee',     //table
 		body: {
 			aggs: {
-				all_interests: {
+				all_interests: {//"all_interests" 是我们定义的返回值的key,不是关键字
 					terms: {field: "interests"},
 					aggs: {
-						avg_age: {
+						avg_age: {//avg_age是我们定义的返回值的key,不是关键字
 							avg: {field: "age"}
 						}
 					}
@@ -65,81 +66,81 @@ function test3() {
 	};
 	client.search(condition, function (err, response) {
 		console.log(arguments);
+		console.log("=====================");
 		console.log(response.aggregations.all_interests);
+		console.log("=====================");
 		console.log(response.aggregations.all_interests.buckets[0].avg_age);
 		console.log(response.aggregations.all_interests.buckets[1].avg_age);
 		console.log(response.aggregations.all_interests.buckets[2].avg_age);
 	});
 }
-
 test3();
 
-
-var body = {
-	'size': 0,
-	'query': {
-		'filtered': {
-			'filter': {
-				'bool': {
-					'must': [
-						{
-							'term': {
-								'message.sn.raw': sn
-							}
-						},
-						{
-							'term': {
-								'message.multiIndex': 1
-							}
-						},
-						{
-							'range': {
-								'@timestamp': {
-									'gte': _time.startTime,
-									'lte': _time.endTime
-								}
-							}
-						},
-						{
-							'exists': {'field': 'message.data.' + TYPE_MAP[type]}
-						}
-					],
-					'must_not': []
-				}
-			}
-		}
-	},
-	'aggs': {
-		'data': {
-			'date_histogram': {
-				'field': '@timestamp',
-				'interval': interval,
-				'time_zone': 'Asia/Shanghai',
-				'min_doc_count': 1,
-				'extended_bounds': {
-					'min': _time.startTime,
-					'max': _time.endTime
-				}
-			},
-			'aggs': {
-				'avg_value': {
-					'avg': {
-						'field': 'message.data.' + TYPE_MAP[type]
-					}
-				},
-				'max_value': {
-					'max': {
-						'field': 'message.data.' + TYPE_MAP[type]
-					}
-				},
-				'min_value': {
-					'min': {
-						'field': 'message.data.' + TYPE_MAP[type]
-					}
-				}
-			}
-		}
-	}
-};
+/*var body = {
+ 'size': 0,
+ 'query': {
+ 'filtered': {
+ 'filter': {
+ 'bool': {
+ 'must': [
+ {
+ 'term': {
+ 'message.sn.raw': sn
+ }
+ },
+ {
+ 'term': {
+ 'message.multiIndex': 1
+ }
+ },
+ {
+ 'range': {
+ '@timestamp': {
+ 'gte': _time.startTime,
+ 'lte': _time.endTime
+ }
+ }
+ },
+ {
+ 'exists': {'field': 'message.data.' + TYPE_MAP[type]}
+ }
+ ],
+ 'must_not': []
+ }
+ }
+ }
+ },
+ 'aggs': {
+ 'data': {
+ 'date_histogram': {
+ 'field': '@timestamp',
+ 'interval': interval,
+ 'time_zone': 'Asia/Shanghai',
+ 'min_doc_count': 1,
+ 'extended_bounds': {
+ 'min': _time.startTime,
+ 'max': _time.endTime
+ }
+ },
+ 'aggs': {
+ 'avg_value': {
+ 'avg': {
+ 'field': 'message.data.' + TYPE_MAP[type]
+ }
+ },
+ 'max_value': {
+ 'max': {
+ 'field': 'message.data.' + TYPE_MAP[type]
+ }
+ },
+ 'min_value': {
+ 'min': {
+ 'field': 'message.data.' + TYPE_MAP[type]
+ }
+ }
+ }
+ }
+ }
+ };*/
 
 

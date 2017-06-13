@@ -43,13 +43,15 @@ function test3() {
 	};
 	client.search(condition, function (err, response) {
 		console.log(arguments);
+		console.log("=====================");
 		console.log(response.hits.total);
+		console.log("=====================");
 		console.log(response.hits.hits);
 	});
 }
 
 function test4() {
-	let condtion = {
+	/*let condtion = {
 		index: "megacorp",
 		type: "employee",
 		body: {
@@ -68,12 +70,35 @@ function test4() {
 				}
 			}
 		}
+	};*/
+	let condtion = {
+		index: "megacorp",
+		type: "employee",
+		body: {
+			query: {
+				bool: {
+					must: {
+						match: {
+							last_name: "smith"
+						}
+					},
+					filter: {
+						range: {
+							age: {
+								gt: 30
+							}
+						}
+					}
+				}
+			}
+		}
 	};
 	client.search(condtion, function (err, response) {
 		console.log(arguments);
+		console.log("==================");
 		console.log(response.hits.total);
+		console.log("==================");
 		console.log(response.hits.hits);
 	});
 }
-
 test4();

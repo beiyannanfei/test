@@ -19,7 +19,9 @@ function test1() {
 	};
 	client.search(condition, function (err, response) {
 		console.log(arguments);
+		console.log("====================");
 		console.log(response.hits.total);
+		console.log("====================");
 		console.log(response.hits.hits);
 	});
 }
@@ -38,7 +40,9 @@ function test2() {
 	};
 	client.search(condition, function (err, response) {
 		console.log(arguments);
+		console.log("====================");
 		console.log(response.hits.total);
+		console.log("====================");
 		console.log(response.hits.hits);
 	});
 }
@@ -49,7 +53,7 @@ function test3() {
 		type: 'employee',     //table
 		body: {
 			query: {
-				match_phrase: {about: "rock climbing"}
+				match_phrase: {about: "rock climbing"}    //精确短语搜索
 			},
 			highlight: {
 				fields: {about: {}}
@@ -63,8 +67,8 @@ function test3() {
 		console.log(response.hits.hits[0].highlight);
 	});
 }
+test3()
 
-test3();
 
 
 
