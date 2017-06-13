@@ -1,51 +1,10 @@
-var data = {
-	"2017-06-10-16": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-17": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-18": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-19": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-20": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-21": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-22": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-10-23": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-00": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-01": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-02": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-03": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-04": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-05": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-06": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-07": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-08": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-09": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-10": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-11": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-12": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-13": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-14": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-15": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-16": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-17": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-18": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-19": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-20": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-21": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-22": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-11-23": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-00": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-01": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-02": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-03": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-04": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-05": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-06": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-07": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-08": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-09": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-10": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-11": {"batteryAvg": 59, "batteryMin": 59, "batteryMax": 59, "waterAvg": 18, "waterMin": 18, "waterMax": 18},
-	"2017-06-12-12": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-13": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-14": {"batteryAvg": 62, "batteryMin": 62, "batteryMax": 62, "waterAvg": 17, "waterMin": 17, "waterMax": 17},
-	"2017-06-12-15": {"batteryAvg": 0, "batteryMin": 0, "batteryMax": 0, "waterAvg": 0, "waterMin": 0, "waterMax": 0},
-	"2017-06-12-16": {"batteryAvg": 55, "batteryMin": 50, "batteryMax": 60, "waterAvg": 15.5, "waterMin": 15, "waterMax": 16}
+const timeSpan = {  //默认最大时间跨度
+	months: 3, //按月，最多显示最近一年的数据
+	days: 30,   //按天，最多显示最近1个月的数据
+	hours: 48,  //按小时，最多显示最近48小时的数据
+	realTime: 1 //实时, 最多显示最近1小时的数据
 };
+
+const _ = require("underscore");
+
+console.log(_.keys(timeSpan).filter(item => item !== "realTime"));

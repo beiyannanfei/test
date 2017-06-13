@@ -76,71 +76,71 @@ function test3() {
 }
 test3();
 
-/*var body = {
- 'size': 0,
- 'query': {
- 'filtered': {
- 'filter': {
- 'bool': {
- 'must': [
- {
- 'term': {
- 'message.sn.raw': sn
- }
- },
- {
- 'term': {
- 'message.multiIndex': 1
- }
- },
- {
- 'range': {
- '@timestamp': {
- 'gte': _time.startTime,
- 'lte': _time.endTime
- }
- }
- },
- {
- 'exists': {'field': 'message.data.' + TYPE_MAP[type]}
- }
- ],
- 'must_not': []
- }
- }
- }
- },
- 'aggs': {
- 'data': {
- 'date_histogram': {
- 'field': '@timestamp',
- 'interval': interval,
- 'time_zone': 'Asia/Shanghai',
- 'min_doc_count': 1,
- 'extended_bounds': {
- 'min': _time.startTime,
- 'max': _time.endTime
- }
- },
- 'aggs': {
- 'avg_value': {
- 'avg': {
- 'field': 'message.data.' + TYPE_MAP[type]
- }
- },
- 'max_value': {
- 'max': {
- 'field': 'message.data.' + TYPE_MAP[type]
- }
- },
- 'min_value': {
- 'min': {
- 'field': 'message.data.' + TYPE_MAP[type]
- }
- }
- }
- }
- }
- };*/
+var body = {
+	'size': 0,
+	'query': {
+		'filtered': {
+			'filter': {
+				'bool': {
+					'must': [
+						{
+							'term': {
+								'message.sn.raw': sn
+							}
+						},
+						{
+							'term': {
+								'message.multiIndex': 1
+							}
+						},
+						{
+							'range': {
+								'@timestamp': {
+									'gte': _time.startTime,
+									'lte': _time.endTime
+								}
+							}
+						},
+						{
+							'exists': {'field': 'message.data.' + TYPE_MAP[type]}
+						}
+					],
+					'must_not': []
+				}
+			}
+		}
+	},
+	'aggs': {
+		'data': {
+			'date_histogram': {
+				'field': '@timestamp',
+				'interval': interval,
+				'time_zone': 'Asia/Shanghai',
+				'min_doc_count': 1,
+				'extended_bounds': {
+					'min': _time.startTime,
+					'max': _time.endTime
+				}
+			},
+			'aggs': {
+				'avg_value': {
+					'avg': {
+						'field': 'message.data.' + TYPE_MAP[type]
+					}
+				},
+				'max_value': {
+					'max': {
+						'field': 'message.data.' + TYPE_MAP[type]
+					}
+				},
+				'min_value': {
+					'min': {
+						'field': 'message.data.' + TYPE_MAP[type]
+					}
+				}
+			}
+		}
+	}
+};
 
 
