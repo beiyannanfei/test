@@ -57,7 +57,7 @@ t1Model.find({sn: "11401017C61870E8"}).then(val => {
 		item.sensorData ? (doc.body.sensorData = item.sensorData) : "";
 		item.lonlat && (doc.body.lonlat = item.lonlat);
 		item.interval && (doc.body.interval = item.interval);
-		item.updatedTime && (doc.body.updatedTime = new Date(item.updatedTime));
+		item.updatedTime && (doc.body.updatedTime = +new Date(item.updatedTime));
 		console.log("============ item: %j, doc: %j", item, doc);
 		client.create(doc, function (err, val) {
 			if (!!err) {

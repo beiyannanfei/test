@@ -1,7 +1,6 @@
-RegExp.quote = function (str) {
-	return str.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
-};
-
-let search = "\\";
-let r = new RegExp(RegExp.quote(search));
-console.log(r);
+function _find() {
+	let arr1 = [1, 2, 3, 40, 5, 6];
+	let f = arr1.find(item => item > 100);
+	console.log(f);
+}
+_find();

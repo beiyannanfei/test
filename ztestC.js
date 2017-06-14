@@ -1,130 +1,261 @@
-"sn" : "01521117C69ED23E",
-	"appId" : "lUn0eDNDHOMs",
-
-{
-	"_id" : ObjectId("5909a7e08fc0634c63459139"),
-	"grants" : {
-		"device" : [
-			"get",
-			"add",
-			"delete",
-			"update",
-			"list",
-			"transfer",
-			"modifyCycle",
-			"fence",
-			"pull"
-		],
-		"user" : [
-			"add",
-			"delete",
-			"update",
-			"list",
-			"control"
-		]
-	},
-	"updatedTime" : ISODate("2017-05-03T09:50:24.394Z"),
-	"nickname" : "nijie",
-	"email" : "nijie@sensoro.com",
-	"password" : "$2a$04$6R.GyzTkXzFWh3/mcBumCu12LfMsp3Op.4EOHzrKSKjC2X6x1Xk/S",
-	"appId" : "lUn0eDNDHOMs",
-	"appKey" : "SLR9LNalGnIXyIpjhhfTgf3uMHE5xvYaKsdQ9sAmhTZ",
-	"appSecret" : "nmqI0e3c586Ywn77rzIiOMBGypl8gsC8",
-	"addBy" : "58eafb50ecdead4d9075637c",
-	"createdTime" : ISODate("2017-05-03T09:50:24.377Z"),
-	"isDeleted" : false,
-	"config" : {
-		"businessCount" : 0,
-		"businessLimit" : 10
-	},
-	"indexTags" : [
-		"nijie",
-		"nijie@sensoro.com",
-		"vJWtoSxFnPkt"
-	],
-	"roles" : "dealers",
-	"__v" : 0
+var response = {
+	"took": 6,
+	"timed_out": false,
+	"_shards": {"total": 22, "successful": 22, "failed": 0},
+	"hits": {
+		"total": 28333,
+		"max_score": 1,
+		"hits": [
+			{
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "indices_stats",
+				"_id": "AVykhDS5Xc1i0y_01QMx",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.676Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"indices_stats": {
+						"_all": {
+							"primaries": {
+								"docs": {"count": 223},
+								"store": {"size_in_bytes": 400291},
+								"indexing": {
+									"index_total": 390,
+									"index_time_in_millis": 152,
+									"is_throttled": false,
+									"throttle_time_in_millis": 0
+								},
+								"search": {"query_total": 217, "query_time_in_millis": 680}
+							},
+							"total": {
+								"docs": {"count": 223},
+								"store": {"size_in_bytes": 400291},
+								"indexing": {
+									"index_total": 390,
+									"index_time_in_millis": 152,
+									"is_throttled": false,
+									"throttle_time_in_millis": 0
+								},
+								"search": {"query_total": 217, "query_time_in_millis": 680}
+							}
+						}
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "cluster_state",
+				"_id": "AVykhDS5Xc1i0y_01QMy",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.676Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"cluster_state": {
+						"status": "yellow",
+						"version": 52,
+						"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+						"master_node": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"nodes": {
+							"65YV5g0QTAi_7yIRVdpZ1Q": {
+								"name": "Hyde",
+								"transport_address": "127.0.0.1:9300",
+								"attributes": {}
+							}
+						}
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "node",
+				"_id": "AVykhDS5Xc1i0y_01QMz",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.676Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"node": {"id": "65YV5g0QTAi_7yIRVdpZ1Q"}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:65YV5g0QTAi_7yIRVdpZ1Q:myindex2:3:p",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "STARTED",
+						"primary": true,
+						"node": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"relocating_node": null,
+						"shard": 3,
+						"index": "myindex2"
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:_na:myindex2:3:r",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "UNASSIGNED",
+						"primary": false,
+						"node": null,
+						"relocating_node": null,
+						"shard": 3,
+						"index": "myindex2"
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:65YV5g0QTAi_7yIRVdpZ1Q:myindex2:2:p",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "STARTED",
+						"primary": true,
+						"node": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"relocating_node": null,
+						"shard": 2,
+						"index": "myindex2"
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:_na:myindex2:2:r",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "UNASSIGNED",
+						"primary": false,
+						"node": null,
+						"relocating_node": null,
+						"shard": 2,
+						"index": "myindex2"
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:65YV5g0QTAi_7yIRVdpZ1Q:myindex2:1:p",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "STARTED",
+						"primary": true,
+						"node": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"relocating_node": null,
+						"shard": 1,
+						"index": "myindex2"
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:_na:myindex2:1:r",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "UNASSIGNED",
+						"primary": false,
+						"node": null,
+						"relocating_node": null,
+						"shard": 1,
+						"index": "myindex2"
+					}
+				}
+			}, {
+				"_index": ".marvel-es-1-2017.06.14",
+				"_type": "shards",
+				"_id": "Ne3-fv0TTi2AAdA7l3ELRQ:65YV5g0QTAi_7yIRVdpZ1Q:myindex2:4:p",
+				"_score": 1,
+				"_source": {
+					"cluster_uuid": "9O_bDuqoSwaoAUUJx5S-LQ",
+					"timestamp": "2017-06-14T02:52:26.677Z",
+					"source_node": {
+						"uuid": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"host": "127.0.0.1",
+						"transport_address": "127.0.0.1:9300",
+						"ip": "127.0.0.1",
+						"name": "Hyde",
+						"attributes": {}
+					},
+					"state_uuid": "Ne3-fv0TTi2AAdA7l3ELRQ",
+					"shard": {
+						"state": "STARTED",
+						"primary": true,
+						"node": "65YV5g0QTAi_7yIRVdpZ1Q",
+						"relocating_node": null,
+						"shard": 4,
+						"index": "myindex2"
+					}
+				}
+			}]
+	}
 }
-
-{
-	"sn": "01521117C69ED23E",
-	"taskId": 123,
-	"appSecret": "nmqI0e3c586Ywn77rzIiOMBGypl8gsC8",
-	"appId": "lUn0eDNDHOMs",
-	"type": "cycle",
-	"content": "20",
-	"status": 2,
-	"createdTime": "2017-05-17T07:52:24.066Z"
-}
-
-
-{
-	"sn" : "01581117C645CAB9",
-	"deviceName" : "真实设备01581117C645CAB9",
-	"deviceType" : "default",
-	"appId" : "lUn0eDNDHOMs",
-	"owners" : ObjectId("5909a7e08fc0634c63459139"),
-	"status" : 2,
-	"tags" : [
-	"标签1",
-	"标签2"
-],
-	"indexTags" : [
-	"01521117C69ED23E",
-	"真实设备01521117C69ED23E",
-	"default",
-	"标签1",
-	"标签2"
-],
-	"sensorData" : {},
-	"geofences" : [],
-	"createTime" : ISODate("2017-05-17T07:52:24.066Z")
-}
-
-
-{
-	"sn" : "01581117C645CAB9",
-	"taskId" : 123,
-	"appSecret" : "nmqI0e3c586Ywn77rzIiOMBGypl8gsC8",
-	"appId" : "lUn0eDNDHOMs",
-	"type" : "cycle",
-	"content" : "20",
-	"status" : 2,
-	"createdTime" : "2017-05-17T07:52:24.066Z"
-}
-
-{
-	"sn" : "01581117C6E54A93",
-	"deviceName" : "真实设备01581117C6E54A93",
-	"deviceType" : "default",
-	"appId" : "lUn0eDNDHOMs",
-	"owners" : ObjectId("5909a7e08fc0634c63459139"),
-	"status" : 2,
-	"tags" : [
-	"标签1",
-	"标签2"
-],
-	"indexTags" : [
-	"01521117C69ED23E",
-	"真实设备01521117C69ED23E",
-	"default",
-	"标签1",
-	"标签2"
-],
-	"sensorData" : {},
-	"geofences" : [],
-	"createTime" : ISODate("2017-05-17T07:52:24.066Z")
-}
-
-* @apiSuccessExample Success-Response:
-* HTTP/1.1 200 OK
-*     {
-*       "errcode": 0,
-*       "data": {
-*         _id: '5840175bc869c181f0f3cea2',
-*         email: '13888888888',
-*         nickname: '路人甲',
-*         sessionID: 'xxxxxxxxxxxxxxxxxx',
-*         createdTime: 1471937884044
-*       }
-*     }
