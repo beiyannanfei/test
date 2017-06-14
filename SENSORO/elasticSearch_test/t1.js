@@ -21,12 +21,12 @@ function deleteOne(body) {
 	});
 }
 
-findAll();
-/*deleteOne({
- index: "megacorp",
- type: "employee",
- id: 4
- });*/
+// findAll();
+deleteOne({
+	index: "city-es",
+	type: "logs",
+	id: 2
+});
 
 /*
  var a = [
