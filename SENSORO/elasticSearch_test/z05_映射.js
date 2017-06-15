@@ -4,6 +4,7 @@
  */
 "use strict";
 const client = require("./esClient.js").esClient;
+const superagent = require('superagent');
 
 // put http://localhost:9200/gb   //gb为index名称
 let struct = {
@@ -57,8 +58,32 @@ let struct = {
 				"lonlat": {
 					"type": "geo_point"   //经纬度
 				}
+				//关于数组:所以ElasticSearch不需要指定一个映射是一个数组。您可以使用方括号将任何映射视为数组：
 			}
 		}
 	}
 };
 
+superagent.put("http://localhost:9200/gb")
+	.send(struct)
+	.accept("text/json")
+	.end(function (err, xhr) {
+		if (!!err) {
+			return console.log("http err: %j", err.message || err);
+		}
+		if (xhr.statusCode != 200) {
+			return console.log("statusCode err: %j", xhr.statusCode);
+		}
+		if (!xhr.body) {
+			return console.log("no xhr.body, xhr: %j", xhr);
+		}
+		let body;
+		try {
+			body = JSON.parse(xhr.text);
+		}
+		catch (e) {
+			console.log(e.message);
+			body = xhr.text;
+		}
+		return console.log("success body: %j", body);
+	});
