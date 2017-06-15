@@ -15,6 +15,8 @@ function toSave() {
 			{price: 30000, color: "green", make: "ford", sold: "2014-05-18", remark: "make by ford company"},
 			{index: {_index: "mytest01", _type: "cars"}},
 			{price: 15000, color: "blue", make: "toyota", sold: "2014-07-02", remark: "make by toyota company"},
+			{index: {_index: "mytest01", _type: "cars"}},
+			{price: 12345, make: "toyota", sold: "2014-07-02", remark: "make by toyota company"},
 			{index: {_index: "mytest02", _type: "cars"}},
 			{price: 12000, color: "green", make: "toyota", sold: "2014-08-19", remark: "make by toyota company"},
 			{index: {_index: "mytest02", _type: "cars"}},
@@ -22,7 +24,9 @@ function toSave() {
 			{index: {_index: "mytest02", _type: "cars"}},
 			{price: 80000, color: "red", make: "bmw", sold: "2014-01-01", remark: "make by bmw company"},
 			{index: {_index: "mytest02", _type: "cars"}},
-			{price: 25000, color: "blue", make: "ford", sold: "2014-02-12", remark: "make by honda company"}
+			{price: 25000, color: "blue", make: "ford", sold: "2014-02-12", remark: "make by honda company"},
+			{index: {_index: "mytest02", _type: "cars"}},
+			{price: 15000, color: "red", sold: "2014-02-12", remark: "make by honda company"}
 		]
 	};
 	client.bulk(condtion, function (err, response) {

@@ -263,8 +263,8 @@ function exists() {
 		index: "mytest02",
 		body: {
 			query: {
-				exists: { //查询被用于查找那些指定字段中有值
-					field: "color"
+				exists: { //查询被用于查找那些指定字段中有值(make字段有值的)
+					field: "make"
 				}
 			}
 		}
@@ -282,7 +282,7 @@ function exists() {
 					{
 						"_index": "mytest02",
 						"_type": "cars",
-						"_id": "AVymD0CD2dNT6M0pjpZG",
+						"_id": "AVyqaDsY2dNT6M0pjpZj",
 						"_score": 1,
 						"_source": {
 							"price": 80000,
@@ -294,19 +294,7 @@ function exists() {
 					}, {
 						"_index": "mytest02",
 						"_type": "cars",
-						"_id": "AVymD0CD2dNT6M0pjpZE",
-						"_score": 1,
-						"_source": {
-							"price": 12000,
-							"color": "green",
-							"make": "toyota",
-							"sold": "2014-08-19",
-							"remark": "make by toyota company"
-						}
-					}, {
-						"_index": "mytest02",
-						"_type": "cars",
-						"_id": "AVymD0CD2dNT6M0pjpZF",
+						"_id": "AVyqaDsY2dNT6M0pjpZi",
 						"_score": 1,
 						"_source": {
 							"price": 20000,
@@ -318,7 +306,19 @@ function exists() {
 					}, {
 						"_index": "mytest02",
 						"_type": "cars",
-						"_id": "AVymD0CD2dNT6M0pjpZH",
+						"_id": "AVyqaDsY2dNT6M0pjpZh",
+						"_score": 1,
+						"_source": {
+							"price": 12000,
+							"color": "green",
+							"make": "toyota",
+							"sold": "2014-08-19",
+							"remark": "make by toyota company"
+						}
+					}, {
+						"_index": "mytest02",
+						"_type": "cars",
+						"_id": "AVyqaDsY2dNT6M0pjpZk",
 						"_score": 1,
 						"_source": {
 							"price": 25000,
@@ -335,6 +335,43 @@ function exists() {
 		console.log("err: %j", err.message || err);
 	});
 }
-exists();
+
+
+function missing() {
+	let condition = {
+		index: "mytest02",
+		body: {
+			query: {
+				missing: {  //查询被用于查找那些指定字段中无值(make字段无值的文档)
+					field: "make"
+				}
+			}
+		}
+	};
+	client.search(condition).then(response => {
+		console.log("response = %j", response);
+		response = {
+			"took": 3,
+			"timed_out": false,
+			"_shards": {"total": 5, "successful": 5, "failed": 0},
+			"hits": {
+				"total": 1,
+				"max_score": 1,
+				"hits": [
+					{
+						"_index": "mytest02",
+						"_type": "cars",
+						"_id": "AVyqaDsY2dNT6M0pjpZl",
+						"_score": 1,
+						"_source": {"price": 15000, "color": "red", "sold": "2014-02-12", "remark": "make by honda company"}
+					}
+				]
+			}
+		}
+	}).catch(err => {
+		console.log("err: %j", err.message || err);
+	});
+}
+
 
 
