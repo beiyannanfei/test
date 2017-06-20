@@ -6,7 +6,7 @@ var redis = require('redis');
 
 var redisClient = redis.createClient(6379, '127.0.0.1');
 
-redisClient.config("set", "notify-keyspace-events", "KEx", function () {
+redisClient.config("set", "notify-keyspace-events", "KEA", function () {
 	console.log(arguments);
 	redisClient.config("get", "notify-keyspace-events", function () {
 		console.log(arguments);
