@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "async": "^2.4.1",
     "baidu-ocr-api": "^2.0.5",
     "bcrypt": "^1.0.1",
     "body-parser": "^1.14.2",
