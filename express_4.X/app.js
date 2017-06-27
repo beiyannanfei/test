@@ -46,3 +46,22 @@ app.listen(app.get('port'), function () {
 	logger.fatal('Express server listening on port %d, redis: %j', app.get('port'), util.format("%s:%s", config.redis.host, config.redis.port));
 });
 
+
+app.get("/download", function (req, res) {
+	let fileName = "../W3CSchool.chm";
+	let path = require("path");
+	let filePath = path.join(__dirname, fileName);
+	let fs = require("fs");
+	let stats = fs.statSync(filePath);
+	if (stats.isFile()) {
+		res.set({
+			'Content-Type': 'application/octet-stream',
+			'Content-Disposition': 'attachment; filename=w3c.chm',
+			'Content-Length': stats.size
+		});
+		return fs.createReadStream(filePath).pipe(res);
+	}
+	else {
+		return res.end(404);
+	}
+});
