@@ -1,5 +1,9 @@
 git status
 git add .
-git commit -m "update" -n
+if [ ! -n "$1" ] ;then
+    git commit -m "update" -n
+else
+    git commit -m "$1" -n
+fi
 git pull
 git push
