@@ -1,3 +1,6 @@
+/**
+ * Created by wyq on 17/6/29.
+ */
 "use strict";
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
