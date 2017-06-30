@@ -1,33 +1,53 @@
-"use strict";
-const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-mongoose.connect("mongodb://localhost/test");
-const Schema = mongoose.Schema;
-
-let t1Schema = new Schema({
-	name: {type: String, unique: true},
-	age: {type: Number},
-	addr: {type: String}
-}, {versionKey: false});
-
-let t1Model = mongoose.model("t1", t1Schema);
-
-async function callStat() {
-	let doc = {
-		name: "AAAE",
-		age: 25,
-		addr: "beijing"
-	};
-	try {
-		let response = await t1Model.create(doc);
-		console.log(response);
-		response = await t1Model.update({_id: response._id}, {$set: {age: 26}});
-		console.log(response);
-		response = await t1Model.find({age: 26});
-		console.log(response);
-	} catch (e) {
-		console.log("e: %j", e.message || e);
+let city_es_mapping = {
+	"mappings": {
+		"logs": {
+			"properties": {
+				"msgId": {"type": "string", "index": "not_analyzed"},
+				"taskId": {"type": "string", "index": "not_analyzed"},
+				"sn": {"type": "string", "index": "not_analyzed"},
+				"type": {"type": "string", "index": "not_analyzed"},
+				"appId": {"type": "string", "index": "not_analyzed"},
+				"lonlat": {"type": "geo_point"},
+				"updatedTime": {"type": "date"},
+				"interval": {"type": "short"},
+				"sensorData": {
+					"type": "object",
+					"properties": {
+						"battery": {"type": "float"},
+						"temperature": {"type": "float"},
+						"light": {"type": "float"},
+						"humidity": {"type": "float"},
+						"water": {"type": "float"},
+						"jinggai": {"type": "float"},
+						"drop": {"type": "float"},
+						"co": {"type": "float"},
+						"co2": {"type": "float"},
+						"distance": {"type": "float"},
+						"calibration": {"type": "float"},
+						"angle": {"type": "float"},
+						"so2": {"type": "float"},
+						"no2": {"type": "float"},
+						"ch4": {"type": "float"},
+						"pm2_5": {"type": "float"},
+						"pm10": {"type": "float"},
+						"cover": {"type": "boolean"},
+						"level": {"type": "boolean"},
+						"smoke": {"type": "boolean"},
+						"customer": {"type": "string", "index": "not_analyzed"}
+					}
+				}
+			},
+			"_ttl": {
+				"enabled": true,
+				"default": "100s"
+			}
+		}
 	}
-}
+};
 
-callStat();
+let addTtl = {
+	"_ttl": {
+		"enabled": true,
+		"default": "100s"
+	}
+};

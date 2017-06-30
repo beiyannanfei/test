@@ -59,6 +59,10 @@ let struct = {
 					"type": "geo_point"   //经纬度
 				}
 				//关于数组:所以ElasticSearch不需要指定一个映射是一个数组。您可以使用方括号将任何映射视为数组：
+			},
+			"_ttl": {   //定时过去  s:秒 m/M:分 d:天 (注意es版本支持)
+				enable:true,
+				default: "100s"
 			}
 		}
 	}
