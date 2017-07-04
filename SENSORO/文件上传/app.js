@@ -29,8 +29,18 @@ app.post('/upload', upload.single('logo'), function (req, res, next) {
 	res.send({ret_code: '0'});
 });
 
+//any不用指定name的名称
+app.post("/any", upload.any(), function (req, res) {
+	console.log(req.files);
+	res.send({ret_code: '0'});
+});
+
 app.get('/form', function (req, res, next) {
 	var form = fs.readFileSync('./form.html', {encoding: 'utf8'});
+	res.send(form);
+});
+app.get('/form1', function (req, res, next) {
+	var form = fs.readFileSync('./form1.html', {encoding: 'utf8'});
 	res.send(form);
 });
 
