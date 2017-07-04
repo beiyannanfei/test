@@ -74,17 +74,19 @@ var Promise = require("bluebird");
  */
 
 
-rc.hkeys("test").then(val => {
-	console.log("hkeys val: %j", val);
-	var keys = val;
-	keys.push("test");
-	console.log("all keys: %j", keys);
-	return rc.del(keys);
-}).then(val => {
-	console.log("del val: %j", val);
-}).catch(err => {
-	console.log("err: %j", err);
-});
+/*rc.hkeys("test").then(val => {
+ console.log("hkeys val: %j", val);
+ var keys = val;
+ keys.push("test");
+ console.log("all keys: %j", keys);
+ return rc.del(keys);
+ }).then(val => {
+ console.log("del val: %j", val);
+ }).catch(err => {
+ console.log("err: %j", err);
+ });*/
+
+
 
 
 
