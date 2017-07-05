@@ -103,7 +103,7 @@ var _ = require("lodash");
 // console.log(results1.error.details[0].message);//"other" is required
 
 
-let schema = {
+/*let schema = {
 	a: Joi.string().required(),
 	b: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().required()}),
 	c: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().greater().required()})
@@ -119,6 +119,19 @@ console.log(results1);
 
 function filterJoiErrMsg(err) {
 	return (err && err.details && err.details[0] && err.details[0].message) || err.message || err;
-}
+}*/
 
 // https://resource-city.sensoro.com/188db5760db0a5a5acaba8f187ab446f.png
+
+let schema = {
+	sn: Joi.string().min(1).required(),
+	name: Joi.string().max(30).allow("")
+};
+
+let checkObj = {
+	sn: "00001",
+	name: "safd"
+};
+
+let results1 = Joi.validate(checkObj, schema);
+console.log(results1);
