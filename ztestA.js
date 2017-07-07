@@ -1,14 +1,16 @@
-1. 管理设备
-			a. admin 所有
-			b. dealers appId同
-			c. business 分配的
+let vals = [
+	{distance: 12.34},
+	{distance: 5.36},
+	{distance: 20.59},
+	{distance: 3.259},
+	{distance: 11.254}
+];
 
-2. 管理商户
-			a. admin 所有
-			b. dealers 子商户
+vals = vals.map(item => {
+	item._distance = item.distance;
+	return item;
+}).sort((a, b)=> {
+	return a._distance - b._distance;
+});
 
-3. 具体权限
-			用户: 获取  更新  添加  列表  删除  控制
-			设备: 添加  列表  更新  删除  分配
-			控制面板: 查看  控制
-
+console.log("%j", vals);
