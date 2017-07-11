@@ -3,21 +3,21 @@
  */
 "use strict";
 const bcrypt = require('bcrypt');
-let pwd = '$2a$04$fFTEcFPDz992G./DlysvAuMf8XCbhlkm7BQab/OXSleZaUflkLpBW';
+let pwd = '$2a$04$oLKt1sKXpePxf4PtRX5WquLZ6q51ge8OQse9TXc0LBjdUwvlX9Nvu';
 
 function t1() {
-	bcrypt.hash("123456", 1, function (err, hash) {
+	bcrypt.hash("e88ea50c12", 1, function (err, hash) {
 		console.log(arguments);//注意: 没事生成的密码都会变化
 	});
 }
 
 function t2() {
-	bcrypt.compare("123456", pwd, function (err, isMatch) {
+	bcrypt.compare("e88ea50c12", pwd, function (err, isMatch) {
 		console.log(arguments);
 	});
 }
 
-t1();
+t2();
 
 
 
