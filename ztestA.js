@@ -3,8 +3,8 @@ let a = {
 	"updatedTime": ISODate("2017-07-10T07:34:12.990Z"),
 	"roles": "admin",
 	"grants": {
-		"device": ["add", "list", "update"],
-		"user": ["get", "update", "add", "list", "control"],
+		"device": ["add", "list", "update", "hideCycle", "hideAlarm", "hideUpload", "hideDelete"],
+		"user": ["get", "update", "add", "list", "control", "hideDelete"],
 		"panel": ["get", "manage"]
 	},
 	"config": {
