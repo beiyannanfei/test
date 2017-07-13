@@ -3,6 +3,7 @@
 //
 var express = require('express');
 var app = express();
+var dash = require('appmetrics-dash').monitor();  //http://127.0.0.1:3001/appmetrics-dash/   检测
 
 app.get("/test", function (req, res) {
 	return res.send("hello ex4");
