@@ -10,7 +10,7 @@ function testThis() {
 console.log(global.foo);
 testThis();
 console.log(global.foo);
-console.log("==================");
+console.log("===================");
 
 function Thing() {
 }
