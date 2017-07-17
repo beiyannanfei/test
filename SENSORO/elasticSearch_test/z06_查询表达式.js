@@ -155,6 +155,13 @@ function filter() {
 function should() {
 	let condition = {
 		body: {
+			/*_source: {    //返回指定字段
+				includes: ["price", "color"]
+			},*/
+			/*_source: {    //返回结果不包含字段
+				excludes: ["price", "remark"]
+			},*/
+			// _source: false,   //返回值没有具体内容,只有_id
 			query: {
 				bool: {
 					should: {
@@ -194,7 +201,7 @@ function should() {
 		console.log("err: %j", err.message || err);
 	});
 }
-
+should();
 
 let egCondition = { //找出信件正文包含 business opportunity 的星标邮件，或者在收件箱正文包含 business opportunity 的非垃圾邮件：
 	body: {
