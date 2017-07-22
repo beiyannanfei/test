@@ -19,7 +19,11 @@ t1Schema.static("say", function (cb) {  //静态方法在Model层就能使用
 	return setTimeout(cb, 1000, "Hello");
 });
 
-t1Schema.methods.speak = function (cb) {
+/**
+ * static <=> Model
+ * methods <=> doc
+ */
+t1Schema.statics.speak = t1Schema.methods.speak = function (cb) {//可以在Model和schema层调用
 	console.log("====== t1Schema.methods.speak ======");
 	return setTimeout(cb, 1000, "World");
 };
@@ -33,4 +37,8 @@ t1Model.say(function (info) {
 var t1Entity = new t1Model({name: "a", age: 28, addr: "chengdu"});
 t1Entity.speak(function (con) {
 	console.log("speak con: %s", con);
+});
+
+t1Model.speak(function (con) {
+	console.log("====speak con: %s", con);
 });
