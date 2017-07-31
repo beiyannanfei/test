@@ -1,8 +1,30 @@
 /**
  * Created by wyq on 17/7/27.
  */
-// 116.424247,40.0284   北五环与5号线交点
-// 116.462048,40.022432 北五环与京承高速交点
-// 116.449112,39.994026 北四环与望和桥交点
-// 116.423672,39.994579 惠新西街北口地铁站
+"use strict";
+const through2 = require("through2");
+const csv2 = require("csv2");
+const fs = require("fs");
 
+fs.createReadStream("./e0b7833431acbd4a529115c92bcf0b7a.csv")
+	.pipe(csv2(/*{separator: "\t"}*/))
+	.pipe(through2.obj(function (chunk, enc, cb) {
+		// console.log(chunk);
+		let dataArr;
+		try {
+			dataArr = chunk[0].split("\t");
+		} catch (e) {
+			console.log(e.message, chunk);
+		}
+		this.push(dataArr);
+		return cb();
+	}))
+	.on("data", data => {
+		console.log("====data: %j", data);
+	})
+	.on("error", err => {
+		console.log("=== err: %s", err.message || err);
+	})
+	.on("end", () => {
+		console.log("==== end");
+	});
