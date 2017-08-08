@@ -163,7 +163,6 @@ function t12() {
 	console.log(foo); //{ a: { bar: 123 } }
 }
 
-t12();
 
 
 

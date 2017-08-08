@@ -1,12 +1,12 @@
-let a = [1, 1, "1", 2, 2, "2", 3, 3, "3"];
-
-let b = Array.from(new Set(a));
-console.log(b);
-
-let obj = {};
-for (let i = 0; i < a.length; ++i) {
-	let key = `${a[i]},${typeof a[i]}`;
-	obj[key] = 1;
+var async = require("async");
+let arr = [];
+for (let i = 1; i < 100000; ++i) {
+	arr.push(i);
 }
-console.log(Object.keys(obj));
 
+async.eachSeries(arr, function (item, cb) {
+	console.log("item: %j", item);
+	return setTimeout(cb, 10);
+}, function (err) {
+	console.log("=======");
+});
