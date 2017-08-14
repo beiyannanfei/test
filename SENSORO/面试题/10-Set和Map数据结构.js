@@ -81,10 +81,30 @@ function t7() {
 	console.log("map has name: %j", map.has("name"));   //map has name: true
 	console.log("map.name: %j", map.get("name"));       //map.name: "zhangsan"
 }
+
 function t8() {
+	const map = new Map([
+		['name', 'zhangsan'],
+		['title', 'Author'],
+		['addr', 'beijing']
+	]);
+	let keys = map.keys();        //keys()：返回键名的遍历器。
+	console.log("keys = ", [...keys]); //keys =  [ 'name', 'title', 'addr' ]
+	let values = map.values();    //values()：返回键值的遍历器。
+	console.log("values = ", [...values]);   //values =  [ 'zhangsan', 'Author', 'beijing' ]
+	let entries = map.entries();  //entries()：返回所有成员的遍历器。
+	console.log("entries = ", [...entries]); //entries =  [[ 'name', 'zhangsan' ],[ 'title', 'Author' ],[ 'addr', 'beijing' ]]
+	map.forEach((v, k, m) => {
+		//v: "zhangsan", k: "name", m: [["name","zhangsan"],["title","Author"],["addr","beijing"]]
+		console.log("v: %j, k: %j, m: %j", v, k, [...m]);
+	});
+}
+
+function t9() {
+	let myMap = new Map().set("yes", true).set("no", false);
 
 }
-t8();
+t9();
 
 
 
