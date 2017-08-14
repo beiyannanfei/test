@@ -61,7 +61,30 @@ function t5() {
 	let difference = new Set([...a].filter(x => !b.has(x)));  // 差集
 	console.log("difference: ", difference);  //difference:  Set { 1 }
 }
-t5();
+
+function t6() {
+	const m = new Map();
+	const o = {p: "hello world"};
+	m.set(o, "content");
+	console.log(m.get(o));    //content
+	console.log(m.has(o));    //true
+	m.delete(o);
+	console.log(m.has(o));    //false
+}
+
+function t7() {
+	const map = new Map([
+		['name', 'zhangsan'],
+		['title', 'Author']
+	]);
+	console.log("map size: %j", map.size);              //map size: 2
+	console.log("map has name: %j", map.has("name"));   //map has name: true
+	console.log("map.name: %j", map.get("name"));       //map.name: "zhangsan"
+}
+function t8() {
+
+}
+t8();
 
 
 
