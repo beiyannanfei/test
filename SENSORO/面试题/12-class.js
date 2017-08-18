@@ -136,3 +136,81 @@ function t8() {
 	}
 	Bar.classMethod();  //hello    父类的静态方法，可以被子类继承
 }
+
+function t9() {
+	class Foo {
+		static classMethod() {
+			return "hello";
+		}
+	}
+	class Bar extends Foo {
+		static classMethod() {
+			return super.classMethod() + ", too";   //静态方法也是可以从super对象上调用的
+		}
+	}
+	console.log("Foo.classMethod = %j", Foo.classMethod());   //Foo.classMethod = "hello"
+	console.log("Bar.classMethod = %j", Bar.classMethod());   //Bar.classMethod = "hello, too"
+}
+
+function t10() {
+	class Foo {
+		// bar: 2;             //写法无效
+		// static foo: 3;      //写法无效
+	}
+	Foo.prop = 1;     //为Foo类定义了一个静态属性prop
+	console.log("Foo.prop = %j", Foo.prop);   //Foo.prop = 1
+	let foo = new Foo();
+	console.log("foo.prop = %j", foo.prop);   //foo.prop = undefined
+}
+
+function t11() {
+	class Rectangle {
+		constructor(length, width) {
+			console.log("new.target === Rectangle ? %j", new.target === Rectangle);   //Class 内部调用new.target，返回当前 Class
+			this.length = length;
+			this.width = width;
+		}
+
+		toString() {
+			return `(${this.length}, ${this.width})`;
+		}
+	}
+	let r = new Rectangle(10, 20);    //new.target === Rectangle ? true
+	console.log(r.toString());        //(10, 20)
+	console.log("----------------------------");
+
+	class Square extends Rectangle {
+		constructor(length) {
+			super(length, length + 1);    //子类继承父类时，new.target会返回子类
+		}
+
+		toString() {
+			return `(${this.length} - ${this.width})`;
+		}
+	}
+	let s = new Square(100);      //new.target === Rectangle ? false
+	console.log(s.toString());    //(100 - 101)
+}
+
+function t12() {
+	class Shape {
+		constructor() {
+			console.log("Shape - constructor");
+			if (new.target === Shape) {
+				throw new Error("本类不能实例化");
+			}
+		}
+	}
+	class Rectanle extends Shape {
+		constructor(length, width) {  //子类继承父类时，new.target会返回子类,利用这个特点，可以写出不能独立使用、必须继承后才能使用的类
+			console.log("Rectanle - constructor");
+			super();
+		}
+	}
+	try {
+		let s = new Shape();  //Shape - constructor
+	} catch (e) {
+		console.log("e = %j", e.message); //e = "本类不能实例化"
+	}
+	let r = new Rectanle(10, 20); //Rectanle - constructor  Shape - constructor
+}
