@@ -39,5 +39,5 @@ function t3() {
 	emitter.emit('myEvent');    //只会输出一个hi
 }
 
-t3();
+t2();
 
