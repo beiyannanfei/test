@@ -56,3 +56,4 @@ console.log(isDigit("132a"));
 console.log(/^[0-5]\d:[0-5]\d$/.test("01-:01"));
 
 
+console.log(/^([a-zA-Z0-9._-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test("web.blue@163.net"));
