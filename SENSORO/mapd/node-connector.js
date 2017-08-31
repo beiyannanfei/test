@@ -25811,7 +25811,6 @@ module.exports =
 	      conId: 0,
 	      estimatedQueryTime: lastQueryTime
 	    };
-
 	    _client.sql_execute(_sessionId, sql, columnarResults, curNonce, limit, function (error, result) {
 	      if (error) {
 	        return callback(normalizeError(error));
