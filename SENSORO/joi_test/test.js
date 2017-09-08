@@ -104,32 +104,47 @@ var _ = require("lodash");
 
 
 /*let schema = {
-	a: Joi.string().required(),
-	b: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().required()}),
-	c: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().greater().required()})
-};
+ a: Joi.string().required(),
+ b: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().required()}),
+ c: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().greater().required()})
+ };
 
-let checkObj = {
-	a: "a",
-	b: "" + +new Date()
-};
+ let checkObj = {
+ a: "a",
+ b: "" + +new Date()
+ };
 
-let results1 = Joi.validate(checkObj, schema);
-console.log(results1);
+ let results1 = Joi.validate(checkObj, schema);
+ console.log(results1);
 
-function filterJoiErrMsg(err) {
-	return (err && err.details && err.details[0] && err.details[0].message) || err.message || err;
-}*/
+ function filterJoiErrMsg(err) {
+ return (err && err.details && err.details[0] && err.details[0].message) || err.message || err;
+ }*/
 
 // https://resource-city.sensoro.com/188db5760db0a5a5acaba8f187ab446f.png
 
-let schema = {
-	sn: Joi.string().min(1).required(),
-	name: Joi.string().max(30).allow("")
-};
+/*
+ let schema = {
+ sn: Joi.string().min(1).required(),
+ name: Joi.string().max(30).allow("")
+ };
+
+ let checkObj = {
+ sn: "00001",
+ name: "safd"
+ };
+
+ let results1 = Joi.validate(checkObj, schema);
+ console.log(results1);*/
+
+let schema = Joi.object().keys({
+	sn: Joi.string(),
+	name: Joi.string()
+}).min(1);
+
 
 let checkObj = {
-	sn: "00001",
+	// sn: "00001",
 	name: "safd"
 };
 
