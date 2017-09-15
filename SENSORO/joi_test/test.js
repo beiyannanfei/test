@@ -140,12 +140,12 @@ var _ = require("lodash");
 let schema = Joi.object().keys({
 	sn: Joi.string(),
 	name: Joi.string()
-}).min(1);
+}).or('sn', 'name');      //.min(1)
 
-
+let a = {};
 let checkObj = {
-	// sn: "00001",
-	name: "safd"
+	sn: a.sn,
+	name: a.name
 };
 
 let results1 = Joi.validate(checkObj, schema);
