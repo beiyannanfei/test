@@ -41,8 +41,6 @@ var _ = require("lodash");
  b: o.b
  }
  };*/
-
-
 /*var a = {};
  let schema = Joi.object().keys({
  name: Joi.string().max(50),
@@ -78,7 +76,6 @@ var _ = require("lodash");
  }
  console.log(value);
  });*/
-
 /*
 
  let flag = true;
@@ -94,15 +91,10 @@ var _ = require("lodash");
  console.log(results1.error.message);//child "other" fails because ["other" is required]
  console.log(results1.error.details[0].message);//"other" is required
  */
-
-
-
 /*let results1 = Joi.validate("14810776836", Joi.string().regex(/^(\+86){0,1}1[3|4|5|7|8](\d){9}$/));
  console.log(results1);//child "other" fails because ["other" is required]
  console.log(results1.error.message);*/
 // console.log(results1.error.details[0].message);//"other" is required
-
-
 /*let schema = {
  a: Joi.string().required(),
  b: Joi.any().when("a", {is: "AAA", then: Joi.any(), otherwise: Joi.date().timestamp().required()}),
@@ -120,9 +112,7 @@ var _ = require("lodash");
  function filterJoiErrMsg(err) {
  return (err && err.details && err.details[0] && err.details[0].message) || err.message || err;
  }*/
-
 // https://resource-city.sensoro.com/188db5760db0a5a5acaba8f187ab446f.png
-
 /*
  let schema = {
  sn: Joi.string().min(1).required(),

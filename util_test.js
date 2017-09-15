@@ -9,7 +9,13 @@ var str = util.format("test: %j", a);
 
 console.log(str);
 
-util.exec("ls e:/", function (err, stdout, stderr) {
-	console.log(arguments);
+var exec = require('child_process').exec;
+
+var cmdStr = "ls -lh";
+cmdStr = "lt --port 3000";
+exec(cmdStr, function (err, stdout, stderr) {
+	console.log(err);
+	console.log(stdout);
+	console.log(stderr);
 });
 
