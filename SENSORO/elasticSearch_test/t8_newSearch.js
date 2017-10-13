@@ -218,6 +218,8 @@ function updateTest() {
 	});
 }
 
+updateTest();
+
 function bulkTest() {
 	let condition = {
 		body: [
@@ -782,6 +784,6 @@ function aggsTerms2() {
 	};
 }
 
-aggsTerms2();
+// aggsTerms2();
 // deleteAll();
 
