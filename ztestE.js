@@ -1,6 +1,8 @@
-var path = require("path");
-
-let url = "http://7u2jeb.com1.z0.glb.clouddn.com/2e41b08db2b7dbcba13c8f5cb7ac7d7c.png";
-let fileName = path.basename(url);
-console.log(fileName);
+let arr = [45, 87, 63, 45, 12, 87, 63];
+let notSame = "";
+for (let i of arr) {
+	notSame ^= i;
+	console.log("======= i: %j, notSame: %j", i, notSame);
+}
+console.log(notSame);
 
