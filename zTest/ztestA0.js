@@ -1,105 +1,23 @@
-var a = {
-	"_id": "GM569c4cf093cd63236707ee67",
-	"openId": "onC35t0jeANujdvgbm3F2EMXhc5g",
-	"rechargeNum": 1000,
-	"reward": 1000,
-	"mallOpenId": "og4wdwBw9KyT2l6uJwvsnqcFO4_Y",
-	"mallToken": "1e715ec3cd4e",
-	"yyyappId": "wx33dc1a5264b4e846",
-	"userData": {
-		"city": "",
-		"nickname": "宁画儿",
-		"ret": "0",
-		"openid": "onC35t0jeANujdvgbm3F2EMXhc5g",
-		"country": "CN",
-		"resTime": "1453083857",
-		"sourceCache": "slave",
-		"status": "ok",
-		"headimgurl": "http://wx.qlogo.cn/mmopen/oQ7QIr12iawpLo9LBt22NLiaPQ5bia8RZXib22Dl2ibU864YA6ocWLqwIPHyDmemnWLe9OJafdjQFnRMt69Xr3QeB46qXicZfW585p",
-		"sex": "0",
-		"province": ""
+require('../env.js');
+const co = require("co");
+
+let condition = [
+	{
+		$match: {
+			updatedTime: {
+				$gte: new Date(2017, 10, 15, 9, 0, 0),
+				$lte: new Date(2017, 10, 15, 10, 0, 0)
+			}
+		}
 	},
-	"dateTime": ISODate("2016-01-18T02:24:47.769Z"),
-	"activeId": "DT569775036d606fa42c9b25e1",
-	"startTime": 1453083809407,
-	"wxToken": "354e6b14b65b79ad",
-	"channelId": "1782",
-	"orderState": 4,
-	"localIp": "111.198.249.58",
-	"limitType": 1,
-	"auth_phone": "13691299137",
-	"isBlack": 0,
-	"out_trade_no": "2016011810244719681929307989",
-	"payResult": {
-		"appid": "wxe83c93f1af97ad9c",
-		"bank_type": "CFT",
-		"cash_fee": "1000",
-		"fee_type": "CNY",
-		"is_subscribe": "N",
-		"mch_id": "1305454701",
-		"nonce_str": "Rn5DpgFa7lWK35ukMJxXbnZiIbTUb91K",
-		"openid": "og4wdwBw9KyT2l6uJwvsnqcFO4_Y",
-		"out_trade_no": "2016011810244719681929307989",
-		"result_code": "SUCCESS",
-		"return_code": "SUCCESS",
-		"sign": "F37C743AC52571240F42B17AD0FBB53F",
-		"time_end": "20160118102458",
-		"total_fee": "1000",
-		"trade_type": "JSAPI",
-		"transaction_id": "1002920343201601182760488201"
+	{
+		$group: {
+			_id: "$sn",
+			count: {$sum: 1}
+		},
 	}
-};
-var b = {
-	"_id": "XT569ca251776e8f7879a2a8ab",
-	"openId": "onC35t0jeANujdvgbm3F2EMXhc5g",
-	"rechargeNum": 1000,
-	"reward": 1000,
-	"mallOpenId": "og4wdwBw9KyT2l6uJwvsnqcFO4_Y",
-	"mallToken": "1e715ec3cd4e",
-	"yyyappId": "wx33dc1a5264b4e846",
-	"userData": {
-		"city": "",
-		"nickname": "宁画儿",
-		"ret": "0",
-		"openid": "onC35t0jeANujdvgbm3F2EMXhc5g",
-		"country": "CN",
-		"resTime": "1453105735",
-		"sourceCache": "slave",
-		"status": "ok",
-		"headimgurl": "http://wx.qlogo.cn/mmopen/oQ7QIr12iawpLo9LBt22NLiaPQ5bia8RZXib22Dl2ibU864YA6ocWLqwIPHyDmemnWLe9OJafdjQFnRMt69Xr3QeB46qXicZfW585p",
-		"sex": "0",
-		"province": ""
-	},
-	"dateTime": ISODate("2016-01-18T08:29:05.141Z"),
-	"activeId": "DT569775036d606fa42c9b25e1",
-	"startTime": 1453105710165,
-	"wxToken": "354e6b14b65b79ad",
-	"channelId": "1782",
-	"orderState": 4,
-	"localIp": "111.198.249.58",
-	"limitType": 1,
-	"auth_phone": "13691299137",
-	"isBlack": 0,
-	"out_trade_no": "2016011816290501533714821562",
-	"payResponse": {
-		"return_code": "SUCCESS",
-		"return_msg": "OK",
-		"appid": "wxe83c93f1af97ad9c",
-		"mch_id": "1305454701",
-		"nonce_str": "Z7MOHt40vno9BJ1T",
-		"sign": "764FEFB61B92CD46DE2F454DD03F9110",
-		"result_code": "SUCCESS",
-		"openid": "og4wdwBw9KyT2l6uJwvsnqcFO4_Y",
-		"is_subscribe": "N",
-		"trade_type": "JSAPI",
-		"bank_type": "CFT",
-		"total_fee": "1000",
-		"fee_type": "CNY",
-		"transaction_id": "1002920343201601182767168559",
-		"out_trade_no": "2016011816290501533714821562",
-		"attach": "",
-		"time_end": "20160118162954",
-		"trade_state": "SUCCESS",
-		"cash_fee": "1000"
-	}
-};
+];
+
+Log.aggregate(condition, function (err, response) {
+	console.log("response = %j;", response);
+});
