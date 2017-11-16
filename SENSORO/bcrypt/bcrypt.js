@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt');
 let pwd = '$2a$04$fviiDpvl.ae7.whPgrI6YuiX7H5axqtdBQeT23T6EnYYGfUYiOGz.';
 
 function t1() {
-	bcrypt.hash("Tianyou18611987743", 1, function (err, hash) {
+	bcrypt.hash("11223344", 1, function (err, hash) {
 		console.log(arguments);//注意: 没事生成的密码都会变化
 	});
 }
