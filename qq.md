@@ -4,7 +4,7 @@
 | 序号 |    QQ     | D | Q币 | 轮次 | 已售 | 登陆 | 当前网赚项目 |
 |:---:|:----------:|:-:|:--:|:----:|:---:|:----:|:----------:|
 | 01 | 120471708  | T*6 | 0  | 1 | 30 | X | x |
-| 02 | 342160245  | t*  | 0  | 0 | 10 | 1 | x |
+| 02 | 342160245  | t*  | 0  | 0 | 10 | 1 | 应用宝 |
 | 03 | 348477539  | t*  | 0  | 1 | 1  | X | 应用宝 |
 | 04 | 419763262  | t*  | 0  | 0 | 0  | 1 | x | 
 | 05 | 501977094  | t*  | 0  | 0 | 19 | 1 | x |
@@ -104,23 +104,28 @@
 | 76 | 1623173386 | w*  | 0  | 0 | 0  | 1 | no
 客服QQ: 9758384 && 89052773 主Q: 805490859   120471708   348477539   960515933
 
-01  3043868257 t*3 188注册 应急手机15133600586  yuxiurong  liudan  wanghecheng
-02  1031017858 t*4 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-03  2501356255 t*4 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-04  1284047171 t*4 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-05  3318150568 t*4 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-06  3151508191 t*4 586注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-07  1946124204 t*3 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-08  2954135144 t*4 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-09  3318099402 t*3 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-10  3431114193 t*4 188注册 应急手机15133600586  yuxiurong  wanghecheng  liudan
-11  3428025175 t*4 586注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-12  2516343571 t*4 586注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-13  3210628851 t*4 586注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-14  2246434072 t*4 783注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-15  723768287  t*4 783注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-16  168871540  t*4 136注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-17  1928736114 t*4 136注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-18  257233521  t*4 136注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-19  256210140  t*4 136注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
-20  242557715  t*4 136注册 应急手机18810776836  yuxiurong  wanghecheng  liudan
+ 
+| 序号 |    QQ    |  D  | 注册号码 | 应急找回手机 |  密保问题一 |  密保问题二  | 密保三 | 涨乐财富通账号 |
+|:---:|:---------:|:---:|:------:|:-----------:|:----------:|:----------:|:------:|:------------:|
+| -1 | 805490859  | m*5 | XXXXXX | XXXXXXXXXXX | XXXXXXXXX | XXXXXXXXXXX | XXXXXX | 18810776836 |
+| 00 | 120471708  | T*6 | XXXXXX | XXXXXXXXXXX | XXXXXXXXX | XXXXXXXXXXX | XXXXXX | 15133600586 |
+| 01 | 3043868257 | t*3 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan | 15133606783 |
+| 02 | 1031017858 | t*4 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan | 13671278480 |
+| 03 | 2501356255 | t*4 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 04 | 1284047171 | t*4 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 05 | 3318150568 | t*4 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 06 | 3151508191 | t*4 | 586注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 07 | 1946124204 | t*3 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 08 | 2954135144 | t*4 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 09 | 3318099402 | t*3 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 10 | 3431114193 | t*4 | 188注册 | 15133600586 | yuxiurong | wanghecheng | liudan |  |
+| 11 | 3428025175 | t*4 | 586注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 12 | 2516343571 | t*4 | 586注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 13 | 3210628851 | t*4 | 586注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 14 | 2246434072 | t*4 | 783注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 15 | 723768287  | t*4 | 783注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 16 | 168871540  | t*4 | 136注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 17 | 1928736114 | t*4 | 136注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 18 | 257233521  | t*4 | 136注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 19 | 256210140  | t*4 | 136注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
+| 20 | 242557715  | t*4 | 136注册 | 18810776836 | yuxiurong | wanghecheng | liudan |  |
