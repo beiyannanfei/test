@@ -10,6 +10,7 @@ let response = [
 	{"_id": "co2", "count": 18},
 	{"_id": "drop", "count": 21}
 ];
+
 let cMap = {total: 0};
 response.forEach(item => {
 	if (!item._id) {
