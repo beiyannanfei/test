@@ -44,12 +44,12 @@ let iosParam = {
 
 let androidParam = {
 	types: "android",
-	version: "58",
+	version: "63",
 	url: "http://fir.im/g7jk",
 	msg: " "
 };
 
-httpPost(demoUrl, androidParam, function (err, response) {
+httpPost(proUrl, androidParam, function (err, response) {
 	if (!!err) {
 		return console.log("err: %j", err.message || err);
 	}
