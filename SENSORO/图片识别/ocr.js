@@ -14,7 +14,7 @@ ocr.scan({
 	type: "line", //text line character
 	language: "CHN" //CHE_ENG CHE ENG
 }).then(val => {
-	console.log(JSON.stringify(val));
+	console.log(val);
 }).catch(err => {
 	console.log("err: %j", err.m || err);
 });

@@ -128,14 +128,11 @@ var _ = require("lodash");
  console.log(results1);*/
 
 let schema = Joi.object().keys({
-	sn: Joi.string(),
-	name: Joi.string()
-}).or('sn', 'name');      //.min(1)
+	url: Joi.string().uri()
+});
 
-let a = {};
 let checkObj = {
-	sn: a.sn,
-	name: a.name
+	url: "https://resource-city.sensoro.com/09c62bb2a986e921d99939212ea13301.png"
 };
 
 let results1 = Joi.validate(checkObj, schema);
