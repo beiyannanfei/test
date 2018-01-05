@@ -41,7 +41,7 @@ do
     fi
     echo "table: ${preT}"
     #导出数据
-    mongoexport -h $host --port $port -u $user -p $pwd -d $db -c ${preT} -o ${path}/city-mocha-${preT}.dat
+    mongoexport -h $host --port $port -u $user -p $pwd -d $db -c ${preT} -o ${path}/${preT}
 done
 
 
