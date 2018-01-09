@@ -119,4 +119,3 @@ function t5() {   //混合call，原型立案继承方式
 	c.sayWorld();   //lisi
 }
 
-t5();
