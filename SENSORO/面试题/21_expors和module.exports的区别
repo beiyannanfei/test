@@ -1,0 +1,13 @@
+用一句话来说明就是，require方能看到的只有module.exports这个对象，
+它是看不到exports对象的，而我们在编写模块时用到的exports对象实际上只是对module.exports的引用。
+
+//下面的 function是一块新的内存地址，导致exports与module.exports不存在任何关系，
+//而require方能看到的只有module.exports这个对象，看不到exports对象，所以这样写是导不出去的
+exports = function(x){
+    console.log(x);
+}
+
+//下面的写法是可以导出去的。说句题外话，module.exports除了导出对象，函数，还可以导出所有的类型，比如字符串、数值等。
+module.expoerts=function(x) {
+    console.log(x);
+}
