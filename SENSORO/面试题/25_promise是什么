@@ -13,3 +13,4 @@ Promise 也有一些缺点。首先，无法取消 Promise，一旦新建它就�
 第三，当处于 Pending 状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
 
 Promise是一个构造函数，自己身上有all、reject、resolve这几个眼熟的方法，原型上有then、catch等同样很眼熟的方法。
+Promise是一种模式或规范
