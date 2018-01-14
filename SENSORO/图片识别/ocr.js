@@ -19,3 +19,4 @@ ocr.scan({
 	console.log("err: %j", err.m || err);
 });
 
+
