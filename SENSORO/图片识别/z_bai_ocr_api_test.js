@@ -95,8 +95,25 @@ function distinguish() {    //识别
 		});
 }
 
-distinguish();
+function speech() {   //文字转语音
+	const appId = "10695135";
+	const apiKey = "WkPLOuQd3rgoVy9t8Gg1pUFM";
+	const secretKey = "Gkl7XWI9A5yWOnW0I8BszNYXQd4EUn9i";
 
+	const AipSpeechClient = require("baidu-aip-sdk").speech;
+	const client = new AipSpeechClient(appId, apiKey, secretKey);
+	//api地址：http://ai.baidu.com/docs#/TTS-Online-Node-SDK/6e8f50ff
+	client.text2audio("合成文本长度必须小于1024字节，如果本文长度较长，可以采用多次请求的方式。不可文本长度超过限制").then(res => {
+		if (res && res.data) {
+			return fs.writeFileSync("/Users/sensoro/Desktop/tttt.mp3", res.data);
+		}
+		return console.log("res: %j", res);
+	}).catch(e => {
+		return console.log("e: %j", e.message || e);
+	});
+}
+
+speech();
 
 
 
