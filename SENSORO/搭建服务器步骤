@@ -18,7 +18,9 @@
     c. cd redis-3.2.8
     d. make
     e. mkdir /usr/redis
+    e.1 cd /root/redis-3.2.8/src
     f. cp redis-server redis-benchmark redis-cli  /usr/redis/
+    f.1 cd /root/redis-3.2.8
     g. cp redis.conf /usr/redis/
     h. vi /usr/redis/redis.conf
         daemonize no -> yes     修改redis为后台启动

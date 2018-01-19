@@ -33,7 +33,20 @@ function crop() {
 	});
 }
 
-crop();
+function rotate() { //图片翻转
+	const newFileName = "./a_rotate.png";
+	if (fs.existsSync(newFileName)) {    //如果文件已经存在则删除
+		fs.unlinkSync(newFileName);
+	}
+	Jimp.read("./a.png").then(lenna => {
+		lenna.rotate(90)
+			.write(newFileName);
+	}).catch(err => {
+		return console.log("crop err: %j", err.message || err);
+	});
+}
+
+rotate();
 
 
 
