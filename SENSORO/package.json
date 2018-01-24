@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "apn": "^3.0.0-alpha1",
     "async": "^2.4.1",
     "baidu-ocr-api": "^2.0.5",
     "bcrypt": "^1.0.1",
