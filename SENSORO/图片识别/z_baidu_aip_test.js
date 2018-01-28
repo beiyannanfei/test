@@ -9,7 +9,7 @@ const fs = require("fs");
 const client = new AipOcrClient(AppID, APIKey, SecretKey);
 
 function t1() { //通用文字识别
-	const imageBuf = fs.readFileSync("./b.jpg").toString("base64");
+	const imageBuf = fs.readFileSync("./b.png").toString("base64");
 	client.generalBasic(imageBuf).then(function (result) {
 		return console.log(JSON.stringify(result));
 		let str = "";
@@ -22,7 +22,7 @@ function t1() { //通用文字识别
 		console.log(err);
 	});
 }
-
+t1();
 function t2() { //生僻字识别(收费)
 	const image = fs.readFileSync("./d.jpg").toString("base64");
 	let options = {};
