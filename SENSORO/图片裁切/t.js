@@ -20,7 +20,7 @@ function resize() {
 	});
 }
 
-function crop() {
+function crop() { //图片裁切
 	const newFileName = "./a_crop.png";
 	if (fs.existsSync(newFileName)) {    //如果文件已经存在则删除
 		fs.unlinkSync(newFileName);
@@ -46,7 +46,7 @@ function rotate() { //图片翻转
 	});
 }
 
-rotate();
+
 
 
 

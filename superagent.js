@@ -39,6 +39,11 @@ exports.postFile = function (url, fileName, filePath, cb) {
 		});
 }
 
+exports.postFile("127.0.0.1:3000/prov1/boss/general", "aa", "/Users/sensoro/bynf/ocr/server/test/b.png", function (err, data) {
+	console.log(err);
+	console.log(data);
+});
+
 exports.getXmlHttp = function (url, cb) {
 	request.get(url)
 		.type('application/x-www-form-urlencoded')

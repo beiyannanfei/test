@@ -18,6 +18,7 @@
     "express": "^4.13.1",
     "express-session": "^1.15.1",
     "folktale": "^2.0.0-alpha1",
+    "gm": "^1.23.1",
     "iconv-lite": "^0.4.13",
     "install": "^0.8.1",
     "ioredis": "^2.4.2",
