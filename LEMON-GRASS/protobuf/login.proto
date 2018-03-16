@@ -1,0 +1,29 @@
+// 登录请求
+
+
+message Login {
+    optional PlatType platId = 1; // 平台Id
+    optional string openId = 2; //
+    optional string clientVersion = 3;
+    optional string telecomOper = 4; // 运营商
+    optional Channel channel = 5; // 渠道
+    optional string mPhone = 6; // 移动终端机型
+    optional string network = 7; // 网络(3G/wifi/2G/4G)
+}
+
+enum Channel {
+    qq = 0;
+    wechat = 1;
+    guest = 2;
+}
+
+enum PlatType {
+    ios = 0;
+    android = 1;
+}
+
+message Request {
+    optional int32 sequence = 1;
+    optional string token = 2;
+    optional bytes payload = 3;
+}
