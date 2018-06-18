@@ -1,0 +1,14 @@
+{
+    "name": "fpnn-nodejs-sdk",
+    "version": "1.0.0",
+    "description": "Node.js SDK with FPNN",
+    "main": "src/FPClient.js",
+    "scripts": {
+        "test": "node test/test-fpnn.js"
+    },
+    "author": "Dixun",
+    "license": "ISC",
+    "dependencies": {
+        "msgpack-lite": "^0.1.26"
+    }
+}
