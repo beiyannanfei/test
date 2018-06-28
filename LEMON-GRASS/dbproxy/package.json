@@ -1,0 +1,16 @@
+{
+  "name": "dbproxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dbproxy_test.js",
+  "dependencies": {
+    "int64-buffer": "^0.1.10",
+    "msgpack-lite": "^0.1.26"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
