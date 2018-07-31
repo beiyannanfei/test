@@ -2,7 +2,8 @@ var xlsx = require("node-xlsx");
 var fs = require("fs");
 
 try {
-	var buffer = fs.readFileSync("./excel1.xlsx");
+	var buffer = fs.readFileSync("/Users/wyq/Downloads/authLog/a.xlsx");
+	// var buffer = fs.readFileSync("./excel1.xlsx");
 } catch (e) {
 	console.log("e: %s", e.message);
 }
@@ -16,6 +17,18 @@ try {
 	console.log(e.message);
 }
 console.log(JSON.stringify(result));
+
+var list = [];
+console.log(result[0].data.length);
+result[0].data.forEach(item => {
+	if (item.length !== 3) {
+		console.log("data error item: %j", item);
+		return;
+	}
+	list.push({t: `${item[0]} ${item[1]}`, count: +item[2]});
+});
+
+console.log("let list = %j", list);
 /*console.log("===========================");
  var buffer1 = fs.readFileSync("./excel2.xls");
  console.log(buffer1);

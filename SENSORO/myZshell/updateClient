@@ -1,0 +1,34 @@
+#更新客户端所有分支
+echo "......开始更新客户端 trunk 分支......"
+cd /Users/wyq/workspace/loveClient/trunk
+pwd
+svn up .
+echo "......更新客户端 trunk 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 master 分支......"
+cd /Users/wyq/workspace/loveClient/master
+pwd
+svn up .
+echo "......更新客户端 master 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 ios_review 分支......"
+cd /Users/wyq/workspace/loveClient/ios_review
+pwd
+svn up .
+echo "......更新客户端 ios_review 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 publish 分支......"
+cd /Users/wyq/workspace/loveClient/publish
+pwd
+svn up .
+echo "......更新客户端 publish 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 online 分支......"
+cd /Users/wyq/workspace/loveClient/online
+pwd
+svn up .
+echo "......更新客户端 online 分支完成......\n"
