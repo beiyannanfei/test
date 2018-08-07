@@ -31,12 +31,12 @@ echo "......开始更新客户端 online 分支......"
 cd /Users/wyq/workspace/loveClient/online
 pwd
 svn up .
-echo "......更新客户端 online 分支完成......\n"
+echo "......更新客户端 online 分支完成......\n\n\n"
 
 
 echo "......开始更新客户端 featureABTest 分支......"
 cd /Users/wyq/workspace/loveClient/featureABTest
 pwd
 svn up .
-echo "......更新客户端 featureABTest 分支完成......\n"
+echo "......更新客户端 featureABTest 分支完成......\n\n\n"
 
