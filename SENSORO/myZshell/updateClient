@@ -15,12 +15,12 @@ svn up .
 echo "......更新客户端 master 分支完成......\n\n\n"
 
 
-echo "......开始更新客户端 ios_review 分支......"
-cd /Users/wyq/workspace/loveClient/ios_review
+echo "......开始更新客户端 review 分支......"
+cd /Users/wyq/workspace/loveClient/review
 pwd
 echo "svn up ."
 svn up .
-echo "......更新客户端 ios_review 分支完成......\n\n\n"
+echo "......更新客户端 review 分支完成......\n\n\n"
 
 
 echo "......开始更新客户端 publish 分支......"
@@ -38,11 +38,4 @@ echo "svn up ."
 svn up .
 echo "......更新客户端 online 分支完成......\n\n\n"
 
-
-echo "......开始更新客户端 featureABTest 分支......"
-cd /Users/wyq/workspace/loveClient/featureABTest
-pwd
-echo "svn up ."
-svn up .
-echo "......更新客户端 featureABTest 分支完成......\n\n\n"
 
