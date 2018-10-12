@@ -23,6 +23,14 @@ svn up .
 echo "......更新客户端 review 分支完成......\n\n\n"
 
 
+echo "......开始更新客户端 tencent 分支......"
+cd /Users/wyq/workspace/loveClient/tencent
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 tencent 分支完成......\n\n\n"
+
+
 echo "......开始更新客户端 publish 分支......"
 cd /Users/wyq/workspace/loveClient/publish
 pwd

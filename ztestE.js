@@ -1,52 +1,121 @@
-// [2018-06-27 15:54:09] "request":"{\"finishGuideList\":[2]}"
-// [2018-06-27 15:56:47] "request":"{\"finishGuideList\":[3]}"
-// [2018-06-27 16:10:09] "request":"{\"finishGuideList\":[6]}"
-// [2018-06-27 16:18:57] "request":"{\"finishGuideList\":[10,10,22]}"
-// [2018-06-27 16:19:41] "request":"{\"finishGuideList\":[26,18,26]}"
-// [2018-06-27 16:20:31] "request":"{\"finishGuideList\":[23,1,23]}
-// [2018-06-27 16:20:35] "request":"{\"finishGuideList\":[25,24,25]}"
-// [2018-06-27 16:22:57] "request":"{\"finishGuideList\":[20]}"
-// [2018-06-27 16:23:02] "request":"{\"finishGuideList\":[11,11,12]}"
-// [2018-06-27 16:23:09] "request":"{\"finishGuideList\":[21]}"
-let beforeArr = [1, 2, 3, 6, 10, 11, 12, 18, 20, 21, 22, 23, 24, 25, 26];
-
-// [2018-06-27 16:30:03] "request":"{\"finishGuideList\":[10,10,22]}"
-// [2018-06-27 16:30:10] "request":"{\"finishGuideList\":[7,7,8,9]}"
-// [2018-06-27 16:32:28] "request":"{\"finishGuideList\":[26,18,26]}"
-// [2018-06-27 16:32:37] "request":"{\"finishGuideList\":[23,1,23]}"
-// [2018-06-27 16:32:52] "request":"{\"finishGuideList\":[2]}"
-// [2018-06-27 16:34:18] "request":"{\"finishGuideList\":[3]}"
-// [2018-06-27 16:46:44] "request":"{\"finishGuideList\":[25,24,25]}"
-// [2018-06-27 17:17:15] "request":"{\"finishGuideList\":[6]}"
-// [2018-06-27 17:20:50] "request":"{\"finishGuideList\":[13,13,14]}"
-// [2018-06-27 17:44:16] "request":"{\"finishGuideList\":[20]}"
-// [2018-06-27 17:44:21] "request":"{\"finishGuideList\":[11,11,12]}"
-// [2018-06-27 17:44:24] "request":"{\"finishGuideList\":[21]}"
-
-// [2018-06-27 19:44:18] "request":"{\"finishGuideList\":[170,16,160,17,170]}"
-// [2018-06-27 20:52:39] "request":"{\"finishGuideList\":[26,18,26]}"
-// [2018-06-27 20:52:48] "request":"{\"finishGuideList\":[23,1,23]}"
-// [2018-06-27 20:52:56] "request":"{\"finishGuideList\":[10,10,22]}"
-// [2018-06-27 20:53:12] "request":"{\"finishGuideList\":[2]}"
-// [2018-06-27 20:54:50] "request":"{\"finishGuideList\":[6]}"
-// [2018-06-27 20:56:51] "request":"{\"finishGuideList\":[7,7,8,9]}"
-// [2018-06-27 20:59:42] "request":"{\"finishGuideList\":[3]}"
-// [2018-06-27 21:16:56] "request":"{\"finishGuideList\":[24,24,25]}"
-// [2018-06-27 21:17:01] "request":"{\"finishGuideList\":[170,16,160,17,170]}"
-// [2018-06-27 21:17:51] "request":"{\"finishGuideList\":[12,11,12]}"
-// [2018-06-27 21:17:59] "request":"{\"finishGuideList\":[20]}"
-// [2018-06-27 21:18:02] "request":"{\"finishGuideList\":[21]}"
-// [2018-06-27 21:18:16] "request":"{\"finishGuideList\":[13,13,14]
-
-// [2018-06-28 09:57:44] "request":"{\"finishGuideList\":[26,18,
-// [2018-06-28 09:58:09] "request":"{\"finishGuideList\":[23,1,23]}
-// [2018-06-28 09:58:26] "request":"{\"finishGuideList\":[13,13,14]}"
-// [2018-06-28 09:58:33] "request":"{\"finishGuideList\":[25,24,25]}"
-// [2018-06-28 09:58:46] "request":"{\"finishGuideList\":[20]}"
-// [2018-06-28 09:58:49] "request":"{\"finishGuideList\":[11,11,12]}"
-// [2018-06-28 09:58:53] "request":"{\"finishGuideList\":[21]}"
-// [2018-06-28 09:59:57] "request":"{\"finishGuideList\":[10,10,22]}"
-// [2018-06-28 10:00:06] "request":"{\"finishGuideList\":[7,7,8,9]}
-// [2018-06-28 10:00:42] "request":"{\"finishGuideList\":[2]}"
-// [2018-06-28 10:03:55] "request":"{\"finishGuideList\":[6]}"
-// [2018-06-28 10:06:35] "request":"{\"finishGuideList\":[3]}"
+requestStory = {
+	"storyId": 75,
+	"defaultNextStory": -1,
+	"bgChgColor": "#FFFFFFFF",
+	"showText": "心平静下来，有些情感也因为放置而\n逐渐变得清晰\r",
+	"chgDataList": [
+		{
+			"name": "原长野*10000",
+			"leftValue": {"gDataIndex": 54},
+			"rightValue": {"type": "FixedValue", "fixedValue": 10000},
+			"chgRelation": "MultipleAssign"
+		}, {
+			"name": "萧川*10000",
+			"leftValue": {"gDataIndex": 55},
+			"rightValue": {"type": "FixedValue", "fixedValue": 10000},
+			"chgRelation": "MultipleAssign"
+		}, {
+			"name": "江北*10000",
+			"leftValue": {"gDataIndex": 56},
+			"rightValue": {"type": "FixedValue", "fixedValue": 10000},
+			"chgRelation": "MultipleAssign"
+		}, {
+			"name": "任谷*10000",
+			"leftValue": {"gDataIndex": 57},
+			"rightValue": {"type": "FixedValue", "fixedValue": 10000},
+			"chgRelation": "MultipleAssign"
+		}, {
+			"name": "原长野/30",
+			"leftValue": {"gDataIndex": 54},
+			"rightValue": {"type": "FixedValue", "fixedValue": 40},
+			"chgRelation": "DivisionAssign"
+		}, {
+			"name": "萧川/25",
+			"leftValue": {"gDataIndex": 55},
+			"rightValue": {"type": "FixedValue", "fixedValue": 25},
+			"chgRelation": "DivisionAssign"
+		}, {
+			"name": "江北/29",
+			"leftValue": {"gDataIndex": 56},
+			"rightValue": {"type": "FixedValue", "fixedValue": 29},
+			"chgRelation": "DivisionAssign"
+		}, {
+			"name": "任谷/26",
+			"leftValue": {"gDataIndex": 57},
+			"rightValue": {"type": "FixedValue", "fixedValue": 26},
+			"chgRelation": "DivisionAssign"
+		}],
+	"conditionLibrary": {
+		"conditions": [   //$conditionList
+			{
+				"leftValue": {"gDataIndex": 54},
+				"rightValue": {"gDataIndex": 55},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 1,
+				"leftValue": {"gDataIndex": 54},
+				"rightValue": {"gDataIndex": 56},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 2,
+				"leftValue": {"gDataIndex": 54},
+				"rightValue": {"gDataIndex": 57},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 3,
+				"leftValue": {"gDataIndex": 55},
+				"rightValue": {"gDataIndex": 54},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 4,
+				"leftValue": {"gDataIndex": 55},
+				"rightValue": {"gDataIndex": 56},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 5,
+				"leftValue": {"gDataIndex": 55},
+				"rightValue": {"gDataIndex": 57},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 6,
+				"leftValue": {"gDataIndex": 56},
+				"rightValue": {"gDataIndex": 54},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 7,
+				"leftValue": {"gDataIndex": 56},
+				"rightValue": {"gDataIndex": 55},
+				"compareType": "BiggerAndEqual"
+			}, {
+				"index": 8,
+				"leftValue": {"gDataIndex": 56},
+				"rightValue": {"gDataIndex": 57},
+				"compareType": "BiggerAndEqual"
+			},
+			{
+				"index": 9,
+				"type": "Group",
+				"conditionIndexList": [0, 1, 2]
+			},
+			{
+				"index": 10,
+				"type": "Group",
+				"conditionIndexList": [3, 4, 5]
+			},
+			{"index": 11, "type": "Group", "conditionIndexList": [6, 7, 8]}
+		]
+	},
+	"switchStoryList": [
+		{"conditionId": 9, "nextStory": 76},
+		{"conditionId": 10, "nextStory": 77},
+		{"conditionId": 11, "nextStory": 78},
+		{"conditionId": -1, "nextStory": 79}
+	],
+	"bgMusicId": -1,
+	"bgMusicCmd": "PLayFade",
+	"soundEffectId": -1,
+	"avgBgName": "siyin_s_029",
+	"bgmName": "beauty",
+	"cvTalkTimeScale": 1,
+	"progress": 0.34782609
+};
