@@ -1,50 +1,107 @@
-let a = {
-	"_id": "59f7f68057299c1ccd7a181e",
-	"owners": "507f1f77bcf86cd799100000",
-	"deviceSN": "01531117C602099A",
-	"appId": "50I35FhvOAw9",
-	"sensorType": "flame",
-	"unionType": "flame",
-	"deviceType": "flame",
-	"sensorData": {"battery": 100, "interval": 10, "flame": true},
-	"rules": [
-		{
-			"_id": "59f7f68057299c1ccd7a181a",
-			"sensorTypes": "flame",
-			"thresholds": 0,
-			"conditionType": "gt"
-		}
-	],
-	"records": [
-		{
-			"type": "sendSMS",
-			"sid": "13983652948",
-			"phoneList": [
-				{
-					"name": "Limjoe",
-					"number": "18600866484"
-				},
-				{
-					"receiveTime": "2017-03-02+15:40:00",
-					"error_msg": "DELIVRD",
-					"reciveStatus": 1,
-					"name": "18600866585",
-					"number": "18600866585"
-				}
-			],
-			"updatedTime": "2017-10-31T04:05:20.429Z"
-		},
-		{
-			"type": "alarm",
-			"sensorType": "flame",
-			"thresholds": true,
-			"updatedTime": "2017-10-31T04:05:20.429Z"
-		}
-	],
-	"__v": 0,
-	"updatedTime": 1509422720429,
-	"isDeleted": false,
-	"displayStatus": 0,
-	"id": "59f7f68057299c1ccd7a181e",
-	"_updatedTime": "2017-10-31 12:05:20"
+"use strict";
+const _ = require("underscore");
+const MD5 = require("md5");
+const util = require("util");
+const xml2js = require('xml2js');
+const request = require('superagent');
+
+let payParam = {
+	appid: "wx6*****6a4",
+	mch_id: "152******1",
+	nonce_str: "Kwyfk43mcFDoeDJZ2CNL47rOa9gd2jRL",
+	body: "恋世界购买123456-1234",
+	out_trade_no: "123456-1545647815",
+	total_fee: 400,
+	spbill_create_ip: "127.0.0.1",
+	notify_url: "https://******",
+	trade_type: "APP",
+	// attach: "2362765424644.2.2018-05-30T10:10:59+08:00.2363086403188",
 };
+
+let getPaySign = function (param, signKey = "") {
+	let paramArr = _.keys(param);
+	paramArr.sort();
+	let strArr = [];
+	paramArr.forEach(key => {
+		strArr.push(util.format("%s=%s", key, param[key]));
+	});
+	strArr.push(util.format("%s=%s", "key", signKey));
+	let md5string = strArr.join("&");
+	console.log("md5string: %j", md5string);
+	return MD5(md5string).toString().toUpperCase();
+};
+
+payParam.sign = getPaySign(payParam);
+
+let json2xml = function (obj) {
+	let builder = new xml2js.Builder({
+		allowSurrogateChars: true
+	});
+	let xml = builder.buildObject({
+		xml: obj
+	});
+	return xml;
+};
+
+let xml2Json = function (xml, cb) {
+	xml2js.parseString(xml, {explicitArray: false, trim: true, explicitRoot: false}, function (err, json) {
+		if (!!err) {
+			return cb("parse xml err");
+		}
+		if (!json) {
+			return cb("no response");
+		}
+		return cb(null, json);
+	});
+};
+
+let postXmlHttp = function (url, params, cb) {
+	let xmlStr = json2xml(params);
+	console.log("postXmlHttp url: %j, xmlStr: %j", url, xmlStr);
+	request.post(url)
+		.type("text/xml")
+		.send(xmlStr)
+		.end((err, xhr) => {
+			if (!!err) {
+				return cb(err);
+			}
+			if (!xhr || !xhr.text) {
+				return cb("no response");
+			}
+			if (xhr.statusCode != 200) {
+				console.log("postXmlHttp statusCode err url: %j, xmlStr: %j, statusCode: %j", url, xmlStr, xhr.statusCode);
+				return cb(xhr.statusCode);
+			}
+			xml2Json(xhr.text, function (err, result) {
+				if (!!err) {
+					console.log("postXmlHttp xml2Json err: %j, xhr.text: %j, url: %j, params: %j", err, xhr.text, url, params);
+				}
+				return cb(err, result);
+			});
+		});
+};
+
+let wxHttpCallback = exports.wxHttpCallback = function (err, response, cb) {
+	if (err) {
+		return cb('http err: ' + err);
+	}
+	if (!response) {
+		return cb('no response');
+	}
+	if (response.return_code == 'FAIL') {
+		return cb('return_code fail: ' + response.return_msg);
+	}
+	if (response.result_code == 'FAIL') {
+		return cb('err_code:' + response.err_code + ', err_msg:' + response.err_code_des);
+	}
+	return cb(null, response);
+};
+
+console.log("payParam: %j", payParam);
+let url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
+postXmlHttp(url, payParam, function (err, response) {
+	console.log("=================== err: %j, response: %j", err, response);
+	wxHttpCallback(err, response, function (err, res) {
+		console.log("=================== err: %j, res: %j", err, res);
+	});
+});
