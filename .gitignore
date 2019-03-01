@@ -14,3 +14,4 @@ koa_2.X/node_modules/babel-preset-stage-3/
 /LEMON-GRASS/node_modules
 /笔记/*
 .DS_Store
+ztest*
