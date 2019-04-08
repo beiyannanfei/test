@@ -1,0 +1,49 @@
+#更新客户端所有分支
+echo "......开始更新客户端 trunk 分支......"
+cd /Users/wyq/workspace/loveClient/trunk
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 trunk 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 master 分支......"
+cd /Users/wyq/workspace/loveClient/master
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 master 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 review 分支......"
+cd /Users/wyq/workspace/loveClient/review
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 review 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 tencent 分支......"
+cd /Users/wyq/workspace/loveClient/tencent
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 tencent 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 publish 分支......"
+cd /Users/wyq/workspace/loveClient/publish
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 publish 分支完成......\n\n\n"
+
+
+echo "......开始更新客户端 online 分支......"
+cd /Users/wyq/workspace/loveClient/online
+pwd
+echo "svn up ."
+svn up .
+echo "......更新客户端 online 分支完成......\n\n\n"
+
+
