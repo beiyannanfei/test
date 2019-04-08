@@ -6,7 +6,7 @@
   "dependencies": {
     "alipay-sdk": "^3.0.4",
     "jpush-async": "^4.0.0-rc.1",
-    "protobufjs": "^5.0.1"
+    "protobufjs": "^6.7.3"
   },
   "devDependencies": {},
   "scripts": {
