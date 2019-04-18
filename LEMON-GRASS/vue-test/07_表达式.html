@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 都提供了完全的 JavaScript 表达式支持</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  {{5+5}}<br>
+  {{ok ? "yes" : "no"}}<br>
+  {{message.split("").reverse().join("")}}<br>
+  <div v-bind:id="'list-' + id">菜鸟教程</div>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			ok: true,
+			message: "runoob",
+			id: 1
+		}
+	});
+</script>
+</body>
+</html>

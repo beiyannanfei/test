@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-else-if</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <div v-if="randomNum() < 0.2">
+    less than 0.2
+  </div>
+  <div v-else-if="randomNum() < 0.5">
+    less than 0.5
+  </div>
+  <div v-else-if="randomNum() < 0.8">
+    less than 0.8
+  </div>
+  <div v-else>
+    bigger than 0.8
+  </div>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		methods: {
+			randomNum: function () {
+				return Math.random();
+			}
+		}
+	});
+</script>
+</body>
+</html>

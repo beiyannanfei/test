@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>对象中传入更多属性用来动态切换多个 class</title>
+  <script src="./lib/vue.min.js"></script>
+  <style>
+    .active {
+      width: 100px;
+      height: 100px;
+      background: green;
+    }
+
+    .text-danger {
+      background: red;
+    }
+
+    .base {
+      width: 100px;
+      height: 100px;
+    }
+
+    .active1 {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+
+<p>我们也可以在对象中传入更多属性用来动态切换多个 class </p>
+<div id="app">
+  <div class="static"
+       v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+</div>
+
+<hr>
+<p>我们也可以直接绑定数据里的一个对象：</p>
+
+<div id="app1">
+  <div v-bind:class="classObject"></div>
+</div>
+
+<hr>
+<p>此外，我们也可以在这里绑定返回对象的计算属性。这是一个常用且强大的模式：</p>
+
+<div id="app2">
+  <div v-bind:class="classObject"></div>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			isActive: true,
+			hasError: true
+		}
+	});
+
+	new Vue({
+		el: "#app1",
+		data: {
+			classObject: {
+				active: true,
+				'text-danger': true
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app2",
+		data: {
+			isActive: true,
+			error: {
+				value: true,
+				type: "fatal"
+			}
+		},
+		computed: {
+			classObject: function () {
+				return {
+					base: true,
+					active1: this.isActive && !this.error.value,
+					'text-danger': this.error.value && this.error.type === "fatal"
+				}
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

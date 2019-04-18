@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 起步-测试实例(数据互通)</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="vue_det">
+  <h5>site : {{site}}</h5>
+  <h5>url : {{url}}</h5>
+  <h5>Alexa: {{alexa}}</h5>
+</div>
+
+<script type="text/javascript">
+	//我们的数据对象
+	let myData = {
+		site: "菜鸟教程",
+		url: "www.runoob.com",
+		alexa: 10000
+	};
+
+	let vm = new Vue({
+		el: "#vue_det",
+		data: myData
+	});
+
+	//它们引用相同的对象
+	document.write(`vm.site === myData.site -> ${vm.site === myData.site}`);
+	document.write("<br>");
+
+	//设置属性也会影响到原始数据
+	vm.site = "Runoob";
+	document.write(`myData.site: ${myData.site} "<br>"`);
+
+	//...反之亦然
+	myData.alexa = 1234;
+	document.write(`vm.alexa: ${vm.alexa}`);
+</script>
+</body>
+</html>

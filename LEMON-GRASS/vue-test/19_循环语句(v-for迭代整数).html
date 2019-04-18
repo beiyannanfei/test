@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for 迭代整数</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="n in 10">
+      {{n}}
+    </li>
+  </ul>
+</div>
+
+<script>
+	new Vue({
+		el: "#app"
+	});
+</script>
+</body>
+</html>

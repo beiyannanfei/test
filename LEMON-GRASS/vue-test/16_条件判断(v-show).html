@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>我们也可以使用 v-show 指令来根据条件展示元素</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <h1 v-show="ok">hello</h1>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			ok: true
+		}
+	});
+</script>
+</body>
+</html>

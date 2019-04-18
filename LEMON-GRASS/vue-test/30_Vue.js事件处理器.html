@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 事件处理器</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<p>事件监听可以使用 v-on 指令：</p>
+<div id="app1">
+  <button v-on:click="counter += 1">增加 1</button>
+  <p>这个按钮被点击了 {{ counter }} 次</p>
+</div>
+
+<hr>
+<p>通常情况下，我们需要使用一个方法来调用 JavaScript 方法。</p>
+<p>v-on 可以接收一个定义的方法来调用。</p>
+<div id="app2">
+  <!-- `greet` 是在下面定义的方法名 -->
+  <button v-on:click="greet">Greet按钮</button>
+</div>
+
+<hr>
+<p>除了直接绑定到一个方法，也可以用内联 JavaScript 语句：</p>
+<div id="app3">
+  <button v-on:click="say('hi')">Say hi</button>
+  <button v-on:click="say('what')">Say what</button>
+</div>
+
+<hr>
+<p>当绑定 v-on:click 事件时，想传入参数同时也传入当前元素：</p>
+<div id="app4">
+  <button v-on:click="say('hi', $event)">say hi</button>
+</div>
+
+<hr>
+<p>点击按钮的不同操作：</p>
+<div id="app5">
+  <input type="button" value="单击后增加1" @click="m += 1">
+  <input type="button" value="绑定函数的按钮" @click="add">
+  <input type="button" value="绑定可传值函数的按钮" @click="add2(3, 4)">
+  <div>这个按钮被点击了 {{m}}</div>
+</div>
+
+<hr>
+<p>.capture: 在传递的父子事件种，加了这个，无论先点哪个，都先执行这个。</p>
+<!--
+.stop: 不会一直传递，自己运行结束就结束了。
+.prevent: 比如 submit 加了这个，就不会提交了。
+.capture: 在传递的父子事件种，加了这个，无论先点哪个，都先执行这个。
+.self: 只有点击自己本身才会执行，点他的子元素也不会被传递。
+.once: 只执行一次。
+.stop：就是js中的event.stopPropagation()的缩写,它是用来阻止冒泡的；
+.prevent：就是js中event.preventDefault()的缩写,它是用来阻止默认行为的；
+.capture：捕获事件和冒泡事件(默认)是两种事件流,事件捕获是从document到触发事件的那个元素;冒泡事件是从下向上的触发事件；
+.self：就是防止父元素（设置了该修饰符）的子元素的事件冒泡到父元素上，只有本身触发时才会执行事件处理程序（函数）；
+once：每次页面重载后只会执行一次。
+-->
+<div id="app6">
+  <div v-on:click.capture="say('hi')">say hi
+    <div v-on:click="say('what')">say what(先弹出hi，再弹出what)</div>
+  </div>
+</div>
+
+<script>
+	new Vue({
+		el: "#app6",
+		methods: {
+			say: function (msg) {
+				alert(msg);
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app5",
+		data: {
+			m: 0
+		},
+		methods: {
+			add: function (e) {
+				e.stopPropagation();
+				this.m += 2;
+			},
+			add2: function (m, n) {
+				this.m = m + n;
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app4",
+		methods: {
+			say: function (msg, e) {
+				alert(msg);
+				alert(e.currentTarget);
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app3",
+		methods: {
+			say: function (message) {
+				alert(message);
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app2",
+		data: {
+			name: "Vue.js"
+		},
+		//在 methods 对象中定义方法
+		methods: {
+			greet: function (event) {
+				//this 在方法里指当前vue实例
+				alert(`Hello ${this.name} !`);
+				//event 是原生DOM事件
+				if (event) {
+					alert(event.target.tagName);
+				}
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app1",
+		data: {
+			counter: 0
+		}
+	});
+</script>
+
+</body>
+</html>

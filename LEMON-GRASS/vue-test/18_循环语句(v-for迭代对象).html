@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>v-for 可以通过一个对象的属性来迭代数据</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="value in object">
+      {{value}}
+    </li>
+  </ul>
+
+  <hr>
+  <p>可以提供第二个的参数为键名</p>
+  <ul>
+    <li v-for="(value, key) in object">
+      {{key}} : {{value}}
+    </li>
+  </ul>
+
+  <hr>
+  <p>第三个参数为索引</p>
+  <ul>
+    <li v-for="(value, key, index) in object">
+      {{index}} : {{key}} : {{value}}
+    </li>
+  </ul>
+
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			object: {
+				name: "菜鸟教程",
+				url: "http://www.runoob.com",
+				slogan: "学的不仅是技术，更是梦想"
+			}
+		}
+	});
+</script>
+</body>
+</html>

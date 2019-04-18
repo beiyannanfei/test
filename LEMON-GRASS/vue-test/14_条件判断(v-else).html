@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>可以用 v-else 指令给 v-if 添加一个 "else" 块</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <div v-if="Math.random() > 0.5">
+    Sorry
+  </div>
+  <div v-else>
+    Not sorry
+  </div>
+
+  <hr>
+  <div v-if="randomNum()">
+    bigger than 0.5
+  </div>
+  <div v-else>
+    less than 0.5
+  </div>
+
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		methods: {
+			randomNum: function () {
+				return Math.random() > 0.5;
+			}
+		}
+	});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>把一个数组传给 v-bind:class</title>
+  <script src="./lib/vue.min.js"></script>
+  <style>
+    .text-danger1 {
+      width: 100px;
+      height: 100px;
+      background: red;
+    }
+
+    .active {
+      width: 100px;
+      height: 100px;
+      background: green;
+    }
+
+    .text-danger {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+
+<p>我们可以把一个数组传给 v-bind:class ，实例如下：</p>
+<div id="app">
+  <div v-bind:class="[activeClass, errorClass]"></div>
+</div>
+
+<hr>
+<p>我们还可以使用三元表达式来切换列表中的 class ：</p>
+<div id="app1">
+  <div v-bind:class="[errorClass ,isActive ? activeClass : '']"></div>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			activeClass: 'active',
+			errorClass: 'text-danger'
+		}
+	});
+
+	new Vue({
+		el: '#app1',
+		data: {
+			isActive: true,
+			activeClass: 'active',
+			errorClass: 'text-danger1'
+		}
+	})
+</script>
+
+</body>
+</html>

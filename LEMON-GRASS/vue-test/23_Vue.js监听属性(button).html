@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 监听属性-watch</title>
+  <!--本章节，我们将为大家介绍 Vue.js 监听属性 watch，我们可以通过 watch 来响应数据的变化。-->
+  <!--以下实例通过使用 watch 实现计数器：-->
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p style="font-size: 25px">计数器: {{counter}}</p>
+  <button @click="counter++" style="font-size: 25px">点我</button>
+</div>
+
+<script>
+	let vm = new Vue({
+		el: "#app",
+		data: {
+			counter: 1
+		}
+	});
+
+	vm.$watch("counter", function (nval, oval) {
+		alert(`计算器数值变化: ${oval} 变为 ${nval}!`);
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<p>我们可以在 v-bind:style 直接设置样式：</p>
+<div id="app">
+  <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px'}">菜鸟教程</div>
+</div>
+
+<hr>
+<p>也可以直接绑定到一个样式对象，让模板更清晰：</p>
+<div id="app1">
+  <div v-bind:style="styleObject">菜鸟教程</div>
+</div>
+
+<hr>
+<p>v-bind:style 可以使用数组将多个样式对象应用到一个元素上：</p>
+<div id="app2">
+  <div v-bind:style="[baseStyles, overridingStyles]">菜鸟教程</div>
+</div>
+
+<hr>
+<p>动态调节样式这个挺好用的</p>
+<div id="app3">
+  <button v-on:click="fontSize --">-</button>
+  <button v-on:click="fontSize ++">+</button>
+  <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">菜鸟教程</div>
+
+  <button v-on:click="showAlert()">显示fontSize</button>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			activeColor: "green",
+			fontSize: 30
+		}
+	});
+
+	new Vue({
+		el: "#app1",
+		data: {
+			styleObject: {
+				color: "green",
+				fontSize: "30px"
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app2",
+		data: {
+			baseStyles: {
+				color: "green",
+				fontSize: "30px"
+			},
+			overridingStyles: {
+				"font-weight": "bold"
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app3",
+		data: {
+			activeColor: "green",
+			fontSize: 30,
+		},
+		methods: {
+			showAlert: function () {
+				alert(this.fontSize)
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

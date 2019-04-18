@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>参数在指令后以冒号指明</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <pre><a v-bind:href="url">百度</a> </pre>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			url: "https://www.baidu.com"
+		}
+	});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>条件判断使用 v-if 指令</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <p v-if="seen">现在你看到我了</p>    <!--这里， v-if 指令将根据表达式 seen 的值(true 或 false )来决定是否插入 p 元素。-->
+  <template v-if="ok">
+    <h1>菜鸟教程</h1>
+    <p>学的不仅是技术，更是梦想</p>
+    <p>学的不仅是技术，更是梦想!</p>
+  </template>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			seen: true,
+			ok: true
+		}
+	});
+</script>
+</body>
+</html>

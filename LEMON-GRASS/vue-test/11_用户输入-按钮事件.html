@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>按钮的事件我们可以使用 v-on 监听事件，并对用户的输入进行响应</title>
+  <!--v-model 指令用来在 input、select、text、checkbox、radio 等表单控件元素上创建双向数据绑定，根据表单上的值，自动更新绑定的元素的值。-->
+  <!--按钮的事件我们可以使用 v-on 监听事件，并对用户的输入进行响应。-->
+  <!--以下实例在用户点击按钮后对字符串进行反转操作：-->
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+  <p>{{ message }}</p>
+  <button v-on:click="reverseMessage">反转字符串</button>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			message: "Runoob!"
+		},
+		methods: {
+			reverseMessage: function () {
+				this.message = this.message.split("").reverse().join("");
+			}
+		}
+	});
+</script>
+</body>
+</html>

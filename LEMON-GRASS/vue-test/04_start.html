@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 起步-测试实例(实例属性与方法)</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<div id="vue_det">
+  <h6>site: {{site}}</h6>
+  <h6>url: {{url}}</h6>
+  <h6>Alexa: {{alexa}}</h6>
+</div>
+
+<script type="text/javascript">
+	let mydata = {
+		site: "菜鸟教程",
+		url: "www.runoob.com",
+		alexa: 10000
+	};
+
+	let vm = new Vue({
+		el: "#vue_det",
+		data: mydata
+	});
+
+	document.write(`vm.$data === data -> ${vm.$data === mydata} <br><br>`);
+	document.write(`vm.$el === document.getElementById("vue_det") -> ${vm.$el === document.getElementById("vue_det")}`);
+</script>
+</body>
+</html>

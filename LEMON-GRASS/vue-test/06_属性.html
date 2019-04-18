@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML 属性中的值应使用 v-bind 指令</title>
+  <script src="./lib/vue.min.js"></script>
+  <style>
+    .class1 {
+      background: #444;
+      color: #eee;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <label for="r1">修改颜色</label><input type="checkbox" v-model="use" id="r1">
+  <br><br>
+  <div v-bind:class="{'class1': use}">
+    v-bind:class 指令
+  </div>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			use: false
+		}
+	});
+</script>
+</body>
+</html>

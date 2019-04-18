@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 监听属性-通过vue监听事件实现一个简单的购物车</title>
+  <script src="./lib/vue.min.js"></script>
+  <style>
+    table {
+      border: 1px solid black;
+      margin: 0px auto;
+    }
+
+    table {
+      width: 70%;
+    }
+
+    th {
+      height: 50px;
+    }
+
+    th, td {
+      border-bottom: 1px solid #ddd;
+    }
+
+    td {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <table>
+    <tr>
+      <th>序号</th>
+      <th>商品名称</th>
+      <th>商品价格</th>
+      <th>购买数量</th>
+      <th>操作</th>
+    </tr>
+    <tr v-for="iphone in Ip_Json">
+      <td>{{iphone.id}}</td>
+      <td>{{iphone.name}}</td>
+      <td>{{iphone.price}}</td>
+      <td>
+        <button v-bind:disabled="iphone.count === 0" v-on:click="iphone.count - 1">-</button>
+        {{iphone.count}}
+        <button v-on:click="iphone.count+=1">+</button>
+      </td>
+      <td>
+        <button v-on:click="iphone.count=0">移除</button>
+      </td>
+    </tr>
+  </table>
+  <p style="text-align: center">总价: {{totalPrice()}}</p>
+</div>
+
+<script>
+	let app = new Vue({
+		el: "#app",
+		data: {
+			Ip_Json: [
+				{id: 1, name: 'iphone 8', price: 5099, count: 1},
+				{id: 2, name: 'iphone xs', price: 8699, count: 1},
+				{id: 3, name: 'iphone xr', price: 6499, count: 1}
+			]
+		},
+		methods: {
+			totalPrice: function () {
+				let totalP = 0;
+				for (let i = 0; i < this.Ip_Json.length; ++i) {
+					totalP += this.Ip_Json[i].price * this.Ip_Json[i].count;
+				}
+				return totalP;
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js 表单</title>
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<p>实例中演示了 input 和 textarea 元素中使用 v-model 实现双向数据绑定：</p>
+<div id="app1">
+  <p>input 元素:</p>
+  <input v-model="msg" placeholder="编辑我...">
+  <p>消息是: {{ msg }}</p>
+
+  <p>textarea 元素:</p>
+  <p style="white-space: pre">{{msg2}}</p>
+  <textarea v-model="msg2" placeholder="多行文本输入..."></textarea>
+</div>
+
+<hr>
+<p>复选框如果是一个为逻辑值，如果是多个则绑定到同一个数组：</p>
+<div id="app2">
+  <p>单个复选框:</p>
+  <input type="checkbox" id="checkbox" v-model="checked">
+  <label for="checkbox"> {{ checked }}</label>
+
+  <p>多个复选框:</p>
+  <input type="checkbox" id="runoob" value="Runoob" v-model="checkedNames">
+  <label for="runoob">Runoob</label>
+  <input type="checkbox" id="google" value="Google" v-model="checkedNames">
+  <label for="google">Google</label>
+  <input type="checkbox" id="taobao" value="Taobao" v-model="checkedNames">
+  <label for="taobao">Taobao</label>
+  <br>
+  <span>选择的值为: {{ checkedNames }}</span>
+</div>
+
+<hr>
+<p>以下实例中演示了单选按钮的双向数据绑定：</p>
+<div id="app3">
+  <input type="radio" id="runoob1" value="Runoob" v-model="picked">
+  <label for="runoob1">Runoob</label>
+  <input type="radio" id="google1" value="Google" v-model="picked">
+  <label for="google1">Google</label>
+  <br>
+  <span>选中值为: {{picked}}</span>
+</div>
+
+<hr>
+<p>select 列表 以下实例中演示了下拉列表的双向数据绑定：</p>
+<div id="app4">
+  <label>这是一个下拉列表：
+    <select v-model="selected" name="fruit">
+      <option value="">选中一个网站</option>
+      <option value="www.runoob.com">Runoob</option>
+      <option value="www.google.com">Google</option>
+    </select>
+  </label>
+
+  <div id="output">
+    选择的网站是: {{selected}}
+  </div>
+</div>
+
+<hr>
+<p>全选与取消全选</p>
+<div id="app5">
+  <p>全选:</p>
+  <input type="checkbox" id="checkbox1" v-model="checked" @change="changeAllChecked()">
+  <label for="checkbox1">{{checked}}</label>
+
+  <p>多个复选框:</p>
+  <input type="checkbox" id="runoob2" value="Runoob" v-model="checkedNames">
+  <label for="runoob2">Runoob</label>
+  <input type="checkbox" id="google2" value="Google" v-model="checkedNames">
+  <label for="google2">Google</label>
+  <input type="checkbox" id="taobao2" value="Taobao" v-model="checkedNames">
+  <label for="taobao2">Taobao</label>
+
+  <br>
+  <span>
+    选择的值为: {{checkedNames}}
+  </span>
+</div>
+
+<hr>
+<p>select 列表实例：</p>
+<div id="app6">
+  <label>循环列表:
+    <select v-model="selected" name="fruit">
+      <option v-for="option in optionsList" :value="option.value">{{option.key}}</option>
+    </select>
+  </label>
+
+  <div>
+    选择的网站是: {{selected}}
+  </div>
+
+</div>
+
+<hr>
+<p>动态全反选</p>
+<div id="app7">
+  <p>全选 <input type="checkbox" v-model="checks" @change="Numlist()">{{checks}}</p>
+  <P>
+    <label v-for="(list, index) in checkList">
+      <input type="checkbox" v-model="checksListOn" :value="list.name">{{list.name}}
+    </label>
+  </P>
+  <p>{{checksListOn}}</p>
+
+</div>
+
+<script>
+	new Vue({
+		el: "#app7",
+		data: {
+			checks: false,
+			checkList: [
+				{id: 1, name: '苹果'},
+				{id: 2, name: '香蕉'},
+				{id: 3, name: '栗子'},
+				{id: 4, name: '橘子'}
+			],
+			checksListOn: []
+		},
+		methods: {
+			Numlist: function () {
+				if (this.checks) {
+					let listArr = [];
+					for (let checkItem of this.checkList) {
+						listArr.push(checkItem.name);
+					}
+
+					this.checksListOn = listArr;
+				} else {
+					this.checksListOn = [];
+				}
+			}
+		},
+		watch: {
+			"checksListOn": function () {
+				this.checks = this.checksListOn.length === this.checkList.length;
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app6",
+		data: {
+			selected: "Select",
+			optionsList: [
+				{key: '选择', value: 'Select'},
+				{key: '淘宝', value: 'taobao'},
+				{key: '京东', value: 'jingd'},
+				{key: '阿里巴巴', value: 'alibaba'},
+				{key: '亚马逊', value: 'amazon'},
+				{key: '苏宁', value: 'suning'},
+				{key: '拼多多', value: 'pinduoduo'}
+			]
+		}
+	});
+
+	new Vue({
+		el: "#app5",
+		data: {
+			checked: false,
+			checkedNames: [],
+			checkedArr: ["Runoob", "Taobao", "Google"]
+		},
+		methods: {
+			changeAllChecked: function () {
+				if (this.checked) {
+					this.checkedNames = this.checkedArr;
+				} else {
+					this.checkedNames = [];
+				}
+			}
+		},
+		watch: {
+			"checkedNames": function () {
+				this.checked = this.checkedNames.length === this.checkedArr.length;
+			}
+		}
+	});
+
+	new Vue({
+		el: "#app4",
+		data: {
+			selected: ""
+		}
+	});
+
+	new Vue({
+		el: "#app3",
+		data: {
+			picked: "Runoob"
+		}
+	});
+
+	new Vue({
+		el: "#app2",
+		data: {
+			checked: false,
+			checkedNames: []
+		}
+	});
+
+	new Vue({
+		el: "#app1",
+		data: {
+			msg: "Runoob",
+			msg2: "菜鸟教程\r\nhttp://www.runoob.com"
+		}
+	});
+</script>
+
+</body>
+</html>

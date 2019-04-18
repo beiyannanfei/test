@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计算属性(computed vs methods)</title>
+  <!--我们可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。-->
+  <!--可以说使用 computed 性能会更好，但是如果你不希望缓存，你可以使用 methods 属性-->
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p>原始字符串: {{message}}</p>
+  <p>计算后反转字符串: {{reversedMessage}}</p>
+  <p>使用方法后反转字符串: {{reversedMessage2()}}</p>
+</div>
+
+<hr>
+
+<div id="app1">
+  <p>原始字符串: {{ message }}</p>
+  <p>计算后反转字符串: {{ reversedMessage }}</p>
+  <p>计算后反转字符串: {{ reversedMessage }}</p>
+  <p>使用方法后反转字符串: {{ reversedMessage2() }}</p>
+  <p>使用方法后反转字符串: {{ reversedMessage2() }}</p>
+</div>
+
+<script>
+	let vm = new Vue({
+		el: "#app",
+		data: {
+			message: "Runoob!"
+		},
+		computed: {
+			//计算属性的 getter
+			reversedMessage: function () {
+				console.log("调用 reversedMessage", +new Date());
+				//this指向vm实例
+				return this.message.split("").reverse().join("");
+			}
+		},
+		methods: {
+			reversedMessage2: function () {
+				console.log("调用 reversedMessage2", +new Date());
+				return this.message.split("").reverse().join("");
+			}
+		}
+	});
+
+	// 把代码改了改，应该可以体现 computer 属性“依赖缓存”的概念以及与 method 的差别。如下面代码，cnt 是独立于 vm 对象的变量。
+  // 在使用 reversedMessage 这个计算属性的时候，第一次会执行代码，得到一个值，以后再使用 reversedMessage 这个计算属性，
+  // 因为 vm 对象没有发生改变，于是界面渲染就直接用这个值，不再重复执行代码。而 reversedMessage2 没有这个缓存，
+  // 只要用一次，函数代码就执行一次，于是每次返回值都不一样
+	let cnt = 1;
+	let vm1 = new Vue({
+		el: "#app1",
+		data: {
+			message: "Runoob!"
+		},
+
+		computed: {
+			// 计算属性的 getter
+			reversedMessage: function () {
+				// `this` 指向 vm 实例
+				cnt += 1;
+				return cnt + this.message.split("").reverse().join("");
+			}
+		},
+		methods: {
+			reversedMessage2: function () {
+				cnt += 1;
+				return cnt + this.message.split("").reverse().join("");
+			}
+		}
+	});
+</script>
+
+</body>
+</html>

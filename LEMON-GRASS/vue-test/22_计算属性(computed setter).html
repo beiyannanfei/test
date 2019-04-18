@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>计算属性(computed setter)</title>
+  <!--computed 属性默认只有 getter ，不过在需要时你也可以提供一个 setter-->
+  <script src="./lib/vue.min.js"></script>
+</head>
+<body>
+
+<div id="app">
+  <p>调用set之前: {{site}}</p>
+  <p>{{setData()}}</p>
+  <p>调用set之后: {{site}}</p>
+</div>
+
+<script>
+	let vm = new Vue({
+		el: "#app",
+		data: {
+			name: "Google",
+			url: "http://www.google.com"
+		},
+		computed: {
+			site: {
+				//getter
+				get: function () {
+					console.log("computed site get");
+					return this.name + ' ' + this.url;
+				},
+				//setter
+				set: function (newValue) {
+					console.log("computed site set");
+					let names = newValue.split(' ');
+					this.name = names[0];
+					this.url = names[names.length - 1]
+				}
+			}
+		},
+		methods: {
+			setData: function () {
+				console.log("methods setData");
+				this.site = "菜鸟教程 http://www.runoob.com";
+			}
+		}
+	});
+
+	//调用 setter， vm.name 和 vm.url 也会被对应更新
+	// vm.site = "菜鸟教程 http://www.runoob.com";
+	// document.write("name: " + vm.name);
+	// document.write("<br>");
+	// document.write("url: " + vm.url);
+</script>
+
+</body>
+</html>
