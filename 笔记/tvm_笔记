@@ -368,7 +368,7 @@ curl "http://qa.pmall.yaotv.tvm.cn/open/reset/refund?tOpenId=orEt2t-p47EYkrGc7i0
 
 {
         "_id" : "orEt2t9TyFNWO3XX5E-YTj61Hd0U",
-        "phone" : "18810776836",
+        "phone" : "13888888888",
         "md5Phone" : "4167c3266b67fc449172249550a55876",
         "dateTime" : ISODate("2016-03-30T09:14:37.292Z"),
         "dateTimeStr" : "2016-03-30 17:14:37",
@@ -400,7 +400,7 @@ curl "http://qa.pmall.yaotv.tvm.cn/open/reset/refund?tOpenId=orEt2t-p47EYkrGc7i0
 
 {
         "_id" : "orEt2t_UF1QO8fV8E_i57onelLjk",
-        "phone" : "15133600586",
+        "phone" : "13888888888",
         "md5Phone" : "6e45ad19c8b3d550682e1f9eef78931a",
         "dateTime" : ISODate("2016-04-13T12:27:59.399Z"),
         "dateTimeStr" : "2016-04-13 20:27:59",
@@ -416,7 +416,7 @@ curl "http://qa.pmall.yaotv.tvm.cn/open/reset/refund?tOpenId=orEt2t-p47EYkrGc7i0
 
 {
         "_id" : "orEt2twn-fU3jwEHeHB6qZFPwOhk",
-        "phone" : "15133606783",
+        "phone" : "13888888888",
         "md5Phone" : "ea8ce63646b02eb216de881a45ca49f7",
         "dateTime" : ISODate("2016-04-13T12:44:27.665Z"),
         "dateTimeStr" : "2016-04-13 20:44:27",

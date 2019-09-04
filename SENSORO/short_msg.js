@@ -56,15 +56,15 @@ var sendMsg = function (mobile, msg, type, cb) {
 };
 
 /*
- sendMsg("18810776836", "短信測試1", 1, function () {
+ sendMsg("13888888888", "短信測試1", 1, function () {
  console.log(arguments);
  });*/
 
 async.series([
-	// cb => sendMsg("18810776836", "短信测试1", 1, cb),
-	// cb => sendMsg("18810776836", "短信测试2", 2, cb),
+	// cb => sendMsg("13888888888", "短信测试1", 1, cb),
+	// cb => sendMsg("13888888888", "短信测试2", 2, cb),
 	cb => sendMsg("13691035358", "短信测试3", 3, cb),
-	// cb => sendMsg("18810776836", "短信测试4", 4, cb),
+	// cb => sendMsg("13888888888", "短信测试4", 4, cb),
 ], function (err, results) {
 	console.log(arguments);
 });

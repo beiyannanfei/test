@@ -21,7 +21,7 @@ var transporter = nodemailer.createTransport(smtpConfig);
 // setup e-mail data with unicode symbols
 var mailOptions = {
 	from: 'yanqiang.wang@lemongrassmedia.cn', // sender address
-	to: '805490859@qq.com', // list of receivers,逗号分隔
+	to: 'aaaa@qq.com', // list of receivers,逗号分隔
 	subject: 'ABC账号分布', // Subject line
 	//text: 'Hello world ?', // plaintext body
 	html: 'ABC账号分布<br/><br/><div style="text-align: right">邮件为自动发送，请勿回复。</div>', // html body

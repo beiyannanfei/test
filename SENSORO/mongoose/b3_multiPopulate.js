@@ -34,7 +34,7 @@ let t3Model = mongoose.model("a3", t3Schema);
 
 function createDoc() {
 	let doc1 = {
-		name: "北艳难菲",
+		name: "张三",
 		age: 28,
 		addr: "北京"
 	};
@@ -42,7 +42,7 @@ function createDoc() {
 	let doc2 = {
 		job: "程序员",
 		love: "炒股",
-		email: "18810776836@163.com"
+		email: "13888888888@163.com"
 	};
 
 	Bluebird.all([

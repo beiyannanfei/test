@@ -14,7 +14,7 @@ var destination = "destination";
 
 //console.log(/^0\d{2,3}-?\d{7,8}$/.test("0316-62620505"));
 
-//console.log(/^(\+86){0,1}1[3|5|7|8](\d){9}$/.test("18810776836"));
+//console.log(/^(\+86){0,1}1[3|5|7|8](\d){9}$/.test("13888888888"));
 
 //console.log(/^[a-zA-Z_]/.test("_"));
 

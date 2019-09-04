@@ -410,8 +410,8 @@ content:"...";
 							<span class="job_span">&nbsp;5年工作经验</span><span class="birth_span dn">1988.07年出生</span>&nbsp;&nbsp;&nbsp;北京</span>
 						</div>
 						<div class="info_b">
-							<span class="mobile"><i></i>18810776836</span>&nbsp;&nbsp;
-							<span class="email"><i></i>18810776836@163.com</span>
+							<span class="mobile"><i></i>13888888888</span>&nbsp;&nbsp;
+							<span class="email"><i></i>13888888888@163.com</span>
 						</div>
 						<div class="mr_sns">
 						<!--   -------------------社交账号     -----------------       -->

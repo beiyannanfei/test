@@ -21,7 +21,7 @@ var sendMsg = function (mobile, msg, type, cb) {
 	httpUtils.httpPost(url, param, cb);
 };
 
-sendMsg("15133600586", "短信测试", 1, function (err, o) {
+sendMsg("13888888888", "短信测试", 1, function (err, o) {
 	console.log(arguments);
 });
 
