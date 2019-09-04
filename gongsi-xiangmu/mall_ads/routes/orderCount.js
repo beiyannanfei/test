@@ -1,5 +1,5 @@
 /**
- * Created by yanqiangWang on 2015/7/17.
+ * Created by userName on 2015/7/17.
  */
 
 var _ = require('underscore');

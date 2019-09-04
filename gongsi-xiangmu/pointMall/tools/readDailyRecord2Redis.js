@@ -1,5 +1,5 @@
 /**
- * Created by yanqiang.Wang on 2015/8/5.
+ * Created by userName.Wang on 2015/8/5.
  */
 var models = require('../models/index');
 var tools = require('../tools');

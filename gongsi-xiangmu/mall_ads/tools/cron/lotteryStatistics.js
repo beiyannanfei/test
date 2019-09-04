@@ -1,5 +1,5 @@
 /**
- * Created by yanqiangWang on 2015/7/29.
+ * Created by userName on 2015/7/29.
  *
  * 根据订单信息上报摇一摇抽奖统计
  */

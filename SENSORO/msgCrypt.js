@@ -11,12 +11,12 @@ let config = {
 	appKey: "4z04NBTlokkUjNZHK9WCfPPquYzkChtiRYHU4BHkHpf",    //必须为43位长度
 	appId: "cde7890"
 };
-let msg = "wangyanqiang";
+let msg = "userName";
 let crypter = new MsgCrypt(config.appSecret, config.appKey, config.appId);
 let encrypted = crypter.encrypt(msg);   //每次加密后的值不同
 console.log("encrypted: %j", encrypted);
 let decrypted = crypter.decrypt(encrypted);
-console.log(decrypted);   //{ message: 'wangyanqiang', id: 'cde789' }
+console.log(decrypted);   //{ message: 'userName', id: 'cde789' }
 
 
 

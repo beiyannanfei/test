@@ -1,5 +1,5 @@
 /**
- * Created by yanqiang.Wang on 2015/7/30.
+ * Created by userName.Wang on 2015/7/30.
  * 将数据库中的数据解析并上报到http
  */
 var dbUtils          = require('../mongoSkin/mongoUtils.js');

@@ -11,7 +11,7 @@ var smtpConfig = {
 	port: 465,
 	secure: true, // use SSL
 	auth: {
-		user: 'yanqiang.wang@lemongrassmedia.cn',
+		user: 'userName@lemongrassmedia.cn',
 		pass: '*******'
 	}
 };
@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport(smtpConfig);
 
 // setup e-mail data with unicode symbols
 var mailOptions = {
-	from: 'yanqiang.wang@lemongrassmedia.cn', // sender address
+	from: 'userName@lemongrassmedia.cn', // sender address
 	to: 'aaaa@qq.com', // list of receivers,逗号分隔
 	subject: 'ABC账号分布', // Subject line
 	//text: 'Hello world ?', // plaintext body

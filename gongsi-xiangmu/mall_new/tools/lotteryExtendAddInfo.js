@@ -1,5 +1,5 @@
 /**
- * Created by yanqiang.Wang on 2015/8/11.
+ * Created by userName.Wang on 2015/8/11.
  */
 
 var async = require('async');

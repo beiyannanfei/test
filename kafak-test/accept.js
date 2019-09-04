@@ -13,5 +13,5 @@ client.on('lastmessage', function(topic, offset) {
 	client.fetchTopic({name: topic, offset: offset});
 });
 client.connect(function() {
-	client.fetchTopic({name: "wangyanqiang_test", offset: 0});
+	client.fetchTopic({name: "userName", offset: 0});
 });

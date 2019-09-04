@@ -3,7 +3,7 @@
  */
 var localtunnel = require('localtunnel');
 
-var tunnel = localtunnel(3000, {subdomain: "wangyanqiang"}, function (err, tunnel) {
+var tunnel = localtunnel(3000, {subdomain: "userName"}, function (err, tunnel) {
 	if (!!err) {
 		return console.log("err: %j", err.message || err);
 	}

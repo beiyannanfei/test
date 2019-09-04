@@ -21,7 +21,7 @@ for (var index in hashes) {
 
 console.error("==============================================\n");
 
-var key = "wangyanqiang";   //加密的秘钥
+var key = "userName";   //加密的秘钥
 for (index in ciphers) {
     var pwd = ciphers[index];
     if (-1 != ["aes-128-cbc-hmac-sha1", "aes-128-gcm", "aes-128-xts", "aes-192-gcm", "aes-256-cbc-hmac-sha1",

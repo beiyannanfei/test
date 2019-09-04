@@ -1,5 +1,5 @@
 /**
- * Created by yanqiangWang on 2015/7/27.
+ * Created by userName on 2015/7/27.
  */
 var dbUtils          = require('../mongoSkin/mongoUtils.js');
 var ordersCollection = new dbUtils('order');

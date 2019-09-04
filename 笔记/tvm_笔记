@@ -2,21 +2,15 @@ test3/tvmining@1234%
 test4/tvmining12345()
 linshi2/tvm123@TVm
 
-203.195.162.229  bynf  -p yanqiang.wang
+203.195.162.229  bynf  -p ****
 
 北京市东城区安定门东大街28号雍和大厦E座808天脉聚源
 
 天脉wifi密码：f00ec889e6
 
-禅道：wangyanqiang -p 123456
-
-工作邮箱：wangyanqiang@tvmining.com   -P t*145236
-
 git clone http://10.10.72.63:3000//chenjie/mall_ads.git   获取代码
 
 http://10.10.72.63:3000/chenjie/mall_play.git
-
-wangyanqiang  -p  tvm2015
 
 git status  查看修改文件
 
@@ -24,9 +18,9 @@ git add config.js   添加准备提交的文件(添加到本地)
 
 git commit -m "update test"
 
-git config --global user.email "wangyanqiang@tvmining.com"	git添加邮箱
+git config --global user.email "****@aaa.com"	git添加邮箱
 
-git config --global user.name "wangyanqiang"	git添加用户
+git config --global user.name "abc"	git添加用户
 
 git commit -m "update test"
 

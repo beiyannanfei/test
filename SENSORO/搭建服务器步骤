@@ -61,14 +61,14 @@
     b. wget https://raw.githubusercontent.com/progrium/gitreceive/master/gitreceive 下载,会生成gitreceive文件
     c. chmod a+x gitreceive 修改gitreceive为可执行文件
     d. gitreceive init 创建git用户
-    e. adduser wangyanqiang  创建一个用户
-    f. cd /home/wangyanqiang/   进入创建用户的目录
+    e. adduser userName  创建一个用户
+    f. cd /home/userName/   进入创建用户的目录
     g. mkdir .ssh && cd .ssh/ 创建并进入.ssh目录
     h. touch authorized_keys  创建文件
     i. vi authorized_keys  将本机的.ssh/id_rsa.pub文件内容写入
-    j. cat ./authorized_keys | gitreceive upload-key wangyanqiang   将密钥添加到ssh命令管理中(wangyanqiang为刚才新建的用户)
+    j. cat ./authorized_keys | gitreceive upload-key userName   将密钥添加到ssh命令管理中(userName为刚才新建的用户)
     k. su git && cd && ls => receiver  登录到git用户进入根目录,此时会有文件receiver
-    l. vi /etc/group  修改 sudo:x:27:ubuntu,wangyanqiang  将用户wangyanqiang添加到root组
+    l. vi /etc/group  修改 sudo:x:27:ubuntu,userName  将用户userName添加到root组
     m. 修改receiver   类似
         deploy_dir=/home/git/$1_deploy
         mkdir -p $deploy_dir && cat | tar -x -C $deploy_dir
@@ -94,7 +94,7 @@
         ]
     o. 本机修改 vi /Users/sensoro/.ssh/config  添加类似
         Host Tracker-Mocha
-        User wangyanqiang           (登录名称)
+        User userName           (登录名称)
         HostName 192.168.211.18     (远程服务器ip)
         IdentityFile ~/.ssh/id_rsa
     p. git remote add mocha git@Tracker-Mocha:tracker-api 添加git remote

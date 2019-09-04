@@ -1,5 +1,5 @@
 /**
- * Created by yanqiang.Wang on 2015/9/8.
+ * Created by userName.Wang on 2015/9/8.
  */
 var tools = require('../tools');
 var redisClient = tools.redisClient();

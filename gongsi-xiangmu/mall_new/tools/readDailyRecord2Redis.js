@@ -1,5 +1,5 @@
 /**
- * Created by yanqiang.Wang on 2015/8/5.
+ * Created by userName on 2015/8/5.
  */
 var dbUtils = require('../mongoSkin/mongoUtils.js');
 var log4js = require('log4js');
