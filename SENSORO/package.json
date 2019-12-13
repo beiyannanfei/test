@@ -34,7 +34,7 @@
     "node-schedule": "^1.1.1",
     "node-xlsx": "^0.7.2",
     "nodemailer": "^4.6.8",
-    "npm": "^3.10.8",
+    "npm": "^6.13.4",
     "request": "^2.74.0",
     "require-directory": "^2.1.1",
     "rewire": "^2.5.2",
